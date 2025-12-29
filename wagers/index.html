@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WAGER OS | Universal Betting Platform</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --primary: #10b981; /* Sportsbook Green */
+            --primary-glow: rgba(16, 185, 129, 0.4);
+            --accent: #f97316; /* Alert Orange */
+            --bg-light: #f8fafc;
+            --bg-dark: #020617; /* Deep Navy */
+            --card-light: #ffffff;
+            --card-dark: #1e293b; /* Slate card background */
+            --glass-blur: blur(8px);
+            --text-light: #0f172a;
+            --text-dark: #f1f5f9;
+            --radius: 12px;
+            --font-head: 'Roboto Condensed', sans-serif;
+            --font-ui: 'Inter', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-color: rgba(30, 41, 59, 0.3);
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; padding: 0; font-family: var(--font-ui); background: var(--bg-light); color: var(--text-light); transition: var(--transition); overflow-x: hidden; }
+        
+        /* --- THEME ENGINES --- */
+        body[data-theme="dark"] {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0c1a2d 100%);
+            color: var(--text-dark);
+            --primary: #10b981;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Background Animated Gradient */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
+            transition: var(--transition);
+        }
+        body[data-theme="dark"] .ambient-bg {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.05), transparent 30%);
+        }
+
+        /* --- APP SHELL --- */
+        .app-container {
+            max-width: 440px; margin: 0 auto; padding-bottom: 100px; min-height: 100vh; position: relative;
+        }
+
+        /* --- HEADER & HERO --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center; padding: 20px 24px;
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,0.95); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border-color);
+        }
+        body[data-theme="dark"] header { 
+            background: rgba(2, 6, 23, 0.95); 
+            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+        }
+
+        .brand { 
+            font-family: var(--font-head); 
+            font-weight: 700; 
+            font-size: 1.4rem; 
+            letter-spacing: 0.5px; 
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: rgba(0,0,0,0.03);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        body[data-theme="dark"] .stats-bar {
+            background: rgba(30, 41, 59, 0.5);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-top: 4px;
+        }
+        
+        .theme-switch { 
+            background: rgba(0,0,0,0.05); border: none; width: 40px; height: 40px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer; color: inherit; transition: var(--transition);
+        }
+        body[data-theme="dark"] .theme-switch { 
+            background: rgba(30, 41, 59, 0.8); 
+            color: var(--primary); 
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); 
+        }
+
+        .hero { padding: 20px 24px; text-align: center; }
+        .event-title { 
+            font-family: var(--font-head); 
+            font-size: 1.8rem; 
+            line-height: 1.2; 
+            margin: 0 0 5px 0; 
+            color: var(--text-light);
+        }
+        body[data-theme="dark"] .event-title { 
+            color: var(--text-dark); 
+        }
+        
+        .event-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .hero-date { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            opacity: 0.7; 
+            margin-top: 5px; 
+            font-weight: 600; 
+        }
+        
+        /* REVENUE RACK */
+        .revenue-rack {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 20px 24px;
+        }
+        
+        .rack-item {
+            background: var(--card-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        body[data-theme="dark"] .rack-item {
+            background: var(--card-dark);
+        }
+        
+        .rack-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .rack-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .rack-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .rack-price {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* --- NAVIGATION TABS --- */
+        .nav-scroller {
+            display: flex; gap: 12px; overflow-x: auto; padding: 10px 24px 20px; scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-scroller::-webkit-scrollbar { display: none; }
+        
+        .nav-pill {
+            padding: 10px 20px; border-radius: 100px; background: rgba(0,0,0,0.05); 
+            font-size: 0.85rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        body[data-theme="dark"] .nav-pill { background: rgba(30, 41, 59, 0.8); color: rgba(241, 245, 249, 0.8); }
+        
+        .nav-pill.active {
+            background: var(--primary); color: white; transform: scale(1.05); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        body[data-theme="dark"] .nav-pill.active {
+            background: var(--primary); color: #000; box-shadow: 0 5px 20px var(--primary-glow);
+        }
+
+        /* --- CONTENT CARDS --- */
+        .section { display: none; padding: 0 24px; animation: slideUp 0.5s ease; }
+        .section.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass-card {
+            background: var(--card-light); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px;
+            margin-bottom: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        body[data-theme="dark"] .glass-card {
+            background: var(--card-dark); border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        h2 { font-size: 1.2rem; margin: 0 0 15px 0; font-weight: 700; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+        
+        /* --- ACTION BUTTONS (BETTING STYLE) --- */
+        .action-btn {
+            width: 100%; padding: 16px; border-radius: 8px; border: none; 
+            font-family: var(--font-ui); font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            background: #000; color: #fff; margin-bottom: 10px; transition: 0.2s;
+        }
+        .action-btn i { font-size: 1.1rem; }
+        .action-btn:active { transform: scale(0.98); }
+        
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--primary), #0da271); 
+            color: #000; 
+            box-shadow: 0 4px 15px var(--primary-glow); 
+            justify-content: center; 
+            font-family: var(--font-head);
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid rgba(0,0,0,0.1); 
+            color: inherit; 
+        }
+        body[data-theme="dark"] .btn-outline { border-color: rgba(255,255,255,0.2); }
+        
+        .btn-bet { 
+            justify-content: space-between; 
+            background: rgba(0,0,0,0.03); 
+            color: inherit; 
+            box-shadow: none; 
+            border: 1px solid rgba(0,0,0,0.1); 
+            padding: 12px 16px;
+        }
+        body[data-theme="dark"] .btn-bet { 
+            background: rgba(30, 41, 59, 0.8); 
+            border-color: rgba(255,255,255,0.1); 
+        }
+        
+        .odds-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: var(--font-head);
+        }
+        
+        .odds-positive {
+            background: #10b981;
+        }
+        
+        .odds-negative {
+            background: #ef4444;
+        }
+
+        /* --- VISUAL ELEMENTS --- */
+        .vs-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; text-align: center; }
+        .vs-avatar { width: 60px; height: 60px; border-radius: 50%; background-size: cover; margin: 0 auto 5px; border: 2px solid var(--bg-light); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* BETTOR AVATARS */
+        .bettor-avatar { width: 50px; height: 50px; border-radius: 50%; background-size: cover; margin: 0 auto 10px; border: 2px solid var(--primary); }
+        
+        .vote-bar { height: 6px; background: rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; margin-top: 15px; position: relative; }
+        .vote-fill { height: 100%; background: var(--primary); width: 50%; transition: width 1s ease; }
+        
+        /* MULTI-ENTRY GRID */
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .grid-item {
+            background: rgba(0,0,0,0.03);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        body[data-theme="dark"] .grid-item {
+            background: rgba(30, 41, 59, 0.8);
+        }
+        
+        .grid-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-size: cover;
+            margin: 0 auto 8px;
+        }
+
+        /* --- BOTTOM DOCK --- */
+        .bottom-dock {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px;
+            background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 100px; padding: 10px; display: flex; justify-content: space-around;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 200; border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        body[data-theme="dark"] .bottom-dock { 
+            border: 1px solid var(--primary); 
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .dock-item {
+            background: none; border: none; color: rgba(255,255,255,0.5); font-size: 1.2rem;
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .dock-item.active { color: #000; background: var(--primary); transform: translateY(-5px); }
+        body[data-theme="dark"] .dock-item.active { background: var(--primary); color: #000; }
+
+        /* --- WINNER ANIMATION --- */
+        .winner-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 1000;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px); animation: fadeIn 0.3s;
+        }
+        .winner-content {
+            text-align: center; color: var(--primary);
+            transform: scale(0.5); opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .winner-title { font-family: var(--font-ui); font-size: 1.5rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; color: #fff; }
+        .winner-name {
+            font-family: var(--font-head); font-size: 4rem; font-weight: 700; line-height: 1; margin: 0;
+            background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px var(--primary-glow);
+        }
+        .confetti-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        @keyframes popIn { to { transform: scale(1); opacity: 1; } }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(8px); z-index: 300; display: none; align-items: flex-end;
+            animation: fadeIn 0.3s;
+        }
+        .modal-sheet {
+            background: var(--bg-light); width: 100%; max-width: 440px; margin: 0 auto;
+            border-radius: 24px 24px 0 0; padding: 30px 24px 50px; position: relative;
+            animation: slideUpModal 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        body[data-theme="dark"] .modal-sheet { 
+            background: #1e293b; 
+            color: #fff; 
+            border-top: 2px solid var(--primary); 
+        }
+        @keyframes slideUpModal { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        
+        .bet-slip {
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .payout-display {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            font-family: var(--font-head);
+        }
+
+        /* INPUTS */
+        input {
+            width: 100%; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.03); font-family: var(--font-ui); font-size: 1rem; color: inherit; margin-bottom: 10px;
+            text-align: center;
+        }
+        body[data-theme="dark"] input { 
+            background: rgba(255,255,255,0.05); 
+            border-color: rgba(255,255,255,0.1); 
+        }
+        
+        /* PROP BET STYLES */
+        .prop-bet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        body[data-theme="dark"] .prop-bet {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .prop-vote {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .vote-count {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        /* LIVE BADGE */
+        .live-badge {
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"></div>
+
+    <div class="app-container">
+        
+        <header>
+            <div class="brand">
+                <i class="fas fa-chart-line"></i>
+                WAGER OS
+            </div>
+            <button class="theme-switch" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div>Total Pool</div>
+                <span class="stat-value">$124,580</span>
+            </div>
+            <div class="stat-item">
+                <div>Live Bets</div>
+                <span class="stat-value">1,847</span>
+            </div>
+            <div class="stat-item">
+                <div>Bets Close In</div>
+                <span class="stat-value">2:34</span>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="event-subtitle">MAIN EVENT</div>
+            <h1 class="event-title" id="eventTitle">Championship Fight<br>Mayweather vs. McGregor II</h1>
+            <div class="hero-date">SATURDAY, NOV 12, 2024 • 8:00 PM EST</div>
+        </div>
+        
+        <div class="revenue-rack">
+            <div class="rack-item" onclick="openPaymentModal('Buy Credits', 20)">
+                <div class="rack-icon"><i class="fas fa-coins"></i></div>
+                <div class="rack-title">Buy Credits</div>
+                <div class="rack-price">$20</div>
+            </div>
+            <div class="rack-item" onclick="openOddsBoost()">
+                <div class="rack-icon"><i class="fas fa-bolt"></i></div>
+                <div class="rack-title">Odds Boost (2x)</div>
+                <div class="rack-price">Limited</div>
+            </div>
+            <div class="rack-item" onclick="openHighRoller()">
+                <div class="rack-icon"><i class="fas fa-crown"></i></div>
+                <div class="rack-title">High Roller Suite</div>
+                <div class="rack-price">$500+</div>
+            </div>
+            <div class="rack-item" onclick="openJackpot()">
+                <div class="rack-icon"><i class="fas fa-trophy"></i></div>
+                <div class="rack-title">Jackpot Entry</div>
+                <div class="rack-price">$10</div>
+            </div>
+        </div>
+
+        <div class="nav-scroller">
+            <div class="nav-pill active" onclick="nav('sportsbook', this)">The Sportsbook</div>
+            <div class="nav-pill" onclick="nav('leaderboard', this)">Leaderboard</div>
+            <div class="nav-pill" onclick="nav('propbets', this)">Prop Bets</div>
+            <div class="nav-pill" onclick="nav('livebets', this)">Live Bets</div>
+            <div class="nav-pill" onclick="nav('mybets', this)">My Bets</div>
+        </div>
+
+        <div id="sportsbook" class="section active">
+            <div class="glass-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <h2 style="margin:0;">Head-to-Head</h2>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <h3 style="text-align:center; font-size:1.1rem; margin-bottom:20px;">Who will win the main event?</h3>
+                <div class="vs-grid">
+                    <div>
+                        <div class="vs-avatar" id="groomImg" style="background-image:url('https://images.unsplash.com/photo-1618331833071-1c0c6ee3d19e?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">MAYWEATHER</div>
+                        <div class="odds-badge odds-negative" style="margin-top:5px;">-150</div>
+                    </div>
+                    <div style="font-style:italic; opacity:0.5;">VS</div>
+                    <div>
+                        <div class="vs-avatar" id="brideImg" style="background-image:url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">MCGREGOR</div>
+                        <div class="odds-badge odds-positive" style="margin-top:5px;">+220</div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:15px;">
+                    <button class="action-btn btn-bet" onclick="placeBet('Mayweather', -150)">
+                        <span>Bet Mayweather</span>
+                        <span class="odds-badge odds-negative">-150</span>
+                    </button>
+                    <button class="action-btn btn-bet" onclick="placeBet('McGregor', 220)">
+                        <span>Bet McGregor</span>
+                        <span class="odds-badge odds-positive">+220</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="glass-card">
+                <h2><i class="fas fa-horse-head" style="color:var(--primary)"></i> Multi-Entry: Kentucky Derby</h2>
+                <p style="font-size:0.9rem; opacity:0.8; margin-bottom:15px;">Pick the winning horse</p>
+                
+                <div class="grid-3col">
+                    <div class="grid-item" onclick="placeBet('Thunder Bolt', 300)">
+                        <div class="grid-avatar" style="background-image:url('https://images.unsplash.com/photo-1513279922550-250c2129b13a?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">Thunder Bolt</div>
+                        <div class="odds-badge odds-positive" style="margin-top:5px; font-size:0.7rem;">+300</div>
+                    </div>
+                    <div class="grid-item" onclick="placeBet('Midnight Run', 150)">
+                        <div class="grid-avatar" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">Midnight Run</div>
+                        <div class="odds-badge odds-positive" style="margin-top:5px; font-size:0.7rem;">+150</div>
+                    </div>
+                    <div class="grid-item" onclick="placeBet('Silver Arrow', 80)">
+                        <div class="grid-avatar" style="background-image:url('https://images.unsplash.com/photo-1546971587-02375cbb1e4f?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">Silver Arrow</div>
+                        <div class="odds-badge odds-negative" style="margin-top:5px; font-size:0.7rem;">-120</div>
+                    </div>
+                </div>
+                
+                <div class="grid-3col">
+                    <div class="grid-item" onclick="placeBet('Desert Wind', 450)">
+                        <div class="grid-avatar" style="background-image:url('https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">Desert Wind</div>
+                        <div class="odds-badge odds-positive" style="margin-top:5px; font-size:0.7rem;">+450</div>
+                    </div>
+                    <div class="grid-item" onclick="placeBet('Royal Prince', 200)">
+                        <div class="grid-avatar" style="background-image:url('https://images.unsplash.com/photo-1513279922550-250c2129b13a?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">Royal Prince</div>
+                        <div class="odds-badge odds-positive" style="margin-top:5px; font-size:0.7rem;">+200</div>
+                    </div>
+                    <div class="grid-item" onclick="placeBet('Golden Spirit', 120)">
+                        <div class="grid-avatar" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">Golden Spirit</div>
+                        <div class="odds-badge odds-positive" style="margin-top:5px; font-size:0.7rem;">+120</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="leaderboard" class="section">
+            <div class="glass-card" style="text-align:center;">
+                <h2 style="justify-content:center;">Top Bettors</h2>
+                <p style="opacity:0.7; margin-bottom:25px; font-size:0.9rem;">This week's highest earners</p>
+                
+                <div style="margin-bottom:20px; border-bottom:1px solid rgba(128,128,128,0.2); padding-bottom:20px;">
+                    <div class="bettor-avatar" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200');"></div>
+                    <div style="font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; color:var(--primary); font-weight:bold;">#1 Top Earner</div>
+                    <h3 style="margin:5px 0 10px;">Mike "The Shark"</h3>
+                    <div style="font-size:1.2rem; font-weight:bold; color:var(--primary);">+$12,450</div>
+                    <button class="action-btn btn-outline" style="margin-top:10px; justify-content:center;" onclick="followBettor('Mike')">
+                        <i class="fas fa-eye"></i> Follow Bets
+                    </button>
+                </div>
+
+                <div style="margin-bottom:20px; border-bottom:1px solid rgba(128,128,128,0.2); padding-bottom:20px;">
+                    <div class="bettor-avatar" style="background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200');"></div>
+                    <div style="font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; color:var(--primary); font-weight:bold;">#2 Hot Streak</div>
+                    <h3 style="margin:5px 0 10px;">Sarah "Lucky" Chen</h3>
+                    <div style="font-size:1.2rem; font-weight:bold; color:var(--primary);">+$8,920</div>
+                    <button class="action-btn btn-outline" style="margin-top:10px; justify-content:center;" onclick="followBettor('Sarah')">
+                        <i class="fas fa-eye"></i> Follow Bets
+                    </button>
+                </div>
+                
+                <div>
+                    <div class="bettor-avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200');"></div>
+                    <div style="font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; color:var(--primary); font-weight:bold;">#3 Rising Star</div>
+                    <h3 style="margin:5px 0 10px;">David "Oracle" Miller</h3>
+                    <div style="font-size:1.2rem; font-weight:bold; color:var(--primary);">+$5,670</div>
+                    <button class="action-btn btn-outline" style="margin-top:10px; justify-content:center;" onclick="followBettor('David')">
+                        <i class="fas fa-eye"></i> Follow Bets
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="propbets" class="section">
+            <div class="glass-card">
+                <h2><i class="fas fa-lightbulb" style="color:var(--primary)"></i> Prop Bet Suggestions</h2>
+                <p style="font-size:0.9rem; opacity:0.8; margin-bottom:15px;">Upvote props you want to see live</p>
+                
+                <div class="prop-bet">
+                    <div>
+                        <div style="font-weight:600;">Will there be a knockout in Round 1?</div>
+                        <div style="font-size:0.8rem; opacity:0.7;">Suggested by @FightFan23</div>
+                    </div>
+                    <div class="prop-vote">
+                        <button class="vote-count" onclick="upvoteProp(1)">42</button>
+                        <i class="fas fa-chevron-up" style="color:var(--primary); cursor:pointer;" onclick="upvoteProp(1)"></i>
+                    </div>
+                </div>
+                
+                <div class="prop-bet">
+                    <div>
+                        <div style="font-weight:600;">Total fight duration over/under 7.5 rounds</div>
+                        <div style="font-size:0.8rem; opacity:0.7;">Suggested by @RoundPredictor</div>
+                    </div>
+                    <div class="prop-vote">
+                        <button class="vote-count" onclick="upvoteProp(2)">38</button>
+                        <i class="fas fa-chevron-up" style="color:var(--primary); cursor:pointer;" onclick="upvoteProp(2)"></i>
+                    </div>
+                </div>
+                
+                <div class="prop-bet">
+                    <div>
+                        <div style="font-weight:600;">Will McGregor attempt a takedown?</div>
+                        <div style="font-size:0.8rem; opacity:0.7;">Suggested by @GrappleExpert</div>
+                    </div>
+                    <div class="prop-vote">
+                        <button class="vote-count" onclick="upvoteProp(3)">29</button>
+                        <i class="fas fa-chevron-up" style="color:var(--primary); cursor:pointer;" onclick="upvoteProp(3)"></i>
+                    </div>
+                </div>
+                
+                <div class="prop-bet">
+                    <div>
+                        <div style="font-weight:600;">Exact round of knockout: Round 3</div>
+                        <div style="font-size:0.8rem; opacity:0.7;">Suggested by @PrecisePuncher</div>
+                    </div>
+                    <div class="prop-vote">
+                        <button class="vote-count" onclick="upvoteProp(4)">24</button>
+                        <i class="fas fa-chevron-up" style="color:var(--primary); cursor:pointer;" onclick="upvoteProp(4)"></i>
+                    </div>
+                </div>
+                
+                <input type="text" id="propInput" placeholder="Suggest a prop bet...">
+                <button class="action-btn btn-outline" style="justify-content:center;" onclick="suggestProp()">
+                    <i class="fas fa-plus"></i> Submit Prop Bet
+                </button>
+            </div>
+        </div>
+
+        <div id="livebets" class="section">
+            <div class="glass-card">
+                <h2><i class="fas fa-bolt" style="color:var(--accent)"></i> Live Betting Feed</h2>
+                <p style="font-size:0.9rem; opacity:0.8; margin-bottom:15px;">Recent bets placed in real-time</p>
+                
+                <div style="background:rgba(16, 185, 129, 0.05); padding:15px; border-radius:8px; margin-bottom:10px;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <div>
+                            <span style="font-weight:bold;">@BigSpender</span> bet $500 on <span style="color:var(--primary); font-weight:bold;">Mayweather ML</span>
+                        </div>
+                        <div style="font-size:0.8rem; opacity:0.7;">2 min ago</div>
+                    </div>
+                </div>
+                
+                <div style="background:rgba(16, 185, 129, 0.05); padding:15px; border-radius:8px; margin-bottom:10px;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <div>
+                            <span style="font-weight:bold;">@LuckyLady</span> bet $250 on <span style="color:var(--primary); font-weight:bold;">McGregor by KO</span>
+                        </div>
+                        <div style="font-size:0.8rem; opacity:0.7;">4 min ago</div>
+                    </div>
+                </div>
+                
+                <div style="background:rgba(16, 185, 129, 0.05); padding:15px; border-radius:8px; margin-bottom:10px;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <div>
+                            <span style="font-weight:bold;">@HorseWhisperer</span> bet $1,000 on <span style="color:var(--primary); font-weight:bold;">Thunder Bolt</span>
+                        </div>
+                        <div style="font-size:0.8rem; opacity:0.7;">7 min ago</div>
+                    </div>
+                </div>
+                
+                <div style="background:rgba(16, 185, 129, 0.05); padding:15px; border-radius:8px; margin-bottom:10px;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <div>
+                            <span style="font-weight:bold;">@PropKing</span> bet $150 on <span style="color:var(--primary); font-weight:bold;">Fight goes distance</span>
+                        </div>
+                        <div style="font-size:0.8rem; opacity:0.7;">12 min ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mybets" class="section">
+            <div class="glass-card">
+                <h2><i class="fas fa-wallet" style="color:var(--primary)"></i> My Active Bets</h2>
+                <p style="font-size:0.9rem; opacity:0.8; margin-bottom:15px;">Balance: <span style="font-weight:bold; color:var(--primary);">$1,245.50</span></p>
+                
+                <div style="background:rgba(16, 185, 129, 0.1); padding:15px; border-radius:8px; margin-bottom:10px; border-left:4px solid var(--primary);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                        <div style="font-weight:bold;">Mayweather to win</div>
+                        <div style="color:var(--primary); font-weight:bold;">-150</div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                        <div>Wager: $100</div>
+                        <div>To win: $166.67</div>
+                    </div>
+                </div>
+                
+                <div style="background:rgba(16, 185, 129, 0.1); padding:15px; border-radius:8px; margin-bottom:10px; border-left:4px solid var(--primary);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                        <div style="font-weight:bold;">Thunder Bolt to win</div>
+                        <div style="color:var(--primary); font-weight:bold;">+300</div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                        <div>Wager: $50</div>
+                        <div>To win: $200</div>
+                    </div>
+                </div>
+                
+                <div style="background:rgba(239, 68, 68, 0.1); padding:15px; border-radius:8px; margin-bottom:10px; border-left:4px solid #ef4444;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                        <div style="font-weight:bold;">Lakers to win NBA Finals</div>
+                        <div style="color:#ef4444; font-weight:bold;">+450</div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                        <div>Wager: $75</div>
+                        <div>To win: $412.50</div>
+                    </div>
+                </div>
+                
+                <button class="action-btn btn-primary" style="margin-top:20px;" onclick="openDepositModal()">
+                    <i class="fas fa-plus-circle"></i> Deposit Funds
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-dock">
+        <button class="dock-item active" onclick="nav('sportsbook', null)"><i class="fas fa-trophy"></i></button>
+        <button class="dock-item" onclick="nav('leaderboard', null)"><i class="fas fa-chart-line"></i></button>
+        <button class="dock-item" onclick="nav('propbets', null)"><i class="fas fa-lightbulb"></i></button>
+        <button class="dock-item" onclick="nav('livebets', null)"><i class="fas fa-bolt"></i></button>
+        <button class="dock-item" onclick="nav('mybets', null)"><i class="fas fa-wallet"></i></button>
+    </div>
+
+    <div class="winner-overlay" id="winnerOverlay" onclick="closeWinner()">
+        <canvas id="confetti" class="confetti-canvas"></canvas>
+        <div class="winner-content">
+            <div class="winner-title">Bet Confirmed</div>
+            <div class="winner-name" id="winnerName">MAYWEATHER</div>
+            <div style="color:white; margin-top:20px; font-size:0.8rem; opacity:0.7;">(Tap to close)</div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="genericModal" onclick="closeModal()">
+        <div class="modal-sheet" onclick="event.stopPropagation()">
+            <div style="text-align:center; margin-bottom:20px;">
+                <div style="width:40px; height:4px; background:rgba(128,128,128,0.3); border-radius:2px; margin:0 auto 20px;"></div>
+                <h2 id="modalTitle" style="justify-content:center;">Place Bet</h2>
+            </div>
+            <div class="bet-slip">
+                <div style="text-align:center; font-weight:bold; margin-bottom:10px;" id="betSelection">Mayweather to win (-150)</div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                    <div>Odds:</div>
+                    <div style="font-weight:bold;" id="betOdds">-150</div>
+                </div>
+                <div>
+                    <div style="margin-bottom:5px;">Wager Amount ($)</div>
+                    <input type="number" id="wagerAmount" placeholder="Enter amount" value="50" min="5" step="5">
+                </div>
+                <div class="payout-display" id="payoutDisplay">$83.33</div>
+                <div style="text-align:center; font-size:0.9rem; opacity:0.7;">Potential Payout</div>
+            </div>
+            <div id="modalContent"></div>
+            <button class="action-btn btn-primary" style="margin-top:20px;" onclick="processBet()">CONFIRM BET</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        const config = {
+            eventName: "Mayweather vs. McGregor II",
+            eventDate: "November 12, 2024",
+            primaryColor: "#10b981",
+            autoDarkMode: true,
+            currentBet: {
+                selection: "",
+                odds: 0,
+                wager: 50
+            }
+        };
+
+        // --- 2. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('eventTitle').innerHTML = `${config.eventName}`;
+            
+            if(config.autoDarkMode) {
+                const hour = new Date().getHours();
+                if(hour >= 18) toggleTheme();
+            }
+            
+            // Initialize bet slip calculator
+            document.getElementById('wagerAmount').addEventListener('input', calculatePayout);
+        });
+
+        // --- 3. NAVIGATION ---
+        function nav(tabId, pillElement) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            if(pillElement) {
+                document.querySelectorAll('.nav-pill').forEach(el => el.classList.remove('active'));
+                pillElement.classList.add('active');
+            }
+
+            // Sync Dock
+            const icons = ['sportsbook', 'leaderboard', 'propbets', 'livebets', 'mybets'];
+            const idx = icons.indexOf(tabId);
+            document.querySelectorAll('.dock-item').forEach((el, i) => {
+                if(i === idx) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+        }
+
+        // --- 4. THEME TOGGLE ---
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-switch i');
+            if(body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        }
+
+        // --- 5. BETTING LOGIC ---
+        function placeBet(selection, odds) {
+            config.currentBet.selection = selection;
+            config.currentBet.odds = odds;
+            
+            document.getElementById('betSelection').innerText = `${selection} (${odds > 0 ? '+' : ''}${odds})`;
+            document.getElementById('betOdds').innerText = `${odds > 0 ? '+' : ''}${odds}`;
+            
+            openBetModal();
+        }
+        
+        function calculatePayout() {
+            const wager = parseFloat(document.getElementById('wagerAmount').value) || 50;
+            const odds = config.currentBet.odds;
+            let payout = 0;
+            
+            if (odds > 0) {
+                // Positive odds: (odds/100) * wager + wager
+                payout = (odds / 100) * wager + wager;
+            } else {
+                // Negative odds: (100/|odds|) * wager + wager
+                payout = (100 / Math.abs(odds)) * wager + wager;
+            }
+            
+            document.getElementById('payoutDisplay').innerText = `$${payout.toFixed(2)}`;
+        }
+        
+        function openBetModal() {
+            calculatePayout();
+            document.getElementById('modalTitle').innerText = "Bet Slip";
+            document.getElementById('genericModal').style.display = 'flex';
+        }
+        
+        function processBet() {
+            const btn = document.querySelector('.modal-sheet .btn-primary');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Placing Bet...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Bet Confirmed!';
+                btn.style.background = '#10b981';
+                
+                // Show winner overlay
+                document.getElementById('winnerName').innerText = config.currentBet.selection.toUpperCase();
+                document.getElementById('winnerOverlay').style.display = 'flex';
+                initConfetti();
+                loopConfetti();
+                
+                setTimeout(() => {
+                    closeModal();
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 1500);
+            }, 1500);
+        }
+        
+        function triggerWinner(name) {
+            document.getElementById('winnerName').innerText = name;
+            document.getElementById('winnerOverlay').style.display = 'flex';
+            initConfetti();
+            loopConfetti();
+        }
+
+        function closeWinner() {
+            document.getElementById('winnerOverlay').style.display = 'none';
+            confetti = [];
+        }
+
+        // --- CONFETTI ---
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let confetti = [];
+        const colors = [config.primaryColor, '#10b981', '#f97316', '#ffffff'];
+
+        function initConfetti() {
+            confetti = [];
+            for (let i = 0; i < 100; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: Math.random() * 10 + 5,
+                    speed: Math.random() * 5 + 2,
+                    angle: Math.random() * 6.28
+                });
+            }
+        }
+
+        function loopConfetti() {
+            if(document.getElementById('winnerOverlay').style.display === 'none') return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach((p, i) => {
+                p.y += p.speed;
+                p.angle += 0.1;
+                ctx.fillStyle = p.color;
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.angle);
+                ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                ctx.restore();
+                if (p.y > canvas.height) confetti[i].y = -10;
+            });
+            requestAnimationFrame(loopConfetti);
+        }
+
+        // --- 6. MODALS ---
+        function openPaymentModal(title, amount) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalContent').innerHTML = `
+                <div style="text-align:center; font-size:2rem; font-weight:bold; margin:20px 0;">$${amount}.00</div>
+                <p style="text-align:center; opacity:0.6;">Proceeding to secure checkout.</p>
+                <div style="display:flex; justify-content:center; gap:10px; margin-top:15px; font-size:1.5rem; opacity:0.5;">
+                    <i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-cc-amex"></i>
+                </div>
+            `;
+            document.getElementById('genericModal').style.display = 'flex';
+        }
+        
+        function openDepositModal() {
+            openPaymentModal("Deposit Funds", 100);
+        }
+        
+        function openOddsBoost() {
+            alert("Odds Boost activated! Your next bet will have 2x odds!");
+        }
+        
+        function openHighRoller() {
+            alert("High Roller Suite access requires minimum $500 deposit. Contact support.");
+        }
+        
+        function openJackpot() {
+            alert("Jackpot entry added! Draw happens Saturday at 9 PM EST.");
+        }
+        
+        function followBettor(name) {
+            alert(`Now following ${name}'s bets. You'll receive notifications when they place new wagers.`);
+        }
+        
+        function upvoteProp(id) {
+            const voteCount = document.querySelectorAll('.vote-count')[id-1];
+            const current = parseInt(voteCount.innerText);
+            voteCount.innerText = current + 1;
+            voteCount.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                voteCount.style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        function suggestProp() {
+            const input = document.getElementById('propInput');
+            if (input.value.trim()) {
+                alert(`Prop bet submitted: "${input.value}"\nIt will appear after moderation.`);
+                input.value = '';
+            } else {
+                alert("Please enter a prop bet suggestion.");
+            }
+        }
+
+        function closeModal() { 
+            document.getElementById('genericModal').style.display = 'none'; 
+        }
+    </script>
+</body>
+</html>
