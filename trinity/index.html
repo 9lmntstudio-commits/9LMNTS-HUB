@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9LMNTS Trinity | Complete Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        * { 
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        .accent {
+            color: #FF5500;
+        }
+        .bg-accent {
+            background-color: #FF5500;
+        }
+        .success {
+            color: #10B981;
+        }
+        .warning {
+            color: #F59E0B;
+        }
+        .mono {
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        .ticker-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 30s linear infinite;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 85, 0, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 85, 0, 0.7);
+        }
+        
+        /* Micro tier highlight */
+        .micro-tier {
+            background: linear-gradient(135deg, rgba(255,85,0,0.1) 0%, rgba(16,185,129,0.1) 100%);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Network surge effects */
+        .network-surge {
+            animation: surge 1.5s ease-in-out infinite;
+        }
+        @keyframes surge {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // ====== UTILITY FUNCTIONS ======
+        const formatMoney = (amount) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        };
+
+        const formatCurrency = (amount) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        };
+
+        const formatCompact = (amount) => {
+            if (amount >= 1000000) {
+                return '$' + (amount / 1000000).toFixed(1) + 'M';
+            } else if (amount >= 1000) {
+                return '$' + (amount / 1000).toFixed(1) + 'K';
+            }
+            return '$' + amount.toFixed(0);
+        };
+
+        // ====== CENTRAL STATE MANAGEMENT ======
+        const PLATFORM_DATA = {
+            assets: [
+                {
+                    id: 1,
+                    name: "THE ETHER TOWER",
+                    type: "Luxury Residential",
+                    status: "ACTIVE",
+                    target: 50000000,
+                    raised: 28500000,
+                    microRaised: 1250000,
+                    apy: 8.2,
+                    holders: 1240,
+                    microHolders: 650,
+                    listingDate: "2023-10-15",
+                    monthlyRevenue: 185000,
+                    feesCollected: 427500,
+                    performance: 94,
+                    description: "72-story architectural marvel in the financial district. LEED Platinum certified with private club and panoramic city views.",
+                    capRate: 7.8,
+                    occupancy: 94,
+                    yearBuilt: 2023,
+                    floors: 72,
+                    units: 412,
+                    tags: ["VIP", "MICRO", "PREMIUM"],
+                    suites: [
+                        { id: '12A', name: "City View Studio", price: 425000, size: "650 sqft", yield: 6.2 },
+                        { id: '12B', name: "Executive One-Bedroom", price: 850000, size: "1,200 sqft", yield: 7.5 },
+                        { id: '45C', name: "Corner Two-Bedroom", price: 1250000, size: "1,850 sqft", yield: 8.1 },
+                        { id: '68P', name: "Penthouse Sky Residence", price: 3850000, size: "4,200 sqft", yield: 9.8 }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "9LMNTS HQ",
+                    type: "Commercial",
+                    status: "ACTIVE",
+                    target: 20000000,
+                    raised: 18000000,
+                    microRaised: 950000,
+                    apy: 11.5,
+                    holders: 850,
+                    microHolders: 420,
+                    listingDate: "2023-08-22",
+                    monthlyRevenue: 165000,
+                    feesCollected: 270000,
+                    performance: 98,
+                    description: "Flagship creative studio and office complex for Web3 startups.",
+                    capRate: 9.2,
+                    occupancy: 87,
+                    yearBuilt: 2022,
+                    floors: 12,
+                    units: 85,
+                    tags: ["VIP", "MICRO", "TECH"],
+                    suites: [
+                        { id: 'G01', name: "Ground Floor Retail", price: 1250000, size: "3,200 sqft", yield: 10.5 },
+                        { id: '5A', name: "Tech Suite", price: 750000, size: "2,100 sqft", yield: 9.8 }
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "LOGISTICS HUB ALPHA",
+                    type: "Industrial",
+                    status: "FUNDING",
+                    target: 15000000,
+                    raised: 2500000,
+                    microRaised: 180000,
+                    apy: 7.8,
+                    holders: 120,
+                    microHolders: 85,
+                    listingDate: "2023-11-05",
+                    monthlyRevenue: 45000,
+                    feesCollected: 37500,
+                    performance: 65,
+                    description: "State-of-the-art logistics center with autonomous vehicle integration.",
+                    capRate: 8.5,
+                    occupancy: 100,
+                    yearBuilt: 2021,
+                    floors: 3,
+                    units: 1,
+                    tags: ["MICRO", "INDUSTRIAL"],
+                    suites: [
+                        { id: 'WH1', name: "Main Warehouse", price: 15000000, size: "250,000 sqft", yield: 7.8 }
+                    ]
+                }
+            ],
+            transactions: [],
+            tvl: 28500000 + 18000000 + 2500000,
+            fees: (28500000 + 18000000 + 2500000) * 0.015,
+            totalInvestors: 1240 + 850 + 120,
+            microInvestors: 650 + 420 + 85
+        };
+
+        // ====== LOADING SCREEN ======
+        const LoadingScreen = ({ onComplete }) => {
+            const [progress, setProgress] = useState(0);
+            const [status, setStatus] = useState("Initializing 9LMNTS Network...");
+            
+            useEffect(() => {
+                const statuses = [
+                    "Loading Smart Contracts...",
+                    "Syncing Blockchain Data...",
+                    "Initializing Liquidity Pools...",
+                    "Connecting to Polygon Network...",
+                    "Ready for Live Demo"
+                ];
+                
+                const interval = setInterval(() => {
+                    setProgress(prev => {
+                        const newProgress = prev + 20;
+                        if (newProgress <= 100) {
+                            setStatus(statuses[newProgress / 20 - 1]);
+                        }
+                        
+                        if (newProgress >= 100) {
+                            clearInterval(interval);
+                            setTimeout(onComplete, 800);
+                            return 100;
+                        }
+                        return newProgress;
+                    });
+                }, 600);
+                
+                return () => clearInterval(interval);
+            }, [onComplete]);
+            
+            return (
+                <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+                    <div className="text-center p-8 max-w-md">
+                        <div className="w-32 h-32 mx-auto mb-8 relative">
+                            <div className="absolute inset-0 border-4 border-transparent border-t-accent rounded-full animate-spin"></div>
+                            <div className="absolute inset-4 border-4 border-transparent border-b-success rounded-full animate-spin" style={{animationDirection: 'reverse'}}></div>
+                            <div className="absolute inset-8 bg-accent rounded-full flex items-center justify-center">
+                                <span className="text-4xl font-black text-white">9</span>
+                            </div>
+                        </div>
+                        
+                        <h1 className="text-5xl font-black text-white mb-2">9LMNTS</h1>
+                        <p className="text-gray-400 mb-6">DIGITAL REAL ESTATE NETWORK</p>
+                        
+                        <div className="mb-8">
+                            <div className="flex justify-between text-sm text-gray-400 mb-2">
+                                <span>{status}</span>
+                                <span>{progress}%</span>
+                            </div>
+                            <div className="w-full bg-gray-800 h-3 rounded-full overflow-hidden">
+                                <div 
+                                    className="h-full bg-gradient-to-r from-accent to-success transition-all duration-500"
+                                    style={{ width: `${progress}%` }}
+                                ></div>
+                            </div>
+                        </div>
+                        
+                        <div className="text-xs text-gray-600">
+                            <div className="flex justify-center space-x-6">
+                                <span><i className="fas fa-bolt mr-1 text-accent"></i> Polygon Network</span>
+                                <span><i className="fas fa-shield-alt mr-1 text-green-400"></i> Secure</span>
+                                <span><i className="fas fa-users mr-1 text-blue-400"></i> Multi-Tier</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // ====== VIP INVESTOR VIEW ======
+        const VIPInvestorView = ({ assets, onInvest, demoMode = true }) => {
+            const [balance, setBalance] = useState(demoMode ? 1000000 : 50000);
+            const [portfolio, setPortfolio] = useState([]);
+            const [selectedAsset, setSelectedAsset] = useState(null);
+            const [activeTab, setActiveTab] = useState('overview');
+            const [investmentOption, setInvestmentOption] = useState('fractional');
+            const [fractionalAmount, setFractionalAmount] = useState(50000);
+            const [selectedSuite, setSelectedSuite] = useState(null);
+            const [showModal, setShowModal] = useState(false);
+            
+            const handleInvest = () => {
+                let investAmount = 0;
+                
+                if (investmentOption === 'fractional') {
+                    investAmount = fractionalAmount;
+                } else if (investmentOption === 'unit' && selectedSuite) {
+                    investAmount = selectedSuite.price;
+                }
+                
+                if (balance < investAmount) {
+                    alert("Insufficient liquidity");
+                    return;
+                }
+                
+                // Confetti effect
+                confetti({
+                    particleCount: 200,
+                    spread: 100,
+                    origin: { y: 0.6 },
+                    colors: ['#FF5500', '#10B981', '#FFFFFF']
+                });
+                
+                setBalance(prev => prev - investAmount);
+                
+                // Update portfolio
+                const existing = portfolio.find(p => p.assetId === selectedAsset.id);
+                const tokens = investAmount / 1; // Token price $1
+                
+                if (existing) {
+                    setPortfolio(prev => prev.map(p => 
+                        p.assetId === selectedAsset.id 
+                            ? { ...p, amount: p.amount + investAmount, tokens: p.tokens + tokens }
+                            : p
+                    ));
+                } else {
+                    setPortfolio([...portfolio, {
+                        assetId: selectedAsset.id,
+                        name: selectedAsset.name,
+                        amount: investAmount,
+                        tokens: tokens,
+                        type: investmentOption === 'unit' ? 'WHOLE_UNIT' : 'FRACTIONAL'
+                    }]);
+                }
+                
+                // Call global investment handler
+                onInvest(selectedAsset.id, investAmount, 'VIP');
+                
+                // Close modal
+                setTimeout(() => {
+                    setShowModal(false);
+                    setSelectedAsset(null);
+                }, 1500);
+            };
+            
+            return (
+                <div className="p-4 md:p-6 max-w-7xl mx-auto">
+                    {/* VIP Banner */}
+                    <div className="glass p-6 mb-8 border-l-4 border-accent relative overflow-hidden">
+                        <div className="absolute top-4 right-4">
+                            <span className="px-3 py-1 bg-accent text-black text-xs font-bold rounded-full">VIP TIER</span>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-center">
+                            <div className="md:w-2/3 pr-0 md:pr-8">
+                                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">VIP INVESTOR DASHBOARD</h2>
+                                <p className="text-gray-300 mb-4">Access to premium properties with $50K+ minimum investment. Institutional-grade opportunities.</p>
+                                <div className="flex flex-wrap gap-4 mb-4">
+                                    <div className="flex items-center">
+                                        <div className="w-2 h-2 bg-accent rounded-full mr-2"></div>
+                                        <span className="text-sm text-gray-300">Minimum: $50,000</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <div className="w-2 h-2 bg-success rounded-full mr-2"></div>
+                                        <span className="text-sm text-gray-300">Priority Access</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                        <span className="text-sm text-gray-300">Direct Deals</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:w-1/3 mt-4 md:mt-0">
+                                <div className="glass p-4 rounded-xl">
+                                    <div className="text-xs text-gray-400 uppercase font-bold mb-2">Available Liquidity</div>
+                                    <div className="text-3xl text-white font-bold mono mb-2">{formatCurrency(balance)}</div>
+                                    <div className="text-xs text-gray-500">USDC • VIP Account</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Stats Dashboard */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div className="glass p-6 rounded-2xl border-l-4 border-accent">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">
+                                <i className="fas fa-wallet mr-2"></i>
+                                Portfolio Value
+                            </div>
+                            <div className="text-3xl text-white font-bold mono">{formatCurrency(portfolio.reduce((sum, p) => sum + p.amount, 0))}</div>
+                            <div className="text-xs text-gray-500 mt-1">Across {portfolio.length} properties</div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl border-l-4 border-blue-500">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">
+                                <i className="fas fa-chart-line mr-2"></i>
+                                Projected Annual Yield
+                            </div>
+                            <div className="text-3xl success font-bold mono">
+                                +{formatCurrency(portfolio.reduce((sum, p) => sum + p.amount, 0) * 0.092)}
+                            </div>
+                            <div className="text-xs text-gray-500 mt-1">Based on 9.2% avg APY</div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl border-l-4 border-purple-500">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">
+                                <i className="fas fa-crown mr-2"></i>
+                                VIP Benefits
+                            </div>
+                            <div className="text-xl text-white font-bold">Priority Access</div>
+                            <div className="text-xs text-gray-500 mt-1">Early deal flow • Lower fees</div>
+                        </div>
+                    </div>
+                    
+                    {/* Property Grid */}
+                    <h2 className="text-2xl font-bold text-white mb-6">VIP Properties (Minimum $50K)</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        {assets.map(asset => (
+                            <div key={asset.id} className="glass rounded-xl overflow-hidden hover:border-accent transition-colors border border-gray-800">
+                                <div className="h-48 relative bg-gradient-to-br from-gray-900 to-black">
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="text-center">
+                                            <i className="fas fa-building text-5xl text-gray-700 mb-2"></i>
+                                            <div className="text-gray-600 font-bold">{asset.name}</div>
+                                        </div>
+                                    </div>
+                                    <div className="absolute top-3 right-3">
+                                        <span className="px-2 py-1 bg-accent/20 text-accent rounded text-xs font-bold">VIP ACCESS</span>
+                                    </div>
+                                </div>
+                                <div className="p-5">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h3 className="font-bold text-lg text-white">{asset.name}</h3>
+                                        <span className="text-xs px-2 py-1 bg-white/10 rounded text-gray-300">{asset.type}</span>
+                                    </div>
+                                    <p className="text-xs text-gray-400 mb-4 flex items-center">
+                                        <i className="fas fa-users mr-2"></i>
+                                        {asset.holders.toLocaleString()} VIP Investors
+                                    </p>
+                                    
+                                    <div className="w-full bg-gray-800 h-2 rounded-full mb-3">
+                                        <div 
+                                            className="bg-accent h-full rounded-full" 
+                                            style={{ width: `${((asset.raised + asset.microRaised) / asset.target) * 100}%` }}
+                                        ></div>
+                                    </div>
+                                    <div className="flex justify-between text-xs text-gray-500 mb-6">
+                                        <span>{formatCompact(asset.raised + asset.microRaised)} raised</span>
+                                        <span>Goal: {formatCompact(asset.target)}</span>
+                                    </div>
+                                    
+                                    <button 
+                                        onClick={() => {
+                                            setSelectedAsset(asset);
+                                            setShowModal(true);
+                                        }}
+                                        className="w-full py-3 bg-white/10 hover:bg-accent hover:text-white rounded-xl font-bold text-sm transition-colors"
+                                    >
+                                        <i className="fas fa-arrow-right mr-2"></i>
+                                        INVEST FROM $50K
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    {/* Investment Modal */}
+                    {showModal && selectedAsset && (
+                        <div className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4">
+                            <div className="glass max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-2xl border border-gray-800 fade-in">
+                                <div className="p-6">
+                                    <div className="flex justify-between items-center mb-6">
+                                        <div>
+                                            <h2 className="text-2xl font-bold text-white">VIP Investment</h2>
+                                            <p className="text-gray-400">Invest in {selectedAsset.name}</p>
+                                        </div>
+                                        <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-white text-2xl">
+                                            <i className="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div className="mb-6">
+                                        <div className="text-gray-400 mb-4">Minimum VIP investment: $50,000</div>
+                                        
+                                        <div className="flex justify-between mb-4">
+                                            <label className="text-lg font-medium text-white">Investment Amount</label>
+                                            <span className="text-accent font-bold text-2xl">{formatCurrency(fractionalAmount)}</span>
+                                        </div>
+                                        <input
+                                            type="range"
+                                            min="50000"
+                                            max="1000000"
+                                            step="50000"
+                                            value={fractionalAmount}
+                                            onChange={(e) => setFractionalAmount(parseInt(e.target.value))}
+                                            className="w-full h-3 bg-gray-800 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent"
+                                        />
+                                        <div className="flex justify-between text-sm text-gray-400 mt-2">
+                                            <span>$50K</span>
+                                            <span>$500K</span>
+                                            <span>$1M</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="grid grid-cols-3 gap-3 mb-6">
+                                        {[50000, 250000, 1000000].map(amount => (
+                                            <button
+                                                key={amount}
+                                                onClick={() => setFractionalAmount(amount)}
+                                                className="py-3 glass rounded-xl text-center hover:bg-white/10 transition-colors"
+                                            >
+                                                <div className="text-white font-bold">${amount >= 1000000 ? '1M' : amount >= 1000 ? amount/1000 + 'K' : amount}</div>
+                                                <div className="text-xs text-gray-400">{(amount).toLocaleString()} tokens</div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                    
+                                    <div className="glass rounded-xl p-6 mb-6">
+                                        <h4 className="text-lg font-bold text-white mb-4">Investment Summary</h4>
+                                        <div className="space-y-3">
+                                            <div className="flex justify-between">
+                                                <span className="text-gray-400">Investment Amount</span>
+                                                <span className="text-white font-bold mono">{formatCurrency(fractionalAmount)}</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span className="text-gray-400">Tokens Received</span>
+                                                <span className="text-accent font-bold mono">{fractionalAmount.toLocaleString()} TOKENS</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span className="text-gray-400">Estimated Annual Yield</span>
+                                                <span className="success font-bold mono">{formatCurrency((fractionalAmount * selectedAsset.apy) / 100)}</span>
+                                            </div>
+                                            <div className="border-t border-gray-800 pt-3 mt-3">
+                                                <div className="flex justify-between text-lg font-bold">
+                                                    <span className="text-white">Total Cost</span>
+                                                    <span className="text-white">{formatCurrency(fractionalAmount)}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button
+                                        onClick={handleInvest}
+                                        className="w-full py-4 bg-accent hover:bg-orange-600 rounded-xl font-bold text-black text-lg transition-colors flex items-center justify-center"
+                                    >
+                                        <i className="fas fa-check-circle mr-2"></i>
+                                        CONFIRM VIP INVESTMENT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // ====== MICRO INVESTOR VIEW ======
+        const MicroInvestorView = ({ assets, onInvest, demoMode = true }) => {
+            const [balance, setBalance] = useState(demoMode ? 2000 : 1000);
+            const [portfolio, setPortfolio] = useState([]);
+            const [selectedAsset, setSelectedAsset] = useState(null);
+            const [showModal, setShowModal] = useState(false);
+            const [investmentAmount, setInvestmentAmount] = useState(1000);
+            
+            const handleInvest = () => {
+                if (balance < investmentAmount) {
+                    alert("Insufficient balance");
+                    return;
+                }
+                
+                // Confetti for micro-investors
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#10B981', '#FF5500', '#FFFFFF']
+                });
+                
+                setBalance(prev => prev - investmentAmount);
+                
+                // Update portfolio
+                const existing = portfolio.find(p => p.assetId === selectedAsset.id);
+                const tokens = investmentAmount / 1;
+                
+                if (existing) {
+                    setPortfolio(prev => prev.map(p => 
+                        p.assetId === selectedAsset.id 
+                            ? { ...p, amount: p.amount + investmentAmount, tokens: p.tokens + tokens }
+                            : p
+                    ));
+                } else {
+                    setPortfolio([...portfolio, {
+                        assetId: selectedAsset.id,
+                        name: selectedAsset.name,
+                        amount: investmentAmount,
+                        tokens: tokens,
+                        type: 'MICRO'
+                    }]);
+                }
+                
+                // Call global investment handler
+                onInvest(selectedAsset.id, investmentAmount, 'MICRO');
+                
+                // Close modal
+                setTimeout(() => {
+                    setShowModal(false);
+                    setSelectedAsset(null);
+                }, 1500);
+            };
+            
+            const quickAmounts = [250, 500, 1000, 2000];
+            
+            return (
+                <div className="p-4 md:p-6 max-w-7xl mx-auto">
+                    {/* Micro Tier Banner */}
+                    <div className="micro-tier p-6 mb-8 rounded-2xl relative overflow-hidden">
+                        <div className="absolute top-4 right-4">
+                            <span className="px-3 py-1 bg-green-500 text-black text-xs font-bold rounded-full">MICRO TIER</span>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-center">
+                            <div className="md:w-2/3 pr-0 md:pr-8">
+                                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">MICRO-INVESTOR PLATFORM</h2>
+                                <p className="text-gray-300 mb-4">Start with as little as $250. Own a piece of premium real estate alongside institutional investors.</p>
+                                <div className="flex flex-wrap gap-4 mb-4">
+                                    <div className="flex items-center">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                        <span className="text-sm text-gray-300">Minimum: $250</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <div className="w-2 h-2 bg-accent rounded-full mr-2"></div>
+                                        <span className="text-sm text-gray-300">Same Properties as VIPs</span>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                        <span className="text-sm text-gray-300">Automatic Diversification</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="md:w-1/3 mt-4 md:mt-0">
+                                <div className="glass p-4 rounded-xl">
+                                    <div className="text-xs text-gray-400 uppercase font-bold mb-2">Available Balance</div>
+                                    <div className="text-3xl text-white font-bold mono mb-2">{formatCurrency(balance)}</div>
+                                    <div className="text-xs text-gray-500">Start with $250 • Micro Account</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Stats Dashboard */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div className="glass p-6 rounded-2xl border-l-4 border-green-500">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">
+                                <i className="fas fa-piggy-bank mr-2"></i>
+                                Micro Portfolio
+                            </div>
+                            <div className="text-3xl text-white font-bold mono">{formatCurrency(portfolio.reduce((sum, p) => sum + p.amount, 0))}</div>
+                            <div className="text-xs text-gray-500 mt-1">Start small, grow steadily</div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl border-l-4 border-success">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">
+                                <i className="fas fa-chart-line mr-2"></i>
+                                Projected Annual Yield
+                            </div>
+                            <div className="text-3xl success font-bold mono">
+                                +{formatCurrency(portfolio.reduce((sum, p) => sum + p.amount, 0) * 0.092)}
+                            </div>
+                            <div className="text-xs text-gray-500 mt-1">Same APY as VIP investors</div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl border-l-4 border-blue-500">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">
+                                <i className="fas fa-users mr-2"></i>
+                                Community Power
+                            </div>
+                            <div className="text-xl text-white font-bold">6,500+ Micro-Investors</div>
+                            <div className="text-xs text-gray-500 mt-1">Join the community</div>
+                        </div>
+                    </div>
+                    
+                    {/* Property Grid for Micro */}
+                    <h2 className="text-2xl font-bold text-white mb-6">Available for Micro-Investing (From $250)</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        {assets.filter(asset => asset.tags.includes('MICRO')).map(asset => (
+                            <div key={asset.id} className="glass rounded-xl overflow-hidden hover:border-green-500 transition-colors border border-gray-800">
+                                <div className="h-48 relative bg-gradient-to-br from-gray-900 to-green-900/20">
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="text-center">
+                                            <i className="fas fa-home text-5xl text-gray-700 mb-2"></i>
+                                            <div className="text-gray-600 font-bold">{asset.name}</div>
+                                        </div>
+                                    </div>
+                                    <div className="absolute top-3 right-3">
+                                        <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-bold">MICRO ACCESS</span>
+                                    </div>
+                                    <div className="absolute bottom-3 left-3">
+                                        <div className="text-xs text-gray-400">
+                                            <i className="fas fa-user-friends mr-1"></i>
+                                            {asset.microHolders} micro-investors
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="p-5">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h3 className="font-bold text-lg text-white">{asset.name}</h3>
+                                        <span className="text-xs px-2 py-1 bg-white/10 rounded text-gray-300">{asset.type}</span>
+                                    </div>
+                                    <p className="text-xs text-gray-400 mb-4">
+                                        {formatCompact(asset.microRaised)} raised from micro-investors
+                                    </p>
+                                    
+                                    <div className="w-full bg-gray-800 h-2 rounded-full mb-3">
+                                        <div 
+                                            className="bg-green-500 h-full rounded-full" 
+                                            style={{ width: `${(asset.microRaised / asset.target) * 100}%` }}
+                                        ></div>
+                                    </div>
+                                    
+                                    <button 
+                                        onClick={() => {
+                                            setSelectedAsset(asset);
+                                            setShowModal(true);
+                                        }}
+                                        className="w-full py-3 bg-green-500/20 hover:bg-green-500 text-green-400 hover:text-white rounded-xl font-bold text-sm transition-colors"
+                                    >
+                                        <i className="fas fa-coins mr-2"></i>
+                                        INVEST FROM $250
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    {/* How Micro-Investing Works */}
+                    <div className="glass p-6 rounded-2xl mb-12">
+                        <h3 className="text-xl font-bold text-white mb-6">How Micro-Investing Works</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i className="fas fa-wallet text-2xl text-accent"></i>
+                                </div>
+                                <h4 className="font-bold text-white mb-2">Start Small</h4>
+                                <p className="text-gray-400 text-sm">Begin with just $250. No large capital required.</p>
+                            </div>
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i className="fas fa-building text-2xl text-green-500"></i>
+                                </div>
+                                <h4 className="font-bold text-white mb-2">Same Properties</h4>
+                                <p className="text-gray-400 text-sm">Access the same premium properties as VIP investors.</p>
+                            </div>
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i className="fas fa-percentage text-2xl text-blue-500"></i>
+                                </div>
+                                <h4 className="font-bold text-white mb-2">Same Yields</h4>
+                                <p className="text-gray-400 text-sm">Earn the same APY percentages as large investors.</p>
+                            </div>
+                            <div className="text-center">
+                                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i className="fas fa-chart-line text-2xl text-purple-500"></i>
+                                </div>
+                                <h4 className="font-bold text-white mb-2">Build Wealth</h4>
+                                <p className="text-gray-400 text-sm">Grow your portfolio one small investment at a time.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Investment Modal */}
+                    {showModal && selectedAsset && (
+                        <div className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4">
+                            <div className="glass max-w-md w-full max-h-[90vh] overflow-y-auto rounded-2xl border border-gray-800 fade-in">
+                                <div className="p-6">
+                                    <div className="flex justify-between items-center mb-6">
+                                        <div>
+                                            <h2 className="text-2xl font-bold text-white">Micro-Investment</h2>
+                                            <p className="text-gray-400">Start with as little as $250</p>
+                                        </div>
+                                        <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-white text-2xl">
+                                            <i className="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div className="mb-6">
+                                        <div className="flex justify-between mb-4">
+                                            <label className="text-lg font-medium text-white">Investment Amount</label>
+                                            <span className="text-green-400 font-bold text-2xl">{formatCurrency(investmentAmount)}</span>
+                                        </div>
+                                        <input
+                                            type="range"
+                                            min="250"
+                                            max="2000"
+                                            step="250"
+                                            value={investmentAmount}
+                                            onChange={(e) => setInvestmentAmount(parseInt(e.target.value))}
+                                            className="w-full h-3 bg-gray-800 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-green-500"
+                                        />
+                                        <div className="flex justify-between text-sm text-gray-400 mt-2">
+                                            <span>$250</span>
+                                            <span>$1,000</span>
+                                            <span>$2,000</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="grid grid-cols-2 gap-3 mb-6">
+                                        {quickAmounts.map(amount => (
+                                            <button
+                                                key={amount}
+                                                onClick={() => setInvestmentAmount(amount)}
+                                                className="py-3 glass rounded-xl text-center hover:bg-white/10 transition-colors"
+                                            >
+                                                <div className="text-white font-bold">${amount}</div>
+                                                <div className="text-xs text-gray-400">{amount} tokens</div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                    
+                                    <div className="glass rounded-xl p-6 mb-6">
+                                        <h4 className="text-lg font-bold text-white mb-4">Investment Summary</h4>
+                                        <div className="space-y-3">
+                                            <div className="flex justify-between">
+                                                <span className="text-gray-400">You will own</span>
+                                                <span className="text-white font-bold mono">{((investmentAmount / selectedAsset.target) * 100).toFixed(4)}%</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span className="text-gray-400">Tokens Received</span>
+                                                <span className="text-green-400 font-bold mono">{investmentAmount} TOKENS</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span className="text-gray-400">Estimated Annual Yield</span>
+                                                <span className="success font-bold mono">{formatCurrency((investmentAmount * selectedAsset.apy) / 100)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button
+                                        onClick={handleInvest}
+                                        className="w-full py-4 bg-green-500 hover:bg-green-600 rounded-xl font-bold text-black text-lg transition-colors flex items-center justify-center"
+                                    >
+                                        <i className="fas fa-check-circle mr-2"></i>
+                                        CONFIRM MICRO-INVESTMENT
+                                    </button>
+                                    
+                                    <div className="text-center mt-4 text-gray-500 text-sm">
+                                        Minimum: $250 • Maximum: $2,000
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {/* Live News Ticker */}
+                    <div className="fixed bottom-0 left-0 right-0 bg-black/95 border-t border-gray-800 z-40 py-3">
+                        <div className="ticker-container">
+                            <div className="ticker-content">
+                                {[
+                                    "MICRO-INVESTING: Now open to everyone with just $250 minimum",
+                                    "LIVE DEMO: Try both VIP and Micro tiers with simulated funds",
+                                    "NEW: Over 6,500 micro-investors joined this month",
+                                    "ANNOUNCEMENT: Ether Tower micro-investing pool now open",
+                                    "TIP: Start with $250 and add $100 monthly to build wealth"
+                                ].map((news, index) => (
+                                    <span key={index} className="inline-block mx-8 text-sm">
+                                        <span className="text-green-400 font-bold">◉ MICRO:</span> 
+                                        <span className="text-gray-300 ml-2">{news}</span>
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // ====== DEVELOPER VIEW ======
+        const DeveloperView = ({ assets }) => {
+            const [selectedProperty, setSelectedProperty] = useState(null);
+            const [showModal, setShowModal] = useState(false);
+            
+            const handleUpdateProperty = (updatedProperty) => {
+                // In a real app, this would update the backend
+                console.log("Updated property:", updatedProperty);
+                setShowModal(false);
+                setSelectedProperty(null);
+            };
+            
+            return (
+                <div className="p-6 max-w-7xl mx-auto">
+                    <div className="flex justify-between items-center mb-8">
+                        <div>
+                            <h2 className="text-3xl font-bold text-white">Developer Console</h2>
+                            <p className="text-gray-400">List and manage tokenized properties</p>
+                        </div>
+                        <button className="px-6 py-3 bg-accent hover:bg-orange-600 rounded-xl font-bold text-black">
+                            <i className="fas fa-plus mr-2"></i>
+                            NEW PROPERTY LISTING
+                        </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div className="glass p-6 rounded-2xl">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">Total Properties</div>
+                            <div className="text-3xl text-white font-bold">{assets.length}</div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">Capital Raised</div>
+                            <div className="text-3xl text-white font-bold mono">
+                                {formatCompact(assets.reduce((sum, a) => sum + a.raised + a.microRaised, 0))}
+                            </div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">Total Investors</div>
+                            <div className="text-3xl text-white font-bold">
+                                {(assets.reduce((sum, a) => sum + a.holders + a.microHolders, 0)).toLocaleString()}
+                            </div>
+                        </div>
+                        <div className="glass p-6 rounded-2xl">
+                            <div className="text-xs text-gray-400 uppercase font-bold mb-2">Fees Collected</div>
+                            <div className="text-3xl success font-bold mono">
+                                {formatCompact(assets.reduce((sum, a) => sum + a.feesCollected, 0))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="glass rounded-2xl overflow-hidden mb-8">
+                        <table className="w-full">
+                            <thead className="bg-gray-900">
+                                <tr>
+                                    <th className="p-4 text-left text-gray-400 text-sm font-bold">Property</th>
+                                    <th className="p-4 text-left text-gray-400 text-sm font-bold">Status</th>
+                                    <th className="p-4 text-left text-gray-400 text-sm font-bold">VIP Raised</th>
+                                    <th className="p-4 text-left text-gray-400 text-sm font-bold">Micro Raised</th>
+                                    <th className="p-4 text-left text-gray-400 text-sm font-bold">Total</th>
+                                    <th className="p-4 text-left text-gray-400 text-sm font-bold">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {assets.map(asset => (
+                                    <tr key={asset.id} className="border-t border-gray-800 hover:bg-white/5">
+                                        <td className="p-4">
+                                            <div className="font-bold text-white">{asset.name}</div>
+                                            <div className="text-xs text-gray-400">{asset.type}</div>
+                                        </td>
+                                        <td className="p-4">
+                                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                                                asset.status === 'ACTIVE' ? 'bg-green-500/20 text-green-400' :
+                                                'bg-yellow-500/20 text-yellow-400'
+                                            }`}>
+                                                {asset.status}
+                                            </span>
+                                        </td>
+                                        <td className="p-4">
+                                            <div className="text-white font-bold">{formatCompact(asset.raised)}</div>
+                                            <div className="text-xs text-gray-400">{asset.holders} investors</div>
+                                        </td>
+                                        <td className="p-4">
+                                            <div className="text-white font-bold">{formatCompact(asset.microRaised)}</div>
+                                            <div className="text-xs text-gray-400">{asset.microHolders} investors</div>
+                                        </td>
+                                        <td className="p-4">
+                                            <div className="flex items-center">
+                                                <div className="w-24 bg-gray-800 h-2 rounded-full mr-3">
+                                                    <div 
+                                                        className="bg-accent h-full rounded-full" 
+                                                        style={{ width: `${((asset.raised + asset.microRaised) / asset.target) * 100}%` }}
+                                                    ></div>
+                                                </div>
+                                                <span className="text-sm text-gray-300">
+                                                    {(((asset.raised + asset.microRaised) / asset.target) * 100).toFixed(1)}%
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td className="p-4">
+                                            <button 
+                                                onClick={() => {
+                                                    setSelectedProperty(asset);
+                                                    setShowModal(true);
+                                                }}
+                                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm text-white"
+                                            >
+                                                <i className="fas fa-cog mr-1"></i>
+                                                Manage
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    {/* Management Modal */}
+                    {showModal && selectedProperty && (
+                        <div className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 flex items-center justify-center p-4">
+                            <div className="glass max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-2xl border border-gray-800">
+                                <div className="p-6">
+                                    <div className="flex justify-between items-center mb-6">
+                                        <h2 className="text-2xl font-bold text-white">Manage Property</h2>
+                                        <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-white text-2xl">
+                                            <i className="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div className="space-y-6">
+                                        <div>
+                                            <label className="block text-gray-400 text-sm mb-2">Property Name</label>
+                                            <input 
+                                                type="text" 
+                                                defaultValue={selectedProperty.name}
+                                                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                                            />
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label className="block text-gray-400 text-sm mb-2">Target Capital</label>
+                                                <input 
+                                                    type="text" 
+                                                    defaultValue={formatCompact(selectedProperty.target)}
+                                                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-gray-400 text-sm mb-2">Offered APY</label>
+                                                <input 
+                                                    type="text" 
+                                                    defaultValue={selectedProperty.apy + '%'}
+                                                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                                                />
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label className="block text-gray-400 text-sm mb-2">Investment Tiers</label>
+                                            <div className="flex space-x-4">
+                                                <label className="flex items-center">
+                                                    <input type="checkbox" defaultChecked={selectedProperty.tags.includes('VIP')} className="mr-2" />
+                                                    <span className="text-gray-300">VIP Tier ($50K+)</span>
+                                                </label>
+                                                <label className="flex items-center">
+                                                    <input type="checkbox" defaultChecked={selectedProperty.tags.includes('MICRO')} className="mr-2" />
+                                                    <span className="text-gray-300">Micro Tier ($250+)</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex space-x-4 pt-6 border-t border-gray-800">
+                                            <button
+                                                onClick={() => handleUpdateProperty(selectedProperty)}
+                                                className="flex-1 py-3 bg-accent hover:bg-orange-600 rounded-xl font-bold text-black"
+                                            >
+                                                Save Changes
+                                            </button>
+                                            <button
+                                                onClick={() => setShowModal(false)}
+                                                className="px-8 py-3 glass rounded-xl font-bold text-white"
+                                            >
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // ====== GOD MODE VIEW ======
+        const GodModeView = ({ assets, transactions, tvl, fees, totalInvestors, microInvestors, onSurge }) => {
+            const [isSurgeActive, setIsSurgeActive] = useState(false);
+            const [networkLoad, setNetworkLoad] = useState(42);
+            
+            useEffect(() => {
+                let interval;
+                if (isSurgeActive) {
+                    interval = setInterval(() => {
+                        setNetworkLoad(prev => {
+                            const newLoad = prev + Math.random() * 10;
+                            return newLoad > 95 ? 95 : newLoad;
+                        });
+                    }, 500);
+                } else {
+                    interval = setInterval(() => {
+                        setNetworkLoad(prev => {
+                            const newLoad = prev - 1;
+                            return newLoad < 42 ? 42 : newLoad;
+                        });
+                    }, 1000);
+                }
+                return () => clearInterval(interval);
+            }, [isSurgeActive]);
+            
+            const handleSurge = () => {
+                setIsSurgeActive(true);
+                onSurge();
+                
+                // Auto-stop after 10 seconds
+                setTimeout(() => {
+                    setIsSurgeActive(false);
+                }, 10000);
+            };
+            
+            return (
+                <div className="p-6 max-w-7xl mx-auto min-h-screen bg-black">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center">
+                            <div className={`p-3 rounded-lg mr-4 ${isSurgeActive ? 'network-surge bg-green-500' : 'bg-purple-600'}`}>
+                                <i className="fas fa-crown text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h1 className="text-4xl font-black text-white">GOD MODE</h1>
+                                <p className="text-gray-400">Network Administration Dashboard</p>
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <div className="text-xs text-gray-400 mb-1">DEMO CONTROLS</div>
+                            <div className="flex space-x-2">
+                                <button
+                                    onClick={handleSurge}
+                                    className={`px-4 py-2 rounded-lg font-bold ${isSurgeActive ? 'bg-yellow-500 text-black' : 'bg-green-600 text-white'}`}
+                                >
+                                    {isSurgeActive ? 'SURGE ACTIVE' : 'SIMULATE SURGE'}
+                                </button>
+                                <button
+                                    onClick={() => setIsSurgeActive(false)}
+                                    className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-bold text-white"
+                                >
+                                    STOP
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Surge Banner */}
+                    {isSurgeActive && (
+                        <div className="mb-8 p-4 glass border border-yellow-500/50">
+                            <div className="flex items-center">
+                                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse mr-3"></div>
+                                <span className="text-yellow-400 font-bold text-xl">⚡ NETWORK SURGE DETECTED</span>
+                            </div>
+                            <p className="text-gray-300 text-sm mt-2">
+                                Simulating massive liquidity inflow from both VIP and Micro investors
+                            </p>
+                        </div>
+                    )}
+                    
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                        <div className={`glass p-6 rounded-xl border ${isSurgeActive ? 'border-green-500' : 'border-purple-500'}`}>
+                            <div className="text-xs text-gray-400 font-bold mb-2">TOTAL VALUE LOCKED</div>
+                            <div className="text-4xl text-white font-bold mono">{formatCompact(tvl)}</div>
+                            <div className="text-xs text-gray-500 mt-2">
+                                {isSurgeActive ? (
+                                    <span className="text-green-400">
+                                        <i className="fas fa-arrow-up mr-1"></i>
+                                        Simulating surge
+                                    </span>
+                                ) : 'Combined VIP + Micro'}
+                            </div>
+                        </div>
+                        
+                        <div className={`glass p-6 rounded-xl border ${isSurgeActive ? 'border-green-500' : 'border-purple-500'}`}>
+                            <div className="text-xs text-gray-400 font-bold mb-2">NETWORK FEES (1.5%)</div>
+                            <div className="text-4xl success font-bold mono">{formatCompact(fees)}</div>
+                            <div className="text-xs text-gray-500 mt-2">
+                                80% to treasury • 10% staking • 10% buyback
+                            </div>
+                        </div>
+                        
+                        <div className="glass p-6 rounded-xl border border-blue-500">
+                            <div className="text-xs text-gray-400 font-bold mb-2">TOTAL INVESTORS</div>
+                            <div className="text-4xl text-white font-bold">{totalInvestors.toLocaleString()}</div>
+                            <div className="text-xs text-gray-500 mt-2">
+                                {microInvestors.toLocaleString()} micro-investors
+                            </div>
+                        </div>
+                        
+                        <div className="glass p-6 rounded-xl border border-blue-500">
+                            <div className="text-xs text-gray-400 font-bold mb-2">NETWORK STATUS</div>
+                            <div className="flex items-center text-xl font-bold mb-4">
+                                <div className={`w-3 h-3 rounded-full mr-3 ${isSurgeActive ? 'bg-yellow-400 animate-pulse' : 'bg-green-500'}`}></div>
+                                <span className={isSurgeActive ? 'text-yellow-400' : 'text-green-400'}>
+                                    {isSurgeActive ? 'HIGH TRAFFIC' : 'OPERATIONAL'}
+                                </span>
+                            </div>
+                            <div className="text-xs text-gray-400 mb-2">Network Load: {networkLoad.toFixed(0)}%</div>
+                            <div className="w-full bg-gray-800 h-2 rounded-full">
+                                <div 
+                                    className={`h-full rounded-full ${
+                                        networkLoad > 80 ? 'bg-red-500' :
+                                        networkLoad > 60 ? 'bg-yellow-500' : 'bg-green-500'
+                                    }`}
+                                    style={{ width: `${networkLoad}%` }}
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Dual Tier Analytics */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                        <div className="glass p-6 rounded-xl">
+                            <h3 className="text-xl font-bold text-white mb-6">
+                                <i className="fas fa-chart-pie mr-2"></i>
+                                Investment Tier Distribution
+                            </h3>
+                            <div className="space-y-6">
+                                {assets.map(asset => {
+                                    const totalRaised = asset.raised + asset.microRaised;
+                                    const vipPercent = totalRaised > 0 ? (asset.raised / totalRaised) * 100 : 0;
+                                    const microPercent = totalRaised > 0 ? (asset.microRaised / totalRaised) * 100 : 0;
+                                    
+                                    return (
+                                        <div key={asset.id} className="space-y-2">
+                                            <div className="flex justify-between text-sm">
+                                                <span className="text-gray-300">{asset.name}</span>
+                                                <span className="text-gray-400">{formatCompact(totalRaised)}</span>
+                                            </div>
+                                            <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden flex">
+                                                <div 
+                                                    className="bg-accent h-full"
+                                                    style={{ width: `${vipPercent}%` }}
+                                                    title={`VIP: ${vipPercent.toFixed(1)}%`}
+                                                ></div>
+                                                <div 
+                                                    className="bg-green-500 h-full"
+                                                    style={{ width: `${microPercent}%` }}
+                                                    title={`Micro: ${microPercent.toFixed(1)}%`}
+                                                ></div>
+                                            </div>
+                                            <div className="flex justify-between text-xs text-gray-500">
+                                                <span>VIP: {formatCompact(asset.raised)}</span>
+                                                <span>Micro: {formatCompact(asset.microRaised)}</span>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        
+                        <div className="glass p-6 rounded-xl">
+                            <h3 className="text-xl font-bold text-white mb-6">
+                                <i className="fas fa-bolt mr-2"></i>
+                                Live Network Activity
+                            </h3>
+                            <div className="space-y-4 h-96 overflow-y-auto">
+                                {[
+                                    { type: 'VIP', user: 'VIP_Investor_482', amount: 50000, asset: 'ETHER TOWER', time: 'Just now' },
+                                    { type: 'MICRO', user: 'Micro_Investor_156', amount: 1000, asset: '9LMNTS HQ', time: '1 min ago' },
+                                    { type: 'VIP', user: 'VIP_Investor_129', amount: 250000, asset: 'ETHER TOWER', time: '2 min ago' },
+                                    { type: 'MICRO', user: 'Micro_Investor_893', amount: 500, asset: 'LOGISTICS HUB', time: '3 min ago' },
+                                    { type: 'MICRO', user: 'Micro_Investor_452', amount: 2000, asset: '9LMNTS HQ', time: '4 min ago' },
+                                    { type: 'VIP', user: 'VIP_Investor_754', amount: 100000, asset: 'ETHER TOWER', time: '5 min ago' }
+                                ].map((tx, index) => (
+                                    <div key={index} className="flex items-center justify-between p-3 glass rounded-lg">
+                                        <div className="flex items-center">
+                                            <div className={`w-3 h-3 rounded-full mr-3 ${tx.type === 'VIP' ? 'bg-accent' : 'bg-green-500'}`}></div>
+                                            <div>
+                                                <div className="text-gray-300 text-sm">{tx.user}</div>
+                                                <div className="text-xs text-gray-500">{tx.asset}</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className={`font-bold ${tx.type === 'VIP' ? 'text-accent' : 'text-green-400'}`}>
+                                                +{formatCurrency(tx.amount)}
+                                            </div>
+                                            <div className="text-xs text-gray-500">{tx.time}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Platform Summary */}
+                    <div className="glass p-6 rounded-xl">
+                        <h3 className="text-xl font-bold text-white mb-6">Platform Summary</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="text-center p-6">
+                                <div className="text-5xl font-bold text-white mb-2">{assets.length}</div>
+                                <div className="text-gray-400">Tokenized Properties</div>
+                            </div>
+                            <div className="text-center p-6 border-l border-r border-gray-800">
+                                <div className="text-5xl font-bold text-white mb-2">
+                                    {((microInvestors / totalInvestors) * 100).toFixed(0)}%
+                                </div>
+                                <div className="text-gray-400">Of Investors are Micro Tier</div>
+                            </div>
+                            <div className="text-center p-6">
+                                <div className="text-5xl success font-bold mb-2">1.5%</div>
+                                <div className="text-gray-400">Platform Fee on All Trades</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // ====== MAIN APP ======
+        const App = () => {
+            const [view, setView] = useState('micro');
+            const [loading, setLoading] = useState(true);
+            const [assets, setAssets] = useState(PLATFORM_DATA.assets);
+            const [transactions, setTransactions] = useState(PLATFORM_DATA.transactions);
+            const [tvl, setTvl] = useState(PLATFORM_DATA.tvl);
+            const [fees, setFees] = useState(PLATFORM_DATA.fees);
+            const [totalInvestors, setTotalInvestors] = useState(PLATFORM_DATA.totalInvestors);
+            const [microInvestors, setMicroInvestors] = useState(PLATFORM_DATA.microInvestors);
+            
+            const handleInvest = (assetId, amount, investorType) => {
+                // Update asset state
+                setAssets(prev => prev.map(asset => {
+                    if (asset.id === assetId) {
+                        if (investorType === 'VIP') {
+                            return {
+                                ...asset,
+                                raised: asset.raised + amount,
+                                holders: asset.holders + 1
+                            };
+                        } else {
+                            return {
+                                ...asset,
+                                microRaised: asset.microRaised + amount,
+                                microHolders: asset.microHolders + 1
+                            };
+                        }
+                    }
+                    return asset;
+                }));
+                
+                // Add transaction
+                const newTransaction = {
+                    id: Date.now(),
+                    assetId,
+                    amount,
+                    investorType,
+                    time: new Date().toLocaleTimeString()
+                };
+                setTransactions(prev => [newTransaction, ...prev]);
+                
+                // Update TVL and fees
+                setTvl(prev => prev + amount);
+                setFees(prev => prev + (amount * 0.015));
+                
+                // Update investor counts
+                if (investorType === 'VIP') {
+                    setTotalInvestors(prev => prev + 1);
+                } else {
+                    setTotalInvestors(prev => prev + 1);
+                    setMicroInvestors(prev => prev + 1);
+                }
+            };
+            
+            const handleNetworkSurge = () => {
+                // Simulate a network surge with random investments
+                const surgeInterval = setInterval(() => {
+                    const randomAsset = assets[Math.floor(Math.random() * assets.length)];
+                    const isVIP = Math.random() > 0.7;
+                    const amount = isVIP 
+                        ? Math.floor(Math.random() * 100000) + 50000
+                        : Math.floor(Math.random() * 1750) + 250;
+                    
+                    handleInvest(randomAsset.id, amount, isVIP ? 'VIP' : 'MICRO');
+                    
+                    // Random confetti during surge
+                    if (Math.random() > 0.8) {
+                        confetti({
+                            particleCount: Math.floor(Math.random() * 30) + 10,
+                            spread: 70,
+                            origin: { x: Math.random(), y: 0 },
+                            colors: ['#FF5500', '#10B981', '#FFFFFF']
+                        });
+                    }
+                }, 300);
+                
+                // Stop after 10 seconds
+                setTimeout(() => {
+                    clearInterval(surgeInterval);
+                }, 10000);
+            };
+            
+            useEffect(() => {
+                const timer = setTimeout(() => {
+                    setLoading(false);
+                }, 2500);
+                return () => clearTimeout(timer);
+            }, []);
+            
+            if (loading) {
+                return <LoadingScreen onComplete={() => setLoading(false)} />;
+            }
+            
+            return (
+                <div className="min-h-screen bg-black">
+                    {/* Navigation */}
+                    <div className="sticky top-0 z-50 bg-gray-900 border-b border-gray-800 px-6 py-3 flex justify-between items-center">
+                        <div className="flex items-center space-x-3">
+                            <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center font-black text-2xl text-black">9</div>
+                            <span className="font-bold text-white text-xl">9LMNTS TRINITY</span>
+                            <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full">LIVE DEMO</span>
+                        </div>
+                        
+                        {/* View Switcher */}
+                        <div className="flex bg-gray-800 rounded-xl p-1">
+                            <button 
+                                onClick={() => setView('micro')}
+                                className={`px-4 py-2 rounded-lg text-sm font-bold ${view === 'micro' ? 'bg-green-500 text-black' : 'text-gray-300 hover:text-white'}`}
+                            >
+                                <i className="fas fa-users mr-2"></i>
+                                Micro Tier
+                            </button>
+                            <button 
+                                onClick={() => setView('vip')}
+                                className={`px-4 py-2 rounded-lg text-sm font-bold ${view === 'vip' ? 'bg-accent text-black' : 'text-gray-300 hover:text-white'}`}
+                            >
+                                <i className="fas fa-crown mr-2"></i>
+                                VIP Tier
+                            </button>
+                            <button 
+                                onClick={() => setView('developer')}
+                                className={`px-4 py-2 rounded-lg text-sm font-bold ${view === 'developer' ? 'bg-blue-600 text-white' : 'text-gray-300 hover:text-white'}`}
+                            >
+                                <i className="fas fa-code mr-2"></i>
+                                Developer
+                            </button>
+                            <button 
+                                onClick={() => setView('god')}
+                                className={`px-4 py-2 rounded-lg text-sm font-bold ${view === 'god' ? 'bg-purple-600 text-white' : 'text-gray-300 hover:text-white'}`}
+                            >
+                                <i className="fas fa-eye mr-2"></i>
+                                God Mode
+                            </button>
+                        </div>
+                    </div>
+                    
+                    {/* Current View */}
+                    {view === 'micro' && <MicroInvestorView assets={assets} onInvest={handleInvest} demoMode={true} />}
+                    {view === 'vip' && <VIPInvestorView assets={assets} onInvest={handleInvest} demoMode={true} />}
+                    {view === 'developer' && <DeveloperView assets={assets} />}
+                    {view === 'god' && (
+                        <GodModeView 
+                            assets={assets}
+                            transactions={transactions}
+                            tvl={tvl}
+                            fees={fees}
+                            totalInvestors={totalInvestors}
+                            microInvestors={microInvestors}
+                            onSurge={handleNetworkSurge}
+                        />
+                    )}
+                    
+                    {/* Demo Instructions Footer */}
+                    <div className="fixed bottom-20 right-4 glass p-4 rounded-xl max-w-xs">
+                        <div className="text-xs text-gray-400 mb-2">DEMO INSTRUCTIONS</div>
+                        <div className="text-sm text-gray-300">
+                            <div className="flex items-center mb-1">
+                                <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                <span>Micro Tier: Start with $250-$2,000</span>
+                            </div>
+                            <div className="flex items-center mb-1">
+                                <div className="w-2 h-2 bg-accent rounded-full mr-2"></div>
+                                <span>VIP Tier: $50,000 minimum</span>
+                            </div>
+                            <div className="flex items-center">
+                                <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                                <span>God Mode: Click "Simulate Surge"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Render the app
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
