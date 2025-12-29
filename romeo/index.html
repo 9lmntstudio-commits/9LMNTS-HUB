@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reception OS | 9LMNTS</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --primary: #D4AF37; /* Luxury Gold */
+            --primary-glow: rgba(212, 175, 55, 0.4);
+            --accent: #FF5500; /* 9LMNTS Orange (Party Mode) */
+            --bg-light: #f4f4f0;
+            --bg-dark: #0a0a0a;
+            --card-light: rgba(255, 255, 255, 0.85);
+            --card-dark: rgba(20, 20, 20, 0.6);
+            --glass-blur: blur(12px);
+            --text-light: #1a1a1a;
+            --text-dark: #ededed;
+            --radius: 16px;
+            --font-head: 'Playfair Display', serif;
+            --font-ui: 'Space Grotesk', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; padding: 0; font-family: var(--font-ui); background: var(--bg-light); color: var(--text-light); transition: var(--transition); overflow-x: hidden; }
+        
+        /* --- THEME ENGINES --- */
+        body[data-theme="dark"] {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+            --primary: #FFD700; /* Brighter gold for dark mode */
+        }
+        
+        /* Background Animated Gradient */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.1), transparent 60%);
+            transition: var(--transition);
+        }
+        body[data-theme="dark"] .ambient-bg {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 85, 0, 0.08), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05), transparent 40%);
+        }
+
+        /* --- APP SHELL --- */
+        .app-container {
+            max-width: 440px; margin: 0 auto; padding-bottom: 100px; min-height: 100vh; position: relative;
+        }
+
+        /* --- HEADER & HERO --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center; padding: 20px 24px;
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,0.01); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        body[data-theme="dark"] header { border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        .brand { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.5px; }
+        .theme-switch { 
+            background: rgba(0,0,0,0.05); border: none; width: 40px; height: 40px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer; color: inherit; transition: var(--transition);
+        }
+        body[data-theme="dark"] .theme-switch { background: rgba(255,255,255,0.1); color: #FFD700; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+
+        .hero { padding: 30px 24px 20px; text-align: center; }
+        .couple-names { font-family: var(--font-head); font-size: 3rem; line-height: 0.9; margin: 0; background: linear-gradient(45deg, var(--text-light), #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        body[data-theme="dark"] .couple-names { background: linear-gradient(45deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-date { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.6; margin-top: 10px; font-weight: 700; }
+        
+        /* CONTRIBUTE BUTTON (Added Feature) */
+        .hero-cta {
+            margin-top: 25px;
+            width: 100%;
+            padding: 18px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- NAVIGATION TABS --- */
+        .nav-scroller {
+            display: flex; gap: 12px; overflow-x: auto; padding: 10px 24px 20px; scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-scroller::-webkit-scrollbar { display: none; }
+        
+        .nav-pill {
+            padding: 10px 20px; border-radius: 100px; background: rgba(0,0,0,0.05); 
+            font-size: 0.85rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        body[data-theme="dark"] .nav-pill { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+        
+        .nav-pill.active {
+            background: var(--text-light); color: white; transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        body[data-theme="dark"] .nav-pill.active {
+            background: var(--primary); color: #000; box-shadow: 0 5px 20px var(--primary-glow);
+        }
+
+        /* --- CONTENT CARDS --- */
+        .section { display: none; padding: 0 24px; animation: slideUp 0.5s ease; }
+        .section.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass-card {
+            background: var(--card-light); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius); padding: 20px;
+            margin-bottom: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        body[data-theme="dark"] .glass-card {
+            background: var(--card-dark); border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        h2 { font-size: 1.2rem; margin: 0 0 15px 0; font-weight: 700; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+        
+        /* --- ACTION BUTTONS (PAYMENT STYLE) --- */
+        .action-btn {
+            width: 100%; padding: 16px; border-radius: 12px; border: none; 
+            font-family: var(--font-ui); font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            background: #000; color: #fff; margin-bottom: 10px; transition: 0.2s;
+        }
+        .action-btn i { font-size: 1.1rem; }
+        .action-btn:active { transform: scale(0.98); }
+        
+        .btn-primary { background: linear-gradient(135deg, var(--primary), #b08d26); color: #000; box-shadow: 0 4px 15px var(--primary-glow); justify-content: center; }
+        .btn-outline { background: transparent; border: 2px solid rgba(0,0,0,0.1); color: inherit; }
+        body[data-theme="dark"] .btn-outline { border-color: rgba(255,255,255,0.2); }
+        
+        .btn-vote { justify-content: center; background: rgba(0,0,0,0.05); color: inherit; box-shadow: none; border: 1px solid rgba(0,0,0,0.1); }
+        body[data-theme="dark"] .btn-vote { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.1); }
+
+        /* --- VISUAL ELEMENTS --- */
+        .vs-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; text-align: center; }
+        .vs-avatar { width: 60px; height: 60px; border-radius: 50%; background-size: cover; margin: 0 auto 5px; border: 2px solid var(--bg-light); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* SPEECH AVATARS (Larger) */
+        .speech-avatar { width: 80px; height: 80px; border-radius: 50%; background-size: cover; margin: 0 auto 15px; border: 3px solid var(--primary); }
+        
+        .vote-bar { height: 6px; background: rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; margin-top: 15px; position: relative; }
+        .vote-fill { height: 100%; background: var(--primary); width: 50%; transition: width 1s ease; }
+
+        /* --- BOTTOM DOCK --- */
+        .bottom-dock {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px;
+            background: rgba(20, 20, 20, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 100px; padding: 10px; display: flex; justify-content: space-around;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 200; border: 1px solid rgba(255,255,255,0.1);
+        }
+        body[data-theme="dark"] .bottom-dock { border: 1px solid var(--primary); box-shadow: 0 0 20px var(--primary-glow); }
+
+        .dock-item {
+            background: none; border: none; color: rgba(255,255,255,0.5); font-size: 1.2rem;
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .dock-item.active { color: #000; background: var(--primary); transform: translateY(-5px); }
+        body[data-theme="dark"] .dock-item.active { background: var(--primary); color: #000; }
+
+        /* --- WINNER ANIMATION --- */
+        .winner-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 1000;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px); animation: fadeIn 0.3s;
+        }
+        .winner-content {
+            text-align: center; color: var(--primary);
+            transform: scale(0.5); opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .winner-title { font-family: var(--font-ui); font-size: 1.5rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; color: #fff; }
+        .winner-name {
+            font-family: var(--font-head); font-size: 4rem; font-weight: 700; line-height: 1; margin: 0;
+            background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px var(--primary-glow);
+        }
+        .confetti-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        @keyframes popIn { to { transform: scale(1); opacity: 1; } }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(8px); z-index: 300; display: none; align-items: flex-end;
+            animation: fadeIn 0.3s;
+        }
+        .modal-sheet {
+            background: var(--bg-light); width: 100%; max-width: 440px; margin: 0 auto;
+            border-radius: 24px 24px 0 0; padding: 30px 24px 50px; position: relative;
+            animation: slideUpModal 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        body[data-theme="dark"] .modal-sheet { background: #1a1a1a; color: #fff; border-top: 1px solid var(--primary); }
+        @keyframes slideUpModal { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        /* INPUTS */
+        input {
+            width: 100%; padding: 16px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.03); font-family: var(--font-ui); font-size: 1rem; color: inherit; margin-bottom: 10px;
+        }
+        body[data-theme="dark"] input { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"></div>
+
+    <div class="app-container">
+        
+        <header>
+            <div class="brand" id="brandInitials">R & J</div>
+            <button class="theme-switch" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="hero">
+            <div class="hero-date" id="weddingDate">JULY 24, 2025</div>
+            <h1 class="couple-names" id="coupleNames">Romeo &<br>Juliet</h1>
+            
+            <button class="action-btn btn-primary hero-cta" onclick="openFundModal()">
+                Contribute to Future
+            </button>
+        </div>
+
+        <div class="nav-scroller">
+            <div class="nav-pill active" onclick="nav('timeline', this)">Timeline</div>
+            <div class="nav-pill" onclick="nav('speeches', this)">Speeches</div>
+            <div class="nav-pill" onclick="nav('games', this)">Live Games</div>
+            <div class="nav-pill" onclick="nav('music', this)">Music</div>
+            <div class="nav-pill" onclick="nav('raffle', this)">Tickets</div>
+        </div>
+
+        <div id="timeline" class="section active">
+            <div class="glass-card">
+                <h2><i class="fas fa-clock" style="color:var(--primary)"></i> Happening Now</h2>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span style="font-weight:700;">Dinner Service</span>
+                    <span style="opacity:0.6;">7:00 PM</span>
+                </div>
+                <div style="width:100%; height:4px; background:rgba(0,0,0,0.1); border-radius:2px;">
+                    <div style="width:70%; height:100%; background:var(--primary); border-radius:2px;"></div>
+                </div>
+                <p style="font-size:0.85rem; opacity:0.7; margin-top:10px;">Speeches starting in 15 mins.</p>
+            </div>
+            
+            <div class="glass-card">
+                <h2><i class="fas fa-camera"></i> Guestbook</h2>
+                <p style="font-size:0.9rem; opacity:0.8; margin-bottom:15px;">Upload your candid shots directly to the screens.</p>
+                <button class="action-btn btn-outline" onclick="openModal('uploadModal')">
+                    <span style="display:flex; align-items:center; justify-content:center; width:100%; gap:10px;">
+                        <i class="fas fa-upload"></i> Upload Photo
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div id="speeches" class="section">
+            <div class="glass-card" style="text-align:center;">
+                <h2 style="justify-content:center;">Speech Showcase</h2>
+                <p style="opacity:0.7; margin-bottom:25px; font-size:0.9rem;">Vote for the best speech or buy them a drink.</p>
+                
+                <div style="margin-bottom:30px; border-bottom:1px solid rgba(128,128,128,0.2); padding-bottom:20px;">
+                    <div class="speech-avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200');"></div>
+                    <div style="font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; color:var(--primary); font-weight:bold;">Best Man</div>
+                    <h3 style="margin:5px 0 15px;">Mercutio</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <button class="action-btn btn-vote" onclick="vote('Mercutio')">🗳️ VOTE</button>
+                        <button class="action-btn btn-primary" style="background:var(--accent); color:white; border:none;" onclick="tip('Mercutio', 5)">🍺 BUY DRINK ($5)</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="speech-avatar" style="background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200');"></div>
+                    <div style="font-size:0.8rem; letter-spacing:1px; text-transform:uppercase; color:var(--primary); font-weight:bold;">Maid of Honor</div>
+                    <h3 style="margin:5px 0 15px;">Nurse</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <button class="action-btn btn-vote" onclick="vote('The Nurse')">🗳️ VOTE</button>
+                        <button class="action-btn btn-primary" style="background:var(--accent); color:white; border:none;" onclick="tip('The Nurse', 5)">🍷 BUY DRINK ($5)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="games" class="section">
+            <div class="glass-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <h2 style="margin:0;">Shoe Game</h2>
+                    <span style="font-size:0.7rem; background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-weight:bold;">LIVE</span>
+                </div>
+                <h3 style="text-align:center; font-size:1.1rem; margin-bottom:20px;">"Who made the first move?"</h3>
+                <div class="vs-grid">
+                    <div>
+                        <div class="vs-avatar" id="groomImg" style="background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">ROMEO</div>
+                    </div>
+                    <div style="font-style:italic; opacity:0.5;">vs</div>
+                    <div>
+                        <div class="vs-avatar" id="brideImg" style="background-image:url('https://images.unsplash.com/photo-1595156820235-9fa6b9777993?w=200');"></div>
+                        <div style="font-size:0.8rem; font-weight:bold;">JULIET</div>
+                    </div>
+                </div>
+                <div class="vote-bar"><div class="vote-fill" style="width:50%"></div></div>
+                <div style="display:flex; gap:10px; margin-top:15px;">
+                    <button class="action-btn btn-outline" style="justify-content:center;" onclick="vote('Romeo')">Vote Romeo</button>
+                    <button class="action-btn btn-outline" style="justify-content:center;" onclick="vote('Juliet')">Vote Juliet</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="music" class="section">
+            <div class="glass-card">
+                <h2><i class="fas fa-music" style="color:var(--primary)"></i> DJ Request</h2>
+                <input type="text" placeholder="Song Name / Artist">
+                <button class="action-btn btn-outline" style="justify-content:center;" onclick="alert('Request sent to DJ!')">Send Request</button>
+            </div>
+            
+            <div class="glass-card" style="border-color: var(--primary);">
+                <h2 style="color:var(--primary);"><i class="fas fa-bolt"></i> Power Up the Party</h2>
+                <p style="font-size:0.9rem; opacity:0.8;">Keep the energy high.</p>
+                <button class="action-btn btn-primary" style="margin-top:10px;" onclick="tip('The DJ', 20)">
+                    <span>🔥 Tip the DJ ($20)</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="raffle" class="section">
+            <div class="glass-card" style="text-align:center;">
+                <div style="font-size:3rem; margin-bottom:10px;">🎟️</div>
+                <h2 style="justify-content:center;">Event Tickets & Raffle</h2>
+                <p style="opacity:0.8; margin-bottom:20px;">Win a weekend getaway ($750 Value).<br>Proceeds go to our honeymoon.</p>
+                
+                <button class="action-btn btn-outline" onclick="payRaffle(10)">
+                    <div style="text-align:left;">
+                        <div style="font-size:0.8rem; opacity:0.7;">SINGLE TICKET</div>
+                        <div>1 Entry</div>
+                    </div>
+                    <div>$10.00</div>
+                </button>
+                
+                <button class="action-btn btn-primary" style="justify-content:space-between;" onclick="payRaffle(25)">
+                    <div style="text-align:left;">
+                        <div style="font-size:0.8rem; opacity:0.8;">BEST VALUE</div>
+                        <div>3 Entries</div>
+                    </div>
+                    <div>$25.00</div>
+                </button>
+                
+                 <button class="action-btn btn-outline" style="margin-top:10px;" onclick="payRaffle(50)">
+                    <div style="text-align:left;">
+                        <div style="font-size:0.8rem; opacity:0.7;">FULL ARM</div>
+                        <div>10 Entries</div>
+                    </div>
+                    <div>$50.00</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-dock">
+        <button class="dock-item active" onclick="nav('timeline', null)"><i class="fas fa-home"></i></button>
+        <button class="dock-item" onclick="nav('speeches', null)"><i class="fas fa-microphone-alt"></i></button>
+        <button class="dock-item" onclick="nav('games', null)"><i class="fas fa-gamepad"></i></button>
+        <button class="dock-item" onclick="nav('music', null)"><i class="fas fa-music"></i></button>
+        <button class="dock-item" onclick="nav('raffle', null)"><i class="fas fa-ticket-alt"></i></button>
+    </div>
+
+    <div class="winner-overlay" id="winnerOverlay" onclick="closeWinner()">
+        <canvas id="confetti" class="confetti-canvas"></canvas>
+        <div class="winner-content">
+            <div class="winner-title">Current Leader</div>
+            <div class="winner-name" id="winnerName">ROMEO</div>
+            <div style="color:white; margin-top:20px; font-size:0.8rem; opacity:0.7;">(Tap to close)</div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="genericModal" onclick="closeModal()">
+        <div class="modal-sheet" onclick="event.stopPropagation()">
+            <div style="text-align:center; margin-bottom:20px;">
+                <div style="width:40px; height:4px; background:rgba(128,128,128,0.3); border-radius:2px; margin:0 auto 20px;"></div>
+                <h2 id="modalTitle" style="justify-content:center;">Payment</h2>
+            </div>
+            <div id="modalContent"></div>
+            <button class="action-btn btn-primary" style="margin-top:20px;" onclick="processPayment()">CONFIRM SECURELY</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        const config = {
+            groom: "Romeo",
+            bride: "Juliet",
+            date: "July 24, 2025",
+            themeColor: "#D4AF37", 
+            autoDarkMode: true 
+        };
+
+        // --- 2. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('coupleNames').innerHTML = `${config.groom} &<br>${config.bride}`;
+            document.getElementById('brandInitials').innerText = `${config.groom.charAt(0)} & ${config.bride.charAt(0)}`;
+            document.getElementById('weddingDate').innerText = config.date;
+            
+            if(config.autoDarkMode) {
+                const hour = new Date().getHours();
+                if(hour >= 18) toggleTheme(); 
+            }
+        });
+
+        // --- 3. NAVIGATION ---
+        function nav(tabId, pillElement) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            if(pillElement) {
+                document.querySelectorAll('.nav-pill').forEach(el => el.classList.remove('active'));
+                pillElement.classList.add('active');
+            }
+
+            // Sync Dock
+            const icons = ['timeline', 'speeches', 'games', 'music', 'raffle'];
+            const idx = icons.indexOf(tabId);
+            document.querySelectorAll('.dock-item').forEach((el, i) => {
+                if(i === idx) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+        }
+
+        // --- 4. THEME TOGGLE ---
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-switch i');
+            if(body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        }
+
+        // --- 5. LOGIC (Voting, Tips, Funds) ---
+        function vote(who) {
+            // Update visual bar if it exists (for shoe game)
+            const fill = document.querySelector('.vote-fill');
+            if(fill) {
+                if(who === config.groom) fill.style.width = "80%";
+                else fill.style.width = "20%";
+            }
+            setTimeout(() => { triggerWinner(who); }, 500);
+        }
+
+        function triggerWinner(name) {
+            document.getElementById('winnerName').innerText = name;
+            document.getElementById('winnerOverlay').style.display = 'flex';
+            initConfetti();
+            loopConfetti();
+        }
+
+        function closeWinner() {
+            document.getElementById('winnerOverlay').style.display = 'none';
+            confetti = []; 
+        }
+
+        // --- CONFETTI ---
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let confetti = [];
+        const colors = [config.themeColor, '#ffffff', '#FFD700', '#FF5500'];
+
+        function initConfetti() {
+            confetti = [];
+            for (let i = 0; i < 100; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: Math.random() * 10 + 5,
+                    speed: Math.random() * 5 + 2,
+                    angle: Math.random() * 6.28
+                });
+            }
+        }
+
+        function loopConfetti() {
+            if(document.getElementById('winnerOverlay').style.display === 'none') return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach((p, i) => {
+                p.y += p.speed;
+                p.angle += 0.1;
+                ctx.fillStyle = p.color;
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.angle);
+                ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                ctx.restore();
+                if (p.y > canvas.height) confetti[i].y = -10;
+            });
+            requestAnimationFrame(loopConfetti);
+        }
+
+        // --- 6. MODALS ---
+        function tip(target, amount) { openPaymentModal(`Tip for ${target}`, amount); }
+        function payRaffle(amount) { openPaymentModal("Raffle Tickets", amount); }
+        
+        // New: Cash Fund Modal
+        function openFundModal() {
+            document.getElementById('modalTitle').innerText = "Future Fund";
+            document.getElementById('modalContent').innerHTML = `
+                <p style="text-align:center; opacity:0.6; margin-bottom:20px;">Help us build our new home/honeymoon.</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                    <button class="action-btn btn-outline" style="justify-content:center;" onclick="document.getElementById('fundInput').value='50'">$50</button>
+                    <button class="action-btn btn-outline" style="justify-content:center;" onclick="document.getElementById('fundInput').value='100'">$100</button>
+                </div>
+                <input type="number" id="fundInput" placeholder="Custom Amount ($)" style="margin-top:10px; text-align:center;">
+                 <div style="display:flex; justify-content:center; gap:10px; margin-top:15px; font-size:1.5rem; opacity:0.5;">
+                    <i class="fab fa-apple"></i> <i class="fab fa-cc-visa"></i> <i class="fab fa-paypal"></i>
+                </div>
+            `;
+            document.getElementById('genericModal').style.display = 'flex';
+        }
+
+        function openPaymentModal(title, amount) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalContent').innerHTML = `
+                <div style="text-align:center; font-size:2rem; font-weight:bold; margin:20px 0;">$${amount}.00</div>
+                <p style="text-align:center; opacity:0.6;">Proceeding to secure checkout.</p>
+                <div style="display:flex; justify-content:center; gap:10px; margin-top:15px; font-size:1.5rem; opacity:0.5;">
+                    <i class="fab fa-apple"></i> <i class="fab fa-cc-visa"></i>
+                </div>
+            `;
+            document.getElementById('genericModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('genericModal').style.display = 'none'; }
+
+        function processPayment() {
+            const btn = document.querySelector('.modal-sheet .btn-primary');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            setTimeout(() => {
+                btn.innerHTML = 'Success!';
+                btn.style.background = '#4CAF50';
+                setTimeout(() => {
+                    closeModal();
+                    btn.innerHTML = originalText;
+                    btn.style.background = ''; 
+                }, 1000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
