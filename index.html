@@ -1,115 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9LMNTS Studio | AI Integration & Event OS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; }
-        .studio-gradient { background: linear-gradient(135deg, #FF5E00 0%, #FF2E2E 100%); }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-        .glass:hover { background: rgba(255, 255, 255, 0.07); border: 1px solid #FF5E00; transform: translateY(-5px); }
-        .glow { box-shadow: 0 0 20px rgba(255, 94, 0, 0.2); }
-    </style>
-</head>
-<body class="overflow-x-hidden">
 
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 studio-gradient rounded-lg flex items-center justify-center font-black text-xl">9</div>
-            <span class="font-bold tracking-tighter text-2xl">9LMNTS STUDIO</span>
-        </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium opacity-70">
-            <a href="#os" class="hover:opacity-100">EVENT OS</a>
-            <a href="/loa" class="hover:opacity-100 text-orange-500">LOA PROJECT</a>
-            <a href="#" class="hover:opacity-100">SOLUTIONS</a>
-        </div>
-        <a href="https://github.com" class="px-5 py-2 glass rounded-full text-xs font-bold">PORTAL ACCESS</a>
-    </nav>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>9LMNTS Studio</title>
+    </head>
 
-    <header class="py-20 px-6 max-w-7xl mx-auto text-center">
-        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter">GAMIFY YOUR <br><span class="text-orange-500">REALITY.</span></h1>
-        <p class="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">9LMNTS Studio develops innovative AI integration solutions and custom Event Operating Systems that turn any gathering into a high-stakes interactive experience.</p>
-        <div class="flex flex-col md:flex-row justify-center gap-4">
-            <a href="/loa" class="px-8 py-4 studio-gradient rounded-xl font-bold glow">EXPLORE LOA PROJECT</a>
-            <a href="#os" class="px-8 py-4 glass rounded-xl font-bold">VIEW EVENT OS LIBRARY</a>
-        </div>
-    </header>
-
-    <section id="os" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-3xl font-bold">EVENT OS PORTAL</h2>
-                <p class="text-gray-500">Select an environment to launch the licensee dashboard.</p>
-            </div>
-            <span class="text-orange-500 font-mono text-sm">8 SYSTEMS ONLINE</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="/fashion" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-high-heel text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">RUNWAY OS</h3>
-                <p class="text-xs text-gray-500">Fashion Week & Editorial</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/trinity" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-building text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">TRINITY</h3>
-                <p class="text-xs text-gray-500">Real Estate & VIP Staking</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/pitch" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-rocket text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">PITCH BATTLE</h3>
-                <p class="text-xs text-gray-500">Corporate & Startup Gamification</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/culture" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-fire text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">CULTURE CLASH</h3>
-                <p class="text-xs text-gray-500">Street Tournament OS</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/clash" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-compact-disc text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">SOUND CLASH</h3>
-                <p class="text-xs text-gray-500">DJ & Music Competition</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/love" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-heart text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">LOVE MATCH</h3>
-                <p class="text-xs text-gray-500">Weddings & Social Networking</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/romeo" class="glass p-8 rounded-2xl relative overflow-hidden group">
-                <i class="fas fa-masks-theater text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">RECEPTION OS</h3>
-                <p class="text-xs text-gray-500">Immersive Theater Hub</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-
-            <a href="/loa" class="glass p-8 rounded-2xl border-2 border-orange-500/30 group">
-                <i class="fas fa-gamepad text-3xl mb-4 text-orange-500"></i>
-                <h3 class="font-bold text-xl mb-2">LOA OS</h3>
-                <p class="text-xs text-gray-500">Ottawa Open World Fundraiser</p>
-                <div class="mt-6 text-xs font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH SYSTEM →</div>
-            </a>
-        </div>
-    </section>
-
-    <footer class="py-10 border-t border-white/5 text-center text-gray-600 text-xs">
-        <p>&copy; 2025 9LMNTS STUDIO. ALL RIGHTS RESERVED. POWERED BY 9LMNTS OS.</p>
-    </footer>
-
-</body>
-</html>
+    <body>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+    </body>
+  </html>
+  
