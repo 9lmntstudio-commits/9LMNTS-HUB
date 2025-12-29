@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎭 LIVE: Romeo & Juliet - Immersive Theater Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- ROMANTIC THEATER THEME --- */
+        :root {
+            --bg-color: #0a080f;       /* Midnight blue */
+            --card-bg: #1a1626;        /* Velvet purple */
+            --modal-bg: #1a1626;
+            --primary: #e63946;        /* Romantic red */
+            --accent: #9d4edd;         /* Royal purple */
+            --secondary: #f4a261;      /* Gold */
+            --green: #2a9d8f;          /* Emerald */
+            --text-main: #f8f9fa;      /* Ivory */
+            --text-sub: #adb5bd;       /* Silver */
+            --border: #495057;         /* Steel */
+            --input-bg: #0a080f;
+            --success: #52b788;
+            --live-pulse: #ff006e;
+            
+            --font-head: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-decor: 'Playfair Display', serif;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            background: linear-gradient(135deg, #0a080f 0%, #1a1626 100%);
+            color: var(--text-main); 
+            font-family: var(--font-body); 
+            margin: 0; 
+            padding-bottom: 90px;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .app-container { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            min-height: 100vh; 
+            background: var(--bg-color); 
+            position: relative; 
+            overflow-x: hidden;
+            box-shadow: 0 0 60px rgba(230, 57, 70, 0.1);
+        }
+        
+        /* LIVE EVENT HEADER */
+        .live-event-header { 
+            background: linear-gradient(90deg, #1a1626 0%, #0a080f 100%);
+            padding: 16px 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.2);
+            height: 70px;
+        }
+        
+        .logo { 
+            font-family: var(--font-head); 
+            font-size: 1.8rem; 
+            font-weight: 900;
+            color: var(--primary); 
+            text-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+        
+        .live-status {
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+        }
+        
+        .live-badge { 
+            background: linear-gradient(90deg, #ff006e, #ff4757);
+            color: white; 
+            font-size: 0.7rem; 
+            font-weight: 900; 
+            padding: 6px 12px; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
+            animation: pulse-glow 1.5s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 110, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(255, 0, 110, 0.8); }
+        }
+        
+        .live-timer {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(157, 78, 221, 0.1);
+            padding: 4px 10px;
+            border-radius: 10px;
+            border: 1px solid var(--accent);
+            font-family: var(--font-body);
+            white-space: nowrap;
+        }
+
+        /* LIVE ANNOUNCEMENT TICKER */
+        .announcement-ticker {
+            background: rgba(230, 57, 70, 0.1);
+            border-bottom: 1px solid rgba(230, 57, 70, 0.3);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding-left: 100%;
+        }
+        
+        .ticker-content i { 
+            margin: 0 10px; 
+            color: var(--primary); 
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* HERO DASHBOARD */
+        .hero-dashboard-live {
+            background: radial-gradient(ellipse at center, #1a1626 0%, #0a080f 70%);
+            padding: 25px 20px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-dashboard-live::before {
+            content: '';
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+        }
+        
+        .hero-sub { 
+            color: var(--accent); 
+            font-weight: 900; 
+            letter-spacing: 2px; 
+            font-size: 0.75rem; 
+            margin: 0 0 15px; 
+            text-transform: uppercase;
+            font-family: var(--font-body);
+        }
+        
+        .hero-title { 
+            font-family: var(--font-head); 
+            margin: 0 0 20px; 
+            font-size: 3rem; 
+            line-height: 0.9; 
+            color: var(--text-main); 
+            text-transform: uppercase; 
+            text-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .live-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+            font-family: var(--font-head);
+        }
+        
+        .stat-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: var(--text-sub);
+            font-weight: 700;
+            margin-top: 5px;
+            display: block;
+            letter-spacing: 1px;
+        }
+        
+        .stat-icon {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .main-cta-btn { 
+            width: 100%; 
+            padding: 16px; 
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white; 
+            border: none; 
+            border-radius: 12px; 
+            font-weight: 900; 
+            font-size: 1rem; 
+            margin: 15px 0 0; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            text-transform: uppercase;
+            box-shadow: 0 5px 25px rgba(230, 57, 70, 0.4);
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-cta-btn:active { 
+            transform: scale(0.98); 
+        }
+        
+        .main-cta-btn:hover { 
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.6); 
+        }
+
+        /* REVENUE RACK */
+        .contribution-section {
+            padding: 20px; 
+            margin: 20px; 
+            background: var(--card-bg); 
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contribution-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .section-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 20px; 
+            color: white; 
+            font-weight: 800; 
+            font-size: 1rem; 
+            font-family: var(--font-head);
+        }
+        
+        .section-header i { 
+            color: var(--accent); 
+            font-size: 1.1rem; 
+        }
+        
+        .ticket-row { 
+            display: flex; 
+            gap: 12px; 
+            overflow-x: auto; 
+            padding-bottom: 5px; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+        
+        .ticket-row::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .ticket-card {
+            min-width: 140px; 
+            padding: 15px; 
+            border-radius: 15px; 
+            border: 2px solid var(--border);
+            background: var(--bg-color); 
+            cursor: pointer; 
+            text-align: center; 
+            transition: all 0.2s;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .ticket-card:active { 
+            transform: scale(0.97); 
+        }
+        
+        .ticket-card:hover { 
+            border-color: var(--primary); 
+        }
+        
+        .ticket-card.vip { 
+            border: 2px solid var(--secondary); 
+            background: linear-gradient(145deg, rgba(244, 162, 97, 0.15), transparent); 
+        }
+        
+        .vip-badge {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: #0a080f;
+            font-size: 0.6rem;
+            font-weight: 900;
+            padding: 2px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .t-price { 
+            font-size: 1.6rem; 
+            font-weight: 900; 
+            color: var(--accent); 
+            margin-bottom: 5px; 
+            font-family: var(--font-head); 
+            line-height: 1;
+        }
+        
+        .t-label { 
+            font-size: 0.75rem; 
+            color: var(--text-sub); 
+            margin-bottom: 12px; 
+            line-height: 1.2; 
+            min-height: 32px;
+        }
+        
+        .t-btn { 
+            font-size: 0.8rem; 
+            font-weight: 900; 
+            padding: 10px 0; 
+            border-radius: 25px; 
+            border: none; 
+            background: var(--accent); 
+            color: white; 
+            width: 100%; 
+            cursor: pointer; 
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .t-btn:active { 
+            transform: translateY(2px); 
+        }
+        
+        .vip .t-btn { 
+            background: var(--secondary); 
+            color: #0a080f; 
+        }
+
+        /* BATTLE SECTION */
+        .battle-header { 
+            text-align: center; 
+            margin: 25px 20px 20px; 
+            color: var(--accent); 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-weight: 900; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-body);
+        }
+        
+        .live-indicator {
+            background: var(--primary);
+            color: white;
+            font-size: 0.6rem;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-weight: 900;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.6; } 
+        }
+        
+        .battle-grid {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            margin: 0 20px 25px;
+            padding: 0;
+        }
+        
+        .battle-card { 
+            background: var(--card-bg); 
+            padding: 20px 15px; 
+            text-align: center; 
+            border-radius: 20px; 
+            border: 2px solid var(--border); 
+            position: relative;
+            transition: all 0.2s;
+            overflow: hidden;
+        }
+        
+        .battle-card:active { 
+            transform: scale(0.99); 
+        }
+        
+        .bc-romeo { 
+            border-top: 5px solid var(--primary); 
+        }
+        
+        .bc-juliet { 
+            border-top: 5px solid var(--accent); 
+        }
+        
+        .vote-percentage {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-family: var(--font-head);
+        }
+        
+        .bc-juliet .vote-percentage { 
+            color: var(--accent); 
+        }
+        
+        .bc-avatar { 
+            width: 90px; 
+            height: 90px; 
+            background-size: cover; 
+            background-position: center;
+            margin: 0 auto 15px; 
+            border-radius: 50%; 
+            border: 4px solid var(--bg-color); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .bc-name { 
+            font-family: var(--font-head); 
+            font-size: 1.6rem; 
+            line-height: 1; 
+            margin: 0 0 5px; 
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        
+        .bc-role { 
+            font-size: 0.75rem; 
+            color: var(--text-sub); 
+            margin-bottom: 15px; 
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        .menu-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 10px 0 15px;
+            text-align: left;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .menu-title {
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .menu-desc {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+        
+        .vote-progress {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .vote-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 1s ease-out;
+        }
+        
+        .bc-romeo .vote-fill { 
+            background: var(--primary); 
+        }
+        
+        .bc-juliet .vote-fill { 
+            background: var(--accent); 
+        }
+        
+        .bc-btn { 
+            width: 100%; 
+            padding: 12px; 
+            font-weight: 900; 
+            border: none; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            border-radius: 12px; 
+            font-size: 0.85rem; 
+            color: white; 
+            transition: all 0.2s;
+            letter-spacing: 1px;
+        }
+        
+        .bc-btn:active { 
+            transform: scale(0.98); 
+        }
+        
+        .btn-romeo { 
+            background: var(--primary); 
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
+        }
+        
+        .btn-juliet { 
+            background: var(--accent); 
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+        }
+
+        /* ADDITIONAL GAMES SECTION */
+        .additional-games {
+            margin: 20px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .games-header {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .mini-games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .mini-game-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .mini-game-card:active {
+            transform: scale(0.98);
+        }
+        
+        .mini-game-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .mini-game-icon {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        
+        .mini-game-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            line-height: 1.1;
+        }
+        
+        .mini-game-desc {
+            font-size: 0.6rem;
+            color: var(--text-sub);
+            line-height: 1.2;
+        }
+
+        /* TIP SECTION */
+        .tip-section {
+            background: linear-gradient(135deg, #1a1626, #0a080f);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin: 20px;
+            text-align: center;
+        }
+        
+        .tip-section h3 {
+            color: var(--accent); 
+            font-family: var(--font-head); 
+            margin: 0 0 10px; 
+            font-size: 1.4rem;
+        }
+        
+        .tip-section p {
+            color: var(--text-sub); 
+            font-size: 0.85rem; 
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .tip-option {
+            background: var(--bg-color);
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            padding: 18px 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tip-option:active {
+            transform: scale(0.98);
+        }
+        
+        .tip-option.selected {
+            border-color: var(--accent);
+            background: rgba(157, 78, 221, 0.1);
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.2);
+        }
+        
+        .tip-amount {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--accent);
+            font-family: var(--font-head);
+            line-height: 1;
+        }
+        
+        .tip-label {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-top: 5px;
+        }
+        
+        .submit-action { 
+            background: linear-gradient(90deg, var(--accent), var(--primary)); 
+            color: white; 
+            border: none; 
+            padding: 16px; 
+            width: 100%; 
+            font-weight: 900; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            margin-top: 15px; 
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .submit-action:active { 
+            transform: scale(0.98); 
+        }
+
+        /* QUICK ACTION FAB */
+        .quick-action-fab {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.6);
+            z-index: 99;
+            transition: all 0.3s;
+            border: 3px solid var(--bg-color);
+        }
+        
+        .quick-action-fab:active { 
+            transform: scale(0.9); 
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.8);
+        }
+
+        /* BOTTOM NAV */
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            max-width: 480px; 
+            background: rgba(26, 22, 38, 0.95); 
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--primary); 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 15px 0; 
+            z-index: 100; 
+            box-shadow: 0 -8px 35px rgba(0,0,0,0.4); 
+        }
+        
+        .nav-item { 
+            text-align: center; 
+            color: var(--text-sub); 
+            font-size: 0.7rem; 
+            cursor: pointer; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 6px; 
+            font-weight: 800; 
+            position: relative;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 60px;
+        }
+        
+        .nav-item:active { 
+            transform: scale(0.95); 
+        }
+        
+        .nav-item.active { 
+            color: var(--primary); 
+        }
+        
+        .nav-item i { 
+            font-size: 1.4rem; 
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -2px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 900;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* --- MODALS --- */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(10, 8, 15, 0.95); 
+            z-index: 200; 
+            justify-content: center; 
+            align-items: center; 
+            backdrop-filter: blur(10px); 
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .modal-box { 
+            width: 100%; 
+            max-width: 400px; 
+            background: var(--modal-bg); 
+            padding: 0; 
+            border-radius: 24px; 
+            position: relative; 
+            border-top: 6px solid var(--primary); 
+            animation: slideUp 0.3s; 
+            overflow: hidden; 
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7); 
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .m-header { 
+            padding: 25px 20px; 
+            border-bottom: 1px solid var(--border); 
+            position: relative; 
+            text-align: center; 
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .m-title { 
+            margin: 0; 
+            color: var(--primary); 
+            font-size: 1.4rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            font-family: var(--font-head);
+        }
+        
+        .m-close { 
+            position: absolute; 
+            top: 20px; 
+            right: 20px; 
+            font-size: 2rem; 
+            color: var(--text-sub); 
+            cursor: pointer; 
+            transition: all 0.2s;
+            font-family: sans-serif;
+            line-height: 1;
+        }
+        
+        .m-close:active { 
+            transform: scale(1.2); 
+        }
+        
+        .m-body { 
+            padding: 25px; 
+        }
+
+        /* VOTE MODAL */
+        .vote-tabs { 
+            display: flex; 
+            background: var(--bg-color); 
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .v-tab { 
+            flex: 1; 
+            padding: 16px; 
+            text-align: center; 
+            font-size: 0.85rem; 
+            font-weight: 900; 
+            color: var(--text-sub); 
+            cursor: pointer; 
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        
+        .v-tab:active { 
+            transform: scale(0.98); 
+        }
+        
+        .v-tab.active { 
+            color: var(--primary); 
+            background: rgba(230, 57, 70, 0.1);
+            border-bottom: 3px solid var(--primary); 
+        }
+        
+        .vote-option { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 18px; 
+            background: var(--bg-color); 
+            border: 2px solid var(--border); 
+            border-radius: 15px; 
+            margin-bottom: 12px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        
+        .vote-option:active { 
+            transform: scale(0.98); 
+        }
+        
+        .vote-option.selected { 
+            border-color: var(--primary); 
+            background: rgba(230, 57, 70, 0.1); 
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        @keyframes slideUp { 
+            from { transform: translateY(30px); opacity: 0; } 
+            to { transform: translateY(0); opacity: 1; } 
+        }
+
+        /* RESPONSIVE FIXES */
+        @media (max-width: 480px) {
+            .app-container {
+                border-left: none;
+                border-right: none;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .stat-value {
+                font-size: 1.4rem;
+            }
+            
+            .ticket-card {
+                min-width: 130px;
+            }
+            
+            .battle-card {
+                padding: 15px 10px;
+            }
+            
+            .bc-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .bc-name {
+                font-size: 1.4rem;
+            }
+            
+            .mini-games-grid {
+                gap: 10px;
+            }
+            
+            .mini-game-card {
+                padding: 12px 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .live-stats {
+                padding: 12px;
+            }
+            
+            .stat-value {
+                font-size: 1.2rem;
+            }
+            
+            .ticket-card {
+                min-width: 120px;
+                padding: 12px;
+            }
+            
+            .battle-grid {
+                gap: 10px;
+            }
+            
+            .tip-grid {
+                gap: 10px;
+            }
+        }
+
+        /* SCROLLBAR STYLING */
+        .modal-box::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .modal-box::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        
+        .modal-box::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- LIVE EVENT HEADER -->
+    <div class="live-event-header">
+        <div class="logo">ROMEO & JULIET</div>
+        <div class="live-status">
+            <div class="live-timer" id="liveTimer">ACT III</div>
+            <div class="live-badge"><i class="fas fa-heart"></i> LIVE</div>
+        </div>
+    </div>
+
+    <!-- LIVE ANNOUNCEMENT TICKER -->
+    <div class="announcement-ticker">
+        <div class="ticker-content" id="announcementTicker">
+            <i class="fas fa-heart"></i> Welcome to Romeo & Juliet Live! • 
+            <i class="fas fa-theater-masks"></i> Balcony scene now playing • 
+            <i class="fas fa-music"></i> Live orchestra performing • 
+            <i class="fas fa-crown"></i> Vote for your favorite performance •
+        </div>
+    </div>
+
+    <!-- HERO DASHBOARD -->
+    <div class="hero-dashboard-live">
+        <div class="hero-sub">IMMERSIVE THEATER • LIVE NOW</div>
+        <h1 class="hero-title">BALCONY<br>SCENE</h1>
+        
+        <div class="live-stats">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-value" id="liveAudience">1,842</div>
+                <div class="stat-label">Live Audience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                <div class="stat-value" id="totalVotes">3,456</div>
+                <div class="stat-label">Love Votes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-value" id="matchTimer">22:45</div>
+                <div class="stat-label">Scene Time</div>
+            </div>
+        </div>
+
+        <button class="main-cta-btn" onclick="openModal('contributeModal')">
+            <i class="fas fa-theater-masks"></i> JOIN & SUPPORT
+        </button>
+    </div>
+
+    <!-- REVENUE RACK -->
+    <div class="contribution-section">
+        <div class="section-header">
+            <i class="fas fa-crown"></i> THEATER EXPERIENCES
+        </div>
+        <div class="ticket-row">
+            <div class="ticket-card" onclick="openTierSelection(35, 'Standard Ticket')">
+                <div class="t-price">$35</div>
+                <div class="t-label">General Admission</div>
+                <button class="t-btn">BUY TICKET</button>
+            </div>
+            <div class="ticket-card vip" onclick="openTierSelection(75, 'VIP Experience')">
+                <div class="vip-badge">VIP</div>
+                <div class="t-price">$75</div>
+                <div class="t-label">Front Row VIP</div>
+                <button class="t-btn">UPGRADE</button>
+            </div>
+            <div class="ticket-card" onclick="openTierSelection(50, 'Love Boost Pack')">
+                <div class="t-price">$50</div>
+                <div class="t-label">10 Love Votes</div>
+                <button class="t-btn">BOOST</button>
+            </div>
+            <div class="ticket-card" onclick="openModal('tipModal')">
+                <div class="t-price">TIP DJ</div>
+                <div class="t-label">Support the Music</div>
+                <button class="t-btn">APPRECIATE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BATTLE SECTION -->
+    <div class="battle-header">
+        <div class="live-indicator">LIVE PERFORMANCE</div>
+        ACT III • BALCONY SCENE
+    </div>
+
+    <div class="battle-grid">
+        <div class="battle-card bc-romeo">
+            <div class="vote-percentage" id="voteRomeo">58%</div>
+            <div class="bc-avatar" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&fit=crop&crop=face');"></div>
+            <h3 class="bc-name">ROMEO</h3>
+            <div class="bc-role">Montague Heir</div>
+            
+            <div class="menu-box">
+                <div class="menu-title"><i class="fas fa-quote-left"></i> PERFORMANCE</div>
+                <div class="menu-desc">"But, soft! what light through yonder window breaks? It is the east, and Juliet is the sun."</div>
+            </div>
+            
+            <div class="vote-progress">
+                <div class="vote-fill" id="progressRomeo" style="width: 58%"></div>
+            </div>
+            
+            <button class="bc-btn btn-romeo" onclick="openVote('Romeo', 'var(--primary)', 'Romeo')">
+                <i class="fas fa-heart"></i> VOTE ROMANTIC
+            </button>
+        </div>
+
+        <div class="battle-card bc-juliet">
+            <div class="vote-percentage" id="voteJuliet">42%</div>
+            <div class="bc-avatar" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&fit=crop&crop=face');"></div>
+            <h3 class="bc-name">JULIET</h3>
+            <div class="bc-role">Capulet Daughter</div>
+            
+            <div class="menu-box">
+                <div class="menu-title"><i class="fas fa-quote-left"></i> PERFORMANCE</div>
+                <div class="menu-desc">"O Romeo, Romeo! wherefore art thou Romeo? Deny thy father and refuse thy name."</div>
+            </div>
+            
+            <div class="vote-progress">
+                <div class="vote-fill" id="progressJuliet" style="width: 42%"></div>
+            </div>
+            
+            <button class="bc-btn btn-juliet" onclick="openVote('Juliet', 'var(--accent)', 'Juliet')">
+                <i class="fas fa-star"></i> VOTE DRAMATIC
+            </button>
+        </div>
+    </div>
+
+    <!-- ADDITIONAL GAMES SECTION -->
+    <div class="additional-games">
+        <div class="games-header">ADDITIONAL LIVE GAMES</div>
+        <div class="mini-games-grid">
+            <div class="mini-game-card" onclick="openMiniGame('trivia')">
+                <div class="mini-game-icon"><i class="fas fa-brain"></i></div>
+                <div class="mini-game-title">SHAKESPEARE TRIVIA</div>
+                <div class="mini-game-desc">Test your knowledge</div>
+            </div>
+            <div class="mini-game-card" onclick="openMiniGame('predict')">
+                <div class="mini-game-icon"><i class="fas fa-crystal-ball"></i></div>
+                <div class="mini-game-title">SCENE PREDICTOR</div>
+                <div class="mini-game-desc">Guess next move</div>
+            </div>
+            <div class="mini-game-card" onclick="openMiniGame('quote')">
+                <div class="mini-game-icon"><i class="fas fa-quote-right"></i></div>
+                <div class="mini-game-title">QUOTE MATCH</div>
+                <div class="mini-game-desc">Complete the line</div>
+            </div>
+            <div class="mini-game-card" onclick="openMiniGame('costume')">
+                <div class="mini-game-icon"><i class="fas fa-tshirt"></i></div>
+                <div class="mini-game-title">COSTUME VOTE</div>
+                <div class="mini-game-desc">Best outfit</div>
+            </div>
+            <div class="mini-game-card" onclick="openMiniGame('duel')">
+                <div class="mini-game-icon"><i class="fas fa-fist-raised"></i></div>
+                <div class="mini-game-title">SWORD DUEL</div>
+                <div class="mini-game-desc">Tybalt vs Mercutio</div>
+            </div>
+            <div class="mini-game-card" onclick="openModal('tipModal')">
+                <div class="mini-game-icon"><i class="fas fa-music"></i></div>
+                <div class="mini-game-title">TIP THE DJ</div>
+                <div class="mini-game-desc">Support music</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIP THE DJ SECTION -->
+    <div class="tip-section">
+        <h3><i class="fas fa-music"></i> TIP THE DJ</h3>
+        <p>Support our live orchestra and DJ. Choose an amount to show your appreciation.</p>
+        
+        <div class="tip-grid">
+            <div class="tip-option" onclick="selectTipAmount(2)">
+                <div class="tip-amount">$2</div>
+                <div class="tip-label">Light Applause</div>
+            </div>
+            <div class="tip-option" onclick="selectTipAmount(3)">
+                <div class="tip-amount">$3</div>
+                <div class="tip-label">Bravo!</div>
+            </div>
+            <div class="tip-option" onclick="selectTipAmount(5)">
+                <div class="tip-amount">$5</div>
+                <div class="tip-label">Encore!</div>
+            </div>
+            <div class="tip-option" onclick="selectTipAmount(10)">
+                <div class="tip-amount">$10</div>
+                <div class="tip-label">Standing Ovation</div>
+            </div>
+        </div>
+        
+        <button class="submit-action" onclick="sendTip()">
+            <i class="fas fa-heart"></i> SEND TIP TO DJ
+        </button>
+    </div>
+
+    <!-- QUICK ACTION FAB -->
+    <div class="quick-action-fab" onclick="openQuickActions()">
+        <i class="fas fa-magic"></i>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('performance', this)">
+            <i class="fas fa-theater-masks"></i>
+            PERFORMANCE
+            <div class="notification-badge" id="navPerformanceBadge">3</div>
+        </div>
+        <div class="nav-item" onclick="openModal('gamesModal')">
+            <i class="fas fa-gamepad"></i>
+            GAMES
+            <div class="notification-badge" id="navGamesBadge" style="display: none;">0</div>
+        </div>
+        <div class="nav-item" onclick="openModal('tipModal')">
+            <i class="fas fa-music"></i>
+            TIP DJ
+            <div class="notification-badge" id="navTipBadge">1</div>
+        </div>
+        <div class="nav-item" onclick="openModal('castModal')">
+            <i class="fas fa-users"></i>
+            CAST
+        </div>
+    </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+
+<!-- VOTE MODAL -->
+<div id="voteModal" class="modal">
+    <div class="modal-box">
+        <div class="m-header">
+            <div class="m-title">CAST YOUR VOTE</div>
+            <div style="font-size:0.85rem; color:var(--text-sub); margin-top:8px;">
+                Voting for: <span id="voteTarget" style="color:var(--primary); font-weight:900;">CHARACTER</span>
+            </div>
+            <span class="m-close" onclick="closeModal('voteModal')">&times;</span>
+        </div>
+        <div class="m-body">
+            <div id="freeVoteSection">
+                <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:20px; text-align:center;">
+                    Cast your vote for this performance. Consider acting, emotion, and delivery.
+                </p>
+                <button class="submit-action" style="background:var(--border);" onclick="castFreeVote()">
+                    <i class="fas fa-check-circle"></i> SUBMIT VOTE
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TIP MODAL -->
+<div id="tipModal" class="modal">
+    <div class="modal-box">
+        <div class="m-header">
+            <div class="m-title" style="color: var(--accent);">TIP THE DJ & ORCHESTRA</div>
+            <span class="m-close" onclick="closeModal('tipModal')">&times;</span>
+        </div>
+        <div class="m-body">
+            <div style="text-align:center;">
+                <p style="color:var(--text-sub); margin-bottom:20px; font-size:0.9rem;">
+                    Support our live musicians. 100% of tips go directly to the performers.
+                </p>
+                
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:20px;">
+                    <div class="tip-option" style="text-align:center; padding:20px 10px;" onclick="selectTipAmount(2)">
+                        <div style="font-size:1.6rem; font-weight:900; color:var(--accent);">$2</div>
+                        <div style="font-size:0.8rem; color:var(--text-sub);">Light Applause</div>
+                    </div>
+                    <div class="tip-option" style="text-align:center; padding:20px 10px;" onclick="selectTipAmount(3)">
+                        <div style="font-size:1.6rem; font-weight:900; color:var(--accent);">$3</div>
+                        <div style="font-size:0.8rem; color:var(--text-sub);">Bravo!</div>
+                    </div>
+                    <div class="tip-option" style="text-align:center; padding:20px 10px;" onclick="selectTipAmount(5)">
+                        <div style="font-size:1.6rem; font-weight:900; color:var(--accent);">$5</div>
+                        <div style="font-size:0.8rem; color:var(--text-sub);">Encore!</div>
+                    </div>
+                    <div class="tip-option" style="text-align:center; padding:20px 10px;" onclick="selectTipAmount(10)">
+                        <div style="font-size:1.6rem; font-weight:900; color:var(--accent);">$10</div>
+                        <div style="font-size:0.8rem; color:var(--text-sub);">Standing Ovation</div>
+                    </div>
+                </div>
+                
+                <div style="display:flex; gap:10px; margin-bottom:20px;">
+                    <input type="number" id="customTipAmount" placeholder="Custom amount ($1-50)" min="1" max="50" 
+                           style="flex:1; padding:12px; background:var(--bg-color); border:2px solid var(--border); border-radius:12px; color:white; font-size:0.9rem;">
+                    <button class="t-btn" onclick="useCustomTip()" style="padding:12px 15px;">CUSTOM</button>
+                </div>
+                
+                <button class="submit-action" onclick="sendTipViaModal()">
+                    <i class="fas fa-heart"></i> SEND TIP TO PERFORMERS
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- GAMES MODAL -->
+<div id="gamesModal" class="modal">
+    <div class="modal-box">
+        <div class="m-header">
+            <div class="m-title" style="color: var(--primary);">LIVE THEATER GAMES</div>
+            <span class="m-close" onclick="closeModal('gamesModal')">&times;</span>
+        </div>
+        <div class="m-body">
+            <div style="text-align: center;">
+                <p style="color:var(--text-sub); margin-bottom:20px; font-size:0.9rem;">
+                    Participate in interactive games during the performance.
+                </p>
+                
+                <div style="display: grid; gap: 12px;">
+                    <div class="vote-option" onclick="startGame('trivia')">
+                        <div>
+                            <div style="font-weight: bold; font-size: 1rem; color: white;">Shakespeare Trivia</div>
+                            <div style="font-size: 0.8rem; color: var(--text-sub);">Test your knowledge of the Bard</div>
+                        </div>
+                        <div style="color: var(--accent); font-weight: 900;">PLAY</div>
+                    </div>
+                    
+                    <div class="vote-option" onclick="startGame('predict')">
+                        <div>
+                            <div style="font-weight: bold; font-size: 1rem; color: white;">Scene Predictor</div>
+                            <div style="font-size: 0.8rem; color: var(--text-sub);">Guess what happens next</div>
+                        </div>
+                        <div style="color: var(--accent); font-weight: 900;">PLAY</div>
+                    </div>
+                    
+                    <div class="vote-option" onclick="startGame('quote')">
+                        <div>
+                            <div style="font-weight: bold; font-size: 1rem; color: white;">Quote Match</div>
+                            <div style="font-size: 0.8rem; color: var(--text-sub);">Complete famous lines</div>
+                        </div>
+                        <div style="color: var(--accent); font-weight: 900;">PLAY</div>
+                    </div>
+                    
+                    <div class="vote-option" onclick="openModal('tipModal')">
+                        <div>
+                            <div style="font-weight: bold; font-size: 1rem; color: white;">Tip the DJ</div>
+                            <div style="font-size: 0.8rem; color: var(--text-sub);">Support live music ($2-$10)</div>
+                        </div>
+                        <div style="color: var(--accent); font-weight: 900;">TIP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div id="payModal" class="modal">
+    <div class="modal-box">
+        <div class="m-header">
+            <div class="m-title">SECURE PAYMENT</div>
+            <span class="m-close" onclick="closeModal('payModal')">&times;</span>
+        </div>
+        <div class="m-body" style="text-align:center;">
+            <h3 id="paymentTitle" style="margin-bottom:15px; color:var(--primary); font-size:1.2rem;">Payment Confirmation</h3>
+            <div style="font-size:2.5rem; font-weight:900; margin:20px 0; color:var(--accent);">
+                $<span id="payAmount">0</span>
+            </div>
+            <p style="font-size:0.8rem; color:var(--text-sub); margin-bottom:20px;">
+                Secure checkout • 256-bit encryption
+            </p>
+            
+            <div style="background:var(--bg-color); padding:20px; border-radius:15px; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+                    <span>Item:</span>
+                    <span id="paymentItem" style="font-weight:bold; color:var(--primary);"></span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+                    <span>Amount:</span>
+                    <span id="paymentAmount" style="font-weight:bold;"></span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+                    <span>Service fee:</span>
+                    <span id="paymentFee" style="font-weight:bold;"></span>
+                </div>
+                <hr style="border-color:var(--border); margin:15px 0;">
+                <div style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:bold;">
+                    <span>Total:</span>
+                    <span id="paymentTotal" style="color:var(--accent);"></span>
+                </div>
+            </div>
+            
+            <button class="submit-action" onclick="processPayment()">
+                <i class="fas fa-lock"></i> CONFIRM & PAY
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============ GLOBAL STATE ============
+    const state = {
+        votes: {
+            'Romeo': { count: 2004, percentage: 58 },
+            'Juliet': { count: 1452, percentage: 42 }
+        },
+        totalVotes: 3456,
+        liveAudience: 1842,
+        
+        selectedTipAmount: 0,
+        selectedTier: null,
+        selectedTierName: '',
+        currentVoteTarget: '',
+        
+        user: {
+            name: 'Theater Lover',
+            balance: 150,
+            tickets: 1,
+            tipsGiven: 0
+        },
+        
+        notifications: {
+            performance: 3,
+            tip: 1,
+            games: 0
+        }
+    };
+
+    // ============ INITIALIZATION ============
+    document.addEventListener('DOMContentLoaded', function() {
+        initializePage();
+        startLiveUpdates();
+        updateNotificationBadges();
+    });
+
+    function initializePage() {
+        updateTicker();
+        updateMatchTimer();
+        updateVoteUI();
+        startRandomUpdates();
+    }
+
+    // ============ LIVE UPDATES ============
+    function startLiveUpdates() {
+        setInterval(updateLiveStats, 3000);
+        setInterval(updateMatchTimer, 1000);
+        setInterval(updateTicker, 10000);
+        setInterval(addRandomAnnouncement, 15000);
+    }
+
+    function updateLiveStats() {
+        // Update audience count
+        const audienceChange = Math.floor(Math.random() * 10) - 3;
+        state.liveAudience = Math.max(1800, state.liveAudience + audienceChange);
+        document.getElementById('liveAudience').textContent = state.liveAudience.toLocaleString();
+        
+        // Update total votes
+        const newVotes = Math.floor(Math.random() * 15) + 5;
+        state.totalVotes += newVotes;
+        document.getElementById('totalVotes').textContent = state.totalVotes.toLocaleString();
+        
+        // Update vote percentages
+        updateVotePercentages();
+        updateVoteUI();
+    }
+
+    function updateMatchTimer() {
+        const timer = document.getElementById('matchTimer');
+        if(!timer) return;
+        
+        const parts = timer.textContent.split(':');
+        let minutes = parseInt(parts[0]);
+        let seconds = parseInt(parts[1]);
+        
+        seconds++;
+        if(seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if(minutes >= 60) minutes = 0;
+        }
+        
+        timer.textContent = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+    }
+
+    function updateVotePercentages() {
+        const total = Object.values(state.votes).reduce((sum, vote) => sum + vote.count, 0);
+        
+        Object.keys(state.votes).forEach(character => {
+            const vote = state.votes[character];
+            vote.percentage = total > 0 ? Math.round((vote.count / total) * 100) : 0;
+        });
+    }
+
+    function updateVoteUI() {
+        // Update Romeo
+        const romeoVote = state.votes['Romeo'];
+        document.getElementById('voteRomeo').textContent = romeoVote.percentage + '%';
+        document.getElementById('progressRomeo').style.width = romeoVote.percentage + '%';
+        
+        // Update Juliet
+        const julietVote = state.votes['Juliet'];
+        document.getElementById('voteJuliet').textContent = julietVote.percentage + '%';
+        document.getElementById('progressJuliet').style.width = julietVote.percentage + '%';
+    }
+
+    function startRandomUpdates() {
+        // Simulate random vote fluctuations
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 5) - 2;
+            const character = Math.random() > 0.5 ? 'Romeo' : 'Juliet';
+            state.votes[character].count = Math.max(0, state.votes[character].count + change);
+            
+            updateVotePercentages();
+            updateVoteUI();
+        }, 5000);
+        
+        // Simulate occasional notifications
+        setInterval(() => {
+            if(Math.random() > 0.7) {
+                state.notifications.performance++;
+                updateNotificationBadges();
+            }
+        }, 15000);
+    }
+
+    // ============ VOTING SYSTEM ============
+    function openVote(name, color, target) {
+        state.currentVoteTarget = target;
+        document.getElementById('voteTarget').textContent = target;
+        openModal('voteModal');
+    }
+
+    function castFreeVote() {
+        if(!state.currentVoteTarget) return;
+        
+        const target = state.currentVoteTarget;
+        if(state.votes[target]) {
+            state.votes[target].count += 1;
+            state.totalVotes += 1;
+            
+            updateVotePercentages();
+            updateVoteUI();
+            
+            showToast('Vote cast for ' + target + '!');
+            closeModal('voteModal');
+            
+            // Add announcement
+            addAnnouncement('vote', `${target} received a new vote!`);
+            
+            // Update notifications
+            state.notifications.performance++;
+            updateNotificationBadges();
+        }
+    }
+
+    // ============ TIP SYSTEM ============
+    function selectTipAmount(amount) {
+        state.selectedTipAmount = amount;
+        
+        // Remove selected class from all options
+        document.querySelectorAll('.tip-option').forEach(o => o.classList.remove('selected'));
+        
+        // Add to clicked option
+        event.target.closest('.tip-option').classList.add('selected');
+    }
+
+    function useCustomTip() {
+        const customAmount = parseInt(document.getElementById('customTipAmount').value);
+        if(customAmount && customAmount >= 1 && customAmount <= 50) {
+            state.selectedTipAmount = customAmount;
+            showToast(`Custom tip set to $${customAmount}`);
+        } else {
+            showToast('Please enter a valid amount ($1-50)');
+        }
+    }
+
+    function sendTip() {
+        if(state.selectedTipAmount === 0) {
+            showToast('Please select a tip amount first');
+            return;
+        }
+        
+        openPay(state.selectedTipAmount, 'Tip for DJ & Orchestra');
+        
+        // Reset selection
+        state.selectedTipAmount = 0;
+        document.querySelectorAll('.tip-option').forEach(o => o.classList.remove('selected'));
+    }
+
+    function sendTipViaModal() {
+        if(state.selectedTipAmount === 0) {
+            const customAmount = parseInt(document.getElementById('customTipAmount').value);
+            if(customAmount && customAmount >= 1 && customAmount <= 50) {
+                state.selectedTipAmount = customAmount;
+            } else {
+                showToast('Please select or enter a tip amount ($2-$10)');
+                return;
+            }
+        }
+        
+        openPay(state.selectedTipAmount, 'Tip for DJ & Orchestra');
+        closeModal('tipModal');
+        
+        // Reset
+        state.selectedTipAmount = 0;
+        document.getElementById('customTipAmount').value = '';
+        document.querySelectorAll('.tip-option').forEach(o => o.classList.remove('selected'));
+    }
+
+    // ============ ORDER SYSTEM ============
+    function openTierSelection(amount, name) {
+        state.selectedTier = amount;
+        state.selectedTierName = name;
+        openPay(amount, name);
+    }
+
+    function openPay(amount, description) {
+        const fee = amount * 0.029 + 0.30;
+        const total = (amount + fee).toFixed(2);
+        
+        document.getElementById('payAmount').textContent = amount;
+        document.getElementById('paymentTitle').textContent = 'Payment for ' + description;
+        document.getElementById('paymentItem').textContent = description;
+        document.getElementById('paymentAmount').textContent = '$' + amount.toFixed(2);
+        document.getElementById('paymentFee').textContent = '$' + fee.toFixed(2);
+        document.getElementById('paymentTotal').textContent = '$' + total;
+        
+        openModal('payModal');
+    }
+
+    function processPayment() {
+        const btn = document.querySelector('#payModal .submit-action');
+        const original = btn.innerHTML;
+        
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            const amount = parseFloat(document.getElementById('payAmount').textContent);
+            const item = document.getElementById('paymentItem').textContent;
+            
+            showToast('Payment successful! Thank you for your support.');
+            closeModal('payModal');
+            
+            // Update user balance
+            state.user.balance -= amount;
+            
+            // If it was a tip, track it
+            if(item.includes('Tip')) {
+                state.user.tipsGiven += amount;
+                state.notifications.tip++;
+                addAnnouncement('tip', 'New tip received for the DJ!');
+            }
+            
+            // Reset
+            state.selectedTier = null;
+            state.selectedTierName = '';
+            
+            btn.innerHTML = original;
+            btn.disabled = false;
+            
+            updateNotificationBadges();
+        }, 1500);
+    }
+
+    // ============ GAMES ============
+    function openMiniGame(gameType) {
+        const games = {
+            'trivia': 'Shakespeare Trivia',
+            'predict': 'Scene Predictor',
+            'quote': 'Quote Match',
+            'costume': 'Costume Vote',
+            'duel': 'Sword Duel'
+        };
+        
+        if(gameType === 'trivia') {
+            const questions = [
+                "In which Italian city is Romeo & Juliet set?",
+                "Who says 'A plague on both your houses!'?",
+                "How old is Juliet in the play?"
+            ];
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            showToast(`Trivia: ${randomQuestion} (Answer in chat!)`);
+        } else if(gameType === 'tip') {
+            openModal('tipModal');
+        } else {
+            showToast(`Starting ${games[gameType]} game!`);
+            state.notifications.games++;
+            updateNotificationBadges();
+        }
+    }
+
+    function startGame(gameType) {
+        openMiniGame(gameType);
+        closeModal('gamesModal');
+    }
+
+    // ============ ANNOUNCEMENTS ============
+    function updateTicker() {
+        const announcements = [
+            { icon: 'heart', text: 'Welcome to Romeo & Juliet Live!' },
+            { icon: 'theater-masks', text: 'Balcony scene now playing' },
+            { icon: 'music', text: 'Live orchestra performing now' },
+            { icon: 'crown', text: 'VIP tickets still available' },
+            { icon: 'gamepad', text: 'Join our interactive theater games' },
+            { icon: 'money-bill-wave', text: 'Tip the DJ to show appreciation' },
+            { icon: 'users', text: 'Over 1,800 viewers live now' },
+            { icon: 'trophy', text: 'Vote for your favorite performance' }
+        ];
+        
+        const ticker = document.getElementById('announcementTicker');
+        let tickerHTML = '';
+        
+        const shuffled = [...announcements].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 3);
+        
+        selected.forEach(ann => {
+            tickerHTML += `<i class="fas fa-${ann.icon}"></i> ${ann.text} • `;
+        });
+        
+        ticker.innerHTML = tickerHTML;
+    }
+
+    function addRandomAnnouncement() {
+        const types = ['vote', 'tip', 'scene', 'general'];
+        const type = types[Math.floor(Math.random() * types.length)];
+        
+        switch(type) {
+            case 'vote':
+                const characters = ['Romeo', 'Juliet'];
+                const character = characters[Math.floor(Math.random() * characters.length)];
+                addAnnouncement('vote', `${character} is gaining votes!`);
+                break;
+            case 'tip':
+                addAnnouncement('tip', 'Someone just tipped the DJ $5!');
+                break;
+            case 'scene':
+                const scenes = ['Balcony Scene', 'Fight Scene', 'Wedding Scene', 'Final Scene'];
+                const scene = scenes[Math.floor(Math.random() * scenes.length)];
+                addAnnouncement('scene', `${scene} starting soon`);
+                break;
+        }
+    }
+
+    function addAnnouncement(type, text) {
+        console.log(`Announcement: ${text}`);
+    }
+
+    // ============ NOTIFICATIONS ============
+    function updateNotificationBadges() {
+        // Performance notifications
+        const performanceBadge = document.getElementById('navPerformanceBadge');
+        if(state.notifications.performance > 0) {
+            performanceBadge.style.display = 'flex';
+            performanceBadge.textContent = state.notifications.performance > 9 ? '9+' : state.notifications.performance;
+        } else {
+            performanceBadge.style.display = 'none';
+        }
+        
+        // Tip notifications
+        const tipBadge = document.getElementById('navTipBadge');
+        if(state.notifications.tip > 0) {
+            tipBadge.style.display = 'flex';
+            tipBadge.textContent = state.notifications.tip > 9 ? '9+' : state.notifications.tip;
+        } else {
+            tipBadge.style.display = 'none';
+        }
+        
+        // Games notifications
+        const gamesBadge = document.getElementById('navGamesBadge');
+        if(state.notifications.games > 0) {
+            gamesBadge.style.display = 'flex';
+            gamesBadge.textContent = state.notifications.games > 9 ? '9+' : state.notifications.games;
+        } else {
+            gamesBadge.style.display = 'none';
+        }
+    }
+
+    // ============ QUICK ACTIONS ============
+    function openQuickActions() {
+        const actions = [
+            { text: 'Tip DJ', icon: 'music', action: () => openModal('tipModal') },
+            { text: 'Vote Now', icon: 'vote-yea', action: () => openVote('Quick Vote', 'white', 'Quick Vote') },
+            { text: 'Play Games', icon: 'gamepad', action: () => openModal('gamesModal') },
+            { text: 'Buy Ticket', icon: 'ticket-alt', action: () => openTierSelection(35, 'Standard Ticket') }
+        ];
+        
+        const menu = document.createElement('div');
+        menu.style.cssText = `
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            background: var(--modal-bg);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+            z-index: 199;
+            min-width: 200px;
+            border: 2px solid var(--border);
+        `;
+        
+        actions.forEach(action => {
+            const btn = document.createElement('div');
+            btn.style.cssText = `
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 15px;
+                cursor: pointer;
+                border-radius: 10px;
+                transition: background 0.2s;
+                color: white;
+                font-weight: 600;
+            `;
+            btn.onmouseenter = () => btn.style.background = 'rgba(255,255,255,0.1)';
+            btn.onmouseleave = () => btn.style.background = 'transparent';
+            btn.onclick = () => {
+                action.action();
+                document.body.removeChild(menu);
+            };
+            
+            btn.innerHTML = `
+                <i class="fas fa-${action.icon}" style="color: var(--accent); font-size: 1.1rem;"></i>
+                <span style="font-weight: 700; font-size: 0.9rem;">${action.text}</span>
+            `;
+            
+            menu.appendChild(btn);
+        });
+        
+        const closeBtn = document.createElement('div');
+        closeBtn.style.cssText = `
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            color: var(--text-sub);
+            font-size: 0.8rem;
+            cursor: pointer;
+            border-top: 1px solid var(--border);
+            font-weight: 700;
+        `;
+        closeBtn.textContent = 'Close';
+        closeBtn.onclick = () => document.body.removeChild(menu);
+        menu.appendChild(closeBtn);
+        
+        document.body.appendChild(menu);
+        
+        setTimeout(() => {
+            const closeOnClick = (e) => {
+                if(!menu.contains(e.target) && !e.target.closest('.quick-action-fab')) {
+                    document.body.removeChild(menu);
+                    document.removeEventListener('click', closeOnClick);
+                }
+            };
+            document.addEventListener('click', closeOnClick);
+        }, 100);
+    }
+
+    // ============ MODAL SYSTEM ============
+    function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) { 
+        document.getElementById(id).style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+
+    // ============ TAB SWITCHING ============
+    function switchTab(id, el) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    // ============ UI HELPERS ============
+    function showToast(message) {
+        const existing = document.querySelector('.toast');
+        if(existing) existing.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.style.cssText = `
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 900;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            animation: slideDown 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+            max-width: 280px;
+            font-size: 0.9rem;
+        `;
+        
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.animation = 'slideUp 0.3s ease';
+            setTimeout(() => {
+                if(toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    // Add CSS for animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideDown {
+            from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(0); opacity: 1; }
+            to { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+        }
+        
+        .vote-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: var(--bg-color);
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .vote-option:active {
+            transform: scale(0.98);
+        }
+        
+        .vote-option:hover {
+            border-color: var(--accent);
+            background: rgba(157, 78, 221, 0.1);
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>
