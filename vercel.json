@@ -1,0 +1,14 @@
+{
+  "trailingSlash": true,
+  "rewrites": [
+    { "source": "/fashion/(.*)", "destination": "/fashion/$1" },
+    { "source": "/loa/(.*)", "destination": "/loa/$1" },
+    { "source": "/pitch/(.*)", "destination": "/pitch/$1" },
+    { "source": "/clash/(.*)", "destination": "/clash/$1" },
+    { "source": "/trinity/(.*)", "destination": "/trinity/$1" },
+    { "source": "/culture/(.*)", "destination": "/culture/$1" },
+    { "source": "/love/(.*)", "destination": "/love/$1" },
+    { "source": "/romeo/(.*)", "destination": "/romeo/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
