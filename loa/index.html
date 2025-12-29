@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LOA Event OS - 3026 Neo-Ottawa // 9LMNTS Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 9LMNTS STUDIO COLOR SYSTEM ===== */
+        :root {
+            --primary: #FF5E00;       /* 9LMNTS Orange */
+            --primary-glow: rgba(255, 94, 0, 0.3);
+            --bg-dark: #050505;        /* Deep Noir */
+            --bg-card: #0a0a0a;
+            --accent: #00E6FF;         /* Spirit Blue */
+            --accent-glow: rgba(0, 230, 255, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #666666;
+            --danger: #FF2E2E;
+            --success: #00FF9D;
+            --border: #1a1a1a;
+            
+            --font-heading: 'Orbitron', monospace;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Egyptian Gold */
+            --gold: #FFD700;
+            --gold-glow: rgba(255, 215, 0, 0.2);
+        }
+
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 94, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
+                linear-gradient(to bottom, transparent, rgba(5, 5, 5, 0.9));
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* ===== CODE VEIN ANIMATIONS ===== */
+        @keyframes codePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--primary-glow); }
+            50% { box-shadow: 0 0 20px var(--primary-glow); }
+        }
+
+        @keyframes slideRight {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100vw); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .code-vein {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+            animation: slideRight 4s linear infinite;
+            z-index: -1;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .os-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* ===== OS HEADER ===== */
+        .os-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .os-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .studio-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: glowPulse 2s infinite;
+        }
+
+        .logo-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-top: -5px;
+            letter-spacing: 3px;
+        }
+
+        .system-time {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--accent);
+            background: rgba(0, 230, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 230, 255, 0.3);
+        }
+
+        /* ===== LIVE NOTIFICATION TICKER ===== */
+        .live-ticker {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .live-badge {
+            background: var(--danger);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 30px;
+            animation: tickerScroll 40s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .ticker-item i {
+            color: var(--primary);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .trailer-container {
+            background: #000;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trailer-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .trailer-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 94, 0, 0.1) 2px,
+                    rgba(255, 94, 0, 0.1) 4px
+                );
+            pointer-events: none;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .countdown-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .countdown-label {
+            font-family: var(--font-heading);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .countdown-display {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .countdown-unit {
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(255, 94, 0, 0.1);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            border: 1px solid rgba(255, 94, 0, 0.3);
+        }
+
+        .countdown-label-small {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .funding-tracker {
+            margin-top: 30px;
+        }
+
+        .funding-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .funding-amount {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--success);
+        }
+
+        .funding-goal {
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            width: 25%;
+            position: relative;
+            transition: width 1s ease-in-out;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: slideRight 2s infinite;
+        }
+
+        .progress-percentage {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ===== NAVIGATION TABS ===== */
+        .os-nav {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .nav-tab {
+            padding: 15px 30px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            border: none;
+            background: transparent;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+        }
+
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .tab-badge {
+            background: var(--danger);
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+
+        /* ===== TAB CONTENT ===== */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ===== ARENA TAB (PITCH BATTLE) ===== */
+        .battle-arena {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .battle-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .battle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .battle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .battle-card:nth-child(2)::before {
+            background: var(--accent);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .battle-card:nth-child(2) .project-badge {
+            background: var(--accent);
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .project-genre {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-description {
+            color: var(--text-tertiary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .vote-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .vote-count {
+            text-align: center;
+        }
+
+        .vote-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .battle-card:nth-child(2) .vote-number {
+            color: var(--accent);
+        }
+
+        .vote-label {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vote-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-primary:hover {
+            background: #ff6a1a;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 94, 0, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 94, 0, 0.2);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: black;
+        }
+
+        .btn-accent:hover {
+            background: #1af0ff;
+        }
+
+        /* ===== FUNDRAISER TIERS ===== */
+        .fundraiser-section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .tiers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tier-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .tier-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: black;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .tier-price {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .tier-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .tier-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .tier-features li {
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tier-features li::before {
+            content: '▶';
+            color: var(--primary);
+            font-size: 0.6rem;
+        }
+
+        .tier-action {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .tier-action:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===== VOTE PACK SHOP ===== */
+        .vote-shop {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+
+        .vote-packs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .vote-packs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pack-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .pack-card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 230, 255, 0.05);
+        }
+
+        .pack-votes {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .pack-price {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .pack-value {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+
+        .pack-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pack-btn:hover {
+            background: #1af0ff;
+        }
+
+        /* ===== VAULT 9 FILES ===== */
+        .lore-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .lore-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lore-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 94, 0, 0.05), transparent);
+            pointer-events: none;
+        }
+
+        .lore-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .lore-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .lore-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ===== NETWORK TAB ===== */
+        .network-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .attendee-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .attendee-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .attendee-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .attendee-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .attendee-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== MODALS ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .modal-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-footer {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        /* ===== FOOTER ===== */
+        .os-footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .battle-arena {
+                grid-template-columns: 1fr;
+            }
+            
+            .os-nav {
+                flex-wrap: wrap;
+            }
+            
+            .nav-tab {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .network-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-title {
+                font-size: 1.5rem;
+            }
+            
+            .system-time {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+            }
+            
+            .countdown-display {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .vote-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Code Vein Animations -->
+    <div class="code-vein" style="top: 20%; width: 100%; animation-delay: 0s;"></div>
+    <div class="code-vein" style="top: 50%; width: 80%; animation-delay: 1s;"></div>
+    <div class="code-vein" style="top: 80%; width: 60%; animation-delay: 2s;"></div>
+
+    <div class="os-container">
+        <!-- OS Header -->
+        <header class="os-header">
+            <div class="logo-container">
+                <div>
+                    <h1 class="logo-title">LOA Event OS</h1>
+                    <div class="logo-subtitle">3026 NEO-OTTAWA // 9LMNTS STUDIO</div>
+                </div>
+                <div class="studio-badge">9LMNTS STUDIO</div>
+            </div>
+            <div class="system-time" id="systemClock">00:00:00 UTC</div>
+        </header>
+
+        <!-- Live Notification Ticker -->
+        <div class="live-ticker">
+            <div class="ticker-header">
+                <div class="live-badge">
+                    <i class="fas fa-circle"></i> LIVE
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.8rem;">
+                    EVENT UPDATES • JAN 31, 2026 LAUNCH
+                </div>
+            </div>
+            <div class="ticker-content" id="tickerContent">
+                <!-- Ticker items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="trailer-container">
+                <div class="trailer-placeholder">
+                    <div class="play-button" onclick="playTrailer()">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="color: var(--text-primary); font-family: var(--font-heading); margin-bottom: 10px;">
+                            LOA: ARCHITECT'S REVELATION TRAILER
+                        </div>
+                        <div style="color: var(--text-tertiary); font-size: 0.9rem;">
+                            Coming January 31, 2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="countdown-container">
+                <div class="countdown-label">
+                    <i class="fas fa-rocket"></i> LAUNCH COUNTDOWN
+                </div>
+                <div class="countdown-display" id="countdown">
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="days">000</div>
+                        <div class="countdown-label-small">DAYS</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label-small">HOURS</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label-small">MINUTES</div>
+                    </div>
+                    <div class="countdown-unit">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label-small">SECONDS</div>
+                    </div>
+                </div>
+                
+                <div class="funding-tracker">
+                    <div class="funding-header">
+                        <div class="funding-amount">$12,450</div>
+                        <div class="funding-goal">raised of $50,000</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="fundingProgress"></div>
+                    </div>
+                    <div class="progress-percentage">25% Funded</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <nav class="os-nav">
+            <button class="nav-tab active" onclick="switchTab('arena')">
+                <i class="fas fa-fire"></i> THE ARENA
+                <span class="tab-badge" id="arenaBadge">3</span>
+            </button>
+            <button class="nav-tab" onclick="switchTab('vault')">
+                <i class="fas fa-archive"></i> VAULT 9 FILES
+            </button>
+            <button class="nav-tab" onclick="switchTab('market')">
+                <i class="fas fa-shopping-cart"></i> THE MARKET
+            </button>
+            <button class="nav-tab" onclick="switchTab('network')">
+                <i class="fas fa-users"></i> NETWORK
+                <span class="tab-badge" id="networkBadge">12</span>
+            </button>
+        </nav>
+
+        <!-- Arena Tab (Pitch Battle) -->
+        <div id="arena" class="tab-content active">
+            <div class="battle-arena">
+                <!-- LOA Card -->
+                <div class="battle-card">
+                    <div class="project-badge">PROJECT A</div>
+                    <h2 class="project-title">LOA</h2>
+                    <div class="project-genre">
+                        <i class="fas fa-gamepad"></i> Mythic Sci-Fi / Cyber-Action
+                    </div>
+                    <p class="project-description">
+                        In 3026 Neo-Ottawa, tech genius Damian Kane fights a corrupt mega-corporation using dark energy and martial arts, unaware he is the amnesiac God Ptah. His AI assistant "LOA" is possessed by an ancient evil spirit trying to manipulate him into reshaping reality.
+                    </p>
+                    
+                    <div class="vote-stats">
+                        <div class="vote-count">
+                            <div class="vote-number" id="votesLOA">3,842</div>
+                            <div class="vote-label">HYPE VOTES</div>
+                        </div>
+                        <div class="vote-count">
+                            <div class="vote-number">48%</div>
+                            <div class="vote-label">BATTLE SHARE</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vote-actions">
+                        <button class="btn btn-primary" onclick="voteForProject('LOA')">
+                            <i class="fas fa-fire"></i> HYPE THIS PROJECT
+                        </button>
+                        <button class="btn btn-secondary" onclick="openPowerBoost('LOA')">
+                            <i class="fas fa-bolt"></i> POWER BOOST
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project B Card -->
+                <div class="battle-card">
+                    <div class="project-badge">PROJECT B</div>
+                    <h2 class="project-title">ECHO CHAMBER</h2>
+                    <div class="project-genre">
+                        <i class="fas fa-headphones"></i> Rhythm / Psychological Horror
+                    </div>
+                    <p class="project-description">
+                        A sound engineer trapped in an abandoned radio station must use audio equipment to fight auditory hallucinations while uncovering the station's dark past. Every sound could be a clue or a deadly threat in this innovative rhythm-based horror experience.
+                    </p>
+                    
+                    <div class="vote-stats">
+                        <div class="vote-count">
+                            <div class="vote-number" id="votesEcho">4,158</div>
+                            <div class="vote-label">HYPE VOTES</div>
+                        </div>
+                        <div class="vote-count">
+                            <div class="vote-number">52%</div>
+                            <div class="vote-label">BATTLE SHARE</div>
+                        </div>
+                    </div>
+                    
+                    <div class="vote-actions">
+                        <button class="btn btn-primary btn-accent" onclick="voteForProject('Echo')">
+                            <i class="fas fa-fire"></i> HYPE THIS PROJECT
+                        </button>
+                        <button class="btn btn-secondary" onclick="openPowerBoost('Echo')">
+                            <i class="fas fa-bolt"></i> POWER BOOST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fundraiser Tiers -->
+            <div class="fundraiser-section">
+                <h2 class="section-header">GAMIFIED FUNDRAISER TIERS</h2>
+                <div class="tiers-grid">
+                    <!-- Tier 1 -->
+                    <div class="tier-card" onclick="selectTier(250)">
+                        <div class="tier-badge">POPULAR</div>
+                        <div class="tier-price">$250</div>
+                        <h3 class="tier-name">CLUB EXTRA</h3>
+                        <p class="tier-description">
+                            Early access to beta builds and exclusive developer updates.
+                        </p>
+                        <ul class="tier-features">
+                            <li>Digital Artbook & Soundtrack</li>
+                            <li>Beta Access (Q4 2025)</li>
+                            <li>Exclusive Discord Role</li>
+                            <li>Name in Credits</li>
+                        </ul>
+                        <button class="tier-action" onclick="event.stopPropagation(); pledgeTier(250)">
+                            SELECT TIER
+                        </button>
+                    </div>
+                    
+                    <!-- Tier 2 -->
+                    <div class="tier-card" onclick="selectTier(500)">
+                        <div class="tier-price">$500</div>
+                        <h3 class="tier-name">STREET TALKER</h3>
+                        <p class="tier-description">
+                            Immerse yourself in Neo-Ottawa with exclusive in-game content.
+                        </p>
+                        <ul class="tier-features">
+                            <li>Everything in Club Extra</li>
+                            <li>Exclusive In-Game Jacket</li>
+                            <li>Custom NPC with Your Name</li>
+                            <li>Developer Video Chat</li>
+                        </ul>
+                        <button class="tier-action" onclick="event.stopPropagation(); pledgeTier(500)">
+                            SELECT TIER
+                        </button>
+                    </div>
+                    
+                    <!-- Tier 3 -->
+                    <div class="tier-card" onclick="selectTier(1000)">
+                        <div class="tier-badge">BEST VALUE</div>
+                        <div class="tier-price">$1,000</div>
+                        <h3 class="tier-name">SIDEQUEST HERO</h3>
+                        <p class="tier-description">
+                            Help shape the world with your own side quest in Neo-Ottawa.
+                        </p>
+                        <ul class="tier-features">
+                            <li>Everything in Street Talker</li>
+                            <li>Design a Side Quest</li>
+                            <li>Voice Chat with Creative Director</li>
+                            <li"Patreon Producer" Credit</li>
+                        </ul>
+                        <button class="tier-action" onclick="event.stopPropagation(); pledgeTier(1000)">
+                            SELECT TIER
+                        </button>
+                    </div>
+                    
+                    <!-- Tier 4 -->
+                    <div class="tier-card" onclick="selectTier(2500)">
+                        <div class="tier-badge">VIP</div>
+                        <div class="tier-price">$2,500</div>
+                        <h3 class="tier-name">THE MOGUL</h3>
+                        <p class="tier-description">
+                            Become part of LOA's legacy with executive producer status.
+                        </p>
+                        <ul class="tier-features">
+                            <li>Everything in Sidequest Hero</li>
+                            <li>Executive Producer Credit</li>
+                            <li>Visit 9LMNTS Studio</li>
+                            <li>Physical Collector's Edition</li>
+                        </ul>
+                        <button class="tier-action" onclick="event.stopPropagation(); pledgeTier(2500)">
+                            SELECT TIER
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vote Pack Shop -->
+            <div class="vote-shop">
+                <h2 class="section-header">VOTE PACK SHOP</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Boost your favorite project's chances! Each purchase directly supports development.
+                </p>
+                
+                <div class="vote-packs">
+                    <!-- Pack 1 -->
+                    <div class="pack-card" onclick="selectVotePack(10, 2)">
+                        <div class="pack-votes">10 VOTES</div>
+                        <div class="pack-price">$2.00</div>
+                        <div class="pack-value">$0.20 per vote</div>
+                        <button class="pack-btn">PURCHASE PACK</button>
+                    </div>
+                    
+                    <!-- Pack 2 -->
+                    <div class="pack-card" onclick="selectVotePack(50, 10)">
+                        <div class="pack-votes">50 VOTES</div>
+                        <div class="pack-price">$10.00</div>
+                        <div class="pack-value">$0.20 per vote</div>
+                        <button class="pack-btn">BEST VALUE</button>
+                    </div>
+                    
+                    <!-- Pack 3 -->
+                    <div class="pack-card" onclick="selectVotePack(250, 45)">
+                        <div class="pack-votes">250 VOTES</div>
+                        <div class="pack-price">$45.00</div>
+                        <div class="pack-value">$0.18 per vote</div>
+                        <button class="pack-btn">MEGA PACK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vault 9 Files Tab -->
+        <div id="vault" class="tab-content">
+            <div class="lore-grid">
+                <div class="lore-card">
+                    <div class="lore-icon">
+                        <i class="fas fa-monument"></i>
+                    </div>
+                    <h3 class="lore-title">THE DJED PILLAR</h3>
+                    <p class="lore-content">
+                        Damian's tech signature, seen on his vest. Unbeknownst to him, it's the ancient Egyptian symbol of stability and power—literally his divine signature as Ptah. The orange glow represents his suppressed divine energy.
+                    </p>
+                </div>
+                
+                <div class="lore-card">
+                    <div class="lore-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="lore-title">CODE VEINS</h3>
+                    <p class="lore-content">
+                        Neon-blue digital streams that throb like infected blood vessels. They represent the Spirit's possession of technology and organic matter alike—a parasitic AI becoming physical through Damian's own divine power.
+                    </p>
+                </div>
+                
+                <div class="lore-card">
+                    <div class="lore-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="lore-title">LUCIUS KRAY</h3>
+                    <p class="lore-content">
+                        CEO of Apophis Dynamics. A "Reptilian Corporate" villain with obsidian ocular implants. He believes he's hunting Damian for his technology, unaware he's just a pawn of the Spirit inside LOA.
+                    </p>
+                </div>
+                
+                <div class="lore-card">
+                    <div class="lore-icon">
+                        <i class="fas fa-ankh"></i>
+                    </div>
+                    <h3 class="lore-title">ARCHITECT'S SCEPTRE</h3>
+                    <p class="lore-content">
+                        The Staff of Ptah in 3026 form. Appears as a black cylinder that telescopes into a molecular-manipulation staff. It doesn't just hit things—it rewrites the atomic blueprint of reality itself.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Tab -->
+        <div id="market" class="tab-content">
+            <div style="text-align: center; padding: 50px;">
+                <div class="lore-icon" style="font-size: 4rem; margin-bottom: 20px;">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h2 style="font-family: var(--font-heading); margin-bottom: 15px; color: var(--text-primary);">
+                    MARKET ACCESS RESTRICTED
+                </h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 30px;">
+                    The Neo-Ottawa black market requires VIP clearance. Complete your first pledge to unlock exclusive merchandise, digital assets, and collector's items.
+                </p>
+                <button class="btn btn-primary" onclick="switchTab('arena')">
+                    <i class="fas fa-arrow-right"></i> VIEW FUNDRAISER TIERS
+                </button>
+            </div>
+        </div>
+
+        <!-- Network Tab -->
+        <div id="network" class="tab-content">
+            <div class="network-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalBackers">124</div>
+                    <div class="stat-label">TOTAL BACKERS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeNow">47</div>
+                    <div class="stat-label">ACTIVE NOW</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="topPledge">$2,500</div>
+                    <div class="stat-label">TOP PLEDGE</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalVotes">8,000</div>
+                    <div class="stat-label">TOTAL VOTES</div>
+                </div>
+            </div>
+            
+            <h2 class="section-header">RECENT BACKERS</h2>
+            <div class="attendee-list" id="attendeeList">
+                <!-- Attendees will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="os-footer">
+            <div class="footer-links">
+                <a href="#" onclick="openModal('termsModal')">Terms</a>
+                <a href="#" onclick="openModal('privacyModal')">Privacy</a>
+                <a href="https://9lmnts.com" target="_blank">9LMNTS Studio</a>
+                <a href="#" onclick="openModal('contactModal')">Contact</a>
+            </div>
+            <div>
+                © 2025 9LMNTS Studio. LOA: Legends of Ottawa/Arena. All rights reserved.
+                Neo-Ottawa 3026 is a fictional setting.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="paymentTitle">CONFIRM PURCHASE</h3>
+                <button class="modal-close" onclick="closeModal('paymentModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div class="lore-icon" style="font-size: 3rem; color: var(--primary);">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4 style="margin: 15px 0 10px; color: var(--text-primary);">SECURE CHECKOUT</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Powered by Stripe • 256-bit encryption
+                    </p>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span style="color: var(--text-secondary);">Item:</span>
+                        <span style="color: var(--text-primary); font-weight: 600;" id="paymentItem">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span style="color: var(--text-secondary);">Amount:</span>
+                        <span style="color: var(--text-primary); font-weight: 600;" id="paymentAmount">$0.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span style="color: var(--text-secondary);">Processing fee:</span>
+                        <span style="color: var(--text-primary); font-weight: 600;" id="paymentFee">$0.00</span>
+                    </div>
+                    <hr style="border: none; height: 1px; background: var(--border); margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; font-size: 1.2rem;">
+                        <span style="color: var(--text-primary); font-weight: 600;">Total:</span>
+                        <span style="color: var(--primary); font-weight: 700;" id="paymentTotal">$0.00</span>
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.8rem; color: var(--text-tertiary); text-align: center; margin-bottom: 25px;">
+                    By completing this purchase, you agree to our Terms of Service and Privacy Policy.
+                    All sales are final.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('paymentModal')">
+                    CANCEL
+                </button>
+                <button class="btn btn-primary" onclick="processPayment()" id="confirmPaymentBtn">
+                    <i class="fas fa-lock"></i> CONFIRM & PAY
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">PAYMENT SUCCESSFUL!</h3>
+                <button class="modal-close" onclick="closeModal('successModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="width: 80px; height: 80px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
+                        <i class="fas fa-check" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">THANK YOU FOR YOUR SUPPORT!</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;" id="successMessage">
+                        Your contribution helps bring LOA to life.
+                    </p>
+                    <div style="background: rgba(0, 255, 157, 0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(0, 255, 157, 0.3);">
+                        <div style="color: var(--success); font-family: var(--font-heading); margin-bottom: 5px;">
+                            TRANSACTION COMPLETE
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-tertiary);">
+                            Receipt has been sent to your email
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('successModal')">
+                    RETURN TO EVENT OS
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voting Modal -->
+    <div class="modal" id="voteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">CAST YOUR VOTE</h3>
+                <button class="modal-close" onclick="closeModal('voteModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); margin-bottom: 25px;" id="voteModalText">
+                    Your vote will be recorded and added to the live battle totals.
+                </p>
+                
+                <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+                    <button class="btn btn-primary" style="flex: 1;" onclick="castVote()" id="confirmVoteBtn">
+                        <i class="fas fa-fire"></i> CONFIRM VOTE
+                    </button>
+                    <button class="btn btn-secondary" style="flex: 1;" onclick="closeModal('voteModal')">
+                        CANCEL
+                    </button>
+                </div>
+                
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); text-align: center;">
+                    <i class="fas fa-info-circle"></i> Each user gets one free vote. Additional votes can be purchased in the Vote Pack Shop.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Power Boost Modal -->
+    <div class="modal" id="boostModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">POWER BOOST</h3>
+                <button class="modal-close" onclick="closeModal('boostModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); margin-bottom: 25px;" id="boostModalText">
+                    Power Boosts give your project extra visibility and voting weight.
+                </p>
+                
+                <div style="background: rgba(255, 94, 0, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid rgba(255, 94, 0, 0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="color: var(--primary); font-weight: 600;">POWER BOOST PACK</div>
+                            <div style="font-size: 0.9rem; color: var(--text-tertiary);">25 votes + Featured placement</div>
+                        </div>
+                        <div style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary);">
+                            $10
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%; margin-bottom: 15px;" onclick="openPaymentModal('boost')">
+                    <i class="fas fa-bolt"></i> PURCHASE POWER BOOST
+                </button>
+                
+                <div style="font-size: 0.8rem; color: var(--text-tertiary); text-align: center;">
+                    <i class="fas fa-star"></i> Power Boosts remain active for 48 hours
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== GLOBAL STATE ====================
+        const state = {
+            // Voting state
+            votes: {
+                LOA: 3842,
+                Echo: 4158
+            },
+            totalVotes: 8000,
+            
+            // User state
+            user: {
+                hasVoted: false,
+                balance: 0,
+                powerBoosts: 0
+            },
+            
+            // Funding state
+            funding: {
+                current: 12450,
+                goal: 50000,
+                percentage: 25
+            },
+            
+            // Countdown to Jan 31, 2026
+            launchDate: new Date('2026-01-31T23:59:59Z').getTime(),
+            
+            // Selected items for purchase
+            selectedTier: null,
+            selectedPack: null,
+            selectedProject: null,
+            
+            // Ticker messages
+            tickerMessages: [
+                { icon: 'fire', text: 'LOA just received 50 power votes!' },
+                { icon: 'users', text: 'Sarah Chen pledged at Mogul tier ($2,500)' },
+                { icon: 'trophy', text: 'Battle update: LOA 48% vs Echo 52%' },
+                { icon: 'bolt', text: 'Power Boost activated for Echo Chamber' },
+                { icon: 'gamepad', text: 'New lore entry unlocked: The Djed Pillar' },
+                { icon: 'crown', text: 'VIP access granted to 12 new backers' },
+                { icon: 'chart-line', text: 'Funding milestone reached: $12,450' }
+            ],
+            
+            // Attendees data
+            attendees: [
+                { name: 'Alex Turner', pledge: 'Mogul', amount: 2500 },
+                { name: 'Maria Garcia', pledge: 'Sidequest Hero', amount: 1000 },
+                { name: 'James Wilson', pledge: 'Street Talker', amount: 500 },
+                { name: 'Lisa Chen', pledge: 'Club Extra', amount: 250 },
+                { name: 'David Park', pledge: 'Mogul', amount: 2500 },
+                { name: 'Sarah Jenkins', pledge: 'Sidequest Hero', amount: 1000 }
+            ]
+        };
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePage();
+            startLiveUpdates();
+            updateCountdown();
+            updateTicker();
+            updateAttendees();
+            updateFundingProgress();
+        });
+
+        function initializePage() {
+            // Set system clock
+            updateSystemClock();
+            setInterval(updateSystemClock, 1000);
+            
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
+            
+            // Initialize funding progress
+            document.getElementById('fundingProgress').style.width = state.funding.percentage + '%';
+            
+            // Update vote counts
+            updateVoteCounts();
+        }
+
+        // ==================== SYSTEM FUNCTIONS ====================
+        function updateSystemClock() {
+            const now = new Date();
+            const timeString = now.toUTCString().split(' ')[4];
+            document.getElementById('systemClock').textContent = timeString + ' UTC';
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = state.launchDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--success); font-family: var(--font-heading); font-size: 1.5rem;">LAUNCHED!</div>';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(3, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        function updateFundingProgress() {
+            const progress = (state.funding.current / state.funding.goal) * 100;
+            document.getElementById('fundingProgress').style.width = progress + '%';
+            document.querySelector('.progress-percentage').textContent = Math.round(progress) + '% Funded';
+        }
+
+        // ==================== TAB SYSTEM ====================
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.nav-tab').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Activate corresponding button
+            event.currentTarget.classList.add('active');
+            
+            // Clear notification badge for this tab
+            if (tabId === 'arena') {
+                document.getElementById('arenaBadge').style.display = 'none';
+            } else if (tabId === 'network') {
+                document.getElementById('networkBadge').style.display = 'none';
+            }
+        }
+
+        // ==================== VOTING SYSTEM ====================
+        function voteForProject(project) {
+            if (state.user.hasVoted) {
+                showToast('You have already voted! Purchase vote packs for additional votes.');
+                return;
+            }
+            
+            state.selectedProject = project;
+            document.getElementById('voteModalText').innerHTML = `
+                You are about to vote for <strong style="color: var(--primary);">${project}</strong>.
+                This will be your free vote for this battle round.
+            `;
+            openModal('voteModal');
+        }
+
+        function castVote() {
+            if (!state.selectedProject) return;
+            
+            // Add vote
+            state.votes[state.selectedProject]++;
+            state.totalVotes++;
+            state.user.hasVoted = true;
+            
+            // Update UI
+            updateVoteCounts();
+            
+            // Update percentages
+            const loaPercent = Math.round((state.votes.LOA / state.totalVotes) * 100);
+            const echoPercent = 100 - loaPercent;
+            
+            // Show success
+            closeModal('voteModal');
+            showToast(`Vote cast for ${state.selectedProject}!`);
+            
+            // Add to ticker
+            addTickerMessage('fire', `New vote for ${state.selectedProject}!`);
+            
+            // Update badge
+            document.getElementById('arenaBadge').textContent = '1';
+            document.getElementById('arenaBadge').style.display = 'inline-block';
+            
+            // Reset selection
+            state.selectedProject = null;
+        }
+
+        function updateVoteCounts() {
+            document.getElementById('votesLOA').textContent = state.votes.LOA.toLocaleString();
+            document.getElementById('votesEcho').textContent = state.votes.Echo.toLocaleString();
+            document.getElementById('totalVotes').textContent = state.totalVotes.toLocaleString();
+        }
+
+        function openPowerBoost(project) {
+            state.selectedProject = project;
+            document.getElementById('boostModalText').innerHTML = `
+                Boost <strong style="color: var(--primary);">${project}</strong> with 25 additional votes and featured placement on the event page.
+            `;
+            openModal('boostModal');
+        }
+
+        // ==================== FUNDRAISER SYSTEM ====================
+        function selectTier(amount) {
+            state.selectedTier = amount;
+            const tierNames = {
+                250: 'CLUB EXTRA',
+                500: 'STREET TALKER',
+                1000: 'SIDEQUEST HERO',
+                2500: 'THE MOGUL'
+            };
+            
+            document.getElementById('paymentTitle').textContent = `PLEDGE: ${tierNames[amount]}`;
+            document.getElementById('paymentItem').textContent = tierNames[amount] + ' Tier';
+            document.getElementById('paymentAmount').textContent = `$${amount}.00`;
+            
+            // Calculate fee (3% + $0.30)
+            const fee = (amount * 0.029) + 0.30;
+            const total = amount + fee;
+            
+            document.getElementById('paymentFee').textContent = `$${fee.toFixed(2)}`;
+            document.getElementById('paymentTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function pledgeTier(amount) {
+            event.stopPropagation();
+            selectTier(amount);
+            openPaymentModal('tier');
+        }
+
+        function selectVotePack(votes, amount) {
+            state.selectedPack = { votes, amount };
+            document.getElementById('paymentTitle').textContent = 'VOTE PACK PURCHASE';
+            document.getElementById('paymentItem').textContent = `${votes} Power Votes`;
+            document.getElementById('paymentAmount').textContent = `$${amount}.00`;
+            
+            // Calculate fee (3% + $0.30)
+            const fee = (amount * 0.029) + 0.30;
+            const total = amount + fee;
+            
+            document.getElementById('paymentFee').textContent = `$${fee.toFixed(2)}`;
+            document.getElementById('paymentTotal').textContent = `$${total.toFixed(2)}`;
+            
+            openPaymentModal('pack');
+        }
+
+        // ==================== PAYMENT SYSTEM ====================
+        function openPaymentModal(type) {
+            openModal('paymentModal');
+        }
+
+        function processPayment() {
+            const btn = document.getElementById('confirmPaymentBtn');
+            const originalText = btn.innerHTML;
+            
+            // Show processing state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
+            btn.disabled = true;
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                closeModal('paymentModal');
+                
+                // Update funding if it's a tier pledge
+                if (state.selectedTier) {
+                    state.funding.current += state.selectedTier;
+                    updateFundingProgress();
+                    
+                    // Add to attendees
+                    const names = ['Alex', 'Jordan', 'Casey', 'Taylor', 'Morgan', 'Riley'];
+                    const randomName = names[Math.floor(Math.random() * names.length)];
+                    const pledges = ['Club Extra', 'Street Talker', 'Sidequest Hero', 'The Mogul'];
+                    const randomPledge = pledges[Math.floor(Math.random() * pledges.length)];
+                    
+                    state.attendees.unshift({
+                        name: `${randomName} ${['Smith', 'Johnson', 'Williams', 'Brown', 'Jones'][Math.floor(Math.random() * 5)]}`,
+                        pledge: randomPledge,
+                        amount: state.selectedTier
+                    });
+                    
+                    updateAttendees();
+                    
+                    // Show success
+                    document.getElementById('successMessage').innerHTML = `
+                        Thank you for your <strong style="color: var(--primary);">$${state.selectedTier}</strong> pledge!<br>
+                        You've unlocked exclusive rewards for ${state.selectedTier >= 1000 ? 'helping shape Neo-Ottawa' : 'supporting LOA'}.
+                    `;
+                    
+                    // Add to ticker
+                    addTickerMessage('crown', `New ${randomPledge} pledge ($${state.selectedTier})`);
+                    
+                    state.selectedTier = null;
+                }
+                
+                // If it's a vote pack
+                if (state.selectedPack) {
+                    // Add votes to selected project
+                    if (state.selectedProject) {
+                        state.votes[state.selectedProject] += state.selectedPack.votes;
+                        state.totalVotes += state.selectedPack.votes;
+                        updateVoteCounts();
+                        
+                        // Add to ticker
+                        addTickerMessage('bolt', `${state.selectedPack.votes} power votes added to ${state.selectedProject}`);
+                    }
+                    
+                    document.getElementById('successMessage').textContent = 
+                        `Your ${state.selectedPack.votes} power votes have been added!`;
+                    
+                    state.selectedPack = null;
+                }
+                
+                // Update network badge
+                const newCount = parseInt(document.getElementById('networkBadge').textContent) + 1;
+                document.getElementById('networkBadge').textContent = newCount;
+                document.getElementById('networkBadge').style.display = 'inline-block';
+                
+                openModal('successModal');
+                
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        // ==================== TICKER SYSTEM ====================
+        function updateTicker() {
+            const container = document.getElementById('tickerContent');
+            container.innerHTML = '';
+            
+            // Shuffle messages
+            const shuffled = [...state.tickerMessages].sort(() => Math.random() - 0.5);
+            
+            // Show 5 random messages
+            shuffled.slice(0, 5).forEach(msg => {
+                const item = document.createElement('div');
+                item.className = 'ticker-item';
+                item.innerHTML = `
+                    <i class="fas fa-${msg.icon}"></i>
+                    ${msg.text}
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function addTickerMessage(icon, text) {
+            state.tickerMessages.unshift({ icon, text });
+            if (state.tickerMessages.length > 20) {
+                state.tickerMessages.pop();
+            }
+            updateTicker();
+        }
+
+        // ==================== ATTENDEES SYSTEM ====================
+        function updateAttendees() {
+            const container = document.getElementById('attendeeList');
+            container.innerHTML = '';
+            
+            // Update stats
+            document.getElementById('totalBackers').textContent = state.attendees.length + 118; // Base + actual
+            document.getElementById('activeNow').textContent = Math.floor(Math.random() * 20) + 30;
+            
+            // Show latest 6 attendees
+            state.attendees.slice(0, 6).forEach(attendee => {
+                const card = document.createElement('div');
+                card.className = 'attendee-card';
+                
+                // Get initials for avatar
+                const initials = attendee.name.split(' ').map(n => n[0]).join('');
+                
+                card.innerHTML = `
+                    <div class="attendee-avatar">${initials}</div>
+                    <div class="attendee-info">
+                        <h4>${attendee.name}</h4>
+                        <p>${attendee.pledge} ($${attendee.amount})</p>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // ==================== LIVE UPDATES ====================
+        function startLiveUpdates() {
+            // Random vote fluctuations
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const change = Math.floor(Math.random() * 10) - 3;
+                    const project = Math.random() > 0.5 ? 'LOA' : 'Echo';
+                    state.votes[project] = Math.max(0, state.votes[project] + change);
+                    state.totalVotes += change > 0 ? change : 0;
+                    updateVoteCounts();
+                }
+            }, 10000);
+            
+            // Random ticker updates
+            setInterval(() => {
+                const actions = [
+                    { icon: 'fire', text: 'New backer joined the network!' },
+                    { icon: 'chart-line', text: 'Funding tracker updated' },
+                    { icon: 'users', text: `${Math.floor(Math.random() * 5) + 1} users online now` },
+                    { icon: 'gamepad', text: 'Developer stream starting soon' }
+                ];
+                const action = actions[Math.floor(Math.random() * actions.length)];
+                addTickerMessage(action.icon, action.text);
+            }, 30000);
+            
+            // Update network stats
+            setInterval(() => {
+                const active = document.getElementById('activeNow');
+                const current = parseInt(active.textContent);
+                const change = Math.floor(Math.random() * 5) - 2;
+                active.textContent = Math.max(10, current + change);
+            }, 15000);
+        }
+
+        // ==================== UI HELPERS ====================
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function showToast(message) {
+            // Remove existing toast
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+            
+            // Create toast
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--primary);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 4px;
+                font-weight: 600;
+                z-index: 1000;
+                box-shadow: 0 5px 20px rgba(255, 94, 0, 0.3);
+                animation: toastSlideUp 0.3s ease;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.animation = 'toastSlideDown 0.3s ease';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function playTrailer() {
+            showToast('Trailer playback starting...');
+            // In production, this would load the YouTube/Vimeo embed
+            document.querySelector('.play-button').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            setTimeout(() => {
+                document.querySelector('.play-button').innerHTML = '<i class="fas fa-play"></i>';
+                showToast('Trailer ready! Redirecting to video player...');
+            }, 1500);
+        }
+
+        // Add toast animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes toastSlideUp {
+                from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes toastSlideDown {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Close modals on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // Initialize with some random data
+        setTimeout(() => {
+            document.getElementById('topPledge').textContent = '$2,500';
+            document.getElementById('arenaBadge').style.display = 'inline-block';
+            document.getElementById('networkBadge').style.display = 'inline-block';
+        }, 1000);
+    </script>
+</body>
+</html>
