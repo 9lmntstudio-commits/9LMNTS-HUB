@@ -27,7 +27,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             onClick={() => onNavigate('home')}
             className="flex items-center group"
           >
-            <img src="/logo-clean.png" alt="9LMNTS Studio" className="h-12 w-auto" />
+         <img src="/logo-clean.png" alt="9LMNTS Studio" className="h-12 w-auto" />
           </button>
 
           {/* Desktop Navigation */}
