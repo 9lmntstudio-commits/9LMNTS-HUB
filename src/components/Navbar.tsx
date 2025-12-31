@@ -14,7 +14,9 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
     { name: 'Home', id: 'home' },
     { name: 'Services', id: 'services' },
     { name: 'Portfolio', id: 'portfolio' },
-    { name: 'Pricing', id: 'pricing' },
+    { name: 'Event OS', id: 'event-os' },
+    { name: 'Payments', id: 'payments' },
+    { name: 'Emergency NYE', id: 'emergency-nye' },
     { name: 'About', id: 'about' },
   ];
 

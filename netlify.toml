@@ -1,6 +1,6 @@
 [build]
+  publish = "dist"
   command = "npm run build"
-  publish = "build"
 
 [functions]
   directory = "netlify/functions"
@@ -47,6 +47,71 @@
   to = "/index.html"
   status = 200
 
+[[redirects]]
+  from = "/payments"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/emergency-nye"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/loa-dashboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/loa/*"
+  to = "/loa/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pitch/*"
+  to = "/pitch/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/culture/*"
+  to = "/culture/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/clash/*"
+  to = "/clash/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/romeo/*"
+  to = "/romeo/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/wagers/*"
+  to = "/wagers/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/trinity/*"
+  to = "/trinity/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/love/*"
+  to = "/love/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/fashion/*"
+  to = "/fashion/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/catering/*"
+  to = "/catering/index.html"
+  status = 200
+
 # API redirects
 [[redirects]]
   from = "/api/*"
@@ -57,3 +122,10 @@
   from = "/.netlify/functions/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"

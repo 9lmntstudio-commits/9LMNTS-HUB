@@ -20,6 +20,8 @@ import { MasterAdminPage } from "./components/MasterAdminPage";
 import { CRM } from "./components/CRM";
 import { ClientPortal } from "./components/ClientPortal";
 import LOAChatWidget from "./components/LOAChatWidget";
+import Payments from "./pages/Payments";
+import EmergencyNYE from "./pages/EmergencyNYE";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -77,6 +79,10 @@ export default function App() {
         return <CRM onNavigate={handleNavigate} />;
       case "client-portal":
         return <ClientPortal onNavigate={handleNavigate} />;
+      case "payments":
+        return <Payments onNavigate={handleNavigate} />;
+      case "emergency-nye":
+        return <EmergencyNYE onNavigate={handleNavigate} />;
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }
