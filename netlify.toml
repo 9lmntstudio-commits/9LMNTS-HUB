@@ -6,12 +6,46 @@
   directory = "netlify/functions"
   node_version = "18"
 
-# Handle SPA routing - redirect all non-file requests to index.html
+# SPA routing - handle client-side routes
 [[redirects]]
-  from = "/*"
+  from = "/event-os/*"
   to = "/index.html"
   status = 200
-  force = false
+
+[[redirects]]
+  from = "/sound-clash-os"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/wedding-os"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/festival-flow"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/corporate-clash-os"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/game-night-pro"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/conference-connect"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/red-carpet"
+  to = "/index.html"
+  status = 200
 
 # API redirects
 [[redirects]]
