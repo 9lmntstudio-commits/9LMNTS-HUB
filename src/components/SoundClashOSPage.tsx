@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, Play, Pause, Volume2, Users, Trophy, Music, Mic2, Zap } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { api, Vote } from '../lib/supabase';
 
 interface SoundClashOSPageProps {
   onNavigate: (page: string) => void;
@@ -10,6 +11,39 @@ export function SoundClashOSPage({ onNavigate }: SoundClashOSPageProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentRound, setCurrentRound] = useState(1);
   const [hypeLevel, setHypeLevel] = useState(75);
+  const [votes, setVotes] = useState<Vote[]>([]);
+  const [userVote, setUserVote] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Load votes on component mount
+  useEffect(() => {
+    loadVotes();
+  }, []);
+
+  const loadVotes = async () => {
+    try {
+      const response = await api.getVotes('sound-clash');
+      setVotes(response.data || []);
+    } catch (error) {
+      console.error('Failed to load votes:', error);
+    }
+  };
+
+  const handleVote = async (voteType: string) => {
+    if (userVote) return; // User already voted
+    
+    setIsLoading(true);
+    try {
+      const userId = `user-${Date.now()}`; // Simple user ID for demo
+      await api.vote('sound-clash', userId, voteType);
+      setUserVote(voteType);
+      await loadVotes(); // Reload votes
+    } catch (error) {
+      console.error('Failed to vote:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const features = [
     {
@@ -101,17 +135,47 @@ export function SoundClashOSPage({ onNavigate }: SoundClashOSPageProps) {
               </div>
             </div>
 
-            {/* Battle Display */}
+            {/* Battle Display with Real Voting */}
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-[#1A1A1A] rounded-lg p-6 border border-[#E91E63]/20">
                 <h3 className="text-xl text-white mb-4">DJ Shadow</h3>
-                <div className="text-3xl text-[#E91E63] font-bold mb-2">8,547</div>
-                <div className="text-gray-400">Votes</div>
+                <div className="text-3xl text-[#E91E63] font-bold mb-2">
+                  {votes.filter(v => v.vote_type === 'dj-shadow').length}
+                </div>
+                <div className="text-gray-400 mb-4">Votes</div>
+                <button
+                  onClick={() => handleVote('dj-shadow')}
+                  disabled={!!userVote || isLoading}
+                  className={`w-full py-3 rounded-lg font-semibold transition-all ${
+                    userVote === 'dj-shadow' 
+                      ? 'bg-[#E91E63] text-white' 
+                      : userVote
+                      ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                      : 'bg-[#E91E63]/20 text-[#E91E63] hover:bg-[#E91E63]/30'
+                  }`}
+                >
+                  {userVote === 'dj-shadow' ? 'Voted ✓' : userVote ? 'Already Voted' : 'Vote for DJ Shadow'}
+                </button>
               </div>
               <div className="bg-[#1A1A1A] rounded-lg p-6 border border-[#00D4FF]/20">
                 <h3 className="text-xl text-white mb-4">DJ Phoenix</h3>
-                <div className="text-3xl text-[#00D4FF] font-bold mb-2">7,892</div>
-                <div className="text-gray-400">Votes</div>
+                <div className="text-3xl text-[#00D4FF] font-bold mb-2">
+                  {votes.filter(v => v.vote_type === 'dj-phoenix').length}
+                </div>
+                <div className="text-gray-400 mb-4">Votes</div>
+                <button
+                  onClick={() => handleVote('dj-phoenix')}
+                  disabled={!!userVote || isLoading}
+                  className={`w-full py-3 rounded-lg font-semibold transition-all ${
+                    userVote === 'dj-phoenix' 
+                      ? 'bg-[#00D4FF] text-white' 
+                      : userVote
+                      ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                      : 'bg-[#00D4FF]/20 text-[#00D4FF] hover:bg-[#00D4FF]/30'
+                  }`}
+                >
+                  {userVote === 'dj-phoenix' ? 'Voted ✓' : userVote ? 'Already Voted' : 'Vote for DJ Phoenix'}
+                </button>
               </div>
             </div>
           </div>
