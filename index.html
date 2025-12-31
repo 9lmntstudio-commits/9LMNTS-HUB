@@ -47,6 +47,43 @@
           document.body.appendChild(widget);
         });
       </script>
+      
+      <!-- NYE EMERGENCY WIDGET -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const nyeHTML = `
+            <div style="position:fixed; bottom:320px; right:20px; z-index:9998;">
+              <div style="background:linear-gradient(135deg, #ff0000, #ff6b6b); border:2px solid #ffff00; border-radius:12px; padding:12px; width:280px; box-shadow:0 10px 30px rgba(255,0,0,0.5); animation:nyePulse 1.5s infinite;">
+                <div style="color:#ffff00; font-weight:bold; margin-bottom:8px; text-align:center; font-size:14px;">
+                  🎆 NYE EMERGENCY 🎆
+                </div>
+                <div style="color:white; margin-bottom:10px; text-align:center; font-size:12px;">
+                  Need virtual party platform for TONIGHT?
+                </div>
+                <div style="text-align:center;">
+                  <button onclick="window.location.href='mailto:9lmntstudio@gmail.com?subject=NYE%20EMERGENCY%20-%20TONIGHT&body=URGENT:%20I%20need%20NYE%20platform%20for%20tonight!%0A%0AName:%0AEvent:%0AGuests:%0ATime:%0A%0AE-Transfer:%20$750%20to%203dkane@gmail.com%0ASecurity%20Q:%20What%20is%20company%20name?%0ASecurity%20A:%209LMNTS%20Studio' style="background:#ffff00; color:#ff0000; border:none; padding:8px 12px; border-radius:6px; font-weight:bold; font-size:12px; cursor:pointer;">
+                    DEPLOY NOW - $750
+                  </button>
+                </div>
+                <div style="color:#ffff00; font-size:10px; text-align:center; margin-top:8px;">
+                  ⏰ 3-hour deployment • Live before midnight
+                </div>
+              </div>
+            </div>
+            <style>
+              @keyframes nyePulse { 
+                0% { box-shadow: 0 10px 30px rgba(255,0,0,0.5); }
+                50% { box-shadow: 0 10px 40px rgba(255,255,0,0.8); }
+                100% { box-shadow: 0 10px 30px rgba(255,0,0,0.5); }
+              }
+            </style>
+          `;
+          
+          const nyeWidget = document.createElement('div');
+          nyeWidget.innerHTML = nyeHTML;
+          document.body.appendChild(nyeWidget);
+        });
+      </script>
     </body>
   </html>
   
