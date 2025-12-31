@@ -103,15 +103,19 @@ const Payments = () => {
       `Email: ${clientInfo.email}\n` +
       `Company: ${clientInfo.company || 'N/A'}\n` +
       `Phone: ${clientInfo.phone || 'N/A'}\n\n` +
-      `E-Transfer Instructions:\n` +
-      `Send to: 3dkane@gmail.com\n` +
+      `Payment Options:\n\n` +
+      `Option 1: E-Transfer (Recommended - No Fees)\n` +
+      `Send to: 9lmntstudio@gmail.com\n` +
       `Security Question: What is company name?\n` +
       `Security Answer: 9LMNTS Studio\n\n` +
-      `After sending payment, reply to this email with:\n` +
+      `Option 2: Credit Card (2.9% + $0.30 fee)\n` +
+      `Visit: https://9lmntsstudio.com/pay\n` +
+      `Click "Pay with Credit Card" button\n\n` +
+      `After payment, reply to this email with:\n` +
       `- Payment confirmation\n` +
       `- Your logo/branding files\n` +
       `- Special requirements\n\n` +
-      `Work begins immediately upon deposit confirmation.\n` +
+      `Work begins immediately upon payment confirmation.\n` +
       `${currentService?.timeline.includes('hour') ? 'Platform will be live within ' + currentService?.timeline : 'Design work will begin immediately'}.\n\n` +
       `Thank you!\n` +
       `9LMNTS Studio`
@@ -321,13 +325,14 @@ const Payments = () => {
 
             {/* Payment Instructions */}
             <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-              <h4 className="font-bold text-blue-400 mb-2">💳 E-Transfer Process:</h4>
+              <h4 className="font-bold text-blue-400 mb-2">💳 Payment Options:</h4>
               <ul className="text-sm text-gray-400 space-y-1">
-                <li>• Click button above to generate payment email</li>
-                <li>• Send e-transfer to: <strong>3dkane@gmail.com</strong></li>
+                <li>• <strong>E-Transfer (Recommended)</strong>: No fees, instant processing</li>
+                <li>• Send to: <strong>9lmntstudio@gmail.com</strong></li>
                 <li>• Security Question: <strong>"What is company name?"</strong></li>
                 <li>• Security Answer: <strong>"9LMNTS Studio"</strong></li>
-                <li>• Work starts immediately upon deposit</li>
+                <li>• <strong>Credit Card</strong>: 2.9% + $0.30 fee via Stripe</li>
+                <li>• Work starts immediately upon payment confirmation</li>
                 <li>• Platform delivered within promised timeline</li>
               </ul>
             </div>

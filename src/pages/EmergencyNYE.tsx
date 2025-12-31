@@ -30,7 +30,7 @@ const EmergencyNYE = () => {
   }, []);
 
   const handlePayment = (tier: string, price: number, deposit: number) => {
-    window.location.href = `mailto:9lmntstudio@gmail.com?subject=NYE%20EMERGENCY%20-%20${tier}&body=URGENT%20NYE%20Platform%20Request%0A%0ATier:%20${tier}%0APrice:%20$${price}%0ADeposit:%20$${deposit}%0A%0AE-Transfer%20Instructions:%0ASend%20$${deposit}%20to:%203dkane@gmail.com%0ASecurity%20Question:%20What%20is%20company%20name?%0ASecurity%20Answer:%209LMNTS%20Studio%0A%0AAfter%20sending,%20reply%20with:%0A-%20Event%20name%0A-%20Logo%20file%0A-%20Special%20requirements%0A%0APlatform%20will%20be%20live%20within%203%20hours.%0A%0AThank%20you!`;
+    window.location.href = `mailto:9lmntstudio@gmail.com?subject=NYE%20EMERGENCY%20-%20${tier}&body=URGENT%20NYE%20Platform%20Request%0A%0ATier:%20${tier}%0APrice:%20$${price}%0ADeposit:%20$${deposit}%0A%0AE-Transfer%20Instructions:%0ASend%20$${deposit}%20to:%209lmntstudio@gmail.com%0ASecurity%20Question:%20What%20is%20company%20name?%0ASecurity%20Answer:%209LMNTS%20Studio%0A%0AAfter%20sending,%20reply%20with:%0A-%20Event%20name%0A-%20Logo%20file%0A-%20Special%20requirements%0A%0APlatform%20will%20be%20live%20within%203%20hours.%0A%0AThank%20you!`;
   };
 
   return (
@@ -215,14 +215,14 @@ const EmergencyNYE = () => {
 
         {/* Payment Instructions */}
         <div className="bg-gray-800 p-8 rounded-2xl mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-center">⚡ E-Transfer Payment Instructions</h2>
+          <h2 className="text-3xl font-bold mb-6 text-center">⚡ Payment Options</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-900 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-orange-400">Step 1: Send E-Transfer</h3>
+              <h3 className="text-xl font-bold mb-4 text-orange-400">Option 1: E-Transfer (Fastest)</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Send to:</span>
-                  <span className="font-bold">3dkane@gmail.com</span>
+                  <span className="font-bold">9lmntstudio@gmail.com</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Security Question:</span>
@@ -232,26 +232,32 @@ const EmergencyNYE = () => {
                   <span className="text-gray-400">Security Answer:</span>
                   <span className="font-bold">9LMNTS Studio</span>
                 </div>
+                <div className="text-sm text-green-400 mt-2">
+                  ✓ Work starts immediately upon receipt<br/>
+                  ✓ No processing fees<br/>
+                  ✓ Direct to Desjardins bank account
+                </div>
               </div>
             </div>
             <div className="bg-gray-900 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-green-400">Step 2: What Happens Next</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-start">
-                  <span className="mr-2 text-green-400">✓</span>
-                  <span>Payment received in minutes</span>
+              <h3 className="text-xl font-bold mb-4 text-purple-400">Option 2: Credit Card</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Processor:</span>
+                  <span className="font-bold">Stripe Secure</span>
                 </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-green-400">✓</span>
-                  <span>Work starts immediately</span>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Cards Accepted:</span>
+                  <span className="font-bold">Visa, Mastercard, Amex</span>
                 </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-green-400">✓</span>
-                  <span>Platform live within 1-3 hours</span>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Processing Time:</span>
+                  <span className="font-bold">2-5 minutes</span>
                 </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-green-400">✓</span>
-                  <span>Final payment due upon delivery</span>
+                <div className="text-sm text-blue-400 mt-2">
+                  ✓ Instant processing<br/>
+                  ✓ International cards accepted<br/>
+                  ✓ 2.9% + $0.30 processing fee
                 </div>
               </div>
             </div>
