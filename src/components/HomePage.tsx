@@ -1,8 +1,5 @@
 import { ArrowRight, Sparkles, Zap, Layers, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import soundClashImg from 'figma:asset/f72325e312a920e71b791080254e4f61fa38da20.png';
-import weddingImg from 'figma:asset/a083d348fd3f6c8062c56e44479af8ebd9c8d90b.png';
-import corporateImg from 'figma:asset/818fc707455adb1fc5f7e10ecda370f2026a8c37.png';
 
 interface HomePageProps {
   onNavigate: (page: string, plan?: string) => void;
@@ -13,7 +10,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     {
       title: 'Sound Clash OS',
       category: 'Nightlife & Entertainment',
-      image: soundClashImg,
+      image: '/images/Screenshot 2025-12-09 010706.jpg',
       link: '/clash/index.html',
       features: ['Live Voting', 'Power Tips', 'Battle Mode', 'Real-time Chat'],
       external: true
@@ -21,7 +18,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     {
       title: 'The Union: Wedding OS',
       category: 'Lifestyle & Events',
-      image: weddingImg,
+      image: '/images/Screenshot 2025-12-09 010734.jpg',
       link: '/romeo/index.html',
       features: ['Guest Management', 'Live Streaming', 'Digital Invitations', 'Photo Gallery'],
       external: true
@@ -29,7 +26,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     {
       title: 'Corporate Clash',
       category: 'Business & Tech',
-      image: corporateImg,
+      image: '/images/Screenshot 2025-12-09 010806.jpg',
       link: '/pitch/index.html',
       features: ['Pitch Battles', 'Investor Voting', 'Live Analytics', 'Networking Hub'],
       external: true

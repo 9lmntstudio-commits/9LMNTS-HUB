@@ -7,7 +7,7 @@ import { PricingPage } from "./components/PricingPage";
 import { AboutPage } from "./components/AboutPage";
 import { StartProjectPage } from "./components/StartProjectPage";
 import { PortfolioPage } from "./components/PortfolioPage";
-import { AdminDashboard } from "./components/AdminDashboard";
+import { AdminPage } from "./components/AdminPage";
 import { CRM } from "./components/CRM";
 import { ClientPortal } from "./components/ClientPortal";
 
@@ -44,7 +44,7 @@ export default function App() {
           />
         );
       case "admin":
-        return <AdminDashboard onNavigate={handleNavigate} />;
+        return <AdminPage onNavigate={handleNavigate} />;
       case "crm":
         return <CRM onNavigate={handleNavigate} />;
       case "client-portal":

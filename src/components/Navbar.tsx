@@ -112,6 +112,12 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             >
               Start Project
             </button>
+            <button
+              onClick={() => onNavigate('admin')}
+              className="px-4 py-2 bg-transparent border border-[#FF7A00]/30 text-[#FF7A00] rounded hover:bg-[#FF7A00]/10 transition-colors text-sm"
+            >
+              Admin
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -178,6 +184,15 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
               className="w-full mt-2 px-6 py-2 bg-[#FF7A00] text-[#1A1A1A] rounded hover:bg-[#FF7A00]/90 transition-colors"
             >
               Start Project
+            </button>
+            <button
+              onClick={() => {
+                onNavigate('admin');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full mt-2 px-6 py-2 bg-transparent border border-[#FF7A00]/30 text-[#FF7A00] rounded hover:bg-[#FF7A00]/10 transition-colors"
+            >
+              Admin Panel
             </button>
           </div>
         </div>
