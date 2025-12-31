@@ -132,6 +132,33 @@
             gap: 15px;
         }
 
+        /* ===== HUB NAVIGATION ===== */
+        .hub-navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .back-to-hub {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 94, 0, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-hub:hover {
+            background: rgba(255, 94, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 94, 0, 0.3);
+        }
+
         .studio-badge {
             background: var(--bg-card);
             border: 1px solid var(--primary);
@@ -1125,10 +1152,19 @@
             <div class="logo-container">
                 <div>
                     <h1 class="logo-title">LOA Event OS</h1>
-                    <div class="logo-subtitle">3026 NEO-OTTAWA // 9LMNTS STUDIO</div>
+                    <p class="logo-subtitle">3026 Neo-Ottawa</p>
                 </div>
-                <div class="studio-badge">9LMNTS STUDIO</div>
             </div>
+            
+            <!-- Back to Hub Navigation -->
+            <div class="hub-navigation">
+                <a href="https://9lmntsstudio.com" class="back-to-hub">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to 9LMNTS Studio
+                </a>
+            </div>
+            
+            <div class="studio-badge">9LMNTS STUDIO</div>
             <div class="system-time" id="systemClock">00:00:00 UTC</div>
         </header>
 
