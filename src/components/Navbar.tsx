@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react';
 import logoImage from 'logo-clean.png';
 
 interface NavbarProps {
@@ -9,6 +9,7 @@ interface NavbarProps {
 
 export function Navbar({ currentPage, onNavigate }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
 
   const navLinks = [
     { name: 'Home', id: 'home' },
@@ -16,6 +17,18 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
     { name: 'Portfolio', id: 'portfolio' },
     { name: 'Pricing', id: 'pricing' },
     { name: 'About', id: 'about' },
+  ];
+
+  const eventOSApps = [
+    { name: 'LOA Event OS', path: '/loa/index.html', description: 'Live Event Operating System' },
+    { name: 'Pitch Battle', path: '/pitch/index.html', description: 'Corporate Pitch Competition' },
+    { name: 'Culture Clash', path: '/culture/index.html', description: 'Cultural Event Platform' },
+    { name: 'Sound Clash', path: '/clash/index.html', description: 'DJ Battle System' },
+    { name: 'Wedding OS', path: '/romeo/index.html', description: 'Wedding Management' },
+    { name: 'Fashion OS', path: '/fashion/index.html', description: 'Fashion Event Platform' },
+    { name: 'Sports OS', path: '/wagers/index.html', description: 'Sports Betting Platform' },
+    { name: 'Love Match', path: '/love/index.html', description: 'Dating Event System' },
+    { name: 'Trinity', path: '/trinity/index.html', description: 'Multi-Event Hub' },
   ];
 
   return (
@@ -45,6 +58,54 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                 {link.name}
               </button>
             ))}
+            
+            {/* Event OS Dropdown */}
+            <div className="relative">
+              <button
+                onMouseEnter={() => setEventDropdownOpen(true)}
+                onMouseLeave={() => setEventDropdownOpen(false)}
+                className="flex items-center text-white hover:text-[#FF7A00] transition-colors"
+              >
+                Event OS
+                <ChevronDown className="ml-1" size={16} />
+              </button>
+              
+              {eventDropdownOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-2 w-80 bg-[#222222] border border-[#FF7A00]/20 rounded-lg shadow-xl"
+                  onMouseEnter={() => setEventDropdownOpen(true)}
+                  onMouseLeave={() => setEventDropdownOpen(false)}
+                >
+                  <div className="p-4">
+                    <h3 className="text-[#FF7A00] font-semibold mb-3">Event Operating Systems</h3>
+                    <div className="space-y-2">
+                      {eventOSApps.map((app, index) => (
+                        <a
+                          key={index}
+                          href={app.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block p-3 rounded-lg hover:bg-[#1A1A1A] transition-colors group"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <div className="text-white font-medium group-hover:text-[#FF7A00] transition-colors">
+                                {app.name}
+                              </div>
+                              <div className="text-gray-400 text-sm">
+                                {app.description}
+                              </div>
+                            </div>
+                            <ExternalLink className="text-gray-400 group-hover:text-[#FF7A00] transition-colors" size={16} />
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+            
             <button
               onClick={() => onNavigate('start-project')}
               className="px-6 py-2 bg-[#FF7A00] text-[#1A1A1A] rounded hover:bg-[#FF7A00]/90 transition-colors"
@@ -83,6 +144,32 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                 {link.name}
               </button>
             ))}
+            
+            {/* Mobile Event OS Section */}
+            <div className="pt-4 border-t border-[#FF7A00]/20">
+              <div className="text-[#FF7A00] font-semibold mb-3">Event Operating Systems</div>
+              <div className="space-y-1">
+                {eventOSApps.map((app, index) => (
+                  <a
+                    key={index}
+                    href={app.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-left px-3 py-2 rounded text-white hover:bg-[#222222] transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-sm font-medium">{app.name}</div>
+                        <div className="text-xs text-gray-400">{app.description}</div>
+                      </div>
+                      <ExternalLink size={14} className="text-gray-400" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+            
             <button
               onClick={() => {
                 onNavigate('start-project');

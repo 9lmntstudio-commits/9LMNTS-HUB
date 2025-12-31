@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, Zap, Layers } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Layers, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import soundClashImg from 'figma:asset/f72325e312a920e71b791080254e4f61fa38da20.png';
 import weddingImg from 'figma:asset/a083d348fd3f6c8062c56e44479af8ebd9c8d90b.png';
@@ -14,16 +14,25 @@ export function HomePage({ onNavigate }: HomePageProps) {
       title: 'Sound Clash OS',
       category: 'Nightlife & Entertainment',
       image: soundClashImg,
+      link: '/clash/index.html',
+      features: ['Live Voting', 'Power Tips', 'Battle Mode', 'Real-time Chat'],
+      external: true
     },
     {
       title: 'The Union: Wedding OS',
       category: 'Lifestyle & Events',
       image: weddingImg,
+      link: '/romeo/index.html',
+      features: ['Guest Management', 'Live Streaming', 'Digital Invitations', 'Photo Gallery'],
+      external: true
     },
     {
       title: 'Corporate Clash',
       category: 'Business & Tech',
       image: corporateImg,
+      link: '/pitch/index.html',
+      features: ['Pitch Battles', 'Investor Voting', 'Live Analytics', 'Networking Hub'],
+      external: true
     },
   ];
 
@@ -186,8 +195,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
             {featuredWorks.map((work, index) => (
               <div
                 key={index}
-                onClick={() => onNavigate('portfolio')}
                 className="group cursor-pointer"
+                onClick={() => {
+                  if (work.external) {
+                    window.open(work.link, '_blank');
+                  } else {
+                    onNavigate('portfolio');
+                  }
+                }}
               >
                 <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/3] bg-[#222222]">
                   <ImageWithFallback
@@ -197,11 +212,23 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform">
-                    <ArrowRight className="text-[#FF7A00]" size={24} />
+                    <div className="flex items-center justify-between">
+                      <ArrowRight className="text-[#FF7A00]" size={24} />
+                      {work.external && <ExternalLink className="text-[#FF7A00]" size={20} />}
+                    </div>
                   </div>
                 </div>
                 <h3 className="text-white text-xl mb-1">{work.title}</h3>
-                <p className="text-gray-400">{work.category}</p>
+                <p className="text-gray-400 mb-3">{work.category}</p>
+                
+                {/* Features */}
+                <div className="flex flex-wrap gap-2">
+                  {work.features.map((feature, idx) => (
+                    <span key={idx} className="bg-[#FF7A00]/20 text-[#FF7A00] px-2 py-1 rounded text-xs font-medium">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -218,7 +245,108 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Pricing Teaser */}
+      {/* Services Section - The Graffiti Element */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0D0D0D]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-5xl text-white mb-4">
+              The <span className="font-futuristic">Graffiti</span> <span className="font-graffiti text-[#FF7A00]">Element</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Our signature services that transform your vision into digital art
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: '🎨',
+                title: 'Brand Identity',
+                description: 'Complete brand systems that capture your essence and stand out in the digital landscape'
+              },
+              {
+                icon: '🚀',
+                title: 'Web Experiences',
+                description: 'Interactive websites that blend cutting-edge technology with artistic vision'
+              },
+              {
+                icon: '📱',
+                title: 'Mobile Applications',
+                description: 'Native and progressive apps that deliver seamless user experiences'
+              },
+              {
+                icon: '🎮',
+                title: 'Event OS Platforms',
+                description: 'Custom operating systems for live events with voting, networking, and gamification'
+              },
+              {
+                icon: '🤖',
+                title: 'AI Integration',
+                description: 'Intelligent systems that enhance user engagement and automate workflows'
+              },
+              {
+                icon: '📊',
+                title: 'Data Visualization',
+                description: 'Interactive dashboards and analytics that bring your data to life'
+              }
+            ].map((service, index) => (
+              <div key={index} className="bg-[#222222] p-8 rounded-xl border border-[#FF7A00]/20 hover:border-[#FF7A00]/50 transition-all group">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-white text-xl font-semibold mb-3">{service.title}</h3>
+                <p className="text-gray-400">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Founder Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="mb-6 inline-block">
+                <span className="px-4 py-2 bg-[#222222] border border-[#FF7A00]/30 rounded-full text-[#FF7A00] text-sm">
+                  Founder & Creative Director
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl text-white mb-6">
+                Meet the <span className="font-futuristic">Visionary</span> <span className="font-graffiti text-[#FF7A00]">Behind 9LMNTS</span>
+              </h2>
+              <p className="text-gray-300 text-lg mb-6">
+                Blending years of design expertise with hip-hop culture and cutting-edge technology, 
+                our founder has pioneered a new approach to digital experiences that resonates with 
+                the modern audience while honoring cultural roots.
+              </p>
+              <p className="text-gray-300 text-lg mb-8">
+                From underground graffiti art to enterprise-level digital platforms, the journey has been 
+                about breaking boundaries and creating spaces where creativity meets technology in perfect harmony.
+              </p>
+              <button
+                onClick={() => onNavigate('about')}
+                className="px-8 py-4 bg-[#FF7A00] text-[#1A1A1A] rounded-lg hover:bg-[#FF7A00]/90 transition-all inline-flex items-center gap-2 transform hover:scale-105"
+              >
+                Learn More
+                <ArrowRight size={20} />
+              </button>
+            </div>
+            <div className="relative">
+              <div className="aspect-square bg-[#222222] rounded-2xl border border-[#FF7A00]/20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-[#FF7A00]/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <span className="text-4xl">🎨</span>
+                  </div>
+                  <h3 className="text-white text-xl font-semibold mb-2">Founder Image</h3>
+                  <p className="text-gray-400">Professional photography coming soon</p>
+                </div>
+              </div>
+              {/* Background decoration */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#FF7A00]/10 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#FF7A00]/5 rounded-full blur-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0D0D0D]">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-16">
