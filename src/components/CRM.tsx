@@ -6,7 +6,6 @@ import {
   Mail, 
   Phone, 
   Calendar,
-  DollarSign,
   User,
   MapPin,
   MoreVertical,
@@ -37,6 +36,7 @@ interface Client {
 export function CRM({ onNavigate }: CRMProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
+  // @ts-ignore: For future client detail view
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
   const clients: Client[] = [

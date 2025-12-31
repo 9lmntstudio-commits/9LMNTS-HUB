@@ -33,29 +33,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
     },
   ];
 
-  const pricingTiers = [
-    {
-      name: 'Flow Element',
-      price: '$1,500',
-      planValue: 'basic',
-      features: ['Basic Web Design', '3 Page Website', 'Mobile Responsive', '1 Month Support'],
-    },
-    {
-      name: 'Beat Element',
-      price: '$3,000',
-      planValue: 'standard',
-      features: ['Advanced Design', 'Up to 10 Pages', 'Custom Animations', '3 Months Support', 'SEO Optimization'],
-      highlighted: false,
-    },
-    {
-      name: 'Cypher Element',
-      price: '$5,000',
-      planValue: 'premium',
-      features: ['Premium Design', 'Unlimited Pages', 'Full Stack Development', '6 Months Support', 'AI Integration', 'Custom CMS'],
-      highlighted: true,
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-[#1A1A1A]">
       {/* Hero Section */}
@@ -308,38 +285,55 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-5xl text-white mb-6">
-                Meet the <span className="font-futuristic">Visionary</span> <span className="font-graffiti text-[#FF7A00]">Behind 9LMNTS</span>
+                <span className="font-futuristic">Darnley Sanon</span> - <span className="font-graffiti text-[#FF7A00]">Founder</span>
               </h2>
               <p className="text-gray-300 text-lg mb-6">
-                Blending years of design expertise with hip-hop culture and cutting-edge technology, 
-                our founder has pioneered a new approach to digital experiences that resonates with 
-                the modern audience while honoring cultural roots.
+                With over a decade of experience in graphic design and UI/UX, Darnley founded 9LMNTS Studio to merge his passion for Hip-Hop culture with cutting-edge digital design. His unique approach combines artistic authenticity with technical excellence.
               </p>
               <p className="text-gray-300 text-lg mb-8">
-                From underground graffiti art to enterprise-level digital platforms, the journey has been 
-                about breaking boundaries and creating spaces where creativity meets technology in perfect harmony.
+                As a freelance graphic designer and UI/UX specialist, he has worked with clients across Southeast Asia, bringing a fresh perspective that honors cultural roots while embracing innovation.
               </p>
-              <button
-                onClick={() => onNavigate('about')}
-                className="px-8 py-4 bg-[#FF7A00] text-[#1A1A1A] rounded-lg hover:bg-[#FF7A00]/90 transition-all inline-flex items-center gap-2 transform hover:scale-105"
-              >
-                Learn More
-                <ArrowRight size={20} />
-              </button>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-[#222222] rounded-2xl border border-[#FF7A00]/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-[#FF7A00]/20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-4xl">🎨</span>
-                  </div>
-                  <h3 className="text-white text-xl font-semibold mb-2">Founder Image</h3>
-                  <p className="text-gray-400">Professional photography coming soon</p>
+              <blockquote className="text-[#FF7A00] text-lg italic border-l-4 border-[#FF7A00] pl-4 mb-8">
+                "Every project is an opportunity to tell a story, to create something that resonates beyond screen. That's the power of combining art, culture, and technology."
+              </blockquote>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[#222222] p-4 rounded-lg">
+                  <h4 className="text-[#FF7A00] font-semibold mb-2">Graphic Design</h4>
+                  <p className="text-gray-400 text-sm">Professional branding and visual identity</p>
+                </div>
+                <div className="bg-[#222222] p-4 rounded-lg">
+                  <h4 className="text-[#FF7A00] font-semibold mb-2">UI/UX Design</h4>
+                  <p className="text-gray-400 text-sm">User-centered digital experiences</p>
+                </div>
+                <div className="bg-[#222222] p-4 rounded-lg">
+                  <h4 className="text-[#FF7A00] font-semibold mb-2">Brand Strategy</h4>
+                  <p className="text-gray-400 text-sm">Strategic brand development</p>
+                </div>
+                <div className="bg-[#222222] p-4 rounded-lg">
+                  <h4 className="text-[#FF7A00] font-semibold mb-2">Art Direction</h4>
+                  <p className="text-gray-400 text-sm">Creative vision and leadership</p>
                 </div>
               </div>
-              {/* Background decoration */}
-              <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#FF7A00]/10 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#FF7A00]/5 rounded-full blur-2xl"></div>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-64 h-64 bg-[#FF7A00]/20 rounded-full flex items-center justify-center mb-6 mx-auto border-4 border-[#FF7A00]/30">
+                <span className="text-6xl">👨‍🎨</span>
+              </div>
+              <h3 className="text-white text-2xl font-bold mb-2">Darnley Sanon</h3>
+              <p className="text-[#FF7A00] text-lg font-semibold mb-4">Meet Founder</p>
+              <div className="bg-[#222222] p-6 rounded-lg">
+                <p className="text-gray-300 mb-4">
+                  <span className="text-[#FF7A00] font-semibold">10+ Years</span> of experience in digital design
+                </p>
+                <p className="text-gray-300 mb-4">
+                  <span className="text-[#FF7A00] font-semibold">50+ Projects</span> completed across Southeast Asia
+                </p>
+                <p className="text-gray-300">
+                  <span className="text-[#FF7A00] font-semibold">Hip-Hop Culture</span> meets cutting-edge technology
+                </p>
+              </div>
             </div>
           </div>
         </div>

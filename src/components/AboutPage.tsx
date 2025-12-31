@@ -1,12 +1,13 @@
 import { Brain, Zap, Target, ArrowRight } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import founderImage from 'figma:asset/3f226a9aaba070676f15ff899e38fc9ed7023707.png';
+// Founder wedding image
+const founderImage = '/my bro wedding.jpg';
 
 interface AboutPageProps {
   onNavigate: (page: string, plan?: string) => void;
 }
 
-export function AboutPage({ onNavigate }: AboutPageProps) {
+export function AboutPage({ onNavigate: _ }: AboutPageProps) {
   const aiFeatures = [
     {
       icon: Brain,

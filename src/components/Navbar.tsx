@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react';
-import logoImage from 'logo-clean.png';
 
 interface NavbarProps {
   currentPage: string;
@@ -62,42 +61,42 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             {/* Event OS Dropdown */}
             <div className="relative">
               <button
+                onClick={() => setEventDropdownOpen(!eventDropdownOpen)}
                 onMouseEnter={() => setEventDropdownOpen(true)}
                 onMouseLeave={() => setEventDropdownOpen(false)}
-                className="flex items-center text-white hover:text-[#FF7A00] transition-colors"
+                className="flex items-center text-white hover:text-[#FF7A00] transition-colors px-3 py-2 rounded-lg hover:bg-[#222222]"
               >
                 Event OS
-                <ChevronDown className="ml-1" size={16} />
+                <ChevronDown className={`ml-1 transition-transform ${eventDropdownOpen ? 'rotate-180' : ''}`} size={16} />
               </button>
               
               {eventDropdownOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-2 w-80 bg-[#222222] border border-[#FF7A00]/20 rounded-lg shadow-xl"
+                  className="absolute top-full left-0 mt-2 w-96 bg-[#222222] border border-[#FF7A00]/20 rounded-lg shadow-xl z-50"
                   onMouseEnter={() => setEventDropdownOpen(true)}
                   onMouseLeave={() => setEventDropdownOpen(false)}
                 >
                   <div className="p-4">
                     <h3 className="text-[#FF7A00] font-semibold mb-3">Event Operating Systems</h3>
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                       {eventOSApps.map((app, index) => (
                         <a
                           key={index}
                           href={app.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block p-3 rounded-lg hover:bg-[#1A1A1A] transition-colors group"
+                          className="flex items-center justify-between p-3 rounded-lg hover:bg-[#1A1A1A] transition-all hover:scale-[1.02] group cursor-pointer"
                         >
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <div className="text-white font-medium group-hover:text-[#FF7A00] transition-colors">
-                                {app.name}
-                              </div>
-                              <div className="text-gray-400 text-sm">
-                                {app.description}
-                              </div>
+                          <div className="flex-1">
+                            <div className="text-white font-medium group-hover:text-[#FF7A00] transition-colors flex items-center">
+                              <span className="w-2 h-2 bg-[#FF7A00] rounded-full mr-2"></span>
+                              {app.name}
                             </div>
-                            <ExternalLink className="text-gray-400 group-hover:text-[#FF7A00] transition-colors" size={16} />
+                            <div className="text-gray-400 text-sm ml-4">
+                              {app.description}
+                            </div>
                           </div>
+                          <ExternalLink className="text-gray-400 group-hover:text-[#FF7A00] transition-colors" size={16} />
                         </a>
                       ))}
                     </div>
@@ -113,7 +112,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
               Start Project
             </button>
             <button
-              onClick={() => onNavigate('admin')}
+              onClick={() => onNavigate('master-admin')}
               className="px-4 py-2 bg-transparent border border-[#FF7A00]/30 text-[#FF7A00] rounded hover:bg-[#FF7A00]/10 transition-colors text-sm"
             >
               Admin
@@ -187,7 +186,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             </button>
             <button
               onClick={() => {
-                onNavigate('admin');
+                onNavigate('master-admin');
                 setMobileMenuOpen(false);
               }}
               className="w-full mt-2 px-6 py-2 bg-transparent border border-[#FF7A00]/30 text-[#FF7A00] rounded hover:bg-[#FF7A00]/10 transition-colors"

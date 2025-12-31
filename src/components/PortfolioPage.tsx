@@ -1,19 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, ExternalLink, ArrowRight } from 'lucide-react';
+import { Play, Pause, ArrowRight, Gamepad2 } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { motion, useScroll, useTransform } from 'motion/react';
-import soundClashImg1 from 'figma:asset/f72325e312a920e71b791080254e4f61fa38da20.png';
-import soundClashImg2 from 'figma:asset/de8a2e1adcd80c0dcf4f12629db345562f731b0f.png';
-import soundClashImg3 from 'figma:asset/c3b29129e040fb61f7359e2cbcc462f641916974.png';
-import weddingImg1 from 'figma:asset/a083d348fd3f6c8062c56e44479af8ebd9c8d90b.png';
-import weddingImg2 from 'figma:asset/08f443f779e7ab34741807a775b36f6b08ae26e7.png';
-import weddingImg3 from 'figma:asset/222e6fbc01cb161ce6543f143e1f81097c7307f9.png';
-import corporateImg1 from 'figma:asset/818fc707455adb1fc5f7e10ecda370f2026a8c37.png';
-import corporateImg2 from 'figma:asset/f7ec312717ed58d647a0f051ce6415645cb3ffc0.png';
-import corporateImg3 from 'figma:asset/fd6fa7cde00c87fff91580cdb97c37bc5339c96b.png';
-import corporateImg4 from 'figma:asset/432e930f89e4d5a66a399a4e390adab4bb655bb9.png';
-import corporateImg5 from 'figma:asset/5359a9525bafb1f8dd371122129dd80304b81eb6.png';
-import corporateImg6 from 'figma:asset/640118ee9324e3c82ba4a1b04b4b79cfb65cfeb8.png';
+import { motion } from 'motion/react';
+// Placeholder images - replace with actual images
+const soundClashImg1 = '/images/Screenshot 2025-12-09 010806.jpg';
+const soundClashImg2 = '/images/Screenshot 2025-12-09 010806.jpg';
+const soundClashImg3 = '/images/Screenshot 2025-12-09 010806.jpg';
+const weddingImg1 = '/images/Screenshot 2025-12-09 010806.jpg';
+const weddingImg2 = '/images/Screenshot 2025-12-09 010806.jpg';
+const weddingImg3 = '/images/Screenshot 2025-12-09 010806.jpg';
+const corporateImg1 = '/images/Screenshot 2025-12-09 010806.jpg';
+const corporateImg2 = '/images/Screenshot 2025-12-09 010806.jpg';
+const corporateImg3 = '/images/Screenshot 2025-12-09 010806.jpg';
+const corporateImg4 = '/images/Screenshot 2025-12-09 010806.jpg';
+const corporateImg5 = '/images/Screenshot 2025-12-09 010806.jpg';
+const corporateImg6 = '/images/Screenshot 2025-12-09 010806.jpg';
 
 interface PortfolioPageProps {
   onNavigate: (page: string) => void;
@@ -125,13 +126,22 @@ export function PortfolioPage({ onNavigate }: PortfolioPageProps) {
           <p className="text-gray-400 text-lg mb-8">
             Let's create something legendary together
           </p>
-          <button
-            onClick={() => onNavigate('start-project')}
-            className="px-8 py-4 bg-[#FF7A00] text-[#1A1A1A] rounded-lg hover:bg-[#FF7A00]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2"
-          >
-            Start Your Project
-            <ArrowRight size={20} />
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => onNavigate('start-project')}
+              className="px-8 py-4 bg-[#FF7A00] text-[#1A1A1A] rounded-lg hover:bg-[#FF7A00]/90 transition-all transform hover:scale-105 inline-flex items-center gap-2"
+            >
+              Start Your Project
+              <ArrowRight size={20} />
+            </button>
+            <button
+              onClick={() => onNavigate('event-os')}
+              className="px-8 py-4 bg-transparent border-2 border-[#FF7A00] text-[#FF7A00] rounded-lg hover:bg-[#FF7A00]/10 transition-all inline-flex items-center gap-2"
+            >
+              Explore Event OS
+              <Gamepad2 size={20} />
+            </button>
+          </div>
         </div>
       </section>
     </div>

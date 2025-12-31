@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   Download,
   Upload,
-  MessageSquare,
   CheckCircle,
   Clock,
   AlertCircle,
@@ -11,7 +10,6 @@ import {
   Video,
   Calendar,
   DollarSign,
-  TrendingUp,
   ArrowLeft,
   Send,
   Paperclip,

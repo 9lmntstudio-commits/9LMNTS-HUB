@@ -1,5 +1,6 @@
 import { Instagram, Twitter, Linkedin, Mail, Shield } from 'lucide-react';
-import logoImage from 'figma:asset/7fa6b449af0658006c308e262ec964e0117dac44.png';
+// Placeholder logo - replace with actual logo
+const logoImage = '/images/Screenshot 2025-12-09 010806.jpg';
 
 interface FooterProps {
   onNavigate: (page: string, plan?: string) => void;

@@ -299,10 +299,18 @@
                     0deg,
                     transparent,
                     transparent 2px,
-                    rgba(255, 94, 0, 0.1) 2px,
-                    rgba(255, 94, 0, 0.1) 4px
+                    rgba(255, 94, 0, 0.03) 2px,
+                    rgba(255, 94, 0, 0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 230, 255, 0.03) 2px,
+                    rgba(0, 230, 255, 0.03) 4px
                 );
             pointer-events: none;
+            z-index: 1;
         }
 
         .play-button {
@@ -436,6 +444,174 @@
             text-align: right;
             font-size: 0.8rem;
             color: var(--text-tertiary);
+        }
+
+        /* ===== FEATURES CONTAINER ===== */
+        .features-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(255, 94, 0, 0.05);
+            border: 1px solid rgba(255, 94, 0, 0.2);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 94, 0, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 94, 0, 0.5));
+        }
+
+        .feature-text {
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== FUNDING & ADMIN SECTION ===== */
+        .funding-admin-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .funding-card, .admin-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .funding-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+        }
+
+        .admin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+        }
+
+        .funding-header, .admin-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .funding-header h3, .admin-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .funding-header p, .admin-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .funding-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 94, 0, 0.05);
+            border: 1px solid rgba(255, 94, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .admin-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(0, 230, 255, 0.05);
+            border: 1px solid rgba(0, 230, 255, 0.2);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-feature:hover {
+            background: rgba(0, 230, 255, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .admin-feature i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .admin-feature span {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
         }
 
         /* ===== NAVIGATION TABS ===== */
@@ -1192,12 +1368,34 @@
                     </div>
                     <div style="text-align: center;">
                         <div style="color: var(--text-primary); font-family: var(--font-heading); margin-bottom: 10px;">
-                            LOA: ARCHITECT'S REVELATION TRAILER
+                            Live Event Operating System - Powered by AI Agents
                         </div>
                         <div style="color: var(--text-tertiary); font-size: 0.9rem;">
-                            Coming January 31, 2026
+                            Video Game Trailer
+                        </div>
+                        <div style="color: var(--primary); font-size: 1rem; margin-top: 5px;">
+                            Coming Soon - Experience future of live events
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-item">
+                    <div class="feature-icon">🎮</div>
+                    <div class="feature-text">Interactive Gameplay</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-text">AI-Powered Events</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-text">Multi-Platform Support</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Real-Time Processing</div>
                 </div>
             </div>
             
@@ -1234,6 +1432,61 @@
                     </div>
                     <div class="progress-percentage">25% Funded</div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Funding & Admin Section -->
+        <section class="funding-admin-section">
+            <div class="funding-card">
+                <div class="funding-header">
+                    <h3><i class="fas fa-rocket"></i> Fund Your LOA</h3>
+                    <p>Support and invest in live event operating systems</p>
+                </div>
+                <div class="funding-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">$12,450</div>
+                        <div class="stat-label">RAISED</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">$50,000</div>
+                        <div class="stat-label">GOAL</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">25%</div>
+                        <div class="stat-label">FUNDED</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-full" onclick="openFundingModal()">
+                    <i class="fas fa-dollar-sign"></i> INVEST NOW
+                </button>
+            </div>
+            
+            <div class="admin-card">
+                <div class="admin-header">
+                    <h3><i class="fas fa-cog"></i> LOA Admin</h3>
+                    <p>Manage your live events with AI agents</p>
+                </div>
+                <div class="admin-features">
+                    <div class="admin-feature">
+                        <i class="fas fa-users-cog"></i>
+                        <span>CRM Client Portal</span>
+                    </div>
+                    <div class="admin-feature">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Admin Control</span>
+                    </div>
+                    <div class="admin-feature">
+                        <i class="fas fa-database"></i>
+                        <span>Content Management</span>
+                    </div>
+                    <div class="admin-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics Dashboard</span>
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-full" onclick="openAdminPortal()">
+                    <i class="fas fa-sign-in-alt"></i> ACCESS ADMIN
+                </button>
             </div>
         </section>
 
@@ -2159,6 +2412,23 @@
                 document.querySelector('.play-button').innerHTML = '<i class="fas fa-play"></i>';
                 showToast('Trailer ready! Redirecting to video player...');
             }, 1500);
+        }
+
+        // ==================== FUNDING & ADMIN FUNCTIONS ====================
+        function openFundingModal() {
+            showToast('Opening investment portal...');
+            // In production, this would open a secure investment form
+            setTimeout(() => {
+                showToast('Investment portal loading... Please wait.');
+            }, 1000);
+        }
+
+        function openAdminPortal() {
+            showToast('Accessing LOA Admin Portal...');
+            // In production, this would redirect to admin login
+            setTimeout(() => {
+                showToast('Admin portal authentication required.');
+            }, 1000);
         }
 
         // Add toast animations

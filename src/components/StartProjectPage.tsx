@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, ArrowLeft, Check, Calendar, Mail, Phone, User, Building2, Globe, MessageSquare } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Check, Mail, Phone, User, Building2, Globe } from 'lucide-react';
 
 interface StartProjectPageProps {
   selectedPlan?: string;
