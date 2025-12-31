@@ -19,6 +19,7 @@ import { AdminPage } from "./components/AdminPage";
 import { MasterAdminPage } from "./components/MasterAdminPage";
 import { CRM } from "./components/CRM";
 import { ClientPortal } from "./components/ClientPortal";
+import LOAChatWidget from "./components/LOAChatWidget";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -89,6 +90,7 @@ export default function App() {
       />
       <main>{renderPage()}</main>
       <Footer onNavigate={handleNavigate} />
+      <LOAChatWidget />
     </div>
   );
 }
