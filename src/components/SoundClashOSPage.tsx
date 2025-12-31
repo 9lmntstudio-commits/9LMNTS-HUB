@@ -21,40 +21,33 @@ export function SoundClashOSPage({ onNavigate }: SoundClashOSPageProps) {
   }, []);
 
   const loadVotes = async () => {
-    try {
-      // First test if backend is working
-      const testResponse = await fetch('/.netlify/functions/test');
-      if (!testResponse.ok) {
-        console.log('Backend not ready, using demo mode');
-        return;
-      }
-      
-      const response = await api.getVotes('sound-clash');
-      setVotes(response.data || []);
-    } catch (error: any) {
-      console.log('Backend not available, using demo mode:', error.message);
-      // Set some demo votes for testing
-      setVotes([
-        { platform: 'sound-clash', user_id: 'demo-1', vote_type: 'dj-shadow' },
-        { platform: 'sound-clash', user_id: 'demo-2', vote_type: 'dj-phoenix' }
-      ]);
-    }
+    // For now, use demo mode to ensure UI works
+    console.log('Loading demo votes for Sound Clash OS');
+    setVotes([
+      { platform: 'sound-clash', user_id: 'demo-1', vote_type: 'dj-shadow' },
+      { platform: 'sound-clash', user_id: 'demo-2', vote_type: 'dj-phoenix' },
+      { platform: 'sound-clash', user_id: 'demo-3', vote_type: 'dj-shadow' },
+      { platform: 'sound-clash', user_id: 'demo-4', vote_type: 'dj-phoenix' }
+    ]);
   };
 
   const handleVote = async (voteType: string) => {
     if (userVote) return; // User already voted
     
     setIsLoading(true);
-    try {
-      const userId = `user-${Date.now()}`; // Simple user ID for demo
-      await api.vote('sound-clash', userId, voteType);
+    
+    // Simulate voting for demo
+    setTimeout(() => {
+      const newVote: Vote = {
+        platform: 'sound-clash',
+        user_id: `user-${Date.now()}`,
+        vote_type: voteType
+      };
+      
+      setVotes(prev => [...prev, newVote]);
       setUserVote(voteType);
-      await loadVotes(); // Reload votes
-    } catch (error) {
-      console.error('Failed to vote:', error);
-    } finally {
       setIsLoading(false);
-    }
+    }, 500); // Simulate API call delay
   };
 
   const features = [
