@@ -22,10 +22,22 @@ export function SoundClashOSPage({ onNavigate }: SoundClashOSPageProps) {
 
   const loadVotes = async () => {
     try {
+      // First test if backend is working
+      const testResponse = await fetch('/.netlify/functions/test');
+      if (!testResponse.ok) {
+        console.log('Backend not ready, using demo mode');
+        return;
+      }
+      
       const response = await api.getVotes('sound-clash');
       setVotes(response.data || []);
-    } catch (error) {
-      console.error('Failed to load votes:', error);
+    } catch (error: any) {
+      console.log('Backend not available, using demo mode:', error.message);
+      // Set some demo votes for testing
+      setVotes([
+        { platform: 'sound-clash', user_id: 'demo-1', vote_type: 'dj-shadow' },
+        { platform: 'sound-clash', user_id: 'demo-2', vote_type: 'dj-phoenix' }
+      ]);
     }
   };
 
