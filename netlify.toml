@@ -6,6 +6,10 @@
   directory = "netlify/functions"
   node_version = "18"
 
+# Force redeploy
+[build.environment]
+  NODE_VERSION = "18"
+
 # SPA routing - handle client-side routes
 [[redirects]]
   from = "/event-os/*"
