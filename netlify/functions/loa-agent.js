@@ -1,4 +1,4 @@
-// LOA Agent - Working Version
+// LOA Agent - Working Version - Updated
 exports.handler = async (event, context) => {
   // CORS headers
   const headers = {
