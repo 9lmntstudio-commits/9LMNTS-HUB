@@ -609,18 +609,10 @@
             font-weight: 500;
         }
 
-        .btn-full {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* ===== NAVIGATION TABS ===== */
-        .os-nav {
-            display: flex;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 40px;
-            position: relative;
-        }
+            .btn-full {
+                width: 100%;
+                justify-content: center;
+            }
 
         .nav-tab {
             padding: 15px 30px;
@@ -1948,8 +1940,205 @@
         </div>
     </div>
 
+    <!-- Terms Modal -->
+    <div class="modal" id="termsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Terms of Service</h3>
+                <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="max-height: 400px; overflow-y: auto; padding: 10px;">
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">LOA Event OS - Terms of Service</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        <strong>Last Updated:</strong> December 31, 2025<br>
+                        <strong>Effective Date:</strong> December 31, 2025
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Acceptance of Terms</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        By accessing and using LOA Event OS, you accept and agree to be bound by the terms and provision of this agreement.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. Fictional Game Disclaimer</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        LOA Event OS is a fictional game concept. All characters, events, and settings are fictional. 
+                        Neo-Ottawa 3026 is a fictional setting for entertainment purposes only.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Payment Terms</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        All payments are processed through Stripe. All sales are final. No refunds will be issued for virtual items or in-game currency.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Virtual Items</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        All virtual items, currency, and rewards remain the property of 9LMNTS Studio. You are granted a limited, non-transferable license to use these items within the game.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Contact Information</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        For questions about these terms, please contact us at: <strong>9lmntstudio@gmail.com</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('termsModal')">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Privacy Policy</h3>
+                <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="max-height: 400px; overflow-y: auto; padding: 10px;">
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">LOA Event OS - Privacy Policy</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        <strong>Last Updated:</strong> December 31, 2025<br>
+                        <strong>Effective Date:</strong> December 31, 2025
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">1. Information We Collect</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">2. Payment Information</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        Payment processing is handled by Stripe. We do not store your credit card information. All payment data is encrypted and secure.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">3. Game Data</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        Game progress, virtual items, and in-game achievements are stored securely and associated with your account.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">4. Analytics</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        We use Google Analytics to understand how our platform is used. This helps us improve the game experience.
+                    </p>
+                    
+                    <h5 style="color: var(--text-primary); margin-top: 20px; margin-bottom: 10px;">5. Contact Information</h5>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">
+                        For privacy-related questions, please contact us at: <strong>9lmntstudio@gmail.com</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('privacyModal')">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Contact 9LMNTS Studio</h3>
+                <button class="modal-close" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
+                        <i class="fas fa-envelope" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    
+                    <h4 style="color: var(--text-primary); margin-bottom: 20px;">Get in Touch</h4>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: var(--primary);">Email:</strong><br>
+                            <a href="mailto:9lmntstudio@gmail.com" style="color: var(--accent);">9lmntstudio@gmail.com</a>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: var(--primary);">Studio:</strong><br>
+                            <a href="https://9lmntsstudio.com" target="_blank" style="color: var(--accent);">9lmntsstudio.com</a>
+                        </div>
+                        
+                        <div>
+                            <strong style="color: var(--primary);">Response Time:</strong><br>
+                            <span style="color: var(--text-secondary);">Usually within 24 hours</span>
+                        </div>
+                    </div>
+                    
+                    <div style="font-size: 0.9rem; color: var(--text-tertiary); text-align: center;">
+                        <p>For support with LOA Event OS, payment issues, or general inquiries about our AI-powered event platforms.</p>
+                        <p style="margin-top: 10px;">Neo-Ottawa 3026 is a fictional game setting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('contactModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ==================== GLOBAL STATE ====================
+        // ===== GLOBAL CONFIGURATION =====
+        const GLOBAL_CONFIG = {
+            // Stripe payment links (REPLACE WITH ACTUAL LINKS)
+            STRIPE_LINKS: {
+                // Tier payments
+                '250': 'https://buy.stripe.com/9LMNTS_250_tier',  // Club Extra
+                '500': 'https://buy.stripe.com/9LMNTS_500_tier',  // Street Talker
+                '1000': 'https://buy.stripe.com/9LMNTS_1000_tier', // Sidequest Hero
+                '2500': 'https://buy.stripe.com/9LMNTS_2500_tier', // The Mogul
+                
+                // Vote packs
+                '10_votes': 'https://buy.stripe.com/9LMNTS_10_votes',  // $2
+                '50_votes': 'https://buy.stripe.com/9LMNTS_50_votes',  // $10
+                '250_votes': 'https://buy.stripe.com/9LMNTS_250_votes', // $45
+                
+                // Power boosts
+                'power_boost': 'https://buy.stripe.com/9LMNTS_power_boost' // $10
+            },
+            
+            // Funding stats (update daily)
+            funding: {
+                current: 12450,
+                goal: 50000,
+                backers: 124,
+                percentage: 25
+            },
+            
+            // Launch date
+            launchDate: '2026-01-31T23:59:59Z',
+            
+            // Vote stats
+            votes: {
+                LOA: 3842,
+                Echo: 4158,
+                total: 8000
+            },
+            
+            // Tier pricing
+            tiers: {
+                250: 'CLUB EXTRA',
+                500: 'STREET TALKER', 
+                1000: 'SIDEQUEST HERO',
+                2500: 'THE MOGUL'
+            },
+            
+            // Vote pack pricing
+            votePacks: {
+                10: 2.00,
+                50: 10.00,
+                250: 45.00
+            },
+            
+            // Display settings
+            showCountdown: true,
+            showFundingTracker: true,
+            liveTickerEnabled: true
+        };
+
+        // ===== APPLICATION STATE =====
         const state = {
             // Voting state
             votes: {
@@ -2169,24 +2358,31 @@
 
         function pledgeTier(amount) {
             event.stopPropagation();
-            selectTier(amount);
-            openPaymentModal('tier');
+            // Redirect directly to Stripe
+            const stripeLink = GLOBAL_CONFIG.STRIPE_LINKS[amount];
+            if (stripeLink) {
+                // Track conversion
+                trackConversion('tier_pledge', amount);
+                // Redirect to Stripe
+                window.location.href = stripeLink;
+            } else {
+                showToast('Payment link not available. Please contact support.');
+            }
         }
 
         function selectVotePack(votes, amount) {
-            state.selectedPack = { votes, amount };
-            document.getElementById('paymentTitle').textContent = 'VOTE PACK PURCHASE';
-            document.getElementById('paymentItem').textContent = `${votes} Power Votes`;
-            document.getElementById('paymentAmount').textContent = `$${amount}.00`;
-            
-            // Calculate fee (3% + $0.30)
-            const fee = (amount * 0.029) + 0.30;
-            const total = amount + fee;
-            
-            document.getElementById('paymentFee').textContent = `$${fee.toFixed(2)}`;
-            document.getElementById('paymentTotal').textContent = `$${total.toFixed(2)}`;
-            
-            openPaymentModal('pack');
+            event.stopPropagation();
+            // Redirect directly to Stripe
+            const stripeKey = `${votes}_votes`;
+            const stripeLink = GLOBAL_CONFIG.STRIPE_LINKS[stripeKey];
+            if (stripeLink) {
+                // Track conversion
+                trackConversion('vote_pack', amount);
+                // Redirect to Stripe
+                window.location.href = stripeLink;
+            } else {
+                showToast('Payment link not available. Please contact support.');
+            }
         }
 
         // ==================== PAYMENT SYSTEM ====================
@@ -2404,14 +2600,51 @@
             }, 3000);
         }
 
+        // ==================== CONVERSION TRACKING ====================
+        function trackConversion(type, amount) {
+            // Send to Google Analytics (if available)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-YOUR_ID',
+                    'value': amount,
+                    'currency': 'USD',
+                    'transaction_id': Date.now()
+                });
+            }
+            
+            // Send to 9LMNTS Studio backend
+            fetch('https://9lmntsstudio.com/.netlify/functions/track-conversion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    type, 
+                    amount, 
+                    timestamp: Date.now(),
+                    source: 'loa-event-os'
+                })
+            }).catch(err => console.log('Tracking error:', err));
+        }
+
+        // ==================== VIDEO SYSTEM ====================
         function playTrailer() {
-            showToast('Trailer playback starting...');
-            // In production, this would load the YouTube/Vimeo embed
-            document.querySelector('.play-button').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-            setTimeout(() => {
-                document.querySelector('.play-button').innerHTML = '<i class="fas fa-play"></i>';
-                showToast('Trailer ready! Redirecting to video player...');
-            }, 1500);
+            // Replace placeholder with actual video
+            const trailerContainer = document.querySelector('.trailer-container');
+            trailerContainer.innerHTML = `
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="width:100%;height:100%;min-height:400px;">
+                    </iframe>
+                </div>
+            `;
+            
+            // Track video play
+            trackConversion('video_play', 0);
         }
 
         // ==================== FUNDING & ADMIN FUNCTIONS ====================

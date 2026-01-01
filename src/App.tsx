@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import { HomePage } from "./components/HomePage";
+import { NewHomePage } from "./components/NewHomePage";
+import { StudioPage } from "./components/StudioPage";
 import { ServicesPage } from "./components/ServicesPage";
-import { PricingPage } from "./components/PricingPage";
+import { PricingPage } from "./pages/Pricing/PricingPage";
 import { AboutPage } from "./components/AboutPage";
 import { StartProjectPage } from "./components/StartProjectPage";
 import { PortfolioPage } from "./components/PortfolioPage";
 import { EventOSSelectionPage } from "./components/EventOSSelectionPage";
+import { EventOSPage } from "./pages/EventOS/EventOSPage";
+import { LOAAIPage } from "./components/LOAAIPage";
 import { SoundClashOSPage } from "./components/SoundClashOSPage";
 import { WeddingOSPage } from "./components/WeddingOSPage";
 import { FestivalFlowPage } from "./components/FestivalFlowPage";
@@ -39,7 +42,11 @@ export default function App() {
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <HomePage onNavigate={handleNavigate} />;
+        return <NewHomePage onNavigate={handleNavigate} />;
+      case "studio":
+        return <StudioPage onNavigate={handleNavigate} />;
+      case "loa-ai":
+        return <LOAAIPage onNavigate={handleNavigate} />;
       case "services":
         return <ServicesPage onNavigate={handleNavigate} />;
       case "pricing":
@@ -47,7 +54,7 @@ export default function App() {
       case "portfolio":
         return <PortfolioPage onNavigate={handleNavigate} />;
       case "event-os":
-        return <EventOSSelectionPage onNavigate={handleNavigate} />;
+        return <EventOSPage onNavigate={handleNavigate} />;
       case "sound-clash-os":
         return <SoundClashOSPage onNavigate={handleNavigate} />;
       case "wedding-os":
@@ -83,8 +90,12 @@ export default function App() {
         return <Payments onNavigate={handleNavigate} />;
       case "emergency-nye":
         return <EmergencyNYE onNavigate={handleNavigate} />;
+      case "deploy-now":
+        return <StartProjectPage selectedPlan="event-os" onNavigate={handleNavigate} />;
+      case "case-studies":
+        return <PortfolioPage onNavigate={handleNavigate} />;
       default:
-        return <HomePage onNavigate={handleNavigate} />;
+        return <NewHomePage onNavigate={handleNavigate} />;
     }
   };
 

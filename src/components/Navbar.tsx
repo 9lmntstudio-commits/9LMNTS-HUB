@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react';
+import { Menu, X, ChevronDown, ExternalLink, Zap, Crown, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: string;
@@ -11,13 +11,12 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
   const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', id: 'home' },
-    { name: 'Services', id: 'services' },
-    { name: 'Portfolio', id: 'portfolio' },
-    { name: 'Event OS', id: 'event-os' },
-    { name: 'Payments', id: 'payments' },
-    { name: 'Emergency NYE', id: 'emergency-nye' },
-    { name: 'About', id: 'about' },
+    { name: 'Studio', id: 'studio', icon: Sparkles },
+    { name: 'EVENT OS', id: 'event-os', icon: Zap, isPrimary: true },
+    { name: 'LOA AI', id: 'loa-ai', icon: Crown },
+    { name: 'Pricing', id: 'pricing' },
+    { name: 'Case Studies', id: 'case-studies' },
+    { name: 'Deploy Now', id: 'deploy-now', isCTA: true },
   ];
 
   const eventOSApps = [
@@ -33,32 +32,43 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1A1A1A]/95 backdrop-blur-sm border-b border-[#FF7A00]/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-glass-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <button
             onClick={() => onNavigate('home')}
-            className="flex items-center group"
+            className="flex items-center group transition-all hover:scale-105"
           >
-         <img src="/logo-clean.png" alt="9LMNTS Studio" className="h-12 w-auto" />
+            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-cyan-500 rounded-xl flex items-center justify-center font-black text-2xl text-black mr-3">
+              9
+            </div>
+            <div className="text-left">
+              <div className="text-xl font-black text-white font-futuristic">9LMNTS</div>
+              <div className="text-xs text-cyber-green font-medium">TRINITY V2</div>
+            </div>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => onNavigate(link.id)}
-                className={`transition-colors ${
-                  currentPage === link.id
-                    ? 'text-[#FF7A00]'
-                    : 'text-white hover:text-[#FF7A00]'
-                }`}
-              >
-                {link.name}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center space-x-2">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => onNavigate(link.id)}
+                  className={`nav-item flex items-center space-x-2 ${
+                    currentPage === link.id ? 'active' : ''
+                  } ${link.isPrimary ? 'text-cyber-blue font-bold' : ''}`}
+                >
+                  {Icon && <Icon size={16} />}
+                  <span>{link.name}</span>
+                  {link.isPrimary && (
+                    <span className="daily-income-badge text-xs">LIVE</span>
+                  )}
+                </button>
+              );
+            })}
             
             {/* Event OS Dropdown */}
             <div className="relative">
@@ -66,39 +76,41 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                 onClick={() => setEventDropdownOpen(!eventDropdownOpen)}
                 onMouseEnter={() => setEventDropdownOpen(true)}
                 onMouseLeave={() => setEventDropdownOpen(false)}
-                className="flex items-center text-white hover:text-[#FF7A00] transition-colors px-3 py-2 rounded-lg hover:bg-[#222222]"
+                className="nav-item flex items-center space-x-2 text-cyber-blue font-bold"
               >
-                Event OS
-                <ChevronDown className={`ml-1 transition-transform ${eventDropdownOpen ? 'rotate-180' : ''}`} size={16} />
+                <Zap size={16} />
+                <span>EVENT OS</span>
+                <ChevronDown className={`transition-transform ${eventDropdownOpen ? 'rotate-180' : ''}`} size={16} />
+                <span className="daily-income-badge text-xs">9 TEMPLATES</span>
               </button>
               
               {eventDropdownOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-2 w-96 bg-[#222222] border border-[#FF7A00]/20 rounded-lg shadow-xl z-50"
+                  className="absolute top-full left-0 mt-2 w-96 glass border border-cyber-blue rounded-xl shadow-2xl z-50 fade-in"
                   onMouseEnter={() => setEventDropdownOpen(true)}
                   onMouseLeave={() => setEventDropdownOpen(false)}
                 >
                   <div className="p-4">
-                    <h3 className="text-[#FF7A00] font-semibold mb-3">Event Operating Systems</h3>
-                    <div className="space-y-1">
+                    <h3 className="text-cyber-blue font-bold mb-3 font-futuristic">Event Operating Systems</h3>
+                    <div className="space-y-2">
                       {eventOSApps.map((app, index) => (
                         <a
                           key={index}
                           href={app.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between p-3 rounded-lg hover:bg-[#1A1A1A] transition-all hover:scale-[1.02] group cursor-pointer"
+                          className="flex items-center justify-between p-3 glass border border-glass-border rounded-lg hover:border-cyber-green transition-all hover:scale-[1.02] group cursor-pointer"
                         >
                           <div className="flex-1">
-                            <div className="text-white font-medium group-hover:text-[#FF7A00] transition-colors flex items-center">
-                              <span className="w-2 h-2 bg-[#FF7A00] rounded-full mr-2"></span>
+                            <div className="text-white font-medium group-hover:text-cyber-green transition-colors flex items-center">
+                              <div className="w-2 h-2 bg-cyber-green rounded-full mr-2 pulse"></div>
                               {app.name}
                             </div>
                             <div className="text-gray-400 text-sm ml-4">
                               {app.description}
                             </div>
                           </div>
-                          <ExternalLink className="text-gray-400 group-hover:text-[#FF7A00] transition-colors" size={16} />
+                          <ExternalLink className="text-gray-400 group-hover:text-cyber-green transition-colors" size={16} />
                         </a>
                       ))}
                     </div>
@@ -109,13 +121,14 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             
             <button
               onClick={() => onNavigate('start-project')}
-              className="px-6 py-2 bg-[#FF7A00] text-[#1A1A1A] rounded hover:bg-[#FF7A00]/90 transition-colors"
+              className="btn-glow bg-vip-gold text-black font-bold"
             >
+              <Crown size={16} className="mr-2" />
               Start Project
             </button>
             <button
               onClick={() => onNavigate('master-admin')}
-              className="px-4 py-2 bg-transparent border border-[#FF7A00]/30 text-[#FF7A00] rounded hover:bg-[#FF7A00]/10 transition-colors text-sm"
+              className="px-4 py-2 glass border border-cyber-purple text-cyber-purple rounded-lg hover:bg-cyber-purple hover:text-black transition-all text-sm font-medium"
             >
               Admin
             </button>
@@ -123,7 +136,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white hover:text-cyber-blue transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -133,68 +146,59 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#1A1A1A] border-t border-[#FF7A00]/20">
+        <div className="md:hidden glass border-t border-glass-border">
           <div className="px-4 pt-2 pb-4 space-y-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => {
-                  onNavigate(link.id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left px-3 py-2 rounded transition-colors ${
-                  currentPage === link.id
-                    ? 'text-[#FF7A00] bg-[#222222]'
-                    : 'text-white hover:bg-[#222222]'
-                }`}
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => {
+                    onNavigate(link.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`flex items-center space-x-3 w-full text-left px-4 py-3 glass border border-glass-border rounded-lg transition-all ${
+                    currentPage === link.id
+                      ? 'text-cyber-blue border-cyber-blue'
+                      : 'text-white hover:text-cyber-blue hover:border-cyber-blue'
+                  }`}
+                >
+                  {Icon && <Icon size={18} />}
+                  <span className="font-medium">{link.name}</span>
+                  {link.isPrimary && (
+                    <span className="daily-income-badge text-xs ml-auto">LIVE</span>
+                  )}
+                </button>
+              );
+            })}
             
             {/* Mobile Event OS Section */}
-            <div className="pt-4 border-t border-[#FF7A00]/20">
-              <div className="text-[#FF7A00] font-semibold mb-3">Event Operating Systems</div>
-              <div className="space-y-1">
+            <div className="pt-4 border-t border-glass-border">
+              <div className="text-cyber-blue font-bold mb-3 font-futuristic">Event Operating Systems</div>
+              <div className="space-y-2">
                 {eventOSApps.map((app, index) => (
                   <a
                     key={index}
                     href={app.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full text-left px-3 py-2 rounded text-white hover:bg-[#222222] transition-colors"
+                    className="flex items-center justify-between p-3 glass border border-glass-border rounded-lg hover:border-cyber-green transition-all hover:scale-[1.02] group cursor-pointer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-sm font-medium">{app.name}</div>
-                        <div className="text-xs text-gray-400">{app.description}</div>
+                    <div className="flex-1">
+                      <div className="text-white font-medium group-hover:text-cyber-green transition-colors flex items-center">
+                        <div className="w-2 h-2 bg-cyber-green rounded-full mr-2 pulse"></div>
+                        {app.name}
                       </div>
-                      <ExternalLink size={14} className="text-gray-400" />
+                      <div className="text-gray-400 text-sm ml-4">
+                        {app.description}
+                      </div>
                     </div>
+                    <ExternalLink className="text-gray-400 group-hover:text-cyber-green transition-colors" size={16} />
                   </a>
                 ))}
               </div>
             </div>
-            
-            <button
-              onClick={() => {
-                onNavigate('start-project');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full mt-2 px-6 py-2 bg-[#FF7A00] text-[#1A1A1A] rounded hover:bg-[#FF7A00]/90 transition-colors"
-            >
-              Start Project
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('master-admin');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full mt-2 px-6 py-2 bg-transparent border border-[#FF7A00]/30 text-[#FF7A00] rounded hover:bg-[#FF7A00]/10 transition-colors"
-            >
-              Admin Panel
-            </button>
           </div>
         </div>
       )}
