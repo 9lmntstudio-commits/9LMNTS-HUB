@@ -1,73 +1,27 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import path from 'path';
+import react from '@vitejs/plugin-react';
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-    alias: {
-      'vaul@1.1.2': 'vaul',
-      'sonner@2.0.3': 'sonner',
-      'recharts@2.15.2': 'recharts',
-      'react-resizable-panels@2.1.7': 'react-resizable-panels',
-      'react-hook-form@7.55.0': 'react-hook-form',
-      'react-day-picker@8.10.1': 'react-day-picker',
-      'next-themes@0.4.6': 'next-themes',
-      'lucide-react@0.487.0': 'lucide-react',
-      'input-otp@1.4.2': 'input-otp',
-      'figma:asset/fd6fa7cde00c87fff91580cdb97c37bc5339c96b.png': path.resolve(__dirname, './src/assets/fd6fa7cde00c87fff91580cdb97c37bc5339c96b.png'),
-      'figma:asset/f7ec312717ed58d647a0f051ce6415645cb3ffc0.png': path.resolve(__dirname, './src/assets/f7ec312717ed58d647a0f051ce6415645cb3ffc0.png'),
-      'figma:asset/f72325e312a920e71b791080254e4f61fa38da20.png': path.resolve(__dirname, './src/assets/f72325e312a920e71b791080254e4f61fa38da20.png'),
-      'figma:asset/de8a2e1adcd80c0dcf4f12629db345562f731b0f.png': path.resolve(__dirname, './src/assets/de8a2e1adcd80c0dcf4f12629db345562f731b0f.png'),
-      'figma:asset/c3b29129e040fb61f7359e2cbcc462f641916974.png': path.resolve(__dirname, './src/assets/c3b29129e040fb61f7359e2cbcc462f641916974.png'),
-      'figma:asset/a083d348fd3f6c8062c56e44479af8ebd9c8d90b.png': path.resolve(__dirname, './src/assets/a083d348fd3f6c8062c56e44479af8ebd9c8d90b.png'),
-      'figma:asset/818fc707455adb1fc5f7e10ecda370f2026a8c37.png': path.resolve(__dirname, './src/assets/818fc707455adb1fc5f7e10ecda370f2026a8c37.png'),
-      'figma:asset/7fa6b449af0658006c308e262ec964e0117dac44.png': path.resolve(__dirname, './src/assets/7fa6b449af0658006c308e262ec964e0117dac44.png'),
-      'figma:asset/640118ee9324e3c82ba4a1b04b4b79cfb65cfeb8.png': path.resolve(__dirname, './src/assets/640118ee9324e3c82ba4a1b04b4b79cfb65cfeb8.png'),
-      'figma:asset/5359a9525bafb1f8dd371122129dd80304b81eb6.png': path.resolve(__dirname, './src/assets/5359a9525bafb1f8dd371122129dd80304b81eb6.png'),
-      'figma:asset/432e930f89e4d5a66a399a4e390adab4bb655bb9.png': path.resolve(__dirname, './src/assets/432e930f89e4d5a66a399a4e390adab4bb655bb9.png'),
-      'figma:asset/3f226a9aaba070676f15ff899e38fc9ed7023707.png': path.resolve(__dirname, './src/assets/3f226a9aaba070676f15ff899e38fc9ed7023707.png'),
-      'figma:asset/222e6fbc01cb161ce6543f143e1f81097c7307f9.png': path.resolve(__dirname, './src/assets/222e6fbc01cb161ce6543f143e1f81097c7307f9.png'),
-      'figma:asset/08f443f779e7ab34741807a775b36f6b08ae26e7.png': path.resolve(__dirname, './src/assets/08f443f779e7ab34741807a775b36f6b08ae26e7.png'),
-      'embla-carousel-react@8.6.0': 'embla-carousel-react',
-      'cmdk@1.1.1': 'cmdk',
-      'class-variance-authority@0.7.1': 'class-variance-authority',
-      '@radix-ui/react-tooltip@1.1.8': '@radix-ui/react-tooltip',
-      '@radix-ui/react-toggle@1.1.2': '@radix-ui/react-toggle',
-      '@radix-ui/react-toggle-group@1.1.2': '@radix-ui/react-toggle-group',
-      '@radix-ui/react-tabs@1.1.3': '@radix-ui/react-tabs',
-      '@radix-ui/react-switch@1.1.3': '@radix-ui/react-switch',
-      '@radix-ui/react-slot@1.1.2': '@radix-ui/react-slot',
-      '@radix-ui/react-slider@1.2.3': '@radix-ui/react-slider',
-      '@radix-ui/react-separator@1.1.2': '@radix-ui/react-separator',
-      '@radix-ui/react-select@2.1.6': '@radix-ui/react-select',
-      '@radix-ui/react-scroll-area@1.2.3': '@radix-ui/react-scroll-area',
-      '@radix-ui/react-radio-group@1.2.3': '@radix-ui/react-radio-group',
-      '@radix-ui/react-progress@1.1.2': '@radix-ui/react-progress',
-      '@radix-ui/react-popover@1.1.6': '@radix-ui/react-popover',
-      '@radix-ui/react-navigation-menu@1.2.5': '@radix-ui/react-navigation-menu',
-      '@radix-ui/react-menubar@1.1.6': '@radix-ui/react-menubar',
-      '@radix-ui/react-label@2.1.2': '@radix-ui/react-label',
-      '@radix-ui/react-hover-card@1.1.6': '@radix-ui/react-hover-card',
-      '@radix-ui/react-dropdown-menu@2.1.6': '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-dialog@1.1.6': '@radix-ui/react-dialog',
-      '@radix-ui/react-context-menu@2.2.6': '@radix-ui/react-context-menu',
-      '@radix-ui/react-collapsible@1.1.3': '@radix-ui/react-collapsible',
-      '@radix-ui/react-checkbox@1.1.4': '@radix-ui/react-checkbox',
-      '@radix-ui/react-avatar@1.1.3': '@radix-ui/react-avatar',
-      '@radix-ui/react-aspect-ratio@1.1.2': '@radix-ui/react-aspect-ratio',
-      '@radix-ui/react-alert-dialog@1.1.6': '@radix-ui/react-alert-dialog',
-      '@radix-ui/react-accordion@1.2.3': '@radix-ui/react-accordion',
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
   build: {
+    // Targets 'esnext' for modern JavaScript features (ideal for Trinity V2)
     target: 'esnext',
+    // The critical fix: ensuring build output goes to 'dist' for Netlify compatibility
     outDir: 'dist',
+    // Improves build performance and source mapping
+    sourcemap: true,
+    // Ensures assets are handled correctly in the glass-morphism UI
+    assetsDir: 'assets',
+    // Optimizes the bundle size
+    minify: 'esbuild',
   },
   server: {
     port: 3000,
     open: true,
   },
+  // If you are using environment variables for Stripe/Netlify Functions
+  define: {
+    'process.env': {}
+  }
 });
