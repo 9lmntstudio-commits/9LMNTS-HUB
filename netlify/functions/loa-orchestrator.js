@@ -1,12 +1,185 @@
-// LOA Orchestrator Netlify Function
-const LOAMaster = require('../ai-agents/loa-master');
-const GitHubAgent = require('../ai-agents/github-agent');
-const ZapierWorkflows = require('../ai-agents/zapier-workflows');
+// LOA Orchestrator Netlify Function - Standalone Version
+const { Octokit } = require("@octokit/rest");
 
-// Initialize agents
+// Initialize GitHub Agent
+const githubAgent = new Octokit({ auth: process.env.GITHUB_TOKEN });
+
+// Simplified LOA Master for testing
+class LOAMaster {
+  constructor() {
+    this.activeProjects = new Map();
+  }
+
+  async processRequest(request) {
+    console.log(`🤖 LOA Processing: ${request.type}`);
+    
+    try {
+      switch (request.type) {
+        case 'new_client':
+          return await this.handleNewClient(request.data);
+        case 'nye_emergency':
+          return await this.handleNYEEmergency(request.data);
+        case 'project_update':
+          return await this.handleProjectUpdate(request.data);
+        case 'payment_received':
+          return await this.handlePaymentReceived(request.data);
+        default:
+          throw new Error(`Unknown request type: ${request.type}`);
+      }
+    } catch (error) {
+      console.error(`❌ LOA Error: ${error.message}`);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async handleNYEEmergency(emergencyData) {
+    const projectId = `nye_${Date.now()}`;
+    
+    console.log(`🚨 NYE Emergency: ${emergencyData.clientName}`);
+    
+    const project = {
+      id: projectId,
+      client: emergencyData.clientName,
+      email: emergencyData.email,
+      service: 'NYE Platform',
+      budget: emergencyData.budget || 1500,
+      deadline: emergencyData.deadline || '3 hours',
+      status: 'emergency',
+      priority: 'critical',
+      createdAt: new Date().toISOString()
+    };
+    
+    this.activeProjects.set(projectId, project);
+    
+    // Create GitHub repository
+    try {
+      const repoName = `${emergencyData.clientName.toLowerCase().replace(/\s+/g, '-')}-nye-platform`;
+      const repo = await githubAgent.repos.createForAuthenticatedUser({
+        name: repoName,
+        description: `NYE Platform for ${emergencyData.clientName}`,
+        private: true,
+        auto_init: true
+      });
+      
+      project.githubRepo = repo.html_url;
+      console.log(`✅ Created repo: ${repo.html_url}`);
+      
+      return {
+        success: true,
+        projectId,
+        message: `Emergency deployment started for ${emergencyData.clientName}`,
+        eta: '3 hours',
+        priority: 'CRITICAL',
+        githubRepo: repo.html_url
+      };
+    } catch (error) {
+      console.error('❌ GitHub repo creation failed:', error);
+      return {
+        success: true,
+        projectId,
+        message: `Emergency deployment started for ${emergencyData.clientName}`,
+        eta: '3 hours',
+        priority: 'CRITICAL',
+        githubError: error.message
+      };
+    }
+  }
+
+  async handleNewClient(clientData) {
+    const projectId = `proj_${Date.now()}`;
+    
+    console.log(`👋 New client: ${clientData.name}`);
+    
+    const project = {
+      id: projectId,
+      client: clientData.name,
+      email: clientData.email,
+      service: clientData.service,
+      budget: clientData.budget,
+      deadline: clientData.deadline,
+      status: 'onboarding',
+      createdAt: new Date().toISOString()
+    };
+    
+    this.activeProjects.set(projectId, project);
+    
+    // Create GitHub repository
+    try {
+      const repoName = `${clientData.name.toLowerCase().replace(/\s+/g, '-')}-${clientData.service.toLowerCase().replace(/\s+/g, '-')}`;
+      const repo = await githubAgent.repos.createForAuthenticatedUser({
+        name: repoName,
+        description: `${clientData.service} platform for ${clientData.name}`,
+        private: true,
+        auto_init: true
+      });
+      
+      project.githubRepo = repo.html_url;
+      console.log(`✅ Created repo: ${repo.html_url}`);
+      
+      return {
+        success: true,
+        projectId,
+        message: `Project created for ${clientData.name}`,
+        nextStep: 'Design phase started',
+        timeline: this.generateTimeline(clientData.deadline),
+        githubRepo: repo.html_url
+      };
+    } catch (error) {
+      console.error('❌ GitHub repo creation failed:', error);
+      return {
+        success: false,
+        error: error.message
+      };
+    }
+  }
+
+  generateTimeline(deadline) {
+    return {
+      'Phase 1 - Design': '25% of time',
+      'Phase 2 - Development': '60% of time', 
+      'Phase 3 - Deployment': '15% of time',
+      'Total': deadline
+    };
+  }
+
+  getProjectStatus(projectId) {
+    const project = this.activeProjects.get(projectId);
+    return project || { error: 'Project not found' };
+  }
+
+  getAllProjects() {
+    return Array.from(this.activeProjects.values());
+  }
+
+  getAgentMetrics() {
+    return {
+      totalProjects: this.activeProjects.size,
+      byStatus: this.getProjectCountsByStatus(),
+      byAgent: this.getProjectCountsByAgent()
+    };
+  }
+
+  getProjectCountsByStatus() {
+    const counts = {};
+    this.activeProjects.forEach(project => {
+      counts[project.status] = (counts[project.status] || 0) + 1;
+    });
+    return counts;
+  }
+
+  getProjectCountsByAgent() {
+    const counts = {};
+    this.activeProjects.forEach(project => {
+      if (project.currentAgent) {
+        counts[project.currentAgent] = (counts[project.currentAgent] || 0) + 1;
+      }
+    });
+    return counts;
+  }
+}
+
+// Initialize LOA
 const loa = new LOAMaster();
-const githubAgent = new GitHubAgent(process.env.GITHUB_TOKEN);
-const zapier = new ZapierWorkflows();
 
 exports.handler = async (event, context) => {
   // CORS headers
