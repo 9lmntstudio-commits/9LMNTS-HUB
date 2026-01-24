@@ -1,11 +1,17 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./app"; // 1. Capitalized 'App' to match the component below
+import App from "./app"; // Match the lowercase 'a' in your app.tsx
 import "./index.css";
 
-// 2. Used the 'createRoot' variable directly as imported above
-createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  console.error("Failed to find the root element. Check your index.html for id='root'");
+} else {
+  const root = createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
