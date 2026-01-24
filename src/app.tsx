@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/Footer";
-import { HomePage } from "./components/HomePage";
-import { ServicesPage } from "./components/ServicesPage";
-import { PricingPage } from "./components/PricingPage";
-import { AboutPage } from "./components/AboutPage";
-import { StartProjectPage } from "./components/StartProjectPage";
-import { PortfolioPage } from "./components/PortfolioPage";
-import { AdminDashboard } from "./components/AdminDashboard";
-import { CRM } from "./components/CRM";
-import { EventOSDemo } from "./components/EventOSDemo";
+import { navbar } from "./components/navbar";
+import { footer } from "./components/footer";
+import { homepage } from "./components/homepage";
+import { servicespage } from "./components/servicespage";
+import { pricingpage } from "./components/pricingpage";
+import { aboutPage } from "./components/aboutpage";
+import { startprojectpage } from "./components/startprojectpage";
+import { portfoliopage } from "./components/portfoliopage";
+import { admindashboard } from "./components/admindashboard";
+import { crm } from "./components/crm";
+import { eventosdemo } from "./components/eventosdemo";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
