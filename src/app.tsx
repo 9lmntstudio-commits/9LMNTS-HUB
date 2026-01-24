@@ -1,27 +1,29 @@
 import { useState } from "react";
-import { navbar } from "./components/navbar";
-import { footer } from "./components/footer";
-import { homepage } from "./components/homepage";
-import { servicespage } from "./components/servicespage";
-import { pricingpage } from "./components/pricingpage";
-import { aboutPage } from "./components/aboutpage";
-import { startprojectpage } from "./components/startprojectpage";
-import { portfoliopage } from "./components/portfoliopage";
-import { admindashboard } from "./components/admindashboard";
-import { crm } from "./components/crm";
-import { eventosdemo } from "./components/eventosdemo";
+// Import names must be Capitalized to be used as React Components
+import { Navbar } from "./components/navbar";
+import { Footer } from "./components/footer";
+import { HomePage } from "./components/homepage";
+import { ServicesPage } from "./components/servicespage";
+import { PricingPage } from "./components/pricingpage";
+import { AboutPage } from "./components/aboutpage";
+import { StartProjectPage } from "./components/startprojectpage";
+import { PortfolioPage } from "./components/portfoliopage";
+import { AdminDashboard } from "./components/admindashboard";
+import { CRM } from "./components/crm";
+import { EventOSDemo } from "./components/eventosdemo";
+import { ClientPortal } from "./components/clientportal"; // Added missing import
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [selectedPlan, setSelectedPlan] = useState<
-    string | undefined
-  >(undefined);
+  const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
 
   const handleNavigate = (page: string, plan?: string) => {
     setCurrentPage(page);
     if (plan) {
       setSelectedPlan(plan);
     }
+    // Scroll to top on navigation
+    window.scrollTo(0, 0);
   };
 
   const renderPage = () => {
@@ -64,7 +66,7 @@ export default function App() {
   ].includes(currentPage);
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A]">
+    <div className="min-h-screen bg-[#1A1A1A] text-white">
       {!isStandalonePage && (
         <Navbar
           currentPage={currentPage}
