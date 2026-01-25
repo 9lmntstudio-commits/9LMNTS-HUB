@@ -1,6 +1,9 @@
 import { useState } from "react";
+// Layout Components
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+
+// Page Components - Matching your Capitalized file list
 import { HomePage } from "./components/HomePage";
 import { ServicesPage } from "./components/ServicesPage";
 import { PricingPage } from "./components/PricingPage";
@@ -10,18 +13,19 @@ import { PortfolioPage } from "./components/PortfolioPage";
 import { AdminDashboard } from "./components/AdminDashboard";
 import { CRM } from "./components/CRM";
 import { EventOSDemo } from "./components/EventOSDemo";
+import { ClientPortal } from "./components/ClientPortal"; // Added this missing import
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [selectedPlan, setSelectedPlan] = useState<
-    string | undefined
-  >(undefined);
+  const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
 
   const handleNavigate = (page: string, plan?: string) => {
     setCurrentPage(page);
     if (plan) {
       setSelectedPlan(plan);
     }
+    // Smooth scroll to top on navigation
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const renderPage = () => {
@@ -64,7 +68,7 @@ export default function App() {
   ].includes(currentPage);
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A]">
+    <div className="min-h-screen bg-[#1A1A1A] text-white">
       {!isStandalonePage && (
         <Navbar
           currentPage={currentPage}
