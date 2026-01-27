@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "./utils/supabase/client";
+import { supabase } from "./utils/supabase/client.js";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./components/HomePage";
