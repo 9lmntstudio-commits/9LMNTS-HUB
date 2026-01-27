@@ -15,9 +15,7 @@ import { EventOSDemo } from "./components/EventOSDemo";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [selectedPlan, setSelectedPlan] = useState<
-    string | undefined
-  >(undefined);
+  const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
