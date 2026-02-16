@@ -1,0 +1,9 @@
+2026-02-15 15:03:42,846 - __main__ - WARNING - Configuration validation failed - some features may not work
+2026-02-15 15:03:43,998 - automation.handlers.lead_processor - INFO - Webhook sent: 200
+2026-02-15 15:03:44,007 - automation.handlers.lead_processor - ERROR - Database error: table leads has no column named qualification_score
+2026-02-15 15:03:44,016 - automation.handlers.notifications - ERROR - Email error: please run connect() first
+2026-02-15 15:03:44,018 - automation.handlers.notifications - ERROR - Email error: please run connect() first
+2026-02-15 15:03:44,025 - __main__ - INFO -    Lead ID: None
+2026-02-15 15:03:44,025 - __main__ - INFO -    Score: 100/100
+2026-02-15 15:03:44,025 - __main__ - INFO -    Category: HOT
+2026-02-15 15:03:44,026 - __main__ - INFO -    Payment Link: https://PayPal.Me/9LMNTSSTUDIO/3000
