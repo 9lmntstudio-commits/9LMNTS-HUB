@@ -1,5 +1,4 @@
 import { ArrowRight, Sparkles, Zap, Layers } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import soundClashImg from '/images/sound-clash-1.png';
 import weddingImg from '/images/wedding-1.png';
 import corporateImg from '/images/corporate-1.png';
@@ -189,7 +188,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 className="group cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4 aspect-[4/3] bg-[#222222]">
-                  <ImageWithFallback
+                  <img
                     src={work.image as unknown as string}
                     alt={work.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
