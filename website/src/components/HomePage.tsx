@@ -1,8 +1,8 @@
 import { ArrowRight, Sparkles, Zap, Layers } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import soundClashImg from '/images/sound-clash-1.png';
-import weddingImg from '/images/wedding-1.png';
-import corporateImg from '/images/corporate-1.png';
+import soundClashImg from '../public/images/sound-clash-1.png';
+import weddingImg from '../public/images/wedding-1.png';
+import corporateImg from '../public/images/corporate-1.png';
 
 interface HomePageProps {
   onNavigate: (page: string, plan?: string) => void;
