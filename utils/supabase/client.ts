@@ -1,16 +1,19 @@
-import { createClient } from "@supabase/supabase-js";
-import { projectId, publicAnonKey } from "./info";
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-// Create a singleton Supabase client to avoid multiple instances
-let supabaseClient: ReturnType<typeof createClient> | null =
-  null;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
-export function getSupabaseClient() {
-  if (!supabaseClient) {
-    supabaseClient = createClient(
-      `https://${projectId}.supabase.co`,
-      publicAnonKey,
-    );
-  }
-  return supabaseClient;
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('Missing Supabase env vars (VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY).');
 }
+
+let client: SupabaseClient | null = null;
+
+export function getSupabaseClient(): SupabaseClient {
+  if (!client) {
+    client = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '');
+  }
+  return client;
+}
+
+export const supabase = getSupabaseClient();
