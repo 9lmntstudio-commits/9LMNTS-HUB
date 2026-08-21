@@ -5,9 +5,9 @@ import {
   Layers,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import img1 from "../../imports/image-1.png";
-import img2 from "../../imports/image-2.png";
-import img3 from "../../imports/image-3.png";
+import img1 from "../imports/image-1.png";
+import img2 from "../imports/image-2.png";
+import img3 from "../imports/image-3.png";
 import { SEO } from "./SEO";
 const soundClashImg = img3;
 const weddingImg    = img2;
