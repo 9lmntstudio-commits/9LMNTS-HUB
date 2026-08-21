@@ -1,0 +1,80 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "9LMNTS Studio",
+  "url": "https://9lmntsstudio.com",
+  "logo": "https://9lmntsstudio.com/imports/Main_website_logo_9lmnts_studio.png",
+  "description": "9LMNTS Studio delivers futuristic web experiences and proprietary event management platforms with true black cyber aesthetics. Expert web development, UI/UX design, and digital transformation services.",
+  "foundingDate": "2024",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "",
+    "addressRegion": "",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "",
+    "contactType": "customer service",
+    "email": "info@9lmntsstudio.com",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://twitter.com/9lmntsstudio",
+    "https://instagram.com/9lmntsstudio",
+    "https://linkedin.com/company/9lmntsstudio"
+  ],
+  "services": [
+    {
+      "@type": "Service",
+      "name": "Web Development",
+      "description": "Custom web applications with futuristic design and cyber aesthetics"
+    },
+    {
+      "@type": "Service",
+      "name": "Event Management Platforms",
+      "description": "Proprietary OS platforms: Sound Clash OS, Gate OS, Venue OS, Event OS"
+    },
+    {
+      "@type": "Service",
+      "name": "UI/UX Design",
+      "description": "Cyber aesthetic design systems and user experience optimization"
+    },
+    {
+      "@type": "Service",
+      "name": "Digital Transformation",
+      "description": "Technology strategy and digital business transformation consulting"
+    }
+  ],
+  "product": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Sound Clash OS",
+      "applicationCategory": "EventManagement",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Gate OS",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Venue OS",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Event OS",
+      "applicationCategory": "EventManagement",
+      "operatingSystem": "Web"
+    }
+  ]
+}
