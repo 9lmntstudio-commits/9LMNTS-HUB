@@ -168,41 +168,98 @@ curl https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generate
 
 ---
 
-## 4. Qwen API Setup
+## 4. Alibaba Cloud Qwen API Setup
 
 ### Step 1: Create Alibaba Cloud Account
 1. Go to https://www.alibabacloud.com
-2. Click "Free Account"
-3. Register with email
-4. Complete identity verification
+2. Click "Free Account" or "Sign Up"
+3. Register with email or phone number
+4. Complete identity verification (may require ID or passport)
+5. Set up account security (password, phone verification)
+6. Choose your preferred region (closest to your location)
 
 ### Step 2: Activate Qwen Service
 1. Go to https://www.alibabacloud.com/product/qwen
 2. Click "Free Trial" or "Buy Now"
-3. Select the free tier if available
+3. Select the free tier if available (typically includes free credits)
 4. Complete the activation process
+5. Wait for service activation (usually instant)
+6. Verify service is active in your Alibaba Cloud console
 
-### Step 3: Get API Key
+### Step 3: Get AccessKey Pair
 1. Go to https://ram.console.aliyun.com/manage/ak
-2. Create an AccessKey pair
-3. Save the AccessKey ID and AccessKey Secret securely
+2. Click "Create AccessKey"
+3. Complete security verification (SMS or email)
+4. Save both the **AccessKey ID** and **AccessKey Secret** securely
+5. **Important**: You won't see the Secret again - save it immediately
+6. Enable MFA (Multi-Factor Authentication) for additional security
 
-### Step 4: Configure Qwen API
+### Step 4: Configure DashScope (Qwen API Platform)
 1. Go to https://dashscope.console.aliyun.com
-2. Select "API-KEY Management"
-3. Create a new API key
-4. Copy the API key for use in your application
+2. Sign in with your Alibaba Cloud account
+3. Navigate to "API-KEY Management"
+4. Click "Create API Key"
+5. Name your API key: `9lmnts-studio-loa`
+6. Copy the API key (format: `sk-xxxxxxxxxxxxxxxx`)
+7. Save the API key securely in your password manager
 
-### Step 5: Test API
+### Step 5: Enable Required Services
+1. Go to https://dashscope.console.aliyun.com
+2. Ensure these services are enabled:
+   - **Qwen-Turbo**: Fast, cost-effective model
+   - **Qwen-Plus**: Balanced performance model
+   - **Qwen-Max**: High-performance model
+3. Check your free tier limits and usage quotas
+4. Set up billing alerts if you exceed free tier
+
+### Step 6: Install Python SDK (Optional)
+```bash
+pip install dashscope
+```
+
+### Step 7: Test Qwen API
+**Using curl:**
 ```bash
 curl https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation \
   -H "Authorization: Bearer YOUR_QWEN_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "qwen-turbo",
-    "input": {"prompt": "Hello"}
+    "input": {"prompt": "Hello, this is a test message"}
   }'
 ```
+
+**Using Python SDK:**
+```python
+import dashscope
+
+dashscope.api_key = "YOUR_QWEN_API_KEY"
+
+response = dashscope.Generation.call(
+    model='qwen-turbo',
+    prompt='Hello, this is a test message'
+)
+
+print(response)
+```
+
+### Step 8: Available Qwen Models
+- **qwen-turbo**: Fast, cost-effective (recommended for most tasks)
+- **qwen-plus**: Balanced performance and cost
+- **qwen-max**: Highest performance, more expensive
+- **qwen-vl-max**: Vision-language model for images
+- **qwen-audio**: Audio processing model
+
+### Step 9: Configure Rate Limits
+1. Go to DashScope console
+2. Check your current rate limits (requests per minute)
+3. Request higher limits if needed for production
+4. Monitor usage to avoid unexpected charges
+
+### Step 10: Set Up Webhooks (Optional)
+1. Configure webhooks for async processing
+2. Set up callback URLs for long-running tasks
+3. Implement error handling for webhook failures
 
 ---
 
@@ -609,6 +666,8 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 DEEPSEEK_API_KEY=your-deepseek-api-key
 GEMINI_API_KEY=your-gemini-api-key
 QWEN_API_KEY=your-qwen-api-key
+ALIBABA_ACCESS_KEY_ID=your-alibaba-access-key-id
+ALIBABA_ACCESS_KEY_SECRET=your-alibaba-access-key-secret
 OPENAI_API_KEY=your-openai-api-key
 
 # N8N Configuration
