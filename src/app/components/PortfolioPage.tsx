@@ -55,28 +55,28 @@ export function PortfolioPage({
   const projects: Project[] = [
     {
       id: "sound-clash",
-      category: "NIGHTLIFE & ENTERTAINMENT",
+      category: "9LMNTS OS SERIES",
       title: "Sound Clash OS",
       description:
-        'Turn the crowd into the judge. A real-time voting engine for DJ battles, rap battles, and dance-offs. Features: Live "Hype" Meter, Song Request Line, VIP Bottle Service Upgrades.',
+        'Turn the crowd into the judge. A real-time voting engine for DJ battles, rap battles, and dance-offs. Features: Live "Hype" Meter, Song Request Line, VIP Bottle Service Upgrades, Profit Calculator, Event Management Dashboard.',
       color: "#E91E63",
       images: [soundClashImg1, soundClashImg2, soundClashImg3],
     },
     {
       id: "the-union",
-      category: "LIFESTYLE & EVENTS",
+      category: "9LMNTS OS SERIES",
       title: "The Union: Wedding OS",
       description:
-        "Modernize the reception. No more clinking glasses—guests complete challenges to unlock rewards. Features: Digital Guestbook, Buy the Couple a Round, Photo Scavenger Hunt.",
+        "Modernize the reception. No more clinking glasses—guests complete challenges to unlock rewards. Features: Digital Guestbook, Buy the Couple a Round, Photo Scavenger Hunt, Gift Registry Integration, Custom Branding.",
       color: "#FF7A00",
       images: [weddingImg1, weddingImg2, weddingImg3],
     },
     {
       id: "corporate-clash",
-      category: "BUSINESS & TECH",
-      title: "Corporate Clash",
+      category: "9LMNTS OS SERIES",
+      title: "Corporate Clash OS",
       description:
-        'Gamify the boardroom. Perfect for startup pitch competitions, town halls, and internal hackathons. Features: Real-time Investment Simulation, Networking "Who\'s Here" Grid, Audience Q&A Upvoting.',
+        'Gamify the boardroom. Perfect for startup pitch competitions, town halls, and internal hackathons. Features: Real-time Investment Simulation, Networking "Who\'s Here" Grid, Audience Q&A Upvoting, Analytics Dashboard.',
       color: "#00D4FF",
       images: [
         corporateImg1,

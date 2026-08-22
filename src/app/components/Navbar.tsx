@@ -21,7 +21,6 @@ export function Navbar({
 
   const navLinks = [
     { name: "Home", id: "home" },
-    { name: "Services", id: "services" },
     { name: "Portfolio", id: "portfolio" },
     { name: "Pricing", id: "pricing" },
     { name: "EventOS Demo", id: "event-os-demo" },
@@ -124,10 +123,10 @@ export function Navbar({
                   Login
                 </button>
                 <button
-                  onClick={() => onNavigate("start-project")}
+                  onClick={() => onNavigate("pricing")}
                   className="px-6 py-2.5 bg-primary text-primary-foreground rounded-none text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors border border-primary shadow-[0_0_15px_rgba(255,69,0,0.3)]"
                 >
-                  Start Project
+                  Get Started
                 </button>
               </div>
             )}
@@ -217,12 +216,12 @@ export function Navbar({
                   </button>
                   <button
                     onClick={() => {
-                      onNavigate("start-project");
+                      onNavigate("pricing");
                       setMobileMenuOpen(false);
                     }}
                     className="px-4 py-4 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest border border-primary shadow-[0_0_15px_rgba(255,69,0,0.2)]"
                   >
-                    Start Project
+                    Get Started
                   </button>
                 </div>
               )}

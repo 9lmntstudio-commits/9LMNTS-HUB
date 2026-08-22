@@ -16,7 +16,6 @@ import {
   EventOSData,
 } from "./EventOSData";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { GateOSCheckoutModal } from "./GateOSCheckoutModal";
 import { SEO } from "./SEO";
 
 interface EventOSDemoProps {
@@ -1406,17 +1405,6 @@ export function EventOSDemo({ onNavigate }: EventOSDemoProps) {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <GateOSCheckoutModal 
-        isOpen={isCheckoutModalOpen}
-        onClose={() => setIsCheckoutModalOpen(false)}
-        invoiceDetails={{
-          id: `NX-${Math.floor(Math.random() * 10000)}`,
-          title: "Gate OS Access Ticket",
-          amount: 150.00,
-          description: "Standard Access Pass + VIP Entry"
-        }}
-      />
 
       <style>{`
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }

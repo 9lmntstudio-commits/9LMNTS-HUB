@@ -2,16 +2,12 @@ import { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./components/HomePage";
-import { ServicesPage } from "./components/ServicesPage";
 import { PricingPage } from "./components/PricingPage";
 import { AboutPage } from "./components/AboutPage";
-import { StartProjectPage } from "./components/StartProjectPage";
 import { PortfolioPage } from "./components/PortfolioPage";
 import { AdminDashboardFull } from "./components/AdminDashboardFull";
 import { CRM } from "./components/CRM";
-import { ClientPortal } from "./components/ClientPortal";
 import { EventOSDemo } from "./components/EventOSDemo";
-import { ClashOS } from "./components/ClashOS";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { SEO } from "./components/SEO";
@@ -138,21 +134,12 @@ export default function App() {
     switch (currentPage) {
       case "home":
         return <HomePage onNavigate={handleNavigate} />;
-      case "services":
-        return <ServicesPage onNavigate={handleNavigate} />;
       case "pricing":
         return <PricingPage onNavigate={handleNavigate} />;
       case "portfolio":
         return <PortfolioPage onNavigate={handleNavigate} />;
       case "about":
         return <AboutPage onNavigate={handleNavigate} />;
-      case "start-project":
-        return (
-          <StartProjectPage
-            selectedPlan={selectedPlan}
-            onNavigate={handleNavigate}
-          />
-        );
       case "login":
         return (
           <Login
@@ -182,12 +169,8 @@ export default function App() {
         );
       case "crm":
         return <CRM onNavigate={handleNavigate} />;
-      case "client-portal":
-        return <ClientPortal onNavigate={handleNavigate} />;
       case "event-os-demo":
         return <EventOSDemo onNavigate={handleNavigate} />;
-      case "ClashOS":
-        return <ClashOS onNavigate={handleNavigate} />;
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }
@@ -196,9 +179,7 @@ export default function App() {
   const isStandalonePage = [
     "admin",
     "crm",
-    "client-portal",
     "event-os-demo",
-    "ClashOS",
     "login",
     "signup",
   ].includes(currentPage);
