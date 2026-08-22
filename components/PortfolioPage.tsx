@@ -55,7 +55,7 @@ export function PortfolioPage({
   const projects: Project[] = [
     {
       id: "sound-clash",
-      category: "NIGHTLIFE & ENTERTAINMENT",
+      category: "9LMNTS OS SERIES",
       title: "Sound Clash OS",
       description:
         'Turn the crowd into the judge. A real-time voting engine for DJ battles, rap battles, and dance-offs. Features: Live "Hype" Meter, Song Request Line, VIP Bottle Service Upgrades.',
@@ -63,29 +63,31 @@ export function PortfolioPage({
       images: [soundClashImg1, soundClashImg2, soundClashImg3],
     },
     {
-      id: "the-union",
-      category: "LIFESTYLE & EVENTS",
-      title: "The Union: Wedding OS",
+      id: "gate-os",
+      category: "9LMNTS OS SERIES",
+      title: "Gate OS",
       description:
-        "Modernize the reception. No more clinking glasses—guests complete challenges to unlock rewards. Features: Digital Guestbook, Buy the Couple a Round, Photo Scavenger Hunt.",
+        "Revolutionize event entry. Seamless ticketing, VIP access management, and real-time crowd analytics. Features: Digital Ticket Scanning, Queue Management, VIP Priority Access.",
+      color: "#00D4FF",
+      images: [corporateImg1, corporateImg2, corporateImg3],
+    },
+    {
+      id: "venue-os",
+      category: "9LMNTS OS SERIES",
+      title: "Venue OS",
+      description:
+        "Complete venue management system. Table reservations, bottle service ordering, and staff coordination. Features: Real-time Table Map, Order Management, Staff Dashboard.",
       color: "#FF7A00",
       images: [weddingImg1, weddingImg2, weddingImg3],
     },
     {
-      id: "corporate-clash",
-      category: "BUSINESS & TECH",
-      title: "Corporate Clash",
+      id: "event-os",
+      category: "9LMNTS OS SERIES",
+      title: "Event OS",
       description:
-        'Gamify the boardroom. Perfect for startup pitch competitions, town halls, and internal hackathons. Features: Real-time Investment Simulation, Networking "Who\'s Here" Grid, Audience Q&A Upvoting.',
-      color: "#00D4FF",
-      images: [
-        corporateImg1,
-        corporateImg2,
-        corporateImg3,
-        corporateImg4,
-        corporateImg5,
-        corporateImg6,
-      ],
+        "Full event lifecycle management. From planning to execution, track everything in one platform. Features: Event Timeline, Vendor Management, Attendee Analytics.",
+      color: "#9C27B0",
+      images: [corporateImg4, corporateImg5, corporateImg6],
     },
   ];
 
@@ -93,7 +95,7 @@ export function PortfolioPage({
     <div className="min-h-screen bg-background pt-16 font-['Orbitron'] text-foreground">
       <SEO 
         title="Portfolio | 9LMNTS Studio" 
-        description="Explore our cyber aesthetic web applications, from Sound Clash OS to Corporate Clash. See how we redefine digital experiences." 
+        description="Explore the 9LMNTS OS Series - Sound Clash OS, Gate OS, Venue OS, and Event OS. Revolutionary event management platforms with cyber aesthetics." 
       />
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">

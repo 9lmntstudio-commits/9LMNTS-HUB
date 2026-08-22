@@ -21,7 +21,6 @@ export function Navbar({
 
   const navLinks = [
     { name: "Home", id: "home" },
-    { name: "Services", id: "services" },
     { name: "Portfolio", id: "portfolio" },
     { name: "Pricing", id: "pricing" },
     { name: "EventOS Demo", id: "event-os-demo" },
@@ -116,20 +115,12 @@ export function Navbar({
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => onNavigate("login")}
-                  className="px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors"
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => onNavigate("start-project")}
-                  className="px-6 py-2.5 bg-primary text-primary-foreground rounded-none text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors border border-primary shadow-[0_0_15px_rgba(255,69,0,0.3)]"
-                >
-                  Start Project
-                </button>
-              </div>
+              <button
+                onClick={() => onNavigate("login")}
+                className="px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors"
+              >
+                Login
+              </button>
             )}
           </div>
 
@@ -205,26 +196,15 @@ export function Navbar({
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    onClick={() => {
-                      onNavigate("login");
-                      setMobileMenuOpen(false);
-                    }}
-                    className="px-4 py-4 border border-primary/20 text-foreground text-[10px] font-bold uppercase tracking-widest"
-                  >
-                    Login
-                  </button>
-                  <button
-                    onClick={() => {
-                      onNavigate("start-project");
-                      setMobileMenuOpen(false);
-                    }}
-                    className="px-4 py-4 bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest border border-primary shadow-[0_0_15px_rgba(255,69,0,0.2)]"
-                  >
-                    Start Project
-                  </button>
-                </div>
+                <button
+                  onClick={() => {
+                    onNavigate("login");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full px-4 py-4 border border-primary/20 text-foreground text-[10px] font-bold uppercase tracking-widest"
+                >
+                  Login
+                </button>
               )}
             </div>
           </div>
