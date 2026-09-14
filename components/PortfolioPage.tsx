@@ -25,19 +25,19 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { SEO } from "./SEO";
 
 // Image Imports with fallbacks
-import sc1 from "../../imports/sound-clash-1.png";
-import sc2 from "../../imports/sound-clash-2.png";
-import sc3 from "../../imports/sound-clash-3.png";
-import clashBoardImg from "../../imports/Clash_OS_image_2.png";
-import gateImg from "../../imports/Gate_OS_image-1.png";
-import presentingImg from "../../imports/PRESENTING.png";
-import presenting2Img from "../../imports/PRESENTING-2.png";
-import qrTargetImg from "../../imports/Sound Clash OS - Official Print QR Code (300 DPI).png";
-import wed1 from "../../imports/wedding-1.png";
-import wed2 from "../../imports/wedding-2.png";
-import corp1 from "../../imports/corporate-1.png";
-import corp2 from "../../imports/corporate-2.png";
-import corp3 from "../../imports/corporate-3.png";
+import sc1 from "../imports/sound-clash-1.png";
+import sc2 from "../imports/sound-clash-2.png";
+import sc3 from "../imports/sound-clash-3.png";
+import clashBoardImg from "../imports/Clash_OS_image_2.png";
+import gateImg from "../imports/Gate_OS_image-1.png";
+import presentingImg from "../imports/PRESENTING.png";
+import presenting2Img from "../imports/PRESENTING-2.png";
+import qrTargetImg from "../imports/Sound Clash OS - Official Print QR Code (300 DPI).png";
+import wed1 from "../imports/wedding-1.png";
+import wed2 from "../imports/wedding-2.png";
+import corp1 from "../imports/corporate-1.png";
+import corp2 from "../imports/corporate-2.png";
+import corp3 from "../imports/corporate-3.png";
 
 interface PortfolioPageProps {
   onNavigate: (page: string, plan?: string) => void;
