@@ -11,7 +11,7 @@ import {
   MapPin, Brain, Heart, ThumbsUp, CheckSquare,
 } from "lucide-react";
 import {
-  SOUND_CLASH_DATA, CORPORATE_CLASH_DATA, RECEPTION_OS_DATA,
+  SOUND_CLASH_DATA, ARTIST_OS_DATA, CORPORATE_CLASH_DATA, RECEPTION_OS_DATA,
   COMEDIAN_OS_DATA, VENUE_OS_DATA, UNCLE_JAY_OS_DATA, GAMING_OS_DATA,
   EventOSData,
 } from "./EventOSData";
@@ -25,6 +25,7 @@ interface EventOSDemoProps {
 
 const THEMES: Record<string, EventOSData> = {
   nightlife: SOUND_CLASH_DATA,
+  artist:    ARTIST_OS_DATA,
   corporate: CORPORATE_CLASH_DATA,
   wedding:   RECEPTION_OS_DATA,
   comedy:    COMEDIAN_OS_DATA,

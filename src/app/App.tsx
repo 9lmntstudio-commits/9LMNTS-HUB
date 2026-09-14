@@ -12,6 +12,7 @@ import { CRM } from "./components/CRM";
 import { ClientPortal } from "./components/ClientPortal";
 import { EventOSDemo } from "./components/EventOSDemo";
 import { ClashOS } from "./components/ClashOS";
+import { LoaPage } from "./components/LoaPage";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { SEO } from "./components/SEO";
@@ -188,6 +189,8 @@ export default function App() {
         return <EventOSDemo onNavigate={handleNavigate} />;
       case "ClashOS":
         return <ClashOS onNavigate={handleNavigate} />;
+      case "loa":
+        return <LoaPage onNavigate={handleNavigate} />;
       default:
         return <HomePage onNavigate={handleNavigate} />;
     }
