@@ -32,7 +32,7 @@ import clashBoardImg from "../imports/Clash_OS_image_2.png";
 import gateImg from "../imports/Gate_OS_image-1.png";
 import presentingImg from "../imports/PRESENTING.png";
 import presenting2Img from "../imports/PRESENTING-2.png";
-import qrTargetImg from "../imports/Sound Clash OS - Official Print QR Code (300 DPI).png";
+
 import wed1 from "../imports/wedding-1.png";
 import wed2 from "../imports/wedding-2.png";
 import corp1 from "../imports/corporate-1.png";
@@ -198,7 +198,7 @@ export function PortfolioPage({ onNavigate }: PortfolioPageProps) {
         "Holographic 3D winner trophies & live vote leaderboards floating in mid-air",
         "NFC + WebAR hybrid event wristbands for instant VIP verification",
       ],
-      images: [qrTargetImg, presentingImg, gateImg],
+      images: [presenting2Img, presentingImg, gateImg],
       primaryAction: {
         label: "Book AR Sprint",
         targetRoute: "start-project",
