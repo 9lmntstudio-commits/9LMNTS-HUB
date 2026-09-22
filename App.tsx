@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./components/HomePage";
+import { OverTheShoulderScrollytelling } from "./components/OverTheShoulderScrollytelling";
 import { ServicesPage } from "./components/ServicesPage";
 import { PricingPage } from "./components/PricingPage";
 import { AboutPage } from "./components/AboutPage";
@@ -12,6 +13,8 @@ import { CRM } from "./components/CRM";
 import { ClientPortal } from "./components/ClientPortal";
 import { EventOSDemo } from "./components/EventOSDemo";
 import { ClashOS } from "./components/ClashOS";
+import { CorporateClashShowcase } from "./components/CorporateClashShowcase";
+import { ArenaCircuitHub } from "./components/ArenaCircuitHub";
 import { LoaPage } from "./components/LoaPage";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
@@ -138,6 +141,9 @@ export default function App() {
   const renderPage = () => {
     switch (currentPage) {
       case "home":
+        return <OverTheShoulderScrollytelling onNavigate={handleNavigate} />;
+      case "home-classic":
+      case "overview":
         return <HomePage onNavigate={handleNavigate} />;
       case "services":
         return <ServicesPage onNavigate={handleNavigate} />;
@@ -189,10 +195,22 @@ export default function App() {
         return <EventOSDemo onNavigate={handleNavigate} />;
       case "ClashOS":
         return <ClashOS onNavigate={handleNavigate} />;
+      case "corporate-clash":
+        return (
+          <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <CorporateClashShowcase onNavigate={handleNavigate} />
+          </div>
+        );
+      case "arena-circuit":
+        return (
+          <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <ArenaCircuitHub onNavigate={handleNavigate} />
+          </div>
+        );
       case "loa":
         return <LoaPage onNavigate={handleNavigate} />;
       default:
-        return <HomePage onNavigate={handleNavigate} />;
+        return <OverTheShoulderScrollytelling onNavigate={handleNavigate} />;
     }
   };
 

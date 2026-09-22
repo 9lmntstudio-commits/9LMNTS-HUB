@@ -30,6 +30,7 @@ export function Navbar({
 
   const navLinks = [
     { name: "Home", id: "home" },
+    { name: "Arena Circuit", id: "arena-circuit" },
     { name: "Services", id: "services" },
     { name: "Portfolio", id: "portfolio" },
     { name: "LOA Game", id: "loa", isGame: true },
@@ -141,6 +142,20 @@ export function Navbar({
                   </a>
 
                   <button
+                    onClick={() => onNavigate("corporate-clash")}
+                    className="w-full text-left flex items-center justify-between px-3 py-2.5 rounded hover:bg-[#121624] text-xs text-white transition-colors group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FFB800]" />
+                      <div>
+                        <div className="font-bold font-['Orbitron'] text-[11px]">Corporate Clash OS</div>
+                        <div className="text-[9px] text-[#8E9BAE] font-sans">PropTech & AI Pitch Battle</div>
+                      </div>
+                    </div>
+                    <span className="text-[9px] font-mono text-[#FFB800]">LIVE</span>
+                  </button>
+
+                  <button
                     onClick={() => onNavigate("event-os-demo")}
                     className="w-full text-left flex items-center justify-between px-3 py-2.5 rounded hover:bg-[#121624] text-xs text-white transition-colors group"
                   >
@@ -235,6 +250,20 @@ export function Navbar({
               </span>
               <ExternalLink className="w-3.5 h-3.5 text-[#8E9BAE]" />
             </a>
+
+            <button
+              onClick={() => {
+                onNavigate("corporate-clash");
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-left flex items-center justify-between px-3 py-2 text-xs text-white hover:bg-[#121624] rounded-lg"
+            >
+              <span className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#FFB800]" />
+                <span>Corporate Clash OS (Pitch Battle)</span>
+              </span>
+              <span className="text-[10px] text-[#FFB800] font-mono">LIVE</span>
+            </button>
 
             <button
               onClick={() => {

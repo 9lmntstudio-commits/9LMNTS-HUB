@@ -3,12 +3,16 @@ import {
   Sparkles,
   Zap,
   Layers,
+  CheckCircle,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import img1 from "../imports/image-1.png";
 import img2 from "../imports/image-2.png";
 import img3 from "../imports/image-3.png";
 import { SEO } from "./SEO";
+import { ArenaCircuitHub } from "./ArenaCircuitHub";
+import { CorporateClashShowcase } from "./CorporateClashShowcase";
+
 const soundClashImg = img3;
 const weddingImg    = img2;
 const corporateImg  = img1;
@@ -30,50 +34,52 @@ export function HomePage({ onNavigate }: HomePageProps) {
       image: weddingImg,
     },
     {
-      title: "Corporate Clash",
-      category: "Business & Tech",
+      title: "Corporate Clash OS",
+      category: "PropTech & Enterprise AI",
       image: corporateImg,
     },
   ];
 
   const pricingTiers = [
     {
-      name: "Flow Element",
+      name: "7-Day Kickstarter",
       price: "$1,500",
       planValue: "basic",
+      desc: "Rapid Landing Page & Supabase Edge Setup",
       features: [
-        "Basic Web Design",
-        "3 Page Website",
-        "Mobile Responsive",
-        "1 Month Support",
-      ],
-    },
-    {
-      name: "Beat Element",
-      price: "$3,000",
-      planValue: "standard",
-      features: [
-        "Advanced Design",
-        "Up to 10 Pages",
-        "Custom Animations",
-        "3 Months Support",
-        "SEO Optimization",
+        "7-Day Delivery Sprint",
+        "Flame Orange Cyber Aesthetic",
+        "Supabase Lead-Intake Function",
+        "PayPal Complete Payments / Pay in 4",
       ],
       highlighted: false,
     },
     {
-      name: "Cypher Element",
-      price: "$5,000",
-      planValue: "premium",
+      name: "7-Day Pro Agency",
+      price: "$2,500",
+      planValue: "standard",
+      desc: "Full-Stack App with 2.5D Canvas & Realtime",
       features: [
-        "Premium Design",
-        "Unlimited Pages",
-        "Full Stack Development",
-        "6 Months Support",
-        "AI Integration",
-        "Custom CMS",
+        "Full-Stack React + Vite + Tailwind",
+        "Interactive 2.5D Scroll Canvas",
+        "Supabase PostgreSQL & Realtime PubSub",
+        "85vh Master Modal Drawer Shell",
+        "Netlify Production Staging",
       ],
       highlighted: true,
+    },
+    {
+      name: "7-Day Enterprise Elite",
+      price: "$5,000",
+      planValue: "premium",
+      desc: "Turnkey System with CRM & Gemini AI Engine",
+      features: [
+        "Custom CRM & Client Portal",
+        "Gemini 1.5 Flash AI Qualification",
+        "High-Concurrency Live Jumbotron Sync",
+        "Dedicated Architecture with Darnley Sanon",
+      ],
+      highlighted: false,
     },
   ];
 
@@ -235,8 +241,33 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      {/* Official Q4 2026 Arena Circuit & 9 OS Verticals */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#050505] border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <ArenaCircuitHub onNavigate={onNavigate} />
+        </div>
+      </section>
+
+      {/* Corporate Clash OS Interactive Arena Showcase */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0A0B10] border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10 text-center max-w-3xl mx-auto">
+            <span className="text-xs font-mono text-[#00D2FF] font-bold px-3 py-1 rounded-full bg-[#00D2FF]/10 border border-[#00D2FF]/30">
+              FEATURED ARENA ENGINE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-['Syne',sans-serif] mt-3 text-white">
+              Corporate Clash OS // Live Demo Arena
+            </h2>
+            <p className="text-sm text-gray-400 mt-2">
+              Experience the live pitch timer, corporate sponsor marquee, and OSC Rule 45-501 compliant soft syndicate pledge drawer.
+            </p>
+          </div>
+          <CorporateClashShowcase onNavigate={onNavigate} />
+        </div>
+      </section>
+
       {/* Featured Work */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background border-t border-white/10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-5xl text-foreground mb-4">
@@ -310,30 +341,80 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Pricing Teaser */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card border-t border-border">
+      {/* 7-Day Sprints Pricing Teaser */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0F0F0F] border-t border-border">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-5xl text-foreground mb-4">
-              <span className="font-['Orbitron']">
-                Choose Your
-              </span>{" "}
-              <span className="font-['Mrs_Saint_Delafield'] text-primary text-4xl sm:text-6xl capitalize ml-[-5px] -rotate-3 inline-block">
-                Element
-              </span>
+          <div className="mb-14">
+            <span className="px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-mono uppercase tracking-widest">
+              AUTONOMOUS EXECUTION
+            </span>
+            <h2 className="text-3xl sm:text-5xl text-foreground mt-3 mb-4 font-bold font-['Syne',sans-serif]">
+              7-Day Production Sprints
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Flexible pricing for every stage of your journey
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto font-['Plus_Jakarta_Sans',sans-serif]">
+              From concept to live Netlify deployment and Supabase backend in 7 days. Backed by PayPal Complete Payments & Pay in 4.
             </p>
           </div>
 
-          <div>
+          <div className="grid md:grid-cols-3 gap-6 mb-12 text-left">
+            {pricingTiers.map((tier, idx) => (
+              <div
+                key={idx}
+                className={`p-6 rounded-2xl flex flex-col justify-between transition-all ${
+                  tier.highlighted
+                    ? "bg-[#121624] border-2 border-primary shadow-[0_0_30px_rgba(255,85,0,0.25)] scale-105 z-10"
+                    : "bg-[#0A0B10] border border-white/10 hover:border-white/20"
+                }`}
+              >
+                <div>
+                  {tier.highlighted && (
+                    <span className="inline-block px-2.5 py-0.5 mb-3 text-[10px] font-mono font-bold bg-primary text-black rounded uppercase">
+                      Most Popular
+                    </span>
+                  )}
+                  <h3 className="text-xl font-bold font-['Syne',sans-serif] text-white">
+                    {tier.name}
+                  </h3>
+                  <div className="my-3">
+                    <span className="text-3xl font-black font-mono text-primary">
+                      {tier.price}
+                    </span>
+                    <span className="text-xs text-gray-400 font-mono ml-1">CAD</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mb-6 font-['Plus_Jakarta_Sans',sans-serif]">
+                    {tier.desc}
+                  </p>
+                  <ul className="space-y-2.5 mb-8 font-['Plus_Jakarta_Sans',sans-serif]">
+                    {tier.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="text-xs text-gray-300 flex items-start gap-2">
+                        <CheckCircle className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <button
+                  onClick={() => onNavigate("start-project", tier.planValue)}
+                  className={`w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all ${
+                    tier.highlighted
+                      ? "bg-primary hover:bg-primary/90 text-white shadow-lg"
+                      : "bg-white/10 hover:bg-white/20 text-white border border-white/10"
+                  }`}
+                >
+                  Book 7-Day Sprint
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => onNavigate("pricing")}
-              className="px-8 py-4 bg-primary text-primary-foreground rounded-none font-bold hover:bg-primary/90 transition-all inline-flex items-center gap-2 transform hover:scale-105 border border-primary"
+              className="px-8 py-3.5 bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary/90 transition-all inline-flex items-center gap-2 shadow-lg"
             >
-              View All Plans
-              <ArrowRight size={20} />
+              Compare All Sprints & Spatial Builds
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>

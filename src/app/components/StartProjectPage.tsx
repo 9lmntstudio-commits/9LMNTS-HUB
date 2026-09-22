@@ -38,8 +38,7 @@ import {
 } from "../utils/supabase/info";
 
 /* ─── Config ────────────────────────────────────────────────── */
-const N8N_WEBHOOK_URL =
-  "https://ixlmnts.app.n8n.cloud/webhook/9lmnts-leads";
+const LEAD_INTAKE_URL = `https://${projectId}.supabase.co/functions/v1/lead-intake`;
 const SERVER_URL = `https://${projectId}.supabase.co/functions/v1/make-server-662c70dc`;
 
 /* ─── Types ─────────────────────────────────────────────────── */
@@ -596,17 +595,27 @@ Source: 9lmnts.com/start-project
       emailErrorDetail = err.message || "Failed to send email notification";
     }
 
-    // 2 — n8n webhook (non-blocking, no-cors mode)
-    fetch(N8N_WEBHOOK_URL, {
+    // 2 — Supabase Lead Intake Edge Function (non-blocking)
+    fetch(LEAD_INTAKE_URL, {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${publicAnonKey}`,
+        apikey: publicAnonKey,
+      },
       body: JSON.stringify({
-        ...formData,
+        fullName: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        projectType: selectedService?.title || "Custom Project",
+        timeline: formData.timeline,
+        budget: formData.budget,
+        message: formData.description,
         source: "start-project",
         timestamp: new Date().toISOString(),
       }),
-    }).catch((e) => console.warn("⚠️ n8n webhook error:", e));
+    }).catch((e) => console.warn("⚠️ Lead intake error:", e));
 
     // 3 — Supabase KV store (non-blocking)
     fetch(`${SERVER_URL}/inquiries`, {
@@ -971,17 +980,18 @@ Source: 9lmnts.com/start-project
                           </p>
                         </button>
 
-                        {/* PayPal direct */}
-                        <a
-                          href={`https://PayPal.Me/9LMNTSSTUDIO/${svc.paypalAmount}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="mt-3 flex items-center justify-center gap-1.5 w-full py-2 rounded-none border border-primary/15 text-primary/50 text-[9px] uppercase font-bold tracking-widest hover:border-primary/50 hover:text-primary transition-colors"
+                        {/* Service Selection */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedService(svc);
+                            setStep(2);
+                          }}
+                          className="mt-3 flex items-center justify-center gap-1.5 w-full py-2 rounded-none border border-primary/30 text-primary text-[9px] uppercase font-bold tracking-widest hover:bg-primary/10 transition-colors"
                         >
-                          <ExternalLink size={10} /> Quick Pay
-                          via PayPal
-                        </a>
+                          <Check size={10} /> Select & Proceed
+                        </button>
                       </div>
                     );
                   })}

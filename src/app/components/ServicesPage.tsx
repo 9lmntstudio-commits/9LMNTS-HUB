@@ -26,8 +26,7 @@ import {
   projectId,
 } from "../utils/supabase/info";
 
-const N8N_WEBHOOK_URL =
-  "https://ixlmnts.app.n8n.cloud/webhook/9lmnts-leads";
+const LEAD_INTAKE_URL = `https://${projectId}.supabase.co/functions/v1/lead-intake`;
 const SERVER_URL = `https://${projectId}.supabase.co/functions/v1/make-server-662c70dc`;
 
 interface ServicesPageProps {
@@ -51,7 +50,6 @@ const NINE_PILLARS = [
       "Brand voice consistency audit",
       "Performance analytics dashboard",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/2500",
     image: "https://images.unsplash.com/photo-1753410642481-9306b48b45de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZW9uJTIwYWJzdHJhY3QlMjAzZCUyMGJsYWNrfGVufDF8fHx8MTc3Nzk2NjczOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -70,7 +68,6 @@ const NINE_PILLARS = [
       "A/B testing automation",
       "User behaviour analytics",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/3000",
     image: "https://images.unsplash.com/photo-1718910259504-906abd8dc1ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnB1bmslMjBjaXR5JTIwbmlnaHQlMjBkYXJrfGVufDF8fHx8MTc3Nzk2NjczOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -89,7 +86,6 @@ const NINE_PILLARS = [
       "Social media design templates",
       "Brand guidelines document",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/2000",
     image: "https://images.unsplash.com/photo-1749581134865-6b8255950548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwZ2xvd2luZyUyMHNlcnZlciUyMG5lb258ZW58MXx8fHwxNzc3OTY2NzM5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -108,7 +104,6 @@ const NINE_PILLARS = [
       "Innovation sprint facilitation",
       "Strategic growth playbook",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/1500",
     image: "https://images.unsplash.com/photo-1760931969401-9bd6ee902798?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwbmVvbiUyMGludGVyZmFjZXxlbnwxfHx8fDE3Nzc5NjY3Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -127,7 +122,6 @@ const NINE_PILLARS = [
       "Motion design library",
       "Interactive prototype delivery",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/2000",
     image: "https://images.unsplash.com/photo-1742477012583-804ba592b2c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwbW90aGVyYm9hcmQlMjBvcmFuZ2UlMjBnbG93fGVufDF8fHx8MTc3Nzk2Njc0MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -146,7 +140,6 @@ const NINE_PILLARS = [
       "Automated knowledge base",
       "Content repurposing system",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/1000",
     image: "https://images.unsplash.com/photo-1612967690587-d741c8d7825d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZW9uJTIwbGFzZXIlMjBncmlkJTIwZGFya3xlbnwxfHx8fDE3Nzc5NjY3NDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -165,7 +158,6 @@ const NINE_PILLARS = [
       "Consumer behaviour forecasting",
       "Trend-to-campaign pipeline",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/2500",
     image: "https://images.unsplash.com/photo-1626908013351-800ddd734b8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlciUyMHRlY2glMjBhYnN0cmFjdCUyMG5lb258ZW58MXx8fHwxNzc3OTY2NzQwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -184,7 +176,6 @@ const NINE_PILLARS = [
       "Revenue operations dashboard",
       "Performance monitoring & alerts",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/3000",
     image: "https://images.unsplash.com/photo-1764347295958-6a729b1fdf7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZW9uJTIwbGlnaHQlMjB0cmFpbHMlMjBkYXJrfGVufDF8fHx8MTc3Nzk2Njc0MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
@@ -203,7 +194,6 @@ const NINE_PILLARS = [
       "Global market entry strategy",
       "Multilingual chatbot deployment",
     ],
-    paypalLink: "https://PayPal.Me/9LMNTSSTUDIO/3500",
     image: "https://images.unsplash.com/photo-1771873679764-4e5503b69040?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwbmVvbiUyMGFic3RyYWN0JTIwZ3JpZHxlbnwxfHx8fDE3Nzc5NjY3Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
 ];
@@ -319,19 +309,27 @@ Timestamp: ${new Date().toLocaleString()}
       setEmailErrorMsg(errorDetail);
     }
 
-    // n8n webhook (non-blocking, no-cors mode)
-    fetch(N8N_WEBHOOK_URL, {
+    // Supabase lead-intake Edge Function (non-blocking)
+    fetch(LEAD_INTAKE_URL, {
       method: "POST",
-      mode: "no-cors", // Bypass CORS restrictions
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${publicAnonKey}`,
+        apikey: publicAnonKey,
+      },
       body: JSON.stringify({
-        ...formData,
+        fullName: formData.name,
+        email: formData.email,
+        projectType: formData.service || "Services Inquiry",
+        timeline: formData.timeline || "Immediate",
+        budget: formData.budget,
+        message: formData.message,
         source: "services-page",
         timestamp: new Date().toISOString(),
       }),
     })
-      .then(() => console.log("🚀 n8n webhook sent successfully"))
-      .catch((e) => console.warn("⚠️ n8n webhook error:", e));
+      .then(() => console.log("🚀 Supabase lead intake sent successfully"))
+      .catch((e) => console.warn("⚠️ Lead intake error:", e));
 
     // KV store (non-blocking)
     fetch(`${SERVER_URL}/inquiries`, {
@@ -524,15 +522,15 @@ Timestamp: ${new Date().toLocaleString()}
                         >
                           Start Project <ArrowRight size={13} />
                         </button>
-                        <a
-                          href={pillar.paypalLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          onClick={() =>
+                            onNavigate("start-project", pillar.id)
+                          }
                           className="px-3 py-2.5 border border-primary/30 text-primary rounded-none text-xs hover:border-primary hover:bg-primary/10 transition-all flex items-center gap-1 uppercase font-bold"
-                          title="Pay via PayPal"
+                          title="Checkout Sprint"
                         >
-                          <ExternalLink size={12} /> Pay
-                        </a>
+                          <Zap size={12} /> Book
+                        </button>
                       </div>
                     </div>
                   </div>
