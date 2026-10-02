@@ -1,0 +1,9 @@
+{
+  "name": "immersive-9lmnts-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "9LMNTS Studio Cyber Cypher WebApp",
+  "scripts": {
+    "build": "echo 'Static build ready'"
+  }
+}
