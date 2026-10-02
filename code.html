@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#07080b] text-slate-100 antialiased selection:bg-[#ff5500] selection:text-black">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>9LMNTS Studio — The Cyber Cypher Master WebApp</title>
+  <meta name="description" content="Unified responsive operating system & studio suite for 9LMNTS Studio. Featuring Spatial Cypher, ArtistOS DAW, Sound Clash OS, AR Merch, Services Pricing, About, and Admin Telemetry.">
+  <meta name="theme-color" content="#ff5500">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#ff5500',
+              cyan: '#00f0ff',
+              purple: '#b026ff',
+              matrix: '#07080b',
+              dark: '#0e0f14',
+              surface: '#151720',
+              border: 'rgba(255, 85, 0, 0.25)',
+              borderCyan: 'rgba(0, 240, 255, 0.25)'
+            }
+          },
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 2.5s infinite ease-in-out',
+            'radar-spin': 'radar 8s linear infinite',
+            'scanline': 'scanline 8s linear infinite'
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '1', boxShadow: '0 0 15px rgba(255,85,0,0.4)' },
+              '50%': { transform: 'scale(1.08)', opacity: '0.85', boxShadow: '0 0 30px rgba(0,240,255,0.7)' }
+            },
+            radar: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
+            },
+            scanline: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(1000%)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #07080b; }
+    ::-webkit-scrollbar-thumb { background: #ff550040; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ff550090; }
+
+    /* Scanline CRT overlay */
+    .crt-grid {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+    }
+
+    /* Glassmorphism Cyber Cards */
+    .cyber-glass {
+      background: rgba(14, 15, 20, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 85, 0, 0.22);
+    }
+    .cyber-glass-cyan {
+      background: rgba(14, 15, 20, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+    }
+
+    /* Interactive hotspot pulse */
+    .pin-ring {
+      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping {
+      75%, 100% {
+        transform: scale(2.2);
+        opacity: 0;
+      }
+    }
+    
+    /* View Transitions */
+    .view-panel {
+      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    }
+    .view-panel.hidden-view {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.985);
+      position: absolute;
+      inset: 0;
+    }
+    .view-panel.active-view {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+      position: relative;
+    }
+  </style>
+</head>
+<body class="h-full w-full bg-[#07080b] flex flex-col overflow-hidden font-sans select-none">
+
+  <!-- ==================== TOP NAVIGATION / SYSTEM CONTROL DOCK ==================== -->
+  <header class="h-14 sm:h-16 w-full bg-[#0a0b10]/95 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-3 sm:px-6 z-50 shrink-0">
+    <!-- Brand Logo & Station Badge -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <button onclick="switchView('cypher')" class="flex items-center gap-2 group text-left focus:outline-none">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbWLQEArzT3Jg9UC53GLpScxI789aptBaO6pMZry0rAxfME1BKZXkmXJRCzLfJFql2dTfIiiqwhUKun281s3tE5u2SHmaFmxdwF22boIq7v8qiqnGvoaUU011p4eueMcG31x7wEbJgUsJYJdoOcJzgdBfhPvSJLUfXvusGATMQCaLwMKyX1r5oenb52foIbDPhm7gtuyGjkNpNcxv7gj9ne85oY0U_VcaJcgRUMoLQGat2FyMvVE8j10N5quxF_9f6-w" alt="9LMNTS Studio Logo" class="h-7 sm:h-9 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(255,85,0,0.5)] transition group-hover:brightness-125">
+        <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono tracking-widest bg-brand-orange/10 text-brand-orange border border-brand-orange/30">
+          NODE 09 // PRODUCTION
+        </span>
+      </button>
+    </div>
+
+    <!-- Center Desktop Navigation Tabs -->
+    <nav class="hidden lg:flex items-center gap-1 font-mono text-xs tracking-wider">
+      <button onclick="switchView('cypher')" data-nav="cypher" class="nav-btn px-3 py-1.5 rounded text-white bg-white/10 border border-brand-orange/50 transition">
+        CYPHER
+      </button>
+      <button onclick="switchView('artistos')" data-nav="artistos" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-cyan hover:bg-brand-cyan/10 transition">
+        ARTIST OS
+      </button>
+      <button onclick="switchView('soundclash')" data-nav="soundclash" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-cyan hover:bg-brand-cyan/10 transition">
+        SOUND CLASH
+      </button>
+      <button onclick="switchView('armerch')" data-nav="armerch" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-orange hover:bg-brand-orange/10 transition">
+        AR MERCH
+      </button>
+      <button onclick="switchView('loa')" data-nav="loa" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-purple hover:bg-brand-purple/10 transition">
+        LOA GAME
+      </button>
+      <button onclick="switchView('pricing')" data-nav="pricing" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-orange hover:bg-brand-orange/10 transition">
+        SERVICES & PRICING
+      </button>
+      <button onclick="switchView('about')" data-nav="about" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-cyan hover:bg-brand-cyan/10 transition">
+        ABOUT US
+      </button>
+      <button onclick="switchView('admin')" data-nav="admin" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition">
+        ADMIN
+      </button>
+    </nav>
+
+    <!-- Trailing Actions: SFX Toggle, Quick Booking CTA -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Web Audio SFX Toggle -->
+      <button id="sfx-toggle" onclick="toggleSFX()" title="Toggle Cyber Audio Synthesis" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded font-mono text-[11px] bg-slate-900/90 border border-slate-700/60 hover:border-brand-cyan text-slate-300 transition">
+        <span id="sfx-indicator" class="w-2 h-2 rounded-full bg-slate-500"></span>
+        <span class="hidden sm:inline">SFX:</span>
+        <span id="sfx-text" class="text-slate-400 font-bold">OFF</span>
+      </button>
+
+      <!-- Book Sprint CTA -->
+      <button onclick="openBookingModal('General Studio Sprint')" class="flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded font-mono text-xs font-bold tracking-wider uppercase bg-gradient-to-r from-brand-orange to-amber-500 text-black shadow-[0_0_15px_rgba(255,85,0,0.4)] hover:brightness-110 active:scale-95 transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span>Book Sprint</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN APPLICATION VIEWPORT CONTAINER ==================== -->
+  <main class="flex-1 w-full relative overflow-y-auto overflow-x-hidden bg-[#07080b]">
+
+    <!-- CRT Grid Scanline Overlay (Visual Polish) -->
+    <div class="crt-grid absolute inset-0 z-20 pointer-events-none opacity-40"></div>
+
+    <!-- ========================================================================= -->
+    <!-- 1. SPATIAL CYPHER VIEW (HERO IMMERSIVE CONSOLE)                           -->
+    <!-- ========================================================================= -->
+    <section id="view-cypher" class="view-panel active-view w-full min-h-full flex flex-col justify-between relative bg-black">
+      <!-- Master 16:9 Aspect Spatial Interactive Canvas -->
+      <div class="relative w-full h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-black">
+        
+        <!-- Full-bleed Master Studio Plate -->
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTc1wgAghmjOp8N9sFU5vxrTaageGVMM5HJ9lh7Z_KWCmcwHHgam7pQ7ni3g7E3aGa5bANC-J1Mq7SBY0sp7Bmb10g0_Y4p9ApjmGhnOWMemnzJVggh60_w5DozwnijJH0JtXZf51oddUzvNFtkW63mWOXNtMCaq16tw5yv1kTM4SPn9EjlQE3qCpSbFjsLM4OIBB_C-d60ikNAZKYmq15K5eHZyecBEhBPql4xuLKZJ4amA__G_MXiE-mli-B4Yyhog" alt="9LMNTS Studio Master Plate" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none opacity-90 scale-100 transition-transform duration-700">
+
+        <!-- Ambient Cyber Vignette -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#07080b] via-transparent to-black/60 pointer-events-none"></div>
+
+        <!-- System HUD Telemetry Header Bar (Floating Inside Cypher) -->
+        <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-30">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full cyber-glass text-[11px] font-mono text-slate-300 pointer-events-auto">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>SYS_ONLINE: 99.98%</span>
+            <span class="text-slate-500">|</span>
+            <span class="text-brand-cyan">TORONTO / OTTAWA NODE 09</span>
+          </div>
+          
+          <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full cyber-glass text-[11px] font-mono text-slate-400 pointer-events-auto">
+            <span>EDGE: NETLIFY 9LMNTSSTUDIO.COM</span>
+          </div>
+        </div>
+
+        <!-- ================= HOTSPOT RADAR PINS (RESPONSIVE PERCENTAGE ANCHORS) ================= -->
+        <!-- Hotspot 1: ArtistOS DAW Console (Left Workstation Screen) -->
+        <button onclick="handlePinClick('artistos')" class="group absolute top-[44%] left-[17%] sm:left-[21%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open ArtistOS Station">
+          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-115 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">01</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
+            ArtistOS DAW ↗
+          </div>
+        </button>
+
+        <!-- Hotspot 2: System Telemetry / Live Metrics (Center Display Screen) -->
+        <button onclick="handlePinClick('telemetry')" class="group absolute top-[28%] sm:top-[26%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open Telemetry Specs">
+          <span class="absolute inset-0 rounded-full bg-brand-orange/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-orange flex items-center justify-center shadow-[0_0_20px_rgba(255,85,0,0.7)] group-hover:scale-115 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-orange">02</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-orange/60 text-[10px] sm:text-xs font-mono text-brand-orange whitespace-nowrap shadow-lg">
+            Studio Telemetry ↗
+          </div>
+        </button>
+
+        <!-- Hotspot 3: Sound Clash Arena (Right Battle Screen) -->
+        <button onclick="handlePinClick('soundclash')" class="group absolute top-[48%] right-[16%] sm:right-[20%] translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open Sound Clash Station">
+          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-115 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">03</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
+            Clash Arena ↗
+          </div>
+        </button>
+
+        <!-- Hotspot 4: Project LOA / Lore Archive (Top Left Wall Poster) -->
+        <button onclick="handlePinClick('loa')" class="group absolute top-[16%] sm:top-[18%] left-[10%] sm:left-[14%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open Project LOA">
+          <span class="absolute inset-0 rounded-full bg-brand-purple/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-purple flex items-center justify-center shadow-[0_0_20px_rgba(176,38,255,0.7)] group-hover:scale-115 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-purple">04</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-purple/60 text-[10px] sm:text-xs font-mono text-brand-purple whitespace-nowrap shadow-lg">
+            Project LOA ↗
+          </div>
+        </button>
+
+        <!-- Hotspot 5: AR Merch Wings (Center Artist Hoodie Back) -->
+        <button onclick="handlePinClick('armerch')" class="group absolute top-[68%] sm:top-[66%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open AR Merch Showcase">
+          <span class="absolute inset-0 rounded-full bg-fuchsia-500/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-slate-950/95 border-2 border-fuchsia-400 flex items-center justify-center shadow-[0_0_25px_rgba(232,121,249,0.8)] group-hover:scale-115 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-fuchsia-300">AR</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-fuchsia-500/60 text-[10px] sm:text-xs font-mono text-fuchsia-300 whitespace-nowrap shadow-lg">
+            Wings AR Merch ↗
+          </div>
+        </button>
+
+        <!-- Spatial Cypher Bottom Navigation Bar / Instructions -->
+        <div class="absolute bottom-6 left-4 right-4 flex flex-col sm:flex-row items-center justify-between gap-3 pointer-events-none z-30">
+          <div class="cyber-glass px-4 py-2 rounded-xl flex items-center gap-3 text-xs font-mono text-slate-300 pointer-events-auto">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-orange animate-ping"></span>
+            <span>Tap any radar node or station card to launch interactive engine</span>
+          </div>
+
+          <div class="flex items-center gap-2 pointer-events-auto">
+            <button onclick="switchView('pricing')" class="px-4 py-2 rounded-xl cyber-glass text-xs font-mono text-brand-orange hover:border-brand-orange border border-white/10 transition">
+              Explore Sprint Packages & Rates →
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 2. ARTIST OS WORKSTATION VIEW (/artist)                                   -->
+    <!-- ========================================================================= -->
+    <section id="view-artistos" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-cyan/20 pb-6">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-brand-cyan uppercase tracking-widest mb-1">
+            <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+            Station 01 // Audio Engine
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">ArtistOS DAW & Tour Management</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-2xl font-sans">
+            The operating system engineered for independent musicians. Multi-track stem audio mixing, live streaming distribution, tour revenue tracking, and autonomous AI audience growth.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-brand-cyan text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+            Launch Standalone Subdomain ↗
+          </a>
+          <button onclick="openBookingModal('ArtistOS Integration')" class="px-4 py-2 rounded cyber-glass border-brand-cyan/40 text-brand-cyan font-mono text-xs hover:bg-brand-cyan/10 transition">
+            License Engine ($500/mo)
+          </button>
+        </div>
+      </div>
+
+      <!-- Live DAW Showcase Screen (Using User's Generated Asset) -->
+      <div class="relative rounded-2xl overflow-hidden cyber-glass-cyan border border-brand-cyan/30 shadow-2xl">
+        <div class="p-3 sm:p-4 bg-slate-950/80 border-b border-brand-cyan/20 flex items-center justify-between font-mono text-xs text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-2 text-white">ARTIST_OS_PRO_CONSOLE.V2.4</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-brand-cyan">AUDIO SYNC: 48kHz / 24-BIT</span>
+            <span class="hidden sm:inline text-emerald-400">STATUS: MASTER OUT ONLINE</span>
+          </div>
+        </div>
+        <div class="relative bg-black flex items-center justify-center p-2 sm:p-6">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTsxYUIgN9exXZyPnmnoWvarljQ83NrjCG2Jpz7I4lNEG21IRINABC6VnlrRBi04ASHmw5Yn_Attnoze8wZuBfUlzgu-HdW2KIAVGBlrpoyiPBhEJy5H5YT1d-hAdZHoNPj7UifKUf2FmIM-s50vuh-BcZUxuVV5Y2WisvI-CktSpGQFG0QulmmTTsH1ShW_0PTtbb7RyBvp3K7lLxQA601IhYMjP_UbwSs5ismbppymUWLg4Oabtl6jmsW5E0m1tuKw" alt="ArtistOS Studio Screenshot" class="w-full max-h-[550px] object-contain rounded-xl shadow-2xl">
+        </div>
+      </div>
+
+      <!-- Interactive OS Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="cyber-glass p-6 rounded-2xl border border-white/10 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-cyan/10 border border-brand-cyan/40 flex items-center justify-center text-brand-cyan font-mono font-bold">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-white">Direct Stem Mixer & Audio DAW</h3>
+          <p class="text-sm text-slate-400">
+            Real-time multi-channel web mixer supporting drum, bass, synth, and vocal stems with parametric EQ and Web Audio low-latency processing.
+          </p>
+        </div>
+
+        <div class="cyber-glass p-6 rounded-2xl border border-white/10 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/40 flex items-center justify-center text-brand-orange font-mono font-bold">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-white">Tour Management & Smart Tipping</h3>
+          <p class="text-sm text-slate-400">
+            Instant ticket sales analytics, venue settlement ledgers, and direct fan tipping via Stripe and PayPal with 0% platform take on live tour dates.
+          </p>
+        </div>
+
+        <div class="cyber-glass p-6 rounded-2xl border border-white/10 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-purple/10 border border-brand-purple/40 flex items-center justify-center text-brand-purple font-mono font-bold">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-white">Autonomous AI Fan Engine</h3>
+          <p class="text-sm text-slate-400">
+            Automated ManyChat social DM funnels, fan CRM synchronization with n8n, and push broadcast alerts when new unreleased stems drop.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 3. SOUND CLASH OS VIEW (/clash)                                           -->
+    <!-- ========================================================================= -->
+    <section id="view-soundclash" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-orange/20 pb-6">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-brand-orange uppercase tracking-widest mb-1">
+            <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+            Station 03 // Live Battle Arena
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">Sound Clash OS & Live Tournament</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-2xl font-sans">
+            Real-time synchronized competitive audio bracket arena. Audience peer voting, decibel visualizers, instant tipping, and stage jumbotron telemetry.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-gradient-to-r from-brand-orange to-red-600 text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(255,85,0,0.4)]">
+            Launch Standalone Arena ↗
+          </a>
+          <button onclick="openBookingModal('Sound Clash Live Event')" class="px-4 py-2 rounded cyber-glass border-brand-orange/40 text-brand-orange font-mono text-xs hover:bg-brand-orange/10 transition">
+            Book Live Event Operator
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Battle Arena Simulation Board -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Competitor Red: Producer Alpha -->
+        <div class="lg:col-span-5 cyber-glass p-6 rounded-2xl border border-red-500/30 flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded bg-red-500/20 text-red-400 font-mono text-xs font-bold">ROUND 3 // LANE A</span>
+            <span class="font-mono text-xs text-slate-400">STEM: 140 BPM TRAP</span>
+          </div>
+          <div class="space-y-2">
+            <div class="text-2xl sm:text-3xl font-bold text-white">DJ CYBER CHROME</div>
+            <div class="text-sm text-slate-400">Toronto, ON // 9LMNTS Studio Resident</div>
+            <div class="w-full bg-black/60 rounded-full h-3 overflow-hidden border border-white/10 mt-4">
+              <div class="bg-red-500 h-full rounded-full transition-all duration-500" style="width: 58%;"></div>
+            </div>
+            <div class="flex justify-between font-mono text-xs text-slate-400 pt-1">
+              <span>AUDIENCE VOTES: 1,842</span>
+              <span class="text-red-400 font-bold">58% FAVOR</span>
+            </div>
+          </div>
+          <button onclick="castSimulatedVote('A')" class="w-full py-3 rounded-xl bg-red-600/30 border border-red-500 hover:bg-red-500 hover:text-black text-red-300 font-mono text-xs font-bold uppercase tracking-wider transition">
+            Vote Producer Alpha (SFX)
+          </button>
+        </div>
+
+        <!-- Center Match Status & Telemetry -->
+        <div class="lg:col-span-2 cyber-glass p-6 rounded-2xl flex flex-col items-center justify-center text-center space-y-4 border border-white/10">
+          <div class="w-16 h-16 rounded-full bg-black/80 border-2 border-brand-orange flex items-center justify-center font-mono text-lg font-bold text-brand-orange shadow-[0_0_20px_rgba(255,85,0,0.5)]">
+            VS
+          </div>
+          <div class="space-y-1">
+            <div class="font-mono text-xs text-slate-400">TIMER</div>
+            <div class="font-mono text-2xl font-bold text-emerald-400">01:42.8</div>
+          </div>
+          <div class="text-[11px] font-mono text-slate-500">
+            JUMBOTRON SYNCED<br>NODE 09
+          </div>
+        </div>
+
+        <!-- Competitor Blue: Producer Beta -->
+        <div class="lg:col-span-5 cyber-glass p-6 rounded-2xl border border-brand-cyan/30 flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded bg-brand-cyan/20 text-brand-cyan font-mono text-xs font-bold">ROUND 3 // LANE B</span>
+            <span class="font-mono text-xs text-slate-400">STEM: DRILL WAVE 808</span>
+          </div>
+          <div class="space-y-2">
+            <div class="text-2xl sm:text-3xl font-bold text-white">SYNTH SHADOW</div>
+            <div class="text-sm text-slate-400">Montreal, QC // Edge Challenger</div>
+            <div class="w-full bg-black/60 rounded-full h-3 overflow-hidden border border-white/10 mt-4">
+              <div class="bg-brand-cyan h-full rounded-full transition-all duration-500" style="width: 42%;"></div>
+            </div>
+            <div class="flex justify-between font-mono text-xs text-slate-400 pt-1">
+              <span>AUDIENCE VOTES: 1,328</span>
+              <span class="text-brand-cyan font-bold">42% FAVOR</span>
+            </div>
+          </div>
+          <button onclick="castSimulatedVote('B')" class="w-full py-3 rounded-xl bg-brand-cyan/20 border border-brand-cyan hover:bg-brand-cyan hover:text-black text-brand-cyan font-mono text-xs font-bold uppercase tracking-wider transition">
+            Vote Producer Beta (SFX)
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 4. AR MERCH & SMART APPAREL SHOWROOM (/merch)                             -->
+    <!-- ========================================================================= -->
+    <section id="view-armerch" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-fuchsia-500/20 pb-6">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-fuchsia-400 uppercase tracking-widest mb-1">
+            <span class="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse"></span>
+            Station 05 // Physical-Digital Hybrid Drops
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">AR Holographic Merch & Smart Apparel</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-2xl font-sans">
+            Every garment is a web3 digital portal. Scan the woven micro-matrix QR code with any smartphone camera to activate live WebAR holographic wings and unlock exclusive stem audio tracks.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <button onclick="openBookingModal('AR Merch Production Drop')" class="px-4 py-2 rounded bg-fuchsia-600 text-white font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(217,70,239,0.5)]">
+            Order Custom AR Drop
+          </button>
+        </div>
+      </div>
+
+      <!-- Showcase Hero Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Live Concert AR Wings Showcase Image -->
+        <div class="relative rounded-2xl overflow-hidden cyber-glass border border-fuchsia-500/30 group">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB40stUMm6URlesEPaWNe1rMLoXDr8HygQ14dGYafwkoKAggaylwJ4MpvqC3cPsbUtWsjxxKRC2kECFVd0fmyK23_ncrca2nvJHfFCfAGXHRT0CFzGrTXmZYuGZ-Cjjk2raL2J-WT-dGHiMMO78ZahfXjJkjWCsdj2cHTvW2IRsgP-gHicxV46L6PYzlXU7ZEmpgYh7iVvjkCm63SwXyyWFeHj9vMI5PDE27IC4HfSrdgnRHhVNyxXNeiE26XbN_JwKyA" alt="Live Festival AR Wings" class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex flex-col justify-end p-6">
+            <span class="px-2.5 py-1 rounded bg-fuchsia-500/30 border border-fuchsia-400 text-fuchsia-300 font-mono text-xs w-max mb-2">LIVE ARENA ACTIVATION</span>
+            <h3 class="text-xl font-bold text-white">Festival Stage Holographic Wings</h3>
+            <p class="text-xs text-slate-300 mt-1">Fans scanning hoodies in stadium crowds project neon angel wings over their shoulders in real-time WebAR.</p>
+          </div>
+        </div>
+
+        <!-- Studio & Street AR Collector Showcase -->
+        <div class="relative rounded-2xl overflow-hidden cyber-glass border border-fuchsia-500/30 group">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbOu8zIgv16cJ9CQlBInCWwMz9HmmlrN52ewoQvzHtnmY1ucZCg1214jiQk8XhsQLMrl1_96n9JN7OS4sGOZdKE3ACgyIU8HLvV6uuFBRdgcxY0NHEC3ZX7YWZScwCazJuXKZLJEpq8g8RJniuatpRTu6ZRrCndK9v3vq4Vz2pXBS21S93aKNOvktkw0hw0BjvearEJDKCidAxa_8ZMHM-Dxqf--8GVXNyqrplmhxBTCu-qzeupak46CK00UD3qovsKQ" alt="Artist Core OS AR Hoodie" class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex flex-col justify-end p-6">
+            <span class="px-2.5 py-1 rounded bg-brand-cyan/30 border border-brand-cyan text-brand-cyan font-mono text-xs w-max mb-2">LIMITED COLLECTOR EDITION</span>
+            <h3 class="text-xl font-bold text-white">Web 2.5 Collector Heavyweight Hoodie</h3>
+            <p class="text-xs text-slate-300 mt-1">450 GSM French Terry with embedded NFC sleeve chip and woven high-density back cipher matrix.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Merch Infographic & Specs -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="cyber-glass p-6 rounded-2xl border border-white/10 space-y-3">
+          <h4 class="font-bold text-white font-mono text-sm text-brand-orange">01 // Zero-App WebAR</h4>
+          <p class="text-xs text-slate-400">Runs directly inside Safari, Chrome, and Instagram browser. No app store installation required for fans.</p>
+        </div>
+        <div class="cyber-glass p-6 rounded-2xl border border-white/10 space-y-3">
+          <h4 class="font-bold text-white font-mono text-sm text-brand-cyan">02 // Exclusive Audio Vault</h4>
+          <p class="text-xs text-slate-400">Scanning authenticated garments unseals private audio stems and backstage rehearsal video feeds.</p>
+        </div>
+        <div class="cyber-glass p-6 rounded-2xl border border-white/10 space-y-3">
+          <h4 class="font-bold text-white font-mono text-sm text-fuchsia-400">03 // Full Production & Fulfillment</h4>
+          <p class="text-xs text-slate-400">We handle 3D holographic rendering, screenprinting, barcode manufacturing, and direct worldwide drop shipping.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 5. PROJECT LOA / METAVERSE ARCHIVE VIEW (/loa)                           -->
+    <!-- ========================================================================= -->
+    <section id="view-loa" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-purple/20 pb-6">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-brand-purple uppercase tracking-widest mb-1">
+            <span class="w-2 h-2 rounded-full bg-brand-purple animate-pulse"></span>
+            Station 04 // Interactive Lore & Spatial CGI
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">Project LOA — Metaverse & Game Universe</h1>
+          <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-2xl font-sans">
+            Bespoke 3D CGI commercial video pipelines, cyberpunk character development, and narrative world-building engineered by 9LMNTS Studio.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <button onclick="openBookingModal('3D CGI / Game Video Commercial')" class="px-4 py-2 rounded bg-brand-purple text-white font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(176,38,255,0.5)]">
+            Commission 3D CGI Video
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="cyber-glass p-6 rounded-2xl border border-brand-purple/30 space-y-4">
+          <div class="h-44 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center font-mono text-xs text-brand-purple p-4 text-center">
+            [ CHARACTER ARCHETYPE: Dd Pilar // NEURAL CYBERNETIC RIG ]
+          </div>
+          <h3 class="text-lg font-bold text-white">Character Development & 3D Rigs</h3>
+          <p class="text-xs text-slate-400">High-fidelity 3D modeling and motion capture for interactive virtual production, trailers, and Unreal Engine integrations.</p>
+        </div>
+
+        <div class="cyber-glass p-6 rounded-2xl border border-brand-purple/30 space-y-4">
+          <div class="h-44 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center font-mono text-xs text-brand-cyan p-4 text-center">
+            [ 3D VIDEO COMMERCIALS // TIKTOK & REELS SPEC 9:16 ]
+          </div>
+          <h3 class="text-lg font-bold text-white">Cinematic Video Commercials</h3>
+          <p class="text-xs text-slate-400">CGI music video trailers and high-impact social media video ads engineered to convert fans into collectors.</p>
+        </div>
+
+        <div class="cyber-glass p-6 rounded-2xl border border-brand-purple/30 space-y-4">
+          <div class="h-44 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center font-mono text-xs text-brand-orange p-4 text-center">
+            [ IMMERSIVE SOUNDTRACK // SPATIAL 3D AUDIO ]
+          </div>
+          <h3 class="text-lg font-bold text-white">Spatial Sound Design</h3>
+          <p class="text-xs text-slate-400">Custom synth and 808 sound design tailored for spatial audio headphone experiences and video game scores.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 6. SERVICES & OFFICIAL PRICING VIEW (/pricing)                           -->
+    <!-- ========================================================================= -->
+    <section id="view-pricing" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-12">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full cyber-glass font-mono text-xs text-brand-orange">
+          <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
+          TRANSPARENT COMMERCIAL ARCHITECTURE
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">Agency Sprints & Production Retainers</h1>
+        <p class="text-sm sm:text-base text-slate-400 font-sans">
+          Fixed-scope deliverables with guaranteed delivery timelines. All sprint packages support instant checkout and PayPal Pay in 4 installments.
+        </p>
+      </div>
+
+      <!-- 3 Primary Agency Sprints Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        
+        <!-- Tier 1: Starter Sprint ($1,500) -->
+        <div class="cyber-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 hover:border-brand-orange/50 transition">
+          <div class="space-y-4">
+            <div class="font-mono text-xs tracking-widest text-slate-400 uppercase">TIER 01 // LAUNCHPAD</div>
+            <h3 class="text-2xl font-bold text-white">Starter Sprint</h3>
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-white">$1,500</span>
+              <span class="font-mono text-xs text-slate-400">CAD / USD</span>
+            </div>
+            <div class="inline-block px-2.5 py-1 rounded bg-white/5 border border-white/10 font-mono text-xs text-slate-300">
+              ⚡ 7-Day Guaranteed Turnaround
+            </div>
+            <p class="text-xs text-slate-400">
+              Ideal for independent creators, labels, and boutique agencies needing a high-impact web presence deployed immediately.
+            </p>
+            <ul class="space-y-2.5 pt-4 border-t border-white/10 font-mono text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Custom Figma UI/UX Design System</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Responsive Mobile-First Frontend Code</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Lead Capture & Netlify Serverless Form</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Custom Domain & SSL Provisioning</span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="openBookingModal('Starter Sprint ($1,500)')" class="mt-8 w-full py-3 rounded-xl cyber-glass border-brand-orange/40 hover:bg-brand-orange hover:text-black text-brand-orange font-mono text-xs font-bold uppercase tracking-wider transition">
+            Start $1,500 Sprint
+          </button>
+        </div>
+
+        <!-- Tier 2: Pro Custom Sprint ($2,500 - $3,500) - MOST POPULAR -->
+        <div class="cyber-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-2 border-brand-orange shadow-[0_0_30px_rgba(255,85,0,0.25)] relative">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-orange text-black font-mono text-[11px] font-bold tracking-widest uppercase shadow-md">
+            MOST POPULAR FOR CREATORS
+          </div>
+          <div class="space-y-4">
+            <div class="font-mono text-xs tracking-widest text-brand-orange uppercase">TIER 02 // CREATOR OS</div>
+            <h3 class="text-2xl font-bold text-white">Pro Custom Sprint</h3>
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-white">$2,500</span>
+              <span class="font-mono text-xs text-slate-400">– $3,500 CAD/USD</span>
+            </div>
+            <div class="inline-block px-2.5 py-1 rounded bg-brand-orange/10 border border-brand-orange/30 font-mono text-xs text-brand-orange">
+              ⚡ 14-Day Delivery + 14-Day Support
+            </div>
+            <p class="text-xs text-slate-400">
+              Complete full-stack interactive web application, custom Creator OS interface, backend integration, and automation funnels.
+            </p>
+            <ul class="space-y-2.5 pt-4 border-t border-brand-orange/20 font-mono text-xs text-slate-200">
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Full Bespoke WebApp & Creator OS UI</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Supabase Database & Auth Integration</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>n8n Workflow Automation & ManyChat DMs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Interactive WebAR Holographic Assets</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold">✓</span>
+                <span>Dedicated 14-Day Post-Launch SLA</span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="openBookingModal('Pro Custom Sprint ($2,500 Deposit)')" class="mt-8 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 hover:brightness-110 text-black font-mono text-xs font-bold uppercase tracking-wider shadow-lg transition">
+            Reserve With $2,500 Deposit
+          </button>
+        </div>
+
+        <!-- Tier 3: Enterprise Scale Build ($5,000+) -->
+        <div class="cyber-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-brand-cyan/30 hover:border-brand-cyan transition">
+          <div class="space-y-4">
+            <div class="font-mono text-xs tracking-widest text-brand-cyan uppercase">TIER 03 // BESPOKE PLATFORM</div>
+            <h3 class="text-2xl font-bold text-white">Enterprise Scale Build</h3>
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-white">$5,000+</span>
+              <span class="font-mono text-xs text-slate-400">CAD / USD</span>
+            </div>
+            <div class="inline-block px-2.5 py-1 rounded bg-brand-cyan/10 border border-brand-cyan/30 font-mono text-xs text-brand-cyan">
+              ⚡ 3–4 Weeks Dedicated Architecture
+            </div>
+            <p class="text-xs text-slate-400">
+              For commercial record labels, event venues, tournament leagues, and high-volume creator networks needing bespoke platforms.
+            </p>
+            <ul class="space-y-2.5 pt-4 border-t border-white/10 font-mono text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="text-brand-cyan font-bold">✓</span>
+                <span>Multi-Tenant Platform Architecture</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-cyan font-bold">✓</span>
+                <span>Custom Autonomous AI Agents & Pipelines</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-cyan font-bold">✓</span>
+                <span>3D Assets, Spatial Audio & Virtual Rig</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brand-cyan font-bold">✓</span>
+                <span>Dedicated Production Architect & High SLA</span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="openBookingModal('Enterprise Scale Build ($5,000+)')" class="mt-8 w-full py-3 rounded-xl cyber-glass border-brand-cyan/40 hover:bg-brand-cyan hover:text-black text-brand-cyan font-mono text-xs font-bold uppercase tracking-wider transition">
+            Book Enterprise Build
+          </button>
+        </div>
+      </div>
+
+      <!-- Monthly Operations Retainers Table -->
+      <div class="cyber-glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white">Monthly Operations Retainers</h3>
+            <p class="text-xs text-slate-400 mt-1">Continuous UI/UX engineering, server telemetry updates, and live event technical operators.</p>
+          </div>
+          <span class="font-mono text-xs text-brand-orange px-3 py-1 rounded-full bg-brand-orange/10 border border-brand-orange/30 w-max">
+            CANCEL OR PAUSE ANYTIME
+          </span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs">
+            <thead class="bg-black/40 text-slate-400 border-b border-white/10">
+              <tr>
+                <th class="py-3 px-4">RETAINER TIER</th>
+                <th class="py-3 px-4">INVESTMENT</th>
+                <th class="py-3 px-4">CORE DELIVERABLES</th>
+                <th class="py-3 px-4 text-right">ACTION</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Pro Retainer</td>
+                <td class="py-4 px-4 text-brand-orange font-bold">$1,500 / mo</td>
+                <td class="py-4 px-4 text-slate-400">Continuous UI/UX design updates, server maintenance, remote live-event technical support (1 event/mo).</td>
+                <td class="py-4 px-4 text-right">
+                  <button onclick="openBookingModal('Pro Retainer ($1,500/mo)')" class="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-white transition">Select</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Premier Retainer</td>
+                <td class="py-4 px-4 text-brand-orange font-bold">$2,500 – $3,500 / mo</td>
+                <td class="py-4 px-4 text-slate-400">Bi-weekly feature sprints, dedicated on-site venue operator (2 events/mo), live bracket jumbotron sync, priority SLA.</td>
+                <td class="py-4 px-4 text-right">
+                  <button onclick="openBookingModal('Premier Retainer ($2,500/mo)')" class="px-3 py-1.5 rounded bg-brand-orange/20 text-brand-orange border border-brand-orange/40 hover:bg-brand-orange hover:text-black transition">Select</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Enterprise Retainer</td>
+                <td class="py-4 px-4 text-brand-cyan font-bold">$5,000 / mo</td>
+                <td class="py-4 px-4 text-slate-400">Dedicated studio engineering squad, full custom platform maintenance, and unlimited high-priority feature iterations.</td>
+                <td class="py-4 px-4 text-right">
+                  <button onclick="openBookingModal('Enterprise Retainer ($5,000/mo)')" class="px-3 py-1.5 rounded bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/40 hover:bg-brand-cyan hover:text-black transition">Select</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 7. ABOUT US FOUNDER STORY VIEW (/about)                                   -->
+    <!-- ========================================================================= -->
+    <section id="view-about" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-10">
+      <!-- Section Header -->
+      <div class="border-b border-brand-orange/20 pb-6">
+        <div class="flex items-center gap-2 text-xs font-mono text-brand-orange uppercase tracking-widest mb-1">
+          <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+          STUDIO ORIGIN & DIRECTIVE
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">The Nine Elements of Culture & Code</h1>
+        <p class="text-sm sm:text-base text-slate-400 mt-2 max-w-3xl font-sans">
+          9LMNTS Studio merges underground hip-hop culture with cutting-edge cyberpunk web software engineering. Founded in Ottawa, operating globally.
+        </p>
+      </div>
+
+      <!-- Founder Spotlight & Mission Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Founder Portrait -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-3xl overflow-hidden cyber-glass border-2 border-brand-orange/40 shadow-2xl">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ke7dBfKKVYw2ZMEGpJrIG61Z0T-D6NKszE_LTopBd2n2HTT2SIvLa-WeCILMlAjfrERNX99UllzatjRP3LzxxK9uDo6SIJUZqMUSMKd4nA2EvPDrFY3_Rf0GDii3uu2pDFvUM4UlfpYxliQVFtpETPUHkBB8vzaCoERy2xIpoZ7Sqe6esuM-km5jhZdKk6A_x30qV8kh20dc7FCn39O_MvslyVirtlhXFuZhafwcXoW7f9rP48ms_yxM3QmXuO4vfA" alt="Darnley Sanon - Founder of 9LMNTS Studio" class="w-full h-[450px] object-cover object-top">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="font-mono text-xs text-brand-orange">FOUNDER & LEAD ARCHITECT</span>
+              <h3 class="text-2xl font-bold text-white">Darnley Sanon</h3>
+              <p class="text-xs text-slate-300 mt-1 font-mono">Creative Technologist // Ottawa, ON</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founder Bio Narrative -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="cyber-glass p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-white">From Beatmaking Stems to Autonomous Web Architectures</h2>
+            <p class="text-sm text-slate-300 leading-relaxed font-sans">
+              "We built 9LMNTS Studio because creator tools were broken. Independent artists and labels were forced to juggle disjointed platforms for streaming, merchandise, booking, and ticket revenue — giving away 30% to 50% of their creative equity."
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed font-sans">
+              "Our mission is to arm creators with custom digital sovereign operating systems — from low-latency Web Audio DAWs like ArtistOS to competitive live-event jumbotrons like Sound Clash OS."
+            </p>
+          </div>
+
+          <!-- 3 Pillars Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="cyber-glass p-5 rounded-2xl border border-brand-orange/30 space-y-2">
+              <div class="font-mono text-xs text-brand-orange font-bold">01 // CULTURE</div>
+              <h4 class="text-sm font-bold text-white">Hip-Hop Foundations</h4>
+              <p class="text-xs text-slate-400">Grounded in the 9 authentic elements of hip-hop and urban innovation.</p>
+            </div>
+            <div class="cyber-glass p-5 rounded-2xl border border-brand-cyan/30 space-y-2">
+              <div class="font-mono text-xs text-brand-cyan font-bold">02 // CODE</div>
+              <h4 class="text-sm font-bold text-white">Edge Architecture</h4>
+              <p class="text-xs text-slate-400">Zero-latency serverless edge CDNs, Web Audio API synthesis, and WebAR.</p>
+            </div>
+            <div class="cyber-glass p-5 rounded-2xl border border-fuchsia-400/30 space-y-2">
+              <div class="font-mono text-xs text-fuchsia-400 font-bold">03 // COMMERCE</div>
+              <h4 class="text-sm font-bold text-white">Creator Sovereignty</h4>
+              <p class="text-xs text-slate-400">Direct-to-fan monetization with 0% platform middlemen fees.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- 8. ADMINISTRATION DASHBOARD VIEW (/admin)                                 -->
+    <!-- ========================================================================= -->
+    <section id="view-admin" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-emerald-500/20 pb-6">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            SYS_ADMIN // PROTECTED TELEMETRY CONSOLE
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">Studio Operations & Lead Intake Ledger</h1>
+          <p class="text-sm text-slate-400 mt-1 max-w-2xl font-sans">
+            Real-time pipeline intake from Netlify Forms, Supabase database synchronization, PayPal installment link generator, and edge deployment status.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <button onclick="triggerSimulatedDeploy()" class="px-4 py-2 rounded bg-emerald-500 text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+            Trigger Edge Re-deploy
+          </button>
+        </div>
+      </div>
+
+      <!-- Live KPI Metrics Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
+          <span class="font-mono text-xs text-slate-400">ACTIVE INTAKE LEADS</span>
+          <div class="text-2xl sm:text-3xl font-bold text-white font-mono">14</div>
+          <span class="font-mono text-[11px] text-emerald-400">+3 this week</span>
+        </div>
+        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
+          <span class="font-mono text-xs text-slate-400">PIPELINE VALUE</span>
+          <div class="text-2xl sm:text-3xl font-bold text-brand-orange font-mono">$38,500</div>
+          <span class="font-mono text-[11px] text-slate-400">CAD / USD</span>
+        </div>
+        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
+          <span class="font-mono text-xs text-slate-400">EDGE CDN LATENCY</span>
+          <div class="text-2xl sm:text-3xl font-bold text-brand-cyan font-mono">14ms</div>
+          <span class="font-mono text-[11px] text-emerald-400">99.98% uptime</span>
+        </div>
+        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
+          <span class="font-mono text-xs text-slate-400">DEPLOY DOMAIN</span>
+          <div class="text-sm sm:text-base font-bold text-white font-mono truncate">9lmntsstudio.com</div>
+          <span class="font-mono text-[11px] text-emerald-400">SSL Active</span>
+        </div>
+      </div>
+
+      <!-- Lead Intake Ledger Table -->
+      <div class="cyber-glass rounded-3xl p-6 border border-white/10 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold text-white font-mono">Recent Netlify Form Submissions</h3>
+          <span class="font-mono text-xs text-slate-400">AUTO-SYNCED VIA FORM DETECT</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs">
+            <thead class="bg-black/50 text-slate-400 border-b border-white/10">
+              <tr>
+                <th class="py-3 px-4">TIMESTAMP</th>
+                <th class="py-3 px-4">CLIENT / ARTIST</th>
+                <th class="py-3 px-4">SERVICE PACKAGE</th>
+                <th class="py-3 px-4">BUDGET</th>
+                <th class="py-3 px-4">STATUS</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              <tr>
+                <td class="py-3.5 px-4 text-slate-500">2024-11-20 14:22</td>
+                <td class="py-3.5 px-4 font-bold text-white">Vortex Soundworks</td>
+                <td class="py-3.5 px-4 text-brand-orange">Pro Custom Sprint ($2,500)</td>
+                <td class="py-3.5 px-4">$2,500 Deposit</td>
+                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">In Review</span></td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 text-slate-500">2024-11-19 09:14</td>
+                <td class="py-3.5 px-4 font-bold text-white">Toronto 2026 Tour Media</td>
+                <td class="py-3.5 px-4 text-fuchsia-400">AR Merch Custom Drop</td>
+                <td class="py-3.5 px-4">$5,000 - $15,000</td>
+                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 border border-yellow-500/40">Brief Sent</span></td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 text-slate-500">2024-11-18 18:45</td>
+                <td class="py-3.5 px-4 font-bold text-white">Underground Cypher League</td>
+                <td class="py-3.5 px-4 text-brand-cyan">Sound Clash Arena Operator</td>
+                <td class="py-3.5 px-4">$2,500 / mo Retainer</td>
+                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Confirmed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== RESPONSIVE BOTTOM NAVIGATION DOCK ==================== -->
+  <footer class="h-16 w-full bg-[#0a0b10]/95 backdrop-blur-md border-t border-white/10 flex items-center justify-around px-2 sm:px-6 z-40 shrink-0">
+    <button onclick="switchView('cypher')" data-dock="cypher" class="dock-btn flex flex-col items-center gap-1 text-brand-orange py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">CYPHER</span>
+    </button>
+
+    <button onclick="switchView('artistos')" data-dock="artistos" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-cyan py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">ARTIST OS</span>
+    </button>
+
+    <button onclick="switchView('soundclash')" data-dock="soundclash" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-orange py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">CLASH</span>
+    </button>
+
+    <button onclick="switchView('armerch')" data-dock="armerch" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-fuchsia-400 py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">AR MERCH</span>
+    </button>
+
+    <button onclick="switchView('pricing')" data-dock="pricing" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-orange py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">PRICING</span>
+    </button>
+
+    <button onclick="switchView('about')" data-dock="about" class="dock-btn hidden sm:flex flex-col items-center gap-1 text-slate-400 hover:text-brand-cyan py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">ABOUT</span>
+    </button>
+
+    <button onclick="switchView('admin')" data-dock="admin" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 py-1 px-2.5 rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <span class="text-[10px] font-mono tracking-wider">ADMIN</span>
+    </button>
+  </footer>
+
+
+  <!-- ==================== INTERACTIVE STATION DETAIL MODAL (HOTSPOT CLICK) ==================== -->
+  <div id="station-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="cyber-glass max-w-xl w-full rounded-3xl p-6 sm:p-8 border border-brand-orange/40 shadow-2xl space-y-6 relative transform scale-95 transition-transform duration-300" id="modal-container">
+      
+      <!-- Close Button -->
+      <button onclick="closeStationModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-full bg-white/5 border border-white/10 hover:border-white/30 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Modal Station Header -->
+      <div class="space-y-1">
+        <div id="modal-badge" class="font-mono text-xs text-brand-orange uppercase tracking-wider">STATION INSPECTOR</div>
+        <h2 id="modal-title" class="text-2xl sm:text-3xl font-bold text-white">Station Title</h2>
+        <p id="modal-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans pt-1">Station descriptive overview text.</p>
+      </div>
+
+      <!-- Modal Quick Specs Box -->
+      <div id="modal-specs" class="p-4 rounded-xl bg-black/60 border border-white/10 font-mono text-xs space-y-2 text-slate-300">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Modal Action Buttons -->
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <button onclick="closeStationModal()" class="px-4 py-2 rounded-xl text-xs font-mono text-slate-400 hover:text-white transition">
+          Close Window
+        </button>
+        <button id="modal-primary-action" class="px-5 py-2.5 rounded-xl bg-brand-orange text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-lg">
+          Launch Module ↗
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== NETLIFY SERVERLESS INSTANT BOOKING MODAL ==================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="cyber-glass max-w-lg w-full rounded-3xl p-6 sm:p-8 border-2 border-brand-orange shadow-[0_0_40px_rgba(255,85,0,0.3)] space-y-6 relative transform scale-95 transition-transform duration-300" id="booking-container">
+      
+      <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-full bg-white/5 border border-white/10 hover:border-white/30 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div>
+        <div class="font-mono text-xs text-brand-orange uppercase tracking-wider">COMMERCIAL INTAKE // NETLIFY SERVERLESS</div>
+        <h2 class="text-2xl font-bold text-white mt-1">Book Your 9LMNTS Sprint</h2>
+        <p class="text-xs text-slate-300 mt-1 font-sans">
+          Lock in your production date. Direct integration with studio pipeline, automated Slack notify, and PayPal installments.
+        </p>
+      </div>
+
+      <!-- Netlify Serverless Form Structure -->
+      <form name="studio-booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleBookingSubmit(event)" class="space-y-4 font-mono text-xs">
+        <input type="hidden" name="form-name" value="studio-booking" />
+        <p class="hidden"><input name="bot-field" /></p>
+
+        <div>
+          <label class="block text-slate-400 mb-1">CLIENT / ARTIST NAME *</label>
+          <input type="text" name="name" required placeholder="e.g. Darnley Sanon / OVO Sound" class="w-full px-4 py-2.5 rounded-xl bg-black/70 border border-white/15 text-white placeholder-slate-600 focus:outline-none focus:border-brand-orange transition">
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">OFFICIAL EMAIL *</label>
+          <input type="email" name="email" required placeholder="producer@recordlabel.com" class="w-full px-4 py-2.5 rounded-xl bg-black/70 border border-white/15 text-white placeholder-slate-600 focus:outline-none focus:border-brand-orange transition">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1">DESIRED SERVICE</label>
+            <select id="booking-service-select" name="service_package" class="w-full px-3 py-2.5 rounded-xl bg-black/70 border border-white/15 text-white focus:outline-none focus:border-brand-orange transition">
+              <option value="Starter Sprint ($1,500)">Starter Sprint ($1,500)</option>
+              <option value="Pro Custom Sprint ($2,500 Deposit)">Pro Custom Sprint ($2,500 Deposit)</option>
+              <option value="Enterprise Scale Build ($5,000+)">Enterprise Build ($5,000+)</option>
+              <option value="AR Merch Production">AR Merch Custom Drop</option>
+              <option value="Sound Clash Live Event">Sound Clash Live Operator</option>
+              <option value="Monthly Retainer">Monthly Retainer</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-400 mb-1">BUDGET RANGE</label>
+            <select name="budget_tier" class="w-full px-3 py-2.5 rounded-xl bg-black/70 border border-white/15 text-white focus:outline-none focus:border-brand-orange transition">
+              <option value="$1,500 - $3,500">$1,500 – $3,500 CAD/USD</option>
+              <option value="$3,500 - $7,500">$3,500 – $7,500 CAD/USD</option>
+              <option value="$7,500+ Enterprise">$7,500+ Enterprise Tier</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">PROJECT BRIEF / DEADLINE</label>
+          <textarea name="project_brief" rows="3" placeholder="Tell us about your stems, release deadline, or custom software requirements..." class="w-full px-4 py-2.5 rounded-xl bg-black/70 border border-white/15 text-white placeholder-slate-600 focus:outline-none focus:border-brand-orange transition"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 text-black font-bold uppercase tracking-wider hover:brightness-110 transition shadow-lg">
+          Transmit Booking Inquiry ⚡
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ==================== CLIENT INTERACTION JAVASCRIPT ==================== -->
+  <script>
+    // Audio Synthesis Engine (Web Audio API)
+    let audioCtx = null;
+    let sfxEnabled = false;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function toggleSFX() {
+      initAudio();
+      sfxEnabled = !sfxEnabled;
+      const indicator = document.getElementById('sfx-indicator');
+      const text = document.getElementById('sfx-text');
+      
+      if (sfxEnabled) {
+        indicator.classList.remove('bg-slate-500');
+        indicator.classList.add('bg-brand-cyan');
+        text.classList.remove('text-slate-400');
+        text.classList.add('text-brand-cyan');
+        text.innerText = 'ON';
+        playCyberChirp(600, 1200, 0.08);
+      } else {
+        indicator.classList.remove('bg-brand-cyan');
+        indicator.classList.add('bg-slate-500');
+        text.classList.remove('text-brand-cyan');
+        text.classList.add('text-slate-400');
+        text.innerText = 'OFF';
+      }
+    }
+
+    function playCyberChirp(freqStart = 440, freqEnd = 880, duration = 0.1) {
+      if (!sfxEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freqStart, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freqEnd, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        console.warn('Audio playback error', e);
+      }
+    }
+
+    // View Routing Architecture (SPA Switcher)
+    function switchView(viewId) {
+      playCyberChirp(300, 600, 0.05);
+
+      // Hide all view panels
+      const panels = document.querySelectorAll('.view-panel');
+      panels.forEach(p => {
+        p.classList.remove('active-view');
+        p.classList.add('hidden-view');
+      });
+
+      // Show target panel
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) {
+        target.classList.remove('hidden-view');
+        target.classList.add('active-view');
+      }
+
+      // Update Nav Buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.getAttribute('data-nav') === viewId) {
+          btn.className = 'nav-btn px-3 py-1.5 rounded text-white bg-white/10 border border-brand-orange/50 transition';
+        } else {
+          btn.className = 'nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-white transition';
+        }
+      });
+
+      // Update Dock Buttons
+      document.querySelectorAll('.dock-btn').forEach(btn => {
+        if (btn.getAttribute('data-dock') === viewId) {
+          btn.classList.add('text-brand-orange');
+          btn.classList.remove('text-slate-400');
+        } else {
+          btn.classList.remove('text-brand-orange');
+          btn.classList.add('text-slate-400');
+        }
+      });
+
+      // Scroll viewport back to top
+      document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Hotspot Pin Click Handler & Station Data
+    const stationData = {
+      artistos: {
+        badge: 'HOTSPOT 01 // AUDIO WORKSTATION',
+        title: 'ArtistOS DAW & Tour CRM',
+        desc: 'Browser-based multi-track audio workstation for independent artists. Features stem splitting, Parametric EQ, tour revenue tracking, and autonomous AI fan DM funnels.',
+        specs: [
+          '• Web Audio API: 24-bit / 48kHz Stems',
+          '• Subdomain Edge: artist.9lmntsstudio.com',
+          '• Tour Monetization: 0% Platform Cut on Live Merch & Tips'
+        ],
+        btnText: 'Open Full ArtistOS View',
+        action: () => { closeStationModal(); switchView('artistos'); }
+      },
+      telemetry: {
+        badge: 'HOTSPOT 02 // SYSTEM TELEMETRY',
+        title: 'Master Console Telemetry',
+        desc: 'Real-time studio edge node metrics. Operating on Netlify Edge CDN with serverless SSL and low-latency audio sync across Ottawa & Toronto nodes.',
+        specs: [
+          '• Canonical Domain: 9lmntsstudio.com',
+          '• Global CDN Status: 99.98% Operational',
+          '• Serverless Lead Intakes: Form Sync Active'
+        ],
+        btnText: 'View Services & Rates',
+        action: () => { closeStationModal(); switchView('pricing'); }
+      },
+      soundclash: {
+        badge: 'HOTSPOT 03 // LIVE ARENA',
+        title: 'Sound Clash OS Tournament',
+        desc: 'Real-time synchronized competitive beat battle arena. Audience peer voting, decibel visualizers, instant tipping, and stage jumbotron telemetry.',
+        specs: [
+          '• Live Subdomain: clash.9lmntsstudio.com',
+          '• Real-time Split: 90% Creator / 10% Studio',
+          '• Jumbotron Sync: Sub-50ms Bracket Broadcast'
+        ],
+        btnText: 'Enter Clash Arena View',
+        action: () => { closeStationModal(); switchView('soundclash'); }
+      },
+      loa: {
+        badge: 'HOTSPOT 04 // 3D CGI & LORE',
+        title: 'Project LOA — Metaverse Lore',
+        desc: 'Bespoke 3D CGI commercial video pipelines, cyberpunk character development, and narrative world-building engineered by 9LMNTS Studio.',
+        specs: [
+          '• Primary Character Rig: Dd Pilar',
+          '• Output Formats: 9:16 Vertical Video Ads & 16:9 Trailers',
+          '• Pipeline: Blender, Unreal Engine 5 & WebGL Shaders'
+        ],
+        btnText: 'Explore Project LOA',
+        action: () => { closeStationModal(); switchView('loa'); }
+      },
+      armerch: {
+        badge: 'HOTSPOT 05 // SMART APPAREL',
+        title: 'AR Holographic Merch Gallery',
+        desc: 'Scan the back cipher code on any official 9LMNTS hoodie to project live WebAR holographic neon angel wings over your shoulders with zero app installation.',
+        specs: [
+          '• Engine: WebAR (Safari & Chrome iOS/Android)',
+          '• Garment: 450 GSM Heavyweight French Terry',
+          '• Audio Unseal: Backstage Rehearsal & Unreleased Stems'
+        ],
+        btnText: 'Open AR Merch Showroom',
+        action: () => { closeStationModal(); switchView('armerch'); }
+      }
+    };
+
+    function handlePinClick(key) {
+      playCyberChirp(440, 880, 0.08);
+      const data = stationData[key];
+      if (!data) return;
+
+      document.getElementById('modal-badge').innerText = data.badge;
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-desc').innerText = data.desc;
+      
+      const specsBox = document.getElementById('modal-specs');
+      specsBox.innerHTML = data.specs.map(s => `<div>${s}</div>`).join('');
+
+      const actionBtn = document.getElementById('modal-primary-action');
+      actionBtn.innerText = data.btnText;
+      actionBtn.onclick = data.action;
+
+      // Show Modal
+      const modal = document.getElementById('station-modal');
+      const container = document.getElementById('modal-container');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      container.classList.remove('scale-95');
+      container.classList.add('scale-100');
+    }
+
+    function closeStationModal() {
+      playCyberChirp(600, 300, 0.05);
+      const modal = document.getElementById('station-modal');
+      const container = document.getElementById('modal-container');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      container.classList.add('scale-95');
+      container.classList.remove('scale-100');
+    }
+
+    // Netlify Booking Modal
+    function openBookingModal(preselectedService = null) {
+      playCyberChirp(500, 950, 0.08);
+      if (preselectedService) {
+        const select = document.getElementById('booking-service-select');
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(preselectedService) || select.options[i].value.includes(preselectedService)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      const modal = document.getElementById('booking-modal');
+      const container = document.getElementById('booking-container');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      container.classList.remove('scale-95');
+      container.classList.add('scale-100');
+    }
+
+    function closeBookingModal() {
+      playCyberChirp(600, 300, 0.05);
+      const modal = document.getElementById('booking-modal');
+      const container = document.getElementById('booking-container');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      container.classList.add('scale-95');
+      container.classList.remove('scale-100');
+    }
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      playCyberChirp(800, 1600, 0.15);
+      alert('TRANSMISSION SUCCESSFUL // Your booking inquiry has been recorded in the Netlify Studio Ledger.');
+      closeBookingModal();
+    }
+
+    function castSimulatedVote(lane) {
+      playCyberChirp(520, 1040, 0.1);
+      alert(`VOTE REGISTERED // Node 09 added 1 vote to Producer Lane ${lane}. Audio decibel level updated!`);
+    }
+
+    function triggerSimulatedDeploy() {
+      playCyberChirp(400, 900, 0.1);
+      alert('NETLIFY EDGE SYNC // Build triggered for 9lmntsstudio.com. CDN cache invalidated successfully.');
+    }
+
+    // Escape Key Modal Listener
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeStationModal();
+        closeBookingModal();
+      }
+    });
+  </script>
+</body>
+</html>
