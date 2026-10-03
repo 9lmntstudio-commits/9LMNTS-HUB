@@ -137,7 +137,7 @@
         SOUND CLASH
       </button>
       <button onclick="switchView('armerch')" data-nav="armerch" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-orange hover:bg-brand-orange/10 transition">
-        AR MERCH
+        COMING SOON
       </button>
       <button onclick="switchView('loa')" data-nav="loa" class="nav-btn px-3 py-1.5 rounded text-slate-400 hover:text-brand-purple hover:bg-brand-purple/10 transition">
         LOA GAME
@@ -248,14 +248,14 @@
           </div>
         </button>
 
-        <!-- Hotspot 5: AR Merch Wings (Center Artist Hoodie Back) -->
-        <button onclick="handlePinClick('armerch')" class="group absolute top-[68%] sm:top-[66%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open AR Merch Showcase">
-          <span class="absolute inset-0 rounded-full bg-fuchsia-500/40 pin-ring pointer-events-none"></span>
-          <div class="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-slate-950/95 border-2 border-fuchsia-400 flex items-center justify-center shadow-[0_0_25px_rgba(232,121,249,0.8)] group-hover:scale-115 transition">
-            <span class="font-mono text-[10px] sm:text-xs font-bold text-fuchsia-300">AR</span>
+        <!-- Hotspot 5: About Founder & Studio (Center Artist / Darnley) -->
+        <button onclick="switchView('about')" class="group absolute top-[68%] sm:top-[66%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open About Page">
+          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-slate-950/95 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.8)] group-hover:scale-115 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">ME</span>
           </div>
-          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-fuchsia-500/60 text-[10px] sm:text-xs font-mono text-fuchsia-300 whitespace-nowrap shadow-lg">
-            Wings AR Merch ↗
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
+            About Darnley / Studio ↗
           </div>
         </button>
 
@@ -453,16 +453,16 @@
         <div>
           <div class="flex items-center gap-2 text-xs font-mono text-fuchsia-400 uppercase tracking-widest mb-1">
             <span class="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse"></span>
-            Station 05 // Physical-Digital Hybrid Drops
+            COMING SOON // Q4 2026 & 2027 ARENA ROLLOUT
           </div>
-          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">AR Holographic Merch & Smart Apparel</h1>
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">AR Holographic Wings & Phygital Drops</h1>
           <p class="text-sm sm:text-base text-slate-400 mt-1 max-w-2xl font-sans">
-            Every garment is a web3 digital portal. Scan the woven micro-matrix QR code with any smartphone camera to activate live WebAR holographic wings and unlock exclusive stem audio tracks.
+            Next-generation WebAR holographic wings and NFC-embedded 450 GSM streetwear. Currently in closed laboratory beta. Join the private waitlist for launch notification.
           </p>
         </div>
         <div class="flex items-center gap-3 shrink-0">
-          <button onclick="openBookingModal('AR Merch Production Drop')" class="px-4 py-2 rounded bg-fuchsia-600 text-white font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(217,70,239,0.5)]">
-            Order Custom AR Drop
+          <button onclick="openBookingModal('AR Wings Waitlist')" class="px-4 py-2 rounded bg-fuchsia-600 text-white font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(217,70,239,0.5)]">
+            Join Early Waitlist
           </button>
         </div>
       </div>
@@ -823,94 +823,268 @@
 
 
     <!-- ========================================================================= -->
-    <!-- 8. ADMINISTRATION DASHBOARD VIEW (/admin)                                 -->
+    <!-- 8. ARTIST OS ADMIN DASHBOARD COCKPIT VIEW (/admin)                        -->
     <!-- ========================================================================= -->
-    <section id="view-admin" class="view-panel hidden-view w-full p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-emerald-500/20 pb-6">
-        <div>
-          <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            SYS_ADMIN // PROTECTED TELEMETRY CONSOLE
+    <section id="view-admin" class="view-panel hidden-view w-full p-3 sm:p-6 max-w-7xl mx-auto space-y-6">
+      <div class="relative rounded-3xl bg-gradient-to-b from-[#13151f] to-[#0a0b10] border-2 border-slate-700/60 p-4 sm:p-6 shadow-[0_0_60px_rgba(0,0,0,0.9)] overflow-hidden">
+        
+        <!-- Header with Artist OS Badge and Grill Stripes -->
+        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-cyan to-brand-purple flex items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.5)]">
+              <span class="font-mono text-base font-black text-black">A</span>
+            </div>
+            <div>
+              <h2 class="text-lg sm:text-xl font-bold font-mono tracking-wider text-white flex items-center gap-2">
+                ARTIST OS
+                <span class="hidden sm:inline-flex gap-1 ml-2 opacity-40">
+                  <span class="w-1 h-4 bg-white -skew-x-12"></span>
+                  <span class="w-1 h-4 bg-white -skew-x-12"></span>
+                  <span class="w-1 h-4 bg-white -skew-x-12"></span>
+                  <span class="w-1 h-4 bg-white -skew-x-12"></span>
+                </span>
+              </h2>
+            </div>
           </div>
-          <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">Studio Operations & Lead Intake Ledger</h1>
-          <p class="text-sm text-slate-400 mt-1 max-w-2xl font-sans">
-            Real-time pipeline intake from Netlify Forms, Supabase database synchronization, PayPal installment link generator, and edge deployment status.
-          </p>
-        </div>
-        <div class="flex items-center gap-3 shrink-0">
-          <button onclick="triggerSimulatedDeploy()" class="px-4 py-2 rounded bg-emerald-500 text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(16,185,129,0.4)]">
-            Trigger Edge Re-deploy
-          </button>
-        </div>
-      </div>
 
-      <!-- Live KPI Metrics Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
-          <span class="font-mono text-xs text-slate-400">ACTIVE INTAKE LEADS</span>
-          <div class="text-2xl sm:text-3xl font-bold text-white font-mono">14</div>
-          <span class="font-mono text-[11px] text-emerald-400">+3 this week</span>
+          <div class="flex items-center gap-3">
+            <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-xl bg-black/60 border border-white/10 font-mono text-xs text-slate-300">
+              <span class="text-brand-cyan">💳</span>
+              <span>$0.00 CAD</span>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full">
+              ● DAY-1 CLIENT READY // ZERO-STATE
+            </span>
+          </div>
         </div>
-        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
-          <span class="font-mono text-xs text-slate-400">PIPELINE VALUE</span>
-          <div class="text-2xl sm:text-3xl font-bold text-brand-orange font-mono">$38,500</div>
-          <span class="font-mono text-[11px] text-slate-400">CAD / USD</span>
-        </div>
-        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
-          <span class="font-mono text-xs text-slate-400">EDGE CDN LATENCY</span>
-          <div class="text-2xl sm:text-3xl font-bold text-brand-cyan font-mono">14ms</div>
-          <span class="font-mono text-[11px] text-emerald-400">99.98% uptime</span>
-        </div>
-        <div class="cyber-glass p-5 rounded-2xl border border-white/10 space-y-1">
-          <span class="font-mono text-xs text-slate-400">DEPLOY DOMAIN</span>
-          <div class="text-sm sm:text-base font-bold text-white font-mono truncate">9lmntsstudio.com</div>
-          <span class="font-mono text-[11px] text-emerald-400">SSL Active</span>
-        </div>
-      </div>
 
-      <!-- Lead Intake Ledger Table -->
-      <div class="cyber-glass rounded-3xl p-6 border border-white/10 space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-bold text-white font-mono">Recent Netlify Form Submissions</h3>
-          <span class="font-mono text-xs text-slate-400">AUTO-SYNCED VIA FORM DETECT</span>
+        <!-- TOP ROW: 2 Primary Telemetry Displays -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+          
+          <!-- CARD 1: REVENUE STREAMS // THIS MONTH -->
+          <div class="lg:col-span-6 rounded-2xl bg-black/70 border border-brand-cyan/40 p-4 sm:p-5 relative shadow-[0_0_25px_rgba(0,240,255,0.15)] flex flex-col justify-between">
+            <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-brand-cyan"></div>
+            <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-brand-cyan"></div>
+            
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+              <h3 class="font-mono text-xs font-bold tracking-wider text-white uppercase flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                REVENUE STREAMS // THIS MONTH
+              </h3>
+              <span class="font-mono text-xs text-brand-cyan font-bold">$0.00 CAD</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center my-2">
+              <div class="sm:col-span-6 flex items-center justify-center relative h-36">
+                <svg viewBox="0 0 120 120" class="w-32 h-32 transform -rotate-90">
+                  <circle cx="60" cy="60" r="45" fill="none" stroke="#151720" stroke-width="12"></circle>
+                  <circle cx="60" cy="60" r="45" fill="none" stroke="#00f0ff" stroke-width="12" stroke-dasharray="127 283" stroke-dashoffset="0" class="drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]"></circle>
+                  <circle cx="60" cy="60" r="45" fill="none" stroke="#38bdf8" stroke-width="12" stroke-dasharray="70 283" stroke-dashoffset="-127"></circle>
+                  <circle cx="60" cy="60" r="45" fill="none" stroke="#b026ff" stroke-width="12" stroke-dasharray="50 283" stroke-dashoffset="-197"></circle>
+                  <circle cx="60" cy="60" r="45" fill="none" stroke="#ec4899" stroke-width="12" stroke-dasharray="36 283" stroke-dashoffset="-247"></circle>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                  <span class="font-mono text-xs font-bold text-white">$0.00</span>
+                  <span class="text-[8px] font-mono text-slate-400">CAD</span>
+                </div>
+              </div>
+
+              <div class="sm:col-span-6 space-y-1.5 font-mono text-[11px]">
+                <div class="flex items-center justify-between text-slate-300">
+                  <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-sm bg-[#00f0ff]"></span>
+                    <span>Ticket Sales</span>
+                  </span>
+                  <span class="text-slate-400">45%</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-300">
+                  <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-sm bg-[#38bdf8]"></span>
+                    <span>Merchandise</span>
+                  </span>
+                  <span class="text-slate-400">25%</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-300">
+                  <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-sm bg-[#b026ff]"></span>
+                    <span>Brand Deals</span>
+                  </span>
+                  <span class="text-slate-400">18%</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-300">
+                  <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-sm bg-[#ec4899]"></span>
+                    <span>Tipping</span>
+                  </span>
+                  <span class="text-slate-400">12%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
+              <span class="text-slate-500 italic">
+                Awaiting first Q4 transaction // PayPal E-Commerce Engine Connected
+              </span>
+              <button onclick="switchView('pricing')" class="text-brand-cyan hover:underline font-bold">
+                Pricing Rates →
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 2: FAN GROWTH // 30 DAYS (COMMUNITY & LEADS) -->
+          <div class="lg:col-span-6 rounded-2xl bg-black/70 border border-brand-purple/40 p-4 sm:p-5 relative shadow-[0_0_25px_rgba(176,38,255,0.15)] flex flex-col justify-between">
+            <div class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-brand-purple"></div>
+            <div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-brand-purple"></div>
+
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+              <h3 class="font-mono text-xs font-bold tracking-wider text-white uppercase flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-brand-purple animate-pulse"></span>
+                FAN GROWTH // 30 DAYS
+              </h3>
+              <span class="font-mono text-xs text-emerald-400 font-bold">+0.0%</span>
+            </div>
+
+            <div class="w-full h-36 relative flex items-center justify-center">
+              <svg viewBox="0 0 400 120" class="w-full h-full">
+                <line x1="0" y1="20" x2="400" y2="20" stroke="#1f2430" stroke-dasharray="3 3"></line>
+                <line x1="0" y1="50" x2="400" y2="50" stroke="#1f2430" stroke-dasharray="3 3"></line>
+                <line x1="0" y1="80" x2="400" y2="80" stroke="#1f2430" stroke-dasharray="3 3"></line>
+                <line x1="0" y1="110" x2="400" y2="110" stroke="#1f2430"></line>
+                
+                <defs>
+                  <linearGradient id="cyberSplineGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.4"></stop>
+                    <stop offset="100%" stopColor="#b026ff" stopOpacity="0.0"></stop>
+                  </linearGradient>
+                </defs>
+                <path d="M0,105 Q60,100 120,95 T240,88 T360,70 T400,60 L400,115 L0,115 Z" fill="url(#cyberSplineGrad)"></path>
+                <path d="M0,105 Q60,100 120,95 T240,88 T360,70 T400,60" fill="none" stroke="#00f0ff" stroke-width="3" class="drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]"></path>
+                
+                <circle cx="0" cy="105" r="3" fill="#00f0ff"></circle>
+                <circle cx="120" cy="95" r="3" fill="#00f0ff"></circle>
+                <circle cx="240" cy="88" r="3" fill="#00f0ff"></circle>
+                <circle cx="400" cy="60" r="4" fill="#00f0ff" class="animate-ping"></circle>
+              </svg>
+            </div>
+
+            <div class="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
+              <span class="text-brand-purple font-bold">
+                0 INBOUND LEADS // 0 ACTIVE CLIENTS
+              </span>
+              <button onclick="openBookingModal('Admin Direct Intake')" class="text-brand-purple hover:underline font-bold">
+                + Manual Intake →
+              </button>
+            </div>
+          </div>
+
         </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left font-mono text-xs">
-            <thead class="bg-black/50 text-slate-400 border-b border-white/10">
-              <tr>
-                <th class="py-3 px-4">TIMESTAMP</th>
-                <th class="py-3 px-4">CLIENT / ARTIST</th>
-                <th class="py-3 px-4">SERVICE PACKAGE</th>
-                <th class="py-3 px-4">BUDGET</th>
-                <th class="py-3 px-4">STATUS</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-white/5 text-slate-300">
-              <tr>
-                <td class="py-3.5 px-4 text-slate-500">2024-11-20 14:22</td>
-                <td class="py-3.5 px-4 font-bold text-white">Vortex Soundworks</td>
-                <td class="py-3.5 px-4 text-brand-orange">Pro Custom Sprint ($2,500)</td>
-                <td class="py-3.5 px-4">$2,500 Deposit</td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">In Review</span></td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-4 text-slate-500">2024-11-19 09:14</td>
-                <td class="py-3.5 px-4 font-bold text-white">Toronto 2026 Tour Media</td>
-                <td class="py-3.5 px-4 text-fuchsia-400">AR Merch Custom Drop</td>
-                <td class="py-3.5 px-4">$5,000 - $15,000</td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 border border-yellow-500/40">Brief Sent</span></td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-4 text-slate-500">2024-11-18 18:45</td>
-                <td class="py-3.5 px-4 font-bold text-white">Underground Cypher League</td>
-                <td class="py-3.5 px-4 text-brand-cyan">Sound Clash Arena Operator</td>
-                <td class="py-3.5 px-4">$2,500 / mo Retainer</td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Confirmed</span></td>
-              </tr>
-            </tbody>
-          </table>
+
+        <!-- BOTTOM ROW: 3 Actionable Operational Modules -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+          
+          <!-- CARD 3: ACTIVE TOUR // LIVE DATES -->
+          <div class="md:col-span-5 rounded-2xl bg-black/70 border border-brand-cyan/30 p-4 relative flex flex-col justify-between">
+            <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-brand-cyan"></div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-2.5">
+              <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider">
+                ACTIVE TOUR // LIVE DATES
+              </h4>
+              <span class="text-[9px] font-mono text-slate-400">Q4 2026 / 2027</span>
+            </div>
+
+            <div class="space-y-2 py-1">
+              <p class="text-xs text-slate-300 font-sans leading-relaxed">
+                No public dates currently on sale. Now booking Q4 2026 & 2027 arena residencies, live clash battles & private studio sessions.
+              </p>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 font-mono text-[10px] text-slate-400 flex items-center justify-between">
+                <span>STATUS: RESIDENCY CALENDAR OPEN</span>
+                <span class="text-emerald-400">AVAILABLE</span>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-2 border-t border-white/10">
+              <button onclick="openBookingModal('Tour & Residency Booking')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-sky-400 text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(0,240,255,0.4)] flex items-center justify-center gap-1.5">
+                <span>BOOK DARNLEY / 9LMNTS OS</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 4: MERCH SALES // TOP ITEMS -->
+          <div class="md:col-span-4 rounded-2xl bg-black/70 border border-pink-500/30 p-4 relative flex flex-col justify-between">
+            <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-pink-500"></div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-2.5">
+              <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider">
+                MERCH SALES // TOP ITEMS
+              </h4>
+              <span class="text-[9px] font-mono text-pink-400">PRE-ORDER</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 py-1 text-center font-mono">
+              <div class="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center">
+                <span class="text-xl mb-1">👕</span>
+                <span class="text-[10px] text-white font-bold truncate w-full">Core Tee</span>
+                <span class="text-[9px] text-brand-cyan">$45 CAD</span>
+                <span class="text-[8px] text-slate-500 uppercase mt-0.5">Pre-Order</span>
+              </div>
+
+              <div class="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center">
+                <span class="text-xl mb-1">🧥</span>
+                <span class="text-[10px] text-white font-bold truncate w-full">CYPERFINK</span>
+                <span class="text-[9px] text-brand-purple">$120 CAD</span>
+                <span class="text-[8px] text-amber-400 uppercase mt-0.5">Waitlist</span>
+              </div>
+
+              <div class="p-2 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center">
+                <span class="text-xl mb-1">🎫</span>
+                <span class="text-[10px] text-white font-bold truncate w-full">Clash VIP</span>
+                <span class="text-[9px] text-brand-orange">Tiered</span>
+                <span class="text-[8px] text-emerald-400 uppercase mt-0.5">Upcoming</span>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-2 border-t border-white/10">
+              <button onclick="switchView('pricing')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 hover:text-white font-mono text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-1.5">
+                <span>View Product Matrix →</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 5: PENDING SPONSORSHIPS -->
+          <div class="md:col-span-3 rounded-2xl bg-black/70 border border-brand-orange/30 p-4 relative flex flex-col justify-between">
+            <div class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-brand-orange"></div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-2.5">
+              <h4 class="font-mono text-xs font-bold text-white uppercase tracking-wider">
+                PENDING SPONSORSHIPS
+              </h4>
+              <span class="text-[9px] font-mono text-emerald-400">SLOTS OPEN</span>
+            </div>
+
+            <div class="space-y-1.5 py-1 font-mono text-[10px]">
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-white/5 border border-white/10">
+                <span class="text-slate-300">01: Title Arena</span>
+                <span class="text-emerald-400 font-bold">AVAILABLE</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-white/5 border border-white/10">
+                <span class="text-slate-300">02: Live Prize Pot</span>
+                <span class="text-emerald-400 font-bold">AVAILABLE</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-white/5 border border-white/10">
+                <span class="text-slate-300">03: WebAR Brand</span>
+                <span class="text-emerald-400 font-bold">AVAILABLE</span>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-2 border-t border-white/10">
+              <button onclick="openBookingModal('Sponsorship Acquisition Inquiry')" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-[0_0_15px_rgba(255,85,0,0.4)] flex items-center justify-center gap-1.5">
+                <span>INQUIRE / PARTNER</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </section>
 
@@ -936,7 +1110,7 @@
 
     <button onclick="switchView('armerch')" data-dock="armerch" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-fuchsia-400 py-1 px-2.5 rounded transition">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-      <span class="text-[10px] font-mono tracking-wider">AR MERCH</span>
+      <span class="text-[10px] font-mono tracking-wider">COMING SOON</span>
     </button>
 
     <button onclick="switchView('pricing')" data-dock="pricing" class="dock-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-orange py-1 px-2.5 rounded transition">
@@ -1203,15 +1377,15 @@
         action: () => { closeStationModal(); switchView('loa'); }
       },
       armerch: {
-        badge: 'HOTSPOT 05 // SMART APPAREL',
-        title: 'AR Holographic Merch Gallery',
-        desc: 'Scan the back cipher code on any official 9LMNTS hoodie to project live WebAR holographic neon angel wings over your shoulders with zero app installation.',
+        badge: 'COMING SOON // SMART APPAREL',
+        title: 'AR Holographic Wings (Coming Soon)',
+        desc: 'Next-generation WebAR holographic wings and NFC-embedded 450 GSM streetwear. Currently in closed laboratory beta. Join the private waitlist for launch notification.',
         specs: [
           '• Engine: WebAR (Safari & Chrome iOS/Android)',
-          '• Garment: 450 GSM Heavyweight French Terry',
-          '• Audio Unseal: Backstage Rehearsal & Unreleased Stems'
+          '• Launch Window: Q4 2026 / 2027 Arena Rollout',
+          '• Early Access: Waitlist Registration Active'
         ],
-        btnText: 'Open AR Merch Showroom',
+        btnText: 'Join Early Waitlist',
         action: () => { closeStationModal(); switchView('armerch'); }
       }
     };

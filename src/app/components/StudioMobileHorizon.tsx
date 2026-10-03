@@ -39,7 +39,7 @@ const STUDIO_HOTSPOTS: ZoneHotspot[] = [
     y: 40,
     title: 'Artist OS Admin Telemetry (Center Wall)',
     subtitle: 'MANAGEMENT & REVENUE ANALYTICS',
-    description: 'Live performance metrics, 30-day fan growth (+21.4%), revenue breakdown (Ticket sales 45%, Merch 25%, Brand deals 18%, Tipping 12%), and active tour routing.',
+    description: 'Live performance metrics, 30-day fan growth, Day-1 Zero-State client-ready telemetry, and active tour residency booking intake.',
     type: 'admin-dash',
     actionLabel: 'OPEN ADMIN DASHBOARD'
   },

@@ -6,7 +6,7 @@ import { ServicesPage } from "./components/ServicesPage";
 import { PricingPage } from "./components/PricingPage";
 import { AboutPage } from "./components/AboutPage";
 import { StartProjectPage } from "./components/StartProjectPage";
-import { PortfolioPage } from "./components/PortfolioPage";
+import { NinePillarsPage } from "./components/NinePillarsPage";
 import { AdminDashboardFull } from "./components/AdminDashboardFull";
 import { CRM } from "./components/CRM";
 import { ClientPortal } from "./components/ClientPortal";
@@ -141,12 +141,16 @@ export default function App() {
         return <HomePage onNavigate={handleNavigate} />;
       case "services":
         return <ServicesPage onNavigate={handleNavigate} />;
+      case "nine-pillars":
+        return <NinePillarsPage onNavigate={handleNavigate} />;
       case "pricing":
         return <PricingPage onNavigate={handleNavigate} />;
-      case "portfolio":
-        return <PortfolioPage onNavigate={handleNavigate} />;
       case "about":
         return <AboutPage onNavigate={handleNavigate} />;
+      case "9lmnts-os":
+      case "event-os":
+      case "event-os-demo":
+        return <EventOSDemo onNavigate={handleNavigate} />;
       case "start-project":
         return (
           <StartProjectPage
@@ -185,9 +189,8 @@ export default function App() {
         return <CRM onNavigate={handleNavigate} />;
       case "client-portal":
         return <ClientPortal onNavigate={handleNavigate} />;
-      case "event-os-demo":
-        return <EventOSDemo onNavigate={handleNavigate} />;
       case "ClashOS":
+      case "clash-os":
         return <ClashOS onNavigate={handleNavigate} />;
       case "loa":
         return <LoaPage onNavigate={handleNavigate} />;
@@ -202,6 +205,7 @@ export default function App() {
     "client-portal",
     "event-os-demo",
     "ClashOS",
+    "clash-os",
     "login",
     "signup",
   ].includes(currentPage);
@@ -231,7 +235,7 @@ export default function App() {
         )}
         <main>{renderPage()}</main>
         {!isStandalonePage && (
-          <Footer onNavigate={handleNavigate} />
+          <Footer onNavigate={handleNavigate} user={user} />
         )}
       </div>
     </HelmetProvider>
