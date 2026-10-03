@@ -183,79 +183,128 @@
       <!-- Master 16:9 Aspect Spatial Interactive Canvas -->
       <div class="relative w-full h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-black">
         
-        <!-- Full-bleed Master Studio Plate -->
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTc1wgAghmjOp8N9sFU5vxrTaageGVMM5HJ9lh7Z_KWCmcwHHgam7pQ7ni3g7E3aGa5bANC-J1Mq7SBY0sp7Bmb10g0_Y4p9ApjmGhnOWMemnzJVggh60_w5DozwnijJH0JtXZf51oddUzvNFtkW63mWOXNtMCaq16tw5yv1kTM4SPn9EjlQE3qCpSbFjsLM4OIBB_C-d60ikNAZKYmq15K5eHZyecBEhBPql4xuLKZJ4amA__G_MXiE-mli-B4Yyhog" alt="9LMNTS Studio Master Plate" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none opacity-90 scale-100 transition-transform duration-700">
+        <!-- Full-bleed Master Studio Plate (media_1791046884322.jpg) -->
+        <picture class="absolute inset-0 w-full h-full">
+          <source srcset="/assets/studio/cyber-cypher-4k.webp" type="image/webp">
+          <img src="/assets/studio/cyber-cypher-4k.jpg" alt="9LMNTS Studio Master Plate" class="w-full h-full object-cover object-center pointer-events-none opacity-95 scale-100 transition-transform duration-700">
+        </picture>
 
         <!-- Ambient Cyber Vignette -->
         <div class="absolute inset-0 bg-gradient-to-t from-[#07080b] via-transparent to-black/60 pointer-events-none"></div>
 
         <!-- System HUD Telemetry Header Bar (Floating Inside Cypher) -->
         <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-30">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full cyber-glass text-[11px] font-mono text-slate-300 pointer-events-auto">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full cyber-glass text-[11px] font-mono text-slate-300 pointer-events-auto shadow-lg">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>SYS_ONLINE: 99.98%</span>
             <span class="text-slate-500">|</span>
             <span class="text-brand-cyan">TORONTO / OTTAWA NODE 09</span>
+            <span class="text-slate-500 hidden sm:inline">|</span>
+            <span class="text-slate-400 hidden sm:inline">DAY-1 ZERO-STATE</span>
           </div>
           
-          <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full cyber-glass text-[11px] font-mono text-slate-400 pointer-events-auto">
-            <span>EDGE: NETLIFY 9LMNTSSTUDIO.COM</span>
+          <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full cyber-glass text-[11px] font-mono text-slate-400 pointer-events-auto shadow-lg">
+            <span>EDGE: 9LMNTSSTUDIO.COM</span>
           </div>
         </div>
 
-        <!-- ================= HOTSPOT RADAR PINS (RESPONSIVE PERCENTAGE ANCHORS) ================= -->
-        <!-- Hotspot 1: ArtistOS DAW Console (Left Workstation Screen) -->
-        <button onclick="handlePinClick('artistos')" class="group absolute top-[44%] left-[17%] sm:left-[21%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open ArtistOS Station">
-          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
-          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-115 transition">
-            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">01</span>
-          </div>
-          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
-            ArtistOS DAW ↗
-          </div>
-        </button>
-
-        <!-- Hotspot 2: System Telemetry / Live Metrics (Center Display Screen) -->
-        <button onclick="handlePinClick('telemetry')" class="group absolute top-[28%] sm:top-[26%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open Telemetry Specs">
-          <span class="absolute inset-0 rounded-full bg-brand-orange/40 pin-ring pointer-events-none"></span>
-          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-orange flex items-center justify-center shadow-[0_0_20px_rgba(255,85,0,0.7)] group-hover:scale-115 transition">
-            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-orange">02</span>
-          </div>
-          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-orange/60 text-[10px] sm:text-xs font-mono text-brand-orange whitespace-nowrap shadow-lg">
-            Studio Telemetry ↗
-          </div>
-        </button>
-
-        <!-- Hotspot 3: Sound Clash Arena (Right Battle Screen) -->
-        <button onclick="handlePinClick('soundclash')" class="group absolute top-[48%] right-[16%] sm:right-[20%] translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open Sound Clash Station">
-          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
-          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-115 transition">
-            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">03</span>
-          </div>
-          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
-            Clash Arena ↗
-          </div>
-        </button>
-
-        <!-- Hotspot 4: Project LOA / Lore Archive (Top Left Wall Poster) -->
-        <button onclick="handlePinClick('loa')" class="group absolute top-[16%] sm:top-[18%] left-[10%] sm:left-[14%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open Project LOA">
+        <!-- ================= 9 CANONICAL UNIFIED HOTSPOT RADAR PINS (01 TO 09) ================= -->
+        <!-- Station 01 — Project LOA Universe (Left Wall Lighted Poster) -->
+        <button onclick="handlePinClick('01')" class="group absolute top-[35%] left-[15.5%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 01: Project LOA">
           <span class="absolute inset-0 rounded-full bg-brand-purple/40 pin-ring pointer-events-none"></span>
-          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/90 border-2 border-brand-purple flex items-center justify-center shadow-[0_0_20px_rgba(176,38,255,0.7)] group-hover:scale-115 transition">
-            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-purple">04</span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-purple flex items-center justify-center shadow-[0_0_20px_rgba(176,38,255,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-purple">01</span>
           </div>
           <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-purple/60 text-[10px] sm:text-xs font-mono text-brand-purple whitespace-nowrap shadow-lg">
-            Project LOA ↗
+            01: Project LOA ↗
           </div>
         </button>
 
-        <!-- Hotspot 5: About Founder & Studio (Center Artist / Darnley) -->
-        <button onclick="switchView('about')" class="group absolute top-[68%] sm:top-[66%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Open About Page">
+        <!-- Station 02 — Original Music Vault & Stem Player (Left Monitor Speaker) -->
+        <button onclick="handlePinClick('02')" class="group absolute top-[68%] left-[28.5%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 02: Audio Stem Vault">
           <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
-          <div class="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-slate-950/95 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.8)] group-hover:scale-115 transition">
-            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">ME</span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">02</span>
           </div>
           <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
-            About Darnley / Studio ↗
+            02: Audio Stem Vault ↗
+          </div>
+        </button>
+
+        <!-- Station 03 — 9LMNTS Studio Core Services (Center Wall Display) -->
+        <button onclick="handlePinClick('03')" class="group absolute top-[41.5%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 03: Core Services">
+          <span class="absolute inset-0 rounded-full bg-brand-orange/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-orange flex items-center justify-center shadow-[0_0_20px_rgba(255,85,0,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-orange">03</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-orange/60 text-[10px] sm:text-xs font-mono text-brand-orange whitespace-nowrap shadow-lg">
+            03: Core Services ↗
+          </div>
+        </button>
+
+        <!-- Station 04 — AI Voice Operator (Right Monitor Speaker) -->
+        <button onclick="handlePinClick('04')" class="group absolute top-[51.5%] left-[71.5%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 04: AI Voice Operator">
+          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">04</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
+            04: AI Voice Operator ↗
+          </div>
+        </button>
+
+        <!-- Station 05 — Event OS Universal Showcase (Right Wall Poster) -->
+        <button onclick="handlePinClick('05')" class="group absolute top-[30%] left-[88%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 05: Event OS">
+          <span class="absolute inset-0 rounded-full bg-brand-orange/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-orange flex items-center justify-center shadow-[0_0_20px_rgba(255,85,0,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-orange">05</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-orange/60 text-[10px] sm:text-xs font-mono text-brand-orange whitespace-nowrap shadow-lg">
+            05: Event OS Demo ↗
+          </div>
+        </button>
+
+        <!-- Station 06 — The Helm / Darnley Sanon (Center Mixing Console Desk) -->
+        <button onclick="handlePinClick('06')" class="group absolute top-[72%] left-[45%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 06: The Helm">
+          <span class="absolute inset-0 rounded-full bg-emerald-500/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-emerald-400 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-emerald-400">06</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-emerald-400/60 text-[10px] sm:text-xs font-mono text-emerald-400 whitespace-nowrap shadow-lg">
+            06: The Helm (About & Admin) ↗
+          </div>
+        </button>
+
+        <!-- Station 07 — Sound Clash OS Arena (Right Jumbotron Screen) -->
+        <button onclick="handlePinClick('07')" class="group absolute top-[59%] left-[88%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 07: Sound Clash OS">
+          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">07</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
+            07: Sound Clash Arena ↗
+          </div>
+        </button>
+
+        <!-- Station 08 — Live Events & Calendar Portal (Desk / Wall Alcove) -->
+        <button onclick="handlePinClick('08')" class="group absolute top-[68%] left-[71.5%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 08: Live Tour Calendar">
+          <span class="absolute inset-0 rounded-full bg-brand-orange/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-orange flex items-center justify-center shadow-[0_0_20px_rgba(255,85,0,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-orange">08</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-orange/60 text-[10px] sm:text-xs font-mono text-brand-orange whitespace-nowrap shadow-lg">
+            08: Tour Calendar & Passes ↗
+          </div>
+        </button>
+
+        <!-- Station 09 — Artist OS Creator HQ (Left Desk Screen) -->
+        <button onclick="handlePinClick('09')" class="group absolute top-[59%] left-[15%] -translate-x-1/2 -translate-y-1/2 z-30 focus:outline-none" aria-label="Station 09: Artist OS DAW">
+          <span class="absolute inset-0 rounded-full bg-brand-cyan/40 pin-ring pointer-events-none"></span>
+          <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 border-2 border-brand-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.7)] group-hover:scale-120 transition">
+            <span class="font-mono text-[10px] sm:text-xs font-bold text-brand-cyan">09</span>
+          </div>
+          <div class="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-black/90 border border-brand-cyan/60 text-[10px] sm:text-xs font-mono text-brand-cyan whitespace-nowrap shadow-lg">
+            09: Artist OS DAW ↗
           </div>
         </button>
 
@@ -1151,13 +1200,15 @@
         <!-- Injected via JS -->
       </div>
 
-      <!-- Modal Action Buttons -->
-      <div class="flex items-center justify-end gap-3 pt-2">
-        <button onclick="closeStationModal()" class="px-4 py-2 rounded-xl text-xs font-mono text-slate-400 hover:text-white transition">
-          Close Window
+      <!-- Two-Step Modal Action Buttons Pattern (Step 2A Explore & Step 2B Live Demo) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+        <button id="modal-explore-action" class="w-full py-3 px-4 rounded-xl border border-white/20 hover:border-brand-orange text-slate-200 font-mono text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
+          <span>Explore More</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
-        <button id="modal-primary-action" class="px-5 py-2.5 rounded-xl bg-brand-orange text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 transition shadow-lg">
-          Launch Module ↗
+        <button id="modal-primary-action" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 text-black font-mono text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-lg transition flex items-center justify-center gap-2">
+          <span>Launch Module ↗</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </button>
       </div>
     </div>
@@ -1328,65 +1379,134 @@
 
     // Hotspot Pin Click Handler & Station Data
     const stationData = {
-      artistos: {
-        badge: 'HOTSPOT 01 // AUDIO WORKSTATION',
-        title: 'ArtistOS DAW & Tour CRM',
-        desc: 'Browser-based multi-track audio workstation for independent artists. Features stem splitting, Parametric EQ, tour revenue tracking, and autonomous AI fan DM funnels.',
+    // 9 Canonical Unified Hotspot Stations (01 to 09) & Two-Step Handlers
+    const stationData = {
+      '01': {
+        badge: 'STATION 01 // UNREAL ENGINE 5.7 | SCI-FI RPG',
+        title: 'Project LOA // The Awakening of Ptah',
+        desc: '3026 Neo-Ottawa cyber-industrial dystopia. Follow Damian Kane (amnesiac incarnation of Ptah) mastering Wing Chun and Capoeira Blink-Strike mechanics against corrupted AI entity LOA.',
         specs: [
-          '• Web Audio API: 24-bit / 48kHz Stems',
-          '• Subdomain Edge: artist.9lmntsstudio.com',
-          '• Tour Monetization: 0% Platform Cut on Live Merch & Tips'
+          '• Seed Target: $20,000 CAD Vertical Slice',
+          '• Core Rigs: Damian Kane, Corrupted AI LOA, Lucius Kray, KJ Kane',
+          '• Backer Tiers: 5-Tier Reward Matrix ($25 to $2,500 CAD)'
         ],
-        btnText: 'Open Full ArtistOS View',
-        action: () => { closeStationModal(); switchView('artistos'); }
+        exploreText: 'Explore LOA Universe',
+        exploreAction: () => { closeStationModal(); switchView('loa'); },
+        demoText: 'Launch Project LOA ↗',
+        demoAction: () => { closeStationModal(); switchView('loa'); }
       },
-      telemetry: {
-        badge: 'HOTSPOT 02 // SYSTEM TELEMETRY',
-        title: 'Master Console Telemetry',
-        desc: 'Real-time studio edge node metrics. Operating on Netlify Edge CDN with serverless SSL and low-latency audio sync across Ottawa & Toronto nodes.',
+      '02': {
+        badge: 'STATION 02 // LOSSLESS STREAMING | STEM LICENSING',
+        title: 'Original Audio Vault & Stem Deck',
+        desc: 'High-fidelity audio player with interactive waveform visualizer and multitrack WAV stems. Featuring original Suno productions "You Could Have Been" and "Raise Another Banner".',
         specs: [
-          '• Canonical Domain: 9lmntsstudio.com',
-          '• Global CDN Status: 99.98% Operational',
-          '• Serverless Lead Intakes: Form Sync Active'
+          '• Audio Quality: 48kHz / 24-Bit Uncompressed WAV',
+          '• Multitrack Stems: Drums, Bass, Synth, Vox Isolation',
+          '• Commercial Clearance: $250 CAD Instant Sync License'
         ],
-        btnText: 'View Services & Rates',
-        action: () => { closeStationModal(); switchView('pricing'); }
+        exploreText: 'Sync License Terms',
+        exploreAction: () => { closeStationModal(); switchView('pricing'); },
+        demoText: 'Launch Stem Player ↗',
+        demoAction: () => { closeStationModal(); switchView('artistos'); }
       },
-      soundclash: {
-        badge: 'HOTSPOT 03 // LIVE ARENA',
-        title: 'Sound Clash OS Tournament',
-        desc: 'Real-time synchronized competitive beat battle arena. Audience peer voting, decibel visualizers, instant tipping, and stage jumbotron telemetry.',
+      '03': {
+        badge: 'STATION 03 // 7-DAY TURNKEY MVP | WEB 2.5',
+        title: '9LMNTS Studio // Productized Agency Sprints',
+        desc: 'Rapid production agency builds delivering custom full-stack web applications, scannable WebAR activations, and autonomous Supabase/n8n workflows.',
         specs: [
-          '• Live Subdomain: clash.9lmntsstudio.com',
-          '• Real-time Split: 90% Creator / 10% Studio',
-          '• Jumbotron Sync: Sub-50ms Bracket Broadcast'
+          '• Starter Sprint: $1,500 CAD Turnkey',
+          '• Pro Custom Sprint: $2,500 – $3,500 CAD Deposit',
+          '• Enterprise Scale Build: $5,000 CAD',
+          '• Monthly Retainers: $1,500 – $3,500/mo'
         ],
-        btnText: 'Enter Clash Arena View',
-        action: () => { closeStationModal(); switchView('soundclash'); }
+        exploreText: 'View All Services',
+        exploreAction: () => { closeStationModal(); switchView('pricing'); },
+        demoText: 'Book Sprint Wizard ↗',
+        demoAction: () => { closeStationModal(); openBookingModal('Agency Sprint'); }
       },
-      loa: {
-        badge: 'HOTSPOT 04 // 3D CGI & LORE',
-        title: 'Project LOA — Metaverse Lore',
-        desc: 'Bespoke 3D CGI commercial video pipelines, cyberpunk character development, and narrative world-building engineered by 9LMNTS Studio.',
+      '04': {
+        badge: 'STATION 04 // REAL-TIME AUDIO | GEMINI LIVE API',
+        title: 'AI Voice Operator // Gemini Live API',
+        desc: 'Interactive conversational AI operator trained on 9LMNTS Studio service offerings, sprint timelines, pricing structures, and live arena deployments.',
         specs: [
-          '• Primary Character Rig: Dd Pilar',
-          '• Output Formats: 9:16 Vertical Video Ads & 16:9 Trailers',
-          '• Pipeline: Blender, Unreal Engine 5 & WebGL Shaders'
+          '• Voice Latency: Sub-300ms Native Voice-to-Voice',
+          '• AI Backbone: Gemini 2.0 Flash / Live Stream Engine',
+          '• Direct Keywords: DM "DEV", "CLASH", "ARTIST" (ManyChat)'
         ],
-        btnText: 'Explore Project LOA',
-        action: () => { closeStationModal(); switchView('loa'); }
+        exploreText: 'Service Knowledge Base',
+        exploreAction: () => { closeStationModal(); switchView('pricing'); },
+        demoText: 'Open Operator Chat ↗',
+        demoAction: () => { closeStationModal(); openBookingModal('AI Voice Consultation'); }
       },
-      armerch: {
-        badge: 'COMING SOON // SMART APPAREL',
-        title: 'AR Holographic Wings (Coming Soon)',
-        desc: 'Next-generation WebAR holographic wings and NFC-embedded 450 GSM streetwear. Currently in closed laboratory beta. Join the private waitlist for launch notification.',
+      '05': {
+        badge: 'STATION 05 // DUAL TELEMETRY | MULTI-VERTICAL',
+        title: 'Event OS // 2-Screen Competition Engine',
+        desc: 'Full-stack tournament infrastructure syncing View 1 (Mobile Spectator Arena) and View 2 (Organizer Command Console / Jumbotron Sync) via WebSockets.',
         specs: [
-          '• Engine: WebAR (Safari & Chrome iOS/Android)',
-          '• Launch Window: Q4 2026 / 2027 Arena Rollout',
-          '• Early Access: Waitlist Registration Active'
+          '• Sync Protocol: Sub-50ms WebSocket Broadcast',
+          '• Multi-Vertical: Sound Clash, Sports (3v3), Bars (Battle Rap)',
+          '• Platform Licensing: $500 Base + 5% Event Gross Share'
         ],
-        btnText: 'Join Early Waitlist',
-        action: () => { closeStationModal(); switchView('armerch'); }
+        exploreText: 'Licensing Terms',
+        exploreAction: () => { closeStationModal(); switchView('pricing'); },
+        demoText: 'Launch Event OS ↗',
+        demoAction: () => { closeStationModal(); window.open('https://clash.9lmntsstudio.com', '_blank'); }
+      },
+      '06': {
+        badge: 'STATION 06 // UI/UX ARCHITECT | THE HELM',
+        title: 'Darnley Sanon // Founder & Creative Director',
+        desc: 'Executive dossier, decade-long design standard combining Hip-Hop culture with AI automation, and live studio telemetry hub. Initialized at true Day-1 zero-state ($0.00 CAD active revenue, 0 active leads).',
+        specs: [
+          '• Status: Booking Q4 2026 & 2027 Arena Residencies',
+          '• Zero-State: Verified Day-1 Live Paypal & Supabase Pipeline',
+          '• Protected Terminal: /admin Portal & Lead CRM'
+        ],
+        exploreText: 'About Darnley / Story',
+        exploreAction: () => { closeStationModal(); switchView('about'); },
+        demoText: 'Open Admin Cockpit ↗',
+        demoAction: () => { closeStationModal(); switchView('admin'); }
+      },
+      '07': {
+        badge: 'STATION 07 // 8-CONTENDER TREE | DYNAMIC POT SURGE',
+        title: 'Sound Clash OS // Live Arena Engine',
+        desc: 'Real-time head-to-head live DJ battle engine. Crowd vote telemetry with animated hype meters (#FF5500 vs #00D2FF), live Jumbotron mirroring, and automated 70/30 winner prize pot surges.',
+        specs: [
+          '• Universal 4-Box Grid: $20 Cover, $10 Boost, $50 Power, $150 VIP',
+          '• Flagship Battle: Bronson Centre Halloween Battle (Oct 31, 2026)',
+          '• Live Subdomain: clash.9lmntsstudio.com'
+        ],
+        exploreText: 'Event Rules & Calculator',
+        exploreAction: () => { closeStationModal(); switchView('soundclash'); },
+        demoText: 'Clash.9lmntsstudio.com ↗',
+        demoAction: () => { closeStationModal(); window.open('https://clash.9lmntsstudio.com', '_blank'); }
+      },
+      '08': {
+        badge: 'STATION 08 // BRONSON CENTRE | GATE OS CASHLESS',
+        title: 'Live Events, Tours & Residencies',
+        desc: 'Official event showcase featuring the Culture Clash promotional trailer reel, partner arenas (Sectors 01-06, Arenas Alpha-Gamma), and upcoming tour calendar.',
+        specs: [
+          '• Flagship Live Battle: October 31, 2026 // Bronson Centre',
+          '• Arena Scale: 850 Venue Synced Spectators',
+          '• Cashless Engine: PayPal E-Commerce Services'
+        ],
+        exploreText: 'Tour Dates & Tiers',
+        exploreAction: () => { closeStationModal(); switchView('soundclash'); },
+        demoText: 'Book Arena Passes ↗',
+        demoAction: () => { closeStationModal(); openBookingModal('Sound Clash Live Event Pass'); }
+      },
+      '09': {
+        badge: 'STATION 09 // COMMISSION-FREE | STEM VAULT & ROYALTIES',
+        title: 'Artist OS // 24/7 Creator Digital HQ',
+        desc: 'Permanent Web 2.5 infrastructure for recording artists and producers. Uncompressed 24-bit WAV stem downloads, direct fan tipping jar (80/20 creator split), EPK press pass generator, and automated catalog yield ledgers.',
+        specs: [
+          '• Fan Tipping Jar: 0% Platform Take on Direct Tipping',
+          '• Web 2.5 Architecture: DSP Yield Ledger & Web3 Royalties Vault',
+          '• Creator Tiers: Free Beta, Pro ($500), Elite ($1,500)'
+        ],
+        exploreText: 'Creator Suite Specs',
+        exploreAction: () => { closeStationModal(); switchView('artistos'); },
+        demoText: 'Artist.9lmntsstudio.com ↗',
+        demoAction: () => { closeStationModal(); window.open('https://artist.9lmntsstudio.com', '_blank'); }
       }
     };
 
@@ -1402,9 +1522,17 @@
       const specsBox = document.getElementById('modal-specs');
       specsBox.innerHTML = data.specs.map(s => `<div>${s}</div>`).join('');
 
+      const exploreBtn = document.getElementById('modal-explore-action');
+      if (exploreBtn) {
+        exploreBtn.querySelector('span').innerText = data.exploreText;
+        exploreBtn.onclick = data.exploreAction;
+      }
+
       const actionBtn = document.getElementById('modal-primary-action');
-      actionBtn.innerText = data.btnText;
-      actionBtn.onclick = data.action;
+      if (actionBtn) {
+        actionBtn.querySelector('span').innerText = data.demoText;
+        actionBtn.onclick = data.demoAction;
+      }
 
       // Show Modal
       const modal = document.getElementById('station-modal');

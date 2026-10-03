@@ -83,8 +83,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground font-['Orbitron']">
       <SEO 
-        title="9LMNTS Studio | Futuristic Web Experiences" 
-        description="Pioneering the digital frontier with high-performance Web3 applications, cyber aesthetic designs, and real-time CRM capabilities powered by Gate OS." 
+        title="9LMNTS Studio — Futuristic Web Experiences & Creative Operating Systems" 
+        description="Pioneering the digital frontier with high-performance creative applications, cyber aesthetic designs, Event OS, and Sound Clash arena ecosystems." 
       />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
