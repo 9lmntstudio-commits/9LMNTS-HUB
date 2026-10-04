@@ -462,51 +462,22 @@
     .hud-tr { top: 68px; right: 0; text-align: right; }
 
     /* ===================================================
-       4. MOBILE QUICK DOCK
+       4. MOBILE 3-PART COCKPIT & STREAMLINED DOCK
        =================================================== */
+    .mobile-snap-anchor {
+      display: none;
+    }
+    .mobile-part-switcher {
+      display: none;
+    }
+    .mobile-swipe-hint {
+      display: none;
+    }
+    .mobile-streamlined-dock {
+      display: none;
+    }
     .mobile-dock {
       display: none;
-      position: fixed;
-      bottom: 44px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(17, 19, 25, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 85, 0, 0.4);
-      padding: 6px 10px;
-      border-radius: 30px;
-      z-index: 80;
-      gap: 6px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9);
-      max-width: 95vw;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .mobile-dock::-webkit-scrollbar { display: none; }
-
-    .mobile-dock button, .mobile-dock a {
-      background: transparent;
-      color: #cbd5e1;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
-      font-family: inherit;
-    }
-
-    .mobile-dock button:hover, .mobile-dock a:hover {
-      background: var(--neon-orange);
-      color: #050505;
     }
 
     /* ===================================================
@@ -1297,10 +1268,9 @@
       box-shadow: 0 0 40px rgba(255, 69, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
-    /* Responsive */
+    /* Responsive Engine */
     @media (max-width: 900px) {
-      .hud-corner { display: none; }
-      .mobile-dock { display: flex; }
+      .hud-corner { display: none !important; }
       .studio-header { padding: 0 16px; }
       .tag-label { padding: 3px 6px; }
       .label-title { font-size: 0.64rem; }
@@ -1311,13 +1281,254 @@
       .ar-showcase-gallery { grid-template-columns: 1fr; }
       .service-modules-grid { grid-template-columns: 1fr; }
       .lead-form-grid { grid-template-columns: 1fr; }
-      .modal-dialog { padding: 20px; max-height: 90vh; }
-      .modal-dialog h2 { font-size: 1.45rem; }
+      .modal-dialog { padding: 22px 18px; max-height: 90vh; }
+      .modal-dialog h2 { font-size: 1.4rem; }
+    }
+
+    /* Mobile Viewport: 3-Part Side Scroll Cockpit (Left - Middle - Right) */
+    @media (max-width: 768px) {
+      /* Horizontal Snap-Scroll Stage */
+      .hero-stage {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        display: flex !important;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+      .hero-stage::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* 300vw Panoramic Studio Canvas */
+      .hero-canvas {
+        position: relative !important;
+        width: 300vw !important;
+        min-width: 300vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        min-height: 100vh !important;
+        transform: none !important; /* Eliminate camera zoom disorientation on touch */
+        transition: none !important;
+        flex-shrink: 0;
+      }
+
+      .base-plate {
+        width: 300vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+      }
+
+      /* 3 Snap Anchors for Left, Middle, Right */
+      .mobile-snap-anchor {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        pointer-events: none;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        z-index: 5;
+      }
+      .snap-left { left: 0; }
+      .snap-middle { left: 100vw; }
+      .snap-right { left: 200vw; }
+
+      /* Mobile 3-Part Pill Switcher */
+      .mobile-part-switcher {
+        display: flex;
+        position: fixed;
+        top: 66px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 13, 20, 0.75);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 69, 0, 0.40);
+        border-radius: 40px;
+        padding: 4px 6px;
+        gap: 4px;
+        z-index: 95;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.25);
+        max-width: 95vw;
+      }
+
+      .switcher-pill {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        padding: 6px 12px;
+        color: #94a3b8;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.22s ease;
+        white-space: nowrap;
+        text-transform: uppercase;
+      }
+
+      .switcher-pill.active {
+        background: rgba(255, 69, 0, 0.22);
+        border-color: #FF4500;
+        color: #ffffff;
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.45);
+      }
+
+      .switcher-pill .pill-dot {
+        color: #FF4500;
+        font-size: 0.72rem;
+        animation: blinkGlow 1.8s infinite;
+      }
+
+      .switcher-pill .pill-icon {
+        font-size: 0.60rem;
+        color: #64748b;
+      }
+      .switcher-pill.active .pill-icon {
+        color: #FF4500;
+      }
+
+      @keyframes blinkGlow {
+        0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #FF4500); }
+        50% { opacity: 0.35; filter: none; }
+      }
+
+      /* Mobile Swipe Indicator */
+      .mobile-swipe-hint {
+        display: flex;
+        position: fixed;
+        bottom: 74px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(8, 10, 16, 0.70);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 30px;
+        padding: 5px 14px;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.60rem;
+        letter-spacing: 0.8px;
+        color: #cbd5e1;
+        z-index: 85;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+        animation: pulseHint 2.5s infinite;
+        white-space: nowrap;
+      }
+
+      @keyframes pulseHint {
+        0%, 100% { opacity: 0.9; }
+        50% { opacity: 0.4; }
+      }
+
+      .mobile-swipe-hint.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Streamlined Mobile Dock (Less functions, high utility) */
+      .mobile-dock { display: none !important; }
+      .mobile-streamlined-dock {
+        display: flex;
+        position: fixed;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 13, 20, 0.80);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 69, 0, 0.40);
+        border-radius: 40px;
+        padding: 5px 8px;
+        gap: 6px;
+        z-index: 95;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85), 0 0 24px rgba(255, 69, 0, 0.25);
+        max-width: 95vw;
+        width: auto;
+      }
+
+      .dock-btn {
+        background: transparent;
+        color: #e2e8f0;
+        border: 1px solid transparent;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+      }
+
+      .dock-btn.sprint-btn {
+        background: linear-gradient(135deg, rgba(255, 69, 0, 0.35) 0%, rgba(255, 26, 0, 0.20) 100%);
+        border-color: rgba(255, 69, 0, 0.6);
+        color: #fff;
+        box-shadow: 0 0 14px rgba(255, 69, 0, 0.35);
+      }
+
+      .dock-btn:hover, .dock-btn:active {
+        background: var(--neon-orange);
+        color: #050505;
+      }
+
+      /* Radar Pins on Mobile (Optimized for finger touch) */
+      .tag-pin {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 11px !important;
+        box-shadow: 0 0 18px var(--neon-orange) !important;
+      }
+      /* Disable hovering tech labels on mobile to avoid screen occlusion */
+      .tag-label {
+        display: none !important;
+      }
+
+      /* Modal Responsive Refinement */
+      .modal-backdrop {
+        padding: 12px;
+      }
+      .modal-dialog {
+        padding: 24px 20px;
+        max-height: 88vh;
+        border-radius: 20px;
+        width: 100%;
+      }
+      .modal-dialog h2 {
+        font-size: 1.35rem;
+      }
     }
 
     @media (max-width: 480px) {
       .btn-glow span { display: none; }
       .btn-glow { padding: 8px 10px; }
+      .mobile-streamlined-dock { padding: 4px 6px; gap: 4px; }
+      .dock-btn { padding: 7px 9px; font-size: 0.62rem; }
+      .switcher-pill { padding: 5px 8px; font-size: 0.58rem; }
     }
   </style>
 </head>
@@ -1505,6 +1716,11 @@
   <!-- Interactive 3D Hero Stage -->
   <main class="hero-stage" id="heroStage">
     <div class="hero-canvas" id="heroCanvas">
+      <!-- 3-Part Snap Anchors for Mobile Horizontal Snap Scrolling -->
+      <div class="mobile-snap-anchor snap-left" id="snapLeft" data-part="left"></div>
+      <div class="mobile-snap-anchor snap-middle" id="snapMiddle" data-part="middle"></div>
+      <div class="mobile-snap-anchor snap-right" id="snapRight" data-part="right"></div>
+
       <!-- Master 4K Render Base Plate (3840x2160 UHD) -->
       <picture>
         <source srcset="/assets/studio/cyber-cypher-4k.webp" type="image/webp"/>
@@ -1614,25 +1830,46 @@
     </div>
   </main>
 
-  <!-- Mobile Quick Dock -->
-  <div class="mobile-dock" id="mobileDock">
-    <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
-      <span style="color:var(--neon-orange);">↗</span> Artist OS
+  <!-- Mobile 3-Part Side Scroll Switcher Header -->
+  <nav class="mobile-part-switcher" id="mobilePartSwitcher" aria-label="Cockpit Bay Switcher">
+    <button class="switcher-pill" onclick="snapCockpit('left')" data-part="left" title="View Left Bays">
+      <span class="pill-icon">◀</span>
+      <span class="pill-text">LEFT BAYS</span>
+    </button>
+    <button class="switcher-pill active" onclick="snapCockpit('middle')" data-part="middle" title="View Studio Helm">
+      <span class="pill-dot">●</span>
+      <span class="pill-text">STUDIO HELM</span>
+    </button>
+    <button class="switcher-pill" onclick="snapCockpit('right')" data-part="right" title="View Right Bays">
+      <span class="pill-text">RIGHT BAYS</span>
+      <span class="pill-icon">▶</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Swipe Gesture Hint -->
+  <div class="mobile-swipe-hint" id="mobileSwipeHint">
+    <span class="hint-arrow">‹</span>
+    <span>SWIPE HORIZONTALLY // 3 BAYS</span>
+    <span class="hint-arrow">›</span>
+  </div>
+
+  <!-- Streamlined Mobile Bottom Dock (Less functions, high utility) -->
+  <div class="mobile-streamlined-dock" id="mobileDock">
+    <button class="dock-btn sprint-btn" onclick="launchStationModal(event, '05')" title="Start Immersion Sprint">
+      <span class="dock-icon">⚡</span>
+      <span>Book Sprint</span>
+    </button>
+    <a class="dock-btn" href="pricing.html" title="View Official Pricing">
+      <span class="dock-icon">💳</span>
+      <span>Pricing</span>
     </a>
-    <a href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
-      <span style="color:var(--cyber-teal);">↗</span> Sound Clash
+    <a class="dock-btn" href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" title="Launch Sound Clash OS">
+      <span class="dock-icon">🎛️</span>
+      <span>Clash OS</span>
     </a>
-    <button onclick="triggerZoomAndModal('modalArMerch', -18, -12, 2.4)">
-      <span style="color:var(--cyber-teal);">●</span> AR Merch
-    </button>
-    <button onclick="triggerZoomAndModal('modalStudioServices', -24, 12, 2.3)">
-      <span style="color:var(--neon-orange);">●</span> Services
-    </button>
-    <button onclick="triggerZoomAndModal('modalTheHelm', 0, -14, 2.3)">
-      <span style="color:var(--matrix-green);">●</span> The Helm
-    </button>
-    <button onclick="resetStudioView()" style="border-left: 1px solid rgba(255,255,255,0.15); margin-left: 4px;">
-      ↺ Reset
+    <button class="dock-btn" onclick="toggleNavDrawer(true)" title="Open Directory Menu">
+      <span class="dock-icon">☰</span>
+      <span>Directory</span>
     </button>
   </div>
 
@@ -2208,11 +2445,59 @@
     let hotspotTimer = null;
     let activeStationId = null;
 
+    // 3-Part Mobile Cockpit Snapping Controller
+    window.snapCockpit = function(part) {
+      const stage = document.getElementById('heroStage');
+      if (!stage) return;
+      const w = window.innerWidth;
+      let target = w; // default: middle bay
+      if (part === 'left') target = 0;
+      else if (part === 'right') target = w * 2;
+
+      stage.scrollTo({ left: target, behavior: 'smooth' });
+      updateActivePill(part);
+      if (window.cyberAudio && cyberAudio.playHoverTick) {
+        cyberAudio.playHoverTick();
+      }
+    };
+
+    window.updateActivePill = function(part) {
+      document.querySelectorAll('.switcher-pill').forEach(btn => {
+        if (btn.getAttribute('data-part') === part) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    };
+
+    // Center Cockpit on Middle Bay on Mobile Load
+    window.initMobileCockpit = function() {
+      if (window.innerWidth <= 768) {
+        const stage = document.getElementById('heroStage');
+        if (stage) {
+          // Immediately anchor on Middle (Studio Helm)
+          stage.scrollLeft = window.innerWidth;
+          updateActivePill('middle');
+        }
+      }
+    };
+
     // Single Click: Show Tag/Label | Double Click: Launch Modal & Zoom
+    // On Mobile: Single tap directly launches the modal cleanly with zero camera disorientation
     window.handleHotspot = function(e, stationId) {
       if (e) e.stopPropagation();
       const cfg = stations[stationId];
       if (!cfg) return;
+
+      if (window.innerWidth <= 768) {
+        if (hotspotTimer) {
+          clearTimeout(hotspotTimer);
+          hotspotTimer = null;
+        }
+        launchStationModal(e, stationId);
+        return;
+      }
 
       if (hotspotTimer) {
         // DOUBLE CLICK DETECTED!
@@ -2255,7 +2540,13 @@
       const cfg = stations[stationId];
       if (cfg) {
         deselectAllStations();
-        triggerZoomAndModal(cfg.modalId, cfg.panX, cfg.panY, cfg.zoom);
+        if (window.innerWidth <= 768) {
+          // Direct modal launch on mobile - no camera zoom distortion
+          cyberAudio.playPinChirp();
+          openModal(cfg.modalId);
+        } else {
+          triggerZoomAndModal(cfg.modalId, cfg.panX, cfg.panY, cfg.zoom);
+        }
       }
     };
 
@@ -2311,6 +2602,46 @@
       };
       window.addEventListener('pointerdown', unlockAudio, { once: true });
       window.addEventListener('keydown', unlockAudio, { once: true });
+
+      // Initialize mobile cockpit centered on Middle Bay (Studio Helm)
+      initMobileCockpit();
+      window.addEventListener('load', initMobileCockpit);
+      window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+          const activeBtn = document.querySelector('.switcher-pill.active');
+          const part = activeBtn ? activeBtn.getAttribute('data-part') : 'middle';
+          snapCockpit(part);
+        }
+      });
+
+      // Passive scroll listener on stage to sync active switcher pill on swipe
+      if (stage) {
+        let scrollDebounce = null;
+        stage.addEventListener('scroll', () => {
+          if (window.innerWidth > 768) return;
+
+          // Fade out swipe hint on first swipe
+          const hint = document.getElementById('mobileSwipeHint');
+          if (hint && !hint.classList.contains('fade-out')) {
+            hint.classList.add('fade-out');
+          }
+
+          if (scrollDebounce) clearTimeout(scrollDebounce);
+          scrollDebounce = setTimeout(() => {
+            const currentScroll = stage.scrollLeft;
+            const w = window.innerWidth;
+            let detected = 'middle';
+            if (currentScroll < w * 0.5) {
+              detected = 'left';
+            } else if (currentScroll > w * 1.5) {
+              detected = 'right';
+            } else {
+              detected = 'middle';
+            }
+            updateActivePill(detected);
+          }, 35);
+        }, { passive: true });
+      }
 
       // Deselect all active pins when clicking background canvas/stage
       if (stage) {

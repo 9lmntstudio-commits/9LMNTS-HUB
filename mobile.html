@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>9LMNTS Studio — Mobile Command Cockpit</title>
+  <meta name="description" content="Mobile Cockpit for 9LMNTS Studio — 3-part spatial cypher studio, audio-reactive platforms, and immersion sprints." />
+
+  <!-- Fonts: Syne, Orbitron, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&family=Orbitron:wght@600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-dark: #050608;
+      --panel-bg: rgba(14, 18, 27, 0.50);
+      --panel-border: rgba(255, 69, 0, 0.40);
+      --neon-orange: #FF4500;
+      --neon-orange-glow: rgba(255, 69, 0, 0.45);
+      --cyber-teal: #00D4FF;
+      --cyber-purple: #B026FF;
+      --matrix-green: #10B981;
+      --font-display: 'Orbitron', 'Syne', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg-dark);
+      color: #f1f5f9;
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed Studio Header */
+    .mobile-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(8, 10, 15, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 69, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 100;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-logo .accent {
+      color: var(--neon-orange);
+      text-shadow: 0 0 14px var(--neon-orange);
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.60rem;
+      font-weight: 700;
+      color: var(--matrix-green);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 2px 7px;
+      border-radius: 20px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--matrix-green);
+      box-shadow: 0 0 8px var(--matrix-green);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-quick-sprint {
+      background: linear-gradient(135deg, #FF4500 0%, #FF1A00 100%);
+      color: #fff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.70rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 0 16px var(--neon-orange-glow);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+
+    .btn-menu {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-menu .bar {
+      width: 16px;
+      height: 2px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    /* 3-Part Cockpit Floating Switcher */
+    .mobile-part-switcher {
+      position: sticky;
+      top: 68px;
+      margin: 8px auto -48px auto;
+      background: rgba(10, 13, 20, 0.75);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 69, 0, 0.40);
+      border-radius: 40px;
+      padding: 4px 6px;
+      gap: 4px;
+      z-index: 95;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.25);
+      display: flex;
+      width: fit-content;
+      max-width: 95vw;
+    }
+
+    .switcher-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 20px;
+      padding: 6px 11px;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .switcher-pill.active {
+      background: rgba(255, 69, 0, 0.22);
+      border-color: #FF4500;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 69, 0, 0.45);
+    }
+
+    .switcher-pill .pill-dot {
+      color: #FF4500;
+      font-size: 0.72rem;
+      animation: blinkGlow 1.8s infinite;
+    }
+
+    .switcher-pill .pill-icon {
+      font-size: 0.60rem;
+      color: #64748b;
+    }
+    .switcher-pill.active .pill-icon {
+      color: #FF4500;
+    }
+
+    @keyframes blinkGlow {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #FF4500); }
+      50% { opacity: 0.35; filter: none; }
+    }
+
+    /* 3-Part Snap Scroll Hero Stage */
+    .hero-stage {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 60px);
+      height: calc(100dvh - 60px);
+      min-height: 540px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      margin-top: 60px;
+      background: #030406;
+    }
+    .hero-stage::-webkit-scrollbar { display: none; }
+
+    .hero-canvas {
+      position: relative;
+      width: 300vw;
+      min-width: 300vw;
+      height: 100%;
+      flex-shrink: 0;
+    }
+
+    .base-plate {
+      width: 300vw;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      filter: contrast(1.04) brightness(1.02);
+    }
+
+    /* Snap Anchors */
+    .mobile-snap-anchor {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100vw;
+      pointer-events: none;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      z-index: 5;
+    }
+    .snap-left { left: 0; }
+    .snap-middle { left: 100vw; }
+    .snap-right { left: 200vw; }
+
+    /* Radar Hotspot Pins */
+    .guide-tag {
+      position: absolute;
+      cursor: pointer;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tag-pin {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(10, 11, 16, 0.95);
+      border: 2px solid var(--neon-orange);
+      box-shadow: 0 0 18px var(--neon-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .tag-pin::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border: 1px solid var(--neon-orange);
+      border-radius: 50%;
+      animation: radarPulse 2.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes radarPulse {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .guide-tag.teal .tag-pin { border-color: var(--cyber-teal); box-shadow: 0 0 18px var(--cyber-teal); }
+    .guide-tag.teal .tag-pin::after { border-color: var(--cyber-teal); }
+    .guide-tag.purple .tag-pin { border-color: var(--cyber-purple); box-shadow: 0 0 18px var(--cyber-purple); }
+    .guide-tag.purple .tag-pin::after { border-color: var(--cyber-purple); }
+    .guide-tag.green .tag-pin { border-color: var(--matrix-green); box-shadow: 0 0 18px var(--matrix-green); }
+    .guide-tag.green .tag-pin::after { border-color: var(--matrix-green); }
+
+    /* Spatial Hotspots Coordinates */
+    .pos-station-01 { top: 32%; left: 16%; }
+    .pos-station-02 { top: 58%; left: 34%; }
+    .pos-station-03 { top: 38%; left: 45%; }
+    .pos-station-04 { top: 52%; left: 65%; }
+    .pos-station-05 { top: 31%; left: 88%; }
+    .pos-station-06 { top: 68%; left: 47%; }
+    .pos-station-07 { top: 59%; left: 78%; }
+    .pos-station-08 { top: 72%; left: 63%; }
+    .pos-station-09 { top: 59%; left: 14%; }
+
+    /* Mobile Swipe Hint */
+    .mobile-swipe-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(8, 10, 16, 0.70);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 30px;
+      padding: 5px 14px;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.60rem;
+      letter-spacing: 0.8px;
+      color: #cbd5e1;
+      z-index: 30;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      animation: pulseHint 2.5s infinite;
+      white-space: nowrap;
+      display: flex;
+    }
+
+    @keyframes pulseHint {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 0.4; }
+    }
+
+    .mobile-swipe-hint.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Mobile Streamlined Content Section */
+    .mobile-content-container {
+      padding: 24px 16px 120px 16px;
+      background: linear-gradient(180deg, #030406 0%, #080a10 100%);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--neon-orange);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .section-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Bento Stations Grid */
+    .bento-station-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .bento-card {
+      background: rgba(14, 18, 27, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 100%),
+        url('assets/images/dark_cyber_portal.jpg');
+      background-position: center;
+      background-size: cover;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 69, 0, 0.35);
+      border-top: 2px solid #FF4500;
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-cinematic);
+    }
+
+    .bento-card:active {
+      transform: scale(0.98);
+      border-color: #FF5500;
+      box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
+    }
+
+    .bento-card.teal {
+      border-color: rgba(0, 212, 255, 0.35);
+      border-top-color: #00D2FF;
+    }
+
+    .bento-card.purple {
+      border-color: rgba(176, 38, 255, 0.35);
+      border-top-color: #B026FF;
+    }
+
+    .bento-card.green {
+      border-color: rgba(16, 185, 129, 0.35);
+      border-top-color: #10B981;
+    }
+
+    .bento-card-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 69, 0, 0.15);
+      border: 1px solid rgba(255, 69, 0, 0.4);
+      color: #FF4500;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bento-card.teal .card-num {
+      background: rgba(0, 212, 255, 0.15);
+      border-color: rgba(0, 212, 255, 0.4);
+      color: var(--cyber-teal);
+    }
+
+    .bento-card.purple .card-num {
+      background: rgba(176, 38, 255, 0.15);
+      border-color: rgba(176, 38, 255, 0.4);
+      color: #d8b4fe;
+    }
+
+    .bento-card.green .card-num {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: var(--matrix-green);
+    }
+
+    .card-info h4 {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-info p {
+      font-size: 0.74rem;
+      color: #94a3b8;
+    }
+
+    .card-arrow {
+      color: #64748b;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* Sprint Tiers Section */
+    .sprint-tier-card {
+      background: rgba(14, 18, 27, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 100%),
+        url('assets/images/dark_cyber_portal.jpg');
+      background-position: center;
+      background-size: cover;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 69, 0, 0.40);
+      border-top: 2px solid #FF4500;
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+    }
+
+    .tier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .tier-badge {
+      font-family: var(--font-mono);
+      font-size: 0.60rem;
+      font-weight: 800;
+      color: var(--neon-orange);
+      background: rgba(255, 69, 0, 0.12);
+      border: 1px solid rgba(255, 69, 0, 0.4);
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .tier-price span {
+      font-size: 0.70rem;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin: 16px 0 20px 0;
+    }
+
+    .tier-features li {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tier-features li::before {
+      content: '✓';
+      color: var(--matrix-green);
+      font-family: var(--font-mono);
+      font-weight: 800;
+    }
+
+    .btn-tier-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(135deg, #FF4500 0%, #FF1A00 100%);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 12px;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 20px var(--neon-orange-glow);
+    }
+
+    /* Fixed Mobile Streamlined Bottom Dock */
+    .mobile-streamlined-dock {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 13, 20, 0.80);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 69, 0, 0.40);
+      border-radius: 40px;
+      padding: 5px 8px;
+      gap: 6px;
+      z-index: 95;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85), 0 0 24px rgba(255, 69, 0, 0.25);
+      display: flex;
+      max-width: 95vw;
+    }
+
+    .dock-btn {
+      background: transparent;
+      color: #e2e8f0;
+      border: 1px solid transparent;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+
+    .dock-btn.sprint-btn {
+      background: linear-gradient(135deg, rgba(255, 69, 0, 0.35) 0%, rgba(255, 26, 0, 0.20) 100%);
+      border-color: rgba(255, 69, 0, 0.6);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(255, 69, 0, 0.35);
+    }
+
+    .dock-btn:hover, .dock-btn:active {
+      background: var(--neon-orange);
+      color: #050505;
+    }
+
+    /* Modal Architecture (50% Transparency Bento) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 5, 8, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease-cinematic);
+      padding: 12px;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      background: rgba(9, 11, 16, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 65%, rgba(4, 5, 8, 0.85) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.35) 0%, rgba(255, 30, 0, 0.08) 45%, transparent 75%),
+        url('assets/images/dark_cyber_portal.jpg');
+      background-position: center top;
+      background-size: cover;
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(255, 69, 0, 0.40);
+      border-top: 2px solid #FF4500;
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.35);
+      border-radius: 20px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 24px 20px;
+      position: relative;
+      display: none;
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.35s var(--ease-cinematic);
+    }
+
+    .modal-dialog.active {
+      display: block;
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-badge {
+      font-family: var(--font-mono);
+      font-size: 0.60rem;
+      font-weight: 800;
+      color: var(--neon-orange);
+      background: rgba(255, 69, 0, 0.12);
+      border: 1px solid rgba(255, 69, 0, 0.45);
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .modal-dialog h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .modal-dialog .subtitle {
+      font-size: 0.78rem;
+      color: var(--neon-orange);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .modal-dialog p {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .modal-actions a, .modal-actions button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 12px;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .btn-modal-primary {
+      background: linear-gradient(135deg, #FF4500 0%, #FF1A00 100%);
+      color: #fff;
+      border: 1px solid #FF5500;
+      box-shadow: 0 0 20px var(--neon-orange-glow);
+    }
+
+    .btn-modal-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Navigation Drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      max-width: 85vw;
+      height: 100vh;
+      background: rgba(10, 11, 16, 0.95);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-left: 1px solid rgba(255, 69, 0, 0.35);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.35s var(--ease-cinematic);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nav-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .drawer-link {
+      color: #e2e8f0;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Floating Header -->
+  <header class="mobile-header">
+    <a href="mobile.html" class="brand-group">
+      <div class="brand-logo">9LMNTS <span class="accent">STUDIO</span></div>
+      <div class="status-badge"><span class="status-dot"></span> LIVE</div>
+    </a>
+    <div class="header-actions">
+      <a href="pricing.html" class="btn-quick-sprint">⚡ SPRINT</a>
+      <button class="btn-menu" onclick="toggleNavDrawer()" aria-label="Open Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 3-Part Side Scroll Switcher Header -->
+  <nav class="mobile-part-switcher" id="mobilePartSwitcher" aria-label="Cockpit Bay Switcher">
+    <button class="switcher-pill" onclick="snapCockpit('left')" data-part="left" title="View Left Bays">
+      <span class="pill-icon">◀</span>
+      <span>LEFT BAYS</span>
+    </button>
+    <button class="switcher-pill active" onclick="snapCockpit('middle')" data-part="middle" title="View Studio Helm">
+      <span class="pill-dot">●</span>
+      <span>STUDIO HELM</span>
+    </button>
+    <button class="switcher-pill" onclick="snapCockpit('right')" data-part="right" title="View Right Bays">
+      <span>RIGHT BAYS</span>
+      <span class="pill-icon">▶</span>
+    </button>
+  </nav>
+
+  <!-- 3-Part Side Scroll Hero Stage -->
+  <main class="hero-stage" id="heroStage">
+    <div class="hero-canvas" id="heroCanvas">
+      <!-- 3 Snap Anchors for Left, Middle, Right -->
+      <div class="mobile-snap-anchor snap-left" id="snapLeft" data-part="left"></div>
+      <div class="mobile-snap-anchor snap-middle" id="snapMiddle" data-part="middle"></div>
+      <div class="mobile-snap-anchor snap-right" id="snapRight" data-part="right"></div>
+
+      <!-- Studio Panoramic Base Plate -->
+      <picture>
+        <source srcset="/assets/studio/cyber-cypher-4k.webp" type="image/webp"/>
+        <source srcset="/assets/studio/cyber-cypher-4k.jpg" type="image/jpeg"/>
+        <img id="heroImage" class="base-plate" src="/assets/studio/cyber-cypher-4k.jpg" alt="9LMNTS Cyber Studio" />
+      </picture>
+
+      <!-- 9 Unified Hotspot Station Pins -->
+      <!-- Left Bay -->
+      <div class="guide-tag purple pos-station-01" onclick="openModal('modalLoaGame')" role="button" aria-label="Station 01: Project LOA">
+        <div class="tag-pin">01</div>
+      </div>
+      <div class="guide-tag teal pos-station-02" onclick="openModal('modalMusicVault')" role="button" aria-label="Station 02: Music Vault">
+        <div class="tag-pin">02</div>
+      </div>
+      <div class="guide-tag teal pos-station-09" onclick="openModal('modalArtistOS')" role="button" aria-label="Station 09: Artist OS DAW">
+        <div class="tag-pin">09</div>
+      </div>
+
+      <!-- Middle Bay (Studio Helm) -->
+      <div class="guide-tag pos-station-03" onclick="openModal('modalMainStream')" role="button" aria-label="Station 03: Core Services">
+        <div class="tag-pin">03</div>
+      </div>
+      <div class="guide-tag green pos-station-06" onclick="openModal('modalTheHelm')" role="button" aria-label="Station 06: The Helm">
+        <div class="tag-pin">06</div>
+      </div>
+
+      <!-- Right Bay -->
+      <div class="guide-tag teal pos-station-04" onclick="openModal('modalAiVoice')" role="button" aria-label="Station 04: AI Voice">
+        <div class="tag-pin">04</div>
+      </div>
+      <div class="guide-tag pos-station-05" onclick="openModal('modalStudioServices')" role="button" aria-label="Station 05: Services & Ads">
+        <div class="tag-pin">05</div>
+      </div>
+      <div class="guide-tag teal pos-station-07" onclick="openModal('modalSoundClash')" role="button" aria-label="Station 07: Sound Clash Arena">
+        <div class="tag-pin">07</div>
+      </div>
+      <div class="guide-tag pos-station-08" onclick="openModal('modalArMerch')" role="button" aria-label="Station 08: AR Merch">
+        <div class="tag-pin">08</div>
+      </div>
+      <!-- Mobile Swipe Gesture Hint -->
+      <div class="mobile-swipe-hint" id="mobileSwipeHint">
+        <span>‹</span>
+        <span>SWIPE HORIZONTALLY // 3 BAYS</span>
+        <span>›</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Streamlined Mobile Content Section -->
+  <section class="mobile-content-container">
+    <div class="section-eyebrow">// SPATIAL DIRECTORY</div>
+    <h2 class="section-title">9 Studio Stations</h2>
+    <p class="section-desc">Tap any station to inspect technical specifications, stream engines, and live OS deployment pipelines.</p>
+
+    <!-- Bento Station Cards List -->
+    <div class="bento-station-grid">
+      <div class="bento-card purple" onclick="openModal('modalLoaGame')">
+        <div class="bento-card-left">
+          <div class="card-num">01</div>
+          <div class="card-info">
+            <h4>Project LOA Universe</h4>
+            <p>Metaverse Lore, Cyber Narrative &amp; OST</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card teal" onclick="openModal('modalMusicVault')">
+        <div class="bento-card-left">
+          <div class="card-num">02</div>
+          <div class="card-info">
+            <h4>Music Vault &amp; Chopper</h4>
+            <p>Acapella Stems &amp; Chopper Engine</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card" onclick="openModal('modalMainStream')">
+        <div class="bento-card-left">
+          <div class="card-num">03</div>
+          <div class="card-info">
+            <h4>9LMNTS Studio Core</h4>
+            <p>ArtistOS Telemetry &amp; Live Metrics</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card teal" onclick="openModal('modalAiVoice')">
+        <div class="bento-card-left">
+          <div class="card-num">04</div>
+          <div class="card-info">
+            <h4>AI Voice Operator</h4>
+            <p>Gemini Live Multilingual Voice Engine</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card" onclick="openModal('modalStudioServices')">
+        <div class="bento-card-left">
+          <div class="card-num">05</div>
+          <div class="card-info">
+            <h4>Services &amp; Video Ads</h4>
+            <p>Production Sprints &amp; 3D Commercials</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card green" onclick="openModal('modalTheHelm')">
+        <div class="bento-card-left">
+          <div class="card-num">06</div>
+          <div class="card-info">
+            <h4>The Helm / Darnley Sanon</h4>
+            <p>Founder Dossier &amp; Audio Engineering</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card teal" onclick="openModal('modalSoundClash')">
+        <div class="bento-card-left">
+          <div class="card-num">07</div>
+          <div class="card-info">
+            <h4>Sound Clash OS Arena</h4>
+            <p>Live Real-Time Audio Battle Engine</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card" onclick="openModal('modalArMerch')">
+        <div class="bento-card-left">
+          <div class="card-num">08</div>
+          <div class="card-info">
+            <h4>AR Merch &amp; Passes</h4>
+            <p>Holographic Credentials &amp; 3D Apparel</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+
+      <div class="bento-card teal" onclick="openModal('modalArtistOS')">
+        <div class="bento-card-left">
+          <div class="card-num">09</div>
+          <div class="card-info">
+            <h4>Artist OS Creator HQ DAW</h4>
+            <p>Low-Latency 96kHz Mixing Console</p>
+          </div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- Agency Sprint Deployment Tiers -->
+    <div class="section-eyebrow">// RAPID PRODUCTION</div>
+    <h2 class="section-title">Immersion Sprints</h2>
+    <p class="section-desc">Fixed-scope, turnkey rapid deployments designed for record labels, autonomous artists, and cyber-physical brands.</p>
+
+    <!-- Tier 1 -->
+    <div class="sprint-tier-card">
+      <div class="tier-header">
+        <div>
+          <span class="tier-badge">DAY SPRINT</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">24-Hour Deployment</h3>
+        </div>
+        <div class="tier-price">$1,500 <span>CAD</span></div>
+      </div>
+      <p style="font-size: 0.78rem; color: #94a3b8;">High-speed turnarounds for key art, motion teasers, or sound identity packages.</p>
+      <ul class="tier-features">
+        <li>Turnkey 24-hour delivery window</li>
+        <li>1 Master 4K visual identity asset</li>
+        <li>Audio signature &amp; audio logo design</li>
+        <li>Direct engineering Slack dispatch</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta">Reserve Day Sprint ($1,500)</a>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="sprint-tier-card" style="border-color: rgba(0, 212, 255, 0.45); border-top-color: #00D2FF;">
+      <div class="tier-header">
+        <div>
+          <span class="tier-badge" style="color: var(--cyber-teal); background: rgba(0, 212, 255, 0.12); border-color: rgba(0, 212, 255, 0.4);">WEEKEND SPRINT</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">48-Hour Prototype</h3>
+        </div>
+        <div class="tier-price">$3,500 <span>CAD</span></div>
+      </div>
+      <p style="font-size: 0.78rem; color: #94a3b8;">Functional WebGL/3D interactive product teaser or complete spatial web teaser.</p>
+      <ul class="tier-features">
+        <li>48-Hour weekend execution team</li>
+        <li>Interactive 3D / WebAR experience</li>
+        <li>Audio-reactive Web Audio integration</li>
+        <li>Complete source code &amp; Netlify hosting</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);">Reserve Weekend Sprint ($3,500)</a>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="sprint-tier-card" style="border-color: rgba(176, 38, 255, 0.45); border-top-color: #B026FF;">
+      <div class="tier-header">
+        <div>
+          <span class="tier-badge" style="color: #d8b4fe; background: rgba(176, 38, 255, 0.12); border-color: rgba(176, 38, 255, 0.4);">WARP SPEED</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">7-Day Enterprise OS</h3>
+        </div>
+        <div class="tier-price">$7,500 <span>CAD</span></div>
+      </div>
+      <p style="font-size: 0.78rem; color: #94a3b8;">Full bespoke custom operating system with CRM, live audio battle telemetry, or custom 3D studio world.</p>
+      <ul class="tier-features">
+        <li>Full 7-day dedicated engineering sprint</li>
+        <li>Custom domain &amp; autonomous cloud architecture</li>
+        <li>Custom Sound Clash or ArtistOS deployment</li>
+        <li>Direct architecture with Darnley Sanon</li>
+      </ul>
+      <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #B026FF 0%, #7A00CC 100%);">Deploy Warp Speed ($7,500)</a>
+    </div>
+  </section>
+
+  <!-- Fixed Mobile Streamlined Bottom Dock -->
+  <div class="mobile-streamlined-dock">
+    <button class="dock-btn sprint-btn" onclick="openModal('modalStudioServices')" title="Start Immersion Sprint">
+      <span>⚡</span>
+      <span>Book Sprint</span>
+    </button>
+    <a class="dock-btn" href="pricing.html" title="View Official Pricing">
+      <span>💳</span>
+      <span>Pricing</span>
+    </a>
+    <a class="dock-btn" href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" title="Launch Sound Clash OS">
+      <span>🎛️</span>
+      <span>Clash OS</span>
+    </a>
+    <button class="dock-btn" onclick="toggleNavDrawer()" title="Open Directory Menu">
+      <span>☰</span>
+      <span>Directory</span>
+    </button>
+  </div>
+
+  <!-- Navigation Drawer -->
+  <aside class="nav-drawer" id="navDrawer">
+    <div class="drawer-header">
+      <span style="font-family: var(--font-display); font-weight: 800; font-size: 0.9rem; color: #fff;">DIRECTORY</span>
+      <button onclick="toggleNavDrawer()" style="background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">×</button>
+    </div>
+    <a href="mobile.html" class="drawer-link">Mobile Cockpit <span>↗</span></a>
+    <a href="pricing.html" class="drawer-link">Pricing &amp; Sprints <span>💳</span></a>
+    <a href="services.html" class="drawer-link">Core Services <span>⚡</span></a>
+    <a href="the-helm.html" class="drawer-link">The Helm Dossier <span>👤</span></a>
+    <a href="loa.html" class="drawer-link">Project LOA <span>🎮</span></a>
+    <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="drawer-link">Artist OS <span>↗</span></a>
+    <a href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="drawer-link">Sound Clash OS <span>↗</span></a>
+    <a href="index.html" class="drawer-link" style="border-color: var(--neon-orange); color: var(--neon-orange);">Desktop 4K Cockpit <span>🖥️</span></a>
+  </aside>
+
+  <!-- Modal Backdrop & Dialogs -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <!-- Modal 01: Project LOA -->
+    <div class="modal-dialog" id="modalLoaGame">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 01 // LOA UNIVERSE</span>
+      <h2>Project LOA Game</h2>
+      <div class="subtitle">Interactive Cyber Cypher Universe</div>
+      <p>The LOA universe bridges street cyphers with cybernetic bio-augmentation, tracking sonic rebels taking back airwaves through autonomous code and booming low-end basslines.</p>
+      <div class="modal-actions">
+        <a href="loa.html" class="btn-modal-primary">Full Dossier</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Modal 02: Music Vault -->
+    <div class="modal-dialog" id="modalMusicVault">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 02 // MUSIC VAULT</span>
+      <h2>Music Vault &amp; Chopper</h2>
+      <div class="subtitle">Acapella Stems &amp; Chopper Engine</div>
+      <p>The 9LMNTS stem repository delivers isolated vocal stems, high-energy 808 drum patterns, and dynamic beat choppers with 0 mock metrics.</p>
+      <div class="modal-actions">
+        <a href="vault.html" class="btn-modal-primary">Open Vault</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Modal 03: Core Services -->
+    <div class="modal-dialog" id="modalMainStream">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 03 // STUDIO CORE</span>
+      <h2>9LMNTS Studio Core</h2>
+      <div class="subtitle">ArtistOS Telemetry &amp; Metrics</div>
+      <p>Autonomous spatial computing, Web Audio DAWs, and turnkey commercial immersion sprints for forward-thinking artists and labels.</p>
+      <div class="modal-actions">
+        <a href="core.html" class="btn-modal-primary">Core Dossier</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Modal 04: AI Voice -->
+    <div class="modal-dialog" id="modalAiVoice">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 04 // AI VOICE</span>
+      <h2>AI Voice Operator</h2>
+      <div class="subtitle">Gemini Live Voice Engine</div>
+      <p>Real-time conversational voice assistant with ultra-low latency audio processing and multilingual speech synthesis.</p>
+      <div class="modal-actions">
+        <a href="ai-voice.html" class="btn-modal-primary">Voice Console</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Modal 05: Studio Services -->
+    <div class="modal-dialog" id="modalStudioServices">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 05 // SERVICES</span>
+      <h2>Services &amp; Sprints</h2>
+      <div class="subtitle">Production Sprints &amp; Commercials</div>
+      <p>Commission high-impact interactive 3D, WebAR brand worlds, and sonic architecture deployed in 24 to 72 hours.</p>
+      <div class="modal-actions">
+        <a href="services.html" class="btn-modal-primary">Services Matrix</a>
+        <a href="pricing.html" class="btn-modal-secondary">Pricing</a>
+      </div>
+    </div>
+
+    <!-- Modal 06: The Helm -->
+    <div class="modal-dialog" id="modalTheHelm">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 06 // FOUNDER</span>
+      <h2>The Helm: Darnley Sanon</h2>
+      <div class="subtitle">Founder, Architect &amp; Audio Engineer</div>
+      <p>Architecting digital sovereign operating systems for artists and labels, eliminating 30% to 50% creative equity leaks.</p>
+      <div class="modal-actions">
+        <a href="the-helm.html" class="btn-modal-primary">View Dossier</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Modal 07: Sound Clash -->
+    <div class="modal-dialog" id="modalSoundClash">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 07 // ARENA</span>
+      <h2>Sound Clash OS Arena</h2>
+      <div class="subtitle">Live Real-Time Audio Battles</div>
+      <p>Head-to-head live DJ sound clash platform with audience decibel meter voting and Web Audio DSP telemetry.</p>
+      <div class="modal-actions">
+        <a href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="btn-modal-primary">Launch Clash OS</a>
+        <a href="clash.html" class="btn-modal-secondary">Details</a>
+      </div>
+    </div>
+
+    <!-- Modal 08: AR Merch -->
+    <div class="modal-dialog" id="modalArMerch">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 08 // MERCH</span>
+      <h2>AR Merch &amp; Live Passes</h2>
+      <div class="subtitle">Holographic Credentials &amp; 3D Apparel</div>
+      <p>Augmented reality physical-to-digital wearables and holographic event credentials that unlock real-time stage access.</p>
+      <div class="modal-actions">
+        <a href="merch.html" class="btn-modal-primary">Merch Vault</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Modal 09: Artist OS -->
+    <div class="modal-dialog" id="modalArtistOS">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <span class="modal-badge">STATION 09 // CREATOR HQ</span>
+      <h2>Artist OS Creator HQ</h2>
+      <div class="subtitle">Low-Latency Web Audio DAW</div>
+      <p>In-browser music production suite with real-time multi-track mixing, DSP effects routing, and instant stem extraction.</p>
+      <div class="modal-actions">
+        <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="btn-modal-primary">Launch Artist OS</a>
+        <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 3-Part Snap Controller
+    window.snapCockpit = function(part) {
+      const stage = document.getElementById('heroStage');
+      if (!stage) return;
+      const w = window.innerWidth;
+      let target = w;
+      if (part === 'left') target = 0;
+      else if (part === 'right') target = w * 2;
+
+      stage.scrollTo({ left: target, behavior: 'smooth' });
+      updateActivePill(part);
+    };
+
+    window.updateActivePill = function(part) {
+      document.querySelectorAll('.switcher-pill').forEach(btn => {
+        if (btn.getAttribute('data-part') === part) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    };
+
+    window.openModal = function(id) {
+      const backdrop = document.getElementById('modalBackdrop');
+      document.querySelectorAll('.modal-dialog').forEach(d => d.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (backdrop && target) {
+        backdrop.classList.add('active');
+        target.classList.add('active');
+      }
+    };
+
+    window.closeModal = function() {
+      const backdrop = document.getElementById('modalBackdrop');
+      if (backdrop) backdrop.classList.remove('active');
+      document.querySelectorAll('.modal-dialog').forEach(d => d.classList.remove('active'));
+    };
+
+    window.toggleNavDrawer = function() {
+      const drawer = document.getElementById('navDrawer');
+      if (drawer) drawer.classList.toggle('active');
+    };
+
+    // Close on backdrop click
+    document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('modalBackdrop')) {
+        closeModal();
+      }
+    });
+
+    // Start centered on Middle (Studio Helm)
+    document.addEventListener('DOMContentLoaded', () => {
+      const stage = document.getElementById('heroStage');
+      if (stage) {
+        stage.scrollLeft = window.innerWidth;
+        updateActivePill('middle');
+
+        let scrollDebounce = null;
+        stage.addEventListener('scroll', () => {
+          const hint = document.getElementById('mobileSwipeHint');
+          if (hint && !hint.classList.contains('fade-out')) {
+            hint.classList.add('fade-out');
+          }
+
+          if (scrollDebounce) clearTimeout(scrollDebounce);
+          scrollDebounce = setTimeout(() => {
+            const currentScroll = stage.scrollLeft;
+            const w = window.innerWidth;
+            let detected = 'middle';
+            if (currentScroll < w * 0.5) detected = 'left';
+            else if (currentScroll > w * 1.5) detected = 'right';
+            else detected = 'middle';
+            updateActivePill(detected);
+          }, 35);
+        }, { passive: true });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -26,7 +26,7 @@ fs.mkdirSync(dist, { recursive: true });
 
 // Files to copy
 const filesToCopy = [
-  'index.html', 'code.html', '_redirects', 'netlify.toml', 'package.json', 'robots.txt', 'sitemap.xml', 'llms.txt',
+  'index.html', 'code.html', 'mobile.html', '_redirects', 'netlify.toml', 'package.json', 'robots.txt', 'sitemap.xml', 'llms.txt',
   'loa.html', 'vault.html', 'core.html', 'ai-voice.html', 'services.html', 'the-helm.html', 'clash.html', 'merch.html', 'pricing.html',
   '01_Sound_Clash_OS.html', '02_Comedian_OS_Roast_Battle.html', '07_GameOS_Pro_Esports.html', '08_Pitch_Battle_OS_Corporate_Clash.html', '19_Wedding_OS_The_Union.html'
 ];
