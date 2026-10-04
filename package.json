@@ -4,6 +4,6 @@
   "private": true,
   "description": "9LMNTS Studio Cyber Cypher WebApp",
   "scripts": {
-    "build": "echo 'Static build ready'"
+    "build": "node build.js"
   }
 }
