@@ -34,7 +34,7 @@ export const NINE_PILLARS = [
   {
     id: "graffiti-design",
     element: "01. Graffiti (Aerosol Art)",
-    service: "Graphic Design, Brand Systems & Visual Identity",
+    service: "The Graffiti Agent — Brand Systems & Visual Identity",
     icon: Paintbrush,
     description: "Cyber-industrial brand marks, custom typography, album & tournament key art, vector assets, and brutalist high-contrast UI design systems.",
     features: [
@@ -49,9 +49,9 @@ export const NINE_PILLARS = [
   {
     id: "djing-arena",
     element: "02. DJing (Turntablism)",
-    service: "Live Battle Arenas & Audio Engineering",
+    service: "The DJing Agent — Live Battle Arenas & UX Flow",
     icon: Disc3,
-    description: "Sound Clash OS deployment: 8-contender duel stages, real-time waveform hype meters, uncompressed master stem vaults, and jumbotron synchronization.",
+    description: "Sound Clash OS deployment: 8-contender duel stages, real-time waveform hype meters, frictionless checkout journeys, uncompressed master stem vaults, and jumbotron synchronization.",
     features: [
       "Turnkey 8-DJ single-elimination tournament state machines",
       "Real-time dual-color waveform hype meters (#FF5500 vs #00D2FF)",
@@ -62,9 +62,24 @@ export const NINE_PILLARS = [
     image: "https://images.unsplash.com/photo-1718910259504-906abd8dc1ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
+    id: "breaking-motion",
+    element: "03. Breakin' (B-Boying / Movement)",
+    service: "The Breakin' Agent — Kinetic Movement & Sports/Dancer OS",
+    icon: Users,
+    description: "Kinetic UI micro-interactions, Unreal Engine 5 fight choreography, 3D Metahuman rigging, fitness instructor automation, and Sports/Dancer OS setups.",
+    features: [
+      "Kinetic UI animations & high-frame-rate interaction design",
+      "Unreal Engine 5.7 environmental staging (Nanite & Lumen)",
+      "3D Metahuman rigging & martial arts motion capture integration",
+      "Dynamic 3D video trailers & commercial motion assets",
+      "Hardware-accelerated mobile performance optimization"
+    ],
+    image: "https://images.unsplash.com/photo-1760931969401-9bd6ee902798?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+  },
+  {
     id: "mcing-narrative",
-    element: "03. MCing (Lyricism & Rap)",
-    service: "Narrative Architecture, Brand Voice & Copywriting",
+    element: "04. MCing (Lyricism & Rap)",
+    service: "The MCing Agent — Narrative Architecture & Brand Voice",
     icon: Mic2,
     description: "Battle rap competition rulebooks, campaign story bibles, investor pitch deck narratives, and culture-first high-impact copywriting.",
     features: [
@@ -77,26 +92,11 @@ export const NINE_PILLARS = [
     image: "https://images.unsplash.com/photo-1753410642481-9306b48b45de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
-    id: "breaking-motion",
-    element: "04. Breakin' (B-Boying / Movement)",
-    service: "Motion Design, Dynamic UI & Unreal Engine Staging",
-    icon: Users,
-    description: "Kinetic UI micro-interactions, Unreal Engine 5 fight choreography, 3D Metahuman rigging, and high-energy video commercials.",
-    features: [
-      "Kinetic UI animations & high-frame-rate interaction design",
-      "Unreal Engine 5.7 environmental staging (Nanite & Lumen)",
-      "3D Metahuman rigging & martial arts motion capture integration",
-      "Dynamic 3D video trailers & commercial motion assets",
-      "Hardware-accelerated mobile performance optimization"
-    ],
-    image: "https://images.unsplash.com/photo-1760931969401-9bd6ee902798?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-  },
-  {
     id: "beatboxing-audio",
     element: "05. Beatboxing (Vocal Percussion)",
-    service: "UI Sound FX & Spatial Audio Architecture",
+    service: "The Beatboxing Agent — UI Sound FX & Voice Synthesis",
     icon: Radio,
-    description: "Interactive UI acoustic feedback, stadium audio stingers, sonic brand logos, and multi-channel spatial audio triggers for live venue spaces.",
+    description: "Acoustic mimicry, ElevenLabs voice cloning, multilingual dubbing, stadium audio stingers, and sonic brand architecture.",
     features: [
       "Interactive UI sound effects (button clicks, vote surges, timer alarms)",
       "Live event arena sound drops, countdown sirens & victory stings",
@@ -109,14 +109,14 @@ export const NINE_PILLARS = [
   {
     id: "fashion-webar",
     element: "06. Street Fashion (Streetwear)",
-    service: "Apparel Architecture & WebAR Smart Merch",
+    service: "The Fashion Agent — Spatial AR Wearables & Smart Merch",
     icon: Sparkles,
-    description: "Custom embroidered cyber-streetwear, NFC-enabled festival wristbands, and scannable 300 DPI WebAR target hoodies with 3D floating holograms.",
+    description: "Spatial AR wearables, 480 GSM cyber-apparel with scannable 300 DPI WebAR target hoodies, and woven NFC digital twin credentials.",
     features: [
       "Heavyweight streetwear apparel design (hoodies, tees, caps)",
       "Browser WebAR target tracking (zero app downloads required)",
-      "3D holographic angel wings & floating championship trophies",
-      "NFC + WebAR hybrid event credentials & VIP wristbands",
+      "3D holographic energy wings & floating championship trophies",
+      "Woven NFC + WebAR hybrid event credentials & VIP wristbands",
       "Shopify & PayPal E-Commerce merchandise drops"
     ],
     image: "https://images.unsplash.com/photo-1626908013351-800ddd734b8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
@@ -124,9 +124,9 @@ export const NINE_PILLARS = [
   {
     id: "language-funnels",
     element: "07. Street Language (Slang / Culture)",
-    service: "Culture-First Marketing & Chatbot Funnels",
+    service: "The Language Agent — Natural Language & Chatbot Funnels",
     icon: MessageSquare,
-    description: "Direct-to-consumer conversational funnels, ManyChat DM automation, keyword triggers (DM 'DEV' / DM 'CLASH'), and viral social dispatch.",
+    description: "Natural Language-to-Code, prompt engineering, slang-intelligent chatbots, ManyChat DM funnels (DM 'DEV' / 'CLASH'), and culture-first copy.",
     features: [
       "ManyChat automated DM keyword funnels (Instagram & WhatsApp)",
       "Instant lead qualification bots with under 30-second turnaround",
@@ -138,10 +138,10 @@ export const NINE_PILLARS = [
   },
   {
     id: "trade-monetization",
-    element: "08. Street Entrepreneurialism (Trade)",
-    service: "Web 2.5 In-Venue Monetization & Cashless Gates",
+    element: "08. Entrepreneurialism (Trade)",
+    service: "The Trade Agent — Dealmaking AI & Cashless In-Venue Rails",
     icon: DollarSign,
-    description: "Universal 4-Box in-venue monetization grid ($20 Cover, $10 Micro-Tip, $50 Power Hype, $150 VIP Table) and automated 70/30 prize pot surges.",
+    description: "Jay-Z sales psychology orchestration (CrewAI), Universal 4-Box in-venue monetization grid ($20 Cover, $10 Tip, $50 Hype, $150 VIP), and Gate OS cashless rails.",
     features: [
       "Universal 4-Box in-venue monetization checkout integration",
       "Automated 70/30 winner prize pot surge calculations",
@@ -152,17 +152,17 @@ export const NINE_PILLARS = [
     image: "https://images.unsplash.com/photo-1764347295958-6a729b1fdf7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
-    id: "knowledge-ai",
-    element: "09. Knowledge of Self (Philosophy)",
-    service: "AI Agency Sprints & Platform Architecture",
+    id: "knowledge-super-agent",
+    element: "09. Knowledge of Self (Consciousness & Mastery)",
+    service: "The Super Agent — Personal Life, Study & Creative OS",
     icon: Brain,
-    description: "Rapid 7-day turnkey AI sprints, multi-agent orchestration (n8n, CrewAI), proprietary OS licensing, and digital transformation consulting.",
+    description: "A persistent cognitive second brain and life execution engine. Beyond B2B software—built for personal mastery, habits, workout & sleep discipline, 120-style accelerated study, and raw idea-to-production velocity.",
     features: [
-      "7-Day Turnkey AI Sprints: rapid production MVP deployment",
-      "Multi-agent autonomous workflows via n8n and CrewAI",
-      "Proprietary 9LMNTS OS platform licensing (Sound Clash, Artist, Gate OS)",
-      "Supabase PostgreSQL, Edge Functions & Vector database setups",
-      "Full digital transformation architecture & roadmap consulting"
+      "The Accountability Mirror (Word to Bond): zero-slacking daily goal tracking",
+      "Personal Habit, Health & Routine Architecture: morning anchors, workouts & sleep",
+      "Accelerated Study & Skill Acquisition Engine: 120 Lessons curriculum mastery",
+      "Idea-to-Production Velocity: convert voice memos & midnight lyrics into deliverables",
+      "Personal sovereignty, unshakeable memory & cognitive second brain"
     ],
     image: "https://images.unsplash.com/photo-1612967690587-d741c8d7825d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   }
