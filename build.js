@@ -6,6 +6,19 @@ const dist = path.join(root, 'dist');
 
 console.log('--- 9LMNTS Studio Production Build Engine ---');
 
+function copyDirRecursive(srcDir, destDir) {
+  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  fs.readdirSync(srcDir).forEach(item => {
+    const srcPath = path.join(srcDir, item);
+    const destPath = path.join(destDir, item);
+    if (fs.statSync(srcPath).isDirectory()) {
+      copyDirRecursive(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
+}
+
 if (fs.existsSync(dist)) {
   fs.rmSync(dist, { recursive: true, force: true });
 }
@@ -26,7 +39,7 @@ const dirsToCopy = ['assets', 'styles', 'components'];
 dirsToCopy.forEach(d => {
   const src = path.join(root, d);
   if (fs.existsSync(src)) {
-    fs.cpSync(src, path.join(dist, d), { recursive: true });
+    copyDirRecursive(src, path.join(dist, d));
     console.log(`Copied ${d}/ -> dist/${d}/`);
   }
 });
