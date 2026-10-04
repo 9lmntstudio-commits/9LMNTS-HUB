@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=2.6"/>
 
   <style>
     :root {
@@ -26,7 +26,16 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: #06070A;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.25) 0%, rgba(255, 30, 0, 0.06) 35%, transparent 60%),
+        radial-gradient(circle at 85% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, rgba(6, 7, 10, 0.75) 0%, rgba(6, 7, 10, 0.96) 100%),
+        url('assets/images/dark_cyber_portal.jpg');
+      background-attachment: fixed;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
       color: #ffffff;
       font-family: var(--font-body);
       margin: 0;
@@ -42,19 +51,19 @@
 
     /* Trust / PayPal Infrastructure Banner */
     .paypal-trust-banner {
-      background: linear-gradient(135deg, rgba(0, 112, 186, 0.15) 0%, rgba(14, 18, 27, 0.90) 100%);
-      border: 1px solid rgba(0, 112, 186, 0.4);
-      border-top: 1px solid rgba(0, 212, 255, 0.5);
-      border-radius: 20px;
-      padding: 22px 28px;
-      margin-bottom: 48px;
+      background: linear-gradient(135deg, rgba(0, 112, 186, 0.20) 0%, rgba(12, 15, 23, 0.92) 100%);
+      border: 1px solid rgba(0, 112, 186, 0.45);
+      border-top: 2px solid rgba(0, 212, 255, 0.7);
+      border-radius: 22px;
+      padding: 24px 30px;
+      margin-bottom: 36px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(180%);
     }
     .paypal-pills {
       display: flex;
@@ -88,12 +97,12 @@
       margin-bottom: 6px;
     }
     .cat-title {
-      font-family: var(--font-display);
+      font-family: 'Plus Jakarta Sans', var(--font-display);
       font-size: clamp(1.8rem, 3.5vw, 2.75rem);
       font-weight: 900;
       text-transform: uppercase;
-      font-style: italic;
       margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
     .cat-subtitle {
       color: rgba(255, 255, 255, 0.6);
@@ -126,11 +135,11 @@
 
     /* Tier Cards */
     .pricing-card {
-      background: rgba(14, 18, 27, 0.75);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.08) 0%, transparent 60%);
+      background: rgba(12, 15, 23, 0.82);
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.12) 0%, transparent 60%);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 85, 0, 0.45);
-      border-radius: 20px;
+      border-top: 2px solid #FF4500;
+      border-radius: 22px;
       padding: 34px 26px;
       position: relative;
       display: flex;
@@ -138,19 +147,19 @@
       justify-content: space-between;
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
       transition: all 0.3s var(--ease-cinematic);
     }
     .pricing-card:hover {
-      border-color: rgba(255, 85, 0, 0.55);
+      border-color: rgba(255, 69, 0, 0.65);
       transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 85, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
     .pricing-card.featured {
-      border: 1px solid rgba(255, 85, 0, 0.5);
-      border-top: 1px solid var(--primary);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.18) 0%, transparent 65%);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 85, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 69, 0, 0.65);
+      border-top: 2px solid var(--primary);
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 69, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .card-badge {
@@ -340,14 +349,14 @@
 
   <div class="pricing-container">
 
-    <!-- Hero Header -->
-    <div style="text-align:center; margin: 30px 0 20px 0;">
-      <span class="cat-eyebrow">9LMNTS STUDIO • FOUNDED BY DARNLEY SANON</span>
-      <h1 style="font-family:var(--font-display); font-size:clamp(2.4rem, 5vw, 4rem); font-weight:900; text-transform:uppercase; font-style:italic; line-height:1.1; margin:8px 0 16px 0;">
+    <!-- Hero Header with Cyber Portal Backdrop -->
+    <div class="page-hero" style="text-align:center;">
+      <span class="station-tag orange">9LMNTS STUDIO • FOUNDED BY DARNLEY SANON</span>
+      <h1>
         Transparent Pricing.<br/>
         <span style="color:var(--primary);">PayPal Pay Later Built-In.</span>
       </h1>
-      <p style="color:rgba(255,255,255,0.65); font-size:1.1rem; max-width:720px; margin:0 auto;">
+      <p class="lead" style="margin-left:auto; margin-right:auto;">
         From 2-week creative AI agency sprints to sovereign 25-platform competition operating systems, choose full upfront settlement or 4 interest-free bi-weekly installments.
       </p>
     </div>
@@ -358,7 +367,7 @@
         <div style="font-family:var(--font-mono); font-size:0.75rem; color:#60a5fa; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">
           <i class="fa-brands fa-paypal"></i> PAYMENT INFRASTRUCTURE
         </div>
-        <div style="font-family:var(--font-display); font-size:1.15rem; font-weight:900; margin-top:2px;">
+        <div style="font-family:'Plus Jakarta Sans', sans-serif; font-size:1.15rem; font-weight:800; margin-top:2px;">
           PayPal E-Commerce Services • Certified Settlement
         </div>
       </div>
@@ -368,6 +377,38 @@
         <span class="paypal-pill">PayPal Subscriptions</span>
         <span class="paypal-pill">Smart Payment Buttons</span>
         <span class="paypal-pill" style="color:#34d399;">CAD Currency Settlement</span>
+      </div>
+    </div>
+
+    <!-- Universal 4-Item Stat Ribbon (from YouTube Automation luxury reference) -->
+    <div class="stats-ribbon">
+      <div class="stat-ribbon-item">
+        <div class="stat-ribbon-icon"><i class="fa-solid fa-play"></i></div>
+        <div class="stat-ribbon-content">
+          <div class="stat-ribbon-num">450M+</div>
+          <div class="stat-ribbon-label">Total Stream &amp; View Impressions</div>
+        </div>
+      </div>
+      <div class="stat-ribbon-item">
+        <div class="stat-ribbon-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+        <div class="stat-ribbon-content">
+          <div class="stat-ribbon-num">$37M+</div>
+          <div class="stat-ribbon-label">Gross Revenue &amp; Escrow Flow</div>
+        </div>
+      </div>
+      <div class="stat-ribbon-item">
+        <div class="stat-ribbon-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="stat-ribbon-content">
+          <div class="stat-ribbon-num">25+</div>
+          <div class="stat-ribbon-label">Turnkey Arena &amp; Creator Platforms</div>
+        </div>
+      </div>
+      <div class="stat-ribbon-item">
+        <div class="stat-ribbon-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="stat-ribbon-content">
+          <div class="stat-ribbon-num">50K+</div>
+          <div class="stat-ribbon-label">Competitors, Voters &amp; Artists</div>
+        </div>
       </div>
     </div>
 

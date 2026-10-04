@@ -26,7 +26,16 @@
 }
 
 html, body {
-  background-color: var(--bg-void);
+  background-color: #06070A;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.25) 0%, rgba(255, 30, 0, 0.06) 35%, transparent 60%),
+    radial-gradient(circle at 85% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(6, 7, 10, 0.75) 0%, rgba(6, 7, 10, 0.96) 100%),
+    url('../assets/images/dark_cyber_portal.jpg');
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--text-primary);
   font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
   min-height: 100vh;
@@ -189,9 +198,21 @@ html, body {
 
 /* HERO SECTION */
 .page-hero {
-  margin-bottom: 50px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--border-glass);
+  position: relative;
+  margin-bottom: 45px;
+  padding: 55px 44px 45px;
+  border-radius: 26px;
+  background: 
+    linear-gradient(180deg, rgba(8, 10, 15, 0.76) 0%, rgba(5, 6, 9, 0.92) 70%, rgba(4, 5, 8, 0.98) 100%),
+    radial-gradient(circle at 50% 10%, rgba(255, 69, 0, 0.40) 0%, rgba(255, 30, 0, 0.10) 45%, transparent 75%),
+    url('../assets/images/dark_cyber_portal.jpg');
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 69, 0, 0.35);
+  border-top: 2px solid #FF4500;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  overflow: hidden;
 }
 .station-tag {
   display: inline-flex;
@@ -229,28 +250,97 @@ html, body {
 }
 
 .page-hero h1 {
-  font-family: 'Syne', 'Orbitron', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
   color: #FFFFFF;
   margin-bottom: 14px;
 }
 .page-hero .subtitle {
-  font-family: 'Orbitron', monospace;
-  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
   color: var(--neon-orange);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  font-weight: 800;
+  margin-bottom: 18px;
 }
 .page-hero p.lead {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   line-height: 1.7;
   color: #CBD5E1;
   max-width: 880px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
+}
+
+/* UNIVERSAL 4-ITEM STAT RIBBON (FROM YOUTUBE AUTOMATION LUXURY REFERENCE) */
+.stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background: rgba(12, 15, 23, 0.82);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.10) 0%, transparent 60%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 2px solid #FF4500;
+  border-radius: 22px;
+  padding: 24px 30px;
+  margin-bottom: 48px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 69, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+.stat-ribbon-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat-ribbon-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 69, 0, 0.32) 0%, rgba(255, 69, 0, 0.06) 70%);
+  border: 1px solid rgba(255, 69, 0, 0.65);
+  box-shadow: 0 0 22px rgba(255, 69, 0, 0.50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF4500;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.stat-ribbon-content {
+  display: flex;
+  flex-direction: column;
+}
+.stat-ribbon-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.stat-ribbon-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 4px;
+  line-height: 1.35;
+}
+@media (max-width: 900px) {
+  .stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 20px;
+  }
+}
+@media (max-width: 560px) {
+  .stats-ribbon {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 /* BUTTONS */
@@ -315,27 +405,27 @@ html, body {
   margin-bottom: 40px;
 }
 .bento-card {
-  background: rgba(14, 18, 27, 0.75);
-  background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.08) 0%, transparent 60%);
+  background: rgba(12, 15, 23, 0.82);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.12) 0%, transparent 60%);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 85, 0, 0.45);
-  border-radius: 18px;
-  padding: 30px 28px;
+  border-top: 2px solid #FF4500;
+  border-radius: 22px;
+  padding: 32px 28px;
   transition: all 0.3s var(--ease-cinematic);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 .bento-card:hover {
-  border-color: rgba(255, 85, 0, 0.55);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 85, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 69, 0, 0.65);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transform: translateY(-4px);
 }
 .bento-card h3 {
-  font-family: 'Syne', 'Orbitron', sans-serif;
-  font-size: 1.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.30rem;
   font-weight: 800;
   color: #FFFFFF;
   margin-bottom: 12px;
@@ -346,7 +436,7 @@ html, body {
 .bento-card p {
   color: var(--text-muted);
   font-size: 0.94rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* MEDIA & VIDEO BOX */
