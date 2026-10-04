@@ -769,16 +769,16 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(4, 5, 8, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(3, 4, 7, 0.50); /* 50% visibility dimming for true spatial immersion */
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s var(--ease-cinematic);
       padding: 20px;
     }
 
@@ -788,9 +788,9 @@
     }
 
     .modal-dialog {
-      background: var(--surface-dark);
+      background: rgba(13, 15, 23, 0.94);
       border: 1px solid rgba(255, 85, 0, 0.4);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 85, 0, 0.18);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 85, 0, 0.22);
       border-radius: 14px;
       width: 100%;
       max-width: 680px;
@@ -801,6 +801,8 @@
       display: none;
       transform: translateY(30px) scale(0.96);
       transition: transform 0.4s var(--ease-cinematic);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
     .modal-dialog.wide-dialog {
@@ -2158,18 +2160,17 @@
         });
       });
 
-      // Spatial Zoom & Modal Trigger
+      // Spatial Zoom & Modal Trigger (Camera zooms into station, background dims to 50% visibility)
       window.triggerZoomAndModal = function(modalId, panXPercent, panYPercent, zoomScale = 2.3) {
         isZoomed = true;
         deselectAllStations();
         cyberAudio.playPinChirp();
 
         canvas.style.transform = `scale(${zoomScale}) translate(${panXPercent}%, ${panYPercent}%)`;
-        canvas.style.filter = 'blur(4px) brightness(0.55)';
 
         setTimeout(() => {
           openModal(modalId);
-        }, 420);
+        }, 360);
       };
 
       window.openModal = function(modalId) {
@@ -2195,7 +2196,6 @@
         isZoomed = false;
         deselectAllStations();
         canvas.style.transform = 'scale(1) translate(0, 0)';
-        canvas.style.filter = 'none';
       };
 
       // Close when clicking empty dark area outside modal card
