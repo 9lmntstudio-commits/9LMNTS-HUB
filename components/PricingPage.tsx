@@ -76,6 +76,45 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
     },
   ];
 
+  const superAgentTiers = [
+    {
+      id: 'super-agent-companion',
+      title: 'The Super Agent Companion',
+      subtitle: 'Personal Life, Study & Creative OS',
+      price: '$99',
+      frequency: '/ month CAD',
+      numericPrice: 99,
+      type: 'Recurring PayPal Subscription',
+      popular: false,
+      color: '#00D4FF',
+      deliverables: [
+        'The Accountability Mirror (Word to Bond): daily goal tracking',
+        'Personal Routine Architecture: morning habits, workouts & sleep',
+        '120 Study & Skill Engine: curriculum breakdown & active recall',
+        'Idea-to-Production Velocity: turn voice memos into deliverables',
+        'Direct access via private WhatsApp, Telegram & Web HUD',
+      ],
+    },
+    {
+      id: 'super-agent-sovereign',
+      title: 'Bespoke Sovereign Super Agent',
+      subtitle: 'Founders, Executives & Pro Athletes',
+      price: '$1,500',
+      frequency: 'CAD',
+      numericPrice: 1500,
+      type: 'PayPal Pay in 4: 4x $375.00 CAD (0% Int)',
+      popular: true,
+      color: '#FF5500',
+      deliverables: [
+        'Private-Tenant Dedicated Vector Knowledge Base (Supabase pgvector)',
+        'Custom Autonomous Multi-Agent Workflows (n8n Engine)',
+        'Bespoke Prompt Bibles & Voice Synthesis Integration',
+        '100% Sovereign Data Ownership & Custom Web/Mobile Interface',
+        '30-Day Engineering Handoff & Priority SLA',
+      ],
+    },
+  ];
+
   const monthlyRetainers = [
     {
       id: 'pro-retainer',
@@ -301,7 +340,71 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
         </div>
       </section>
 
-      {/* 2. Monthly Retainers & On-Site Event Operations */}
+      {/* 2. Personal Mastery & The Super Agent (Element 09) */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#06080D] border-b border-[#222222]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[#00D4FF] text-xs font-mono uppercase tracking-widest font-bold">ELEMENT 09 // KNOWLEDGE OF SELF</span>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white mt-1 font-['Orbitron']">
+              The Super Agent: Personal Life, Study &amp; Creative OS
+            </h2>
+            <p className="text-gray-400 text-sm mt-2">Built for personal mastery, mental sovereignty, habits, study acceleration, and uncompromised accountability</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {superAgentTiers.map((tier) => (
+              <div
+                key={tier.id}
+                className={`rounded-2xl p-8 flex flex-col transition-all duration-300 relative bg-[#0F1118] border ${
+                  tier.popular
+                    ? 'border-[#FF5500] shadow-[0_0_30px_rgba(255,85,0,0.2)]'
+                    : 'border-[#00D4FF]/40 hover:border-[#00D4FF]'
+                }`}
+              >
+                {tier.popular && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FF5500] text-black text-[10px] font-black uppercase tracking-widest px-3 py-0.5 rounded-full">
+                    Sovereign Build
+                  </div>
+                )}
+                <div className="mb-4">
+                  <h3 className="text-white text-xl font-bold font-['Orbitron']">{tier.title}</h3>
+                  <p className="text-xs font-mono text-gray-400 mt-1 uppercase tracking-wider">{tier.subtitle}</p>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="text-3xl sm:text-4xl font-black text-white font-['Orbitron']">{tier.price}</span>
+                    <span className="text-gray-400 text-xs font-mono">{tier.frequency}</span>
+                  </div>
+                  <div className="mt-2 text-xs font-mono text-[#93C5FD] bg-[#0070BA]/20 border border-[#0070BA]/30 px-2.5 py-1 rounded inline-block">
+                    {tier.type}
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8 flex-1 border-t border-[#222222] pt-5">
+                  {tier.deliverables.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-300">
+                      <Check size={14} className="text-[#00D4FF] flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => handleOpenCheckout(tier)}
+                  className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${
+                    tier.popular
+                      ? 'bg-[#FF5500] hover:bg-[#E64A19] text-white shadow-[0_0_20px_rgba(255,85,0,0.5)]'
+                      : 'bg-[#00D4FF]/10 hover:bg-[#00D4FF] text-white hover:text-black border border-[#00D4FF]/30'
+                  }`}
+                >
+                  <span>Select via PayPal</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Monthly Retainers & On-Site Event Operations */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
