@@ -14,7 +14,7 @@
   <style>
     :root {
       --bg: #050505;
-      --card-bg: rgba(14, 17, 24, 0.85);
+      --card-bg: rgba(14, 17, 24, 0.50);
       --card-border: rgba(255, 85, 0, 0.25);
       --primary: #FF5500;
       --primary-glow: rgba(255, 85, 0, 0.35);
@@ -46,12 +46,12 @@
     .pricing-container {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 30px 20px 100px 20px;
+      padding: 32px 24px 80px 24px;
     }
 
-    /* Trust / PayPal Infrastructure Banner */
+    /* Trust / PayPal Infrastructure Banner (50% Transparency Bento) */
     .paypal-trust-banner {
-      background: linear-gradient(135deg, rgba(0, 112, 186, 0.20) 0%, rgba(12, 15, 23, 0.92) 100%);
+      background: linear-gradient(135deg, rgba(0, 112, 186, 0.20) 0%, rgba(12, 15, 23, 0.50) 100%);
       border: 1px solid rgba(0, 112, 186, 0.45);
       border-top: 2px solid rgba(0, 212, 255, 0.7);
       border-radius: 22px;
@@ -64,6 +64,7 @@
       gap: 16px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
     }
     .paypal-pills {
       display: flex;
@@ -97,7 +98,7 @@
       margin-bottom: 6px;
     }
     .cat-title {
-      font-family: 'Plus Jakarta Sans', var(--font-display);
+      font-family: var(--font-display);
       font-size: clamp(1.8rem, 3.5vw, 2.75rem);
       font-weight: 900;
       text-transform: uppercase;
@@ -133,9 +134,9 @@
       .tier-grid-4 { grid-template-columns: repeat(4, 1fr); }
     }
 
-    /* Tier Cards */
+    /* Tier Cards (50% Transparency Bento) */
     .pricing-card {
-      background: rgba(12, 15, 23, 0.82);
+      background: rgba(12, 15, 23, 0.50);
       background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.12) 0%, transparent 60%);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-top: 2px solid #FF4500;
@@ -158,6 +159,7 @@
     .pricing-card.featured {
       border: 1px solid rgba(255, 69, 0, 0.65);
       border-top: 2px solid var(--primary);
+      background-color: rgba(20, 16, 26, 0.50);
       background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
       box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 69, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
@@ -290,7 +292,7 @@
     }
     .order-modal.active { display: flex; }
     .order-box {
-      background: rgba(14, 18, 27, 0.90);
+      background: rgba(14, 18, 27, 0.50);
       background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.18) 0%, transparent 65%);
       border: 1px solid rgba(255, 255, 255, 0.10);
       border-top: 1px solid rgba(255, 85, 0, 0.60);
@@ -325,6 +327,20 @@
       border-color: var(--primary);
       color: #ffffff;
       transform: rotate(90deg);
+    }
+
+    @media (max-width: 900px) {
+      .pricing-container {
+        padding: 24px 18px 60px 18px;
+      }
+    }
+    @media (max-width: 600px) {
+      .pricing-container {
+        padding: 18px 14px 40px 14px;
+      }
+      .order-box {
+        padding: 28px 20px;
+      }
     }
   </style>
 </head>
