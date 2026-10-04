@@ -1226,6 +1226,21 @@
         </button>
       </div>
 
+      <!-- Studio & Commercial Hub -->
+      <div>
+        <div class="drawer-section-label">Studio &amp; Commercial Hub</div>
+        <div class="drawer-external-links">
+          <a class="drawer-ext-link" href="pricing.html" style="border-color: rgba(0, 112, 186, 0.4); background: rgba(0, 112, 186, 0.1);">
+            <span>Official Pricing</span>
+            <span style="color: #93c5fd;">💳</span>
+          </a>
+          <a class="drawer-ext-link" href="services.html">
+            <span>Services &amp; Sprints</span>
+            <span style="color: var(--neon-orange);">⚡</span>
+          </a>
+        </div>
+      </div>
+
       <!-- Autonomous Cloud Platforms -->
       <div>
         <div class="drawer-section-label">Live Platform Endpoints</div>
@@ -1677,10 +1692,16 @@
         </div>
         <div class="lead-form-grid">
           <select class="lead-input" name="package" style="background:#111319;" required>
-            <option value="ArtistOS Sprint">ArtistOS Production Sprint ($1,500 CAD)</option>
-            <option value="Sound Clash Live Arena">Sound Clash Tournament Setup ($3,500 CAD)</option>
+            <option value="Starter Sprint">Starter Sprint — $1,500 CAD (4x $375 Pay in 4)</option>
+            <option value="Pro Custom Sprint" selected>Pro Custom Sprint — $2,500 – $3,500 CAD (4x $625 Pay in 4)</option>
+            <option value="Enterprise Scale Build">Enterprise Scale Build — $5,000 CAD</option>
+            <option value="Pro Retainer">Pro Retainer — $1,500 / mo</option>
+            <option value="Premier Operations Retainer">Premier Operations Retainer — $2,500 – $3,500 / mo</option>
+            <option value="Enterprise Custom Retainer">Enterprise Custom Retainer — $5,000 / mo</option>
+            <option value="OS Series - Free Tier">9LMNTS OS Series — Free Tier (80/20 Split)</option>
+            <option value="OS Series - Pro Setup">9LMNTS OS Series — Pro Setup ($500 CAD, 90/10)</option>
+            <option value="OS Series - Elite Setup">9LMNTS OS Series — Elite Setup ($1,500 CAD, 95/5)</option>
             <option value="Commercial Video Ad Reel">Commercial Cyberpunk Video Ad Reel</option>
-            <option value="Full Studio Retainer">Custom Enterprise Retainer</option>
           </select>
           <input class="lead-input" type="text" name="timeline" placeholder="Target Launch Date / Q4 2026"/>
         </div>
@@ -1692,6 +1713,9 @@
 
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
+        <a class="btn-primary" href="pricing.html" style="background: linear-gradient(135deg, #0070ba 0%, #003087 100%); border-color: #0070ba;">
+          Official Pricing Matrix 💳
+        </a>
         <a class="btn-primary" href="services.html">
           Explore Creator Bundles &amp; Services ↗
         </a>

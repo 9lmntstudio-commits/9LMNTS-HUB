@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <title>Official Pricing Matrix &amp; PayPal Payment Plans — 9LMNTS Studio</title>
+  <meta name="description" content="Official pricing for 9LMNTS Studio agency sprints, monthly retainers, turnkey OS platforms, and live venue grids. Powered by PayPal E-Commerce Services with 0% interest Pay in 4."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css"/>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --card-bg: rgba(14, 17, 24, 0.85);
+      --card-border: rgba(255, 85, 0, 0.25);
+      --primary: #FF5500;
+      --primary-glow: rgba(255, 85, 0, 0.35);
+      --cyan: #00D4FF;
+      --green: #10B981;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #ffffff;
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .pricing-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 30px 20px 100px 20px;
+    }
+
+    /* Trust / PayPal Infrastructure Banner */
+    .paypal-trust-banner {
+      background: linear-gradient(135deg, rgba(0, 112, 186, 0.12) 0%, rgba(10, 15, 26, 0.9) 100%);
+      border: 1px solid rgba(0, 112, 186, 0.4);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+    .paypal-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .paypal-pill {
+      font-family: var(--font-mono);
+      font-size: 0.70rem;
+      font-weight: 700;
+      color: #93c5fd;
+      background: rgba(0, 112, 186, 0.18);
+      border: 1px solid rgba(0, 112, 186, 0.35);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Section Headers */
+    .cat-header {
+      text-align: center;
+      margin: 60px 0 32px 0;
+    }
+    .cat-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 6px;
+    }
+    .cat-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .cat-subtitle {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Grids */
+    .tier-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media(min-width: 840px) {
+      .tier-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .tier-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media(min-width: 640px) {
+      .tier-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(min-width: 1024px) {
+      .tier-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* Tier Cards */
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(14px);
+      transition: all 0.3s ease;
+    }
+    .pricing-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 85, 0, 0.2);
+    }
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, rgba(255, 85, 0, 0.1) 0%, rgba(14, 17, 24, 0.95) 100%);
+      box-shadow: 0 0 35px rgba(255, 85, 0, 0.25);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #050505;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tier-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .price-amount {
+      font-family: var(--font-mono);
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 12px 0 6px 0;
+    }
+    .price-currency {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+    }
+
+    .pay-in-4-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 212, 255, 0.12);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .deliverables-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 28px 0;
+      flex: 1;
+    }
+    .deliverables-list li {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .deliverables-list li i {
+      color: var(--primary);
+      margin-top: 3px;
+      font-size: 0.8rem;
+    }
+
+    .btn-select-tier {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: #050505;
+      transition: all 0.25s ease;
+      display: inline-block;
+    }
+    .btn-select-tier:hover {
+      background: #ff6a1a;
+      box-shadow: 0 0 25px var(--primary-glow);
+      transform: translateY(-2px);
+    }
+    .btn-select-tier.secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    .btn-select-tier.secondary:hover {
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Modal for PayPal Order */
+    .order-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .order-modal.active { display: flex; }
+    .order-box {
+      background: #0B0E17;
+      border: 1px solid var(--primary);
+      box-shadow: 0 0 45px rgba(255, 85, 0, 0.3);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      padding: 32px;
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal HUD Return Header -->
+  <header class="hud-top-bar">
+    <a href="index.html#station-05" class="hud-back-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      RETURN TO STUDIO COCKPIT
+    </a>
+    <div class="hud-breadcrumb">
+      <span class="hud-dot" style="background:var(--primary); box-shadow:0 0 10px var(--primary);"></span>
+      <span>STATION 05</span>
+      <span class="hud-sep">/</span>
+      <span class="hud-title">OFFICIAL PRICING &amp; PAYMENT PLANS</span>
+    </div>
+    <div class="hud-actions">
+      <a href="services.html" class="hud-cta-btn" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2);">EXPLORE SERVICES ↗</a>
+    </div>
+  </header>
+
+  <div class="pricing-container">
+
+    <!-- Hero Header -->
+    <div style="text-align:center; margin: 30px 0 20px 0;">
+      <span class="cat-eyebrow">9LMNTS STUDIO • FOUNDED BY DARNLEY SANON</span>
+      <h1 style="font-family:var(--font-display); font-size:clamp(2.4rem, 5vw, 4rem); font-weight:900; text-transform:uppercase; font-style:italic; line-height:1.1; margin:8px 0 16px 0;">
+        Transparent Pricing.<br/>
+        <span style="color:var(--primary);">PayPal Pay Later Built-In.</span>
+      </h1>
+      <p style="color:rgba(255,255,255,0.65); font-size:1.1rem; max-width:720px; margin:0 auto;">
+        From 2-week creative AI agency sprints to sovereign 25-platform competition operating systems, choose full upfront settlement or 4 interest-free bi-weekly installments.
+      </p>
+    </div>
+
+    <!-- PayPal E-Commerce Trust Banner -->
+    <div class="paypal-trust-banner">
+      <div>
+        <div style="font-family:var(--font-mono); font-size:0.75rem; color:#60a5fa; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">
+          <i class="fa-brands fa-paypal"></i> PAYMENT INFRASTRUCTURE
+        </div>
+        <div style="font-family:var(--font-display); font-size:1.15rem; font-weight:900; margin-top:2px;">
+          PayPal E-Commerce Services • Certified Settlement
+        </div>
+      </div>
+      <div class="paypal-pills">
+        <span class="paypal-pill">PayPal Complete Payments</span>
+        <span class="paypal-pill" style="color:#38bdf8; border-color:#38bdf8;">Pay in 4 (0% Interest)</span>
+        <span class="paypal-pill">PayPal Subscriptions</span>
+        <span class="paypal-pill">Smart Payment Buttons</span>
+        <span class="paypal-pill" style="color:#34d399;">CAD Currency Settlement</span>
+      </div>
+    </div>
+
+    <!-- 1. Creative Agency & AI Automation Sprints -->
+    <div class="cat-header" id="agency-sprints">
+      <div class="cat-eyebrow">HIGH-VELOCITY SPRINT DELIVERABLES</div>
+      <h2 class="cat-title">Creative Agency &amp; AI Automation Sprints</h2>
+      <p class="cat-subtitle">Bespoke design systems, social lead funnels, and autonomous agent architectures shipped in 14-day production windows.</p>
+    </div>
+
+    <div class="tier-grid-3">
+      <!-- Starter Sprint -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title">Starter Sprint</div>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">DESIGN SYSTEM &amp; DEPLOYMENT</div>
+          <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
+          <div class="pay-in-4-badge">
+            <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
+          </div>
+          <ul class="deliverables-list">
+            <li><i class="fa-solid fa-check"></i> Figma Design System &amp; Brand Tokens</li>
+            <li><i class="fa-solid fa-check"></i> Mobile-First Glassmorphic Dark UI</li>
+            <li><i class="fa-solid fa-check"></i> Netlify / Vercel Instant Deployment</li>
+            <li><i class="fa-solid fa-check"></i> ManyChat Social Lead Capture Funnel</li>
+          </ul>
+        </div>
+        <button class="btn-select-tier secondary" onclick="openOrderModal('Starter Sprint', 1500, '4x $375.00 CAD', true)">
+          Select Starter Sprint &rarr;
+        </button>
+      </div>
+
+      <!-- Pro Custom Sprint (Featured) -->
+      <div class="pricing-card featured">
+        <div class="card-badge">⚡ MOST POPULAR SPRINT</div>
+        <div>
+          <div class="tier-title" style="color:var(--primary);">Pro Custom Sprint</div>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">FULL WEB APP OR CREATOR OS</div>
+          <div class="price-amount">$2,500 – $3,500 <span class="price-currency">CAD</span></div>
+          <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
+            <i class="fa-solid fa-clock-rotate-left"></i> 4x $625.00 CAD via Pay in 4 (0% Interest)
+          </div>
+          <ul class="deliverables-list">
+            <li><i class="fa-solid fa-check"></i> Full Web App or Vertical Creator OS</li>
+            <li><i class="fa-solid fa-check"></i> ManyChat DM Funnel + n8n Orchestration</li>
+            <li><i class="fa-solid fa-check"></i> Supabase Database &amp; Lead Sync</li>
+            <li><i class="fa-solid fa-check"></i> WebAR Interactive Asset Integration</li>
+            <li><i class="fa-solid fa-check"></i> 14-Day Priority Technical Support</li>
+          </ul>
+        </div>
+        <button class="btn-select-tier" onclick="openOrderModal('Pro Custom Sprint', 2500, '4x $625.00 CAD', true)">
+          Select Pro Custom Sprint &rarr;
+        </button>
+      </div>
+
+      <!-- Enterprise Scale Build -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title">Enterprise Scale Build</div>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">BESPOKE ARCHITECTURE &amp; AGENTS</div>
+          <div class="price-amount">$5,000 <span class="price-currency">CAD</span></div>
+          <div class="pay-in-4-badge" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#cbd5e1;">
+            <i class="fa-solid fa-shield-halved"></i> PayPal Monthly Installment Financing
+          </div>
+          <ul class="deliverables-list">
+            <li><i class="fa-solid fa-check"></i> Bespoke Multi-Tenant OS Engine</li>
+            <li><i class="fa-solid fa-check"></i> Domain-Specific Autonomous AI Agents</li>
+            <li><i class="fa-solid fa-check"></i> Complete 3D WebAR &amp; Brand Identity</li>
+            <li><i class="fa-solid fa-check"></i> Dedicated Production Architect &amp; SLA</li>
+          </ul>
+        </div>
+        <button class="btn-select-tier secondary" onclick="openOrderModal('Enterprise Scale Build', 5000, 'Monthly Financing Eligible', false)">
+          Book Enterprise Build &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. Monthly Retainers & On-Site Operations -->
+    <div class="cat-header" id="monthly-retainers">
+      <div class="cat-eyebrow">CONTINUOUS EVOLUTION &amp; EVENT SLAS</div>
+      <h2 class="cat-title">Monthly Retainers &amp; On-Site Operations</h2>
+      <p class="cat-subtitle">Billed recurringly via PayPal Subscriptions. Dedicated engineering, venue jumbotron sync, and emergency technical operators.</p>
+    </div>
+
+    <div class="tier-grid-3">
+      <!-- Pro Retainer -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title">Pro Retainer</div>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">MAINTENANCE &amp; REMOTE SUPPORT</div>
+          <div class="price-amount">$1,500 <span class="price-currency">/ month CAD</span></div>
+          <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
+            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription
+          </div>
+          <ul class="deliverables-list">
+            <li><i class="fa-solid fa-check"></i> Monthly UI/UX Enhancements &amp; Design</li>
+            <li><i class="fa-solid fa-check"></i> Platform &amp; Asset Maintenance</li>
+            <li><i class="fa-solid fa-check"></i> Remote Live-Event Technical Support (1 event/mo)</li>
+          </ul>
+        </div>
+        <button class="btn-select-tier secondary" onclick="openOrderModal('Pro Retainer', 1500, 'Monthly Subscription', false)">
+          Subscribe to Pro &rarr;
+        </button>
+      </div>
+
+      <!-- Premier Operations Retainer (Featured) -->
+      <div class="pricing-card featured">
+        <div class="card-badge">VENUE PARTNER FAVORITE</div>
+        <div>
+          <div class="tier-title" style="color:var(--primary);">Premier Operations</div>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">ON-SITE ARENA OPERATOR (2 EVENTS/MO)</div>
+          <div class="price-amount">$2,500 – $3,500 <span class="price-currency">/ month CAD</span></div>
+          <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
+            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription
+          </div>
+          <ul class="deliverables-list">
+            <li><i class="fa-solid fa-check"></i> Bi-Weekly Feature Sprints</li>
+            <li><i class="fa-solid fa-check"></i> Dedicated On-Site Venue Operator (2 events/mo)</li>
+            <li><i class="fa-solid fa-check"></i> Live Jumbotron Sync &amp; Arena Telemetry</li>
+            <li><i class="fa-solid fa-check"></i> Priority Emergency Technical SLA</li>
+          </ul>
+        </div>
+        <button class="btn-select-tier" onclick="openOrderModal('Premier Operations Retainer', 2500, 'Monthly Subscription', false)">
+          Subscribe to Premier &rarr;
+        </button>
+      </div>
+
+      <!-- Enterprise Custom Retainer -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title">Enterprise Custom</div>
+          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">ALL CLIENT EVENTS • 24/7 DEDICATED SLA</div>
+          <div class="price-amount">$5,000 <span class="price-currency">/ month CAD</span></div>
+          <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
+            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription
+          </div>
+          <ul class="deliverables-list">
+            <li><i class="fa-solid fa-check"></i> Full Bespoke Studio Engineering</li>
+            <li><i class="fa-solid fa-check"></i> Dedicated On-Site Operator for All Client Events</li>
+            <li><i class="fa-solid fa-check"></i> White-Label Architecture &amp; Scaling</li>
+            <li><i class="fa-solid fa-check"></i> 24/7 Dedicated Priority Technical SLA</li>
+          </ul>
+        </div>
+        <button class="btn-select-tier secondary" onclick="openOrderModal('Enterprise Custom Retainer', 5000, 'Monthly Subscription', false)">
+          Subscribe to Enterprise &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. 9LMNTS OS Series -->
+    <div class="cat-header" id="os-series">
+      <div class="cat-eyebrow">25 COMPETITION OPERATING SYSTEMS</div>
+      <h2 class="cat-title">9LMNTS OS Series Platform Licensing</h2>
+      <p class="cat-subtitle">From Sound Clash OS to bars, runway, and corporate tournaments. Flexible revenue splits or full enterprise buyouts.</p>
+    </div>
+
+    <div class="tier-grid-4">
+      <!-- Free Performance Tier -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title" style="font-size:1.15rem;">Free Performance</div>
+          <div class="price-amount" style="font-size:1.8rem;">$0 <span class="price-currency">Upfront</span></div>
+          <div style="font-family:var(--font-mono); font-size:0.8rem; color:#10B981; font-weight:800; margin-bottom:14px;">
+            80/20 Revenue Split
+          </div>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">80% Creator / 20% Studio. Zero financial risk. Payouts settled via PayPal E-Commerce Direct Split.</p>
+        </div>
+        <button class="btn-select-tier secondary" style="margin-top:20px;" onclick="openOrderModal('Free Performance OS', 0, '80/20 Revenue Split', false)">
+          Deploy Free Tier &rarr;
+        </button>
+      </div>
+
+      <!-- Pro OS Setup -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title" style="font-size:1.15rem;">Pro OS Setup</div>
+          <div class="price-amount" style="font-size:1.8rem;">$500 <span class="price-currency">CAD</span></div>
+          <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--cyan); font-weight:800; margin-bottom:6px;">
+            90/10 Revenue Split
+          </div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-bottom:14px;">+ $250/mo Maintenance</div>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">Dedicated custom branded arena domain, custom contender bracket, and QR mobile voting.</p>
+        </div>
+        <button class="btn-select-tier secondary" style="margin-top:20px;" onclick="openOrderModal('Pro OS Setup', 500, '90/10 Split + $250/mo', false)">
+          Deploy Pro OS &rarr;
+        </button>
+      </div>
+
+      <!-- Elite OS Setup -->
+      <div class="pricing-card featured">
+        <div class="card-badge">HOT PLATFORM</div>
+        <div>
+          <div class="tier-title" style="font-size:1.15rem; color:var(--primary);">Elite OS Setup</div>
+          <div class="price-amount" style="font-size:1.8rem; color:var(--primary);">$1,500 <span class="price-currency">CAD</span></div>
+          <div class="pay-in-4-badge" style="font-size:0.65rem; padding:3px 8px; margin-bottom:6px;">
+            4x $375.00 CAD Pay in 4
+          </div>
+          <div style="font-family:var(--font-mono); font-size:0.8rem; color:#10B981; font-weight:800; margin-bottom:6px;">
+            95/5 Revenue Split
+          </div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-bottom:14px;">+ $500/mo Maintenance</div>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">You keep 95% of ticket sales and vote surge pots. High-throughput venue deployment.</p>
+        </div>
+        <button class="btn-select-tier" style="margin-top:20px;" onclick="openOrderModal('Elite OS Setup', 1500, '4x $375.00 CAD', true)">
+          Deploy Elite OS &rarr;
+        </button>
+      </div>
+
+      <!-- Enterprise Custom OS -->
+      <div class="pricing-card">
+        <div>
+          <div class="tier-title" style="font-size:1.15rem;">Enterprise OS</div>
+          <div class="price-amount" style="font-size:1.8rem;">$5,000 <span class="price-currency">CAD</span></div>
+          <div style="font-family:var(--font-mono); font-size:0.8rem; color:#10B981; font-weight:800; margin-bottom:6px;">
+            100/0 Revenue Split
+          </div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-bottom:14px;">+ $500/mo Maintenance</div>
+          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">Full IP buyout and zero platform fees. 100% of event revenue stays in your organization.</p>
+        </div>
+        <button class="btn-select-tier secondary" style="margin-top:20px;" onclick="openOrderModal('Enterprise Custom OS', 5000, '100% Retained Revenue', false)">
+          Deploy Enterprise OS &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- 4. Universal 4-Box In-Venue Monetization Grid -->
+    <div class="cat-header" id="venue-grid">
+      <div class="cat-eyebrow">LIVE EVENT REVENUE PROTOCOL</div>
+      <h2 class="cat-title">Universal 4-Box In-Venue Monetization Grid</h2>
+      <p class="cat-subtitle">Standardized consumer purchase points configured across all 25 competition operating systems.</p>
+    </div>
+
+    <div class="tier-grid-4">
+      <!-- Box 01 -->
+      <div class="pricing-card" style="padding:24px 20px;">
+        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary); font-weight:800;">BOX 01</span>
+        <h3 style="font-size:1rem; font-weight:800; margin:6px 0;">GA Cover &amp; Ballot</h3>
+        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$20 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+        <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:8px 0 12px 0;">4x $5.00 CAD Pay in 4</div>
+        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">General admission venue entry + digital crowd voter ballot credential.</p>
+        <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('GA Cover & Ballot', 20, '4x $5.00 CAD', true)">Select Pass</button>
+      </div>
+
+      <!-- Box 02 -->
+      <div class="pricing-card" style="padding:24px 20px;">
+        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); font-weight:800;">BOX 02</span>
+        <h3 style="font-size:1rem; font-weight:800; margin:6px 0;">Micro-Tip &amp; Drink</h3>
+        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$10 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+        <div style="font-family:var(--font-mono); font-size:0.70rem; color:rgba(255,255,255,0.5); margin:8px 0 12px 0;">Direct Contender Tip</div>
+        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">Direct contender cash tip jar + 1 feature drink token at the venue bar.</p>
+        <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('Micro-Tip & Drink Credit', 10, 'One-time Payment', false)">Select Tip</button>
+      </div>
+
+      <!-- Box 03 -->
+      <div class="pricing-card" style="padding:24px 20px;">
+        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--green); font-weight:800;">BOX 03</span>
+        <h3 style="font-size:1rem; font-weight:800; margin:6px 0;">Power Hype Pack</h3>
+        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$50 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+        <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:8px 0 12px 0;">4x $12.50 CAD Pay in 4</div>
+        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">25x crowd voting boost + live jumbotron screen name flash shoutout.</p>
+        <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('Power Hype Pack', 50, '4x $12.50 CAD', true)">Select Hype</button>
+      </div>
+
+      <!-- Box 04 -->
+      <div class="pricing-card featured" style="padding:24px 20px;">
+        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary); font-weight:800;">BOX 04</span>
+        <h3 style="font-size:1rem; font-weight:800; margin:6px 0; color:var(--primary);">VIP Hospitality Table</h3>
+        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:var(--primary);">$150 – $250 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+        <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:8px 0 12px 0;">4x $37.50 CAD Pay in 4</div>
+        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">Reserved VIP banquette table, dedicated server, and bottle service credit.</p>
+        <button class="btn-select-tier" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('VIP Hospitality Table', 150, '4x $37.50 CAD', true)">Reserve VIP Table</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Order / Checkout Modal -->
+  <div class="order-modal" id="orderModal">
+    <div class="order-box">
+      <button class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
+      <div style="margin-bottom:20px;">
+        <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:800; text-transform:uppercase;">
+          PAYPAL E-COMMERCE SERVICES • INSTANT CHECKOUT
+        </span>
+        <h3 id="modalTierTitle" style="font-family:var(--font-display); font-size:1.35rem; font-weight:900; margin-top:4px;">
+          Starter Sprint
+        </h3>
+        <div id="modalTierPrice" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:var(--primary); margin:6px 0;">
+          $1,500 CAD
+        </div>
+        <div id="modalPayIn4Option" class="pay-in-4-badge">
+          4x $375.00 CAD via PayPal Pay in 4 (0% Interest)
+        </div>
+      </div>
+
+      <form onsubmit="handleOrderSubmit(event)">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-size:0.75rem; color:rgba(255,255,255,0.6); margin-bottom:4px; font-weight:700;">YOUR NAME / ORGANIZATION</label>
+          <input type="text" id="orderClientName" required style="width:100%; padding:12px; background:#080A0F; border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:0.9rem; outline:none;"/>
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block; font-size:0.75rem; color:rgba(255,255,255,0.6); margin-bottom:4px; font-weight:700;">EMAIL ADDRESS (PAYPAL NOTIFICATIONS)</label>
+          <input type="email" id="orderClientEmail" required style="width:100%; padding:12px; background:#080A0F; border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:0.9rem; outline:none;"/>
+        </div>
+        <div style="margin-bottom:24px; padding:12px; background:rgba(255,85,0,0.06); border:1px solid rgba(255,85,0,0.25); border-radius:8px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.82rem; cursor:pointer;">
+            <input type="checkbox" id="orderUsePayIn4" checked style="accent-color:var(--primary);"/>
+            <span>Pay with <strong>PayPal Pay in 4</strong> (4 bi-weekly payments, 0% interest)</span>
+          </label>
+        </div>
+
+        <button type="submit" id="orderSubmitBtn" class="btn-select-tier" style="width:100%; padding:16px;">
+          <i class="fa-brands fa-paypal"></i> Proceed to PayPal Order &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let activeTier = { title: '', price: 0, plan: '', eligiblePayIn4: false };
+
+    function openOrderModal(title, price, plan, eligiblePayIn4) {
+      activeTier = { title, price, plan, eligiblePayIn4 };
+      document.getElementById('modalTierTitle').innerText = title;
+      document.getElementById('modalTierPrice').innerText = `$${price} CAD`;
+      const badge = document.getElementById('modalPayIn4Option');
+      const checkboxBox = document.getElementById('orderUsePayIn4').parentElement.parentElement;
+      if (eligiblePayIn4) {
+        badge.style.display = 'inline-flex';
+        badge.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${plan} via PayPal Pay in 4 (0% Interest)`;
+        checkboxBox.style.display = 'block';
+      } else {
+        badge.style.display = 'inline-flex';
+        badge.innerHTML = `<i class="fa-solid fa-credit-card"></i> ${plan}`;
+        checkboxBox.style.display = 'none';
+      }
+      document.getElementById('orderModal').classList.add('active');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('orderModal').classList.remove('active');
+    }
+
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('orderClientName').value;
+      const email = document.getElementById('orderClientEmail').value;
+      const usePayIn4 = document.getElementById('orderUsePayIn4').checked;
+      const btn = document.getElementById('orderSubmitBtn');
+      btn.innerText = "Triggering PayPal Engine...";
+      btn.disabled = true;
+
+      // Dispatch to n8n webhook / create_paypal_ecommerce_order
+      const payload = {
+        agency: "9LMNTS Studio",
+        founder: "Darnley Sanon",
+        client_name: name,
+        client_email: email,
+        tier: activeTier.title,
+        price_cad: activeTier.price,
+        pay_in_4: usePayIn4 && activeTier.eligiblePayIn4,
+        installments: usePayIn4 ? "4 payments with 0% interest" : "Full Payment",
+        timestamp: new Date().toISOString()
+      };
+
+      fetch('https://loabrain.app.n8n.cloud/webhook/9lmnts-leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .catch(() => {})
+      .finally(() => {
+        alert(`✓ PayPal E-Commerce Order Created for ${name}!\n\nTier: ${activeTier.title}\nAmount: $${activeTier.price} CAD\nPayment Plan: ${usePayIn4 ? 'PayPal Pay in 4 (4 bi-weekly payments of 0% interest)' : 'Standard Settlement'}\n\nA secure PayPal checkout authorization link has been dispatched to ${email}.`);
+        closeOrderModal();
+        btn.innerText = "Proceed to PayPal Order →";
+        btn.disabled = false;
+      });
+    }
+  </script>
+</body>
+</html>

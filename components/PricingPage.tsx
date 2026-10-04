@@ -1,4 +1,4 @@
-import { Check, HelpCircle } from 'lucide-react';
+import { Check, HelpCircle, Shield, Zap, Sparkles, CreditCard, ArrowRight, Layers, Flame } from 'lucide-react';
 import { useState } from 'react';
 import { GateOSCheckoutModal } from './GateOSCheckoutModal';
 import { SEO } from './SEO';
@@ -14,332 +14,444 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
 
   const handleOpenCheckout = (tier: any) => {
     setSelectedInvoice({
-      id: `NX-${Math.floor(1000 + Math.random() * 9000)}`,
-      title: tier.name,
-      amount: tier.price === 'Custom' ? 5000 : parseFloat(tier.price.replace(/[$,]/g, '')),
-      description: tier.description
+      id: `PAYPAL-${Math.floor(1000 + Math.random() * 9000)}`,
+      title: tier.title || tier.name,
+      amount: typeof tier.price === 'number' ? tier.price : parseFloat(String(tier.price).replace(/[^0-9.]/g, '')) || 1500,
+      description: tier.pay_in_4 ? `Eligible for PayPal Pay in 4 (${tier.pay_in_4}). ${tier.subtitle || ''}` : (tier.subtitle || '9LMNTS Studio Official Tier')
     });
     setIsModalOpen(true);
   };
 
-  const pricingTiers = [
+  const agencySprints = [
     {
-      name: 'Basic Boost',
+      id: 'starter-sprint',
+      title: 'Starter Sprint',
       price: '$1,500',
-      planValue: 'basic',
-      description: 'Startups/Small Projects',
-      features: [
-        'Initial Concept',
-        '1 Revision Round',
-        'Basic Mockups',
-        'Mobile Responsive',
-        'Basic Design Assets',
-        '1-2 Week Delivery',
-      ],
-      cta: 'Select Plan',
+      numericPrice: 1500,
+      currency: 'CAD',
+      billing: 'One-time or Installments',
+      pay_in_4: '4 payments of $375.00 CAD (0% Int)',
       popular: false,
+      deliverables: [
+        'Figma Design System & Brand Tokens',
+        'Mobile-First Glassmorphic Dark UI',
+        'Netlify/Vercel Instant Production Deployment',
+        'ManyChat Social Lead Capture Funnel',
+        '7-Day Turnkey Production Cycle',
+      ],
     },
     {
-      name: 'Standard Pro',
-      price: '$3,000',
-      planValue: 'standard',
-      description: 'Growing Businesses',
-      features: [
-        'Everything in Basic Boost',
-        'Full Wireframe',
-        '2 Revision Rounds',
-        'Full Design System Overview',
-        'Component Library',
-        'Interactive Prototype',
-        '2-3 Week Delivery',
-      ],
-      cta: 'Select Plan',
-      popular: false,
-    },
-    {
-      name: 'Premium Elite',
-      price: '$5,000',
-      planValue: 'premium',
-      description: 'Established Brands',
-      features: [
-        'Everything in Standard Pro',
-        'Full UX Research',
-        'Unlimited Revisions',
-        'Full Design System Documentation',
-        'Advanced Animations',
-        'Priority Support',
-        'Developer Handoff',
-        'Style Guide',
-        '3-4 Week Delivery',
-      ],
-      cta: 'Select Plan',
+      id: 'pro-custom-sprint',
+      title: 'Pro Custom Sprint',
+      price: '$2,500 – $3,500',
+      numericPrice: 2500,
+      currency: 'CAD',
+      billing: 'One-time or Installments',
+      pay_in_4: '4 payments of $625.00 CAD (0% Int)',
       popular: true,
+      deliverables: [
+        'Full Web App or Vertical Creator OS',
+        'ManyChat DM Funnel + n8n Orchestration',
+        'Supabase Database & Real-time Lead Sync',
+        'WebAR Interactive 3D Asset Integration',
+        '14-Day Priority Technical Support & Warranty',
+      ],
     },
     {
-      name: 'Custom Scale',
-      price: 'Custom',
-      planValue: 'custom',
-      description: 'High-End/Large Scope',
-      features: [
-        'Large-scale Applications',
-        'Full Brand Overhaul',
-        'Retainer Work Available',
-        'Dedicated Team',
-        'Custom Timeline (Max 4 weeks)',
-        'White Label Solutions',
-        'Ongoing Support',
-        '24/7 Availability',
-      ],
-      cta: 'Contact for Quote',
+      id: 'enterprise-scale',
+      title: 'Enterprise Scale Build',
+      price: '$5,000',
+      numericPrice: 5000,
+      currency: 'CAD',
+      billing: 'One-time or Monthly Financing',
+      pay_in_4: 'PayPal Monthly Installment Financing',
       popular: false,
+      deliverables: [
+        'Bespoke Multi-Tenant OS Engine',
+        'Domain-Specific Autonomous AI Agents',
+        'Complete 3D WebAR & Cyber Brand Identity',
+        'Dedicated Production Architect & SLA',
+        'Custom Smart Contracts & High-Throughput Rails',
+      ],
     },
+  ];
+
+  const monthlyRetainers = [
+    {
+      id: 'pro-retainer',
+      title: 'Pro Retainer',
+      price: '$1,500',
+      frequency: '/ month CAD',
+      numericPrice: 1500,
+      type: 'PayPal Subscriptions',
+      deliverables: [
+        'Monthly UI/UX Enhancements & Design Sprints',
+        'Platform & Dynamic Asset Maintenance',
+        'Remote Live-Event Technical Support (1 event/mo)',
+        'Continuous Performance Audits & Monitoring',
+      ],
+    },
+    {
+      id: 'premier-operations',
+      title: 'Premier Operations Retainer',
+      price: '$2,500 – $3,500',
+      frequency: '/ month CAD',
+      numericPrice: 2500,
+      type: 'PayPal Subscriptions',
+      popular: true,
+      deliverables: [
+        'Bi-Weekly Feature Sprints & Custom Components',
+        'Dedicated On-Site Venue Operator (2 events/mo)',
+        'Live Jumbotron Sync & Real-Time Arena Telemetry',
+        'Priority Emergency SLA & Hotfix Dispatch',
+      ],
+    },
+    {
+      id: 'enterprise-custom-retainer',
+      title: 'Enterprise Custom Retainer',
+      price: '$5,000',
+      frequency: '/ month CAD',
+      numericPrice: 5000,
+      type: 'PayPal Subscriptions',
+      deliverables: [
+        'Full Bespoke Studio Engineering & Architecture',
+        'Dedicated On-Site Operator for All Client Events',
+        'White-Label Architecture & Horizontal Scaling',
+        '24/7 Dedicated Priority Technical SLA',
+      ],
+    },
+  ];
+
+  const osSeries = [
+    {
+      title: 'Free Performance Tier',
+      fee: '$0 Upfront',
+      split: '80% Creator / 20% Studio',
+      note: 'PayPal E-Commerce Direct Split',
+      features: ['Zero setup cost', 'Full Sound Clash or Artist OS engine', 'Instant activation'],
+    },
+    {
+      title: 'Monthly OS Maintenance',
+      fee: '$500 / month CAD',
+      split: 'Monthly Subscription',
+      note: 'Continuous feature updates & uptime guarantee',
+      features: ['Security patches', 'Database backups', 'Uptime monitoring'],
+    },
+    {
+      title: 'Pro OS Setup',
+      fee: '$500 Setup',
+      split: '90% Creator / 10% Studio',
+      note: 'Includes $250/mo support',
+      features: ['Custom branding', 'Domain integration', '90/10 revenue retention'],
+    },
+    {
+      title: 'Elite OS Setup',
+      fee: '$1,500 Setup',
+      split: '95% Creator / 5% Studio',
+      note: 'PayPal Pay in 4: 4x $375 CAD • $500/mo maint.',
+      popular: true,
+      features: ['Priority support', 'Pay in 4 eligible', '95% creator revenue share'],
+    },
+    {
+      title: 'Enterprise Custom OS',
+      fee: '$5,000 Setup',
+      split: '100% Creator / 0% Studio',
+      note: 'Full IP & code ownership • $500/mo maint.',
+      features: ['100% revenue retention', 'Full source code handoff', 'Dedicated deployment'],
+    },
+  ];
+
+  const inVenueGrid = [
+    { box: 'Box 01', name: 'General Admission Cover & Ballot', price: '$20 CAD', payIn4: '4x $5.00 CAD', desc: 'Entry pass & 1 tournament ballot' },
+    { box: 'Box 02', name: 'Micro-Tip & Feature Drink Token', price: '$10 CAD', payIn4: 'Direct checkout', desc: 'Direct Contender Appreciation' },
+    { box: 'Box 03', name: 'Power Hype Pack (25x Votes + Screen Sync)', price: '$50 CAD', payIn4: '4x $12.50 CAD', desc: '25x Votes + Jumbotron screen takeover' },
+    { box: 'Box 04', name: 'VIP Hospitality Table & Bottle Service', price: '$150 – $250 CAD', payIn4: '4x $37.50 CAD', desc: 'Dedicated booth, bottle service & judge voting' },
   ];
 
   const faqs = [
     {
-      question: 'What is included in each tier?',
-      answer: 'Each tier builds on the previous one. Basic Boost covers initial concepts and mockups, Standard Pro adds wireframes and design systems, Premium Elite includes full UX research and unlimited revisions, and Custom Scale is tailored to your specific needs.',
+      question: 'How does PayPal Pay Later (Pay in 4) work?',
+      answer: 'PayPal Pay Later splits your sprint or VIP pass payment into 4 equal bi-weekly payments with 0% interest and no hidden fees. Eligible for Canadian and international buyers at checkout.',
     },
     {
-      question: 'Can I upgrade my plan later?',
-      answer: 'Absolutely! You can upgrade at any time during the project. We\'ll credit your previous payment toward the higher tier.',
+      question: 'Are retainers recurring subscriptions?',
+      answer: 'Yes, all monthly retainers ($1,500, $2,500-$3,500, and $5,000/mo) are billed recurringly via verified PayPal Subscriptions with transparent monthly invoicing.',
     },
     {
-      question: 'What does "Full Design System" include?',
-      answer: 'A full design system includes color palettes, typography scales, component libraries, spacing guidelines, and comprehensive documentation for consistent implementation across all platforms.',
+      question: 'What is the turnaround time for a Starter or Pro Sprint?',
+      answer: 'Our sprints deliver production-ready assets and web applications within 7 to 14 business days, backed by our battle-tested modular architecture.',
     },
     {
-      question: 'Do you offer payment plans?',
-      answer: 'Yes, we offer flexible payment plans for projects over $3,000 CAD. Contact us to discuss milestone-based payment options.',
-    },
-    {
-      question: 'What is the delivery timeline?',
-      answer: 'Basic Boost takes 1-2 weeks, Standard Pro takes 2-3 weeks, Premium Elite takes 3-4 weeks, and Custom Scale timelines are negotiated based on project scope with a maximum of 4 weeks for most projects.',
-    },
-    {
-      question: 'What services do you offer?',
-      answer: 'We specialize in: 7-Day Agentic Sprint (AI Automation), Brand Identity & Logo Design, Website Design & Development, E-commerce Platforms, Mobile App Design, Marketing Campaigns, and Full Digital Transformations.',
-    },
-    {
-      question: 'What files do I receive?',
-      answer: 'You receive all design files (Figma/Adobe), exported assets, documentation, and for Premium Elite and above, developer-ready specs and style guides.',
+      question: 'Do you offer on-site operators for live events outside Ottawa?',
+      answer: 'Yes! Our Premier Operations ($2,500-$3,500/mo) and Enterprise Custom ($5,000/mo) retainers include dedicated on-site technical operators for Toronto, Montreal, Ottawa, and travel-scheduled tours.',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background pt-16 font-['Orbitron'] text-foreground">
+    <div className="min-h-screen bg-[#050505] pt-16 font-sans text-white">
       <SEO 
-        title="Pricing | 9LMNTS Studio" 
-        description="Transparent and modular pricing tiers for our cyber aesthetic web experiences. Choose between Flow, Beat, and Cypher elements." 
+        title="Official Pricing Matrix & PayPal Payment Plans | 9LMNTS Studio" 
+        description="Official pricing for 9LMNTS Studio agency sprints, monthly retainers, turnkey OS platforms, and live venue grids. Powered by PayPal E-Commerce Services with 0% interest Pay in 4." 
       />
+
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-6">
-            <span className="px-4 py-2 bg-card border border-primary/30 rounded-full text-primary text-sm uppercase tracking-widest">
-              Transparent Pricing
-            </span>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FF5500]/10 border border-[#FF5500]/30 rounded-full text-[#FF5500] text-xs font-mono tracking-widest uppercase mb-6">
+            <Zap size={13} /> OFFICIAL STUDIO PRICING MATRIX // CAD
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-foreground mb-6 font-bold">
-            <span className="font-['Orbitron'] uppercase tracking-tighter">The</span> <span className="font-['Caveat'] text-[#FF5500] text-primary text-6xl sm:text-7xl lg:text-8xl capitalize ml-[-10px] -rotate-3 inline-block">Element Levels</span>
+          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white mb-6 font-['Orbitron']">
+            Production Sprints <span className="text-[#FF5500]">&amp; Retainers</span>
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-sans">
-            Choose the perfect tier for your project. All plans include our signature 
-            9 Elements approach to digital excellence
+          <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            High-velocity AI automation sprints, live tournament operating systems, and dedicated on-site venue production. 
+            All transactions powered strictly by <span className="text-[#00D4FF] font-semibold">PayPal E-Commerce Services</span> with native 0% interest Pay Later financing.
           </p>
         </div>
       </section>
 
-      {/* Pricing Table */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card border-y border-border">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {pricingTiers.slice(0, 3).map((tier, index) => (
-              <div
-                key={index}
-                className={`p-8 rounded-none transition-all flex flex-col ${
-                  tier.popular
-                    ? 'bg-background border-2 border-primary shadow-[0_0_40px_rgba(255,69,0,0.2)] scale-105 z-10'
-                    : 'bg-background border border-primary/20'
-                }`}
-              >
-                {tier.popular && (
-                  <div className="mb-4">
-                    <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <h3 className="text-foreground text-2xl mb-2 font-bold uppercase tracking-widest">{tier.name}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl text-primary font-black">{tier.price}</span>
-                  <span className="text-muted-foreground ml-2 text-sm">CAD</span>
-                </div>
-                <ul className="space-y-3 mb-8 flex-1 font-sans">
-                  {tier.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="text-muted-foreground flex items-start text-sm">
-                      <span className="text-primary mr-2">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => handleOpenCheckout(tier)}
-                  className={`w-full py-4 rounded-none font-bold uppercase tracking-widest transition-all border ${
-                    tier.popular
-                      ? 'bg-primary text-primary-foreground border-primary hover:bg-primary/90'
-                      : 'bg-transparent border-primary text-primary hover:bg-primary/10'
-                  }`}
-                >
-                  Buy Pass
-                </button>
-              </div>
-            ))}
+      {/* PayPal Trust & Features Banner */}
+      <section className="px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="max-w-6xl mx-auto bg-gradient-to-r from-[#0070BA]/20 via-[#0A0F1A] to-[#050505] border border-[#0070BA]/40 rounded-2xl p-6 shadow-2xl flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-[#0070BA] flex items-center justify-center text-white shadow-[0_0_20px_rgba(0,112,186,0.5)]">
+              <CreditCard size={24} />
+            </div>
+            <div>
+              <p className="text-[#93C5FD] text-xs font-mono font-bold tracking-widest uppercase">Verified Infrastructure</p>
+              <h3 className="text-white font-bold text-lg font-['Orbitron']">PayPal E-Commerce Services Rail</h3>
+            </div>
           </div>
-
-          <div className="text-center font-sans">
-            <p className="text-muted-foreground text-sm">
-              All prices in Canadian Dollars (CAD). Need a custom solution?{' '}
-              <a href="#" className="text-primary hover:underline font-bold">
-                Contact us
-              </a>
-            </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              'PayPal Complete Payments',
+              'PayPal Pay Later (0% Pay in 4)',
+              'PayPal Monthly Installments',
+              'PayPal Subscriptions (Recurring)',
+              'Smart Payment Buttons',
+            ].map((feature, i) => (
+              <span key={i} className="px-3 py-1 bg-[#0070BA]/20 border border-[#0070BA]/30 rounded-lg text-xs font-mono text-[#93C5FD]">
+                ✓ {feature}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Compare All Features */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-7xl mx-auto">
+      {/* 1. Creative Agency & AI Automation Sprints */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[#080A0F] border-y border-[#222222]">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl text-foreground mb-4 font-bold uppercase tracking-widest">
-              <span className="font-['Orbitron']">Compare All</span> <span className="font-['Caveat'] text-[#FF5500] text-primary text-4xl sm:text-6xl capitalize ml-[-5px] -rotate-3 inline-block">Features</span>
+            <span className="text-[#FF5500] text-xs font-mono uppercase tracking-widest font-bold">CATEGORY 01</span>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white mt-1 font-['Orbitron']">
+              Creative Agency &amp; AI Sprints
             </h2>
-            <p className="text-muted-foreground font-sans">Detailed feature comparison across all tiers</p>
+            <p className="text-gray-400 text-sm mt-2">One-time production builds with guaranteed turnkey delivery and PayPal Pay in 4</p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full bg-card rounded-none border border-primary/20 font-sans">
-              <thead>
-                <tr className="border-b border-primary/20">
-                  <th className="text-left p-4 text-foreground uppercase tracking-widest text-xs">Features</th>
-                  <th className="text-center p-4 text-foreground uppercase tracking-widest text-xs">Basic Boost</th>
-                  <th className="text-center p-4 text-foreground uppercase tracking-widest text-xs">Standard Pro</th>
-                  <th className="text-center p-4 text-foreground uppercase tracking-widest text-xs bg-primary/10">
-                    Premium Elite
-                    <div className="text-[10px] text-primary mt-1">Popular</div>
-                  </th>
-                  <th className="text-center p-4 text-foreground uppercase tracking-widest text-xs">Custom Scale</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: 'Initial Concept', basic: true, standard: true, premium: true, custom: true },
-                  { feature: 'Mobile Responsive', basic: true, standard: true, premium: true, custom: true },
-                  { feature: 'Basic Design Assets', basic: true, standard: true, premium: true, custom: true },
-                  { feature: 'Revision Rounds', basic: '1', standard: '2', premium: 'Unlimited', custom: 'Unlimited' },
-                  { feature: 'Basic Mockups', basic: true, standard: true, premium: true, custom: true },
-                  { feature: 'Full Wireframe', basic: false, standard: true, premium: true, custom: true },
-                  { feature: 'Component Library', basic: false, standard: true, premium: true, custom: true },
-                  { feature: 'Interactive Prototype', basic: false, standard: true, premium: true, custom: true },
-                  { feature: 'Design System Overview', basic: false, standard: true, premium: true, custom: true },
-                  { feature: 'Full UX Research', basic: false, standard: false, premium: true, custom: true },
-                  { feature: 'Full Design System Documentation', basic: false, standard: false, premium: true, custom: true },
-                  { feature: 'Advanced Animations', basic: false, standard: false, premium: true, custom: true },
-                  { feature: 'Developer Handoff', basic: false, standard: false, premium: true, custom: true },
-                  { feature: 'Style Guide', basic: false, standard: false, premium: true, custom: true },
-                  { feature: 'Priority Support', basic: false, standard: false, premium: true, custom: true },
-                  { feature: 'Dedicated Team', basic: false, standard: false, premium: false, custom: true },
-                  { feature: 'White Label Solutions', basic: false, standard: false, premium: false, custom: true },
-                  { feature: 'Retainer Work Available', basic: false, standard: false, premium: false, custom: true },
-                  { feature: '24/7 Availability', basic: false, standard: false, premium: false, custom: true },
-                  { feature: 'Delivery Time', basic: '1-2 weeks', standard: '2-3 weeks', premium: '3-4 weeks', custom: 'Max 4 weeks' },
-                ].map((row, index) => (
-                  <tr key={index} className="border-b border-primary/10 hover:bg-primary/5 transition-colors">
-                    <td className="p-4 text-muted-foreground text-sm font-medium">{row.feature}</td>
-                    <td className="p-4 text-center">
-                      {typeof row.basic === 'boolean' ? (
-                        row.basic ? (
-                          <Check className="text-primary mx-auto" size={18} />
-                        ) : (
-                          <span className="text-muted-foreground/30">—</span>
-                        )
-                      ) : (
-                        <span className="text-muted-foreground text-xs font-bold uppercase">{row.basic}</span>
-                      )}
-                    </td>
-                    <td className="p-4 text-center">
-                      {typeof row.standard === 'boolean' ? (
-                        row.standard ? (
-                          <Check className="text-primary mx-auto" size={18} />
-                        ) : (
-                          <span className="text-muted-foreground/30">—</span>
-                        )
-                      ) : (
-                        <span className="text-muted-foreground text-xs font-bold uppercase">{row.standard}</span>
-                      )}
-                    </td>
-                    <td className="p-4 text-center bg-primary/5">
-                      {typeof row.premium === 'boolean' ? (
-                        row.premium ? (
-                          <Check className="text-primary mx-auto" size={18} />
-                        ) : (
-                          <span className="text-muted-foreground/30">—</span>
-                        )
-                      ) : (
-                        <span className="text-primary text-xs font-bold uppercase">{row.premium}</span>
-                      )}
-                    </td>
-                    <td className="p-4 text-center">
-                      {typeof row.custom === 'boolean' ? (
-                        row.custom ? (
-                          <Check className="text-primary mx-auto" size={18} />
-                        ) : (
-                          <span className="text-muted-foreground/30">—</span>
-                        )
-                      ) : (
-                        <span className="text-muted-foreground text-xs font-bold uppercase">{row.custom}</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid md:grid-cols-3 gap-8">
+            {agencySprints.map((tier) => (
+              <div
+                key={tier.id}
+                className={`rounded-2xl p-8 flex flex-col transition-all duration-300 relative ${
+                  tier.popular
+                    ? 'bg-[#101420] border-2 border-[#FF5500] shadow-[0_0_35px_rgba(255,85,0,0.25)] scale-105 z-10'
+                    : 'bg-[#0F1118] border border-[#222222] hover:border-[#FF5500]/40'
+                }`}
+              >
+                {tier.popular && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FF5500] text-black text-[11px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-[0_0_15px_rgba(255,85,0,0.6)]">
+                    Most Popular Sprint
+                  </div>
+                )}
+                <div className="mb-4">
+                  <h3 className="text-white text-xl font-bold font-['Orbitron']">{tier.title}</h3>
+                  <div className="mt-3 flex items-baseline gap-2">
+                    <span className="text-3xl sm:text-4xl font-black text-white font-['Orbitron']">{tier.price}</span>
+                    <span className="text-gray-400 text-xs font-mono">{tier.currency}</span>
+                  </div>
+                  <div className="mt-2 text-xs font-mono text-[#93C5FD] bg-[#0070BA]/20 border border-[#0070BA]/30 px-2.5 py-1 rounded">
+                    💳 {tier.pay_in_4}
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8 flex-1 border-t border-[#222222] pt-5">
+                  {tier.deliverables.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-300">
+                      <Check size={14} className="text-[#FF5500] flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => handleOpenCheckout(tier)}
+                  className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${
+                    tier.popular
+                      ? 'bg-[#FF5500] hover:bg-[#E64A19] text-white shadow-[0_0_20px_rgba(255,85,0,0.5)]'
+                      : 'bg-[#181C28] hover:bg-[#FF5500] text-white border border-[#2A2E3D]'
+                  }`}
+                >
+                  <span>Select via PayPal</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Monthly Retainers & On-Site Event Operations */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[#10B981] text-xs font-mono uppercase tracking-widest font-bold">CATEGORY 02</span>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white mt-1 font-['Orbitron']">
+              Monthly Retainers &amp; Venue Operations
+            </h2>
+            <p className="text-gray-400 text-sm mt-2">Billed recurringly via PayPal Subscriptions with dedicated on-site event operators</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {monthlyRetainers.map((tier) => (
+              <div
+                key={tier.id}
+                className={`rounded-2xl p-8 flex flex-col transition-all duration-300 bg-[#0F1118] border ${
+                  tier.popular ? 'border-[#10B981] shadow-[0_0_30px_rgba(16,185,129,0.2)]' : 'border-[#222222] hover:border-[#10B981]/40'
+                }`}
+              >
+                <div className="mb-4">
+                  <h3 className="text-white text-xl font-bold font-['Orbitron']">{tier.title}</h3>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="text-3xl sm:text-4xl font-black text-[#10B981] font-['Orbitron']">{tier.price}</span>
+                    <span className="text-gray-400 text-xs font-mono">{tier.frequency}</span>
+                  </div>
+                  <div className="mt-2 text-xs font-mono text-[#93C5FD] bg-[#0070BA]/20 border border-[#0070BA]/30 px-2.5 py-1 rounded inline-block">
+                    {tier.type}
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8 flex-1 border-t border-[#222222] pt-5">
+                  {tier.deliverables.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-300">
+                      <Check size={14} className="text-[#10B981] flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => handleOpenCheckout(tier)}
+                  className="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-widest bg-[#181C28] hover:bg-[#10B981] hover:text-black text-white border border-[#2A2E3D] transition-all flex items-center justify-center gap-2"
+                >
+                  <span>Subscribe via PayPal</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. 9LMNTS OS Series Licensing */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#080A0F] border-y border-[#222222]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[#00D4FF] text-xs font-mono uppercase tracking-widest font-bold">CATEGORY 03</span>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white mt-1 font-['Orbitron']">
+              9LMNTS OS Series Licensing
+            </h2>
+            <p className="text-gray-400 text-sm mt-2">Sound Clash OS, Artist OS &amp; Gate OS turn-key deployment tiers</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {osSeries.map((tier, idx) => (
+              <div
+                key={idx}
+                className={`bg-[#0F1118] p-5 rounded-xl border flex flex-col justify-between ${
+                  tier.popular ? 'border-[#00D4FF] shadow-[0_0_20px_rgba(0,212,255,0.2)]' : 'border-[#222222]'
+                }`}
+              >
+                <div>
+                  <h4 className="text-white text-sm font-bold font-['Orbitron'] mb-2">{tier.title}</h4>
+                  <div className="text-lg font-black text-[#00D4FF] font-['Orbitron'] mb-1">{tier.fee}</div>
+                  <div className="text-xs font-mono text-gray-300 font-bold mb-2">{tier.split}</div>
+                  <p className="text-[11px] text-gray-400 mb-4">{tier.note}</p>
+                </div>
+                <button
+                  onClick={() => handleOpenCheckout({ name: tier.title, price: tier.fee })}
+                  className="w-full py-2.5 bg-[#181C28] hover:bg-[#00D4FF] hover:text-black text-white text-[11px] font-bold uppercase rounded-lg border border-[#2A2E3D] transition-colors"
+                >
+                  Configure OS
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Universal 4-Box In-Venue Monetization Grid */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[#FF5500] text-xs font-mono uppercase tracking-widest font-bold">CATEGORY 04</span>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white mt-1 font-['Orbitron']">
+              Universal 4-Box In-Venue Monetization
+            </h2>
+            <p className="text-gray-400 text-sm mt-2">Tested live arena monetization rails for tournament crowds and VIPs</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {inVenueGrid.map((box, idx) => (
+              <div key={idx} className="bg-[#0F1118] border border-[#222222] p-6 rounded-2xl flex flex-col justify-between hover:border-[#FF5500]/50 transition-colors">
+                <div>
+                  <span className="text-xs font-mono text-[#FF5500] font-bold uppercase">{box.box}</span>
+                  <h3 className="text-white font-bold text-base mt-1 mb-2">{box.name}</h3>
+                  <div className="text-2xl font-black text-white font-['Orbitron'] mb-1">{box.price}</div>
+                  <div className="text-xs font-mono text-[#93C5FD] mb-3">Pay Later: {box.payIn4}</div>
+                  <p className="text-xs text-gray-400">{box.desc}</p>
+                </div>
+                <button
+                  onClick={() => handleOpenCheckout(box)}
+                  className="mt-6 w-full py-3 bg-[#181C28] hover:bg-[#FF5500] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  Checkout
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card border-t border-border">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#080A0F] border-t border-[#222222]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl text-foreground mb-4 font-bold uppercase tracking-widest">
-              <span className="font-['Orbitron']">Frequently Asked</span> <span className="font-['Caveat'] text-[#FF5500] text-primary text-4xl sm:text-6xl capitalize ml-[-5px] -rotate-3 inline-block">Questions</span>
+            <h2 className="text-3xl font-black uppercase text-white font-['Orbitron']">
+              Frequently Asked Questions
             </h2>
-            <p className="text-muted-foreground font-sans">Everything you need to know about our pricing</p>
+            <p className="text-gray-400 text-sm mt-2">Everything you need to know about payment processing and delivery</p>
           </div>
 
-          <div className="space-y-4 font-sans">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-background rounded-none border border-primary/20 overflow-hidden"
+                className="bg-[#0F1118] border border-[#222222] rounded-xl overflow-hidden"
               >
                 <button
-                  onClick={() => setOpenFaq(faq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-primary/5 transition-colors"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-[#151926] transition-colors"
                 >
-                  <span className="text-foreground font-bold text-sm uppercase tracking-widest">{faq.question}</span>
+                  <span className="text-white font-bold text-sm">{faq.question}</span>
                   <HelpCircle
-                    className={`text-primary flex-shrink-0 transition-transform ${
-                      openFaq === index ? 'rotate-180' : ''
-                    }`}
-                    size={20}
+                    className={`text-[#FF5500] flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
+                    size={18}
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4 border-t border-primary/10 pt-4">
-                    <p className="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
+                  <div className="px-6 pb-4 border-t border-[#222222] pt-4">
+                    <p className="text-gray-400 text-sm leading-relaxed">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -348,29 +460,40 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-5xl text-foreground mb-6 font-bold leading-tight">
-          <span className="font-['Orbitron'] uppercase tracking-tighter">Still Have</span> <span className="font-['Caveat'] text-[#FF5500] text-primary text-5xl sm:text-6xl lg:text-8xl capitalize ml-[-15px] -rotate-6 inline-block">Questions?</span>
-        </h2>
-        <p className="text-muted-foreground text-lg mb-8 font-sans">
-          Our team is ready to help you choose the perfect plan
-        </p>
-        <button className="px-10 py-4 bg-primary text-primary-foreground rounded-none font-bold hover:bg-primary/90 transition-all transform hover:scale-105 border border-primary uppercase tracking-widest">
-          Schedule a Consultation
-        </button>
-      </div>
-    </section>
+      {/* Return to Cockpit CTA */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#222222] text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-black uppercase text-white font-['Orbitron'] mb-4">
+            Ready to Build or Return to the Cockpit?
+          </h2>
+          <p className="text-gray-400 text-sm mb-8">
+            Experience the 4K interactive spatial studio or submit your production brief directly to Darnley Sanon and the engineering dispatch.
+          </p>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <a
+              href="index.html"
+              className="px-8 py-4 bg-[#FF5500] hover:bg-[#E64A19] text-white font-bold rounded-xl text-xs uppercase tracking-widest shadow-[0_0_25px_rgba(255,85,0,0.5)] transition-all"
+            >
+              ← Return to Studio Cockpit
+            </a>
+            <a
+              href="services.html"
+              className="px-8 py-4 bg-[#181C28] hover:bg-[#252C3F] text-white font-bold rounded-xl text-xs uppercase tracking-widest border border-[#2A2E3D] transition-colors"
+            >
+              Services &amp; 9 Pillars →
+            </a>
+          </div>
+        </div>
+      </section>
 
-    {/* Checkout Modal */}
-    {selectedInvoice && (
-      <GateOSCheckoutModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        invoiceDetails={selectedInvoice}
-      />
-    )}
-  </div>
+      {/* Checkout Modal */}
+      {selectedInvoice && (
+        <GateOSCheckoutModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          invoiceDetails={selectedInvoice}
+        />
+      )}
+    </div>
   );
 }

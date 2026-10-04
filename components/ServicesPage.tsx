@@ -532,11 +532,26 @@ Timestamp: ${new Date().toLocaleString()}
                             {p.element} — {p.service}
                           </option>
                         ))}
-                        <option value="7-day-sprint" className="bg-[#0F0F0F]">
-                          7-Day Creative Sprint
+                        <option value="starter-sprint" className="bg-[#0F0F0F]">
+                          Starter Sprint ($1,500 CAD / 4x $375 Pay in 4)
                         </option>
-                        <option value="custom" className="bg-[#0F0F0F]">
-                          Custom Proprietary OS Build
+                        <option value="pro-custom-sprint" className="bg-[#0F0F0F]">
+                          Pro Custom Sprint ($2,500 – $3,500 CAD / 4x $625 Pay in 4)
+                        </option>
+                        <option value="enterprise-scale" className="bg-[#0F0F0F]">
+                          Enterprise Scale Build ($5,000 CAD)
+                        </option>
+                        <option value="pro-retainer" className="bg-[#0F0F0F]">
+                          Pro Retainer ($1,500 / mo)
+                        </option>
+                        <option value="premier-operations-retainer" className="bg-[#0F0F0F]">
+                          Premier Operations Retainer ($2,500 – $3,500 / mo)
+                        </option>
+                        <option value="enterprise-custom-retainer" className="bg-[#0F0F0F]">
+                          Enterprise Custom Retainer ($5,000 / mo)
+                        </option>
+                        <option value="os-series-licensing" className="bg-[#0F0F0F]">
+                          9LMNTS OS Series Platform Licensing
                         </option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#FF5500]">
