@@ -132,40 +132,52 @@
       margin-left: 6px;
     }
 
-    .header-nav {
+    /* Cyber Hamburger Menu Button */
+    .btn-hamburger {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 18px;
-    }
-
-    .header-nav a, .header-nav button {
-      background: transparent;
-      border: none;
-      color: var(--text-dim);
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.75px;
-      transition: color 0.2s ease, text-shadow 0.2s ease;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
+      justify-content: center;
       gap: 5px;
-      text-decoration: none;
-      font-family: inherit;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.25s ease;
+      position: relative;
     }
 
-    .header-nav a:hover, .header-nav button:hover, .header-nav a.active {
-      color: var(--neon-orange);
-      text-shadow: 0 0 12px rgba(255, 85, 0, 0.6);
+    .btn-hamburger:hover {
+      background: rgba(255, 85, 0, 0.12);
+      border-color: rgba(255, 85, 0, 0.5);
+      box-shadow: 0 0 15px rgba(255, 85, 0, 0.3);
     }
 
-    .header-nav a.external-nav {
-      color: #38bdf8;
+    .btn-hamburger .bar {
+      width: 18px;
+      height: 2px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background 0.2s ease;
     }
-    .header-nav a.external-nav:hover {
-      color: var(--cyber-teal);
-      text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+
+    .btn-hamburger:hover .bar {
+      background: var(--neon-orange);
+    }
+
+    .btn-hamburger.active .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      background: var(--neon-orange);
+    }
+    .btn-hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .btn-hamburger.active .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      background: var(--neon-orange);
     }
 
     .header-actions {
@@ -297,6 +309,8 @@
       display: block;
       user-select: none;
       pointer-events: none;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
     }
 
     /* Grid vignette overlay */
@@ -622,96 +636,256 @@
     }
 
     /* ===================================================
-       5. FOOTER STATUS BAR
+       5. OBSIDIAN PROTOCOL SYSTEM DRAWER (#navDrawer)
        =================================================== */
-    .studio-footer {
+    .nav-drawer-backdrop {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100vw;
-      height: 38px;
-      background: rgba(7, 8, 11, 0.96);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      inset: 0;
+      background: rgba(3, 4, 7, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .nav-drawer-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 380px;
+      max-width: 90vw;
+      height: 100vh;
+      background: rgba(10, 11, 16, 0.94);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-left: 1px solid rgba(255, 85, 0, 0.25);
+      box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+      z-index: 999;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 85, 0, 0.3) transparent;
+    }
+
+    .nav-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 28px;
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      z-index: 90;
-      user-select: none;
     }
 
-    .status-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .status-indicator {
+    .drawer-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: #e2e8f0;
     }
 
-    .pulse-dot {
+    .drawer-title .pulse {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-      position: relative;
+      background: var(--neon-orange);
+      box-shadow: 0 0 10px var(--neon-orange);
     }
 
-    .pulse-dot::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border: 1px solid #10b981;
-      border-radius: 50%;
-      animation: statusPulse 2s infinite ease-out;
-    }
-
-    @keyframes statusPulse {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-
-    .status-meta {
+    .drawer-close {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .drawer-close:hover {
+      background: rgba(255, 85, 0, 0.15);
+      color: #fff;
+      border-color: rgba(255, 85, 0, 0.4);
+    }
+
+    .drawer-body {
+      padding: 20px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .drawer-section-label {
       font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
       color: #64748b;
-      font-size: 0.68rem;
-    }
-
-    .status-meta span b {
-      color: #cbd5e1;
-      font-weight: 500;
-    }
-
-    .footer-hint {
-      color: #64748b;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
+      gap: 6px;
+    }
+
+    .drawer-cta-card {
+      background: linear-gradient(135deg, rgba(255, 85, 0, 0.15) 0%, rgba(10, 11, 16, 0.8) 100%);
+      border: 1px solid rgba(255, 85, 0, 0.35);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
       gap: 8px;
     }
 
-    .kbd-chip {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 4px;
-      padding: 1px 6px;
-      font-size: 0.65rem;
-      color: #cbd5e1;
+    .drawer-cta-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .drawer-cta-card p {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      margin: 0 0 4px 0;
+      line-height: 1.35;
+    }
+
+    .drawer-external-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .drawer-ext-link {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #e2e8f0;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
       font-family: 'JetBrains Mono', monospace;
+    }
+
+    .drawer-ext-link:hover {
+      background: rgba(0, 240, 255, 0.08);
+      border-color: var(--cyber-teal);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+    }
+
+    .drawer-ext-link.clash:hover {
+      background: rgba(255, 85, 0, 0.08);
+      border-color: var(--neon-orange);
+      box-shadow: 0 0 14px rgba(255, 85, 0, 0.2);
+    }
+
+    .drawer-station-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .drawer-station-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 7px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .drawer-station-item:hover {
+      background: rgba(255, 85, 0, 0.08);
+      border-color: rgba(255, 85, 0, 0.35);
+      transform: translateX(-3px);
+    }
+
+    .drawer-station-item .station-meta {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .drawer-station-item .station-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--neon-orange);
+      background: rgba(255, 85, 0, 0.12);
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .drawer-station-item .station-name {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .drawer-station-item .station-arrow {
+      color: #64748b;
+      font-size: 0.72rem;
+      transition: color 0.2s ease;
+    }
+
+    .drawer-station-item:hover .station-arrow {
+      color: var(--neon-orange);
+    }
+
+    .drawer-telemetry {
+      padding: 16px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(4, 5, 8, 0.9);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      color: #64748b;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-telemetry .telem-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-telemetry .telem-val {
+      color: #cbd5e1;
+      font-weight: 600;
     }
 
     /* ===================================================
@@ -1107,9 +1281,6 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .header-nav { display: none; }
-      .footer-hint { display: none; }
-      .status-meta { display: none; }
       .mobile-dock { display: flex; }
       .studio-header { padding: 0 16px; }
       .btn-reset { display: none; }
@@ -1124,6 +1295,13 @@
       .lead-form-grid { grid-template-columns: 1fr; }
       .modal-dialog { padding: 20px; max-height: 90vh; }
       .modal-dialog h2 { font-size: 1.45rem; }
+    }
+
+    @media (max-width: 480px) {
+      .btn-glow span { display: none; }
+      .btn-glow { padding: 8px 10px; }
+      .btn-audio-toggle span { display: none; }
+      .btn-audio-toggle { padding: 8px 10px; }
     }
   </style>
 </head>
@@ -1146,22 +1324,7 @@
       </div>
     </div>
 
-    <!-- Navigation & Station Triggers -->
-    <nav class="header-nav">
-      <a class="external-nav" href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" title="Launch Artist OS Suite">
-        Artist OS ↗
-      </a>
-      <a class="external-nav" href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" title="Launch Sound Clash Arena">
-        Sound Clash ↗
-      </a>
-      <button onclick="triggerZoomAndModal('modalMainStream', 0, 8, 2.1)">Main Stage</button>
-      <button onclick="triggerZoomAndModal('modalArMerch', -18, -12, 2.4)" style="color: var(--cyber-teal);">AR Merch</button>
-      <button onclick="triggerZoomAndModal('modalStudioServices', -24, 12, 2.3)" style="color: #fb923c;">Services &amp; Ads</button>
-      <button onclick="triggerZoomAndModal('modalLoaGame', 20, 16, 2.4)" style="color: #c084fc;">LOA Universe</button>
-      <button onclick="triggerZoomAndModal('modalTheHelm', 0, -14, 2.3)" style="color: #10b981;">The Helm</button>
-    </nav>
-
-    <!-- Header Actions: SFX Toggle, Reset Camera, Book Intake -->
+    <!-- Header Actions: SFX Toggle, Reset Camera, Start CTA, Hamburger Menu -->
     <div class="header-actions">
       <!-- Web Audio Sound FX Mute Toggle -->
       <button id="audioToggleBtn" class="btn-audio-toggle active" onclick="toggleAudioFX()" title="Toggle Web Audio SFX">
@@ -1171,7 +1334,7 @@
           <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
           <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
         </svg>
-        <span id="audioToggleText">SFX: ON</span>
+        <span id="audioToggleText">SFX</span>
       </button>
 
       <!-- Reset Camera Button -->
@@ -1180,18 +1343,156 @@
           <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
           <path d="M3 3v5h5"></path>
         </svg>
-        Reset Camera
+        <span>Reset</span>
       </button>
 
-      <!-- Primary Booking Action -->
-      <button class="btn-glow" onclick="triggerZoomAndModal('modalStudioServices', -24, 12, 2.3)">
+      <!-- Primary Start CTA Button -->
+      <button class="btn-glow" onclick="triggerZoomAndModal('modalStudioServices', -24, 12, 2.3)" title="Start Project / Book Sprint">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
         </svg>
-        Book Sprint
+        <span>Start Project</span>
+      </button>
+
+      <!-- Hamburger Menu Button -->
+      <button id="hamburgerBtn" class="btn-hamburger" onclick="toggleNavDrawer()" aria-label="Toggle Navigation Menu" title="Open Studio System Directory">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
     </div>
   </header>
+
+  <!-- Navigation Slide-Out Drawer & Backdrop -->
+  <div class="nav-drawer-backdrop" id="navDrawerBackdrop" onclick="toggleNavDrawer(false)"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-label="System Directory Drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span class="pulse"></span>
+        <span>9LMNTS // DIRECTORY</span>
+      </div>
+      <button class="drawer-close" onclick="toggleNavDrawer(false)" aria-label="Close Navigation Drawer">×</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Direct Action Card -->
+      <div class="drawer-cta-card">
+        <h4>Deploy an Immersion Sprint</h4>
+        <p>Commission high-impact interactive 3D, WebAR brand worlds, and sonic architecture.</p>
+        <button class="btn-glow" style="width: 100%; justify-content: center;" onclick="toggleNavDrawer(false); triggerZoomAndModal('modalStudioServices', -24, 12, 2.3)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          ⚡ Start Project
+        </button>
+      </div>
+
+      <!-- Autonomous Cloud Platforms -->
+      <div>
+        <div class="drawer-section-label">Live Platform Endpoints</div>
+        <div class="drawer-external-links">
+          <a class="drawer-ext-link" href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
+            <span>Artist OS</span>
+            <span style="color: var(--cyber-teal);">↗</span>
+          </a>
+          <a class="drawer-ext-link clash" href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
+            <span>Sound Clash</span>
+            <span style="color: var(--neon-orange);">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Station Directory 01 to 09 -->
+      <div>
+        <div class="drawer-section-label">Spatial Cockpit Stations (01 - 09)</div>
+        <div class="drawer-station-list">
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('01')">
+            <div class="station-meta">
+              <span class="station-num">01</span>
+              <span class="station-name">Project LOA Universe</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('02')">
+            <div class="station-meta">
+              <span class="station-num">02</span>
+              <span class="station-name">Music Vault &amp; Stem Chopper</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('03')">
+            <div class="station-meta">
+              <span class="station-num">03</span>
+              <span class="station-name">9LMNTS Studio Core Services</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('04')">
+            <div class="station-meta">
+              <span class="station-num">04</span>
+              <span class="station-name">AI Voice Operator</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('05')">
+            <div class="station-meta">
+              <span class="station-num">05</span>
+              <span class="station-name">Event OS &amp; Video Ads</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('06')">
+            <div class="station-meta">
+              <span class="station-num">06</span>
+              <span class="station-name">The Helm / Darnley Sanon</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('07')">
+            <div class="station-meta">
+              <span class="station-num">07</span>
+              <span class="station-name">Sound Clash OS Arena</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('08')">
+            <div class="station-meta">
+              <span class="station-num">08</span>
+              <span class="station-name">Live Events &amp; AR Merch</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+          <div class="drawer-station-item" onclick="jumpToStationFromDrawer('09')">
+            <div class="station-meta">
+              <span class="station-num">09</span>
+              <span class="station-name">Artist OS Creator HQ DAW</span>
+            </div>
+            <span class="station-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drawer Telemetry & Day-1 Zero-State (Relocated from footer) -->
+    <div class="drawer-telemetry">
+      <div class="telem-row">
+        <span>SESSION ID:</span>
+        <span class="telem-val">#CYPHER-9X</span>
+      </div>
+      <div class="telem-row">
+        <span>RESOLUTION:</span>
+        <span class="telem-val" style="color: var(--neon-orange);">3840×2160 UHD (4K)</span>
+      </div>
+      <div class="telem-row">
+        <span>AUDIO DSP:</span>
+        <span class="telem-val">96kHz / 32-BIT</span>
+      </div>
+      <div class="telem-row">
+        <span>DAY-1 STANDARD:</span>
+        <span class="telem-val" style="color: #10b981;">$0.00 CAD // 0 MOCK METRICS</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- Ambient HUD Overlays -->
   <div class="hud-corner hud-tl">SYS.ID: 9LMNTS-CYBER-CYPHER // 4K SPATIAL CANVAS ACTIVE</div>
@@ -1200,11 +1501,11 @@
   <!-- Interactive 3D Hero Stage -->
   <main class="hero-stage" id="heroStage">
     <div class="hero-canvas" id="heroCanvas">
-      <!-- Master 4K Render Base Plate (media_1791090330753.jpg / immersive studio v2.jpg) -->
+      <!-- Master 4K Render Base Plate (3840x2160 UHD) -->
       <picture>
         <source srcset="/assets/studio/cyber-cypher-4k.webp" type="image/webp"/>
-        <source srcset="/assets/studio/immersive-studio-v2.jpg" type="image/jpeg"/>
-        <img id="heroImage" class="base-plate" src="/assets/studio/cyber-cypher-4k.jpg" alt="9LMNTS Cyber Cypher Immersive 4K Studio"/>
+        <source srcset="/assets/studio/cyber-cypher-4k.jpg" type="image/jpeg"/>
+        <img id="heroImage" class="base-plate" src="/assets/studio/cyber-cypher-4k.jpg" alt="9LMNTS Cyber Cypher Immersive 4K Studio" width="3840" height="2160"/>
       </picture>
 
       <div class="grid-vignette"></div>
@@ -1332,25 +1633,7 @@
     </button>
   </div>
 
-  <!-- Footer Status Bar -->
-  <footer class="studio-footer">
-    <div class="status-left">
-      <div class="status-indicator">
-        <div class="pulse-dot"></div>
-        <span>CYBER CYPHER 4K: ACTIVE</span>
-      </div>
-      <div class="status-meta">
-        <span>SESSION: <b>#CYPHER-9X</b></span>
-        <span>NETWORK: <b>ARTIST &amp; CLASH OS LIVE</b></span>
-        <span>DAY-1 ZERO-STATE: <b>$0.00 REVENUE // 0 MOCK METRICS</b></span>
-      </div>
-    </div>
-    <div class="footer-hint">
-      <span>Click any glowing radar pin to inspect</span>
-      <span class="kbd-chip">ESC</span>
-      <span>or neon sign to reset view</span>
-    </div>
-  </footer>
+
 
   <!-- ========================================================================= -->
   <!-- MODAL ENGINE OVERLAYS (9 HIGH-FIDELITY INTERACTIVE STATIONS)             -->
@@ -1962,6 +2245,39 @@
       document.querySelectorAll('.guide-tag').forEach(t => t.classList.remove('active'));
     };
 
+    // Toggle Obsidian Protocol Navigation Drawer
+    window.toggleNavDrawer = function(forceState) {
+      const drawer = document.getElementById('navDrawer');
+      const backdrop = document.getElementById('navDrawerBackdrop');
+      const hamburger = document.getElementById('hamburgerBtn');
+      if (!drawer || !backdrop) return;
+      const isOpen = drawer.classList.contains('active');
+      const shouldOpen = (forceState !== undefined) ? forceState : !isOpen;
+
+      if (shouldOpen) {
+        cyberAudio.playPinChirp();
+        drawer.classList.add('active');
+        backdrop.classList.add('active');
+        if (hamburger) hamburger.classList.add('active');
+      } else {
+        cyberAudio.playResetWhoosh();
+        drawer.classList.remove('active');
+        backdrop.classList.remove('active');
+        if (hamburger) hamburger.classList.remove('active');
+      }
+    };
+
+    // Jump to station directly from navigation drawer
+    window.jumpToStationFromDrawer = function(stationId) {
+      toggleNavDrawer(false);
+      const cfg = stations[stationId];
+      if (cfg) {
+        setTimeout(() => {
+          triggerZoomAndModal(cfg.modalId, cfg.panX, cfg.panY, cfg.zoom);
+        }, 180);
+      }
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
       const canvas = document.getElementById('heroCanvas');
       const stage = document.getElementById('heroStage');
@@ -1987,7 +2303,7 @@
       }
 
       // Attach hover tick sound to all guide pins and interactive nav elements
-      document.querySelectorAll('.guide-tag, .header-nav a, .header-nav button, .mobile-dock button, .mobile-dock a').forEach(el => {
+      document.querySelectorAll('.guide-tag, .btn-hamburger, .drawer-station-item, .drawer-ext-link, .btn-glow, .btn-reset, .btn-audio-toggle').forEach(el => {
         el.addEventListener('mouseenter', () => {
           cyberAudio.playHoverTick();
         });
@@ -2040,9 +2356,14 @@
         }
       });
 
-      // Escape key closes modals and resets view or hides labels
+      // Escape key closes modals, drawers, and resets view or hides labels
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
+          const drawer = document.getElementById('navDrawer');
+          if (drawer && drawer.classList.contains('active')) {
+            toggleNavDrawer(false);
+            return;
+          }
           if (backdrop.classList.contains('active')) {
             closeModal();
           } else {
