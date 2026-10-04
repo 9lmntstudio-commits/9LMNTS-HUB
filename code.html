@@ -190,24 +190,20 @@
       pointer-events: none;
       image-rendering: -webkit-optimize-contrast;
       image-rendering: high-quality;
+      filter: url(#cinematicSharpen) contrast(1.04) brightness(1.02) saturate(1.04);
     }
 
-    /* Grid vignette overlay */
+    /* Subtle edge vignette (reduced from 0.75 to 0.28 for clear edge detail) */
     .grid-vignette {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(3, 4, 6, 0.75) 100%);
+      background: radial-gradient(circle at 50% 50%, transparent 68%, rgba(3, 4, 6, 0.28) 100%);
     }
 
-    /* Scanline grid CRT overlay */
+    /* Scanline grid CRT overlay (disabled to eliminate scanline banding/fuzziness) */
     .crt-grid {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.02));
-      background-size: 100% 3px, 6px 100%;
-      pointer-events: none;
-      opacity: 0.45;
+      display: none;
     }
 
     /* ===================================================
@@ -1339,6 +1335,15 @@
   <div class="hud-corner hud-tl">SYS.ID: 9LMNTS-CYBER-CYPHER // 4K SPATIAL CANVAS ACTIVE</div>
   <div class="hud-corner hud-tr" id="hudAudioStatus">LATENCY: 14MS // AUDIO ENGINE: ONLINE [96kHz/32-BIT]</div>
 
+  <!-- Hardware-Accelerated 4K Edge Sharpening Kernel Filter -->
+  <svg width="0" height="0" style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+    <defs>
+      <filter id="cinematicSharpen">
+        <feConvolveMatrix order="3" preserveAlpha="true" kernelMatrix="0 -0.32 0 -0.32 2.28 -0.32 0 -0.32 0"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- Interactive 3D Hero Stage -->
   <main class="hero-stage" id="heroStage">
     <div class="hero-canvas" id="heroCanvas">
@@ -1350,7 +1355,6 @@
       </picture>
 
       <div class="grid-vignette"></div>
-      <div class="crt-grid"></div>
 
       <!-- ========================================================================= -->
       <!-- 9 UNIFIED HOTSPOT STATIONS (PINNED RADAR BEACONS BY DEFAULT)               -->
