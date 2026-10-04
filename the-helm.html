@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <title>About & Founder Dossier: Darnley Sanon — 9LMNTS Studio</title>
+  <meta name="description" content="Learn about 9LMNTS Studio, our vision for the future of digital creation, and our AI-powered workflows. Meet founder Darnley Sanon."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css"/>
+
+  <style>
+    :root {
+      --background: #050505;
+      --foreground: #ffffff;
+      --card: #0d0d0d;
+      --card-border: #27272a;
+      --primary: #FF4500;
+      --primary-glow: rgba(255, 69, 0, 0.35);
+      --muted: #a1a1aa;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-script: 'Mrs Saint Delafield', cursive;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-display);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 100px 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--card);
+      border: 1px solid rgba(255, 69, 0, 0.4);
+      border-radius: 9999px;
+      color: var(--primary);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .hero-heading {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .script-accent {
+      font-family: var(--font-script);
+      color: var(--primary);
+      font-size: clamp(4rem, 8vw, 8rem);
+      text-transform: capitalize;
+      margin-left: -15px;
+      display: inline-block;
+      transform: rotate(-3deg);
+      font-weight: 400;
+    }
+
+    .hero-desc {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 auto 50px auto;
+      line-height: 1.6;
+    }
+
+    .section-box {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 48px 36px;
+      margin-bottom: 60px;
+    }
+
+    .section-box.border-y {
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media(min-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+
+    .culture-img-box {
+      aspect-ratio: 4/3;
+      border: 2px solid rgba(255, 69, 0, 0.4);
+      background: #000;
+      box-shadow: 0 0 35px rgba(255, 69, 0, 0.15);
+      overflow: hidden;
+      position: relative;
+    }
+    .culture-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: transform 0.6s ease;
+    }
+    .culture-img-box:hover img {
+      transform: scale(1.04);
+    }
+
+    .founder-img-box {
+      aspect-ratio: 4/5;
+      border: 2px solid rgba(255, 69, 0, 0.4);
+      background: #000;
+      box-shadow: 0 0 45px rgba(255, 69, 0, 0.2);
+      overflow: hidden;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .founder-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(80%);
+      opacity: 0.95;
+      transition: all 0.7s ease;
+    }
+    .founder-img-box:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    .body-p {
+      font-family: var(--font-body);
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .quote-box {
+      border-left: 4px solid var(--primary);
+      padding: 12px 20px;
+      margin: 24px 0;
+      font-family: var(--font-body);
+      color: var(--foreground);
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.6;
+      background: rgba(255, 69, 0, 0.05);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .skill-tag {
+      padding: 8px 16px;
+      background: var(--background);
+      border: 1px solid rgba(255, 69, 0, 0.35);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* AI Elements cards */
+    .ai-feature-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 69, 0, 0.25);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+    .ai-feature-card:hover {
+      border-color: rgba(255, 69, 0, 0.6);
+      transform: translateX(4px);
+    }
+    .ai-icon-box {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 69, 0, 0.12);
+      border: 1px solid rgba(255, 69, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+
+    /* 4-step workflow */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .step-box {
+      text-align: center;
+      padding: 20px 12px;
+      background: rgba(255, 69, 0, 0.04);
+      border: 1px solid rgba(255, 69, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    .step-box:hover {
+      background: rgba(255, 69, 0, 0.12);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    .step-num {
+      width: 54px;
+      height: 54px;
+      background: rgba(255, 69, 0, 0.12);
+      border: 1px solid rgba(255, 69, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px auto;
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: 900;
+    }
+    .step-name {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* Values grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .value-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 69, 0, 0.2);
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .value-card:hover {
+      border-color: rgba(255, 69, 0, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(255, 69, 0, 0.15);
+    }
+
+    /* CTA Section */
+    .cta-box {
+      background: var(--card);
+      border-top: 1px solid var(--card-border);
+      padding: 70px 24px;
+      text-align: center;
+    }
+    .btn-touch {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 40px;
+      background: var(--primary);
+      color: #050505;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px var(--primary-glow);
+    }
+    .btn-touch:hover {
+      background: #ff5e1a;
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(255, 69, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Universal HUD Return Header -->
+  <header class="hud-top-bar">
+    <a href="index.html#station-06" class="hud-back-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      RETURN TO STUDIO COCKPIT
+    </a>
+    <div class="hud-breadcrumb">
+      <span class="hud-dot" style="background:#FF4500; box-shadow:0 0 10px #FF4500;"></span>
+      <span>STATION 06</span>
+      <span class="hud-sep">/</span>
+      <span class="hud-title">THE HELM // DARNLEY SANON</span>
+    </div>
+    <div class="hud-actions">
+      <a href="services.html#intake" class="hud-cta-btn">⚡ START PROJECT</a>
+    </div>
+  </header>
+
+  <div class="about-container">
+
+    <!-- Hero Section -->
+    <div style="text-align: center; margin-bottom: 60px;">
+      <span class="hero-badge">About Us</span>
+      <h1 class="hero-heading">
+        Where Culture Meets<br/>
+        <span class="script-accent">Technology</span>
+      </h1>
+      <p class="hero-desc">
+        9LMNTS Studio bridges the gap between Hip-Hop culture and cutting-edge digital innovation, creating experiences that resonate and inspire.
+      </p>
+    </div>
+
+    <!-- Story Section -->
+    <div class="section-box border-y">
+      <div class="grid-2">
+        <div class="culture-img-box">
+          <img src="https://images.unsplash.com/photo-1602559399822-bd7d9f6da207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Hip-Hop Culture"/>
+        </div>
+        <div>
+          <h2 class="section-title">
+            The 9LMNTS <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Story</span>
+          </h2>
+          <p class="body-p">
+            Born from the vibrant energy of Hip-Hop culture, 9LMNTS Studio represents the convergence of artistic expression and technological innovation. Just as Hip-Hop consists of 9 foundational elements—MCing, DJing, Graffiti, Breaking, Beatboxing, Knowledge, Fashion, Entrepreneurship, and Language—our approach to digital design draws from these diverse disciplines.
+          </p>
+          <p class="body-p">
+            Each element influences how we craft digital experiences. The rhythm of a DJ's mix informs our UX flows. The bold statements of graffiti art inspire our visual designs. The entrepreneurial spirit drives our innovative solutions. The result? Websites and applications that don't just function—they perform.
+          </p>
+          <p class="body-p">
+            We believe that great design, like great Hip-Hop, is about authentic expression, cultural awareness, and pushing boundaries. Every project we undertake is an opportunity to create something that resonates on a deeper level, connecting with audiences through both aesthetics and meaning.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Element Section -->
+    <div class="section-box">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 class="section-title">
+          The <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">AI Element</span>
+        </h2>
+        <p class="body-p" style="max-width: 700px; margin: 0 auto;">
+          We've added a 10th element to the traditional 9: Artificial Intelligence. By integrating AI into our workflow, we deliver smarter, faster, and more innovative solutions.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="ai-feature-card">
+            <div class="ai-icon-box"><i class="fa-solid fa-brain"></i></div>
+            <div>
+              <h3 style="font-size:1.15rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.1em;">AI-Powered Design</h3>
+              <p class="body-p" style="font-size:0.95rem; margin:0;">Leveraging machine learning to optimize layouts and user experiences across spatial interfaces.</p>
+            </div>
+          </div>
+          <div class="ai-feature-card">
+            <div class="ai-icon-box"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <h3 style="font-size:1.15rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.1em;">Rapid Prototyping</h3>
+              <p class="body-p" style="font-size:0.95rem; margin:0;">AI-assisted wireframing and mockup generation for faster iterations from concept to production.</p>
+            </div>
+          </div>
+          <div class="ai-feature-card">
+            <div class="ai-icon-box"><i class="fa-solid fa-bullseye"></i></div>
+            <div>
+              <h3 style="font-size:1.15rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.1em;">Smart Optimization</h3>
+              <p class="body-p" style="font-size:0.95rem; margin:0;">Automated testing, latency minimization, and performance optimization powered by neural pipelines.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-img-box" style="aspect-ratio: 1/1;">
+          <img src="https://images.unsplash.com/photo-1764336312138-14a5368a6cd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Artificial Intelligence Neon Brain"/>
+        </div>
+      </div>
+
+      <!-- AI Workflow -->
+      <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px;">Our AI Workflow</h3>
+        <p class="body-p">
+          From initial concept to final deployment, AI enhances every stage of our process. We use machine learning algorithms to analyze user behavior, optimize designs, and predict trends. This allows us to create solutions that are not just current, but future-ready.
+        </p>
+        <div class="workflow-grid">
+          <div class="step-box">
+            <div class="step-num">1</div>
+            <div class="step-name">Analyze</div>
+          </div>
+          <div class="step-box">
+            <div class="step-num">2</div>
+            <div class="step-name">Design</div>
+          </div>
+          <div class="step-box">
+            <div class="step-num">3</div>
+            <div class="step-name">Optimize</div>
+          </div>
+          <div class="step-box">
+            <div class="step-num">4</div>
+            <div class="step-name">Deploy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founder Section -->
+    <div class="section-box border-y">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 class="section-title">
+          Meet the <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Founder</span>
+        </h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="founder-img-box">
+          <img src="assets/images/founder.png" alt="Darnley Sanon - Founder & Creative Director"/>
+        </div>
+        <div>
+          <h3 style="font-size: clamp(2.2rem, 4vw, 3rem); font-weight:900; text-transform:uppercase; margin-bottom:4px; letter-spacing:-0.02em;">
+            Darnley Sanon
+          </h3>
+          <p style="color:var(--primary); font-size:1.15rem; font-weight:800; text-transform:uppercase; letter-spacing:0.18em; margin-bottom:24px;">
+            Founder &amp; Creative Director
+          </p>
+
+          <p class="body-p">
+            With over a decade of experience in graphic design and UI/UX, Darnley founded 9LMNTS Studio to merge his passion for Hip-Hop culture with cutting-edge digital design. His unique approach combines artistic authenticity with technical excellence.
+          </p>
+          <p class="body-p">
+            As a freelance graphic designer and UI/UX specialist, he has worked with clients across Southeast Asia, North America, and Europe, bringing a fresh perspective that honors cultural roots while embracing innovation.
+          </p>
+
+          <div class="quote-box">
+            "Every project is an opportunity to tell a story, to create something that resonates beyond the screen. That's the power of combining art, culture, and technology."
+          </div>
+
+          <div class="skill-tags">
+            <span class="skill-tag">Graphic Design</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Brand Strategy</span>
+            <span class="skill-tag">Art Direction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values Section -->
+    <div class="section-box">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 class="section-title">
+          Our <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Values</span>
+        </h2>
+        <p class="body-p">The principles that guide everything we do</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="step-num">1</div>
+          <h3 style="font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:12px;">Authenticity</h3>
+          <p class="body-p" style="font-size:0.95rem; margin:0;">We create designs that are true to your brand and resonate with your audience on a cultural level.</p>
+        </div>
+        <div class="value-card">
+          <div class="step-num">2</div>
+          <h3 style="font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:12px;">Innovation</h3>
+          <p class="body-p" style="font-size:0.95rem; margin:0;">We push boundaries and embrace new technologies to deliver cutting-edge solutions that outperform standards.</p>
+        </div>
+        <div class="value-card">
+          <div class="step-num">3</div>
+          <h3 style="font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:12px;">Excellence</h3>
+          <p class="body-p" style="font-size:0.95rem; margin:0;">We are committed to the highest quality in every aspect of our work, from code architecture to typography.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-box">
+      <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); text-transform: uppercase; font-weight:900; line-height:1.2; margin-bottom:16px;">
+        Ready to Start<br/>
+        Your <span class="script-accent" style="font-size: clamp(3.5rem, 6vw, 6rem); margin-left:-10px;">Journey?</span>
+      </h2>
+      <p class="body-p" style="font-size:1.2rem; margin-bottom:32px;">
+        Let's create something extraordinary together.
+      </p>
+      <a href="services.html#intake" class="btn-touch">
+        <span>Get in Touch</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

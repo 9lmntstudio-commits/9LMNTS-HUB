@@ -18,16 +18,80 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
-  '.ttf': 'font/ttf'
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm'
 };
+
+const VIDEO_DIRS = [
+  path.join(PUBLIC_DIR, 'assets', 'videos'),
+  'C:\\Users\\Darnl\\Downloads\\drive-download-20260823T020523Z-1-001',
+  'C:\\Users\\Darnl\\Downloads',
+  'C:\\Users\\Darnl\\the-clash-tickets',
+  'C:\\Users\\Darnl\\Videos'
+];
 
 const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
-  let filePath = path.join(PUBLIC_DIR, decodeURIComponent(parsedUrl.pathname));
+  const pathname = decodeURIComponent(parsedUrl.pathname);
+
+  // Video Streaming Route (/videos/<filename>)
+  if (pathname.startsWith('/videos/')) {
+    const videoName = path.basename(pathname);
+    let targetVideoPath = null;
+
+    for (const vDir of VIDEO_DIRS) {
+      const candidate = path.join(vDir, videoName);
+      if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+        targetVideoPath = candidate;
+        break;
+      }
+    }
+
+    if (targetVideoPath) {
+      const stat = fs.statSync(targetVideoPath);
+      const fileSize = stat.size;
+      const range = req.headers.range;
+
+      if (range) {
+        const parts = range.replace(/bytes=/, "").split("-");
+        const start = parseInt(parts[0], 10);
+        const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+        const chunksize = (end - start) + 1;
+        const file = fs.createReadStream(targetVideoPath, { start, end });
+        const head = {
+          'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': chunksize,
+          'Content-Type': 'video/mp4',
+          'Access-Control-Allow-Origin': '*'
+        };
+        res.writeHead(206, head);
+        file.pipe(res);
+        return;
+      } else {
+        const head = {
+          'Content-Length': fileSize,
+          'Content-Type': 'video/mp4',
+          'Accept-Ranges': 'bytes',
+          'Access-Control-Allow-Origin': '*'
+        };
+        res.writeHead(200, head);
+        fs.createReadStream(targetVideoPath).pipe(res);
+        return;
+      }
+    }
+  }
+
+  let filePath = path.join(PUBLIC_DIR, pathname);
 
   // If path is root or directory, serve index.html
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
     filePath = path.join(filePath, 'index.html');
+  }
+
+  // Pretty URL support (e.g. /loa -> /loa.html)
+  if (!fs.existsSync(filePath) && fs.existsSync(filePath + '.html')) {
+    filePath = filePath + '.html';
   }
 
   // SPA fallback

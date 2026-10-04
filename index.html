@@ -1516,9 +1516,12 @@
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <button class="btn-primary" onclick="alert('Accessing LOA Narrative Universe Vault...'); closeModal();">
+        <a class="btn-secondary" href="https://youtu.be/wTFIdfOibFI" target="_blank" rel="noopener noreferrer">
+          Watch Trailer ↗
+        </a>
+        <a class="btn-primary" href="loa.html">
           Launch LOA Experience ↗
-        </button>
+        </a>
       </div>
     </div>
 
@@ -1551,8 +1554,8 @@
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <a class="btn-primary" href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
-          Open in ArtistOS Stems ↗
+        <a class="btn-primary" href="vault.html">
+          Open Music Vault &amp; Stems ↗
         </a>
       </div>
     </div>
@@ -1586,9 +1589,9 @@
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <button class="btn-primary" onclick="alert('Studio Core Feed Connected.'); closeModal();">
-          Monitor Live Cypher
-        </button>
+        <a class="btn-primary" href="core.html">
+          Monitor Live Cypher ↗
+        </a>
       </div>
     </div>
 
@@ -1613,9 +1616,9 @@
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <button class="btn-primary" onclick="alert('Gemini Live Voice Operator standby...'); closeModal();">
-          Initialize Voice Session
-        </button>
+        <a class="btn-primary" href="ai-voice.html">
+          Initialize Voice Session ↗
+        </a>
       </div>
     </div>
 
@@ -1689,8 +1692,8 @@
 
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <a class="btn-primary" href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
-          Explore Creator Bundles ↗
+        <a class="btn-primary" href="services.html">
+          Explore Creator Bundles &amp; Services ↗
         </a>
       </div>
     </div>
@@ -1719,9 +1722,9 @@
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <button class="btn-primary" onclick="alert('Accessing Admin Gateway...'); closeModal();">
-          Open Admin Cockpit ↗
-        </button>
+        <a class="btn-primary" href="the-helm.html">
+          Open Founder Dossier &amp; Cockpit ↗
+        </a>
       </div>
     </div>
 
@@ -1816,9 +1819,9 @@
 
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <button class="btn-primary" onclick="alert('Waitlist joined for limited AR Hoodie drop!'); closeModal();">
-          Pre-Order CYPERFINK Hoodie ($120 CAD)
-        </button>
+        <a class="btn-primary" href="merch.html">
+          Pre-Order CYPERFINK AR Wearables ↗
+        </a>
       </div>
     </div>
 
@@ -2256,6 +2259,17 @@
             submitBtn.disabled = false;
           });
         });
+      }
+
+      // Deep-link / Return to station from full page
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#station-')) {
+        const stationNum = hash.replace('#station-', '');
+        setTimeout(() => {
+          if (window.toggleStationTag) {
+            window.toggleStationTag(stationNum);
+          }
+        }, 350);
       }
     });
   </script>

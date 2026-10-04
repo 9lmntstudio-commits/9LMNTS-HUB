@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <title>Original Music Vault &amp; Stem Chopper — 9LMNTS Studio</title>
+  <meta name="description" content="Direct access to unreleased master multi-tracks, acapellas, and drum breaks from 9LMNTS Studio sessions. 24-bit 96kHz uncompressed WAV stems."/>
+  <link rel="stylesheet" href="styles/fullpage.css"/>
+  <style>
+    .stem-mixer-board {
+      background: rgba(16, 18, 26, 0.85);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.15);
+    }
+    .stem-channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .stem-channel {
+      background: rgba(7, 8, 11, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stem-channel.active {
+      border-color: var(--cyber-teal);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+    .stem-fader {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #1e2230;
+      outline: none;
+    }
+    .stem-fader::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--cyber-teal);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--cyber-teal);
+    }
+    .stem-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .stem-btn {
+      flex: 1;
+      padding: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.70rem;
+      font-weight: 700;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: #94A3B8;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .stem-btn.active-mute {
+      background: #EF4444;
+      border-color: #EF4444;
+      color: #FFFFFF;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+    .stem-btn.active-solo {
+      background: #EAB308;
+      border-color: #EAB308;
+      color: #07080B;
+      box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow top-left" style="background: radial-gradient(circle, var(--cyber-teal-glow), transparent 70%);"></div>
+  <div class="ambient-glow bottom-right" style="background: radial-gradient(circle, var(--neon-orange-glow), transparent 70%);"></div>
+
+  <!-- HUD Top Bar -->
+  <header class="hud-top-bar" style="border-bottom-color: rgba(0, 240, 255, 0.3);">
+    <a href="index.html#station-02" class="hud-back-btn" style="border-color: var(--cyber-teal); color: var(--cyber-teal); background: rgba(0, 240, 255, 0.08);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      RETURN TO STUDIO COCKPIT
+    </a>
+    <div class="hud-breadcrumb">
+      <span class="hud-dot" style="background:var(--cyber-teal); box-shadow:0 0 10px var(--cyber-teal);"></span>
+      <span>STATION 02</span>
+      <span class="hud-sep">/</span>
+      <span class="hud-title">MUSIC VAULT &amp; STEM CHOPPER</span>
+    </div>
+    <div class="hud-actions">
+      <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="hud-cta-btn" style="background: linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color: #38E1FF; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);">
+        LAUNCH ARTIST OS DAW ↗
+      </a>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <div class="station-tag teal">AUDIO VAULT // STATION 02</div>
+      <h1>Original Music Vault &amp; Stem Chopper</h1>
+      <div class="subtitle" style="color: var(--cyber-teal);">Multi-Track Master Recordings • AI Neural Demixing Matrix • 24-Bit 96kHz WAV</div>
+      <p class="lead">
+        Direct uncompressed access to unreleased master multi-tracks, acapellas, and drum breaks recorded inside 9LMNTS Studio acoustic chambers. Instant separation of vocals, drums, bass, and synthesizers with zero cloud compression artifacts.
+      </p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="#interactive-chopper" class="btn-primary" style="background: linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color: #38E1FF; box-shadow: 0 0 25px rgba(0,210,255,0.4);">
+          Launch Stem Chopper Matrix &darr;
+        </a>
+        <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Open in ArtistOS DAW ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- Interactive 4-Stem Chopper Console -->
+    <div class="stem-mixer-board" id="interactive-chopper">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px;">
+        <div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--cyber-teal); letter-spacing:0.12em;">DSP DEMIXING CONSOLE // LIVE SESSION PREVIEW</span>
+          <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-top:4px;">9LMNTS Cyber Cypher Theme (138.00 BPM • F Minor)</h3>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button id="masterPlayBtn" onclick="togglePlayback()" style="padding: 10px 22px; background: var(--cyber-teal); color: #07080B; border: none; border-radius: 4px; font-family:'Orbitron',monospace; font-weight:800; font-size:0.80rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+            <span>▶</span> PLAY SESSION
+          </button>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.80rem; color:#94A3B8; background:rgba(0,0,0,0.5); padding:6px 12px; border-radius:4px; border:1px solid rgba(255,255,255,0.1);">00:48 / 03:24</span>
+        </div>
+      </div>
+
+      <!-- 4 Channel Strips -->
+      <div class="stem-channels-grid">
+        <!-- Stem 1: Vocals -->
+        <div class="stem-channel active" id="ch1">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Orbitron',monospace; font-weight:700; font-size:0.85rem; color:#FFFFFF;">01. VOCALS</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.70rem; color:var(--cyber-teal);">DRY LEAD</span>
+          </div>
+          <div style="height:48px; background:rgba(0,240,255,0.08); border-radius:4px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(0,240,255,0.3);">
+            <div style="width:90%; height:16px; background:repeating-linear-gradient(90deg, var(--cyber-teal) 0 3px, transparent 3px 6px); opacity:0.8;"></div>
+          </div>
+          <input type="range" class="stem-fader" min="0" max="100" value="85"/>
+          <div class="stem-controls">
+            <button class="stem-btn" onclick="toggleMute('ch1', this)">MUTE</button>
+            <button class="stem-btn" onclick="toggleSolo('ch1', this)">SOLO</button>
+          </div>
+        </div>
+
+        <!-- Stem 2: Drums -->
+        <div class="stem-channel active" id="ch2">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Orbitron',monospace; font-weight:700; font-size:0.85rem; color:#FFFFFF;">02. DRUMS</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.70rem; color:var(--neon-orange);">808 &amp; TRAP KIT</span>
+          </div>
+          <div style="height:48px; background:rgba(255,85,0,0.08); border-radius:4px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,85,0,0.3);">
+            <div style="width:90%; height:22px; background:repeating-linear-gradient(90deg, var(--neon-orange) 0 3px, transparent 3px 6px); opacity:0.85;"></div>
+          </div>
+          <input type="range" class="stem-fader" min="0" max="100" value="95"/>
+          <div class="stem-controls">
+            <button class="stem-btn" onclick="toggleMute('ch2', this)">MUTE</button>
+            <button class="stem-btn" onclick="toggleSolo('ch2', this)">SOLO</button>
+          </div>
+        </div>
+
+        <!-- Stem 3: Sub-Bass -->
+        <div class="stem-channel active" id="ch3">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Orbitron',monospace; font-weight:700; font-size:0.85rem; color:#FFFFFF;">03. SUB-BASS</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.70rem; color:var(--matrix-green);">SUB-37 ANALOG</span>
+          </div>
+          <div style="height:48px; background:rgba(16,185,129,0.08); border-radius:4px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(16,185,129,0.3);">
+            <div style="width:90%; height:12px; background:repeating-linear-gradient(90deg, var(--matrix-green) 0 4px, transparent 4px 8px); opacity:0.9;"></div>
+          </div>
+          <input type="range" class="stem-fader" min="0" max="100" value="90"/>
+          <div class="stem-controls">
+            <button class="stem-btn" onclick="toggleMute('ch3', this)">MUTE</button>
+            <button class="stem-btn" onclick="toggleSolo('ch3', this)">SOLO</button>
+          </div>
+        </div>
+
+        <!-- Stem 4: Synths -->
+        <div class="stem-channel active" id="ch4">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Orbitron',monospace; font-weight:700; font-size:0.85rem; color:#FFFFFF;">04. SYNTHS</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.70rem; color:var(--cyber-purple);">POLYPHONIC</span>
+          </div>
+          <div style="height:48px; background:rgba(176,38,255,0.08); border-radius:4px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(176,38,255,0.3);">
+            <div style="width:90%; height:18px; background:repeating-linear-gradient(90deg, var(--cyber-purple) 0 3px, transparent 3px 6px); opacity:0.8;"></div>
+          </div>
+          <input type="range" class="stem-fader" min="0" max="100" value="75"/>
+          <div class="stem-controls">
+            <button class="stem-btn" onclick="toggleMute('ch4', this)">MUTE</button>
+            <button class="stem-btn" onclick="toggleSolo('ch4', this)">SOLO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specs Bento Grid -->
+    <div class="section-header">
+      <div class="section-eyebrow">LABORATORY SPECIFICATIONS</div>
+      <h2>Hardware &amp; Neural Demixing Architecture</h2>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card">
+        <h3 style="color:var(--cyber-teal);">24-Bit / 96kHz Lossless</h3>
+        <p>Direct analog-to-digital converter transfers using discrete Class-A preamps. Zero MP3 compression, zero loss of high-end frequency air.</p>
+      </div>
+      <div class="bento-card">
+        <h3 style="color:var(--cyber-teal);">Neural AI Demixing</h3>
+        <p>Instant separation of legacy masters into 4 to 8 discrete stem tracks with phase-aligned cancellation and zero bleed.</p>
+      </div>
+      <div class="bento-card">
+        <h3 style="color:var(--cyber-teal);">BPM Lock Matrix</h3>
+        <p>Automated pitch-neutral tempo warping locked to master session clock. Drag directly into your project at any tempo.</p>
+      </div>
+      <div class="bento-card">
+        <h3 style="color:var(--cyber-teal);">Direct DAW Sync</h3>
+        <p>Seamless 1-click cloud sync into ArtistOS DAW or direct export as uncompressed ZIP bundles for Ableton Live, FL Studio, or Logic Pro.</p>
+      </div>
+    </div>
+
+    <!-- Video Demonstration -->
+    <div class="media-container" style="border-color: rgba(0, 240, 255, 0.4); box-shadow: 0 0 35px rgba(0, 240, 255, 0.15);">
+      <div style="padding: 20px 24px; background: rgba(16, 18, 26, 0.95); display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid rgba(0,240,255,0.3);">
+        <div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--cyber-teal); letter-spacing:0.12em;">PRODUCTION WALKTHROUGH</span>
+          <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-top:4px;">ArtistOS Workstation &amp; Stem Chopper Showcase</h3>
+        </div>
+        <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid var(--cyber-teal); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#FFFFFF;">HD 1080P</span>
+      </div>
+      <video controls poster="assets/images/Clash_OS_image_2.png" style="width: 100%; max-height: 520px; object-fit: cover;">
+        <source src="/videos/ArtistOS.mp4" type="video/mp4"/>
+        <p style="padding: 20px; color: #94A3B8;">Preview file located at /videos/ArtistOS.mp4.</p>
+      </video>
+    </div>
+
+    <!-- Footer HUD Return Bar -->
+    <div class="footer-hud-nav">
+      <div class="left-info">
+        <h3>Finished reviewing stems?</h3>
+        <p>Return to the 4K studio workstation to explore the central telemetry console or sound clash arena.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="index.html#station-02" class="btn-primary" style="background: linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color: #38E1FF;">
+          &larr; Return to Studio Cockpit
+        </a>
+        <a href="core.html" class="btn-secondary">
+          Next: Station 03 Studio Core &rarr;
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let isPlaying = false;
+    function togglePlayback() {
+      isPlaying = !isPlaying;
+      const btn = document.getElementById('masterPlayBtn');
+      if (isPlaying) {
+        btn.innerHTML = '<span>⏸</span> PAUSE SESSION';
+        btn.style.background = '#EF4444';
+        btn.style.color = '#FFFFFF';
+      } else {
+        btn.innerHTML = '<span>▶</span> PLAY SESSION';
+        btn.style.background = 'var(--cyber-teal)';
+        btn.style.color = '#07080B';
+      }
+    }
+    function toggleMute(chId, btn) {
+      btn.classList.toggle('active-mute');
+      const channel = document.getElementById(chId);
+      if (btn.classList.contains('active-mute')) {
+        channel.style.opacity = '0.4';
+      } else {
+        channel.style.opacity = '1';
+      }
+    }
+    function toggleSolo(chId, btn) {
+      btn.classList.toggle('active-solo');
+    }
+  </script>
+</body>
+</html>

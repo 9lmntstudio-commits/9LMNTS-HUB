@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <title>AI Voice Operator & CRM — 9LMNTS Studio</title>
+  <meta name="description" content="Client Relationship Manager & Gemini Live AI Voice Operator by 9LMNTS Studio. Manage leads, automated bookings, and client pipelines in real time."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css"/>
+
+  <style>
+    :root {
+      --bg: #0A0F1E;
+      --card-bg: #1A2332;
+      --card-border: rgba(0, 212, 255, 0.2);
+      --primary: #00D4FF;
+      --primary-glow: rgba(0, 212, 255, 0.35);
+      --success: #10B981;
+      --warning: #FF7A00;
+      --danger: #E91E63;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #ffffff;
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .crm-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px 20px 80px 20px;
+    }
+
+    /* AI Voice Session Banner */
+    .ai-session-card {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(10, 15, 30, 0.8) 100%);
+      border: 1px solid var(--primary);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media(min-width: 800px) {
+      .ai-session-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .voice-orb {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--primary) 0%, rgba(0, 212, 255, 0.1) 70%);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #050505;
+      animation: orbPulse 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+    @keyframes orbPulse {
+      0%, 100% { box-shadow: 0 0 15px var(--primary); transform: scale(1); }
+      50% { box-shadow: 0 0 35px var(--primary); transform: scale(1.08); }
+    }
+
+    /* CRM Header */
+    .crm-header {
+      background: linear-gradient(to right, #0A0F1E, #0D1829);
+      border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+      padding: 32px 0 24px 0;
+      margin-bottom: 32px;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .crm-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-tab-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      background: #1A2332;
+      color: #94a3b8;
+    }
+    .filter-tab-btn:hover {
+      background: rgba(26, 35, 50, 0.8);
+      color: #fff;
+    }
+    .filter-tab-btn.active {
+      background: var(--primary);
+      color: #0A0F1E;
+    }
+
+    /* Search & Filter Bar */
+    .search-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .search-input-box {
+      flex: 1;
+      position: relative;
+    }
+    .search-input-box i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+    }
+    .search-input-box input {
+      width: 100%;
+      padding: 14px 16px 14px 44px;
+      background: #1A2332;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .search-input-box input:focus {
+      border-color: rgba(0, 212, 255, 0.6);
+    }
+    .btn-filter {
+      padding: 14px 24px;
+      background: #1A2332;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 8px;
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-filter:hover {
+      background: rgba(26, 35, 50, 0.8);
+      border-color: var(--primary);
+    }
+
+    /* Clients Grid */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media(min-width: 768px) {
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(min-width: 1024px) {
+      .clients-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .client-card {
+      background: #1A2332;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.25s ease;
+    }
+    .client-card:hover {
+      border-color: rgba(0, 212, 255, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .client-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .client-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00D4FF, #10B981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-family: var(--font-display);
+    }
+    .client-status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-transform: capitalize;
+    }
+
+    .info-row {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .revenue-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .revenue-val {
+      color: #10B981;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-view-card {
+      flex: 1;
+      padding: 10px;
+      background: var(--primary);
+      color: #0A0F1E;
+      border-radius: 8px;
+      border: none;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-view-card:hover {
+      background: #38f4ff;
+    }
+    .btn-icon-card {
+      padding: 10px 14px;
+      background: #0D1829;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-icon-card.edit { color: var(--primary); }
+    .btn-icon-card.trash { color: #E91E63; }
+    .btn-icon-card:hover { background: rgba(13, 24, 41, 0.8); }
+  </style>
+</head>
+<body>
+
+  <!-- Universal HUD Header -->
+  <header class="hud-top-bar">
+    <a href="index.html#station-04" class="hud-back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      RETURN TO STUDIO COCKPIT
+    </a>
+    <div class="hud-breadcrumb">
+      <span class="hud-dot" style="background:#00D4FF; box-shadow:0 0 10px #00D4FF;"></span>
+      <span>STATION 04</span>
+      <span class="hud-sep">/</span>
+      <span class="hud-title">AI VOICE OPERATOR &amp; CRM</span>
+    </div>
+    <div class="hud-actions">
+      <a href="services.html#intake" class="hud-cta-btn">⚡ START PROJECT</a>
+    </div>
+  </header>
+
+  <div class="crm-container">
+
+    <!-- AI Voice Operator Simulator -->
+    <div class="ai-session-card">
+      <div style="display:flex; align-items:center; gap:20px;">
+        <div class="voice-orb"><i class="fa-solid fa-microphone"></i></div>
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--primary); font-weight:800; letter-spacing:0.15em;">
+            GEMINI LIVE MULTIMODAL API • LOW-LATENCY WEBSOCKET
+          </span>
+          <h2 style="font-family:var(--font-display); font-size:1.4rem; font-weight:900; margin-top:2px;">
+            AI Voice Receptionist &amp; Booking Agent
+          </h2>
+          <p style="color:#94a3b8; font-size:0.9rem; margin-top:4px;">
+            Handles incoming venue inquiries, processes lead qualifiers, schedules walkthroughs, and logs clients to CRM automatically.
+          </p>
+        </div>
+      </div>
+      <button class="btn-main" style="background:var(--primary); color:#0A0F1E; border:none; padding:14px 28px; border-radius:10px; font-weight:900; cursor:pointer;" onclick="simulateVoice()">
+        <i class="fa-solid fa-bolt"></i> Test Voice Booking
+      </button>
+    </div>
+
+    <!-- CRM Header -->
+    <div class="crm-header">
+      <div class="header-content">
+        <div>
+          <h1 class="crm-title">
+            Client <span style="color:var(--primary);">Relationship Manager</span>
+          </h1>
+          <p style="color:#94a3b8; font-size:1.05rem;">
+            Manage and track all your client relationships across EventOS, LOA, and Custom Productions.
+          </p>
+        </div>
+        <button class="btn-main" style="background:var(--primary); color:#0A0F1E; border:none; padding:12px 24px; border-radius:8px; font-weight:800; cursor:pointer;" onclick="addNewClientPrompt()">
+          <i class="fa-solid fa-plus"></i> Add New Client
+        </button>
+      </div>
+
+      <!-- Status Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab-btn active" onclick="filterClients('all')">All (4)</button>
+        <button class="filter-tab-btn" onclick="filterClients('active')">Active (3)</button>
+        <button class="filter-tab-btn" onclick="filterClients('prospect')">Prospect (0)</button>
+        <button class="filter-tab-btn" onclick="filterClients('completed')">Completed (1)</button>
+        <button class="filter-tab-btn" onclick="filterClients('on-hold')">On-hold (0)</button>
+      </div>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="search-row">
+      <div class="search-input-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search clients, companies, or projects..." oninput="handleSearch()"/>
+      </div>
+      <button class="btn-filter" onclick="triggerToast('Filter options active')">
+        <i class="fa-solid fa-filter"></i> Filters
+      </button>
+    </div>
+
+    <!-- Clients Grid -->
+    <div class="clients-grid" id="clientsGrid">
+      
+      <!-- Client 1 -->
+      <div class="client-card" data-status="active" data-search="marcus chen techcorp corporate clash">
+        <div class="client-header">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="client-avatar">MC</div>
+            <div>
+              <div style="font-weight:800; font-size:1.05rem;">Marcus Chen</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">TechCorp Inc.</div>
+            </div>
+          </div>
+          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        </div>
+
+        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">
+          Active
+        </div>
+
+        <div class="info-row">
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
+          <div style="font-weight:700; font-size:0.9rem;">Corporate Clash - Enterprise</div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div class="contact-item"><i class="fa-regular fa-envelope"></i> marcus@techcorp.com</div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Toronto, ON</div>
+        </div>
+
+        <div class="revenue-row">
+          <div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
+            <div class="revenue-val">$15,000 CAD</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="color:#94a3b8; font-size:0.75rem;">Next Meeting</div>
+            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-regular fa-calendar"></i> Dec 15, 2025</div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-view-card" onclick="triggerToast('Opening Marcus Chen profile')"><i class="fa-regular fa-eye"></i> View</button>
+          <button class="btn-icon-card edit" onclick="triggerToast('Edit Marcus Chen')"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </div>
+
+      <!-- Client 2 -->
+      <div class="client-card" data-status="active" data-search="sarah martinez club vertex sound clash os">
+        <div class="client-header">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="client-avatar" style="background:linear-gradient(135deg, #d946ef, #06b6d4);">SM</div>
+            <div>
+              <div style="font-weight:800; font-size:1.05rem;">Sarah Martinez</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">Club Vertex</div>
+            </div>
+          </div>
+          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        </div>
+
+        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">
+          Active
+        </div>
+
+        <div class="info-row">
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
+          <div style="font-weight:700; font-size:0.9rem;">Sound Clash OS</div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div class="contact-item"><i class="fa-regular fa-envelope"></i> sarah@clubvertex.com</div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Vancouver, BC</div>
+        </div>
+
+        <div class="revenue-row">
+          <div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
+            <div class="revenue-val">$8,500 CAD</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="color:#94a3b8; font-size:0.75rem;">Next Meeting</div>
+            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-regular fa-calendar"></i> Dec 18, 2025</div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-view-card" onclick="triggerToast('Opening Sarah Martinez profile')"><i class="fa-regular fa-eye"></i> View</button>
+          <button class="btn-icon-card edit" onclick="triggerToast('Edit Sarah Martinez')"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </div>
+
+      <!-- Client 3 -->
+      <div class="client-card" data-status="completed" data-search="emma james wilson personal the union wedding os">
+        <div class="client-header">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="client-avatar" style="background:linear-gradient(135deg, #D4AF37, #FF5500);">EW</div>
+            <div>
+              <div style="font-weight:800; font-size:1.05rem;">Emma &amp; James Wilson</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">Personal</div>
+            </div>
+          </div>
+          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        </div>
+
+        <div class="client-status-badge" style="background:rgba(0,212,255,0.15); color:#00D4FF;">
+          Completed
+        </div>
+
+        <div class="info-row">
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
+          <div style="font-weight:700; font-size:0.9rem;">The Union: Wedding OS</div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div class="contact-item"><i class="fa-regular fa-envelope"></i> emmajames@email.com</div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 345-6789</div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Montreal, QC</div>
+        </div>
+
+        <div class="revenue-row">
+          <div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
+            <div class="revenue-val">$5,000 CAD</div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-view-card" onclick="triggerToast('Opening Emma & James Wilson file')"><i class="fa-regular fa-eye"></i> View</button>
+          <button class="btn-icon-card edit" onclick="triggerToast('Edit record')"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </div>
+
+      <!-- Client 4 -->
+      <div class="client-card" data-status="active" data-search="david park startup summit corporate clash event">
+        <div class="client-header">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="client-avatar" style="background:linear-gradient(135deg, #3b82f6, #06d6a0);">DP</div>
+            <div>
+              <div style="font-weight:800; font-size:1.05rem;">David Park</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">Startup Summit</div>
+            </div>
+          </div>
+          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        </div>
+
+        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">
+          Active
+        </div>
+
+        <div class="info-row">
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
+          <div style="font-weight:700; font-size:0.9rem;">Corporate Clash - Event</div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div class="contact-item"><i class="fa-regular fa-envelope"></i> david@startupsummit.com</div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 456-7890</div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Calgary, AB</div>
+        </div>
+
+        <div class="revenue-row">
+          <div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
+            <div class="revenue-val">$12,000 CAD</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="color:#94a3b8; font-size:0.75rem;">Next Meeting</div>
+            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-regular fa-calendar"></i> Dec 20, 2025</div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-view-card" onclick="triggerToast('Opening David Park profile')"><i class="fa-regular fa-eye"></i> View</button>
+          <button class="btn-icon-card edit" onclick="triggerToast('Edit David Park')"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#111827; border:1px solid var(--primary); padding:12px 24px; border-radius:9999px; font-weight:bold; font-size:0.85rem; display:none; z-index:999; box-shadow:0 0 30px rgba(0,212,255,0.4);"></div>
+
+  <script>
+    function filterClients(status) {
+      document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('.client-card').forEach(card => {
+        if (status === 'all' || card.getAttribute('data-status') === status) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      triggerToast(`Filtering by: ${status}`);
+    }
+
+    function handleSearch() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      document.querySelectorAll('.client-card').forEach(card => {
+        const text = card.getAttribute('data-search') || '';
+        if (!q || text.includes(q)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function simulateVoice() {
+      triggerToast('Connecting to Gemini Live AI Voice Session... [AUDIO ON]');
+    }
+
+    function addNewClientPrompt() {
+      triggerToast('Intake modal opened: New Client Registration');
+    }
+
+    function triggerToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2600);
+    }
+  </script>
+</body>
+</html>
