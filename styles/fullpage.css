@@ -83,22 +83,22 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 28px;
-  background: rgba(7, 8, 11, 0.85);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 85, 0, 0.25);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  padding: 14px 32px;
+  background: rgba(11, 14, 21, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 85, 0, 0.2);
 }
 
 .hud-back-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 18px;
-  background: rgba(255, 85, 0, 0.08);
-  border: 1px solid var(--neon-orange);
-  border-radius: 4px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
   color: var(--neon-orange);
   text-decoration: none;
   font-family: 'Orbitron', monospace;
@@ -108,11 +108,13 @@ html, body {
   text-transform: uppercase;
   transition: all 0.25s var(--ease-cinematic);
   cursor: pointer;
+  backdrop-filter: blur(12px);
 }
 .hud-back-btn:hover {
-  background: var(--neon-orange);
-  color: #07080B;
-  box-shadow: 0 0 20px var(--neon-orange-glow);
+  background: rgba(255, 85, 0, 0.15);
+  border-color: var(--neon-orange);
+  color: #FFFFFF;
+  box-shadow: 0 0 25px var(--neon-orange-glow);
   transform: translateX(-3px);
 }
 
@@ -154,10 +156,10 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 18px;
-  background: linear-gradient(135deg, #FF5500 0%, #FF2200 100%);
-  border: 1px solid #FF7733;
-  border-radius: 4px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #FF5500 0%, #FF3300 100%);
+  border: 1px solid rgba(255, 120, 50, 0.6);
+  border-radius: 12px;
   color: #FFFFFF;
   text-decoration: none;
   font-family: 'Orbitron', monospace;
@@ -166,11 +168,12 @@ html, body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: all 0.25s var(--ease-cinematic);
-  box-shadow: 0 0 15px rgba(255, 85, 0, 0.35);
+  box-shadow: 0 4px 20px rgba(255, 85, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .hud-cta-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(255, 85, 0, 0.70);
+  background: linear-gradient(135deg, #FF6611 0%, #FF4400 100%);
+  box-shadow: 0 6px 30px rgba(255, 85, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 /* ===================================================
@@ -194,33 +197,34 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
-  border-radius: 20px;
+  padding: 6px 16px;
+  border-radius: 9999px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 18px;
+  backdrop-filter: blur(12px);
 }
 .station-tag.purple {
-  background: rgba(176, 38, 255, 0.15);
-  border: 1px solid rgba(176, 38, 255, 0.5);
+  background: rgba(176, 38, 255, 0.12);
+  border: 1px solid rgba(176, 38, 255, 0.4);
   color: #D880FF;
 }
 .station-tag.teal {
-  background: rgba(0, 240, 255, 0.15);
-  border: 1px solid rgba(0, 240, 255, 0.5);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.4);
   color: #38E1FF;
 }
 .station-tag.orange {
-  background: rgba(255, 85, 0, 0.15);
-  border: 1px solid rgba(255, 85, 0, 0.5);
+  background: rgba(255, 85, 0, 0.12);
+  border: 1px solid rgba(255, 85, 0, 0.4);
   color: #FF8533;
 }
 .station-tag.green {
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.5);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
   color: #34D399;
 }
 
@@ -255,24 +259,25 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #FF5500 0%, #FF2200 100%);
-  border: 1px solid #FF7733;
-  border-radius: 4px;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #FF5500 0%, #FF3300 100%);
+  border: 1px solid rgba(255, 120, 50, 0.6);
+  border-radius: 12px;
   color: #FFFFFF;
   text-decoration: none;
   font-family: 'Orbitron', monospace;
-  font-size: 0.90rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   transition: all 0.25s var(--ease-cinematic);
   cursor: pointer;
-  box-shadow: 0 0 20px var(--neon-orange-glow);
+  box-shadow: 0 4px 25px rgba(255, 85, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(255, 85, 0, 0.75);
+  background: linear-gradient(135deg, #FF6611 0%, #FF4400 100%);
+  box-shadow: 0 6px 30px rgba(255, 85, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .btn-secondary {
@@ -280,24 +285,26 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 28px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  padding: 13px 26px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
   color: #F8FAFC;
   text-decoration: none;
   font-family: 'Orbitron', monospace;
-  font-size: 0.90rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   transition: all 0.25s var(--ease-cinematic);
   cursor: pointer;
+  backdrop-filter: blur(12px);
 }
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* GLASS BENTO CARDS */
@@ -308,20 +315,23 @@ html, body {
   margin-bottom: 40px;
 }
 .bento-card {
-  background: var(--surface-glass);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-glass);
-  border-radius: 8px;
-  padding: 28px;
+  background: rgba(14, 18, 27, 0.75);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.08) 0%, transparent 60%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 85, 0, 0.45);
+  border-radius: 18px;
+  padding: 30px 28px;
   transition: all 0.3s var(--ease-cinematic);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .bento-card:hover {
-  border-color: rgba(255, 85, 0, 0.45);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  transform: translateY(-3px);
+  border-color: rgba(255, 85, 0, 0.55);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 85, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
 }
 .bento-card h3 {
   font-family: 'Syne', 'Orbitron', sans-serif;
@@ -342,10 +352,11 @@ html, body {
 /* MEDIA & VIDEO BOX */
 .media-container {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 85, 0, 0.3);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 85, 0, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   margin-bottom: 40px;
   background: #000000;
   position: relative;
@@ -380,39 +391,46 @@ html, body {
 .tiers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 40px;
 }
 .tier-card {
-  background: var(--surface-glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border-glass);
-  border-radius: 8px;
-  padding: 26px;
+  background: rgba(14, 18, 27, 0.75);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.08) 0%, transparent 60%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px 26px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s var(--ease-cinematic);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .tier-card.featured {
-  border-color: var(--neon-orange);
-  box-shadow: 0 0 25px rgba(255, 85, 0, 0.2);
+  border: 1px solid rgba(255, 85, 0, 0.5);
+  border-top: 1px solid var(--neon-orange);
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.18) 0%, transparent 65%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 85, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .tier-card:hover {
   transform: translateY(-4px);
   border-color: var(--neon-orange);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 85, 0, 0.25);
 }
 .tier-badge {
   align-self: flex-start;
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 5px 14px;
+  border-radius: 9999px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.70rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  background: rgba(255, 85, 0, 0.15);
+  background: rgba(255, 85, 0, 0.12);
+  border: 1px solid rgba(255, 85, 0, 0.35);
   color: var(--neon-orange);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .tier-price {
   font-family: 'Orbitron', monospace;
@@ -439,7 +457,7 @@ html, body {
 .tier-features li {
   font-size: 0.85rem;
   color: #CBD5E1;
-  padding: 6px 0;
+  padding: 7px 0;
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -453,15 +471,17 @@ html, body {
 /* FOOTER HUD RETURN */
 .footer-hud-nav {
   margin-top: 80px;
-  padding: 30px;
-  background: rgba(16, 18, 26, 0.85);
-  border: 1px solid rgba(255, 85, 0, 0.3);
-  border-radius: 8px;
+  padding: 34px;
+  background: rgba(14, 18, 27, 0.85);
+  background-image: radial-gradient(circle at 50% -20%, rgba(255, 85, 0, 0.12) 0%, transparent 65%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 85, 0, 0.45);
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 .footer-hud-nav .left-info h3 {
   font-family: 'Syne', sans-serif;
