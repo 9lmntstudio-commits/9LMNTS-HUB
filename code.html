@@ -326,25 +326,32 @@
       z-index: 25;
       display: flex;
       align-items: center;
-      gap: 9px;
       user-select: none;
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .guide-tag:hover {
-      transform: scale(1.1);
-      z-index: 40;
+      z-index: 50;
     }
 
-    /* Radar Pin Dot */
+    /* Radar Pin Dot (Only element visible by default) */
     .tag-pin {
-      width: 14px;
-      height: 14px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: var(--neon-orange);
-      box-shadow: 0 0 16px var(--neon-orange);
+      background: rgba(10, 11, 16, 0.92);
+      border: 2px solid var(--neon-orange);
+      box-shadow: 0 0 14px var(--neon-orange);
       position: relative;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 800;
+      color: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .tag-pin::after {
@@ -353,53 +360,83 @@
       inset: -6px;
       border: 1px solid var(--neon-orange);
       border-radius: 50%;
-      animation: radarPulse 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+      animation: radarPulse 2.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     @keyframes radarPulse {
       0% { transform: scale(0.6); opacity: 1; }
-      100% { transform: scale(2.4); opacity: 0; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .guide-tag:hover .tag-pin, .guide-tag.active .tag-pin {
+      transform: scale(1.18);
+      box-shadow: 0 0 24px var(--neon-orange);
+      background: var(--neon-orange);
+      color: #050505;
     }
 
     /* Color Variants */
     .guide-tag.teal .tag-pin {
-      background: var(--cyber-teal);
-      box-shadow: 0 0 16px var(--cyber-teal);
-    }
-    .guide-tag.teal .tag-pin::after {
       border-color: var(--cyber-teal);
+      box-shadow: 0 0 14px var(--cyber-teal);
+    }
+    .guide-tag.teal .tag-pin::after { border-color: var(--cyber-teal); }
+    .guide-tag.teal:hover .tag-pin, .guide-tag.teal.active .tag-pin {
+      box-shadow: 0 0 24px var(--cyber-teal);
+      background: var(--cyber-teal);
+      color: #050505;
     }
 
     .guide-tag.purple .tag-pin {
-      background: var(--cyber-purple);
-      box-shadow: 0 0 16px var(--cyber-purple);
-    }
-    .guide-tag.purple .tag-pin::after {
       border-color: var(--cyber-purple);
+      box-shadow: 0 0 14px var(--cyber-purple);
+    }
+    .guide-tag.purple .tag-pin::after { border-color: var(--cyber-purple); }
+    .guide-tag.purple:hover .tag-pin, .guide-tag.purple.active .tag-pin {
+      box-shadow: 0 0 24px var(--cyber-purple);
+      background: var(--cyber-purple);
+      color: #fff;
     }
 
     .guide-tag.green .tag-pin {
-      background: var(--matrix-green);
-      box-shadow: 0 0 16px var(--matrix-green);
-    }
-    .guide-tag.green .tag-pin::after {
       border-color: var(--matrix-green);
+      box-shadow: 0 0 14px var(--matrix-green);
+    }
+    .guide-tag.green .tag-pin::after { border-color: var(--matrix-green); }
+    .guide-tag.green:hover .tag-pin, .guide-tag.green.active .tag-pin {
+      box-shadow: 0 0 24px var(--matrix-green);
+      background: var(--matrix-green);
+      color: #050505;
     }
 
-    /* Tech Label Card */
+    /* Tech Label Card - HIDDEN BY DEFAULT (Revealed on 1 Click) */
     .tag-label {
-      background: rgba(15, 17, 23, 0.9);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 85, 0, 0.4);
-      padding: 5px 10px;
-      border-radius: 6px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(8px) scale(0.92);
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+      background: rgba(14, 16, 23, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 85, 0, 0.5);
+      padding: 8px 12px;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.75);
-      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(255, 85, 0, 0.25);
+      position: absolute;
+      left: 28px;
+      top: -12px;
       white-space: nowrap;
+      z-index: 60;
+      cursor: pointer;
+    }
+
+    /* Align left for hotspots positioned on the right edge */
+    .guide-tag.align-left .tag-label {
+      left: auto;
+      right: 28px;
     }
 
     .tag-label::before {
@@ -410,54 +447,78 @@
       width: 3.5px;
       height: 100%;
       background: var(--neon-orange);
-      border-radius: 6px 0 0 6px;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .guide-tag.align-left .tag-label::before {
+      left: auto;
+      right: 0;
+      border-radius: 0 8px 8px 0;
     }
 
     .guide-tag.teal .tag-label::before { background: var(--cyber-teal); }
-    .guide-tag.teal .tag-label { border-color: rgba(0, 240, 255, 0.4); }
+    .guide-tag.teal .tag-label { border-color: rgba(0, 240, 255, 0.5); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(0, 240, 255, 0.25); }
     .guide-tag.purple .tag-label::before { background: var(--cyber-purple); }
-    .guide-tag.purple .tag-label { border-color: rgba(176, 38, 255, 0.4); }
+    .guide-tag.purple .tag-label { border-color: rgba(176, 38, 255, 0.5); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(176, 38, 255, 0.25); }
     .guide-tag.green .tag-label::before { background: var(--matrix-green); }
-    .guide-tag.green .tag-label { border-color: rgba(16, 185, 129, 0.4); }
+    .guide-tag.green .tag-label { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(16, 185, 129, 0.25); }
 
-    .guide-tag:hover .tag-label {
-      background: rgba(22, 26, 36, 0.96);
-      box-shadow: 0 0 20px rgba(255, 85, 0, 0.45);
+    /* SINGLE CLICK ACTIVATION */
+    .guide-tag.active .tag-label {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
     }
-    .guide-tag.teal:hover .tag-label { box-shadow: 0 0 20px rgba(0, 240, 255, 0.45); border-color: var(--cyber-teal); }
-    .guide-tag.purple:hover .tag-label { box-shadow: 0 0 20px rgba(176, 38, 255, 0.45); border-color: var(--cyber-purple); }
-    .guide-tag.green:hover .tag-label { box-shadow: 0 0 20px rgba(16, 185, 129, 0.45); border-color: var(--matrix-green); }
 
     .label-title {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 800;
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.75px;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .label-badge {
-      font-size: 0.55rem;
+      font-size: 0.56rem;
       background: rgba(255, 255, 255, 0.12);
-      padding: 1px 4px;
+      padding: 1px 5px;
       border-radius: 3px;
       color: #cbd5e1;
       font-family: 'JetBrains Mono', monospace;
     }
 
     .label-sub {
-      font-size: 0.62rem;
+      font-size: 0.64rem;
       color: var(--neon-orange);
       font-weight: 600;
       letter-spacing: 0.2px;
-      margin-top: 1px;
+      margin-top: 2px;
     }
     .guide-tag.teal .label-sub { color: var(--cyber-teal); }
     .guide-tag.purple .label-sub { color: #d8b4fe; }
     .guide-tag.green .label-sub { color: var(--matrix-green); }
+
+    .label-hint {
+      font-size: 0.56rem;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .label-hint .hint-accent {
+      color: var(--neon-orange);
+      font-weight: 700;
+    }
+    .guide-tag.teal .label-hint .hint-accent { color: var(--cyber-teal); }
+    .guide-tag.purple .label-hint .hint-accent { color: #d8b4fe; }
+    .guide-tag.green .label-hint .hint-accent { color: var(--matrix-green); }
+
 
     /* Calibrated Spatial Coordinates for 9 Hotspot Stations */
     /* Station 01 — Project LOA Universe (Left Wall Poster) */
@@ -1150,87 +1211,97 @@
       <div class="crt-grid"></div>
 
       <!-- ========================================================================= -->
-      <!-- 9 UNIFIED HOTSPOT STATIONS (SPATIAL POSITIONED ON 4K MASTER PLATE)        -->
+      <!-- 9 UNIFIED HOTSPOT STATIONS (PINNED RADAR BEACONS BY DEFAULT)               -->
+      <!-- Single Click: Displays Station Label | Double-Click: Launches Modal & Zoom -->
       <!-- ========================================================================= -->
 
-      <!-- Station 01 — Project LOA Universe (Left Wall Lighted Poster) -->
-      <div class="guide-tag purple pos-station-01" onclick="triggerZoomAndModal('modalLoaGame', 20, 16, 2.4)" role="button" aria-label="Open Station 01: Project LOA">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <!-- Station 01 — Project LOA Universe (Left Wall Poster) -->
+      <div id="tag-01" class="guide-tag purple pos-station-01" onclick="handleHotspot(event, '01')" ondblclick="launchStationModal(event, '01')" role="button" aria-label="Station 01: Project LOA">
+        <div class="tag-pin">01</div>
+        <div class="tag-label" onclick="launchStationModal(event, '01')">
           <span class="label-title">01: Project LOA <span class="label-badge">CYBER</span></span>
           <span class="label-sub">Metaverse Lore &amp; Universe</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 02 — Music Vault & Audio Chopper (Left Monitor Speaker/Desk) -->
-      <div class="guide-tag teal pos-station-02" onclick="triggerZoomAndModal('modalMusicVault', 12, -6, 2.3)" role="button" aria-label="Open Station 02: Music Vault">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-02" class="guide-tag teal pos-station-02" onclick="handleHotspot(event, '02')" ondblclick="launchStationModal(event, '02')" role="button" aria-label="Station 02: Music Vault">
+        <div class="tag-pin">02</div>
+        <div class="tag-label" onclick="launchStationModal(event, '02')">
           <span class="label-title">02: Music Vault <span class="label-badge">STEMS</span></span>
           <span class="label-sub">Acapella &amp; Chopper Engine</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 03 — 9LMNTS Studio Core Services (Center Wall Display) -->
-      <div class="guide-tag pos-station-03" onclick="triggerZoomAndModal('modalMainStream', 0, 8, 2.1)" role="button" aria-label="Open Station 03: Core Services">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-03" class="guide-tag pos-station-03" onclick="handleHotspot(event, '03')" ondblclick="launchStationModal(event, '03')" role="button" aria-label="Station 03: Core Services">
+        <div class="tag-pin">03</div>
+        <div class="tag-label" onclick="launchStationModal(event, '03')">
           <span class="label-title">03: Core Services <span class="label-badge">LIVE</span></span>
           <span class="label-sub">ArtistOS Telemetry &amp; Metrics</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 04 — AI Voice Operator (Right Monitor Speaker) -->
-      <div class="guide-tag teal pos-station-04" onclick="triggerZoomAndModal('modalAiVoice', -12, -4, 2.3)" role="button" aria-label="Open Station 04: AI Voice">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-04" class="guide-tag teal align-left pos-station-04" onclick="handleHotspot(event, '04')" ondblclick="launchStationModal(event, '04')" role="button" aria-label="Station 04: AI Voice">
+        <div class="tag-pin">04</div>
+        <div class="tag-label" onclick="launchStationModal(event, '04')">
           <span class="label-title">04: AI Operator <span class="label-badge">GEMINI</span></span>
           <span class="label-sub">Gemini Live Voice Engine</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 05 — Event OS & Video Ads (Right Upper Poster/Cityscape) -->
-      <div class="guide-tag pos-station-05" onclick="triggerZoomAndModal('modalStudioServices', -24, 12, 2.3)" role="button" aria-label="Open Station 05: Services & Ads">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-05" class="guide-tag align-left pos-station-05" onclick="handleHotspot(event, '05')" ondblclick="launchStationModal(event, '05')" role="button" aria-label="Station 05: Services & Ads">
+        <div class="tag-pin">05</div>
+        <div class="tag-label" onclick="launchStationModal(event, '05')">
           <span class="label-title">05: Services &amp; Ads <span class="label-badge">PRO</span></span>
           <span class="label-sub">OS Modules &amp; Video Ads</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 06 — The Helm / Darnley Sanon (Center Mixing Desk) -->
-      <div class="guide-tag green pos-station-06" onclick="triggerZoomAndModal('modalTheHelm', 0, -14, 2.3)" role="button" aria-label="Open Station 06: The Helm">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-06" class="guide-tag green pos-station-06" onclick="handleHotspot(event, '06')" ondblclick="launchStationModal(event, '06')" role="button" aria-label="Station 06: The Helm">
+        <div class="tag-pin">06</div>
+        <div class="tag-label" onclick="launchStationModal(event, '06')">
           <span class="label-title">06: The Helm <span class="label-badge">FOUNDER</span></span>
           <span class="label-sub">Darnley Sanon Dossier</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 07 — Sound Clash OS Arena (Right Jumbotron Screen) -->
-      <div class="guide-tag teal pos-station-07" onclick="triggerZoomAndModal('modalSoundClash', -22, -6, 2.4)" role="button" aria-label="Open Station 07: Sound Clash Arena">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-07" class="guide-tag teal align-left pos-station-07" onclick="handleHotspot(event, '07')" ondblclick="launchStationModal(event, '07')" role="button" aria-label="Station 07: Sound Clash Arena">
+        <div class="tag-pin">07</div>
+        <div class="tag-label" onclick="launchStationModal(event, '07')">
           <span class="label-title">07: Sound Clash OS <span class="label-badge">ARENA</span></span>
           <span class="label-sub">Live Battle Telemetry</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 08 — Live Events & AR Merch (Tour Calendar Desk Display) -->
-      <div class="guide-tag pos-station-08" onclick="triggerZoomAndModal('modalArMerch', -18, -12, 2.4)" role="button" aria-label="Open Station 08: AR Merch & Live Passes">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-08" class="guide-tag align-left pos-station-08" onclick="handleHotspot(event, '08')" ondblclick="launchStationModal(event, '08')" role="button" aria-label="Station 08: AR Merch & Live Passes">
+        <div class="tag-pin">08</div>
+        <div class="tag-label" onclick="launchStationModal(event, '08')">
           <span class="label-title">08: AR Merch &amp; Events <span class="label-badge">PASSES</span></span>
           <span class="label-sub">Holographic Wings &amp; Passes</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
       <!-- Station 09 — Artist OS Creator HQ (Left Desk Screen) -->
-      <div class="guide-tag teal pos-station-09" onclick="triggerZoomAndModal('modalArtistOS', 22, -6, 2.4)" role="button" aria-label="Open Station 09: Artist OS DAW">
-        <div class="tag-pin"></div>
-        <div class="tag-label">
+      <div id="tag-09" class="guide-tag teal pos-station-09" onclick="handleHotspot(event, '09')" ondblclick="launchStationModal(event, '09')" role="button" aria-label="Station 09: Artist OS DAW">
+        <div class="tag-pin">09</div>
+        <div class="tag-label" onclick="launchStationModal(event, '09')">
           <span class="label-title">09: Artist OS DAW <span class="label-badge">HQ</span></span>
           <span class="label-sub">Stems Mixing Console</span>
+          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
         </div>
       </div>
 
@@ -1819,8 +1890,81 @@
       }
     };
 
+    // Hotspot Stations Configuration Registry
+    const stations = {
+      '01': { modalId: 'modalLoaGame', panX: 20, panY: 16, zoom: 2.4 },
+      '02': { modalId: 'modalMusicVault', panX: 12, panY: -6, zoom: 2.3 },
+      '03': { modalId: 'modalMainStream', panX: 0, panY: 8, zoom: 2.1 },
+      '04': { modalId: 'modalAiVoice', panX: -12, panY: -4, zoom: 2.3 },
+      '05': { modalId: 'modalStudioServices', panX: -24, panY: 12, zoom: 2.3 },
+      '06': { modalId: 'modalTheHelm', panX: 0, panY: -14, zoom: 2.3 },
+      '07': { modalId: 'modalSoundClash', panX: -22, panY: -6, zoom: 2.4 },
+      '08': { modalId: 'modalArMerch', panX: -18, panY: -12, zoom: 2.4 },
+      '09': { modalId: 'modalArtistOS', panX: 22, panY: -6, zoom: 2.4 }
+    };
+
+    let hotspotTimer = null;
+    let activeStationId = null;
+
+    // Single Click: Show Tag/Label | Double Click: Launch Modal & Zoom
+    window.handleHotspot = function(e, stationId) {
+      if (e) e.stopPropagation();
+      const cfg = stations[stationId];
+      if (!cfg) return;
+
+      if (hotspotTimer) {
+        // DOUBLE CLICK DETECTED!
+        clearTimeout(hotspotTimer);
+        hotspotTimer = null;
+        launchStationModal(e, stationId);
+      } else {
+        // SINGLE CLICK: toggle label card visibility
+        hotspotTimer = setTimeout(() => {
+          hotspotTimer = null;
+          toggleStationTag(stationId);
+        }, 260);
+      }
+    };
+
+    window.toggleStationTag = function(stationId) {
+      const allTags = document.querySelectorAll('.guide-tag');
+      const target = document.getElementById(`tag-${stationId}`);
+      
+      if (activeStationId === stationId) {
+        // Toggle off if clicking the already open pin
+        deselectAllStations();
+        cyberAudio.playHoverTick();
+        return;
+      }
+
+      // Hide all other station tags
+      deselectAllStations();
+
+      if (target) {
+        activeStationId = stationId;
+        target.classList.add('active');
+        cyberAudio.playPinChirp();
+      }
+    };
+
+    // Immediately launch zoom & modal (from dblclick or clicking expanded label)
+    window.launchStationModal = function(e, stationId) {
+      if (e) e.stopPropagation();
+      const cfg = stations[stationId];
+      if (cfg) {
+        deselectAllStations();
+        triggerZoomAndModal(cfg.modalId, cfg.panX, cfg.panY, cfg.zoom);
+      }
+    };
+
+    window.deselectAllStations = function() {
+      activeStationId = null;
+      document.querySelectorAll('.guide-tag').forEach(t => t.classList.remove('active'));
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
       const canvas = document.getElementById('heroCanvas');
+      const stage = document.getElementById('heroStage');
       const backdrop = document.getElementById('modalBackdrop');
       let isZoomed = false;
 
@@ -1833,6 +1977,15 @@
       window.addEventListener('pointerdown', unlockAudio, { once: true });
       window.addEventListener('keydown', unlockAudio, { once: true });
 
+      // Deselect all active pins when clicking background canvas/stage
+      if (stage) {
+        stage.addEventListener('click', (e) => {
+          if (!e.target.closest('.guide-tag')) {
+            deselectAllStations();
+          }
+        });
+      }
+
       // Attach hover tick sound to all guide pins and interactive nav elements
       document.querySelectorAll('.guide-tag, .header-nav a, .header-nav button, .mobile-dock button, .mobile-dock a').forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -1843,6 +1996,7 @@
       // Spatial Zoom & Modal Trigger
       window.triggerZoomAndModal = function(modalId, panXPercent, panYPercent, zoomScale = 2.3) {
         isZoomed = true;
+        deselectAllStations();
         cyberAudio.playPinChirp();
 
         canvas.style.transform = `scale(${zoomScale}) translate(${panXPercent}%, ${panYPercent}%)`;
@@ -1874,6 +2028,7 @@
           cyberAudio.playResetWhoosh();
         }
         isZoomed = false;
+        deselectAllStations();
         canvas.style.transform = 'scale(1) translate(0, 0)';
         canvas.style.filter = 'none';
       };
@@ -1885,10 +2040,14 @@
         }
       });
 
-      // Escape key closes modals and resets view
+      // Escape key closes modals and resets view or hides labels
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          closeModal();
+          if (backdrop.classList.contains('active')) {
+            closeModal();
+          } else {
+            deselectAllStations();
+          }
         }
       });
 
