@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"/>
   <title>9LMNTS Studio — The Cyber Cypher 4K Interactive Studio</title>
   <meta name="description" content="Autonomous cyberpunk spatial studio workstation, ArtistOS DAW, Sound Clash OS arena, AR holographic merch, and commercial video ad production suite."/>
   <meta name="theme-color" content="#FF5500"/>
@@ -1158,9 +1158,9 @@
 
     /* Responsive */
     @media (max-width: 900px) {
+      .hud-corner { display: none; }
       .mobile-dock { display: flex; }
       .studio-header { padding: 0 16px; }
-      .btn-reset { display: none; }
       .tag-label { padding: 3px 6px; }
       .label-title { font-size: 0.64rem; }
       .label-sub { display: none; }
@@ -1669,8 +1669,8 @@
         </h3>
         <p>Get a customized production roadmap and quote for your next single, concert tour, or brand campaign.</p>
         <div class="lead-form-grid">
-          <input class="lead-input" type="text" name="name" placeholder="Your Name / Artist Alias" required/>
-          <input class="lead-input" type="email" name="email" placeholder="Email Address" required/>
+          <input class="lead-input" type="text" name="name" placeholder="Your Name / Artist Alias" autocomplete="name" required/>
+          <input class="lead-input" type="email" name="email" placeholder="Email Address" autocomplete="email" required/>
         </div>
         <div class="lead-form-grid">
           <select class="lead-input" name="package" style="background:#111319;" required>

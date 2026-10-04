@@ -1,0 +1,5 @@
+# 9LMNTS Studio Production Robots Directive
+User-agent: *
+Allow: /
+
+Sitemap: https://9lmntsstudio.com/sitemap.xml

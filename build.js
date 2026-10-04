@@ -25,7 +25,7 @@ if (fs.existsSync(dist)) {
 fs.mkdirSync(dist, { recursive: true });
 
 // Files to copy
-const filesToCopy = ['index.html', 'code.html', '_redirects', 'netlify.toml', 'package.json'];
+const filesToCopy = ['index.html', 'code.html', '_redirects', 'netlify.toml', 'package.json', 'robots.txt', 'sitemap.xml', 'llms.txt'];
 filesToCopy.forEach(f => {
   const src = path.join(root, f);
   if (fs.existsSync(src)) {

@@ -1,0 +1,19 @@
+# 9LMNTS Studio // Interactive Creative Operating System
+
+> 9LMNTS Studio is a next-generation creative agency and sovereign technology suite bridging interactive 3D spatial experiences, low-latency audio DAWs, and decentralized event infrastructure.
+
+## Platforms
+- [9LMNTS Studio Master Cockpit](https://9lmntsstudio.com)
+- [Artist OS Workstation](https://artist.9lmntsstudio.com)
+- [Sound Clash OS Arena](https://clash.9lmntsstudio.com)
+
+## Stations
+- Station 01: Project LOA Metaverse Universe
+- Station 02: Original Music Vault & Stem Chopper
+- Station 03: 9LMNTS Studio Core Services & Telemetry
+- Station 04: AI Voice Operator (Gemini Live API)
+- Station 05: Studio Services & Commercial Video Ads
+- Station 06: The Helm (Founder Dossier & Admin Gateway)
+- Station 07: Sound Clash OS Live Battle Arena
+- Station 08: Live Events & AR Merch Wearables
+- Station 09: ArtistOS Creator HQ DAW
