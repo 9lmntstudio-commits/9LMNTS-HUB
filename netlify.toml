@@ -6,6 +6,61 @@
   NODE_VERSION = "20"
 
 [[redirects]]
+  from = "/mobile"
+  to = "/mobile.html"
+  status = 200
+
+[[redirects]]
+  from = "/desktop"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 200
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/the-helm"
+  to = "/the-helm.html"
+  status = 200
+
+[[redirects]]
+  from = "/loa"
+  to = "/loa.html"
+  status = 200
+
+[[redirects]]
+  from = "/vault"
+  to = "/vault.html"
+  status = 200
+
+[[redirects]]
+  from = "/core"
+  to = "/core.html"
+  status = 200
+
+[[redirects]]
+  from = "/ai-voice"
+  to = "/ai-voice.html"
+  status = 200
+
+[[redirects]]
+  from = "/clash"
+  to = "/clash.html"
+  status = 200
+
+[[redirects]]
+  from = "/merch"
+  to = "/merch.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
