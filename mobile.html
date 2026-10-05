@@ -412,21 +412,32 @@
       margin-bottom: 24px;
     }
 
+    /* Bento Stations Section Wrapper (One Unified Background in the back) */
+    .bento-section-wrapper {
+      position: relative;
+      background-image: 
+        linear-gradient(180deg, rgba(4, 5, 8, 0.88) 0%, rgba(6, 8, 14, 0.65) 50%, rgba(4, 5, 8, 0.92) 100%),
+        url('assets/images/crowd_toronto_9lmnts.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      border-radius: 26px;
+      padding: 26px 16px;
+      border: 1px solid rgba(255, 69, 0, 0.35);
+      border-top: 2px solid #FF4500;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      margin-bottom: 36px;
+    }
+
     /* Bento Stations Grid */
     .bento-station-grid {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 36px;
     }
 
     .bento-card {
       background: rgba(14, 18, 27, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 100%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-position: center;
-      background-size: cover;
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid rgba(255, 69, 0, 0.35);
@@ -524,14 +535,26 @@
       font-weight: 700;
     }
 
+    /* Immersion Sprints Section Wrapper (One Unified Background in the back) */
+    .sprints-section-wrapper {
+      position: relative;
+      background-image: 
+        linear-gradient(180deg, rgba(4, 5, 8, 0.86) 0%, rgba(6, 8, 14, 0.60) 50%, rgba(4, 5, 8, 0.90) 100%),
+        url('assets/images/gate_os_stadium_future.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      border-radius: 26px;
+      padding: 26px 16px;
+      border: 1px solid rgba(255, 69, 0, 0.35);
+      border-top: 2px solid #FF4500;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      margin-bottom: 30px;
+    }
+
     /* Sprint Tiers Section */
     .sprint-tier-card {
       background: rgba(14, 18, 27, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 100%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-position: center;
-      background-size: cover;
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid rgba(255, 69, 0, 0.40);
@@ -539,7 +562,7 @@
       border-radius: 20px;
       padding: 22px;
       margin-bottom: 16px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 
     .tier-header {
@@ -670,9 +693,16 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(4, 5, 8, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background-color: rgba(3, 4, 6, 0.85);
+      background-image: 
+        linear-gradient(180deg, rgba(3, 4, 6, 0.72) 0%, rgba(3, 4, 6, 0.90) 100%),
+        url('assets/images/darnley_studio_helm_v2.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -680,7 +710,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s var(--ease-cinematic);
-      padding: 12px;
+      padding: 16px;
     }
 
     .modal-backdrop.active {
@@ -689,18 +719,15 @@
     }
 
     .modal-dialog {
-      background: rgba(9, 11, 16, 0.50);
+      background: rgba(10, 13, 20, 0.50);
       background-image: 
-        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 65%, rgba(4, 5, 8, 0.85) 100%),
-        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.35) 0%, rgba(255, 30, 0, 0.08) 45%, transparent 75%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-position: center top;
-      background-size: cover;
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
       border: 1px solid rgba(255, 69, 0, 0.40);
       border-top: 2px solid #FF4500;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.35);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 60px rgba(255, 69, 0, 0.25);
       border-radius: 20px;
       width: 100%;
       max-height: 88vh;
@@ -950,8 +977,9 @@
     <h2 class="section-title">9 Studio Stations</h2>
     <p class="section-desc">Tap any station to inspect technical specifications, stream engines, and live OS deployment pipelines.</p>
 
-    <!-- Bento Station Cards List -->
-    <div class="bento-station-grid">
+    <!-- Bento Station Cards List (One Unified Toronto Stadium Background in the back) -->
+    <div class="bento-section-wrapper">
+      <div class="bento-station-grid">
       <div class="bento-card purple" onclick="openModal('modalLoaGame')">
         <div class="bento-card-left">
           <div class="card-num">01</div>
@@ -1051,67 +1079,70 @@
         <div class="card-arrow">↗</div>
       </div>
     </div>
+    </div>
 
-    <!-- Agency Sprint Deployment Tiers -->
+    <!-- Agency Sprint Deployment Tiers (One Unified Gate OS Stadium Background in the back) -->
     <div class="section-eyebrow">// RAPID PRODUCTION</div>
     <h2 class="section-title">Immersion Sprints</h2>
     <p class="section-desc">Fixed-scope, turnkey rapid deployments designed for record labels, autonomous artists, and cyber-physical brands.</p>
 
-    <!-- Tier 1 -->
-    <div class="sprint-tier-card">
-      <div class="tier-header">
-        <div>
-          <span class="tier-badge">DAY SPRINT</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">24-Hour Deployment</h3>
+    <div class="sprints-section-wrapper">
+      <!-- Tier 1 -->
+      <div class="sprint-tier-card">
+        <div class="tier-header">
+          <div>
+            <span class="tier-badge">DAY SPRINT</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">24-Hour Deployment</h3>
+          </div>
+          <div class="tier-price">$1,500 <span>CAD</span></div>
         </div>
-        <div class="tier-price">$1,500 <span>CAD</span></div>
+        <p style="font-size: 0.78rem; color: #94a3b8;">High-speed turnarounds for key art, motion teasers, or sound identity packages.</p>
+        <ul class="tier-features">
+          <li>Turnkey 24-hour delivery window</li>
+          <li>1 Master 4K visual identity asset</li>
+          <li>Audio signature &amp; audio logo design</li>
+          <li>Direct engineering Slack dispatch</li>
+        </ul>
+        <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta">Reserve Day Sprint ($1,500)</a>
       </div>
-      <p style="font-size: 0.78rem; color: #94a3b8;">High-speed turnarounds for key art, motion teasers, or sound identity packages.</p>
-      <ul class="tier-features">
-        <li>Turnkey 24-hour delivery window</li>
-        <li>1 Master 4K visual identity asset</li>
-        <li>Audio signature &amp; audio logo design</li>
-        <li>Direct engineering Slack dispatch</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta">Reserve Day Sprint ($1,500)</a>
-    </div>
 
-    <!-- Tier 2 -->
-    <div class="sprint-tier-card" style="border-color: rgba(0, 212, 255, 0.45); border-top-color: #00D2FF;">
-      <div class="tier-header">
-        <div>
-          <span class="tier-badge" style="color: var(--cyber-teal); background: rgba(0, 212, 255, 0.12); border-color: rgba(0, 212, 255, 0.4);">WEEKEND SPRINT</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">48-Hour Prototype</h3>
+      <!-- Tier 2 -->
+      <div class="sprint-tier-card" style="border-color: rgba(0, 212, 255, 0.45); border-top-color: #00D2FF;">
+        <div class="tier-header">
+          <div>
+            <span class="tier-badge" style="color: var(--cyber-teal); background: rgba(0, 212, 255, 0.12); border-color: rgba(0, 212, 255, 0.4);">WEEKEND SPRINT</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">48-Hour Prototype</h3>
+          </div>
+          <div class="tier-price">$3,500 <span>CAD</span></div>
         </div>
-        <div class="tier-price">$3,500 <span>CAD</span></div>
+        <p style="font-size: 0.78rem; color: #94a3b8;">Functional WebGL/3D interactive product teaser or complete spatial web teaser.</p>
+        <ul class="tier-features">
+          <li>48-Hour weekend execution team</li>
+          <li>Interactive 3D / WebAR experience</li>
+          <li>Audio-reactive Web Audio integration</li>
+          <li>Complete source code &amp; Netlify hosting</li>
+        </ul>
+        <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);">Reserve Weekend Sprint ($3,500)</a>
       </div>
-      <p style="font-size: 0.78rem; color: #94a3b8;">Functional WebGL/3D interactive product teaser or complete spatial web teaser.</p>
-      <ul class="tier-features">
-        <li>48-Hour weekend execution team</li>
-        <li>Interactive 3D / WebAR experience</li>
-        <li>Audio-reactive Web Audio integration</li>
-        <li>Complete source code &amp; Netlify hosting</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);">Reserve Weekend Sprint ($3,500)</a>
-    </div>
 
-    <!-- Tier 3 -->
-    <div class="sprint-tier-card" style="border-color: rgba(176, 38, 255, 0.45); border-top-color: #B026FF;">
-      <div class="tier-header">
-        <div>
-          <span class="tier-badge" style="color: #d8b4fe; background: rgba(176, 38, 255, 0.12); border-color: rgba(176, 38, 255, 0.4);">WARP SPEED</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">7-Day Enterprise OS</h3>
+      <!-- Tier 3 -->
+      <div class="sprint-tier-card" style="border-color: rgba(176, 38, 255, 0.45); border-top-color: #B026FF;">
+        <div class="tier-header">
+          <div>
+            <span class="tier-badge" style="color: #d8b4fe; background: rgba(176, 38, 255, 0.12); border-color: rgba(176, 38, 255, 0.4);">WARP SPEED</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">7-Day Enterprise OS</h3>
+          </div>
+          <div class="tier-price">$7,500 <span>CAD</span></div>
         </div>
-        <div class="tier-price">$7,500 <span>CAD</span></div>
+        <p style="font-size: 0.78rem; color: #94a3b8;">Full bespoke custom operating system with CRM, live audio battle telemetry, or custom 3D studio world.</p>
+        <ul class="tier-features">
+          <li>Full 7-day dedicated engineering sprint</li>
+          <li>Custom domain &amp; autonomous cloud architecture</li>
+          <li>Custom Sound Clash or ArtistOS deployment</li>
+          <li>Direct architecture with Darnley Sanon</li>
+        </ul>
+        <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #B026FF 0%, #7A00CC 100%);">Deploy Warp Speed ($7,500)</a>
       </div>
-      <p style="font-size: 0.78rem; color: #94a3b8;">Full bespoke custom operating system with CRM, live audio battle telemetry, or custom 3D studio world.</p>
-      <ul class="tier-features">
-        <li>Full 7-day dedicated engineering sprint</li>
-        <li>Custom domain &amp; autonomous cloud architecture</li>
-        <li>Custom Sound Clash or ArtistOS deployment</li>
-        <li>Direct architecture with Darnley Sanon</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #B026FF 0%, #7A00CC 100%);">Deploy Warp Speed ($7,500)</a>
     </div>
   </section>
 

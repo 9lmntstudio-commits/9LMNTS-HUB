@@ -739,10 +739,16 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(4, 5, 8, 0.88); /* Deep cinematic dark backdrop */
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background-image: radial-gradient(circle at 50% 25%, rgba(255, 69, 0, 0.35) 0%, rgba(255, 30, 0, 0.12) 40%, transparent 72%);
+      background-color: rgba(3, 4, 6, 0.85);
+      background-image: 
+        linear-gradient(180deg, rgba(3, 4, 6, 0.72) 0%, rgba(3, 4, 6, 0.90) 100%),
+        url('assets/images/darnley_studio_helm_v2.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -759,19 +765,15 @@
     }
 
     .modal-dialog {
-      background: rgba(9, 11, 16, 0.50);
+      background: rgba(10, 13, 20, 0.50);
       background-image: 
-        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 65%, rgba(4, 5, 8, 0.85) 100%),
-        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.35) 0%, rgba(255, 30, 0, 0.08) 45%, transparent 75%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-position: center top;
-      background-size: cover;
-      background-repeat: no-repeat;
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.28) 0%, rgba(255, 30, 0, 0.08) 45%, transparent 75%);
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
       border: 1px solid rgba(255, 69, 0, 0.40);
       border-top: 2px solid #FF4500;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
       border-radius: 26px;
       width: 100%;
       max-width: 760px;
@@ -789,19 +791,15 @@
     }
 
     .modal-dialog.teal-theme {
-      background: rgba(9, 11, 16, 0.50);
+      background: rgba(10, 13, 20, 0.50);
       background-image: 
-        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 65%, rgba(4, 5, 8, 0.85) 100%),
-        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.35) 0%, rgba(0, 160, 220, 0.08) 45%, transparent 75%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-position: center top;
-      background-size: cover;
-      background-repeat: no-repeat;
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.28) 0%, rgba(0, 160, 220, 0.08) 45%, transparent 75%);
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
       border: 1px solid rgba(0, 212, 255, 0.40);
       border-top: 2px solid #00D2FF;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
     .modal-dialog.teal-theme .modal-badge {
       background: rgba(0, 240, 255, 0.12);
@@ -831,19 +829,15 @@
     }
 
     .modal-dialog.purple-theme {
-      background: rgba(9, 11, 16, 0.50);
+      background: rgba(10, 13, 20, 0.50);
       background-image: 
-        linear-gradient(180deg, rgba(8, 10, 16, 0.50) 0%, rgba(6, 7, 11, 0.65) 65%, rgba(4, 5, 8, 0.85) 100%),
-        radial-gradient(circle at 50% -10%, rgba(176, 38, 255, 0.35) 0%, rgba(140, 20, 220, 0.08) 45%, transparent 75%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-position: center top;
-      background-size: cover;
-      background-repeat: no-repeat;
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(176, 38, 255, 0.28) 0%, rgba(140, 20, 220, 0.08) 45%, transparent 75%);
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
       border: 1px solid rgba(176, 38, 255, 0.40);
       border-top: 2px solid #B026FF;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(176, 38, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(176, 38, 255, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
     .modal-dialog.purple-theme .modal-badge {
       background: rgba(176, 38, 255, 0.12);
