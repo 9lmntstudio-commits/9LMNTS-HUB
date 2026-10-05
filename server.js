@@ -118,10 +118,11 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, '127.0.0.1', () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`\n======================================================`);
   console.log(`⚡ 9LMNTS Studio Cyber Cypher Local Server Online`);
-  console.log(`📡 URL: http://localhost:${PORT}`);
-  console.log(`📁 Root: ${PUBLIC_DIR}`);
+  console.log(`📡 Local:   http://localhost:${PORT}`);
+  console.log(`📡 Loopback: http://127.0.0.1:${PORT}`);
+  console.log(`📁 Root:     ${PUBLIC_DIR}`);
   console.log(`======================================================\n`);
 });
