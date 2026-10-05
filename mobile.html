@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var forcedMode = params.get('mode');
+        if (forcedMode === 'mobile') {
+          localStorage.setItem('9lmnts_preferred_mode', 'mobile');
+          return;
+        }
+        if (forcedMode === 'desktop') {
+          localStorage.setItem('9lmnts_preferred_mode', 'desktop');
+          window.location.replace('index.html?mode=desktop');
+          return;
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>9LMNTS Studio — Mobile Command Cockpit</title>
   <meta name="description" content="Mobile Cockpit for 9LMNTS Studio — 3-part spatial cypher studio, audio-reactive platforms, and immersion sprints." />
 
@@ -136,6 +153,33 @@
       align-items: center;
       gap: 5px;
       text-decoration: none;
+    }
+
+    .btn-desktop-toggle {
+      background: rgba(14, 18, 27, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--cyber-teal);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-desktop-toggle:hover, .btn-desktop-toggle:active {
+      background: rgba(0, 240, 255, 0.18);
+      border-color: #00E5FF;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
     }
 
     .btn-menu {
@@ -889,6 +933,10 @@
       <div class="status-badge"><span class="status-dot"></span> LIVE</div>
     </a>
     <div class="header-actions">
+      <a href="index.html?mode=desktop" class="btn-desktop-toggle" onclick="localStorage.setItem('9lmnts_preferred_mode', 'desktop')" title="Switch to 4K Desktop Cockpit">
+        <span>🖥️</span>
+        <span>4K</span>
+      </a>
       <a href="pricing.html" class="btn-quick-sprint">⚡ SPRINT</a>
       <button class="btn-menu" onclick="toggleNavDrawer()" aria-label="Open Menu">
         <span class="bar"></span>
@@ -1179,7 +1227,7 @@
     <a href="loa.html" class="drawer-link">Project LOA <span>🎮</span></a>
     <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="drawer-link">Artist OS <span>↗</span></a>
     <a href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="drawer-link">Sound Clash OS <span>↗</span></a>
-    <a href="index.html" class="drawer-link" style="border-color: var(--neon-orange); color: var(--neon-orange);">Desktop 4K Cockpit <span>🖥️</span></a>
+    <a href="index.html?mode=desktop" class="drawer-link" onclick="localStorage.setItem('9lmnts_preferred_mode', 'desktop')" style="border-color: var(--neon-orange); color: var(--neon-orange);">Desktop 4K Cockpit <span>🖥️</span></a>
   </aside>
 
   <!-- Modal Backdrop & Dialogs -->
