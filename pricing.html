@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <title>Official Pricing Matrix &amp; PayPal Payment Plans — 9LMNTS Studio</title>
-  <meta name="description" content="Official pricing for 9LMNTS Studio agency sprints, monthly retainers, turnkey OS platforms, and live venue grids. Powered by PayPal E-Commerce Services with 0% interest Pay in 4."/>
+  <title>Official Transparent Pricing Matrix &amp; PayPal Payment Plans — 9LMNTS Studio</title>
+  <meta name="description" content="Transparent, unified pricing for 9LMNTS Studio services: Studio Audio &amp; Stem Mastering, Creative Tech Web Sprints, EventOS Turnkey Arenas, and AI Super Agents. Powered by PayPal E-Commerce Services with 0% interest Pay in 4."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
@@ -14,12 +14,12 @@
   <style>
     :root {
       --bg: #050505;
-      --card-bg: rgba(14, 17, 24, 0.50);
+      --card-bg: rgba(14, 18, 27, 0.50);
       --card-border: rgba(255, 85, 0, 0.25);
       --primary: #FF5500;
       --primary-glow: rgba(255, 85, 0, 0.35);
       --cyan: #00D4FF;
-      --green: #10B981;
+      --cyan-glow: rgba(0, 212, 255, 0.35);
       --font-display: 'Orbitron', sans-serif;
       --font-body: 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -28,9 +28,9 @@
     body {
       background-color: #06070A;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.25) 0%, rgba(255, 30, 0, 0.06) 35%, transparent 60%),
+        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.22) 0%, rgba(255, 30, 0, 0.05) 35%, transparent 60%),
         radial-gradient(circle at 85% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
-        linear-gradient(180deg, rgba(6, 7, 10, 0.75) 0%, rgba(6, 7, 10, 0.96) 100%),
+        linear-gradient(180deg, rgba(6, 7, 10, 0.78) 0%, rgba(6, 7, 10, 0.98) 100%),
         url('assets/images/dark_cyber_portal.jpg');
       background-attachment: fixed;
       background-position: center top;
@@ -44,19 +44,19 @@
     }
 
     .pricing-container {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 32px 24px 80px 24px;
+      padding: 36px clamp(24px, 5.5vw, 64px) 80px clamp(24px, 5.5vw, 64px);
     }
 
-    /* Trust / PayPal Infrastructure Banner (50% Transparency Bento) */
+    /* Trust / PayPal Infrastructure Banner (50% Glassmorphic Bento) */
     .paypal-trust-banner {
-      background: linear-gradient(135deg, rgba(0, 112, 186, 0.20) 0%, rgba(12, 15, 23, 0.50) 100%);
+      background: linear-gradient(135deg, rgba(0, 112, 186, 0.22) 0%, rgba(12, 15, 23, 0.50) 100%);
       border: 1px solid rgba(0, 112, 186, 0.45);
-      border-top: 2px solid rgba(0, 212, 255, 0.7);
-      border-radius: 22px;
-      padding: 24px 30px;
-      margin-bottom: 36px;
+      border-top: 2px solid rgba(0, 212, 255, 0.75);
+      border-radius: 20px;
+      padding: 20px 28px;
+      margin-bottom: 28px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -80,13 +80,66 @@
       border: 1px solid rgba(0, 112, 186, 0.35);
       padding: 5px 12px;
       border-radius: 9999px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
 
-    /* Section Headers */
+    /* Filter Controls Nav */
+    .filter-tabs-wrapper {
+      position: sticky;
+      top: 68px;
+      z-index: 100;
+      background: rgba(8, 10, 16, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 12px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filter-tabs-wrapper::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      color: #94a3b8;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s var(--ease-cinematic);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.10);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, rgba(255, 85, 0, 0.9) 0%, rgba(255, 45, 0, 0.9) 100%);
+      color: #ffffff;
+      border-color: #FF5500;
+      box-shadow: 0 4px 18px rgba(255, 85, 0, 0.45);
+    }
+
+    /* Section Category Headers */
+    .cat-section {
+      margin-bottom: 64px;
+      transition: opacity 0.3s ease;
+    }
     .cat-header {
-      text-align: center;
-      margin: 60px 0 32px 0;
+      margin-bottom: 24px;
     }
     .cat-eyebrow {
       font-family: var(--font-mono);
@@ -94,74 +147,102 @@
       font-weight: 800;
       color: var(--primary);
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.16em;
       margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .cat-title {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
       font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      font-style: italic;
       letter-spacing: -0.02em;
+      margin-bottom: 6px;
     }
     .cat-subtitle {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      max-width: 680px;
-      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 0.94rem;
+      max-width: 820px;
+      line-height: 1.6;
     }
 
-    /* Grids */
+    /* Card Grids */
     .tier-grid-3 {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 22px;
     }
-    @media(min-width: 840px) {
+    @media(min-width: 880px) {
       .tier-grid-3 { grid-template-columns: repeat(3, 1fr); }
     }
 
     .tier-grid-4 {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 18px;
     }
-    @media(min-width: 640px) {
+    @media(min-width: 600px) {
       .tier-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
-    @media(min-width: 1024px) {
+    @media(min-width: 1040px) {
       .tier-grid-4 { grid-template-columns: repeat(4, 1fr); }
     }
 
-    /* Tier Cards (50% Transparency Bento) */
+    /* 50% Glassmorphic Bento Cards (Exact Modal / Core Style) */
     .pricing-card {
-      background: rgba(12, 15, 23, 0.50);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.12) 0%, transparent 60%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.22) 0%, rgba(255, 30, 0, 0.06) 45%, transparent 75%);
+      border: 1px solid rgba(255, 69, 0, 0.35);
       border-top: 2px solid #FF4500;
-      border-radius: 22px;
-      padding: 34px 26px;
+      border-radius: 24px;
+      padding: 30px 24px;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
       transition: all 0.3s var(--ease-cinematic);
     }
     .pricing-card:hover {
       border-color: rgba(255, 69, 0, 0.65);
-      transform: translateY(-5px);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 45px 150px rgba(0, 0, 0, 0.98), 0 0 85px rgba(255, 69, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
     .pricing-card.featured {
       border: 1px solid rgba(255, 69, 0, 0.65);
       border-top: 2px solid var(--primary);
-      background-color: rgba(20, 16, 26, 0.50);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 69, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      background-color: rgba(18, 14, 24, 0.52);
+      background-image: 
+        linear-gradient(180deg, rgba(22, 16, 30, 0.50) 0%, rgba(12, 10, 20, 0.65) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.30) 0%, transparent 70%);
+      box-shadow: 0 45px 150px rgba(0, 0, 0, 0.98), 0 0 85px rgba(255, 69, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+    .pricing-card.teal-card {
+      border-color: rgba(0, 212, 255, 0.35);
+      border-top-color: var(--cyan);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.25) 0%, transparent 65%);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    .pricing-card.teal-card:hover {
+      border-color: rgba(0, 212, 255, 0.65);
+      box-shadow: 0 45px 150px rgba(0, 0, 0, 0.98), 0 0 85px rgba(0, 212, 255, 0.40);
+    }
+    .pricing-card.green-card {
+      border-color: rgba(0, 212, 255, 0.35);
+      border-top-color: var(--cyan);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.25) 0%, transparent 65%);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     .card-badge {
@@ -174,7 +255,7 @@
       font-family: var(--font-display);
       font-size: 0.65rem;
       font-weight: 900;
-      padding: 5px 16px;
+      padding: 4px 14px;
       border-radius: 9999px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -182,24 +263,37 @@
       box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
     }
 
+    .tier-station-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
     .tier-title {
       font-family: var(--font-display);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      line-height: 1.25;
     }
 
     .price-amount {
       font-family: var(--font-mono);
-      font-size: 2.3rem;
+      font-size: 2.1rem;
       font-weight: 900;
       color: #ffffff;
-      margin: 12px 0 6px 0;
+      margin: 10px 0 4px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
     }
     .price-currency {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.80rem;
+      color: rgba(255, 255, 255, 0.55);
       font-weight: 600;
     }
 
@@ -211,41 +305,42 @@
       border: 1px solid rgba(0, 212, 255, 0.35);
       color: var(--cyan);
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       font-weight: 800;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 9999px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      max-width: 100%;
     }
 
     .deliverables-list {
       list-style: none;
       padding: 0;
-      margin: 20px 0 28px 0;
+      margin: 16px 0 24px 0;
       flex: 1;
     }
     .deliverables-list li {
-      font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.8);
-      padding: 8px 0;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 7px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
+      gap: 9px;
+      line-height: 1.45;
     }
     .deliverables-list li i {
       color: var(--primary);
       margin-top: 3px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
     }
 
     .btn-select-tier {
       width: 100%;
-      padding: 13px 20px;
+      padding: 12px 18px;
       border-radius: 12px;
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -255,13 +350,13 @@
       border: 1px solid rgba(255, 120, 50, 0.6);
       background: linear-gradient(135deg, #FF5500 0%, #FF3300 100%);
       color: #ffffff;
-      box-shadow: 0 4px 25px rgba(255, 85, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 20px rgba(255, 85, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.3);
       transition: all 0.25s var(--ease-cinematic);
       display: inline-block;
     }
     .btn-select-tier:hover {
       background: linear-gradient(135deg, #FF6611 0%, #FF4400 100%);
-      box-shadow: 0 6px 30px rgba(255, 85, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      box-shadow: 0 6px 28px rgba(255, 85, 0, 0.60), inset 0 1px 0 rgba(255, 255, 255, 0.4);
       transform: translateY(-2px);
     }
     .btn-select-tier.secondary {
@@ -276,6 +371,107 @@
       border-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .btn-select-tier.teal-btn {
+      background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
+      border-color: #00D4FF;
+      color: #050505;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.35);
+    }
+
+    /* Interactive Scope Calculator Bento Box */
+    .estimator-box {
+      background: rgba(14, 18, 27, 0.55);
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.16) 0%, transparent 65%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-top: 2px solid var(--primary);
+      border-radius: 22px;
+      padding: 34px 28px;
+      margin-bottom: 50px;
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+    }
+    .estimator-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    @media(min-width: 900px) {
+      .estimator-grid { grid-template-columns: 1.3fr 0.9fr; }
+    }
+
+    .calc-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .calc-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 85, 0, 0.35);
+    }
+    .calc-item.checked {
+      background: rgba(255, 85, 0, 0.08);
+      border-color: rgba(255, 85, 0, 0.55);
+    }
+    .calc-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .calc-chk {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .calc-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .calc-sub {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .calc-rate {
+      font-family: var(--font-mono);
+      font-size: 0.90rem;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .calc-summary-panel {
+      background: rgba(8, 10, 16, 0.70);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .calc-summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .calc-total-amount {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 8px 0;
     }
 
     /* Modal for PayPal Order */
@@ -295,25 +491,25 @@
       background: rgba(14, 18, 27, 0.50);
       background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.18) 0%, transparent 65%);
       border: 1px solid rgba(255, 255, 255, 0.10);
-      border-top: 1px solid rgba(255, 85, 0, 0.60);
+      border-top: 2px solid rgba(255, 85, 0, 0.60);
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), 0 0 45px rgba(255, 85, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
       border-radius: 22px;
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
       width: 100%;
       max-width: 520px;
-      padding: 36px 32px;
+      padding: 34px 28px;
       position: relative;
     }
     .modal-close-btn {
       position: absolute;
-      top: 22px;
-      right: 22px;
+      top: 20px;
+      right: 20px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       color: #94a3b8;
       font-size: 1.2rem;
       display: flex;
@@ -330,17 +526,7 @@
     }
 
     @media (max-width: 900px) {
-      .pricing-container {
-        padding: 24px 18px 60px 18px;
-      }
-    }
-    @media (max-width: 600px) {
-      .pricing-container {
-        padding: 18px 14px 40px 14px;
-      }
-      .order-box {
-        padding: 28px 20px;
-      }
+      .pricing-container { padding: 18px 14px 60px 14px; }
     }
   </style>
 </head>
@@ -356,10 +542,11 @@
       <span class="hud-dot" style="background:var(--primary); box-shadow:0 0 10px var(--primary);"></span>
       <span>STATION 05</span>
       <span class="hud-sep">/</span>
-      <span class="hud-title">OFFICIAL PRICING &amp; PAYMENT PLANS</span>
+      <span class="hud-title">OFFICIAL PRICING MATRIX</span>
     </div>
     <div class="hud-actions">
       <a href="services.html" class="hud-cta-btn" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2);">EXPLORE SERVICES ↗</a>
+      <a href="#estimator" class="hud-cta-btn">SCOPE CALCULATOR 🧮</a>
     </div>
   </header>
 
@@ -367,13 +554,13 @@
 
     <!-- Hero Header with Cyber Portal Backdrop -->
     <div class="page-hero" style="text-align:center;">
-      <span class="station-tag orange">9LMNTS STUDIO • FOUNDED BY DARNLEY SANON</span>
+      <span class="station-tag orange">9LMNTS STUDIO • ALL-IN-ONE SERVICES &amp; PRICING</span>
       <h1>
         Transparent Pricing.<br/>
-        <span style="color:var(--primary);">PayPal Pay Later Built-In.</span>
+        <span style="color:var(--primary);">No Jargon. Built-in PayPal Pay in 4.</span>
       </h1>
       <p class="lead" style="margin-left:auto; margin-right:auto;">
-        From 2-week creative AI agency sprints to sovereign 25-platform competition operating systems, choose full upfront settlement or 4 interest-free bi-weekly installments.
+        From acoustic chamber stem mastering and 14-day creative agency sprints to turnkey Sound Clash arenas and sovereign AI Super Agents — select full settlement or 4 interest-free bi-weekly installments in Canadian Dollars (CAD).
       </p>
     </div>
 
@@ -381,28 +568,27 @@
     <div class="paypal-trust-banner">
       <div>
         <div style="font-family:var(--font-mono); font-size:0.75rem; color:#60a5fa; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">
-          <i class="fa-brands fa-paypal"></i> PAYMENT INFRASTRUCTURE
+          <i class="fa-brands fa-paypal"></i> CERTIFIED CHECKOUT INFRASTRUCTURE
         </div>
         <div style="font-family:'Plus Jakarta Sans', sans-serif; font-size:1.15rem; font-weight:800; margin-top:2px;">
-          PayPal E-Commerce Services • Certified Settlement
+          PayPal E-Commerce Complete Payments • 0% Interest Pay in 4
         </div>
       </div>
       <div class="paypal-pills">
-        <span class="paypal-pill">PayPal Complete Payments</span>
-        <span class="paypal-pill" style="color:#38bdf8; border-color:#38bdf8;">Pay in 4 (0% Interest)</span>
-        <span class="paypal-pill">PayPal Subscriptions</span>
-        <span class="paypal-pill">Smart Payment Buttons</span>
-        <span class="paypal-pill" style="color:#34d399;">CAD Currency Settlement</span>
+        <span class="paypal-pill">Instant Order Settlement</span>
+        <span class="paypal-pill" style="color:#38bdf8; border-color:#38bdf8;">Pay in 4 (4 Bi-Weekly Payments)</span>
+        <span class="paypal-pill">Monthly Subscriptions</span>
+        <span class="paypal-pill" style="color:#34d399;">100% Transparent CAD</span>
       </div>
     </div>
 
-    <!-- Universal 4-Item Stat Ribbon (from YouTube Automation luxury reference) -->
+    <!-- Universal 4-Item Stat Ribbon -->
     <div class="stats-ribbon">
       <div class="stat-ribbon-item">
         <div class="stat-ribbon-icon"><i class="fa-solid fa-play"></i></div>
         <div class="stat-ribbon-content">
           <div class="stat-ribbon-num">450M+</div>
-          <div class="stat-ribbon-label">Total Stream &amp; View Impressions</div>
+          <div class="stat-ribbon-label">Stream &amp; View Impressions</div>
         </div>
       </div>
       <div class="stat-ribbon-item">
@@ -416,7 +602,7 @@
         <div class="stat-ribbon-icon"><i class="fa-solid fa-chart-line"></i></div>
         <div class="stat-ribbon-content">
           <div class="stat-ribbon-num">25+</div>
-          <div class="stat-ribbon-label">Turnkey Arena &amp; Creator Platforms</div>
+          <div class="stat-ribbon-label">Turnkey Platforms &amp; Arenas</div>
         </div>
       </div>
       <div class="stat-ribbon-item">
@@ -428,330 +614,518 @@
       </div>
     </div>
 
-    <!-- 1. Creative Agency & AI Automation Sprints -->
-    <div class="cat-header" id="agency-sprints">
-      <div class="cat-eyebrow">HIGH-VELOCITY SPRINT DELIVERABLES</div>
-      <h2 class="cat-title">Creative Agency &amp; AI Automation Sprints</h2>
-      <p class="cat-subtitle">Bespoke design systems, social lead funnels, and autonomous agent architectures shipped in 14-day production windows.</p>
+    <!-- Filter Tabs Nav -->
+    <div class="filter-tabs-wrapper" id="pricing-tabs">
+      <button class="filter-btn active" onclick="filterCategory('all')">
+        <i class="fa-solid fa-layer-group"></i> All Services
+      </button>
+      <button class="filter-btn" onclick="filterCategory('audio')">
+        <i class="fa-solid fa-compact-disc"></i> Studio Audio &amp; Sound
+      </button>
+      <button class="filter-btn" onclick="filterCategory('agency')">
+        <i class="fa-solid fa-bolt"></i> Creative Tech Sprints
+      </button>
+      <button class="filter-btn" onclick="filterCategory('arenas')">
+        <i class="fa-solid fa-trophy"></i> Event OS &amp; Arenas
+      </button>
+      <button class="filter-btn" onclick="filterCategory('agent')">
+        <i class="fa-solid fa-brain"></i> AI Super Agent
+      </button>
+      <button class="filter-btn" onclick="filterCategory('venue')">
+        <i class="fa-solid fa-ticket"></i> In-Venue Passes (B2C)
+      </button>
     </div>
 
-    <div class="tier-grid-3">
-      <!-- Starter Sprint -->
-      <div class="pricing-card">
+    <!-- Interactive Scope & Pricing Estimator (Interactive Calculator) -->
+    <section class="estimator-box" id="estimator">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
         <div>
-          <div class="tier-title">Starter Sprint</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">DESIGN SYSTEM &amp; DEPLOYMENT</div>
-          <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
-          <div class="pay-in-4-badge">
-            <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
-          </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Figma Design System &amp; Brand Tokens</li>
-            <li><i class="fa-solid fa-check"></i> Mobile-First Glassmorphic Dark UI</li>
-            <li><i class="fa-solid fa-check"></i> Netlify / Vercel Instant Deployment</li>
-            <li><i class="fa-solid fa-check"></i> ManyChat Social Lead Capture Funnel</li>
-          </ul>
+          <span class="cat-eyebrow"><i class="fa-solid fa-calculator"></i> REAL-TIME SCOPE ESTIMATOR</span>
+          <h2 style="font-family:var(--font-display); font-size:1.45rem; font-weight:900; margin-top:2px;">
+            Build &amp; Calculate Your Custom Package
+          </h2>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-top:2px;">
+            Select the services you need to instantly preview total investment, Pay in 4 installment calculations, and launch dates.
+          </p>
         </div>
-        <button class="btn-select-tier secondary" onclick="openOrderModal('Starter Sprint', 1500, '4x $375.00 CAD', true)">
-          Select Starter Sprint &rarr;
+        <button class="btn-select-tier secondary" style="width:auto; padding:8px 16px; font-size:0.75rem;" onclick="resetEstimator()">
+          Reset Selection
         </button>
       </div>
 
-      <!-- Pro Custom Sprint (Featured) -->
-      <div class="pricing-card featured">
-        <div class="card-badge">⚡ MOST POPULAR SPRINT</div>
+      <div class="estimator-grid">
+        <!-- Checklist Columns -->
         <div>
-          <div class="tier-title" style="color:var(--primary);">Pro Custom Sprint</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">FULL WEB APP OR CREATOR OS</div>
-          <div class="price-amount">$2,500 – $3,500 <span class="price-currency">CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
-            <i class="fa-solid fa-clock-rotate-left"></i> 4x $625.00 CAD via Pay in 4 (0% Interest)
+          <!-- Item 1: Stem Mastering -->
+          <div class="calc-item" onclick="toggleCalcItem('mastering', 250, 'Stem Mastering (1 Track)', this)">
+            <div class="calc-left">
+              <input type="checkbox" class="calc-chk" id="chk-mastering" onchange="event.stopPropagation()"/>
+              <div>
+                <div class="calc-title">Station 02: Stem Mastering &amp; Lossless Export</div>
+                <div class="calc-sub">24-Bit 96kHz + Acapella, Drum, Bass, Synth Stems</div>
+              </div>
+            </div>
+            <div class="calc-rate">$250 CAD</div>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Full Web App or Vertical Creator OS</li>
-            <li><i class="fa-solid fa-check"></i> ManyChat DM Funnel + n8n Orchestration</li>
-            <li><i class="fa-solid fa-check"></i> Supabase Database &amp; Lead Sync</li>
-            <li><i class="fa-solid fa-check"></i> WebAR Interactive Asset Integration</li>
-            <li><i class="fa-solid fa-check"></i> 14-Day Priority Technical Support</li>
-          </ul>
+
+          <!-- Item 2: Vocal Production -->
+          <div class="calc-item" onclick="toggleCalcItem('vocal', 750, 'Full Track Vocal & Mix Production', this)">
+            <div class="calc-left">
+              <input type="checkbox" class="calc-chk" id="chk-vocal" onchange="event.stopPropagation()"/>
+              <div>
+                <div class="calc-title">Station 02: Full Track Vocal Tracking &amp; Stereo Mix</div>
+                <div class="calc-sub">Analog tracking, pitch alignment, stereo saturation &amp; master</div>
+              </div>
+            </div>
+            <div class="calc-rate">$750 CAD</div>
+          </div>
+
+          <!-- Item 3: Starter Sprint -->
+          <div class="calc-item checked" onclick="toggleCalcItem('starter', 1500, 'Starter Creative Sprint', this)">
+            <div class="calc-left">
+              <input type="checkbox" class="calc-chk" id="chk-starter" checked onchange="event.stopPropagation()"/>
+              <div>
+                <div class="calc-title">Station 05: Starter Creative Sprint (14-Day Velocity)</div>
+                <div class="calc-sub">Figma design system, mobile-first glassmorphic dark UI &amp; Netlify deploy</div>
+              </div>
+            </div>
+            <div class="calc-rate">$1,500 CAD</div>
+          </div>
+
+          <!-- Item 4: Pro Custom Sprint -->
+          <div class="calc-item" onclick="toggleCalcItem('pro_sprint', 2500, 'Pro Custom Sprint (Web App / OS)', this)">
+            <div class="calc-left">
+              <input type="checkbox" class="calc-chk" id="chk-pro_sprint" onchange="event.stopPropagation()"/>
+              <div>
+                <div class="calc-title">Station 05: Pro Custom Sprint (Interactive App)</div>
+                <div class="calc-sub">Full web app, Supabase database, ManyChat &amp; WebAR 3D assets</div>
+              </div>
+            </div>
+            <div class="calc-rate">$2,500 CAD</div>
+          </div>
+
+          <!-- Item 5: Sound Clash Arena -->
+          <div class="calc-item" onclick="toggleCalcItem('clash_arena', 1500, 'Turnkey EventOS Arena Deployment', this)">
+            <div class="calc-left">
+              <input type="checkbox" class="calc-chk" id="chk-clash_arena" onchange="event.stopPropagation()"/>
+              <div>
+                <div class="calc-title">Station 07: Sound Clash Turnkey Arena Deployment</div>
+                <div class="calc-sub">8-contender live bracket, jumbotron telemetry, QR crowd voting &amp; 95/5 split</div>
+              </div>
+            </div>
+            <div class="calc-rate">$1,500 CAD</div>
+          </div>
+
+          <!-- Item 6: Super Agent Companion -->
+          <div class="calc-item" onclick="toggleCalcItem('super_agent_solo', 99, 'Super Agent Solo Companion (Monthly)', this, true)">
+            <div class="calc-left">
+              <input type="checkbox" class="calc-chk" id="chk-super_agent_solo" onchange="event.stopPropagation()"/>
+              <div>
+                <div class="calc-title">Element 09: The Super Agent Solo Companion</div>
+                <div class="calc-sub">Accountability Mirror, 120 study engine, WhatsApp/Telegram HUD</div>
+              </div>
+            </div>
+            <div class="calc-rate" style="color:var(--cyan);">$99 / mo CAD</div>
+          </div>
         </div>
-        <button class="btn-select-tier" onclick="openOrderModal('Pro Custom Sprint', 2500, '4x $625.00 CAD', true)">
-          Select Pro Custom Sprint &rarr;
-        </button>
-      </div>
 
-      <!-- Enterprise Scale Build -->
-      <div class="pricing-card">
-        <div>
-          <div class="tier-title">Enterprise Scale Build</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">BESPOKE ARCHITECTURE &amp; AGENTS</div>
-          <div class="price-amount">$5,000 <span class="price-currency">CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#cbd5e1;">
-            <i class="fa-solid fa-shield-halved"></i> PayPal Monthly Installment Financing
+        <!-- Summary Panel -->
+        <div class="calc-summary-panel">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#94a3b8; letter-spacing:0.1em; text-transform:uppercase;">
+              ESTIMATED PROJECT INVESTMENT
+            </div>
+            <div class="calc-total-amount" id="calcTotal">$1,500 CAD</div>
+            <div class="pay-in-4-badge" id="calcPayIn4">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
+            </div>
+
+            <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.08); padding-top:14px;">
+              <div class="calc-summary-row">
+                <span>Selected Items:</span>
+                <span id="calcItemCount" style="color:#fff; font-weight:700;">1 Deliverable</span>
+              </div>
+              <div class="calc-summary-row">
+                <span>Monthly Recurring:</span>
+                <span id="calcMonthlyTotal" style="color:var(--cyan); font-weight:700;">$0 / mo CAD</span>
+              </div>
+              <div class="calc-summary-row">
+                <span>Production Window:</span>
+                <span style="color:#10B981; font-weight:700;">14-Day Delivery</span>
+              </div>
+            </div>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Bespoke Multi-Tenant OS Engine</li>
-            <li><i class="fa-solid fa-check"></i> Domain-Specific Autonomous AI Agents</li>
-            <li><i class="fa-solid fa-check"></i> Complete 3D WebAR &amp; Brand Identity</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated Production Architect &amp; SLA</li>
-          </ul>
+
+          <div style="margin-top:24px;">
+            <button class="btn-select-tier" style="padding:15px;" onclick="bookCalculatedScope()">
+              <i class="fa-brands fa-paypal"></i> Commission Selected Scope &rarr;
+            </button>
+            <div style="font-size:0.70rem; color:rgba(255,255,255,0.45); text-align:center; margin-top:8px;">
+              Direct PayPal invoice dispatched with 0% interest Pay in 4 authorization.
+            </div>
+          </div>
         </div>
-        <button class="btn-select-tier secondary" onclick="openOrderModal('Enterprise Scale Build', 5000, 'Monthly Financing Eligible', false)">
-          Book Enterprise Build &rarr;
-        </button>
       </div>
-    </div>
+    </section>
 
-    <!-- 2. Personal Mastery & The Super Agent (Element 09) -->
-    <div class="cat-header" id="super-agent">
-      <div class="cat-eyebrow" style="color:var(--cyan);">ELEMENT 09 // KNOWLEDGE OF SELF</div>
-      <h2 class="cat-title">The Super Agent: Personal Life, Study &amp; Creative OS</h2>
-      <p class="cat-subtitle">Built for personal mastery, mental sovereignty, habits, study acceleration, and uncompromised accountability. Powered by PayPal E-Commerce Services.</p>
-    </div>
+    <!-- ========================================================
+         CATEGORY 1: STUDIO AUDIO & MUSIC PRODUCTION (STATION 02)
+         ======================================================== -->
+    <section class="cat-section" id="cat-audio">
+      <div class="cat-header">
+        <div class="cat-eyebrow"><i class="fa-solid fa-compact-disc"></i> STATION 02 // ACOUSTIC CHAMBER &amp; MUSIC VAULT</div>
+        <h2 class="cat-title">Studio Audio &amp; Sound Engineering</h2>
+        <p class="cat-subtitle">
+          Engineered inside our acoustic chamber and mastered for streaming, vinyl, and stadium line-arrays. Lossless 24-bit 96kHz deliverable vaults with stems.
+        </p>
+      </div>
 
-    <div class="tier-grid-3" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 20px;">
-      <!-- Super Agent Solo Companion ($99/mo) -->
-      <div class="pricing-card" style="border-color: rgba(0, 212, 255, 0.4); background: rgba(0, 212, 255, 0.04);">
-        <div>
-          <div class="tier-title" style="color:var(--cyan);">The Super Agent Companion</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">SOLO CREATORS, STUDENTS &amp; ATHLETES</div>
-          <div class="price-amount" style="color:var(--cyan);">$99 <span class="price-currency">/ month CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(0,212,255,0.15); border-color:var(--cyan); color:var(--cyan);">
-            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription (Cancel Anytime)
+      <div class="tier-grid-3">
+        <!-- Stem Mastering -->
+        <div class="pricing-card teal-card">
+          <div>
+            <div class="tier-station-tag">SINGLE MASTER // 24-HR TURNAROUND</div>
+            <div class="tier-title">Stem Mastering &amp; Lossless Export</div>
+            <div class="price-amount">$250 <span class="price-currency">CAD / Track</span></div>
+            <div class="pay-in-4-badge">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $62.50 CAD via Pay in 4
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 24-bit 96kHz Apple Digital Masters (ADM) &amp; WAV</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 4 Isolated Stems: Vocals, Drums, Bass, Instruments</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Analog Saturation &amp; Dynamic Range Optimization</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 2 Revisions included with fast 24-hr turnaround</li>
+            </ul>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>The Accountability Mirror (Word to Bond)</strong>: daily goal tracking</li>
-            <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>Personal Routine Architecture</strong>: morning habits, workouts &amp; sleep</li>
-            <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>120 Study &amp; Skill Engine</strong>: curriculum breakdown &amp; active recall</li>
-            <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>Idea-to-Production Velocity</strong>: turn voice memos into deliverables</li>
-            <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Direct access via private WhatsApp, Telegram &amp; Web HUD</li>
-          </ul>
+          <button class="btn-select-tier teal-btn" onclick="openOrderModal('Stem Mastering & Lossless Export', 250, '4x $62.50 CAD', true)">
+            Order Mastering ($250 CAD) &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier" style="background:var(--cyan); border-color:var(--cyan); color:#050505;" onclick="openOrderModal('The Super Agent Companion', 99, 'Monthly Subscription ($99 CAD/mo)', false)">
-          Subscribe via PayPal ($99/mo) &rarr;
-        </button>
-      </div>
 
-      <!-- Bespoke Sovereign Super Agent Build ($1,500) -->
-      <div class="pricing-card featured" style="border-color: var(--primary);">
-        <div class="card-badge" style="background:var(--primary); color:#000;">BESPOKE SOVEREIGN DEPLOYMENT</div>
-        <div>
-          <div class="tier-title" style="color:var(--primary);">Bespoke Sovereign Super Agent</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">FOUNDERS, EXECUTIVES &amp; PRO ATHLETES</div>
-          <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
-            <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
+        <!-- Full Vocal & Mix Production -->
+        <div class="pricing-card featured">
+          <div class="card-badge">HOT PRODUCTION</div>
+          <div>
+            <div class="tier-station-tag" style="color:var(--primary);">TRACK PRODUCTION // 3-5 DAYS</div>
+            <div class="tier-title" style="color:var(--primary);">Full Vocal &amp; Mix Production</div>
+            <div class="price-amount">$750 <span class="price-currency">CAD / Track</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $187.50 CAD via Pay in 4 (0% Interest)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Analog Vocal Tracking &amp; Pitch Alignment (Melodyne)</li>
+              <li><i class="fa-solid fa-check"></i> Stereo Bus Compression &amp; Space Modulation (Reverbs/Delays)</li>
+              <li><i class="fa-solid fa-check"></i> High-Energy Beat Balancing &amp; Low-End Sub Punch</li>
+              <li><i class="fa-solid fa-check"></i> Clean, Explicit, Instrumental &amp; TV Performance Mixes</li>
+              <li><i class="fa-solid fa-check"></i> Mastered for Spotify, Apple Music &amp; Radio</li>
+            </ul>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Private-Tenant Dedicated Vector Knowledge Base (Supabase pgvector)</li>
-            <li><i class="fa-solid fa-check"></i> Custom Autonomous Multi-Agent Workflows (n8n Engine)</li>
-            <li><i class="fa-solid fa-check"></i> Bespoke Prompt Bibles &amp; Voice Synthesis Integration</li>
-            <li><i class="fa-solid fa-check"></i> 100% Sovereign Data Ownership &amp; Custom Web/Mobile Interface</li>
-            <li><i class="fa-solid fa-check"></i> 30-Day Engineering Handoff &amp; Priority SLA</li>
-          </ul>
+          <button class="btn-select-tier" onclick="openOrderModal('Full Track Vocal & Mix Production', 750, '4x $187.50 CAD', true)">
+            Book Track Mix ($750 CAD) &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier" onclick="openOrderModal('Bespoke Sovereign Super Agent', 1500, '4x $375.00 CAD via Pay in 4', true)">
-          Commission Super Agent ($1,500 CAD) &rarr;
-        </button>
-      </div>
-    </div>
 
-    <!-- 3. Monthly Retainers & On-Site Operations -->
-    <div class="cat-header" id="monthly-retainers">
-      <div class="cat-eyebrow">CONTINUOUS EVOLUTION &amp; EVENT SLAS</div>
-      <h2 class="cat-title">Monthly Retainers &amp; On-Site Operations</h2>
-      <p class="cat-subtitle">Billed recurringly via PayPal Subscriptions. Dedicated engineering, venue jumbotron sync, and emergency technical operators.</p>
-    </div>
-
-    <div class="tier-grid-3">
-      <!-- Pro Retainer -->
-      <div class="pricing-card">
-        <div>
-          <div class="tier-title">Pro Retainer</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">MAINTENANCE &amp; REMOTE SUPPORT</div>
-          <div class="price-amount">$1,500 <span class="price-currency">/ month CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
-            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription
+        <!-- ArtistOS Master EP Package -->
+        <div class="pricing-card">
+          <div>
+            <div class="tier-station-tag">FULL EP PRODUCTION // STATION 09</div>
+            <div class="tier-title">ArtistOS Master EP Package</div>
+            <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
+            <div class="pay-in-4-badge">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> 3-Track Master EP with Vocal Tracking &amp; Stem Mastering</li>
+              <li><i class="fa-solid fa-check"></i> Dolby Atmos Spatial Audio 7.1.4 Stems</li>
+              <li><i class="fa-solid fa-check"></i> ArtistOS In-Browser Music Vault &amp; Direct Fan Stem Chopper</li>
+              <li><i class="fa-solid fa-check"></i> Release Strategy Roadmap with Darnley Sanon</li>
+              <li><i class="fa-solid fa-check"></i> Pre-cleared ISRC &amp; Metadata Embeddings</li>
+            </ul>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Monthly UI/UX Enhancements &amp; Design</li>
-            <li><i class="fa-solid fa-check"></i> Platform &amp; Asset Maintenance</li>
-            <li><i class="fa-solid fa-check"></i> Remote Live-Event Technical Support (1 event/mo)</li>
-          </ul>
+          <button class="btn-select-tier secondary" onclick="openOrderModal('ArtistOS Master EP Package', 1500, '4x $375.00 CAD', true)">
+            Order EP Master ($1,500 CAD) &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier secondary" onclick="openOrderModal('Pro Retainer', 1500, 'Monthly Subscription', false)">
-          Subscribe to Pro &rarr;
-        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CATEGORY 2: CREATIVE TECH & AI SPRINTS (STATION 05)
+         ======================================================== -->
+    <section class="cat-section" id="cat-agency">
+      <div class="cat-header">
+        <div class="cat-eyebrow"><i class="fa-solid fa-bolt"></i> STATION 05 // HIGH-VELOCITY PRODUCTION SPRINTS</div>
+        <h2 class="cat-title">Creative Tech &amp; Web App Sprints</h2>
+        <p class="cat-subtitle">
+          Rapid 14-day production windows. We engineer bespoke Figma design systems, social lead funnels, and sovereign web app portals with 0% interest PayPal financing.
+        </p>
       </div>
 
-      <!-- Premier Operations Retainer (Featured) -->
-      <div class="pricing-card featured">
-        <div class="card-badge">VENUE PARTNER FAVORITE</div>
-        <div>
-          <div class="tier-title" style="color:var(--primary);">Premier Operations</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">ON-SITE ARENA OPERATOR (2 EVENTS/MO)</div>
-          <div class="price-amount">$2,500 – $3,500 <span class="price-currency">/ month CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
-            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription
+      <div class="tier-grid-3">
+        <!-- Starter Sprint -->
+        <div class="pricing-card">
+          <div>
+            <div class="tier-station-tag">DESIGN SYSTEM &amp; DEPLOYMENT</div>
+            <div class="tier-title">Starter Sprint</div>
+            <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
+            <div class="pay-in-4-badge">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Figma Design System &amp; Brand Tokens</li>
+              <li><i class="fa-solid fa-check"></i> Mobile-First Glassmorphic Dark UI</li>
+              <li><i class="fa-solid fa-check"></i> Netlify / Vercel Instant Cloud Deployment</li>
+              <li><i class="fa-solid fa-check"></i> ManyChat Social Lead Capture Funnel</li>
+              <li><i class="fa-solid fa-check"></i> 14-Day Delivery Window Guarantee</li>
+            </ul>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Bi-Weekly Feature Sprints</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated On-Site Venue Operator (2 events/mo)</li>
-            <li><i class="fa-solid fa-check"></i> Live Jumbotron Sync &amp; Arena Telemetry</li>
-            <li><i class="fa-solid fa-check"></i> Priority Emergency Technical SLA</li>
-          </ul>
+          <button class="btn-select-tier secondary" onclick="openOrderModal('Starter Sprint', 1500, '4x $375.00 CAD', true)">
+            Select Starter Sprint &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier" onclick="openOrderModal('Premier Operations Retainer', 2500, 'Monthly Subscription', false)">
-          Subscribe to Premier &rarr;
-        </button>
-      </div>
 
-      <!-- Enterprise Custom Retainer -->
-      <div class="pricing-card">
-        <div>
-          <div class="tier-title">Enterprise Custom</div>
-          <div style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:var(--font-mono);">ALL CLIENT EVENTS • 24/7 DEDICATED SLA</div>
-          <div class="price-amount">$5,000 <span class="price-currency">/ month CAD</span></div>
-          <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
-            <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription
+        <!-- Pro Custom Sprint (Featured) -->
+        <div class="pricing-card featured">
+          <div class="card-badge">⚡ MOST POPULAR SPRINT</div>
+          <div>
+            <div class="tier-station-tag" style="color:var(--primary);">FULL WEB APP OR CREATOR OS</div>
+            <div class="tier-title" style="color:var(--primary);">Pro Custom Sprint</div>
+            <div class="price-amount">$2,500 – $3,500 <span class="price-currency">CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $625.00 CAD via Pay in 4 (0% Interest)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Full Interactive Web App or Creator OS</li>
+              <li><i class="fa-solid fa-check"></i> ManyChat DM Funnel + n8n Cloud Automation</li>
+              <li><i class="fa-solid fa-check"></i> Supabase Database &amp; Realtime Lead Sync</li>
+              <li><i class="fa-solid fa-check"></i> WebAR Interactive 3D Asset Integration</li>
+              <li><i class="fa-solid fa-check"></i> 14-Day Priority Technical Support Post-Launch</li>
+            </ul>
           </div>
-          <ul class="deliverables-list">
-            <li><i class="fa-solid fa-check"></i> Full Bespoke Studio Engineering</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated On-Site Operator for All Client Events</li>
-            <li><i class="fa-solid fa-check"></i> White-Label Architecture &amp; Scaling</li>
-            <li><i class="fa-solid fa-check"></i> 24/7 Dedicated Priority Technical SLA</li>
-          </ul>
+          <button class="btn-select-tier" onclick="openOrderModal('Pro Custom Sprint', 2500, '4x $625.00 CAD', true)">
+            Select Pro Custom Sprint &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier secondary" onclick="openOrderModal('Enterprise Custom Retainer', 5000, 'Monthly Subscription', false)">
-          Subscribe to Enterprise &rarr;
-        </button>
-      </div>
-    </div>
 
-    <!-- 3. 9LMNTS OS Series -->
-    <div class="cat-header" id="os-series">
-      <div class="cat-eyebrow">25 COMPETITION OPERATING SYSTEMS</div>
-      <h2 class="cat-title">9LMNTS OS Series Platform Licensing</h2>
-      <p class="cat-subtitle">From Sound Clash OS to bars, runway, and corporate tournaments. Flexible revenue splits or full enterprise buyouts.</p>
-    </div>
-
-    <div class="tier-grid-4">
-      <!-- Free Performance Tier -->
-      <div class="pricing-card">
-        <div>
-          <div class="tier-title" style="font-size:1.15rem;">Free Performance</div>
-          <div class="price-amount" style="font-size:1.8rem;">$0 <span class="price-currency">Upfront</span></div>
-          <div style="font-family:var(--font-mono); font-size:0.8rem; color:#10B981; font-weight:800; margin-bottom:14px;">
-            80/20 Revenue Split
+        <!-- Enterprise Scale Build -->
+        <div class="pricing-card">
+          <div>
+            <div class="tier-station-tag">BESPOKE ARCHITECTURE &amp; AGENTS</div>
+            <div class="tier-title">Enterprise Scale Build</div>
+            <div class="price-amount">$5,000 <span class="price-currency">CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#cbd5e1;">
+              <i class="fa-solid fa-shield-halved"></i> PayPal Monthly Installment Financing
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Bespoke Multi-Tenant OS Engine Architecture</li>
+              <li><i class="fa-solid fa-check"></i> Domain-Specific Autonomous AI Agents (n8n &amp; pgvector)</li>
+              <li><i class="fa-solid fa-check"></i> Complete 3D WebAR &amp; Brand Identity Assets</li>
+              <li><i class="fa-solid fa-check"></i> Dedicated Production Architect &amp; Emergency SLA</li>
+              <li><i class="fa-solid fa-check"></i> Full Source Code &amp; IP Assignment</li>
+            </ul>
           </div>
-          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">80% Creator / 20% Studio. Zero financial risk. Payouts settled via PayPal E-Commerce Direct Split.</p>
+          <button class="btn-select-tier secondary" onclick="openOrderModal('Enterprise Scale Build', 5000, 'Monthly Financing Eligible', false)">
+            Book Enterprise Build &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier secondary" style="margin-top:20px;" onclick="openOrderModal('Free Performance OS', 0, '80/20 Revenue Split', false)">
-          Deploy Free Tier &rarr;
-        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CATEGORY 3: LIVE EVENT OS & ARENA LICENSING (STATION 07)
+         ======================================================== -->
+    <section class="cat-section" id="cat-arenas">
+      <div class="cat-header">
+        <div class="cat-eyebrow"><i class="fa-solid fa-trophy"></i> STATION 07 // SOUND CLASH OS &amp; TOURNAMENTS</div>
+        <h2 class="cat-title">Live Event OS &amp; Turnkey Arena Licensing</h2>
+        <p class="cat-subtitle">
+          Turnkey live DJ battles, producer showdowns, and sports tournaments. Instant mobile QR ballots, decibel crowd meters, and real-time jumbotron sync.
+        </p>
       </div>
 
-      <!-- Pro OS Setup -->
-      <div class="pricing-card">
-        <div>
-          <div class="tier-title" style="font-size:1.15rem;">Pro OS Setup</div>
-          <div class="price-amount" style="font-size:1.8rem;">$500 <span class="price-currency">CAD</span></div>
-          <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--cyan); font-weight:800; margin-bottom:6px;">
-            90/10 Revenue Split
+      <div class="tier-grid-3">
+        <!-- EventOS Starter -->
+        <div class="pricing-card">
+          <div>
+            <div class="tier-station-tag">TOURNAMENT LAUNCHPAD</div>
+            <div class="tier-title">EventOS Starter</div>
+            <div class="price-amount">$500 <span class="price-currency">Setup CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(16,185,129,0.12); border-color:#10B981; color:#10B981;">
+              <i class="fa-solid fa-percent"></i> 90/10 Revenue Split
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Dedicated Custom Arena Subdomain (e.g. clash.yourbrand.com)</li>
+              <li><i class="fa-solid fa-check"></i> 8-Contender Live Bracket Tournament Engine</li>
+              <li><i class="fa-solid fa-check"></i> QR Mobile Crowd Voter Ballot (&lt;0.3s validation)</li>
+              <li><i class="fa-solid fa-check"></i> Automated Contender Round Timers</li>
+              <li><i class="fa-solid fa-check"></i> PayPal Direct Settlement Payouts</li>
+            </ul>
           </div>
-          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-bottom:14px;">+ $250/mo Maintenance</div>
-          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">Dedicated custom branded arena domain, custom contender bracket, and QR mobile voting.</p>
+          <button class="btn-select-tier secondary" onclick="openOrderModal('EventOS Starter', 500, '90/10 Revenue Split', false)">
+            Deploy EventOS Starter ($500) &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier secondary" style="margin-top:20px;" onclick="openOrderModal('Pro OS Setup', 500, '90/10 Split + $250/mo', false)">
-          Deploy Pro OS &rarr;
-        </button>
-      </div>
 
-      <!-- Elite OS Setup -->
-      <div class="pricing-card featured">
-        <div class="card-badge">HOT PLATFORM</div>
-        <div>
-          <div class="tier-title" style="font-size:1.15rem; color:var(--primary);">Elite OS Setup</div>
-          <div class="price-amount" style="font-size:1.8rem; color:var(--primary);">$1,500 <span class="price-currency">CAD</span></div>
-          <div class="pay-in-4-badge" style="font-size:0.65rem; padding:3px 8px; margin-bottom:6px;">
-            4x $375.00 CAD Pay in 4
+        <!-- EventOS Turnkey Arena (Featured) -->
+        <div class="pricing-card featured">
+          <div class="card-badge">HOT ARENA</div>
+          <div>
+            <div class="tier-station-tag" style="color:var(--primary);">STADIUM &amp; FESTIVAL GRADE</div>
+            <div class="tier-title" style="color:var(--primary);">EventOS Turnkey Arena</div>
+            <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD (95/5 Split)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Real-Time Jumbotron Sync &amp; Arena Telemetry</li>
+              <li><i class="fa-solid fa-check"></i> Crowd Decibel Meter &amp; Hype Surge Pot Escrow</li>
+              <li><i class="fa-solid fa-check"></i> Anti-Ghost Protocol: Cryptographic WAV Hash Verification</li>
+              <li><i class="fa-solid fa-check"></i> You keep 95% of ticket sales and vote surge pots</li>
+              <li><i class="fa-solid fa-check"></i> Arena Technician Pre-Event Calibration Checklist</li>
+            </ul>
           </div>
-          <div style="font-family:var(--font-mono); font-size:0.8rem; color:#10B981; font-weight:800; margin-bottom:6px;">
-            95/5 Revenue Split
-          </div>
-          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-bottom:14px;">+ $500/mo Maintenance</div>
-          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">You keep 95% of ticket sales and vote surge pots. High-throughput venue deployment.</p>
+          <button class="btn-select-tier" onclick="openOrderModal('EventOS Turnkey Arena', 1500, '4x $375.00 CAD via Pay in 4', true)">
+            Deploy Turnkey Arena ($1,500) &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier" style="margin-top:20px;" onclick="openOrderModal('Elite OS Setup', 1500, '4x $375.00 CAD', true)">
-          Deploy Elite OS &rarr;
-        </button>
-      </div>
 
-      <!-- Enterprise Custom OS -->
-      <div class="pricing-card">
-        <div>
-          <div class="tier-title" style="font-size:1.15rem;">Enterprise OS</div>
-          <div class="price-amount" style="font-size:1.8rem;">$5,000 <span class="price-currency">CAD</span></div>
-          <div style="font-family:var(--font-mono); font-size:0.8rem; color:#10B981; font-weight:800; margin-bottom:6px;">
-            100/0 Revenue Split
+        <!-- Dedicated Venue Operator Retainer -->
+        <div class="pricing-card teal-card">
+          <div>
+            <div class="tier-station-tag" style="color:var(--cyan);">ON-SITE ARENA OPERATOR // MONTHLY</div>
+            <div class="tier-title">Premier Venue Operations</div>
+            <div class="price-amount" style="color:var(--cyan);">$2,500 <span class="price-currency">/ month CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(0,212,255,0.12); border-color:#00D4FF; color:#00D4FF;">
+              <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription (Cancel Anytime)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Dedicated On-Site Venue Operator for 2 Live Events / Mo</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Bi-Weekly Platform Feature &amp; Branding Updates</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Real-Time Hardware Jumbotron &amp; Stage AV Supervision</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Priority 1-Hour Emergency Technical SLA</li>
+            </ul>
           </div>
-          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-bottom:14px;">+ $500/mo Maintenance</div>
-          <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.5;">Full IP buyout and zero platform fees. 100% of event revenue stays in your organization.</p>
+          <button class="btn-select-tier secondary" style="border-color:rgba(0,212,255,0.4);" onclick="openOrderModal('Premier Venue Operations', 2500, 'Monthly Retainer ($2,500 CAD/mo)', false)">
+            Subscribe to Operations ($2,500/mo) &rarr;
+          </button>
         </div>
-        <button class="btn-select-tier secondary" style="margin-top:20px;" onclick="openOrderModal('Enterprise Custom OS', 5000, '100% Retained Revenue', false)">
-          Deploy Enterprise OS &rarr;
-        </button>
       </div>
-    </div>
+    </section>
 
-    <!-- 4. Universal 4-Box In-Venue Monetization Grid -->
-    <div class="cat-header" id="venue-grid">
-      <div class="cat-eyebrow">LIVE EVENT REVENUE PROTOCOL</div>
-      <h2 class="cat-title">Universal 4-Box In-Venue Monetization Grid</h2>
-      <p class="cat-subtitle">Standardized consumer purchase points configured across all 25 competition operating systems.</p>
-    </div>
-
-    <div class="tier-grid-4">
-      <!-- Box 01 -->
-      <div class="pricing-card" style="padding:24px 20px;">
-        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary); font-weight:800;">BOX 01</span>
-        <h3 style="font-size:1rem; font-weight:800; margin:6px 0;">GA Cover &amp; Ballot</h3>
-        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$20 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
-        <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:8px 0 12px 0;">4x $5.00 CAD Pay in 4</div>
-        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">General admission venue entry + digital crowd voter ballot credential.</p>
-        <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('GA Cover & Ballot', 20, '4x $5.00 CAD', true)">Select Pass</button>
+    <!-- ========================================================
+         CATEGORY 4: AI AUTONOMOUS AGENTS (ELEMENT 09)
+         ======================================================== -->
+    <section class="cat-section" id="cat-agent">
+      <div class="cat-header">
+        <div class="cat-eyebrow" style="color:var(--cyan);"><i class="fa-solid fa-brain"></i> ELEMENT 09 // KNOWLEDGE OF SELF</div>
+        <h2 class="cat-title">The Super Agent: Personal Life, Study &amp; Creative OS</h2>
+        <p class="cat-subtitle">
+          Built for personal mastery, mental sovereignty, habit routines, accelerated study, and uncompromised accountability. Built on private vector storage and autonomous workflows.
+        </p>
       </div>
 
-      <!-- Box 02 -->
-      <div class="pricing-card" style="padding:24px 20px;">
-        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); font-weight:800;">BOX 02</span>
-        <h3 style="font-size:1rem; font-weight:800; margin:6px 0;">Micro-Tip &amp; Drink</h3>
-        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$10 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
-        <div style="font-family:var(--font-mono); font-size:0.70rem; color:rgba(255,255,255,0.5); margin:8px 0 12px 0;">Direct Contender Tip</div>
-        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">Direct contender cash tip jar + 1 feature drink token at the venue bar.</p>
-        <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('Micro-Tip & Drink Credit', 10, 'One-time Payment', false)">Select Tip</button>
+      <div class="tier-grid-3" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <!-- Super Agent Solo Companion ($99/mo) -->
+        <div class="pricing-card teal-card" style="border-color: rgba(0, 212, 255, 0.4); background: rgba(0, 212, 255, 0.04);">
+          <div>
+            <div class="tier-station-tag" style="color:var(--cyan);">SOLO CREATORS, STUDENTS &amp; ATHLETES</div>
+            <div class="tier-title" style="color:var(--cyan);">The Super Agent Companion</div>
+            <div class="price-amount" style="color:var(--cyan);">$99 <span class="price-currency">/ month CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(0,212,255,0.15); border-color:var(--cyan); color:var(--cyan);">
+              <i class="fa-solid fa-repeat"></i> Recurring PayPal Subscription (Cancel Anytime)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>The Accountability Mirror (Word to Bond)</strong>: daily goal tracking</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>Personal Routine Architecture</strong>: morning habits, workouts &amp; sleep</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>120 Study &amp; Skill Engine</strong>: curriculum breakdown &amp; active recall</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> <strong>Idea-to-Production Velocity</strong>: turn voice memos into deliverables</li>
+              <li><i class="fa-solid fa-check" style="color:var(--cyan);"></i> Direct access via private WhatsApp, Telegram &amp; Web HUD</li>
+            </ul>
+          </div>
+          <button class="btn-select-tier teal-btn" onclick="openOrderModal('The Super Agent Companion', 99, 'Monthly Subscription ($99 CAD/mo)', false)">
+            Subscribe via PayPal ($99/mo) &rarr;
+          </button>
+        </div>
+
+        <!-- Bespoke Sovereign Super Agent Build ($1,500) -->
+        <div class="pricing-card featured" style="border-color: var(--primary);">
+          <div class="card-badge" style="background:var(--primary); color:#000;">BESPOKE SOVEREIGN DEPLOYMENT</div>
+          <div>
+            <div class="tier-station-tag" style="color:var(--primary);">FOUNDERS, EXECUTIVES &amp; PRO TEAMS</div>
+            <div class="tier-title" style="color:var(--primary);">Bespoke Sovereign Super Agent</div>
+            <div class="price-amount">$1,500 <span class="price-currency">CAD</span></div>
+            <div class="pay-in-4-badge" style="background:rgba(255,85,0,0.15); border-color:var(--primary); color:var(--primary);">
+              <i class="fa-solid fa-clock-rotate-left"></i> 4x $375.00 CAD via Pay in 4 (0% Interest)
+            </div>
+            <ul class="deliverables-list">
+              <li><i class="fa-solid fa-check"></i> Private-Tenant Vector Knowledge Base (Supabase pgvector)</li>
+              <li><i class="fa-solid fa-check"></i> Custom Autonomous Multi-Agent Workflows (n8n Cloud Engine)</li>
+              <li><i class="fa-solid fa-check"></i> Bespoke Prompt Bibles &amp; Voice Synthesis Integration</li>
+              <li><i class="fa-solid fa-check"></i> 100% Sovereign Data Ownership &amp; Custom Web HUD</li>
+              <li><i class="fa-solid fa-check"></i> 30-Day Engineering Handoff &amp; Priority SLA</li>
+            </ul>
+          </div>
+          <button class="btn-select-tier" onclick="openOrderModal('Bespoke Sovereign Super Agent', 1500, '4x $375.00 CAD via Pay in 4', true)">
+            Commission Super Agent ($1,500 CAD) &rarr;
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CATEGORY 5: IN-VENUE PASSES & TICKETING (B2C)
+         ======================================================== -->
+    <section class="cat-section" id="cat-venue">
+      <div class="cat-header">
+        <div class="cat-eyebrow"><i class="fa-solid fa-ticket"></i> LIVE VENUE REVENUE PROTOCOL // B2C ATTENDEE TIERS</div>
+        <h2 class="cat-title">In-Venue Event Passes, Tips &amp; VIP Tables</h2>
+        <p class="cat-subtitle">
+          Standardized consumer purchase points configured across all live arenas and sound clash events. Attendees can pay at the door or pre-purchase via mobile.
+        </p>
       </div>
 
-      <!-- Box 03 -->
-      <div class="pricing-card" style="padding:24px 20px;">
-        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--green); font-weight:800;">BOX 03</span>
-        <h3 style="font-size:1rem; font-weight:800; margin:6px 0;">Power Hype Pack</h3>
-        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$50 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
-        <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:8px 0 12px 0;">4x $12.50 CAD Pay in 4</div>
-        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">25x crowd voting boost + live jumbotron screen name flash shoutout.</p>
-        <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('Power Hype Pack', 50, '4x $12.50 CAD', true)">Select Hype</button>
-      </div>
+      <div class="tier-grid-4">
+        <!-- Box 01 -->
+        <div class="pricing-card" style="padding:22px 18px;">
+          <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary); font-weight:800;">PASS 01</span>
+          <h3 style="font-size:1rem; font-weight:800; margin:4px 0;">GA Cover &amp; Ballot</h3>
+          <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$20 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+          <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:6px 0 10px 0;">4x $5.00 CAD Pay in 4</div>
+          <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.4;">General admission venue entry + digital crowd voter ballot credential.</p>
+          <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:14px;" onclick="openOrderModal('GA Cover & Ballot', 20, '4x $5.00 CAD', true)">Select Pass</button>
+        </div>
 
-      <!-- Box 04 -->
-      <div class="pricing-card featured" style="padding:24px 20px;">
-        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary); font-weight:800;">BOX 04</span>
-        <h3 style="font-size:1rem; font-weight:800; margin:6px 0; color:var(--primary);">VIP Hospitality Table</h3>
-        <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:var(--primary);">$150 – $250 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
-        <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:8px 0 12px 0;">4x $37.50 CAD Pay in 4</div>
-        <p style="font-size:0.78rem; color:rgba(255,255,255,0.6);">Reserved VIP banquette table, dedicated server, and bottle service credit.</p>
-        <button class="btn-select-tier" style="padding:8px; font-size:0.75rem; margin-top:16px;" onclick="openOrderModal('VIP Hospitality Table', 150, '4x $37.50 CAD', true)">Reserve VIP Table</button>
+        <!-- Box 02 -->
+        <div class="pricing-card" style="padding:22px 18px;">
+          <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); font-weight:800;">PASS 02</span>
+          <h3 style="font-size:1rem; font-weight:800; margin:4px 0;">Micro-Tip &amp; Drink</h3>
+          <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$10 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+          <div style="font-family:var(--font-mono); font-size:0.68rem; color:rgba(255,255,255,0.5); margin:6px 0 10px 0;">Direct Contender Tip</div>
+          <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.4;">Direct contender cash tip jar + 1 feature drink token at the venue bar.</p>
+          <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:14px;" onclick="openOrderModal('Micro-Tip & Drink Credit', 10, 'One-time Payment', false)">Select Tip</button>
+        </div>
+
+        <!-- Box 03 -->
+        <div class="pricing-card" style="padding:22px 18px;">
+          <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--cyan); font-weight:800;">PASS 03</span>
+          <h3 style="font-size:1rem; font-weight:800; margin:4px 0;">Power Hype Pack</h3>
+          <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900;">$50 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+          <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:6px 0 10px 0;">4x $12.50 CAD Pay in 4</div>
+          <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.4;">25x crowd voting boost + live jumbotron screen name flash shoutout.</p>
+          <button class="btn-select-tier secondary" style="padding:8px; font-size:0.75rem; margin-top:14px;" onclick="openOrderModal('Power Hype Pack', 50, '4x $12.50 CAD', true)">Select Hype</button>
+        </div>
+
+        <!-- Box 04 -->
+        <div class="pricing-card featured" style="padding:22px 18px;">
+          <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary); font-weight:800;">PASS 04</span>
+          <h3 style="font-size:1rem; font-weight:800; margin:4px 0; color:var(--primary);">VIP Hospitality Table</h3>
+          <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:var(--primary);">$150 <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">CAD</span></div>
+          <div class="pay-in-4-badge" style="font-size:0.65rem; padding:2px 6px; margin:6px 0 10px 0;">4x $37.50 CAD Pay in 4</div>
+          <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.4;">Reserved VIP banquette table, dedicated server &amp; bottle service credit.</p>
+          <button class="btn-select-tier" style="padding:8px; font-size:0.75rem; margin-top:14px;" onclick="openOrderModal('VIP Hospitality Table', 150, '4x $37.50 CAD', true)">Reserve VIP</button>
+        </div>
       </div>
-    </div>
+    </section>
 
   </div>
 
@@ -760,10 +1134,10 @@
     <div class="order-box">
       <button class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
       <div style="margin-bottom:20px;">
-        <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); font-weight:800; text-transform:uppercase;">
+        <span style="font-family:var(--font-mono); font-size:0.70rem; color:var(--primary); font-weight:800; text-transform:uppercase;">
           PAYPAL E-COMMERCE SERVICES • INSTANT CHECKOUT
         </span>
-        <h3 id="modalTierTitle" style="font-family:var(--font-display); font-size:1.35rem; font-weight:900; margin-top:4px;">
+        <h3 id="modalTierTitle" style="font-family:var(--font-display); font-size:1.3rem; font-weight:900; margin-top:4px;">
           Starter Sprint
         </h3>
         <div id="modalTierPrice" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:var(--primary); margin:6px 0;">
@@ -779,18 +1153,18 @@
           <label style="display:block; font-size:0.75rem; color:rgba(255,255,255,0.6); margin-bottom:4px; font-weight:700;">YOUR NAME / ORGANIZATION</label>
           <input type="text" id="orderClientName" required style="width:100%; padding:12px; background:#080A0F; border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:0.9rem; outline:none;"/>
         </div>
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:18px;">
           <label style="display:block; font-size:0.75rem; color:rgba(255,255,255,0.6); margin-bottom:4px; font-weight:700;">EMAIL ADDRESS (PAYPAL NOTIFICATIONS)</label>
           <input type="email" id="orderClientEmail" required style="width:100%; padding:12px; background:#080A0F; border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:0.9rem; outline:none;"/>
         </div>
-        <div style="margin-bottom:24px; padding:12px; background:rgba(255,85,0,0.06); border:1px solid rgba(255,85,0,0.25); border-radius:8px;">
+        <div style="margin-bottom:22px; padding:12px; background:rgba(255,85,0,0.06); border:1px solid rgba(255,85,0,0.25); border-radius:8px;">
           <label style="display:flex; align-items:center; gap:8px; font-size:0.82rem; cursor:pointer;">
             <input type="checkbox" id="orderUsePayIn4" checked style="accent-color:var(--primary);"/>
             <span>Pay with <strong>PayPal Pay in 4</strong> (4 bi-weekly payments, 0% interest)</span>
           </label>
         </div>
 
-        <button type="submit" id="orderSubmitBtn" class="btn-select-tier" style="width:100%; padding:16px;">
+        <button type="submit" id="orderSubmitBtn" class="btn-select-tier" style="width:100%; padding:15px;">
           <i class="fa-brands fa-paypal"></i> Proceed to PayPal Order &rarr;
         </button>
       </form>
@@ -800,6 +1174,29 @@
   <script>
     let activeTier = { title: '', price: 0, plan: '', eligiblePayIn4: false };
 
+    // Filter Categories
+    function filterCategory(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const sections = {
+        'audio': document.getElementById('cat-audio'),
+        'agency': document.getElementById('cat-agency'),
+        'arenas': document.getElementById('cat-arenas'),
+        'agent': document.getElementById('cat-agent'),
+        'venue': document.getElementById('cat-venue')
+      };
+
+      if (cat === 'all') {
+        Object.values(sections).forEach(s => { if(s) s.style.display = 'block'; });
+      } else {
+        Object.entries(sections).forEach(([key, s]) => {
+          if (s) s.style.display = (key === cat) ? 'block' : 'none';
+        });
+      }
+    }
+
+    // Modal Control
     function openOrderModal(title, price, plan, eligiblePayIn4) {
       activeTier = { title, price, plan, eligiblePayIn4 };
       document.getElementById('modalTierTitle').innerText = title;
@@ -822,6 +1219,77 @@
       document.getElementById('orderModal').classList.remove('active');
     }
 
+    // Real-Time Scope Estimator State
+    let selectedScope = {
+      'starter': { title: 'Starter Creative Sprint', price: 1500, isMonthly: false }
+    };
+
+    function toggleCalcItem(id, price, title, element, isMonthly = false) {
+      const chk = document.getElementById('chk-' + id);
+      const isChecked = !chk.checked;
+      chk.checked = isChecked;
+
+      if (isChecked) {
+        element.classList.add('checked');
+        selectedScope[id] = { title, price, isMonthly };
+      } else {
+        element.classList.remove('checked');
+        delete selectedScope[id];
+      }
+      updateEstimatorDisplay();
+    }
+
+    function updateEstimatorDisplay() {
+      let upfrontTotal = 0;
+      let monthlyTotal = 0;
+      let count = 0;
+
+      for (const key in selectedScope) {
+        const item = selectedScope[key];
+        count++;
+        if (item.isMonthly) {
+          monthlyTotal += item.price;
+        } else {
+          upfrontTotal += item.price;
+        }
+      }
+
+      document.getElementById('calcTotal').innerText = `$${upfrontTotal.toLocaleString()} CAD`;
+      document.getElementById('calcItemCount').innerText = `${count} Selected ${count === 1 ? 'Deliverable' : 'Deliverables'}`;
+      document.getElementById('calcMonthlyTotal').innerText = `$${monthlyTotal.toLocaleString()} / mo CAD`;
+
+      const payIn4Badge = document.getElementById('calcPayIn4');
+      if (upfrontTotal > 0) {
+        const installment = (upfrontTotal / 4).toFixed(2);
+        payIn4Badge.style.display = 'inline-flex';
+        payIn4Badge.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> 4x $${installment} CAD via Pay in 4 (0% Interest)`;
+      } else {
+        payIn4Badge.style.display = 'none';
+      }
+    }
+
+    function resetEstimator() {
+      selectedScope = {};
+      document.querySelectorAll('.calc-item').forEach(el => el.classList.remove('checked'));
+      document.querySelectorAll('.calc-chk').forEach(el => el.checked = false);
+      updateEstimatorDisplay();
+    }
+
+    function bookCalculatedScope() {
+      const titles = Object.values(selectedScope).map(item => item.title);
+      let upfront = 0;
+      for (const key in selectedScope) {
+        if (!selectedScope[key].isMonthly) upfront += selectedScope[key].price;
+      }
+      if (titles.length === 0) {
+        alert("Please select at least one service deliverable in the calculator.");
+        return;
+      }
+      const combinedTitle = titles.length > 2 ? `${titles[0]} + ${titles.length - 1} more items` : titles.join(' + ');
+      const plan = `4x $${(upfront / 4).toFixed(2)} CAD via Pay in 4`;
+      openOrderModal(combinedTitle, upfront, plan, upfront > 0);
+    }
+
     function handleOrderSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('orderClientName').value;
@@ -831,7 +1299,6 @@
       btn.innerText = "Triggering PayPal Engine...";
       btn.disabled = true;
 
-      // Dispatch to n8n webhook / create_paypal_ecommerce_order
       const payload = {
         agency: "9LMNTS Studio",
         founder: "Darnley Sanon",
@@ -851,12 +1318,15 @@
       })
       .catch(() => {})
       .finally(() => {
-        alert(`✓ PayPal E-Commerce Order Created for ${name}!\n\nTier: ${activeTier.title}\nAmount: $${activeTier.price} CAD\nPayment Plan: ${usePayIn4 ? 'PayPal Pay in 4 (4 bi-weekly payments of 0% interest)' : 'Standard Settlement'}\n\nA secure PayPal checkout authorization link has been dispatched to ${email}.`);
+        alert(`✓ PayPal E-Commerce Order Created for ${name}!\n\nDeliverable: ${activeTier.title}\nAmount: $${activeTier.price} CAD\nPayment Plan: ${usePayIn4 ? 'PayPal Pay in 4 (4 bi-weekly payments of 0% interest)' : 'Standard Settlement'}\n\nA secure PayPal checkout authorization link has been dispatched to ${email}.`);
         closeOrderModal();
         btn.innerText = "Proceed to PayPal Order →";
         btn.disabled = false;
       });
     }
+
+    // Initialize display on load
+    updateEstimatorDisplay();
   </script>
 </body>
 </html>

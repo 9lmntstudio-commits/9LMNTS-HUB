@@ -3,23 +3,18 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <title>About & Founder Dossier: Darnley Sanon — 9LMNTS Studio</title>
+  <title>About &amp; Founder Dossier: Darnley Sanon — 9LMNTS Studio</title>
   <meta name="description" content="Learn about 9LMNTS Studio, our vision for the future of digital creation, and our AI-powered workflows. Meet founder Darnley Sanon."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=2.6"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
 
   <style>
     :root {
-      --background: #050505;
-      --foreground: #ffffff;
-      --card: #0d0d0d;
-      --card-border: #27272a;
       --primary: #FF4500;
       --primary-glow: rgba(255, 69, 0, 0.35);
-      --muted: #a1a1aa;
       --font-display: 'Orbitron', sans-serif;
       --font-body: 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -37,94 +32,87 @@
       background-position: center top;
       background-repeat: no-repeat;
       background-size: cover;
-      color: var(--foreground);
-      font-family: var(--font-display);
+      color: #FFFFFF;
+      font-family: var(--font-body);
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
 
     .about-container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 40px 24px 100px 24px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      padding: 8px 20px;
-      background: var(--card);
-      border: 1px solid rgba(255, 69, 0, 0.4);
-      border-radius: 9999px;
-      color: var(--primary);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      margin-bottom: 24px;
-      font-family: var(--font-display);
-      font-weight: 700;
+      padding: 32px 24px 100px 24px;
     }
 
     .hero-heading {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
       font-weight: 900;
       line-height: 1.1;
       text-transform: uppercase;
+      font-style: italic;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .script-accent {
       font-family: var(--font-script);
       color: var(--primary);
-      font-size: clamp(4rem, 8vw, 8rem);
+      font-size: clamp(3.8rem, 7vw, 7.5rem);
       text-transform: capitalize;
-      margin-left: -15px;
+      margin-left: -10px;
       display: inline-block;
       transform: rotate(-3deg);
       font-weight: 400;
+      font-style: normal;
     }
 
     .hero-desc {
       font-family: var(--font-body);
-      font-size: 1.25rem;
-      color: var(--muted);
+      font-size: 1.15rem;
+      color: #cbd5e1;
       max-width: 780px;
-      margin: 0 auto 50px auto;
-      line-height: 1.6;
+      margin: 0 auto 36px auto;
+      line-height: 1.65;
     }
 
+    /* 50% Glassmorphic Bento Sections (Modal & Core Style) */
     .section-box {
-      background: rgba(14, 18, 27, 0.50);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.08) 0%, transparent 60%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.45);
-      border-radius: 20px;
-      padding: 48px 36px;
-      margin-bottom: 60px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
+      border: 1px solid rgba(255, 69, 0, 0.35);
+      border-top: 2px solid #FF4500;
+      border-radius: 26px;
+      padding: 44px 36px;
+      margin-bottom: 48px;
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      transition: all 0.3s var(--ease-cinematic);
     }
-
-    .section-box.border-y {
-      border-left: none;
-      border-right: none;
-      border-radius: 0;
+    .section-box:hover {
+      border-color: rgba(255, 69, 0, 0.65);
+      box-shadow: 0 45px 150px rgba(0, 0, 0, 0.98), 0 0 85px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 24px;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 40px;
       align-items: center;
     }
     @media(min-width: 900px) {
@@ -135,9 +123,9 @@
       aspect-ratio: 4/3;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-top: 1px solid rgba(255, 69, 0, 0.5);
-      border-radius: 18px;
+      border-radius: 20px;
       background: #000;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
       overflow: hidden;
       position: relative;
     }
@@ -145,7 +133,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.85;
+      opacity: 0.88;
       transition: transform 0.6s ease;
     }
     .culture-img-box:hover img {
@@ -155,10 +143,10 @@
     .founder-img-box {
       aspect-ratio: 4/5;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-top: 1px solid rgba(255, 69, 0, 0.5);
-      border-radius: 18px;
+      border-top: 2px solid rgba(255, 69, 0, 0.7);
+      border-radius: 22px;
       background: #000;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.20);
       overflow: hidden;
       max-width: 440px;
       margin: 0 auto;
@@ -180,39 +168,41 @@
 
     .body-p {
       font-family: var(--font-body);
-      color: var(--muted);
-      font-size: 1.05rem;
+      color: #cbd5e1;
+      font-size: 0.98rem;
       line-height: 1.7;
       margin-bottom: 16px;
     }
 
     .quote-box {
-      border: 1px solid rgba(255, 69, 0, 0.25);
+      border: 1px solid rgba(255, 69, 0, 0.35);
       border-left: 4px solid var(--primary);
       border-radius: 14px;
-      padding: 14px 22px;
+      padding: 16px 24px;
       margin: 24px 0;
       font-family: var(--font-body);
-      color: var(--foreground);
-      font-size: 1.1rem;
+      color: #ffffff;
+      font-size: 1.05rem;
       font-style: italic;
       line-height: 1.6;
-      background: rgba(255, 69, 0, 0.06);
+      background: rgba(255, 69, 0, 0.08);
+      backdrop-filter: blur(12px);
     }
 
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
+      gap: 10px;
+      margin-top: 20px;
     }
     .skill-tag {
       padding: 6px 16px;
-      background: rgba(255, 69, 0, 0.10);
-      border: 1px solid rgba(255, 69, 0, 0.35);
+      background: rgba(255, 69, 0, 0.12);
+      border: 1px solid rgba(255, 69, 0, 0.40);
       border-radius: 9999px;
       color: var(--primary);
-      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -222,32 +212,33 @@
     .ai-feature-card {
       background: rgba(14, 18, 27, 0.50);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.35);
-      border-radius: 16px;
-      padding: 24px;
+      border-top: 1px solid rgba(255, 69, 0, 0.4);
+      border-radius: 18px;
+      padding: 20px 22px;
       display: flex;
       gap: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       transition: all 0.3s ease;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.10);
     }
     .ai-feature-card:hover {
-      border-color: rgba(255, 69, 0, 0.6);
+      border-color: rgba(255, 69, 0, 0.65);
       transform: translateX(4px);
     }
     .ai-icon-box {
       width: 48px;
       height: 48px;
-      background: rgba(255, 69, 0, 0.12);
-      border: 1px solid rgba(255, 69, 0, 0.3);
+      background: rgba(255, 69, 0, 0.15);
+      border: 1px solid rgba(255, 69, 0, 0.45);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--primary);
       flex-shrink: 0;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
 
     /* 4-step workflow */
@@ -255,16 +246,18 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 16px;
-      margin-top: 28px;
+      margin-top: 24px;
     }
     .step-box {
       text-align: center;
       padding: 22px 14px;
-      background: rgba(18, 22, 32, 0.65);
+      background: rgba(14, 18, 27, 0.50);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.3);
-      border-radius: 16px;
+      border-top: 1px solid rgba(255, 69, 0, 0.4);
+      border-radius: 18px;
       transition: all 0.3s ease;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.10);
     }
     .step-box:hover {
       background: rgba(255, 69, 0, 0.12);
@@ -272,78 +265,67 @@
       transform: translateY(-3px);
     }
     .step-num {
-      width: 54px;
-      height: 54px;
-      background: rgba(255, 69, 0, 0.12);
-      border: 1px solid rgba(255, 69, 0, 0.3);
-      border-radius: 14px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 69, 0, 0.15);
+      border: 1px solid rgba(255, 69, 0, 0.45);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 12px auto;
       color: var(--primary);
-      font-size: 1.6rem;
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
       font-weight: 900;
     }
     .step-name {
-      font-size: 0.8rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
     }
 
     /* Values grid */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 32px;
+      gap: 22px;
+      margin-top: 28px;
     }
     .value-card {
-      background: rgba(14, 18, 27, 0.75);
+      background: rgba(14, 18, 27, 0.50);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.4);
-      border-radius: 18px;
-      padding: 36px 28px;
+      border-top: 2px solid rgba(255, 69, 0, 0.5);
+      border-radius: 22px;
+      padding: 32px 24px;
       text-align: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
     .value-card:hover {
-      border-color: rgba(255, 69, 0, 0.6);
+      border-color: rgba(255, 69, 0, 0.65);
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(255, 69, 0, 0.15);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 69, 0, 0.25);
     }
 
-    /* CTA Section */
+    /* CTA Section (Modal Bento Style) */
     .cta-box {
-      background: var(--card);
-      border-top: 1px solid var(--card-border);
-      padding: 70px 24px;
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.28) 0%, transparent 65%);
+      border: 1px solid rgba(255, 69, 0, 0.40);
+      border-top: 2px solid #FF4500;
+      border-radius: 26px;
+      padding: 56px 30px;
       text-align: center;
-    }
-    .btn-touch {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px 40px;
-      background: var(--primary);
-      color: #050505;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: 1px solid var(--primary);
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 30px var(--primary-glow);
-    }
-    .btn-touch:hover {
-      background: #ff5e1a;
-      transform: scale(1.05);
-      box-shadow: 0 0 50px rgba(255, 69, 0, 0.6);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -362,6 +344,7 @@
       <span class="hud-title">THE HELM // DARNLEY SANON</span>
     </div>
     <div class="hud-actions">
+      <a href="pricing.html" class="hud-cta-btn" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2);">💳 PRICING</a>
       <a href="services.html#intake" class="hud-cta-btn">⚡ START PROJECT</a>
     </div>
   </header>
@@ -369,24 +352,29 @@
   <div class="about-container">
 
     <!-- Hero Section -->
-    <div style="text-align: center; margin-bottom: 60px;">
-      <span class="hero-badge">About Us</span>
+    <div class="page-hero" style="text-align: center; margin-bottom: 48px;">
+      <span class="station-tag orange">FOUNDER DOSSIER // STATION 06</span>
       <h1 class="hero-heading">
         Where Culture Meets<br/>
         <span class="script-accent">Technology</span>
       </h1>
       <p class="hero-desc">
-        9LMNTS Studio bridges the gap between Hip-Hop culture and cutting-edge digital innovation, creating experiences that resonate and inspire.
+        9LMNTS Studio bridges the gap between Hip-Hop culture and cutting-edge digital innovation, creating sovereign platforms and acoustic soundscapes that resonate.
       </p>
+      <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+        <a href="services.html#intake" class="btn-primary">Book Production Brief &rarr;</a>
+        <a href="pricing.html" class="btn-secondary">Explore Pricing Matrix 💳</a>
+      </div>
     </div>
 
     <!-- Story Section -->
-    <div class="section-box border-y">
+    <div class="section-box">
       <div class="grid-2">
         <div class="culture-img-box">
           <img src="https://images.unsplash.com/photo-1602559399822-bd7d9f6da207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Hip-Hop Culture"/>
         </div>
         <div>
+          <span class="station-tag orange" style="margin-bottom:8px;">ORIGIN PROTOCOL</span>
           <h2 class="section-title">
             The 9LMNTS <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Story</span>
           </h2>
@@ -405,12 +393,13 @@
 
     <!-- AI Element Section -->
     <div class="section-box">
-      <div style="text-align: center; margin-bottom: 40px;">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <span class="station-tag teal" style="margin-bottom:8px;">ELEMENT 10 // NEURAL ACCELERATION</span>
         <h2 class="section-title">
-          The <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">AI Element</span>
+          The <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px; color:var(--cyber-teal);">AI Element</span>
         </h2>
         <p class="body-p" style="max-width: 700px; margin: 0 auto;">
-          We've added a 10th element to the traditional 9: Artificial Intelligence. By integrating AI into our workflow, we deliver smarter, faster, and more innovative solutions.
+          We've added a 10th element to the traditional 9: Artificial Intelligence. By integrating autonomous AI agents and vector pipelines into our workflow, we deliver smarter, faster, and more sovereign solutions.
         </p>
       </div>
 
@@ -419,22 +408,22 @@
           <div class="ai-feature-card">
             <div class="ai-icon-box"><i class="fa-solid fa-brain"></i></div>
             <div>
-              <h3 style="font-size:1.15rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.1em;">AI-Powered Design</h3>
-              <p class="body-p" style="font-size:0.95rem; margin:0;">Leveraging machine learning to optimize layouts and user experiences across spatial interfaces.</p>
+              <h3 style="font-size:1.05rem; margin-bottom:4px;">AI-Powered Design</h3>
+              <p class="body-p" style="font-size:0.88rem; margin:0;">Leveraging machine learning to optimize layouts, audio routing, and user experiences across spatial interfaces.</p>
             </div>
           </div>
           <div class="ai-feature-card">
             <div class="ai-icon-box"><i class="fa-solid fa-bolt"></i></div>
             <div>
-              <h3 style="font-size:1.15rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.1em;">Rapid Prototyping</h3>
-              <p class="body-p" style="font-size:0.95rem; margin:0;">AI-assisted wireframing and mockup generation for faster iterations from concept to production.</p>
+              <h3 style="font-size:1.05rem; margin-bottom:4px;">Rapid Prototyping</h3>
+              <p class="body-p" style="font-size:0.88rem; margin:0;">AI-assisted wireframing and mockup generation for faster iterations from concept to production.</p>
             </div>
           </div>
           <div class="ai-feature-card">
             <div class="ai-icon-box"><i class="fa-solid fa-bullseye"></i></div>
             <div>
-              <h3 style="font-size:1.15rem; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.1em;">Smart Optimization</h3>
-              <p class="body-p" style="font-size:0.95rem; margin:0;">Automated testing, latency minimization, and performance optimization powered by neural pipelines.</p>
+              <h3 style="font-size:1.05rem; margin-bottom:4px;">Smart Optimization</h3>
+              <p class="body-p" style="font-size:0.88rem; margin:0;">Automated testing, latency minimization, and performance optimization powered by neural pipelines.</p>
             </div>
           </div>
         </div>
@@ -445,26 +434,26 @@
       </div>
 
       <!-- AI Workflow -->
-      <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--card-border);">
-        <h3 style="font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px;">Our AI Workflow</h3>
+      <div style="margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Our AI Production Pipeline</h3>
         <p class="body-p">
-          From initial concept to final deployment, AI enhances every stage of our process. We use machine learning algorithms to analyze user behavior, optimize designs, and predict trends. This allows us to create solutions that are not just current, but future-ready.
+          From initial concept to final deployment, AI enhances every stage of our process. We use machine learning algorithms to analyze user behavior, optimize designs, and predict trends.
         </p>
         <div class="workflow-grid">
           <div class="step-box">
-            <div class="step-num">1</div>
+            <div class="step-num">01</div>
             <div class="step-name">Analyze</div>
           </div>
           <div class="step-box">
-            <div class="step-num">2</div>
+            <div class="step-num">02</div>
             <div class="step-name">Design</div>
           </div>
           <div class="step-box">
-            <div class="step-num">3</div>
+            <div class="step-num">03</div>
             <div class="step-name">Optimize</div>
           </div>
           <div class="step-box">
-            <div class="step-num">4</div>
+            <div class="step-num">04</div>
             <div class="step-name">Deploy</div>
           </div>
         </div>
@@ -472,8 +461,9 @@
     </div>
 
     <!-- Founder Section -->
-    <div class="section-box border-y">
-      <div style="text-align: center; margin-bottom: 40px;">
+    <div class="section-box">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <span class="station-tag orange" style="margin-bottom:8px;">LEADERSHIP &amp; ARCHITECTURE</span>
         <h2 class="section-title">
           Meet the <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Founder</span>
         </h2>
@@ -484,11 +474,11 @@
           <img src="assets/images/founder.png" alt="Darnley Sanon - Founder & Creative Director"/>
         </div>
         <div>
-          <h3 style="font-size: clamp(2.2rem, 4vw, 3rem); font-weight:900; text-transform:uppercase; margin-bottom:4px; letter-spacing:-0.02em;">
+          <h3 style="font-size: clamp(2rem, 3.5vw, 2.75rem); margin-bottom:4px;">
             Darnley Sanon
           </h3>
-          <p style="color:var(--primary); font-size:1.15rem; font-weight:800; text-transform:uppercase; letter-spacing:0.18em; margin-bottom:24px;">
-            Founder &amp; Creative Director
+          <p style="color:var(--primary); font-family:var(--font-mono); font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:20px;">
+            Founder &amp; Creative Director // Lead Architect
           </p>
 
           <p class="body-p">
@@ -504,9 +494,10 @@
 
           <div class="skill-tags">
             <span class="skill-tag">Graphic Design</span>
-            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">UI/UX Systems</span>
+            <span class="skill-tag">Audio Engineering</span>
             <span class="skill-tag">Brand Strategy</span>
-            <span class="skill-tag">Art Direction</span>
+            <span class="skill-tag">AI Workflows</span>
           </div>
         </div>
       </div>
@@ -514,45 +505,61 @@
 
     <!-- Values Section -->
     <div class="section-box">
-      <div style="text-align: center; margin-bottom: 30px;">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="station-tag green" style="margin-bottom:8px;">FOUNDATIONAL CODE</span>
         <h2 class="section-title">
-          Our <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Values</span>
+          Our <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px; color:var(--matrix-green);">Values</span>
         </h2>
-        <p class="body-p">The principles that guide everything we do</p>
+        <p class="body-p">The principles that guide everything we do across physical and digital spaces</p>
       </div>
 
       <div class="values-grid">
         <div class="value-card">
-          <div class="step-num">1</div>
-          <h3 style="font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:12px;">Authenticity</h3>
-          <p class="body-p" style="font-size:0.95rem; margin:0;">We create designs that are true to your brand and resonate with your audience on a cultural level.</p>
+          <div class="step-num">01</div>
+          <h3 style="font-size:1.15rem; margin-bottom:8px;">Authenticity</h3>
+          <p class="body-p" style="font-size:0.90rem; margin:0;">We create designs that are true to your brand and resonate with your audience on a cultural level.</p>
         </div>
         <div class="value-card">
-          <div class="step-num">2</div>
-          <h3 style="font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:12px;">Innovation</h3>
-          <p class="body-p" style="font-size:0.95rem; margin:0;">We push boundaries and embrace new technologies to deliver cutting-edge solutions that outperform standards.</p>
+          <div class="step-num">02</div>
+          <h3 style="font-size:1.15rem; margin-bottom:8px;">Innovation</h3>
+          <p class="body-p" style="font-size:0.90rem; margin:0;">We push boundaries and embrace new technologies to deliver cutting-edge solutions that outperform standards.</p>
         </div>
         <div class="value-card">
-          <div class="step-num">3</div>
-          <h3 style="font-size:1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:12px;">Excellence</h3>
-          <p class="body-p" style="font-size:0.95rem; margin:0;">We are committed to the highest quality in every aspect of our work, from code architecture to typography.</p>
+          <div class="step-num">03</div>
+          <h3 style="font-size:1.15rem; margin-bottom:8px;">Excellence</h3>
+          <p class="body-p" style="font-size:0.90rem; margin:0;">We are committed to the highest quality in every aspect of our work, from code architecture to typography.</p>
         </div>
       </div>
     </div>
 
     <!-- CTA Section -->
     <div class="cta-box">
-      <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); text-transform: uppercase; font-weight:900; line-height:1.2; margin-bottom:16px;">
+      <h2 style="font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom:12px;">
         Ready to Start<br/>
         Your <span class="script-accent" style="font-size: clamp(3.5rem, 6vw, 6rem); margin-left:-10px;">Journey?</span>
       </h2>
-      <p class="body-p" style="font-size:1.2rem; margin-bottom:32px;">
+      <p class="body-p" style="font-size:1.1rem; margin-bottom:28px;">
         Let's create something extraordinary together.
       </p>
-      <a href="services.html#intake" class="btn-touch">
-        <span>Get in Touch</span>
-        <i class="fa-solid fa-arrow-right"></i>
+      <a href="services.html#intake" class="btn-primary" style="padding:16px 36px; font-size:0.95rem;">
+        <span>Get in Touch &rarr;</span>
       </a>
+    </div>
+
+    <!-- Footer HUD Return Bar -->
+    <div class="footer-hud-nav">
+      <div class="left-info">
+        <h3>Ready to return to the Studio Cockpit?</h3>
+        <p>Return to the 4K interactive terminal or explore official pricing plans.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="index.html#station-06" class="btn-primary">
+          &larr; Return to Studio Cockpit
+        </a>
+        <a href="pricing.html" class="btn-secondary">
+          Official Pricing Matrix &rarr;
+        </a>
+      </div>
     </div>
 
   </div>

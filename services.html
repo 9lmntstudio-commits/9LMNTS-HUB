@@ -5,76 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
   <title>9LMNTS Studio Services &amp; Video Ads — Creative Production Suite</title>
   <meta name="description" content="Commercial cyberpunk video ads, the 9 Pillars of creative services rooted in Hip-Hop culture, EventOS live tournament engines, and agency production sprints."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=2.6"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
   <style>
-    body {
-      background-color: #06070A;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.25) 0%, rgba(255, 30, 0, 0.06) 35%, transparent 60%),
-        radial-gradient(circle at 85% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
-        linear-gradient(180deg, rgba(6, 7, 10, 0.75) 0%, rgba(6, 7, 10, 0.96) 100%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-attachment: fixed;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-    .pillar-card {
-      background: rgba(12, 15, 23, 0.50);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.12) 0%, transparent 60%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 2px solid #FF4500;
-      border-radius: 22px;
-      padding: 30px 26px;
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      transition: all 0.3s var(--ease-cinematic);
-    }
-    .pillar-card:hover {
-      border-color: rgba(255, 69, 0, 0.65);
-      transform: translateY(-4px);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    }
-    .pillar-element {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
-      border-radius: 9999px;
-      background: rgba(255, 85, 0, 0.12);
-      border: 1px solid rgba(255, 85, 0, 0.35);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.70rem;
-      font-weight: 800;
-      color: var(--neon-orange);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .pillar-price {
-      font-family: 'Orbitron', monospace;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-top: 16px;
-    }
     .intake-wizard-card {
-      background: rgba(14, 18, 27, 0.50);
-      background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.15) 0%, transparent 65%);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      border-top: 1px solid rgba(255, 85, 0, 0.60);
-      border-radius: 22px;
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.28) 0%, rgba(255, 30, 0, 0.08) 45%, transparent 75%);
+      border: 1px solid rgba(255, 69, 0, 0.40);
+      border-top: 2px solid #FF4500;
+      border-radius: 26px;
       padding: 40px 36px;
       margin-top: 60px;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85), 0 0 45px rgba(255, 85, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
     }
@@ -99,7 +46,31 @@
     .form-input:focus {
       border-color: var(--neon-orange);
       background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 3px rgba(255, 85, 0, 0.15);
+      box-shadow: 0 0 0 3px rgba(255, 85, 0, 0.20);
+    }
+
+    /* Video Reel Bento Box */
+    .video-hero-bento {
+      border-radius: 26px;
+      overflow: hidden;
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
+      border: 1px solid rgba(255, 69, 0, 0.35);
+      border-top: 2px solid #FF4500;
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      margin-bottom: 48px;
+    }
+    .video-hero-header {
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(11, 14, 21, 0.65);
     }
   </style>
 </head>
@@ -107,7 +78,7 @@
   <div class="ambient-glow top-left"></div>
   <div class="ambient-glow bottom-right"></div>
 
-  <!-- HUD Top Bar -->
+  <!-- Universal HUD Header -->
   <header class="hud-top-bar">
     <a href="index.html#station-05" class="hud-back-btn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -120,7 +91,7 @@
       <span class="hud-title">SERVICES, VIDEO ADS &amp; OS ECOSYSTEM</span>
     </div>
     <div class="hud-actions">
-      <a href="pricing.html" class="hud-cta-btn" style="background: rgba(0, 112, 186, 0.2); border-color: #0070ba; color: #93c5fd; margin-right: 8px;">💳 PRICING MATRIX</a>
+      <a href="pricing.html" class="hud-cta-btn" style="background: rgba(0, 112, 186, 0.25); border-color: #0070ba; color: #93c5fd;">💳 PRICING MATRIX</a>
       <a href="#intake" class="hud-cta-btn">⚡ START PROJECT</a>
     </div>
   </header>
@@ -134,15 +105,12 @@
       <p class="lead">
         From high-octane commercial cyberpunk video ads to sovereign operating system infrastructure, 9LMNTS Studio provides end-to-end creative technology solutions for record labels, venues, lifestyle brands, and enterprises.
       </p>
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
         <a href="#intake" class="btn-primary">
           Book Production Sprint &darr;
         </a>
         <a href="pricing.html" class="btn-primary" style="background: linear-gradient(135deg, #0070ba 0%, #003087 100%); border-color: #0070ba;">
           View Pricing &amp; PayPal Pay in 4 &rarr;
-        </a>
-        <a href="#sprints-matrix" class="btn-secondary">
-          Agency Sprints &amp; Retainers &darr;
         </a>
         <a href="#nine-pillars" class="btn-secondary">
           Explore 9 Pillars of Services &darr;
@@ -150,7 +118,7 @@
       </div>
     </section>
 
-    <!-- Universal 4-Item Stat Ribbon (from YouTube Automation luxury reference) -->
+    <!-- Universal 4-Item Stat Ribbon -->
     <div class="stats-ribbon">
       <div class="stat-ribbon-item">
         <div class="stat-ribbon-icon"><i class="fa-solid fa-play"></i></div>
@@ -182,16 +150,18 @@
       </div>
     </div>
 
-    <!-- Commercial Video Showcase -->
-    <div class="media-container" style="border-color: rgba(255, 85, 0, 0.4); box-shadow: 0 0 35px rgba(255, 85, 0, 0.2);">
-      <div style="padding: 20px 24px; background: rgba(16, 18, 26, 0.95); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,85,0,0.3);">
+    <!-- Commercial Video Showcase Bento Box -->
+    <div class="video-hero-bento">
+      <div class="video-hero-header">
         <div>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--neon-orange); letter-spacing:0.12em;">COMMERCIAL REEL</span>
-          <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-top:4px;">9LMNTS Event OS &amp; Commercial Video Production</h3>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-orange); letter-spacing:0.14em; text-transform:uppercase; font-weight:800;">
+            COMMERCIAL REEL // 4K BROADCAST
+          </span>
+          <h3 style="margin-top:4px; font-size:1.25rem;">9LMNTS Event OS &amp; Commercial Video Production</h3>
         </div>
-        <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid var(--neon-orange); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#FFFFFF;">4K CAMPAIGN</span>
+        <span class="station-tag orange" style="margin-bottom:0;">4K CAMPAIGN</span>
       </div>
-      <video controls poster="assets/images/corporate-1.png" style="width: 100%; max-height: 520px; object-fit: cover;">
+      <video controls poster="assets/images/corporate-1.png" style="width: 100%; max-height: 520px; object-fit: cover; display:block;">
         <source src="/videos/9LMNTS%20Event%20OS.mp4" type="video/mp4"/>
         <p style="padding: 20px; color: #94A3B8;">Preview file located at /videos/9LMNTS Event OS.mp4.</p>
       </video>
@@ -237,170 +207,117 @@
     <div class="pillars-grid">
       <!-- 1. Graffiti -->
       <div class="pillar-card">
-        <div class="pillar-element">01. GRAFFITI // THE GRAFFITI AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Visual Identity &amp; Design Systems</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Cyber-industrial brand marks, custom typography, album &amp; tournament key art, vector asset libraries, and high-contrast UI design systems.</p>
-        <div class="pillar-price">From $2,000 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag orange">01. GRAFFITI // VISUAL IDENTITY</span>
+        <h3 style="margin-bottom:8px;">Visual Identity &amp; Design Systems</h3>
+        <p>Cyber-industrial brand marks, custom typography, album &amp; tournament key art, vector asset libraries, and high-contrast UI design systems.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-agency" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">View Sprints in Pricing &rarr;</a>
+        </div>
       </div>
 
       <!-- 2. DJing -->
       <div class="pillar-card">
-        <div class="pillar-element">02. DJING // THE DJING AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Live Battle Arenas &amp; UX Flow</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Sound Clash OS deployment: 8-contender duel stages, real-time waveform hype meters, uncompressed master stem vaults, and jumbotron sync.</p>
-        <div class="pillar-price">From $3,000 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag teal">02. DJING // ARENA TELEMETRY</span>
+        <h3 style="margin-bottom:8px;">Live Battle Arenas &amp; UX Flow</h3>
+        <p>Sound Clash OS deployment: 8-contender duel stages, real-time waveform hype meters, uncompressed master stem vaults, and jumbotron sync.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-arenas" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">View Arena Tiers &rarr;</a>
+        </div>
       </div>
 
       <!-- 3. Breaking -->
       <div class="pillar-card">
-        <div class="pillar-element">03. BREAKIN' // THE BREAKIN' AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Kinetic Movement &amp; Sports/Dancer OS</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Kinetic UI micro-interactions, Unreal Engine 5 fight choreography, 3D Metahuman rigging, fitness instructor automation, and Sports/Dancer OS.</p>
-        <div class="pillar-price">From $1,500 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag orange">03. BREAKIN' // KINETIC MOVEMENT</span>
+        <h3 style="margin-bottom:8px;">Kinetic Movement &amp; Sports OS</h3>
+        <p>Kinetic UI micro-interactions, Unreal Engine 5 fight choreography, 3D Metahuman rigging, fitness instructor automation, and Sports/Dancer OS.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-agency" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">Commission Sprint &rarr;</a>
+        </div>
       </div>
 
       <!-- 4. MCing -->
       <div class="pillar-card">
-        <div class="pillar-element">04. MCING // THE MCING AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Brand Voice &amp; Narrative Architecture</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Battle rap competition rules, transmedia campaign story bibles, investor pitch deck narratives, and culture-first high-impact copywriting.</p>
-        <div class="pillar-price">From $2,500 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag orange">04. MCING // BRAND VOICE</span>
+        <h3 style="margin-bottom:8px;">Brand Voice &amp; Narrative Architecture</h3>
+        <p>Battle rap competition rules, transmedia campaign story bibles, investor pitch deck narratives, and culture-first high-impact copywriting.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-agency" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">Commission Sprint &rarr;</a>
+        </div>
       </div>
 
       <!-- 5. Beatboxing -->
       <div class="pillar-card">
-        <div class="pillar-element">05. BEATBOXING // THE BEATBOXING AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">UI Sound FX &amp; Voice Synthesis</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Acoustic mimicry, ElevenLabs voice cloning, multilingual dubbing, arena countdown stingers, and low-latency audio branding.</p>
-        <div class="pillar-price">From $2,500 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag teal">05. BEATBOXING // SOUND FX</span>
+        <h3 style="margin-bottom:8px;">UI Sound FX &amp; Voice Synthesis</h3>
+        <p>Acoustic mimicry, ElevenLabs voice cloning, multilingual dubbing, arena countdown stingers, and low-latency audio branding.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-audio" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">View Audio Vault &rarr;</a>
+        </div>
       </div>
 
       <!-- 6. Street Fashion -->
       <div class="pillar-card">
-        <div class="pillar-element">06. STREET FASHION // THE FASHION AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Spatial AR Wearables &amp; Smart Merch</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">480 GSM physical apparel with scannable 300 DPI WebAR 3D energy wings, woven NFC digital twin credentials, and Gate OS merchandise stores.</p>
-        <div class="pillar-price">From $2,000 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag orange">06. STREET FASHION // AR MERCH</span>
+        <h3 style="margin-bottom:8px;">Spatial AR Wearables &amp; Smart Merch</h3>
+        <p>480 GSM physical apparel with scannable 300 DPI WebAR 3D energy wings, woven NFC digital twin credentials, and Gate OS merchandise stores.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="merch.html" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">Explore AR Wearables &rarr;</a>
+        </div>
       </div>
 
       <!-- 7. Street Language -->
       <div class="pillar-card">
-        <div class="pillar-element">07. STREET LANGUAGE // THE LANGUAGE AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Natural Language &amp; Chatbot Funnels</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Natural Language-to-Code, prompt engineering, slang-intelligent chatbots, ManyChat automated DM keyword funnels, and viral social qualification.</p>
-        <div class="pillar-price">From $2,000 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag teal">07. STREET LANGUAGE // NLP FUNNELS</span>
+        <h3 style="margin-bottom:8px;">Natural Language &amp; Chatbot Funnels</h3>
+        <p>Natural Language-to-Code, prompt engineering, slang-intelligent chatbots, ManyChat automated DM keyword funnels, and viral social qualification.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-agency" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">View Lead Funnels &rarr;</a>
+        </div>
       </div>
 
       <!-- 8. Entrepreneurialism -->
       <div class="pillar-card">
-        <div class="pillar-element">08. ENTREPRENEURIALISM // THE TRADE AGENT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:8px;">Dealmaking AI &amp; Cashless In-Venue Rails</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Jay-Z sales psychology orchestration (CrewAI), Universal 4-Box in-venue monetization grid ($20 Cover, $10 Tip, $50 Hype, $150 VIP), and Gate OS cashless rails.</p>
-        <div class="pillar-price">From $4,000 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
+        <span class="station-tag green">08. TRADE // CASHLESS RAILS</span>
+        <h3 style="margin-bottom:8px;">Dealmaking AI &amp; Cashless In-Venue Rails</h3>
+        <p>Jay-Z sales psychology orchestration, Universal 4-Box in-venue monetization grid ($20 Cover, $10 Tip, $50 Hype, $150 VIP), and Gate OS cashless rails.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-venue" class="btn-secondary" style="width:100%; padding:10px; font-size:0.75rem;">View Venue Protocol &rarr;</a>
+        </div>
       </div>
 
       <!-- 9. Knowledge of Self -->
-      <div class="pillar-card" style="border-color: rgba(0, 212, 255, 0.5); background: rgba(0, 212, 255, 0.04); box-shadow: 0 0 25px rgba(0, 212, 255, 0.1);">
+      <div class="pillar-card teal-card">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div class="pillar-element" style="color:#00D4FF; margin-bottom:0;">09. KNOWLEDGE OF SELF // THE SUPER AGENT</div>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; background:#00D4FF; color:#000; font-weight:800; padding:2px 6px; border-radius:3px;">LIFE &amp; CREATIVE OS</span>
+          <span class="station-tag teal" style="margin-bottom:0;">09. KNOWLEDGE OF SELF</span>
+          <span style="font-family:var(--font-mono); font-size:0.65rem; background:var(--cyber-teal); color:#000; font-weight:800; padding:2px 8px; border-radius:9999px;">LIFE OS</span>
         </div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-top:8px; margin-bottom:8px;">Personal Life, Study &amp; Creative OS</h3>
-        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5;">Persistent cognitive second brain for personal mastery, Accountability Mirror (Word to Bond), habit/sleep tracking, 120-style accelerated study, and raw idea-to-production velocity.</p>
-        <div class="pillar-price" style="color:#00D4FF;">From $1,500 <span style="font-size:0.8rem; color:var(--text-muted);">CAD (or $99/mo)</span></div>
-      </div>
-    </div>
-    <!-- Agency Sprints & Retainers Matrix -->
-    <div class="section-header" id="sprints-matrix">
-      <div class="section-eyebrow">HIGH-VELOCITY PRODUCTION SPRINTS &amp; RETAINERS</div>
-      <h2>Creative Agency &amp; AI Automation Sprints</h2>
-      <p style="color:var(--text-muted); font-size:0.95rem; margin-top:8px;">
-        Powered by <strong style="color:#00D4FF;">PayPal E-Commerce Services</strong> with 0% interest <strong>PayPal Pay Later / Pay in 4</strong> installment options.
-      </p>
-    </div>
-
-    <div class="pillars-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-      <!-- Starter Sprint -->
-      <div class="pillar-card" style="border-color: rgba(255, 85, 0, 0.4);">
-        <div class="pillar-element">01 // PRODUCTION SPRINT</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:4px;">Starter Sprint</h3>
-        <p style="color:var(--text-muted); font-size:0.85rem; line-height:1.5;">Figma design system, brand tokens, mobile-first glassmorphic dark UI, Netlify deployment &amp; ManyChat lead capture funnel.</p>
-        <div class="pillar-price" style="color:var(--neon-orange);">$1,500 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
-        <div style="margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#93c5fd; background:rgba(0,112,186,0.18); border:1px solid rgba(0,112,186,0.35); padding:4px 8px; border-radius:4px; display:inline-block;">
-          💳 PayPal Pay in 4: 4x $375.00 CAD (0% Int)
-        </div>
-        <div style="margin-top:16px;">
-          <a href="pricing.html#agency-sprints" class="btn-primary" style="display:block; text-align:center; padding:10px; font-size:0.78rem;">
-            Order via PayPal Pay in 4 &rarr;
-          </a>
-        </div>
-      </div>
-
-      <!-- Pro Custom Sprint -->
-      <div class="pillar-card" style="border-color: var(--neon-orange); background: rgba(255,85,0,0.06); box-shadow: 0 0 25px rgba(255,85,0,0.15);">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div class="pillar-element" style="margin-bottom:0;">02 // MOST POPULAR SPRINT</div>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; background:var(--neon-orange); color:#000; font-weight:800; padding:2px 6px; border-radius:3px;">HOT</span>
-        </div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-top:8px; margin-bottom:4px;">Pro Custom Sprint</h3>
-        <p style="color:var(--text-muted); font-size:0.85rem; line-height:1.5;">Full web app or creator OS, ManyChat DM funnel + n8n orchestration, Supabase sync, WebAR assets &amp; 14-day priority support.</p>
-        <div class="pillar-price" style="color:#FFFFFF;">$2,500 – $3,500 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
-        <div style="margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#93c5fd; background:rgba(0,112,186,0.18); border:1px solid rgba(0,112,186,0.35); padding:4px 8px; border-radius:4px; display:inline-block;">
-          💳 PayPal Pay in 4: 4x $625.00 CAD (0% Int)
-        </div>
-        <div style="margin-top:16px;">
-          <a href="pricing.html#agency-sprints" class="btn-primary" style="display:block; text-align:center; padding:10px; font-size:0.78rem;">
-            Order via PayPal Pay in 4 &rarr;
-          </a>
-        </div>
-      </div>
-
-      <!-- Enterprise Scale Build -->
-      <div class="pillar-card" style="border-color: rgba(0, 212, 255, 0.4);">
-        <div class="pillar-element" style="color: #00D4FF;">03 // ENTERPRISE BUILD</div>
-        <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; margin-bottom:4px;">Enterprise Scale Build</h3>
-        <p style="color:var(--text-muted); font-size:0.85rem; line-height:1.5;">Bespoke multi-tenant OS engine, domain-specific autonomous AI agents, 3D WebAR brand identity &amp; dedicated production architect.</p>
-        <div class="pillar-price" style="color:#00D4FF;">$5,000 <span style="font-size:0.8rem; color:var(--text-muted);">CAD</span></div>
-        <div style="margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#93c5fd; background:rgba(0,112,186,0.18); border:1px solid rgba(0,112,186,0.35); padding:4px 8px; border-radius:4px; display:inline-block;">
-          💳 PayPal Monthly Installment Financing
-        </div>
-        <div style="margin-top:16px;">
-          <a href="pricing.html#agency-sprints" class="btn-primary" style="display:block; text-align:center; padding:10px; font-size:0.78rem; background:rgba(0,212,255,0.2); border-color:#00D4FF; color:#fff;">
-            Commission Enterprise Build &rarr;
-          </a>
+        <h3 style="margin-top:12px; margin-bottom:8px; color:var(--cyber-teal);">Personal Life, Study &amp; Creative OS</h3>
+        <p>Persistent cognitive second brain for personal mastery, Accountability Mirror (Word to Bond), habit routines, 120 accelerated study, and raw idea-to-production velocity.</p>
+        <div style="margin-top:auto; padding-top:16px;">
+          <a href="pricing.html#cat-agent" class="btn-primary" style="width:100%; padding:10px; font-size:0.75rem; background:linear-gradient(135deg, #00D4FF 0%, #0099CC 100%); border-color:#00D4FF; color:#050505;">View Super Agent ($99/mo) &rarr;</a>
         </div>
       </div>
     </div>
 
-    <!-- Monthly Retainers & On-Site Operations -->
-    <div style="margin-top: 30px; margin-bottom: 40px; background: rgba(14, 17, 24, 0.7); border: 1px solid var(--border-glass); border-radius: 8px; padding: 24px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
-        <div>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.70rem; color:#10B981; letter-spacing:0.12em; text-transform:uppercase;">RECURRING ARCHITECTURE &amp; EVENT OPS</span>
-          <h3 style="font-family:'Syne',sans-serif; color:#FFFFFF; font-size:1.3rem; margin-top:2px;">Monthly Retainers &amp; Venue Operators</h3>
+    <!-- Spotlight Unified Sprints Banner linking to pricing.html (Replaces duplicate sprint cards) -->
+    <div class="bento-card featured" style="margin-top:30px; margin-bottom:40px; padding:36px 30px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px;">
+        <div style="max-width:720px;">
+          <span class="station-tag orange"><i class="fa-brands fa-paypal"></i> CERTIFIED CHECKOUT</span>
+          <h2 style="font-size:clamp(1.6rem, 3vw, 2.2rem); margin-top:6px; margin-bottom:8px;">
+            Production Sprints &amp; PayPal 0% Interest Pay in 4
+          </h2>
+          <p>
+            Choose between 14-day high-velocity development sprints ($1,500 – $5,000 CAD), dedicated venue operations retainers ($2,500/mo), or our AI Super Agent ($99/mo). All fixed-price sprints are eligible for 4 interest-free bi-weekly payments via PayPal E-Commerce Complete Payments.
+          </p>
         </div>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#93c5fd; background:rgba(0,112,186,0.18); border:1px solid rgba(0,112,186,0.35); padding:4px 10px; border-radius:4px;">
-          PayPal Recurring Subscriptions
-        </span>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
-        <div style="background:rgba(8,10,15,0.6); padding:16px; border-radius:6px; border:1px solid rgba(255,255,255,0.08);">
-          <div style="font-family:'Orbitron',sans-serif; font-size:1.1rem; color:#FFFFFF;">Pro Retainer</div>
-          <div style="font-family:'Orbitron',sans-serif; font-size:1.25rem; color:#10B981; margin:6px 0;">$1,500 <span style="font-size:0.75rem; color:var(--text-muted);">/ MO CAD</span></div>
-          <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px;">Monthly UI/UX enhancements, platform maintenance &amp; remote live-event tech support (1 event/mo).</p>
-          <a href="pricing.html#retainers" style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#10B981; text-decoration:none;">View Retainer Details &rarr;</a>
-        </div>
-        <div style="background:rgba(8,10,15,0.6); padding:16px; border-radius:6px; border:1px solid rgba(255,85,0,0.3);">
-          <div style="font-family:'Orbitron',sans-serif; font-size:1.1rem; color:#FFFFFF;">Premier Operations</div>
-          <div style="font-family:'Orbitron',sans-serif; font-size:1.25rem; color:var(--neon-orange); margin:6px 0;">$2,500 – $3,500 <span style="font-size:0.75rem; color:var(--text-muted);">/ MO CAD</span></div>
-          <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px;">Bi-weekly feature sprints, dedicated on-site venue operator (2 events/mo), jumbotron sync &amp; emergency SLA.</p>
-          <a href="pricing.html#retainers" style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--neon-orange); text-decoration:none;">View Retainer Details &rarr;</a>
-        </div>
-        <div style="background:rgba(8,10,15,0.6); padding:16px; border-radius:6px; border:1px solid rgba(0,212,255,0.3);">
-          <div style="font-family:'Orbitron',sans-serif; font-size:1.1rem; color:#FFFFFF;">Enterprise Custom</div>
-          <div style="font-family:'Orbitron',sans-serif; font-size:1.25rem; color:#00D4FF; margin:6px 0;">$5,000 <span style="font-size:0.75rem; color:var(--text-muted);">/ MO CAD</span></div>
-          <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:10px;">Full bespoke engineering, on-site operator for all client events, white-label scaling &amp; 24/7 technical SLA.</p>
-          <a href="pricing.html#retainers" style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00D4FF; text-decoration:none;">View Retainer Details &rarr;</a>
+        <div style="display:flex; flex-direction:column; gap:12px; align-self:center;">
+          <a href="pricing.html" class="btn-primary" style="padding:16px 32px; font-size:0.92rem;">
+            Explore Official Pricing Matrix &rarr;
+          </a>
+          <a href="pricing.html#estimator" class="btn-secondary" style="padding:12px 24px; font-size:0.80rem; text-align:center;">
+            Open Scope Calculator 🧮
+          </a>
         </div>
       </div>
     </div>
@@ -408,9 +325,9 @@
     <!-- Multi-Step Project Intake Wizard -->
     <div class="intake-wizard-card" id="intake">
       <div style="margin-bottom: 24px;">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--neon-orange); letter-spacing:0.15em;">START PROJECT // UNIFIED INTAKE WIZARD</span>
-        <h3 style="font-family:'Syne',sans-serif; font-size:1.8rem; color:#FFFFFF; margin-top:4px;">Transmit Your Production Brief</h3>
-        <p style="color:var(--text-muted); font-size:0.95rem; margin-top:4px;">Select your service scope and target launch date. Our engineering team prepares your roadmap in 24 hours.</p>
+        <span class="station-tag orange">START PROJECT // UNIFIED INTAKE WIZARD</span>
+        <h3 style="font-size:clamp(1.6rem, 3vw, 2.2rem); margin-top:4px;">Transmit Your Production Brief</h3>
+        <p style="margin-top:4px;">Select your service scope and target launch date. Our engineering team prepares your roadmap in 24 hours.</p>
       </div>
 
       <form name="studio-booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleServicesSubmit(event)">
@@ -427,14 +344,13 @@
           <select name="package" class="form-input" style="background:#080A0F;" required>
             <option value="Starter Sprint">Starter Sprint — $1,500 CAD (4x $375 Pay in 4)</option>
             <option value="Pro Custom Sprint" selected>Pro Custom Sprint — $2,500 – $3,500 CAD (4x $625 Pay in 4)</option>
-            <option value="Enterprise Scale Build">Enterprise Scale Build — $5,000 CAD (Monthly Installment Financing)</option>
-            <option value="Pro Retainer">Pro Retainer — $1,500 / month (1 event/mo remote support)</option>
-            <option value="Premier Operations Retainer">Premier Operations Retainer — $2,500 – $3,500 / month (On-site operator)</option>
-            <option value="Enterprise Custom Retainer">Enterprise Custom Retainer — $5,000 / month (Full SLA &amp; On-site operator)</option>
-            <option value="9LMNTS OS - Free Performance Tier">9LMNTS OS Series — Free Performance Tier (80/20 Split)</option>
-            <option value="9LMNTS OS - Pro Setup">9LMNTS OS Series — Pro Setup ($500 Setup, 90/10 Split)</option>
-            <option value="9LMNTS OS - Elite Setup">9LMNTS OS Series — Elite Setup ($1,500 Setup, 95/5 Split)</option>
-            <option value="9LMNTS OS - Enterprise Custom">9LMNTS OS Series — Enterprise Custom ($5,000 Setup, 100/0 Split)</option>
+            <option value="Enterprise Scale Build">Enterprise Scale Build — $5,000 CAD (Monthly Financing)</option>
+            <option value="Audio Vault Stem Mastering">Audio Vault — Stem Mastering ($250 CAD/track)</option>
+            <option value="Full Track Vocal Mix">Audio Vault — Full Vocal &amp; Mix Production ($750 CAD/track)</option>
+            <option value="ArtistOS Master EP">ArtistOS Master EP Package ($1,500 CAD)</option>
+            <option value="EventOS Turnkey Arena">EventOS Turnkey Arena Setup ($1,500 CAD, 95/5 Split)</option>
+            <option value="The Super Agent Companion">The Super Agent Companion ($99 / mo CAD)</option>
+            <option value="Bespoke Sovereign Super Agent">Bespoke Sovereign Super Agent ($1,500 CAD)</option>
             <option value="Commercial Video Ads Reel">Commercial Cyberpunk Video Ads Reel</option>
           </select>
           <select name="budget" class="form-input" style="background:#080A0F;">

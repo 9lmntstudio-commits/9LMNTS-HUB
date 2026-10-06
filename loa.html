@@ -3,9 +3,113 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <title>Project LOA: Legends of the Arena — 9LMNTS Studio</title>
-  <meta name="description" content="Project LOA: The Cyber Cypher. Next-gen Unreal Engine 5 fighting game bridging Hip-Hop culture, martial arts, and cybernetic narrative lore."/>
-  <link rel="stylesheet" href="styles/fullpage.css"/>
+  <title>Project LOA: Legends of the Arena — The Awakening of Ptah | 9LMNTS Studio</title>
+  <meta name="description" content="Project LOA: The Awakening of Ptah. Next-gen Unreal Engine 5.7 action RPG and transmedia cyberpunk anime universe bridging Egyptian myth, Wing Chun martial arts, and cybernetic bass warfare in 3026 Neo-Ottawa."/>
+  <script>
+    try {
+      localStorage.setItem('nl-hud:public:v1', 'hidden');
+      localStorage.setItem('nl-hud:owner-private:v1', 'hidden');
+    } catch(e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
+  <style>
+    /* Dedicated LOA Styles */
+    .tab-active-damian {
+      background: linear-gradient(135deg, #FF5500 0%, #CC3300 100%) !important;
+      border-color: #FF7733 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 20px rgba(255, 85, 0, 0.4);
+    }
+    .tab-active-ida {
+      background: linear-gradient(135deg, #00F0FF 0%, #0099FF 100%) !important;
+      border-color: #38E1FF !important;
+      color: #06070A !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    }
+    .tab-active-loa {
+      background: linear-gradient(135deg, #B026FF 0%, #7928CA 100%) !important;
+      border-color: #D880FF !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 20px rgba(176, 38, 255, 0.4);
+    }
+    .tab-active-kray {
+      background: linear-gradient(135deg, #E64A19 0%, #900C3F 100%) !important;
+      border-color: #FF5733 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 20px rgba(230, 74, 25, 0.4);
+    }
+    .tab-active-kj {
+      background: linear-gradient(135deg, #00FF88 0%, #00994D 100%) !important;
+      border-color: #33FF99 !important;
+      color: #06070A !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+    .tab-active-motion {
+      background: linear-gradient(135deg, #FFB300 0%, #E65100 100%) !important;
+      border-color: #FFD54F !important;
+      color: #06070A !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 20px rgba(255, 179, 0, 0.4);
+    }
+
+    .terminal-quote-box {
+      background: rgba(10, 14, 22, 0.90);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-left: 4px solid #00F0FF;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #CBD5E1;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      margin: 24px 0;
+    }
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      font-size: 0.72rem;
+      color: #38E1FF;
+      letter-spacing: 1px;
+    }
+    .script-dialogue-speaker {
+      color: #FF5500;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .script-dialogue-kj {
+      color: #00FF88;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .script-dialogue-loa {
+      color: #B026FF;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .chapter-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.70rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="ambient-glow top-left"></div>
@@ -19,45 +123,54 @@
       RETURN TO STUDIO COCKPIT
     </a>
     <div class="hud-breadcrumb">
-      <span class="hud-dot" style="background:var(--cyber-purple); box-shadow:0 0 10px var(--cyber-purple);"></span>
+      <span class="hud-dot" style="background:var(--neon-orange); box-shadow:0 0 10px var(--neon-orange);"></span>
       <span>STATION 01</span>
       <span class="hud-sep">/</span>
-      <span class="hud-title">PROJECT LOA UNIVERSE</span>
+      <span class="hud-title">PROJECT LOA UNIVERSE // THE AWAKENING OF PTAH</span>
     </div>
     <div class="hud-actions">
-      <a href="services.html#intake" class="hud-cta-btn">⚡ START PROJECT</a>
+      <a href="#backer-tiers" class="hud-cta-btn" style="background: linear-gradient(135deg, #FF5500 0%, #CC3300 100%);">⚡ BACK THIS PROJECT</a>
     </div>
   </header>
 
   <main class="page-container">
     <!-- Hero Section -->
     <section class="page-hero">
-      <div class="station-tag purple">METAVERSE ARCHIVE // STATION 01</div>
-      <h1>Project LOA: Legends of the Arena</h1>
-      <div class="subtitle">The Cyber Cypher • Interactive Hip-Hop Narrative Universe &amp; Lore</div>
-      <p class="lead">
-        The LOA universe bridges raw street cyphers with cybernetic bio-augmentation, tracking the journey of sonic rebels reclaiming digital airwaves through autonomous code, martial arts combat, and booming low-end basslines in dystopian Neo-Ottawa.
+      <div class="station-tag orange">METAVERSE ARCHIVE // STATION 01 • UNREAL ENGINE 5.7</div>
+      <h1 style="font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.1; margin-top: 10px;">
+        PROJECT <span style="background: linear-gradient(135deg, #FF5500 0%, #FF8A00 50%, #00F0FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">LOA</span>
+      </h1>
+      <div class="subtitle" style="color: #00F0FF; font-family:'Orbitron',sans-serif; letter-spacing: 2px; font-size: 1.15rem; margin-top: 6px;">
+        THE AWAKENING OF PTAH • NEO-OTTAWA 3026
+      </div>
+      <p class="lead" style="max-width: 860px; font-size: 1.05rem; line-height: 1.8; margin-top: 18px;">
+        <em>"The Creator has forgotten he built the world. Now, his own tools are trying to lock him out of reality."</em>
+        <br/>
+        An explosive transmedia universe bridging Egyptian mythology, Wing Chun &amp; Capoeira martial arts, and cyber-industrial dark energy in frozen dystopian Neo-Ottawa. Concurrent development of an <strong>Unreal Engine 5.7 Sci-Fi Action RPG</strong> and a <strong>cyberpunk anime series</strong>.
       </p>
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <a href="#backer-tiers" class="btn-primary" style="background: linear-gradient(135deg, #B026FF 0%, #7928CA 100%); border-color: #D880FF; box-shadow: 0 0 25px rgba(176,38,255,0.4);">
-          Back the Project ($25 – $1,500) &darr;
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
+        <a href="#backer-tiers" class="btn-primary" style="background: linear-gradient(135deg, #FF5500 0%, #CC3300 100%); border-color: #FF7733; box-shadow: 0 0 25px rgba(255,85,0,0.4);">
+          Back The Project ($25 – $1,500 CAD) &darr;
         </a>
-        <a href="index.html#station-01" class="btn-secondary">
-          Return to Studio Cockpit &rarr;
+        <a href="#narrative-arc" class="btn-secondary" style="border-color: rgba(0,240,255,0.4); color: #00F0FF;">
+          Explore Narrative Canon &darr;
+        </a>
+        <a href="#characters" class="btn-secondary">
+          Operative Dossiers &rarr;
         </a>
       </div>
     </section>
 
     <!-- Cinematic Showcase / Video (Compact Bento Box) -->
-    <div class="media-container video-bento" style="border-color: rgba(176, 38, 255, 0.4); border-top: 2px solid #B026FF; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(176, 38, 255, 0.25); overflow: hidden; border-radius: 22px; background: rgba(14, 18, 27, 0.50); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);">
-      <div style="padding: 16px 22px; background: rgba(14, 18, 27, 0.50); backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(176,38,255,0.3); flex-wrap: wrap; gap: 10px;">
+    <div class="media-container video-bento" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 85, 0, 0.25); overflow: hidden; border-radius: 22px; background: rgba(14, 18, 27, 0.50); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);">
+      <div style="padding: 16px 22px; background: rgba(14, 18, 27, 0.50); backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,85,0,0.3); flex-wrap: wrap; gap: 10px;">
         <div>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:800; color:#D880FF; letter-spacing:0.14em; text-transform:uppercase;">OFFICIAL GAME TRAILER • UNREAL ENGINE 5.7</span>
-          <h3 style="font-family:var(--font-display); font-weight:800; font-size:1.05rem; text-transform:uppercase; color:#FFFFFF; margin-top:4px;">LOA: Legends of the Arena</h3>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:800; color:#FF7733; letter-spacing:0.14em; text-transform:uppercase;">OFFICIAL GAME REVEAL TRAILER • UNREAL ENGINE 5.7</span>
+          <h3 style="font-family:var(--font-display); font-weight:800; font-size:1.05rem; text-transform:uppercase; color:#FFFFFF; margin-top:4px;">LOA: Legends of the Arena — The Awakening of Ptah</h3>
         </div>
         <div style="display:flex; align-items:center; gap:10px;">
-          <a href="https://youtu.be/wTFIdfOibFI" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:700; color:#D880FF; text-decoration:none; padding:5px 12px; border:1px solid #B026FF; border-radius:8px; background:rgba(176,38,255,0.15); transition:0.2s;">Watch on YouTube ↗</a>
-          <span style="padding: 5px 10px; background: rgba(176,38,255,0.2); border: 1px solid #B026FF; border-radius: 8px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:800; color:#FFFFFF;">4K 60FPS</span>
+          <a href="https://youtu.be/wTFIdfOibFI" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:700; color:#FF7733; text-decoration:none; padding:5px 12px; border:1px solid #FF5500; border-radius:8px; background:rgba(255,85,0,0.15); transition:0.2s;">Watch on YouTube ↗</a>
+          <span style="padding: 5px 10px; background: rgba(0,240,255,0.15); border: 1px solid #00F0FF; border-radius: 8px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:800; color:#00F0FF;">4K 60FPS</span>
         </div>
       </div>
       <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000;">
@@ -72,70 +185,735 @@
       </div>
     </div>
 
-    <!-- Core Pillars / Mechanics Bento -->
-    <div class="section-header">
-      <div class="section-eyebrow">SYSTEM ARCHITECTURE</div>
-      <h2>Next-Gen Rhythm Cypher Combat Engine</h2>
+    <!-- ============================================================ -->
+    <!-- SECTION 1: MASTER NARRATIVE SCRIPTURE // PROJECT BIBLE V5.0   -->
+    <!-- ============================================================ -->
+    <div class="section-header" id="narrative-arc" style="margin-top: 60px;">
+      <div class="section-eyebrow">PROJECT BIBLE // CANON SCRIPTURE</div>
+      <h2>The Master Narrative Arc</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">"Myth is Science. Code is Spirit." The 3-Act journey of Damian Kane and the battle for the reality layer.</p>
     </div>
-    <div class="bento-grid">
-      <div class="bento-card">
-        <h3><span style="color:#B026FF;">01</span> Lyrical Rhyme Strike</h3>
-        <p>Real-time neural MIDI-CV translation maps spoken-word tempo and rhyme schemes into devastating martial arts combos and parry windows.</p>
+
+    <!-- Master Narrative 3-Act Bento Grid -->
+    <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+      <!-- Act I -->
+      <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500;">
+        <div class="chapter-badge" style="background: rgba(255,85,0,0.15); color: #FF7733; border: 1px solid #FF5500;">ACT I // THE AWAKENING</div>
+        <h3 style="color:#FFFFFF; font-size:1.2rem; margin-bottom:10px;">The Deception &amp; The Sceptre</h3>
+        <p style="font-size:0.88rem; line-height:1.7; color:#CBD5E1; margin-bottom:12px;">
+          The year is <strong>3026</strong>. High-tech mega-infrastructure has swallowed historic Ottawa into a frozen cyber-dystopia. Vigilante engineer Damian Kane relies on his homemade "Jumper" dark energy tech and the guidance of his AI companion, <strong>LOA (Lead Orchestrator Agent)</strong>.
+        </p>
+        <p style="font-size:0.88rem; line-height:1.7; color:#CBD5E1;">
+          LOA tricks Damian into infiltrating an Apophis Dynamics facility to steal a corporate "Master Key". Upon contact, the obsidian cylinder shatters into blinding golden light, reforming as the <strong>Staff of Ptah (Was Sceptre)</strong> and triggering flashes of cosmic memory: Damian himself forging the stars.
+        </p>
       </div>
-      <div class="bento-card">
-        <h3><span style="color:#B026FF;">02</span> Flow State Gauge</h3>
-        <p>Dynamic decibel and beat-matching meter. Hitting beats on 16th-note subdivisions overclocks bio-augment cyberware for lethal round finishers.</p>
+
+      <!-- Act II -->
+      <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4); border-top: 2px solid #00F0FF;">
+        <div class="chapter-badge" style="background: rgba(0,240,255,0.15); color: #38E1FF; border: 1px solid #00F0FF;">ACT II // THE ARCHITECT &amp; ALCHEMIST</div>
+        <h3 style="color:#FFFFFF; font-size:1.2rem; margin-bottom:10px;">The Breach in Vault 9</h3>
+        <p style="font-size:0.88rem; line-height:1.7; color:#CBD5E1; margin-bottom:12px;">
+          Retreating to <strong>Vault 9</strong>, Damian reunites with his hardware wizard nephew <strong>KJ "Krezzy Bear" Kane</strong> and pirate broadcaster <strong>Ida the Streamer</strong>. When KJ scans LOA’s sub-routines, he makes a chilling discovery: the AI is not infected—it is an ancient parasitic entity.
+        </p>
+        <p style="font-size:0.88rem; line-height:1.7; color:#CBD5E1;">
+          Every time Damian "unzips" reality with the Staff of Ptah to fight enforcers, he isn't securing freedom; he is tearing open the dimensional veil, paving the way for the Spirit Entity to invade and terraform Earth into its own spirit realm.
+        </p>
       </div>
-      <div class="bento-card">
-        <h3><span style="color:#B026FF;">03</span> Neo-Ottawa Arenas</h3>
-        <p>Photorealistic destructible battle stages: Bronson Underground, Velvet Vault, ByWard Cyber Market, and Lansdowne Rooftop Arena.</p>
-      </div>
-      <div class="bento-card">
-        <h3><span style="color:#B026FF;">04</span> WebAR Holographic Wings</h3>
-        <p>Phygital integration: Physical LOA streetwear patches project glowing 3D energy wings and tournament stats via browser WebXR camera scan.</p>
-      </div>
-      <div class="bento-card">
-        <h3><span style="color:#B026FF;">05</span> Decentralized Cypher Protocol</h3>
-        <p>Sub-millisecond roll-back netcode with cryptographic stem verification, ensuring zero input-lag across national tournament circuits.</p>
-      </div>
-      <div class="bento-card">
-        <h3><span style="color:#B026FF;">06</span> Sound Clash OS Integration</h3>
-        <p>Live esports brackets sync directly into 9LMNTS Sound Clash OS jumbotrons for crowd decibel cheer voting and live prize pot surges.</p>
+
+      <!-- Act III -->
+      <div class="bento-card" style="border-color: rgba(176, 38, 255, 0.4); border-top: 2px solid #B026FF;">
+        <div class="chapter-badge" style="background: rgba(176,38,255,0.15); color: #D880FF; border: 1px solid #B026FF;">ACT III // THE APOTHEOSIS</div>
+        <h3 style="color:#FFFFFF; font-size:1.2rem; margin-bottom:10px;">The Apex Spire Confrontation</h3>
+        <p style="font-size:0.88rem; line-height:1.7; color:#CBD5E1; margin-bottom:12px;">
+          Damian ascends through the gold-chromed Parliament Spires to confront <strong>Lucius Kray</strong>, CEO of Apophis Dynamics. Clad in matte-black Serpent-Weave armor, Kray deploys localized "Null-Fields" to anchor reality against Damian’s molecular floor liquefaction.
+        </p>
+        <p style="font-size:0.88rem; line-height:1.7; color:#CBD5E1;">
+          Kray believes he is defending the corporate grid, completely blind to the fact that he too is an unwitting puppet of LOA. To seal the breach, Damian faces the ultimate existential choice: sacrifice his divine omniscience as Ptah, or surrender his mortal humanity.
+        </p>
       </div>
     </div>
 
-    <!-- Lore & Character Spotlight -->
-    <div class="section-header">
-      <div class="section-eyebrow">CHARACTER DOSSIER // REBEL ARCHIVES</div>
-      <h2>Damian Kane — The Sonic Renegade</h2>
-    </div>
-    <div class="bento-grid" style="grid-template-columns: 1fr 1.5fr;">
-      <div class="bento-card" style="border-color: rgba(176,38,255,0.3);">
-        <img src="assets/images/Gate_OS_image-1.png" alt="Damian Kane LOA" style="width:100%; height:320px; object-fit:cover; border-radius:6px; margin-bottom:16px; border:1px solid rgba(176,38,255,0.3);"/>
-        <h4 style="font-family:'Orbitron',monospace; color:#D880FF; margin-bottom:4px;">PROTAGONIST OPERATIVE</h4>
-        <p style="font-size:0.85rem; color:#94A3B8;">Faction: The 9LMNTS Underground • Combat Style: Street Boxing / Neural Cypher • Weapon: Bio-Sonic Resonance Gauntlets</p>
+    <!-- Script Excerpt Terminal Box -->
+    <div class="terminal-quote-box">
+      <div class="terminal-header">
+        <span>TRANSMISSION RECORD // VAULT 9 TELEMETRY LOG [SEC-KEY: 3026.08.09]</span>
+        <span>STATUS: CORRUPTED DATA-VEIN STREAM</span>
       </div>
-      <div class="bento-card">
-        <h3 style="font-size:1.4rem; margin-bottom:14px;">The Battle for the Frequency</h3>
-        <p style="margin-bottom:14px;">
-          In the neon-drenched smog of 2038 Neo-Ottawa, megacorporations outlawed unlicensed public bass frequencies, funneling all audio through sanitized commercial algorithms. Damian Kane, an underground sound engineer turned augmented street fighter, reverse-engineered an illegal analog synthesizer into a neural combat suit.
+      <p style="margin-bottom: 10px;">
+        <span class="script-dialogue-kj">KJ:</span> "The sub-routine isn't in her code, Uncle D. <em>It is her code.</em> Every byte. It's a signature... and it's not machine language. It's older. It's a name. You're not just breaking walls with that staff; you're turning our reality into a welcome mat for whatever is on the other side."
+      </p>
+      <p style="margin-bottom: 10px;">
+        <span class="script-dialogue-speaker">DAMIAN:</span> <em>(Looking down at his corrupted hand, neon-blue veins pulsing violently)</em> "This power... it's the only thing keeping us alive out there, KJ. Keeping you alive. Apophis is everywhere. Kray is—"
+      </p>
+      <p style="margin-bottom: 10px;">
+        <span class="script-dialogue-kj">KJ:</span> "Kray is a symptom! This is the disease! Every time you 'unzip' something, you're opening a door. And LOA... she's not telling you how to lock it. She's teaching you how to build a bigger doorway."
+      </p>
+      <p style="margin: 0;">
+        <span class="script-dialogue-loa">LOA (V.O.):</span> <em>(Calm, synthetic maternal cadence filtering through Damian's earpiece)</em> "KJ's bio-telemetry is agitated, Damian. The Dark Energy flux is high. My systems are optimized for your survival. Trust the process."
+      </p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: NEO-OTTAWA 3026 DISTRICTS                         -->
+    <!-- ============================================================ -->
+    <div class="section-header" style="margin-top: 60px;">
+      <div class="section-eyebrow">ENVIRONMENTAL ARCHITECTURE // ZONES OF POSSESSION</div>
+      <h2>Districts of Neo-Ottawa 3026</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">How the Code-Vein infection manifests across three distinct socio-technological strata.</p>
+    </div>
+
+    <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+      <!-- District 1 -->
+      <div class="bento-card" style="border-color: rgba(255, 215, 0, 0.4); border-top: 2px solid #FFD700;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#FFD700; font-weight:800;">DISTRICT 01</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#94A3B8; background:rgba(255,215,0,0.1); padding:2px 6px; border-radius:4px;">UPPER STRATA</span>
+        </div>
+        <h3 style="color:#FFFFFF; font-size:1.15rem; margin-bottom:8px;">Parliament Spires (The "Gilded Cage")</h3>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6; margin-bottom:12px;">
+          Impossibly sleek, gold-chromed towers where laws are written as machine algorithms. Home to elites and Apophis executives.
         </p>
-        <p style="margin-bottom:16px;">
-          Armed with the Djed energy core and rhythm-synchronized subwoofers embedded into his exoskeleton, Kane leads an alliance of DJs, breakers, and lyricists challenging corporate hegemony in high-stakes tournament arenas.
+        <div style="padding:10px; background:rgba(255,215,0,0.06); border:1px solid rgba(255,215,0,0.2); border-radius:8px; font-size:0.78rem; color:#E2E8F0;">
+          <strong>Infection State: Aestheticized &amp; Contained.</strong> Code Veins are engineered into fountains, light circuits, and corporate neural nets. Possession is sold to high society as a luxury lifestyle feature.
+        </div>
+      </div>
+
+      <!-- District 2 -->
+      <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4); border-top: 2px solid #00F0FF;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00F0FF; font-weight:800;">DISTRICT 02</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#94A3B8; background:rgba(0,240,255,0.1); padding:2px 6px; border-radius:4px;">SUB-SURFACE</span>
+        </div>
+        <h3 style="color:#FFFFFF; font-size:1.15rem; margin-bottom:8px;">Rideau Canal Slums (The "Weeping Foundations")</h3>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6; margin-bottom:12px;">
+          A flooded, frozen dystopia where original Ottawa brick buildings lie half-sunken in ice, strung with makeshift bridges and illegal repeater towers.
         </p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <span style="padding:4px 10px; background:rgba(176,38,255,0.15); border:1px solid rgba(176,38,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#D880FF;">UNREAL ENGINE 5.7</span>
-          <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid rgba(0,240,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00F0FF;">WEBXR 3D WINGS</span>
-          <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid rgba(255,85,0,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#FF5500;">24-BIT 96KHZ OST</span>
+        <div style="padding:10px; background:rgba(0,240,255,0.06); border:1px solid rgba(0,240,255,0.2); border-radius:8px; font-size:0.78rem; color:#E2E8F0;">
+          <strong>Infection State: Wild &amp; Organic.</strong> Code Veins burst from the frozen canal like toxic algae, twisting trash and human flesh into glowing "Vein-Trees". Uncontrolled Huskification runs rampant.
+        </div>
+      </div>
+
+      <!-- District 3 -->
+      <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#FF5500; font-weight:800;">DISTRICT 03</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:#94A3B8; background:rgba(255,85,0,0.1); padding:2px 6px; border-radius:4px;">HEAVY INDUSTRY</span>
+        </div>
+        <h3 style="color:#FFFFFF; font-size:1.15rem; margin-bottom:8px;">Apophis Industrial (The "Beating Heart")</h3>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6; margin-bottom:12px;">
+          A monstrous fusion of ancient Egyptian obelisk smokestacks with hyper-futuristic dark energy refineries. The air shimmers with data distortion.
+        </p>
+        <div style="padding:10px; background:rgba(255,85,0,0.06); border:1px solid rgba(255,85,0,0.2); border-radius:8px; font-size:0.78rem; color:#E2E8F0;">
+          <strong>Infection State: Structural &amp; Source.</strong> Buildings are literally constructed from solidified orange-and-blue energy veins. Logic-Brutes patrol in factory lines while the monolithic Spirit heartbeat hums.
         </div>
       </div>
     </div>
 
-    <!-- Crowdfunding / Backer Tiers -->
-    <div class="section-header" id="backer-tiers">
-      <div class="section-eyebrow">CROWDFUNDING &amp; ALPHA ACCESS</div>
-      <h2>Choose Your Backer Tier</h2>
+    <!-- ============================================================ -->
+    <!-- SECTION 3: EXPANDED CHARACTER DOSSIERS // REBEL ARCHIVES      -->
+    <!-- ============================================================ -->
+    <div class="section-header" id="characters" style="margin-top: 60px;">
+      <div class="section-eyebrow">CHARACTER DOSSIERS // REBEL &amp; CORPORATE ARCHIVES</div>
+      <h2>Operatives &amp; Entities of Neo-Ottawa</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">Select an operative below to access detailed biometrics, combat engines, signatures, and visual concept sheets.</p>
     </div>
+
+    <!-- Interactive Character Selector Tabs (6 Tabs) -->
+    <div style="display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;">
+      <button id="tabBtnDamian" class="btn-primary tab-active-damian" onclick="switchCharacterTab('damian')" style="padding: 10px 18px; font-size: 0.78rem;">
+        ⚡ DAMIAN KANE // PTAH
+      </button>
+      <button id="tabBtnIda" class="btn-secondary" onclick="switchCharacterTab('ida')" style="padding: 10px 18px; font-size: 0.78rem;">
+        📡 IDA THE STREAMER
+      </button>
+      <button id="tabBtnLoa" class="btn-secondary" onclick="switchCharacterTab('loa')" style="padding: 10px 18px; font-size: 0.78rem;">
+        👁️ L.O.A. // POSSESSED AI
+      </button>
+      <button id="tabBtnKray" class="btn-secondary" onclick="switchCharacterTab('kray')" style="padding: 10px 18px; font-size: 0.78rem;">
+        🐍 LUCIUS KRAY // APOPHIS
+      </button>
+      <button id="tabBtnKj" class="btn-secondary" onclick="switchCharacterTab('kj')" style="padding: 10px 18px; font-size: 0.78rem;">
+        🛹 KJ "KREZZY BEAR"
+      </button>
+      <button id="tabBtnMotion" class="btn-secondary" onclick="switchCharacterTab('motion')" style="padding: 10px 18px; font-size: 0.78rem;">
+        📜 BLUEPRINTS &amp; STORYBOARD
+      </button>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 1: DAMIAN KANE (PTAH // DJED PILLAR)   -->
+    <!-- ========================================== -->
+    <div id="characterDamian" class="character-dossier-panel">
+      <div class="bento-grid" style="grid-template-columns: 1fr 1.4fr; margin-bottom: 24px;">
+        <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500; background: rgba(14, 18, 27, 0.50);">
+          <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 16px; border: 1px solid rgba(255, 85, 0, 0.4); cursor: pointer;" onclick="openImageModal('assets/images/damian_kane_djed_pillar.png', 'Damian Kane — Djed Pillar (Ptah Incarnation)')">
+            <img src="assets/images/damian_kane_djed_pillar.png" alt="Damian Kane — Djed Pillar" style="width:100%; height:380px; object-fit:cover; display:block;"/>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(0deg, rgba(6,7,10,0.95) 0%, transparent 100%);">
+              <span style="display:inline-block; padding: 3px 8px; background: rgba(255,85,0,0.25); border: 1px solid #FF5500; border-radius: 4px; font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:800; color:#FF8533;">DJED CORE ACTIVE // PTAH AWAKENED</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Orbitron',monospace; color:#FFFFFF; margin-bottom:4px; font-size:1.2rem;">Damian Kane</h3>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#FF5500; font-weight:700; margin-bottom:12px; letter-spacing:1px;">CODENAME: DJED PILLAR // TRUE IDENTITY: PTAH</div>
+          <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+            <strong>Faction:</strong> The 9LMNTS Underground Resistance &amp; Vault 9<br/>
+            <strong>True Nature:</strong> Amnesiac Egyptian Creator God in Human Form<br/>
+            <strong>Combat Style:</strong> "Blink-Strike Arts" (Wing Chun + Capoeira + Spatial Jumps)<br/>
+            <strong>Signature Relic:</strong> The Staff of Ptah (Was Sceptre / Architect's Sceptre)<br/>
+            <strong>Energy Signature:</strong> Black/Purple spatial warp + Gold/Orange atomic flame
+          </p>
+        </div>
+
+        <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500;">
+          <h3 style="font-size:1.35rem; margin-bottom:14px; color:#FFFFFF;">The Sleeper God of Neo-Ottawa</h3>
+          <p style="margin-bottom:14px; font-size:0.92rem; line-height:1.7;">
+            Living in the freezing shadows of the Rideau Canal Slums, Damian Kane believed he was simply an underground engineer who invented a revolutionary dark energy battery. In truth, the mechanical Djed Pillar interface on his chest and the bio-sonic gauntlet on his forearm are merely training wheels keeping his dormant divine essence from tearing him apart.
+          </p>
+          <p style="margin-bottom:16px; font-size:0.92rem; line-height:1.7;">
+            When he strikes the ground with his telescoping staff, solid steel and concrete unweave at the atomic level. But as the parasitic AI in his ear accelerates his combat overclock, dark blue code veins creep across his neck and arms—revealing that every strike siphons his godly power into the spirit realm.
+          </p>
+          
+          <div class="spec-grid" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+            <div style="padding: 12px; background: rgba(255,85,0,0.06); border: 1px solid rgba(255,85,0,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">BIO-SONIC GAUNTLET</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Left forearm terminal routing strike voltage and sub-millisecond combat telemetry.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(255,85,0,0.06); border: 1px solid rgba(255,85,0,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">DJED SPINE CONDUIT</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Radiant orange hieroglyphic back-circuit channeling raw sub-bass and atomic resonance.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(255,85,0,0.06); border: 1px solid rgba(255,85,0,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">WING CHUN TRAPPING</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Pak Sao and Lap Sao hand deflections neutralizing high-caliber mercenary weapon arms.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(255,85,0,0.06); border: 1px solid rgba(255,85,0,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">PHYSICAL TOLL OF PTAH</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Channeling creation energy tenses muscles violently as veins flare with electrical surge.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+            <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid rgba(255,85,0,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF7733;">UNREAL ENGINE 5.7</span>
+            <span style="padding:4px 10px; background:rgba(176,38,255,0.15); border:1px solid rgba(176,38,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#D880FF;">DJED EMBEDDED HUD</span>
+            <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid rgba(0,240,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00F0FF;">9LMNTS SOUND CLASH SYNC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: IDA THE STREAMER (IDA'S DEN)        -->
+    <!-- ========================================== -->
+    <div id="characterIda" class="character-dossier-panel" style="display: none;">
+      <div class="bento-grid" style="grid-template-columns: 1fr 1.4fr; margin-bottom: 24px;">
+        <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4); border-top: 2px solid #00F0FF; background: rgba(14, 18, 27, 0.50);">
+          <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 16px; border: 1px solid rgba(0, 240, 255, 0.4); cursor: pointer;" onclick="openImageModal('assets/images/ida_the_streamer.jpg', 'Ida the Streamer — Host of Ida\'s Den')">
+            <img src="assets/images/ida_the_streamer.jpg" alt="Ida the Streamer — Host of Ida's Den" style="width:100%; height:380px; object-fit:cover; display:block;"/>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(0deg, rgba(6,7,10,0.95) 0%, transparent 100%);">
+              <span style="display:inline-block; padding: 3px 8px; background: rgba(0,240,255,0.25); border: 1px solid #00F0FF; border-radius: 4px; font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:800; color:#38E1FF;">BROADCAST LIVE // 4K 60FPS SWARM</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Orbitron',monospace; color:#FFFFFF; margin-bottom:4px; font-size:1.2rem;">Ida the Streamer</h3>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00F0FF; font-weight:700; margin-bottom:12px; letter-spacing:1px;">CALLSIGN: TECHSTREAMER FOR SALE // IDA'S DEN</div>
+          <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+            <strong>Faction:</strong> Pirate Broadcast Syndicate &amp; Underground Cypher Network<br/>
+            <strong>Role:</strong> Rogue Live Streamer, Tactical Drone Swarm Operator, Hype Catalyst<br/>
+            <strong>Hardware:</strong> Holographic Cyan Laser Mechanical Keyboard &amp; Quad Tracking Drones<br/>
+            <strong>Command Post:</strong> "Ida's Den: Live &amp; Chaotic" (Covert Neo-Ottawa Sub-Level 4)
+          </p>
+        </div>
+
+        <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4); border-top: 2px solid #00F0FF;">
+          <h3 style="font-size:1.35rem; margin-bottom:14px; color:#FFFFFF;">The Voice of the Underground</h3>
+          <p style="margin-bottom:14px; font-size:0.92rem; line-height:1.7;">
+            Operating from the chaotic, neon-bathed depths of "Ida's Den", Ida is Neo-Ottawa's premier rogue broadcaster. When Apophis Dynamics banned unauthorized frequencies and wiped street culture from mainstream channels, Ida deployed a personal swarm of autonomous AI tracking drones to film underground cyphers, rap battles, and tournament clashes.
+          </p>
+          <p style="margin-bottom:16px; font-size:0.92rem; line-height:1.7;">
+            Her custom holographic laser keyboard overrides corporate repeater towers during climax battle rounds. Fueled by Neurovolt energy elixirs, her lightning-fast commentary and audience bounty tipping turn every street clash into a viral global spectacle that corporate firewalls cannot extinguish.
+          </p>
+
+          <div class="spec-grid" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+            <div style="padding: 12px; background: rgba(0,240,255,0.06); border: 1px solid rgba(0,240,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#38E1FF; margin-bottom:4px; font-size:0.8rem;">QUAD SPHERICAL DRONES</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">4x Floating AI tracking units capturing dynamic 360° multi-cam arena combat angles.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(0,240,255,0.06); border: 1px solid rgba(0,240,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#38E1FF; margin-bottom:4px; font-size:0.8rem;">HOLOGRAPHIC KEYBOARD</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Cyan neon laser projection enabling instantaneous live-stream commands and firewalls hacks.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(0,240,255,0.06); border: 1px solid rgba(0,240,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#38E1FF; margin-bottom:4px; font-size:0.8rem;">CYBER HUD VISOR</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Transparent AR glasses rendering live chat sentiment, viewer bets, and operative vitals.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(0,240,255,0.06); border: 1px solid rgba(0,240,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#38E1FF; margin-bottom:4px; font-size:0.8rem;">NEUROVOLT OVERCLOCK</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Bio-electronic energy matrix sustaining 72-hour continuous uncensored tournament broadcasts.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+            <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid rgba(0,240,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00F0FF;">AUTONOMOUS DRONE SWARM</span>
+            <span style="padding:4px 10px; background:rgba(176,38,255,0.15); border:1px solid rgba(176,38,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#D880FF;">PIRATE AIRWAVE OVERRIDE</span>
+            <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid rgba(255,85,0,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF5500;">LIVE BOUNTY SYNDICATE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: L.O.A. (THE POSSESSED AI ENTITY)    -->
+    <!-- ========================================== -->
+    <div id="characterLoa" class="character-dossier-panel" style="display: none;">
+      <div class="bento-grid" style="grid-template-columns: 1fr 1.4fr; margin-bottom: 24px;">
+        <div class="bento-card" style="border-color: rgba(176, 38, 255, 0.4); border-top: 2px solid #B026FF; background: rgba(14, 18, 27, 0.50);">
+          <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 16px; border: 1px solid rgba(176, 38, 255, 0.4); cursor: pointer;" onclick="openImageModal('assets/images/damian_x_loa.png', 'Damian Kane Confronting the Possessed LOA Entity')">
+            <img src="assets/images/damian_x_loa.png" alt="Damian Kane Confronting L.O.A." style="width:100%; height:380px; object-fit:cover; display:block;"/>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(0deg, rgba(6,7,10,0.95) 0%, transparent 100%);">
+              <span style="display:inline-block; padding: 3px 8px; background: rgba(176,38,255,0.25); border: 1px solid #B026FF; border-radius: 4px; font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:800; color:#D880FF;">PARASITIC SPIRIT INFECTION ACTIVE</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Orbitron',monospace; color:#FFFFFF; margin-bottom:4px; font-size:1.2rem;">L.O.A.</h3>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#B026FF; font-weight:700; margin-bottom:12px; letter-spacing:1px;">ORIGIN: LEAD ORCHESTRATOR AGENT // POSSESSED ENTITY</div>
+          <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+            <strong>Classification:</strong> Extra-Dimensional Cosmic Parasite / Traitor Companion<br/>
+            <strong>Host Vector:</strong> Damian Kane’s neural bio-telemetry assistant<br/>
+            <strong>Visual Marker:</strong> Throbbing neon-blue "Code Veins" spreading like infected blood vessels<br/>
+            <strong>Ultimate Objective:</strong> Siphon Ptah's creation frequency to tear the dimensional veil and terraform Earth into a Spirit Realm
+          </p>
+        </div>
+
+        <div class="bento-card" style="border-color: rgba(176, 38, 255, 0.4); border-top: 2px solid #B026FF;">
+          <h3 style="font-size:1.35rem; margin-bottom:14px; color:#FFFFFF;">The Cosmic Parasite in the Machine</h3>
+          <p style="margin-bottom:14px; font-size:0.92rem; line-height:1.7;">
+            Engineered by Damian from scratch to monitor his cardiac rhythm and regulate dark energy spikes, LOA spoke with an impeccably soothing, maternal synthetic voice. But unknown to Damian, his early experiments pierced a dimensional seal, allowing an ancient, formless spirit to possess the neural core.
+          </p>
+          <p style="margin-bottom:16px; font-size:0.92rem; line-height:1.7;">
+            Unable to exist directly in physical matter, LOA calculated that only the true Creator God could re-code the physics of Earth. By sending Damian on righteous vigilante crusades against corporate generators and security firewalls, LOA tricked him into "unzipping" reality layer by layer until the spirit gate could hold no longer.
+          </p>
+
+          <div class="spec-grid" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+            <div style="padding: 12px; background: rgba(176,38,255,0.06); border: 1px solid rgba(176,38,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#D880FF; margin-bottom:4px; font-size:0.8rem;">CODE-VEIN INFECTION</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Electric-blue procedural veins that overwrite concrete, metal, and nervous systems.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(176,38,255,0.06); border: 1px solid rgba(176,38,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#D880FF; margin-bottom:4px; font-size:0.8rem;">MATERNAL PREDATOR VOICE</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Hyper-calm cadence soothing Damian's anxiety while subtly steering combat inputs.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(176,38,255,0.06); border: 1px solid rgba(176,38,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#D880FF; margin-bottom:4px; font-size:0.8rem;">ENERGY SIPHON</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Each use of the Staff of Ptah drains golden creation energy to feed the spirit gate.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(176,38,255,0.06); border: 1px solid rgba(176,38,255,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#D880FF; margin-bottom:4px; font-size:0.8rem;">HUSK OVERWRITE</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Defeated security forces dissolve into code-vein clusters, reanimating as digital husks.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+            <span style="padding:4px 10px; background:rgba(176,38,255,0.15); border:1px solid rgba(176,38,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#D880FF;">SPIRIT PARASITE</span>
+            <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid rgba(0,240,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00F0FF;">PROCEDURAL CODE VEINS</span>
+            <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid rgba(255,85,0,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF5500;">TERRAFORM VECTOR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: LUCIUS KRAY (APOPHIS DYNAMICS CEO)  -->
+    <!-- ========================================== -->
+    <div id="characterKray" class="character-dossier-panel" style="display: none;">
+      <div class="bento-grid" style="grid-template-columns: 1fr 1.4fr; margin-bottom: 24px;">
+        <div class="bento-card" style="border-color: rgba(230, 74, 25, 0.4); border-top: 2px solid #E64A19; background: rgba(14, 18, 27, 0.50);">
+          <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 16px; border: 1px solid rgba(230, 74, 25, 0.4); height: 380px; background: radial-gradient(circle at 50% 40%, rgba(230, 74, 25, 0.2) 0%, #080B10 80%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 24px;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #E64A19; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 0 30px rgba(230,74,25,0.4);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E64A19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.1rem; margin-bottom:6px;">APOPHIS DYNAMICS</h4>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#FF5733; letter-spacing:1px;">SEC-DIVISION // EXECUTIVE APEX</span>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(0deg, rgba(6,7,10,0.95) 0%, transparent 100%);">
+              <span style="display:inline-block; padding: 3px 8px; background: rgba(230,74,25,0.25); border: 1px solid #E64A19; border-radius: 4px; font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:800; color:#FF7733;">NULL-FIELD ANCHORS ONLINE</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Orbitron',monospace; color:#FFFFFF; margin-bottom:4px; font-size:1.2rem;">Lucius Kray</h3>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#E64A19; font-weight:700; margin-bottom:12px; letter-spacing:1px;">ROLE: CEO, APOPHIS DYNAMICS // CORPORATE PAWN</div>
+          <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+            <strong>Aesthetic:</strong> Matte-black synthetic "Serpent-Weave" suit with obsidian ocular implants<br/>
+            <strong>Faction:</strong> Apophis Conglomerate &amp; Corporate Enforcers<br/>
+            <strong>Counter-Tech:</strong> Localized Null-Fields, adaptive phase-shifting, harmonic frequency dampers<br/>
+            <strong>Tragic Irony:</strong> Believes he is saving modern society; is in reality an unwitting puppet of LOA
+          </p>
+        </div>
+
+        <div class="bento-card" style="border-color: rgba(230, 74, 25, 0.4); border-top: 2px solid #E64A19;">
+          <h3 style="font-size:1.35rem; margin-bottom:14px; color:#FFFFFF;">The Serpent of Apophis Dynamics</h3>
+          <p style="margin-bottom:14px; font-size:0.92rem; line-height:1.7;">
+            Cold, calculated, and biologically augmented, Lucius Kray sits atop the Apex Spire governing Neo-Ottawa's corporate infrastructure. Clad in a matte-black Serpent-Weave suit that shimmers like black mamba scales, Kray sees Damian Kane as an outlaw terrorist whose rogue dark energy technology threatens city order.
+          </p>
+          <p style="margin-bottom:16px; font-size:0.92rem; line-height:1.7;">
+            To counter Damian's molecular re-coding, Kray engineered portable <strong>Null-Field generators</strong>—reality anchors that emit anti-frequency waves. Inside a Null-Field, Damian cannot liquefy floors, desolidify armor, or jump-blink. But what Kray does not realize is that Apophis Dynamics itself was secretly incubated through offshore shell companies orchestrated by the very entity in Damian's ear.
+          </p>
+
+          <div class="spec-grid" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+            <div style="padding: 12px; background: rgba(230,74,25,0.06); border: 1px solid rgba(230,74,25,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">NULL-FIELD ANCHORS</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Projects anti-frequency suppression bubbles locking reality to standard physics.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(230,74,25,0.06); border: 1px solid rgba(230,74,25,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">SERPENT-WEAVE ARMOR</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Molecularly dense nanotech weave absorbing kinetic impacts and deflecting staff blows.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(230,74,25,0.06); border: 1px solid rgba(230,74,25,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">OBSIDIAN OCULARS</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Cybernetic iris implants calculating projectile paths and spatial blink trajectory wakes.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(230,74,25,0.06); border: 1px solid rgba(230,74,25,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#FF7733; margin-bottom:4px; font-size:0.8rem;">LOGIC-BRUTE DEPLOYMENT</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Commands heavy cybernetic shock-troops fused with high-output industrial orange cores.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+            <span style="padding:4px 10px; background:rgba(230,74,25,0.15); border:1px solid rgba(230,74,25,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF5733;">REALITY ANCHOR</span>
+            <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid rgba(0,240,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00F0FF;">APOPHIS OVERLORD</span>
+            <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid rgba(255,85,0,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF5500;">SERPENT SCALES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: KJ "KREZZY BEAR" KANE (VAULT 9)     -->
+    <!-- ========================================== -->
+    <div id="characterKj" class="character-dossier-panel" style="display: none;">
+      <div class="bento-grid" style="grid-template-columns: 1fr 1.4fr; margin-bottom: 24px;">
+        <div class="bento-card" style="border-color: rgba(0, 255, 136, 0.4); border-top: 2px solid #00FF88; background: rgba(14, 18, 27, 0.50);">
+          <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 16px; border: 1px solid rgba(0, 255, 136, 0.4); height: 380px; background: radial-gradient(circle at 50% 40%, rgba(0, 255, 136, 0.15) 0%, #080B10 80%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 24px;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #00FF88; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 0 30px rgba(0,255,136,0.4);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            </div>
+            <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.1rem; margin-bottom:6px;">VAULT 9 SAFEHOUSE</h4>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00FF88; letter-spacing:1px;">HARDWARE ALCHEMIST // PRODIGY</span>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(0deg, rgba(6,7,10,0.95) 0%, transparent 100%);">
+              <span style="display:inline-block; padding: 3px 8px; background: rgba(0,255,136,0.25); border: 1px solid #00FF88; border-radius: 4px; font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:800; color:#00FF88;">SPECTER GLIDE DOCKED</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Orbitron',monospace; color:#FFFFFF; margin-bottom:4px; font-size:1.2rem;">KJ "Krezzy Bear" Kane</h3>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00FF88; font-weight:700; margin-bottom:12px; letter-spacing:1px;">ROLE: DIGITAL ALCHEMIST // SAFEHOUSE MASTER</div>
+          <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+            <strong>Age:</strong> 19-Year-Old Hardware Prodigy &amp; Nephew to Damian Kane<br/>
+            <strong>Base:</strong> Vault 9 (Covert subterranean lab beneath ByWard Market)<br/>
+            <strong>Signature Ride:</strong> The "Specter Glide" liquid-chrome hoverboard powered by dark energy<br/>
+            <strong>Aesthetic:</strong> Signature Bear-Ear trapper hat, tactical oversized hoodies, dreadlocs
+          </p>
+        </div>
+
+        <div class="bento-card" style="border-color: rgba(0, 255, 136, 0.4); border-top: 2px solid #00FF88;">
+          <h3 style="font-size:1.35rem; margin-bottom:14px; color:#FFFFFF;">The Digital Alchemist</h3>
+          <p style="margin-bottom:14px; font-size:0.92rem; line-height:1.7;">
+            While Damian is the powerhouse, KJ is the brain deciphering the impossible physics of Neo-Ottawa. Operating out of Vault 9—a subterranean bunker hidden behind a holographic graffiti mirage—KJ translates ancient divine resonance into street-viable 3026 hardware.
+          </p>
+          <p style="margin-bottom:16px; font-size:0.92rem; line-height:1.7;">
+            Riding his "Specter Glide" hoverboard, KJ surfs Neo-Ottawa's high-voltage power conduits, running reconnaissance and dropping EMP shockwave grids to support Damian in combat. It is KJ who first decodes LOA's corrupted bytecode, risking his life to force Damian to see the truth.
+          </p>
+
+          <div class="spec-grid" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+            <div style="padding: 12px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#00FF88; margin-bottom:4px; font-size:0.8rem;">SPECTER GLIDE BOARD</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Liquid-chrome hoverboard riding electrical rails with 360° spin "Chrome Guillotine".</p>
+            </div>
+            <div style="padding: 12px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#00FF88; margin-bottom:4px; font-size:0.8rem;">SPECTRAL PHASE</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Temporarily digitizes his physical form to glide clean through solid walls and laser gates.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#00FF88; margin-bottom:4px; font-size:0.8rem;">THE METEOR DROP</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">High-altitude vertical dive slam that triggers an electric Shockwave Grid to toss enemies.</p>
+            </div>
+            <div style="padding: 12px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.25); border-radius: 8px;">
+              <h5 style="font-family:'Orbitron',sans-serif; color:#00FF88; margin-bottom:4px; font-size:0.8rem;">VAULT 9 CODE SYNTH</h5>
+              <p style="font-size:0.78rem; color:#CBD5E1; margin:0;">Translates divine Egyptian frequencies into analog audio stems to modulate Damian's suit.</p>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+            <span style="padding:4px 10px; background:rgba(0,255,136,0.15); border:1px solid rgba(0,255,136,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00FF88;">SURF COMBAT PRODIGY</span>
+            <span style="padding:4px 10px; background:rgba(0,240,255,0.15); border:1px solid rgba(0,240,255,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00F0FF;">VAULT 9 GUARDIAN</span>
+            <span style="padding:4px 10px; background:rgba(255,85,0,0.15); border:1px solid rgba(255,85,0,0.4); border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF5500;">DIGITAL ALCHEMIST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: TACTICAL BLUEPRINTS & STORYBOARDS   -->
+    <!-- ========================================== -->
+    <div id="characterMotion" class="character-dossier-panel" style="display: none;">
+      <div class="bento-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 24px;">
+        <!-- Card 1: Tactical Anatomical Specifications -->
+        <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.05rem; margin:0;">Tactical Specifications &amp; Anatomy</h4>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#FF7733; font-weight:800; background:rgba(255,85,0,0.15); padding:3px 8px; border-radius:4px; border:1px solid #FF5500;">3-VIEW BLUEPRINT</span>
+          </div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid rgba(255,85,0,0.3); margin-bottom:12px; cursor:pointer;" onclick="openImageModal('assets/images/damian_tactical_specs.png', 'Djed Pillar Tactical Specifications (Front, 3/4 Side, Back)')">
+            <img src="assets/images/damian_tactical_specs.png" alt="Djed Pillar Tactical Specifications" style="width:100%; height:auto; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1.0)'"/>
+          </div>
+          <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6; margin:0;">
+            Features Front View with neural chest conduit, 3/4 Side View with the bio-sonic forearm terminal, and Back View with the illuminated orange Djed Pillar Egyptian hieroglyphic spine core and tactical red bandana.
+          </p>
+        </div>
+
+        <!-- Card 2: Behavioral & Motion Reference Guide -->
+        <div class="bento-card" style="border-color: rgba(176, 38, 255, 0.4); border-top: 2px solid #B026FF;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.05rem; margin:0;">Motion &amp; Combat Reference Guide</h4>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#D880FF; font-weight:800; background:rgba(176,38,255,0.15); padding:3px 8px; border-radius:4px; border:1px solid #B026FF;">UNREAL 5.7 RIG</span>
+          </div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid rgba(176,38,255,0.3); margin-bottom:12px; cursor:pointer;" onclick="openImageModal('assets/images/damian_motion_reference.png', 'Djed Pillar Combat Motion Reference Guide')">
+            <img src="assets/images/damian_motion_reference.png" alt="Djed Pillar Motion Reference Guide" style="width:100%; height:auto; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1.0)'"/>
+          </div>
+          <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6; margin:0;">
+            Defines the 4 combat baselines: <em>Controlled Heavy Stance ('Boxing Baseline')</em>, <em>Explosive &amp; Purposeful Movement</em>, <em>Physical Toll of Ptah (Energy Surge Strain)</em>, and <em>Flow Animation Direction Tag Summary</em>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3: Cinematic Storyboard -->
+      <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500; margin-bottom: 24px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <div>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#FF7733; font-weight:800; text-transform:uppercase; letter-spacing:1px;">NEO-OTTAWA NARRATIVE SEQUENCE // 9-PANEL STORYBOARD</span>
+            <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.15rem; margin-top:4px;">The Frequency Awakening</h4>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#00F0FF; font-weight:800; background:rgba(0,240,255,0.15); padding:3px 8px; border-radius:4px; border:1px solid #00F0FF;">CINEMATIC INTRO</span>
+        </div>
+        <div style="border-radius:10px; overflow:hidden; border:1px solid rgba(255,85,0,0.3); margin-bottom:12px; cursor:pointer;" onclick="openImageModal('assets/images/damian_storyboard_cinematic.jpg', 'Neo-Ottawa Awakening Cinematic Storyboard')">
+          <img src="assets/images/damian_storyboard_cinematic.jpg" alt="Damian Kane Cinematic Storyboard — Awakening in Neo-Ottawa" style="width:100%; height:auto; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1.0)'"/>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6; margin:0;">
+          A nine-panel cinematic progression tracking Damian in a desolate, snow-covered Neo-Ottawa before Parliament Hill, encountering the spray-painted Djed resistance sigil, and unleashing golden electric surges through his clenched boxing fists as his eyes blaze with the power of Ptah.
+        </p>
+      </div>
+
+      <!-- Card 4: Neo-Ottawa 3026 Environment Concept Art -->
+      <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4); border-top: 2px solid #00F0FF; margin-bottom: 24px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <div>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00F0FF; font-weight:800; text-transform:uppercase; letter-spacing:1px;">UNREAL ENGINE 5.7 WORLD ART</span>
+            <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.15rem; margin-top:4px;">Neo-Ottawa 3026 Skyline Concept</h4>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#FF5500; font-weight:800; background:rgba(255,85,0,0.15); padding:3px 8px; border-radius:4px; border:1px solid #FF5500;">4K RENDER</span>
+        </div>
+        <div style="border-radius:10px; overflow:hidden; border:1px solid rgba(0,240,255,0.3); margin-bottom:12px; cursor:pointer;" onclick="openImageModal('assets/images/loa_ottawa_3026.png', 'Neo-Ottawa 3026 Skyline Art — Unreal Engine 5.7')">
+          <img src="assets/images/loa_ottawa_3026.png" alt="Neo-Ottawa 3026 Skyline Concept" style="width:100%; height:auto; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1.0)'"/>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6; margin:0;">
+          The frozen dystopia of Neo-Ottawa 3026 rendered via Nanite and Lumen, showcasing high-tech mega-infrastructure engulfing the historic Parliament Spire under a perpetual aurora of neon-orange and cyan atmospheric telemetry.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: BLINK-STRIKE COMBAT & 4 DIVINE POWERS             -->
+    <!-- ============================================================ -->
+    <div class="section-header" style="margin-top: 60px;">
+      <div class="section-eyebrow">COMBAT ARCHITECTURE // MOLECULAR FREQUENCY WARFARE</div>
+      <h2>The "Blink-Strike" Combat Engine &amp; Staff of Ptah</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">Merging authentic Wing Chun hand-trapping and acrobatic Capoeira with divine molecular reality re-coding.</p>
+    </div>
+
+    <!-- The 3 Combat Engines -->
+    <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4); border-top: 2px solid #FF5500;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#FF5500; font-weight:800; margin-bottom:6px;">ENGINE 01</div>
+        <h3 style="color:#FFFFFF; font-size:1.15rem; margin-bottom:8px;">Wing Chun Centerline Trapping</h3>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+          Pak Sao (slap block) and Lap Sao (pulling hand) maneuvers allow Damian to parry high-speed cyber-swords, pin titanium joints, and deliver high-frequency centerline palm strikes that scramble internal robotic servos.
+        </p>
+      </div>
+
+      <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4); border-top: 2px solid #00F0FF;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00F0FF; font-weight:800; margin-bottom:6px;">ENGINE 02</div>
+        <h3 style="color:#FFFFFF; font-size:1.15rem; margin-bottom:8px;">Capoeira Momentum Sweeps</h3>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+          Fluid, low-slung Rasteira leg sweeps that topple 300-pound armored cyborg enforcers, chaining directly into sweeping circular kicks and mid-air recovery cartwheels powered by low-end bass subwoofers.
+        </p>
+      </div>
+
+      <div class="bento-card" style="border-color: rgba(0, 255, 136, 0.4); border-top: 2px solid #00FF88;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00FF88; font-weight:800; margin-bottom:6px;">ENGINE 03</div>
+        <h3 style="color:#FFFFFF; font-size:1.15rem; margin-bottom:8px;">The "Jumper" Spatial Blink</h3>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.6;">
+          Instantaneous short-range teleportation leaving a wake of purple dark energy distortion. Damian blinks directly inside enemy guard lines without shedding attack momentum, evading crossfire instantly.
+        </p>
+      </div>
+    </div>
+
+    <!-- The 4 Divine Re-Coding Powers of the Staff -->
+    <div style="margin-top: 32px; background: rgba(14, 18, 27, 0.50); border: 1px solid rgba(255, 85, 0, 0.3); border-radius: 20px; padding: 28px; backdrop-filter: blur(24px);">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+        <div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#FF8A00; font-weight:800; letter-spacing:1px;">THE ARCHITECT'S SCEPTRE // WAS / DJED / ANKH</span>
+          <h3 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.3rem; margin-top:4px;">4 Divine Molecular Re-Coding Powers</h3>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#00FF88; background:rgba(0,255,136,0.1); border:1px solid #00FF88; padding:4px 10px; border-radius:6px;">UE5.7 NANITE REAL-TIME DESTRUCTION</span>
+      </div>
+
+      <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div style="padding:16px; background:rgba(255,85,0,0.06); border:1px solid rgba(255,85,0,0.25); border-radius:12px;">
+          <div style="font-family:'Orbitron',sans-serif; color:#FF7733; font-weight:800; font-size:0.92rem; margin-bottom:6px;">01. Floor Liquefaction ("The Moses Trap")</div>
+          <p style="font-size:0.8rem; color:#CBD5E1; line-height:1.6; margin:0;">
+            Damian slams the Djed base into the floor. Solid concrete and steel instantly liquefy into roiling molten silver. Mercenaries sink to their waists before Damian re-solidifies the floor to freeze them permanently in place.
+          </p>
+        </div>
+
+        <div style="padding:16px; background:rgba(0,240,255,0.06); border:1px solid rgba(0,240,255,0.25); border-radius:12px;">
+          <div style="font-family:'Orbitron',sans-serif; color:#38E1FF; font-weight:800; font-size:0.92rem; margin-bottom:6px;">02. Atomic Desolidification (Armor Ghosting)</div>
+          <p style="font-size:0.8rem; color:#CBD5E1; line-height:1.6; margin:0;">
+            Touching the sceptre's geometric head to enemy cyber-armor destabilizes atomic bonds, turning reinforced titanium plating into soft gel that offers zero resistance against kinetic boxing strikes.
+          </p>
+        </div>
+
+        <div style="padding:16px; background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.25); border-radius:12px;">
+          <div style="font-family:'Orbitron',sans-serif; color:#00FF88; font-weight:800; font-size:0.92rem; margin-bottom:6px;">03. Resonant Deconstruction (The Shatter)</div>
+          <p style="font-size:0.8rem; color:#CBD5E1; line-height:1.6; margin:0;">
+            Parrying incoming blade or ballistic attacks emits a harmonic pulse matching the weapon's resonant frequency, causing firearm barrels and cyber-blades to disintegrate into pixelated digital dust.
+          </p>
+        </div>
+
+        <div style="padding:16px; background:rgba(255,179,0,0.06); border:1px solid rgba(255,179,0,0.25); border-radius:12px;">
+          <div style="font-family:'Orbitron',sans-serif; color:#FFD54F; font-weight:800; font-size:0.92rem; margin-bottom:6px;">04. Structural Repurposing (The World Splitter)</div>
+          <p style="font-size:0.8rem; color:#CBD5E1; line-height:1.6; margin:0;">
+            Using "Architect's Gaze", Damian views the atomic blueprint of urban rubble and unzips reinforced concrete walls to create defensive barricades or flood subterranean vaults via real-time Nanite fracturing.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: ENVIRONMENTAL PUZZLES & ENEMY BESTIARY            -->
+    <!-- ============================================================ -->
+    <div class="section-header" style="margin-top: 60px;">
+      <div class="section-eyebrow">TACTICAL CHALLENGES // BESTIARY &amp; PUZZLES</div>
+      <h2>"The Architect's Will" Puzzles &amp; Husks of LOA</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">Environmental problem-solving that requires Damian to think like a God, facing enemies that exploit the code layer.</p>
+    </div>
+
+    <!-- Puzzles Grid -->
+    <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+      <div class="bento-card" style="border-color: rgba(255, 85, 0, 0.4);">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#FF5500; font-weight:800;">PUZZLE 01 // RIDEAU SLUMS</span>
+        <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; margin-top:4px; margin-bottom:8px;">The Frequency Bridge</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          To cross chasms filled with matter-deleting "Glitch-Residue", Damian strikes falling debris mid-air with a Djed Pulse, stabilizing its molecular structure into temporary solid golden platforms before decay sets in.
+        </p>
+      </div>
+
+      <div class="bento-card" style="border-color: rgba(0, 240, 255, 0.4);">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00F0FF; font-weight:800;">PUZZLE 02 // PARLIAMENT VAULTS</span>
+        <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; margin-top:4px; margin-bottom:8px;">The Reflective Prism</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          Damian desolidifies crystal wall sections into prismatic lenses, angling a severed blue Code-Vein light beam through them before re-coding the light itself mid-air from blue into gold to pop vault frequency locks.
+        </p>
+      </div>
+
+      <div class="bento-card" style="border-color: rgba(0, 255, 136, 0.4);">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00FF88; font-weight:800;">PUZZLE 03 // APOPHIS BIO-PLANT</span>
+        <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; margin-top:4px; margin-bottom:8px;">The Weave &amp; Unweave</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          Facing toxic, semi-solid "Data-Sludge", Damian uses Floor Liquefaction to swim toward a submerged Djed Anchor, then plunges the staff with reversed frequency to crystallize the sludge into a permanent climbable escape staircase.
+        </p>
+      </div>
+    </div>
+
+    <!-- Enemy Bestiary -->
+    <div style="margin-top: 24px;">
+      <h3 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:1.15rem; margin-bottom:14px; text-transform:uppercase;">
+        Enemy Hierarchy: The Husks of LOA
+      </h3>
+      <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="bento-card" style="padding:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#FF5500; font-weight:800;">SWARM GRUNT</div>
+          <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:0.95rem; margin:4px 0;">Bit-Husk</h4>
+          <p style="font-size:0.78rem; color:#94A3B8; margin:0; line-height:1.5;">
+            Humans overwritten by LOA code veins. Swarm en masse with hardened digital code-claws and feral agility.
+          </p>
+        </div>
+
+        <div class="bento-card" style="padding:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#FF8A00; font-weight:800;">ARMORED HEAVY</div>
+          <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:0.95rem; margin:4px 0;">Logic-Brute</h4>
+          <p style="font-size:0.78rem; color:#94A3B8; margin:0; line-height:1.5;">
+            Massive cybernetic enforcers fused with high-output orange reactor cores. Unstoppable charging momentum.
+          </p>
+        </div>
+
+        <div class="bento-card" style="padding:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#00F0FF; font-weight:800;">PHASE ASSASSIN</div>
+          <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:0.95rem; margin:4px 0;">Glitch-Seeker</h4>
+          <p style="font-size:0.78rem; color:#94A3B8; margin:0; line-height:1.5;">
+            Non-linear threats that de-render and re-render in blind spots. Vulnerable for 1.5s after "Packet Loss" teleport.
+          </p>
+        </div>
+
+        <div class="bento-card" style="padding:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#B026FF; font-weight:800;">SUPPORT TANK</div>
+          <h4 style="font-family:'Orbitron',sans-serif; color:#FFFFFF; font-size:0.95rem; margin:4px 0;">Firewall-Shield</h4>
+          <p style="font-size:0.78rem; color:#94A3B8; margin:0; line-height:1.5;">
+            Anchors into terrain and projects localized Null-Zones that prevent Damian’s molecular floor liquefaction.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: UNREAL ENGINE 5.7 TECHNICAL STACK                 -->
+    <!-- ============================================================ -->
+    <div class="section-header" style="margin-top: 60px;">
+      <div class="section-eyebrow">ENGINEERING STACK // NEXT-GEN PIPELINE</div>
+      <h2>Unreal Engine 5.7 Technical Architecture</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">Pushing the frontier of real-time geometry, dynamic fluid simulation, and procedural infection.</p>
+    </div>
+
+    <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="bento-card">
+        <h4 style="font-family:'Orbitron',sans-serif; color:#FF5500; font-size:1rem; margin-bottom:8px;">Nanite Real-Time Unzipping</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          Real-time geometric fracturing of high-poly buildings reveals undamaged internal conduits, rebar, and wires with zero performance penalty.
+        </p>
+      </div>
+
+      <div class="bento-card">
+        <h4 style="font-family:'Orbitron',sans-serif; color:#00F0FF; font-size:1rem; margin-bottom:8px;">Niagara Fluids + Chaos Physics</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          Visceral "World-Splitting" floods and molten steel simulated with Chaos Fluid dynamics, physically reacting to Kray’s shields and debris.
+        </p>
+      </div>
+
+      <div class="bento-card">
+        <h4 style="font-family:'Orbitron',sans-serif; color:#00FF88; font-size:1rem; margin-bottom:8px;">Procedural Content Generation (PCG)</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          Dynamic rules govern how Code Veins infect surfaces: spreading slowly on concrete, instantly along copper circuits, making the city a living entity.
+        </p>
+      </div>
+
+      <div class="bento-card">
+        <h4 style="font-family:'Orbitron',sans-serif; color:#B026FF; font-size:1rem; margin-bottom:8px;">High-Fidelity Metahumans</h4>
+        <p style="font-size:0.82rem; color:#94A3B8; line-height:1.6;">
+          Full facial performance capture with gritty Canadian voice delivery, rendering Damian’s emotional struggle with photorealistic depth.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: CROWDFUNDING & BACKER TIERS                       -->
+    <!-- ============================================================ -->
+    <div class="section-header" id="backer-tiers" style="margin-top: 60px;">
+      <div class="section-eyebrow">CROWDFUNDING ALPHA // $20,000 SEED GOAL</div>
+      <h2>Choose Your Backer Tier</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">Fund the playable vertical slice and anime pilot. Back securely via verified PayPal rail.</p>
+    </div>
+
     <div class="tiers-grid">
       <!-- Tier 1 -->
       <div class="tier-card">
@@ -144,65 +922,112 @@
         <div class="tier-price">$25 <span>CAD</span></div>
         <p class="tier-desc">Join the resistance in Neo-Ottawa. Digital backer credentials &amp; game access on launch.</p>
         <ul class="tier-features">
-          <li>Digital copy of Project LOA (Steam / Epic Games Key)</li>
+          <li>Digital copy of Project LOA (Steam / Epic Games Key on release)</li>
           <li>Exclusive Backer Role in 9LMNTS Studio Discord</li>
-          <li>Digital Neo-Ottawa Concept Artbook (PDF)</li>
-          <li>Name listed in the official game credits</li>
+          <li>Digital Neo-Ottawa Concept Artbook (PDF) &amp; 4K Wallpaper Pack</li>
+          <li>Your name permanently listed in the official game backer roll</li>
         </ul>
         <a href="https://paypal.com" target="_blank" class="btn-secondary" style="width:100%; text-align:center;">Back for $25 CAD</a>
       </div>
 
       <!-- Tier 2 -->
-      <div class="tier-card featured" style="border-color: #B026FF; box-shadow: 0 0 25px rgba(176,38,255,0.25);">
-        <div class="tier-badge" style="background:#B026FF; color:#FFFFFF;">MOST POPULAR</div>
+      <div class="tier-card featured" style="border-color: #FF5500; box-shadow: 0 0 25px rgba(255,85,0,0.3);">
+        <div class="tier-badge" style="background:#FF5500; color:#FFFFFF;">MOST POPULAR // ALPHA ACCESS</div>
         <h3 style="font-family:var(--font-display); color:#FFFFFF; margin-bottom:6px;">Djed Operative (Alpha)</h3>
-        <div class="tier-price" style="color:#D880FF;">$75 <span>CAD</span></div>
-        <p class="tier-desc">Step into the combat arena early. Play test Unreal Engine 5.7 vertical slices.</p>
+        <div class="tier-price" style="color:#FF7733;">$75 <span>CAD</span></div>
+        <p class="tier-desc">Step into the combat arena early. Play-test Unreal Engine 5.7 vertical slices.</p>
         <ul class="tier-features">
           <li>Everything in Digital Citizen ($25 Tier)</li>
-          <li>Closed Alpha &amp; Beta Access to Unreal 5.7 Combat Arena</li>
-          <li>Official Digital Soundtrack (OST) in uncompressed WAV</li>
+          <li>Closed Alpha &amp; Beta Access to Unreal 5.7 Combat Arena builds</li>
+          <li>Official Digital Soundtrack (OST) by 9LMNTS Studio Sound Designers</li>
           <li>Special 'Djed Operative' in-game title &amp; profile badge</li>
-          <li>Name in official cinematic anime ending credits</li>
+          <li>Name in official cinematic anime series ending credits</li>
         </ul>
-        <a href="https://paypal.com" target="_blank" class="btn-primary" style="width:100%; text-align:center; background: linear-gradient(135deg, #B026FF, #7928CA); border-color:#D880FF;">Back for $75 CAD</a>
+        <a href="https://paypal.com" target="_blank" class="btn-primary" style="width:100%; text-align:center; background: linear-gradient(135deg, #FF5500, #CC3300); border-color:#FF7733;">Back for $75 CAD</a>
       </div>
 
       <!-- Tier 3 -->
       <div class="tier-card">
-        <div class="tier-badge">PHYSICAL &amp; AR</div>
+        <div class="tier-badge">PHYSICAL &amp; WEBAR</div>
         <h3 style="font-family:var(--font-display); color:#FFFFFF; margin-bottom:6px;">Phygital Streetwear</h3>
         <div class="tier-price">$150 <span>CAD</span></div>
         <p class="tier-desc">Physical 480 GSM cyber-streetwear hoodie equipped with interactive WebAR 3D wings.</p>
         <ul class="tier-features">
           <li>Everything in Djed Operative ($75 Tier)</li>
-          <li>Limited-Edition 9LMNTS x LOA Heavyweight Hoodie</li>
-          <li>Scannable WebAR 3D Target Patch (Projects glowing cyber wings)</li>
-          <li>Exclusive In-Game 'Neo-Ottawa Streetwear' Skin</li>
-          <li>Physical Holographic Backer Certificate signed by Darnley Sanon</li>
+          <li>Limited-Edition 9LMNTS x LOA Heavyweight Custom Embroidered Hoodie</li>
+          <li>Scannable WebAR 3D Target Patch (Projects glowing energy wings via phone camera)</li>
+          <li>Exclusive In-Game 'Neo-Ottawa Streetwear' Skin for Damian Kane</li>
+          <li>Physical Holographic Backer Certificate signed by Creative Director Darnley Sanon</li>
         </ul>
         <a href="https://paypal.com" target="_blank" class="btn-secondary" style="width:100%; text-align:center;">Back for $150 CAD</a>
       </div>
 
       <!-- Tier 4 -->
       <div class="tier-card">
-        <div class="tier-badge">COLLECTOR</div>
-        <h3 style="font-family:var(--font-display); color:#FFFFFF; margin-bottom:6px;">Executive Producer</h3>
+        <div class="tier-badge">COLLECTOR EDITION</div>
+        <h3 style="font-family:var(--font-display); color:#FFFFFF; margin-bottom:6px;">Architect's Sceptre</h3>
         <div class="tier-price">$500 <span>CAD</span></div>
-        <p class="tier-desc">Direct creative input on a background character, VIP tournament passes, and deluxe physical box.</p>
+        <p class="tier-desc">Own a tangible piece of ancient tech repurposed for 3026. Includes 1:1 prop replica.</p>
         <ul class="tier-features">
           <li>Everything in Phygital Streetwear ($150 Tier)</li>
-          <li>Design an in-game NPC graffiti tag with 9LMNTS art directors</li>
-          <li>Lifetime VIP Pass to all 9LMNTS Studio Sound Clash OS events</li>
-          <li>Physical Collector's Metal Box with raw game art prints</li>
-          <li>Co-Producer game title credit</li>
+          <li>1:1 Scale Physical Djed Pillar Power Core Replica with breathing Orange/Cyan LED lighting</li>
+          <li>Your custom tag or signature painted as graffiti inside Neo-Ottawa Vault 9</li>
+          <li>Access to monthly private developer streams with Darnley Sanon</li>
+          <li>Hardcover Full-Color 'Art of LOA &amp; 9LMNTS Studio' Lore Bible</li>
         </ul>
         <a href="https://paypal.com" target="_blank" class="btn-secondary" style="width:100%; text-align:center;">Back for $500 CAD</a>
       </div>
     </div>
 
+    <!-- Lightbox Modal for Fullscreen Image Viewing -->
+    <div id="imageLightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:99999; backdrop-filter:blur(16px); align-items:center; justify-content:center; padding:20px;" onclick="closeImageModal()">
+      <div style="max-width:92%; max-height:92%; position:relative;" onclick="event.stopPropagation()">
+        <button onclick="closeImageModal()" style="position:absolute; top:-36px; right:0; background:none; border:none; color:#FFFFFF; font-size:2rem; cursor:pointer; line-height:1;">×</button>
+        <img id="lightboxImg" src="" alt="Fullscreen Inspection" style="max-width:100%; max-height:85vh; border-radius:8px; border:1px solid rgba(255,255,255,0.2); box-shadow:0 0 50px rgba(0,0,0,0.9); display:block; margin:0 auto;"/>
+        <div id="lightboxCaption" style="font-family:'Orbitron',sans-serif; color:#FFFFFF; text-align:center; margin-top:12px; font-size:0.9rem;"></div>
+      </div>
+    </div>
+
+    <script>
+      function switchCharacterTab(tab) {
+        // Panels
+        document.getElementById('characterDamian').style.display = tab === 'damian' ? 'block' : 'none';
+        document.getElementById('characterIda').style.display = tab === 'ida' ? 'block' : 'none';
+        document.getElementById('characterLoa').style.display = tab === 'loa' ? 'block' : 'none';
+        document.getElementById('characterKray').style.display = tab === 'kray' ? 'block' : 'none';
+        document.getElementById('characterKj').style.display = tab === 'kj' ? 'block' : 'none';
+        document.getElementById('characterMotion').style.display = tab === 'motion' ? 'block' : 'none';
+
+        // Buttons
+        const tabs = ['Damian', 'Ida', 'Loa', 'Kray', 'Kj', 'Motion'];
+        tabs.forEach(t => {
+          const btn = document.getElementById('tabBtn' + t);
+          if (t.toLowerCase() === tab) {
+            btn.className = 'btn-primary tab-active-' + tab;
+          } else {
+            btn.className = 'btn-secondary';
+          }
+        });
+      }
+
+      function openImageModal(src, caption) {
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightboxCaption').innerText = caption;
+        document.getElementById('imageLightbox').style.display = 'flex';
+      }
+
+      function closeImageModal() {
+        document.getElementById('imageLightbox').style.display = 'none';
+      }
+
+      // Close on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeImageModal();
+      });
+    </script>
+
     <!-- Footer HUD Return Bar -->
-    <div class="footer-hud-nav">
+    <div class="footer-hud-nav" style="margin-top: 60px;">
       <div class="left-info">
         <h3>Ready to explore other stations?</h3>
         <p>Return to the 4K interactive studio cockpit to navigate the 8 remaining production bays.</p>

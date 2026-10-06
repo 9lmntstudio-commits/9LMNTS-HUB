@@ -6,6 +6,8 @@
   <script>
     (function() {
       try {
+        localStorage.setItem('nl-hud:public:v1', 'hidden');
+        localStorage.setItem('nl-hud:owner-private:v1', 'hidden');
         var params = new URLSearchParams(window.location.search);
         var forcedMode = params.get('mode');
         if (forcedMode === 'mobile') {
@@ -737,29 +739,45 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background-color: rgba(3, 4, 6, 0.85);
-      background-image: 
-        linear-gradient(180deg, rgba(3, 4, 6, 0.72) 0%, rgba(3, 4, 6, 0.90) 100%),
-        url('assets/images/darnley_studio_helm_v2.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: radial-gradient(circle at 50% 50%, rgba(3, 5, 10, 0.40) 0%, rgba(2, 3, 5, 0.82) 100%);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.35s var(--ease-cinematic);
-      padding: 16px;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: clamp(14px, 4vw, 24px);
     }
 
     .modal-backdrop.active {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    /* Mobile Tactile Spring Pop-Up Animation */
+    @keyframes cyberModalPopIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(32px);
+        filter: blur(10px) brightness(1.3);
+      }
+      65% {
+        opacity: 1;
+        transform: scale(1.02) translateY(-3px);
+        filter: blur(0px) brightness(1.06);
+      }
+      85% {
+        transform: scale(0.99) translateY(1px);
+        filter: blur(0px) brightness(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0px) brightness(1);
+      }
     }
 
     .modal-dialog {
@@ -776,16 +794,14 @@
       width: 100%;
       max-height: 88vh;
       overflow-y: auto;
-      padding: 24px 20px;
+      padding: clamp(24px, 5vw, 36px) clamp(20px, 4.5vw, 28px);
       position: relative;
       display: none;
-      transform: translateY(20px) scale(0.96);
-      transition: transform 0.35s var(--ease-cinematic);
     }
 
     .modal-dialog.active {
       display: block;
-      transform: translateY(0) scale(1);
+      animation: cyberModalPopIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
     }
 
     .modal-close {
@@ -1134,61 +1150,61 @@
     <p class="section-desc">Fixed-scope, turnkey rapid deployments designed for record labels, autonomous artists, and cyber-physical brands.</p>
 
     <div class="sprints-section-wrapper">
-      <!-- Tier 1 -->
+      <!-- Tier 1: Starter Sprint -->
       <div class="sprint-tier-card">
         <div class="tier-header">
           <div>
-            <span class="tier-badge">DAY SPRINT</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">24-Hour Deployment</h3>
+            <span class="tier-badge">14-DAY SPRINT</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">Starter Sprint</h3>
           </div>
           <div class="tier-price">$1,500 <span>CAD</span></div>
         </div>
-        <p style="font-size: 0.78rem; color: #94a3b8;">High-speed turnarounds for key art, motion teasers, or sound identity packages.</p>
+        <p style="font-size: 0.78rem; color: #94a3b8;">Figma design system, brand tokens, glassmorphic dark UI, Netlify deployment &amp; ManyChat lead capture.</p>
         <ul class="tier-features">
-          <li>Turnkey 24-hour delivery window</li>
-          <li>1 Master 4K visual identity asset</li>
-          <li>Audio signature &amp; audio logo design</li>
-          <li>Direct engineering Slack dispatch</li>
+          <li>Figma tokens &amp; mobile-first dark UI</li>
+          <li>Netlify instant cloud deployment</li>
+          <li>ManyChat lead capture funnel</li>
+          <li>4x $375.00 CAD via PayPal Pay in 4 (0% Int)</li>
         </ul>
-        <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta">Reserve Day Sprint ($1,500)</a>
+        <a href="pricing.html#agency-sprints" class="btn-tier-cta">Reserve Starter Sprint ($1,500) &rarr;</a>
       </div>
 
-      <!-- Tier 2 -->
-      <div class="sprint-tier-card" style="border-color: rgba(0, 212, 255, 0.45); border-top-color: #00D2FF;">
+      <!-- Tier 2: Pro Custom Sprint -->
+      <div class="sprint-tier-card" style="border-color: rgba(255, 85, 0, 0.45); border-top-color: #FF5500;">
         <div class="tier-header">
           <div>
-            <span class="tier-badge" style="color: var(--cyber-teal); background: rgba(0, 212, 255, 0.12); border-color: rgba(0, 212, 255, 0.4);">WEEKEND SPRINT</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">48-Hour Prototype</h3>
+            <span class="tier-badge" style="color: var(--neon-orange); background: rgba(255, 85, 0, 0.12); border-color: rgba(255, 85, 0, 0.4);">MOST POPULAR</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">Pro Custom Sprint</h3>
           </div>
-          <div class="tier-price">$3,500 <span>CAD</span></div>
+          <div class="tier-price">$2,500+ <span>CAD</span></div>
         </div>
-        <p style="font-size: 0.78rem; color: #94a3b8;">Functional WebGL/3D interactive product teaser or complete spatial web teaser.</p>
+        <p style="font-size: 0.78rem; color: #94a3b8;">Full interactive web app or creator OS, ManyChat DM funnel, Supabase sync &amp; WebAR 3D assets.</p>
         <ul class="tier-features">
-          <li>48-Hour weekend execution team</li>
-          <li>Interactive 3D / WebAR experience</li>
-          <li>Audio-reactive Web Audio integration</li>
-          <li>Complete source code &amp; Netlify hosting</li>
+          <li>Full interactive web app or OS</li>
+          <li>Supabase database &amp; n8n automation</li>
+          <li>WebAR interactive 3D asset integration</li>
+          <li>4x $625.00 CAD via PayPal Pay in 4 (0% Int)</li>
         </ul>
-        <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);">Reserve Weekend Sprint ($3,500)</a>
+        <a href="pricing.html#agency-sprints" class="btn-tier-cta" style="background: linear-gradient(135deg, #FF5500 0%, #FF2200 100%);">Reserve Pro Sprint ($2,500+) &rarr;</a>
       </div>
 
-      <!-- Tier 3 -->
-      <div class="sprint-tier-card" style="border-color: rgba(176, 38, 255, 0.45); border-top-color: #B026FF;">
+      <!-- Tier 3: Enterprise Scale Build -->
+      <div class="sprint-tier-card" style="border-color: rgba(0, 212, 255, 0.45); border-top-color: #00D4FF;">
         <div class="tier-header">
           <div>
-            <span class="tier-badge" style="color: #d8b4fe; background: rgba(176, 38, 255, 0.12); border-color: rgba(176, 38, 255, 0.4);">WARP SPEED</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">7-Day Enterprise OS</h3>
+            <span class="tier-badge" style="color: var(--cyber-teal); background: rgba(0, 212, 255, 0.12); border-color: rgba(0, 212, 255, 0.4);">ENTERPRISE BUILD</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-top: 4px;">Enterprise Scale Build</h3>
           </div>
-          <div class="tier-price">$7,500 <span>CAD</span></div>
+          <div class="tier-price">$5,000 <span>CAD</span></div>
         </div>
-        <p style="font-size: 0.78rem; color: #94a3b8;">Full bespoke custom operating system with CRM, live audio battle telemetry, or custom 3D studio world.</p>
+        <p style="font-size: 0.78rem; color: #94a3b8;">Bespoke multi-tenant OS engine, domain-specific autonomous AI agents &amp; dedicated architect.</p>
         <ul class="tier-features">
-          <li>Full 7-day dedicated engineering sprint</li>
-          <li>Custom domain &amp; autonomous cloud architecture</li>
-          <li>Custom Sound Clash or ArtistOS deployment</li>
-          <li>Direct architecture with Darnley Sanon</li>
+          <li>Bespoke multi-tenant OS engine</li>
+          <li>Autonomous AI agents (n8n &amp; pgvector)</li>
+          <li>Dedicated architect &amp; priority SLA</li>
+          <li>PayPal monthly installment financing</li>
         </ul>
-        <a href="https://www.paypal.com/ncp/payment/8J6QWJ77C98TL" target="_blank" rel="noopener noreferrer" class="btn-tier-cta" style="background: linear-gradient(135deg, #B026FF 0%, #7A00CC 100%);">Deploy Warp Speed ($7,500)</a>
+        <a href="pricing.html#agency-sprints" class="btn-tier-cta" style="background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%); color:#050505;">Deploy Enterprise ($5,000) &rarr;</a>
       </div>
     </div>
   </section>
@@ -1238,6 +1254,25 @@
       <h2>Project LOA Game</h2>
       <div class="subtitle">Interactive Cyber Cypher Universe</div>
       <p>The LOA universe bridges street cyphers with cybernetic bio-augmentation, tracking sonic rebels taking back airwaves through autonomous code and booming low-end basslines.</p>
+      
+      <!-- Featured Operatives Spotlight -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0;">
+        <div style="display: flex; gap: 8px; align-items: center; background: rgba(255, 85, 0, 0.08); border: 1px solid rgba(255, 85, 0, 0.35); border-radius: 10px; padding: 6px 8px;">
+          <img src="assets/images/damian_kane_djed_pillar.png" alt="Damian Kane" style="width: 38px; height: 38px; border-radius: 6px; object-fit: cover; border: 1px solid #FF5500; flex-shrink: 0;"/>
+          <div style="overflow: hidden;">
+            <div style="font-family: var(--font-display); font-size: 0.70rem; font-weight: 800; color: #FFFFFF; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Damian Kane</div>
+            <div style="font-family: var(--font-mono); font-size: 0.60rem; color: #FF7733; font-weight: 700;">DJED PILLAR</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 10px; padding: 6px 8px;">
+          <img src="assets/images/ida_the_streamer.jpg" alt="Ida the Streamer" style="width: 38px; height: 38px; border-radius: 6px; object-fit: cover; border: 1px solid #00F0FF; flex-shrink: 0;"/>
+          <div style="overflow: hidden;">
+            <div style="font-family: var(--font-display); font-size: 0.70rem; font-weight: 800; color: #FFFFFF; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Ida Streamer</div>
+            <div style="font-family: var(--font-mono); font-size: 0.60rem; color: #38E1FF; font-weight: 700;">IDA'S DEN</div>
+          </div>
+        </div>
+      </div>
+
       <div class="modal-actions">
         <a href="loa.html" class="btn-modal-primary">Full Dossier</a>
         <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
@@ -1250,9 +1285,61 @@
       <span class="modal-badge">STATION 02 // MUSIC VAULT</span>
       <h2>Music Vault &amp; Chopper</h2>
       <div class="subtitle">Acapella Stems &amp; Chopper Engine</div>
-      <p>The 9LMNTS stem repository delivers isolated vocal stems, high-energy 808 drum patterns, and dynamic beat choppers with 0 mock metrics.</p>
+      <p>The 9LMNTS stem repository delivers unreleased masters, isolated vocal stems, high-energy 808 drum patterns, and dynamic beat choppers directly in the browser.</p>
+      
+      <!-- Embedded Mobile DAW Player -->
+      <div style="background:rgba(7, 8, 12, 0.9); border:1px solid rgba(0, 240, 255, 0.35); border-radius:10px; padding:12px; margin:14px 0;">
+        <audio id="mobDawAudio" preload="auto"></audio>
+
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
+          <button type="button" id="mobTrack0" onclick="playMobTrack(0)" style="background:rgba(0,240,255,0.12); border:1px solid var(--cyber-teal); border-radius:6px; padding:8px 10px; cursor:pointer; text-align:left; color:#FFFFFF; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-family:'Syne',sans-serif; font-size:0.80rem; font-weight:700;">01. You Could Have Been</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#94A3B8;">140 BPM • C Minor • Master</div>
+            </div>
+            <span id="mobIcon0" style="font-size:0.85rem; color:var(--cyber-teal); font-weight:bold;">▶</span>
+          </button>
+
+          <button type="button" id="mobTrack1" onclick="playMobTrack(1)" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px 10px; cursor:pointer; text-align:left; color:#FFFFFF; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-family:'Syne',sans-serif; font-size:0.80rem; font-weight:700;">02. Raise Another</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#94A3B8;">132 BPM • G Minor • Cypher Cut</div>
+            </div>
+            <span id="mobIcon1" style="font-size:0.85rem; color:#94A3B8; font-weight:bold;">▶</span>
+          </button>
+
+          <button type="button" id="mobTrack2" onclick="playMobTrack(2)" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px 10px; cursor:pointer; text-align:left; color:#FFFFFF; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-family:'Syne',sans-serif; font-size:0.80rem; font-weight:700;">03. Same Blood, Same Knife</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#94A3B8;">128 BPM • D Minor • L.O.A OST</div>
+            </div>
+            <span id="mobIcon2" style="font-size:0.85rem; color:#94A3B8; font-weight:bold;">▶</span>
+          </button>
+        </div>
+
+        <!-- Transport Bar -->
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button id="mobMasterPlayBtn" type="button" onclick="toggleMobPlayback()" style="padding:6px 14px; background:linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); color:#07080B; border:none; border-radius:4px; font-family:'Orbitron',monospace; font-weight:800; font-size:0.75rem; cursor:pointer;">
+              <span id="mobPlayIcon">▶</span> <span id="mobPlayText">PLAY</span>
+            </button>
+            <button type="button" onclick="stopMobPlayback()" style="padding:6px 10px; background:rgba(255,255,255,0.08); color:#94A3B8; border:1px solid rgba(255,255,255,0.15); border-radius:4px; font-size:0.75rem; cursor:pointer;">
+              ⏹
+            </button>
+          </div>
+          <span id="mobTimecode" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--cyber-teal); background:rgba(0,0,0,0.8); padding:4px 8px; border-radius:4px; border:1px solid rgba(0,240,255,0.2);">
+            00:00 / 03:04
+          </span>
+        </div>
+
+        <!-- Progress Scrubber -->
+        <div style="position:relative; width:100%; height:6px; background:#111520; border-radius:3px; cursor:pointer; overflow:hidden;" onclick="seekMobAudio(event)">
+          <div id="mobProgressFill" style="position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg, #0077FF 0%, #00F0FF 100%);"></div>
+        </div>
+      </div>
+
       <div class="modal-actions">
-        <a href="vault.html" class="btn-modal-primary">Open Vault</a>
+        <a href="vault.html#interactive-chopper" class="btn-modal-primary">Full-Screen DAW Matrix ↗</a>
         <button class="btn-modal-secondary" onclick="closeModal()">Dismiss</button>
       </div>
     </div>
@@ -1384,9 +1471,94 @@
     };
 
     window.closeModal = function() {
+      if (typeof stopMobPlayback === 'function') {
+        stopMobPlayback();
+      }
       const backdrop = document.getElementById('modalBackdrop');
       if (backdrop) backdrop.classList.remove('active');
       document.querySelectorAll('.modal-dialog').forEach(d => d.classList.remove('active'));
+    };
+
+    // Mobile Modal DAW Audio Engine
+    const MOB_TRACKS = [
+      { id: 'you_could_have_been', title: 'You Could Have Been', src: '/assets/audio/you_could_have_been.mp3' },
+      { id: 'raise_another', title: 'Raise Another', src: '/assets/audio/raise_another.mp3' },
+      { id: 'same_blood_same_knife', title: 'Same Blood, Same Knife', src: '/assets/audio/same_blood_same_knife.mp3' }
+    ];
+    let mobCurrentTrack = 0;
+
+    window.playMobTrack = function(idx) {
+      const audio = document.getElementById('mobDawAudio');
+      if (!audio) return;
+      mobCurrentTrack = idx;
+      audio.src = MOB_TRACKS[idx].src;
+      
+      for (let i = 0; i < 3; i++) {
+        const btn = document.getElementById('mobTrack' + i);
+        const icon = document.getElementById('mobIcon' + i);
+        if (i === idx) {
+          if (btn) { btn.style.background = 'rgba(0,240,255,0.18)'; btn.style.borderColor = 'var(--cyber-teal)'; }
+          if (icon) icon.textContent = '⏸';
+        } else {
+          if (btn) { btn.style.background = 'rgba(255,255,255,0.03)'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }
+          if (icon) icon.textContent = '▶';
+        }
+      }
+
+      audio.play().then(() => setMobPlayingUI(true)).catch(e => console.warn(e));
+    };
+
+    window.toggleMobPlayback = function() {
+      const audio = document.getElementById('mobDawAudio');
+      if (!audio) return;
+      if (!audio.src) {
+        playMobTrack(0);
+        return;
+      }
+      if (audio.paused) {
+        audio.play().then(() => setMobPlayingUI(true)).catch(e => console.warn(e));
+      } else {
+        audio.pause();
+        setMobPlayingUI(false);
+      }
+    };
+
+    window.stopMobPlayback = function() {
+      const audio = document.getElementById('mobDawAudio');
+      if (!audio) return;
+      audio.pause();
+      audio.currentTime = 0;
+      setMobPlayingUI(false);
+      const fill = document.getElementById('mobProgressFill');
+      if (fill) fill.style.width = '0%';
+      const tc = document.getElementById('mobTimecode');
+      if (tc) tc.textContent = '00:00 / 03:04';
+    };
+
+    function setMobPlayingUI(playing) {
+      const icon = document.getElementById('mobPlayIcon');
+      const text = document.getElementById('mobPlayText');
+      const btn = document.getElementById('mobMasterPlayBtn');
+      const curIcon = document.getElementById('mobIcon' + mobCurrentTrack);
+      if (playing) {
+        if (icon) icon.textContent = '⏸';
+        if (text) text.textContent = 'PAUSE';
+        if (btn) btn.style.background = 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)';
+        if (curIcon) curIcon.textContent = '⏸';
+      } else {
+        if (icon) icon.textContent = '▶';
+        if (text) text.textContent = 'PLAY';
+        if (btn) btn.style.background = 'linear-gradient(135deg, #00D2FF 0%, #0077FF 100%)';
+        if (curIcon) curIcon.textContent = '▶';
+      }
+    }
+
+    window.seekMobAudio = function(e) {
+      const audio = document.getElementById('mobDawAudio');
+      if (!audio || !audio.duration) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      audio.currentTime = Math.max(0, Math.min(1, clickX / rect.width)) * audio.duration;
     };
 
     window.toggleNavDrawer = function() {
@@ -1426,6 +1598,28 @@
             updateActivePill(detected);
           }, 35);
         }, { passive: true });
+      }
+
+      // Mobile Audio Listeners
+      const mobAudio = document.getElementById('mobDawAudio');
+      if (mobAudio) {
+        mobAudio.addEventListener('timeupdate', () => {
+          const cur = mobAudio.currentTime || 0;
+          const dur = mobAudio.duration || 0;
+          const fmt = (s) => {
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return (m < 10 ? '0' + m : m) + ':' + (sec < 10 ? '0' + sec : sec);
+          };
+          const tc = document.getElementById('mobTimecode');
+          if (tc) tc.textContent = fmt(cur) + ' / ' + (dur > 0 ? fmt(dur) : '--:--');
+          const fill = document.getElementById('mobProgressFill');
+          if (fill && dur > 0) fill.style.width = ((cur / dur) * 100) + '%';
+        });
+        mobAudio.addEventListener('ended', () => {
+          const next = (mobCurrentTrack + 1) % MOB_TRACKS.length;
+          playMobTrack(next);
+        });
       }
     });
   </script>

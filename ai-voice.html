@@ -9,25 +9,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
 
   <style>
     :root {
-      --bg: #0A0F1E;
-      --card-bg: #1A2332;
-      --card-border: rgba(0, 212, 255, 0.2);
       --primary: #00D4FF;
       --primary-glow: rgba(0, 212, 255, 0.35);
-      --success: #10B981;
-      --warning: #FF7A00;
-      --danger: #E91E63;
       --font-display: 'Orbitron', sans-serif;
       --font-body: 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
     body {
-      background-color: var(--bg);
+      background-color: #06070A;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.20) 0%, rgba(0, 160, 220, 0.05) 35%, transparent 60%),
+        radial-gradient(circle at 85% 25%, rgba(255, 85, 0, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, rgba(6, 7, 10, 0.78) 0%, rgba(6, 7, 10, 0.98) 100%),
+        url('assets/images/dark_cyber_portal.jpg');
+      background-attachment: fixed;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
       color: #ffffff;
       font-family: var(--font-body);
       margin: 0;
@@ -41,17 +44,23 @@
       padding: 24px 20px 80px 20px;
     }
 
-    /* AI Voice Session Banner */
+    /* AI Voice Session Banner (Modal / Core Bento Style) */
     .ai-session-card {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(10, 15, 30, 0.8) 100%);
-      border: 1px solid var(--primary);
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
-      border-radius: 18px;
-      padding: 24px;
-      margin-bottom: 32px;
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.25) 0%, transparent 65%);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      border-top: 2px solid var(--primary);
+      border-radius: 24px;
+      padding: 28px 24px;
+      margin-bottom: 36px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
     }
     @media(min-width: 800px) {
       .ai-session-card {
@@ -82,10 +91,14 @@
 
     /* CRM Header */
     .crm-header {
-      background: linear-gradient(to right, #0A0F1E, #0D1829);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-      padding: 32px 0 24px 0;
+      background: rgba(14, 18, 27, 0.50);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(0, 212, 255, 0.35);
+      border-radius: 22px;
+      padding: 30px 26px;
       margin-bottom: 32px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     }
     .header-content {
       display: flex;
@@ -99,7 +112,10 @@
       font-family: var(--font-display);
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 900;
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
     }
 
     /* Filter Tabs */
@@ -193,16 +209,23 @@
     }
 
     .client-card {
-      background: #1A2332;
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      border-radius: 16px;
-      padding: 24px;
-      transition: all 0.25s ease;
+      background: rgba(10, 13, 20, 0.50);
+      background-image: 
+        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
+        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.20) 0%, transparent 65%);
+      border: 1px solid rgba(0, 212, 255, 0.30);
+      border-top: 2px solid var(--primary);
+      border-radius: 22px;
+      padding: 26px 22px;
+      transition: all 0.25s var(--ease-cinematic);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.18);
     }
     .client-card:hover {
-      border-color: rgba(0, 212, 255, 0.6);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 212, 255, 0.65);
+      transform: translateY(-4px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 212, 255, 0.25);
     }
 
     .client-header {

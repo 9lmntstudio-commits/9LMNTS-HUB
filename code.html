@@ -739,29 +739,45 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background-color: rgba(3, 4, 6, 0.85);
-      background-image: 
-        linear-gradient(180deg, rgba(3, 4, 6, 0.72) 0%, rgba(3, 4, 6, 0.90) 100%),
-        url('assets/images/darnley_studio_helm_v2.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: radial-gradient(circle at 50% 50%, rgba(3, 5, 10, 0.40) 0%, rgba(2, 3, 5, 0.82) 100%);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.35s var(--ease-cinematic);
-      padding: 24px;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: clamp(16px, 3.5vw, 40px);
     }
 
     .modal-backdrop.active {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    /* Tactile Holographic Spring Pop-Up Animation */
+    @keyframes cyberModalPopIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.82) translateY(42px);
+        filter: blur(14px) brightness(1.35);
+      }
+      62% {
+        opacity: 1;
+        transform: scale(1.025) translateY(-4px);
+        filter: blur(0px) brightness(1.08);
+      }
+      82% {
+        transform: scale(0.99) translateY(1px);
+        filter: blur(0px) brightness(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0px) brightness(1);
+      }
     }
 
     .modal-dialog {
@@ -779,18 +795,18 @@
       max-width: 760px;
       max-height: 88vh;
       overflow-y: auto;
-      padding: 40px 44px;
+      padding: clamp(32px, 4vw, 44px) clamp(24px, 4.5vw, 44px);
       position: relative;
       display: none;
-      transform: translateY(30px) scale(0.96);
-      transition: transform 0.4s var(--ease-cinematic);
     }
 
     .modal-dialog.wide-dialog {
       max-width: 900px;
     }
 
-    .modal-dialog.teal-theme {
+    /* Cyan Telemetry Variant */
+    .modal-dialog.teal-theme,
+    .modal-dialog.purple-theme {
       background: rgba(10, 13, 20, 0.50);
       background-image: 
         linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
@@ -801,74 +817,42 @@
       border-top: 2px solid #00D2FF;
       box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
-    .modal-dialog.teal-theme .modal-badge {
+    .modal-dialog.teal-theme .modal-badge,
+    .modal-dialog.purple-theme .modal-badge {
       background: rgba(0, 240, 255, 0.12);
       border-color: rgba(0, 240, 255, 0.45);
       color: var(--cyber-teal);
       box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
     }
-    .modal-dialog.teal-theme .spec-item {
+    .modal-dialog.teal-theme .spec-item,
+    .modal-dialog.purple-theme .spec-item {
       border-top-color: rgba(0, 240, 255, 0.5);
     }
-    .modal-dialog.teal-theme .spec-item h4 {
+    .modal-dialog.teal-theme .spec-item h4,
+    .modal-dialog.purple-theme .spec-item h4 {
       color: var(--cyber-teal);
     }
-    .modal-dialog.teal-theme .spec-item h4::before {
+    .modal-dialog.teal-theme .spec-item h4::before,
+    .modal-dialog.purple-theme .spec-item h4::before {
       background: var(--cyber-teal);
       box-shadow: 0 0 8px var(--cyber-teal);
     }
-    .modal-dialog.teal-theme .btn-primary {
+    .modal-dialog.teal-theme .btn-primary,
+    .modal-dialog.purple-theme .btn-primary {
       background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
       border-color: #00E5FF;
       color: #050a14;
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
-    .modal-dialog.teal-theme .btn-primary:hover {
+    .modal-dialog.teal-theme .btn-primary:hover,
+    .modal-dialog.purple-theme .btn-primary:hover {
       background: #38f4ff;
       box-shadow: 0 0 40px rgba(0, 240, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
-    .modal-dialog.purple-theme {
-      background: rgba(10, 13, 20, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
-        radial-gradient(circle at 50% -10%, rgba(176, 38, 255, 0.28) 0%, rgba(140, 20, 220, 0.08) 45%, transparent 75%);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(176, 38, 255, 0.40);
-      border-top: 2px solid #B026FF;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(176, 38, 255, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    }
-    .modal-dialog.purple-theme .modal-badge {
-      background: rgba(176, 38, 255, 0.12);
-      border-color: rgba(176, 38, 255, 0.45);
-      color: #d8b4fe;
-      box-shadow: 0 0 15px rgba(176, 38, 255, 0.25);
-    }
-    .modal-dialog.purple-theme .spec-item {
-      border-top-color: rgba(176, 38, 255, 0.5);
-    }
-    .modal-dialog.purple-theme .spec-item h4 {
-      color: #d8b4fe;
-    }
-    .modal-dialog.purple-theme .spec-item h4::before {
-      background: #B026FF;
-      box-shadow: 0 0 8px #B026FF;
-    }
-    .modal-dialog.purple-theme .btn-primary {
-      background: linear-gradient(135deg, #B026FF 0%, #8800CC 100%);
-      border-color: #C755FF;
-      color: #fff;
-      box-shadow: 0 0 25px rgba(176, 38, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    }
-    .modal-dialog.purple-theme .btn-primary:hover {
-      background: #C755FF;
-      box-shadow: 0 0 40px rgba(176, 38, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    }
-
     .modal-backdrop.active .modal-dialog.active {
       display: block;
-      transform: translateY(0) scale(1);
+      animation: cyberModalPopIn 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
     }
 
     .modal-badge {
@@ -1889,6 +1873,24 @@
         <span>Cypher Battles</span>
         <span>Faction Wars</span>
         <span>Augment Lab</span>
+      </div>
+
+      <!-- Featured Operatives Spotlight -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0;">
+        <div style="display: flex; gap: 10px; align-items: center; background: rgba(255, 85, 0, 0.08); border: 1px solid rgba(255, 85, 0, 0.35); border-radius: 10px; padding: 8px 10px;">
+          <img src="assets/images/damian_kane_djed_pillar.png" alt="Damian Kane" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid #FF5500; flex-shrink: 0;"/>
+          <div style="overflow: hidden;">
+            <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: 800; color: #FFFFFF; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Damian Kane</div>
+            <div style="font-family: var(--font-mono); font-size: 0.64rem; color: #FF7733; font-weight: 700;">DJED PILLAR // REBEL</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 10px; padding: 8px 10px;">
+          <img src="assets/images/ida_the_streamer.jpg" alt="Ida the Streamer" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid #00F0FF; flex-shrink: 0;"/>
+          <div style="overflow: hidden;">
+            <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: 800; color: #FFFFFF; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Ida the Streamer</div>
+            <div style="font-family: var(--font-mono); font-size: 0.64rem; color: #38E1FF; font-weight: 700;">IDA'S DEN // HACKER</div>
+          </div>
+        </div>
       </div>
       <div class="spec-grid">
         <div class="spec-item">
