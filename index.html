@@ -939,22 +939,24 @@
     }
 
     /* ===================================================
-       6. OBSIDIAN PROTOCOL MODAL ENGINE (EMBER LUXURY)
+       6. OBSIDIAN PROTOCOL MODAL ENGINE (60% TRANSPARENT BENTO)
+          Matching Pinterest Luxury Translucent Glass Standard
        =================================================== */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(3, 5, 10, 0.40) 0%, rgba(2, 3, 5, 0.82) 100%);
-      backdrop-filter: blur(12px) saturate(140%);
-      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      background: rgba(3, 5, 8, 0.40);
+      backdrop-filter: blur(8px) saturate(140%);
+      -webkit-backdrop-filter: blur(8px) saturate(140%);
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       padding: clamp(16px, 3.5vw, 40px);
+      overflow-y: auto;
     }
 
     .modal-backdrop.active {
@@ -966,39 +968,40 @@
     @keyframes cyberModalPopIn {
       0% {
         opacity: 0;
-        transform: scale(0.82) translateY(42px);
-        filter: blur(14px) brightness(1.35);
-      }
-      62% {
-        opacity: 1;
-        transform: scale(1.025) translateY(-4px);
-        filter: blur(0px) brightness(1.08);
-      }
-      82% {
-        transform: scale(0.99) translateY(1px);
-        filter: blur(0px) brightness(1.02);
+        transform: scale(0.88) translateY(32px);
+        filter: blur(10px);
       }
       100% {
         opacity: 1;
         transform: scale(1) translateY(0);
-        filter: blur(0px) brightness(1);
+        filter: blur(0px);
       }
     }
 
     .modal-dialog {
-      background: #0E121A;
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-      border-radius: 26px;
+      background: rgba(14, 18, 25, 0.60) !important;
+      backdrop-filter: blur(36px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(36px) saturate(190%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+      border-radius: 28px !important;
       width: 100%;
       max-width: 760px;
-      max-height: 88vh;
+      max-height: 86vh;
       overflow-y: auto;
       padding: clamp(32px, 4vw, 44px) clamp(24px, 4.5vw, 44px);
       position: relative;
       display: none;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    }
+
+    .modal-dialog::-webkit-scrollbar {
+      width: 5px;
+    }
+    .modal-dialog::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 9999px;
     }
 
     .modal-dialog.wide-dialog {
@@ -1008,9 +1011,9 @@
     /* Minimalist Dark Obsidian Standard */
     .modal-dialog.teal-theme,
     .modal-dialog.purple-theme {
-      background: #0E121A;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      background: rgba(14, 18, 25, 0.60) !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
     }
     .modal-dialog.teal-theme .modal-badge,
     .modal-dialog.purple-theme .modal-badge {
@@ -1021,7 +1024,8 @@
     }
     .modal-dialog.teal-theme .spec-item,
     .modal-dialog.purple-theme .spec-item {
-      border-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
     }
     .modal-dialog.teal-theme .spec-item h4,
     .modal-dialog.purple-theme .spec-item h4 {
@@ -1035,7 +1039,7 @@
 
     .modal-backdrop.active .modal-dialog.active {
       display: block;
-      animation: cyberModalPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: cyberModalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .modal-badge {
@@ -1120,27 +1124,26 @@
     }
 
     .spec-item {
-      background: rgba(14, 18, 27, 0.50);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.04) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       padding: 18px 20px;
       border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
       transition: all 0.25s var(--ease-cinematic);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
 
     .spec-item:hover {
-      background: rgba(22, 28, 42, 0.60);
-      border-color: #FF4500;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.35);
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.28) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5);
     }
 
     .spec-item h4 {
       font-size: 0.82rem;
-      color: #FF5500;
+      color: #FFFFFF;
       margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -1154,17 +1157,17 @@
     .spec-item h4::before {
       content: '';
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: #FF4500;
-      box-shadow: 0 0 8px #FF4500;
+      background: #FFFFFF;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     }
 
     .spec-item p {
       font-size: 0.82rem;
       margin-bottom: 0;
-      color: #94a3b8;
+      color: #cbd5e1;
       line-height: 1.55;
     }
 
@@ -1368,50 +1371,49 @@
 
     .modal-actions {
       display: flex;
-      gap: 14px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
     .btn-secondary {
-      background: rgba(18, 20, 28, 0.50);
+      background: rgba(255, 255, 255, 0.06);
       color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.16);
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      font-size: 0.86rem;
+      padding: 12px 22px;
+      border-radius: 9999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.80rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       cursor: pointer;
       transition: all 0.25s var(--ease-cinematic);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .btn-secondary:hover {
-      background: rgba(30, 34, 46, 0.85);
+      background: rgba(255, 255, 255, 0.14);
       border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     }
 
     .btn-primary {
       flex: 1;
-      background: linear-gradient(135deg, #FF4500 0%, #FF1A00 100%);
-      color: #ffffff;
-      border: 1px solid #FF6622;
-      padding: 14px 26px;
-      border-radius: 14px;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
-      font-size: 0.88rem;
+      background: #FFFFFF;
+      color: #0A0C10;
+      border: 1px solid #FFFFFF;
+      padding: 12px 26px;
+      border-radius: 9999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
       cursor: pointer;
-      box-shadow: 0 0 25px rgba(255, 69, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
       transition: all 0.25s var(--ease-cinematic);
       display: inline-flex;
       align-items: center;
@@ -1419,13 +1421,13 @@
       gap: 10px;
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #FF5511 0%, #FF2600 100%);
+      background: #E5E7EB;
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.40);
       transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(255, 69, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
     /* Responsive Engine */
@@ -2018,62 +2020,6 @@
       <div class="reset-hotspot" onclick="resetStudioView()" title="Click to Reset Camera to Wide Center"></div>
     </div>
   </main>
-
-  <!-- Desktop 9-Station Spatial Command Dock (1-Click Station Access) -->
-  <nav class="desktop-command-dock" aria-label="9LMNTS Spatial Stations Dock">
-    <button class="cmd-dock-item" onclick="launchStationModal(event, '01')"><span class="num">01</span><span>Project LOA</span></button>
-    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '02')"><span class="num">02</span><span>Sonic Vault</span></button>
-    <button class="cmd-dock-item" onclick="launchStationModal(event, '03')"><span class="num">03</span><span>Creator OS Hub</span></button>
-    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '04')"><span class="num">04</span><span>Argon AI &amp; CRM</span></button>
-    <button class="cmd-dock-item" onclick="launchStationModal(event, '05')"><span class="num">05</span><span>7-Day Sprints</span></button>
-    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '06')"><span class="num">06</span><span>The Helm</span></button>
-    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '07')"><span class="num">07</span><span>Battle Arenas</span></button>
-    <button class="cmd-dock-item" onclick="launchStationModal(event, '08')"><span class="num">08</span><span>Phygital Merch</span></button>
-    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '09')"><span class="num">09</span><span>Studio DAW</span></button>
-  </nav>
-
-  <!-- Mobile 3-Part Side Scroll Switcher Header -->
-  <nav class="mobile-part-switcher" id="mobilePartSwitcher" aria-label="Cockpit Bay Switcher">
-    <button class="switcher-pill" onclick="snapCockpit('left')" data-part="left" title="View Left Bays">
-      <span class="pill-icon">◀</span>
-      <span class="pill-text">LEFT BAYS</span>
-    </button>
-    <button class="switcher-pill active" onclick="snapCockpit('middle')" data-part="middle" title="View Studio Helm">
-      <span class="pill-dot">●</span>
-      <span class="pill-text">STUDIO HELM</span>
-    </button>
-    <button class="switcher-pill" onclick="snapCockpit('right')" data-part="right" title="View Right Bays">
-      <span class="pill-text">RIGHT BAYS</span>
-      <span class="pill-icon">▶</span>
-    </button>
-  </nav>
-
-  <!-- Mobile Swipe Gesture Hint -->
-  <div class="mobile-swipe-hint" id="mobileSwipeHint">
-    <span class="hint-arrow">‹</span>
-    <span>SWIPE HORIZONTALLY // 3 BAYS</span>
-    <span class="hint-arrow">›</span>
-  </div>
-
-  <!-- Streamlined Mobile Bottom Dock (Less functions, high utility) -->
-  <div class="mobile-streamlined-dock" id="mobileDock">
-    <button class="dock-btn sprint-btn" onclick="launchStationModal(event, '05')" title="Start 7-Day Sprint">
-      <span class="dock-icon">⚡</span>
-      <span>7-Day Sprint</span>
-    </button>
-    <a class="dock-btn" href="pricing.html" title="View Official Pricing & 50% Deposit">
-      <span class="dock-icon">🤝</span>
-      <span>Pricing</span>
-    </a>
-    <a class="dock-btn" href="clash.html" title="Launch 25 Battle Arenas">
-      <span class="dock-icon">🎛️</span>
-      <span>25 Arenas</span>
-    </a>
-    <button class="dock-btn" onclick="toggleNavDrawer(true)" title="Open Directory Menu">
-      <span class="dock-icon">☰</span>
-      <span>Directory</span>
-    </a>
-  </div>
 
 
 
