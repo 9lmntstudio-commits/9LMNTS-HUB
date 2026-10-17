@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.2"/>
 
   <style>
     :root {
@@ -342,66 +342,194 @@
 
   <div class="crm-container">
 
-    <!-- AI Voice Operator Simulator -->
-    <div class="ai-session-card">
-      <div style="display:flex; align-items:center; gap:20px;">
-        <div class="voice-orb"><i class="fa-solid fa-microphone"></i></div>
-        <div>
-          <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--primary); font-weight:800; letter-spacing:0.15em;">
-            GEMINI LIVE MULTIMODAL API • LOW-LATENCY WEBSOCKET
-          </span>
-          <h2 style="font-family:var(--font-display); font-size:1.4rem; font-weight:900; margin-top:2px;">
-            AI Voice Receptionist &amp; Booking Agent
-          </h2>
-          <p style="color:#94a3b8; font-size:0.9rem; margin-top:4px;">
-            Handles incoming venue inquiries, processes lead qualifiers, schedules walkthroughs, and logs clients to CRM automatically.
-          </p>
+    <!-- AI Voice Operator & Interactive Chat Drawer (Station 04 Spec V5) -->
+    <div class="ai-session-card" style="flex-direction:column; align-items:stretch;">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+        <div style="display:flex; align-items:center; gap:20px;">
+          <div class="voice-orb" id="voiceOrbIcon"><i class="fa-solid fa-microphone"></i></div>
+          <div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--primary); font-weight:800; letter-spacing:0.15em;">
+              GEMINI LIVE MULTIMODAL API • AUTONOMOUS INTEL &amp; MANYCHAT FUNNELS
+            </span>
+            <h2 style="font-family:var(--font-display); font-size:1.4rem; font-weight:900; margin-top:2px;">
+              AI Voice Operator &amp; ManyChat Keyword Dispatch
+            </h2>
+            <p style="color:#94a3b8; font-size:0.9rem; margin-top:4px;">
+              Trained on 9LMNTS Studio 7-Day Sprints, pricing structures, Project LOA lore, and live 8-contender arena deployments.
+            </p>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn-main" id="voiceToggleBtn" style="background:var(--primary); color:#0A0F1E; border:none; padding:14px 24px; border-radius:10px; font-weight:900; cursor:pointer;" onclick="simulateVoice()">
+            <i class="fa-solid fa-bolt"></i> Launch Live Voice Briefing
+          </button>
+          <a href="pricing.html" class="btn-main" style="background:rgba(255,255,255,0.08); color:#FFF; border:1px solid rgba(255,255,255,0.2); padding:14px 20px; border-radius:10px; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+            💳 Pricing Matrix
+          </a>
         </div>
       </div>
-      <button class="btn-main" style="background:var(--primary); color:#0A0F1E; border:none; padding:14px 28px; border-radius:10px; font-weight:900; cursor:pointer;" onclick="simulateVoice()">
-        <i class="fa-solid fa-bolt"></i> Test Voice Booking
-      </button>
+
+      <!-- Interactive Operator Console & ManyChat Keyword Triggers (Master System Index Section 4) -->
+      <div style="background:rgba(6,9,15,0.75); border:1px solid rgba(0,212,255,0.25); border-radius:16px; padding:18px; margin-top:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:#00FF88; font-weight:800;">● MANYCHAT &amp; SUPABASE EDGE KEYWORD TRIGGERS (CLICK TO TEST)</span>
+          <span style="font-family:var(--font-mono); font-size:0.7rem; color:#94a3b8;">Webhook: /functions/v1/lead-intake</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px, 1fr)); gap:10px; margin-bottom:14px;">
+          <button onclick="triggerKeywordPrompt('CLASH')" style="background:#121826; border:1px solid rgba(236,72,153,0.4); color:#FFF; padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer;">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#EC4899; font-weight:800;">DM &quot;CLASH&quot; / &quot;EVENT&quot;</div>
+            <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">Halloween DJ Battle ($20–$150 Passes)</div>
+          </button>
+          <button onclick="triggerKeywordPrompt('COMEDY')" style="background:#121826; border:1px solid rgba(245,158,11,0.4); color:#FFF; padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer;">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#F59E0B; font-weight:800;">DM &quot;COMEDY&quot; / &quot;ROAST&quot;</div>
+            <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">Comedian OS Roast Battle Demo</div>
+          </button>
+          <button onclick="triggerKeywordPrompt('ARTIST')" style="background:#121826; border:1px solid rgba(0,212,255,0.4); color:#FFF; padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer;">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#00D4FF; font-weight:800;">DM &quot;ARTIST&quot; / &quot;MUSIC&quot;</div>
+            <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">Artist OS $0 Upfront (80/20 Beta)</div>
+          </button>
+          <button onclick="triggerKeywordPrompt('BALLER')" style="background:#121826; border:1px solid rgba(16,185,129,0.4); color:#FFF; padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer;">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#10B981; font-weight:800;">DM &quot;BALLER&quot; / &quot;SPORTS&quot;</div>
+            <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">Athlete Cards &amp; 3v3 Streetball</div>
+          </button>
+          <button onclick="triggerKeywordPrompt('DEV')" style="background:#121826; border:1px solid rgba(255,85,0,0.4); color:#FFF; padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer;">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#FF5500; font-weight:800;">DM &quot;DEV&quot; / &quot;AGENCY&quot;</div>
+            <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">7-Day Sprints ($1.5k–$5k) &amp; Retainers</div>
+          </button>
+          <button onclick="triggerKeywordPrompt('SPONSOR')" style="background:#121826; border:1px solid rgba(176,38,255,0.4); color:#FFF; padding:10px 12px; border-radius:10px; text-align:left; cursor:pointer;">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#B026FF; font-weight:800;">DM &quot;SPONSOR&quot;</div>
+            <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">Title Arena ($250+) &amp; Player Sponsors</div>
+          </button>
+        </div>
+
+        <!-- Live Operator Transcript Box -->
+        <div id="operatorTranscript" style="background:#070A10; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 14px; font-family:var(--font-mono); font-size:0.8rem; color:#E2E8F0; line-height:1.55; margin-bottom:10px;">
+          <span style="color:var(--primary); font-weight:800;">[9LMNTS AI OPERATOR]:</span> Welcome to Station 04. Click any ManyChat keyword above or type a question below to inspect 7-Day Sprint pricing, PayPal Pay in 4 financing, or Bronson Centre Halloween Sound Clash passes.
+        </div>
+        <form onsubmit="handleOperatorChat(event)" style="display:flex; gap:10px;">
+          <input type="text" id="operatorChatInput" placeholder="Ask the 9LMNTS AI Operator about Sprints, Sound Clash, Artist OS, or Sponsorships..." style="flex:1; padding:11px 14px; background:#121826; border:1px solid rgba(0,212,255,0.3); border-radius:8px; color:#FFF; font-size:0.88rem; outline:none;"/>
+          <button type="submit" style="padding:11px 20px; background:var(--primary); color:#050505; border:none; border-radius:8px; font-family:var(--font-display); font-weight:800; font-size:0.78rem; cursor:pointer;">SEND &rarr;</button>
+        </form>
+      </div>
     </div>
 
-    <!-- CRM Header -->
-    <div class="crm-header">
-      <div class="header-content">
+    <!-- Day-1 Zero-State Telemetry HUD (Master Redesign Specification V5 Section 6) -->
+    <div class="crm-header" style="border-top:2px solid #10B981;">
+      <div class="header-content" style="margin-bottom:18px;">
         <div>
-          <h1 class="crm-title">
-            Client <span style="color:var(--primary);">Relationship Manager</span>
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:#10B981; font-weight:800; letter-spacing:0.14em;">
+            DAY-1 ZERO-STATE PRODUCTION TELEMETRY // DATA INTEGRITY PROTOCOL V5
+          </span>
+          <h1 class="crm-title" style="margin-top:4px;">
+            Executive <span style="color:var(--primary);">Telemetry &amp; CRM</span>
           </h1>
-          <p style="color:#94a3b8; font-size:1.05rem;">
-            Manage and track all your client relationships across EventOS, LOA, and Custom Productions.
+          <p style="color:#94a3b8; font-size:0.95rem;">
+            Initialized at authentic Day-1 baseline ($0.00 CAD active revenue, 0 inbound leads) wired to live PayPal E-Commerce &amp; Supabase webhooks.
           </p>
         </div>
-        <button class="btn-main" style="background:var(--primary); color:#0A0F1E; border:none; padding:12px 24px; border-radius:8px; font-weight:800; cursor:pointer;" onclick="addNewClientPrompt()">
-          <i class="fa-solid fa-plus"></i> Add New Client
-        </button>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn-main" id="toggleZeroStateBtn" style="background:rgba(16,185,129,0.15); color:#10B981; border:1px solid #10B981; padding:10px 18px; border-radius:8px; font-family:var(--font-mono); font-size:0.76rem; font-weight:800; cursor:pointer;" onclick="toggleZeroStateMode()">
+            ● MODE: DAY-1 ZERO-STATE (LIVE)
+          </button>
+          <a href="services.html#intake" class="btn-main" style="background:var(--primary); color:#0A0F1E; border:none; padding:10px 20px; border-radius:8px; font-weight:800; text-decoration:none; font-size:0.85rem;">
+            <i class="fa-solid fa-plus"></i> Book Q4 Sprint
+          </a>
+        </div>
       </div>
 
-      <!-- Status Filter Tabs -->
-      <div class="filter-tabs">
-        <button class="filter-tab-btn active" onclick="filterClients('all')">All (4)</button>
+      <!-- Zero-State 4-Card KPI Matrix -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-bottom:20px;">
+        <div style="background:#0B101B; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+          <div style="font-family:var(--font-mono); font-size:0.7rem; color:#94a3b8;">REVENUE STREAMS (LIVE)</div>
+          <div id="kpiRevVal" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:#10B981; margin:4px 0;">$0.00 CAD</div>
+          <div style="font-size:0.74rem; color:#64748b;">Sprints $0 • Retainers $0 • Passes $0 • Merch $0</div>
+        </div>
+        <div style="background:#0B101B; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+          <div style="font-family:var(--font-mono); font-size:0.7rem; color:#94a3b8;">INBOUND LEAD VELOCITY</div>
+          <div id="kpiLeadVal" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:var(--primary); margin:4px 0;">0 Leads // 0 Subs</div>
+          <div style="font-size:0.74rem; color:#64748b;">Wired to Supabase leads &amp; ManyChat webhook</div>
+        </div>
+        <div style="background:#0B101B; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+          <div style="font-family:var(--font-mono); font-size:0.7rem; color:#94a3b8;">ACTIVE TOUR &amp; RESIDENCIES</div>
+          <div style="font-family:var(--font-display); font-size:0.86rem; font-weight:800; color:#FFF; margin:6px 0;">Now Booking Q4 2026 &amp; 2027</div>
+          <div style="font-size:0.74rem; color:#FF5500;">Flagship: Oct 31 Bronson Centre DJ Clash</div>
+        </div>
+        <div style="background:#0B101B; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px;">
+          <div style="font-family:var(--font-mono); font-size:0.7rem; color:#94a3b8;">SPONSORSHIP INVENTORY</div>
+          <div style="font-family:var(--font-display); font-size:0.86rem; font-weight:800; color:#00D4FF; margin:6px 0;">3 Commercial Slots Open</div>
+          <div style="font-size:0.74rem; color:#64748b;">Title Sponsor • Prize Pot • WebAR Activation</div>
+        </div>
+      </div>
+
+      <!-- Actionable Commercial Sponsorship Matrix + Open Pilot Slots (Replaces fake logos/mockups) -->
+      <div id="zeroStateBoard" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+        <div style="background:rgba(255,85,0,0.06); border:1px solid rgba(255,85,0,0.35); border-radius:16px; padding:20px;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:#FF5500; font-weight:800;">SLOT 01 // AVAILABLE</span>
+          <h3 style="font-family:var(--font-display); font-size:1.05rem; margin:6px 0;">Title Arena Sponsor</h3>
+          <p style="font-size:0.84rem; color:#cbd5e1; margin-bottom:14px;">Main stage jumbotron branding, live broadcast HUD integration, and verified post-event PDF ROI audit across Sound Clash OS &amp; Sports OS.</p>
+          <a href="pricing.html#cat-venue" style="display:inline-block; padding:9px 16px; background:#FF5500; color:#050505; border-radius:8px; font-family:var(--font-display); font-size:0.75rem; font-weight:800; text-decoration:none;">Inquire / Partner With Us &rarr;</a>
+        </div>
+        <div style="background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.35); border-radius:16px; padding:20px;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:#00D4FF; font-weight:800;">SLOT 02 // AVAILABLE</span>
+          <h3 style="font-family:var(--font-display); font-size:1.05rem; margin:6px 0;">Prize Pot Partner</h3>
+          <p style="font-size:0.84rem; color:#cbd5e1; margin-bottom:14px;">Co-brand the surging 70/30 winner jackpot pool ($500 base to $5,000+) with branded Power Hype boost triggers on every voter phone.</p>
+          <a href="pricing.html#cat-arenas" style="display:inline-block; padding:9px 16px; background:#00D4FF; color:#050505; border-radius:8px; font-family:var(--font-display); font-size:0.75rem; font-weight:800; text-decoration:none;">Sponsor Prize Pool &rarr;</a>
+        </div>
+        <div style="background:rgba(176,38,255,0.06); border:1px solid rgba(176,38,255,0.35); border-radius:16px; padding:20px;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:#B026FF; font-weight:800;">SLOT 03 // AVAILABLE</span>
+          <h3 style="font-family:var(--font-display); font-size:1.05rem; margin:6px 0;">WebAR Brand Activation</h3>
+          <p style="font-size:0.84rem; color:#cbd5e1; margin-bottom:14px;">Custom 3D holographic AR wings &amp; scannable sleeve QR codes across our 18-piece heavyweight apparel drop ($1,500–$5,000 Sprint).</p>
+          <a href="merch.html#preorder" style="display:inline-block; padding:9px 16px; background:#B026FF; color:#FFF; border-radius:8px; font-family:var(--font-display); font-size:0.75rem; font-weight:800; text-decoration:none;">Launch WebAR Activation &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Status Filter Tabs (For Pilot Simulation Toggle) -->
+      <div class="filter-tabs" id="pilotFilterTabs" style="display:none; margin-top:20px;">
+        <button class="filter-tab-btn active" onclick="filterClients('all')">All Pilot Blueprints (4)</button>
         <button class="filter-tab-btn" onclick="filterClients('active')">Active (3)</button>
         <button class="filter-tab-btn" onclick="filterClients('prospect')">Prospect (0)</button>
         <button class="filter-tab-btn" onclick="filterClients('completed')">Completed (1)</button>
-        <button class="filter-tab-btn" onclick="filterClients('on-hold')">On-hold (0)</button>
       </div>
     </div>
 
-    <!-- Search & Filter -->
-    <div class="search-row">
+    <!-- Search & Filter (Hidden in Day-1 Zero-State, visible in Pilot Demo Mode) -->
+    <div class="search-row" id="pilotSearchRow" style="display:none;">
       <div class="search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" placeholder="Search clients, companies, or projects..." oninput="handleSearch()"/>
+        <input type="text" id="searchInput" placeholder="Search pilot blueprints..." oninput="handleSearch()"/>
       </div>
       <button class="btn-filter" onclick="triggerToast('Filter options active')">
         <i class="fa-solid fa-filter"></i> Filters
       </button>
     </div>
 
-    <!-- Clients Grid -->
-    <div class="clients-grid" id="clientsGrid">
+    <!-- Clients Grid (Hidden in Day-1 Zero-State per Spec V5 Section 6; toggleable for Pilot Demo) -->
+    <div class="clients-grid" id="clientsGrid" style="display:none;">
+
+      <!-- Target 01: Margo Caribbean & Canadian Restaurant -->
+      <div class="client-card" data-status="active" data-search="margo caribbean canadian restaurant kivenson rideau bank griot diri djon djon chef os catering">
+        <div class="client-header">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="client-avatar" style="background:linear-gradient(135deg, #FF5500, #D4AF37);">MG</div>
+            <div>
+              <div style="font-weight:800; font-size:1.05rem;">Margo Restaurant (Target 01)</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">606 Rideau St &amp; 1563 Bank St, Ottawa</div>
+            </div>
+          </div>
+        </div>
+        <div class="client-status-badge" style="background:rgba(0,255,157,0.15); color:#00FF9D;">● LIVE STAGING DEMO</div>
+        <div class="info-row">
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Target Vertical</div>
+          <div style="font-weight:700; font-size:0.9rem;">05. Chef OS &amp; Instant Catering Deposit Engine</div>
+        </div>
+        <div class="revenue-row">
+          <div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Projected Package</div>
+            <div class="revenue-val">$2,500 CAD</div>
+          </div>
+          <a href="margo.html" class="btn-view-card" style="max-width:140px; text-decoration:none;">Launch Margo ↗</a>
+        </div>
+      </div>
       
       <!-- Client 1 -->
       <div class="client-card" data-status="active" data-search="marcus chen techcorp corporate clash">
@@ -409,43 +537,22 @@
           <div style="display:flex; align-items:center; gap:12px;">
             <div class="client-avatar">MC</div>
             <div>
-              <div style="font-weight:800; font-size:1.05rem;">Marcus Chen</div>
+              <div style="font-weight:800; font-size:1.05rem;">Marcus Chen (Pilot Demo)</div>
               <div style="color:#94a3b8; font-size:0.85rem;">TechCorp Inc.</div>
             </div>
           </div>
-          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
         </div>
-
-        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">
-          Active
-        </div>
-
+        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">Pilot Template</div>
         <div class="info-row">
-          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
-          <div style="font-weight:700; font-size:0.9rem;">Corporate Clash - Enterprise</div>
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Target Vertical</div>
+          <div style="font-weight:700; font-size:0.9rem;">08. Corporate Clash — Pitch Battle OS</div>
         </div>
-
-        <div style="margin-bottom:16px;">
-          <div class="contact-item"><i class="fa-regular fa-envelope"></i> marcus@techcorp.com</div>
-          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</div>
-          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Toronto, ON</div>
-        </div>
-
         <div class="revenue-row">
           <div>
-            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
-            <div class="revenue-val">$15,000 CAD</div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Projected Package</div>
+            <div class="revenue-val">$5,000 CAD</div>
           </div>
-          <div style="text-align:right;">
-            <div style="color:#94a3b8; font-size:0.75rem;">Next Meeting</div>
-            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-regular fa-calendar"></i> Dec 15, 2025</div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <button class="btn-view-card" onclick="triggerToast('Opening Marcus Chen profile')"><i class="fa-regular fa-eye"></i> View</button>
-          <button class="btn-icon-card edit" onclick="triggerToast('Edit Marcus Chen')"><i class="fa-regular fa-pen-to-square"></i></button>
-          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+          <a href="08_Pitch_Battle_OS_Corporate_Clash.html" class="btn-view-card" style="max-width:140px; text-decoration:none;">Launch Arena ↗</a>
         </div>
       </div>
 
@@ -455,43 +562,22 @@
           <div style="display:flex; align-items:center; gap:12px;">
             <div class="client-avatar" style="background:linear-gradient(135deg, #d946ef, #06b6d4);">SM</div>
             <div>
-              <div style="font-weight:800; font-size:1.05rem;">Sarah Martinez</div>
-              <div style="color:#94a3b8; font-size:0.85rem;">Club Vertex</div>
+              <div style="font-weight:800; font-size:1.05rem;">Club Vertex (Pilot Demo)</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">Nightlife Residency</div>
             </div>
           </div>
-          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
         </div>
-
-        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">
-          Active
-        </div>
-
+        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">Pilot Template</div>
         <div class="info-row">
-          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
-          <div style="font-weight:700; font-size:0.9rem;">Sound Clash OS</div>
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Target Vertical</div>
+          <div style="font-weight:700; font-size:0.9rem;">01. Sound Clash OS</div>
         </div>
-
-        <div style="margin-bottom:16px;">
-          <div class="contact-item"><i class="fa-regular fa-envelope"></i> sarah@clubvertex.com</div>
-          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</div>
-          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Vancouver, BC</div>
-        </div>
-
         <div class="revenue-row">
           <div>
-            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
-            <div class="revenue-val">$8,500 CAD</div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Projected Package</div>
+            <div class="revenue-val">$2,500 CAD</div>
           </div>
-          <div style="text-align:right;">
-            <div style="color:#94a3b8; font-size:0.75rem;">Next Meeting</div>
-            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-regular fa-calendar"></i> Dec 18, 2025</div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <button class="btn-view-card" onclick="triggerToast('Opening Sarah Martinez profile')"><i class="fa-regular fa-eye"></i> View</button>
-          <button class="btn-icon-card edit" onclick="triggerToast('Edit Sarah Martinez')"><i class="fa-regular fa-pen-to-square"></i></button>
-          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+          <a href="01_Sound_Clash_OS.html" class="btn-view-card" style="max-width:140px; text-decoration:none;">Launch Arena ↗</a>
         </div>
       </div>
 
@@ -501,99 +587,154 @@
           <div style="display:flex; align-items:center; gap:12px;">
             <div class="client-avatar" style="background:linear-gradient(135deg, #D4AF37, #FF5500);">EW</div>
             <div>
-              <div style="font-weight:800; font-size:1.05rem;">Emma &amp; James Wilson</div>
-              <div style="color:#94a3b8; font-size:0.85rem;">Personal</div>
+              <div style="font-weight:800; font-size:1.05rem;">The Union Gala (Pilot Demo)</div>
+              <div style="color:#94a3b8; font-size:0.85rem;">Reception OS Suite</div>
             </div>
           </div>
-          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
         </div>
-
-        <div class="client-status-badge" style="background:rgba(0,212,255,0.15); color:#00D4FF;">
-          Completed
-        </div>
-
+        <div class="client-status-badge" style="background:rgba(0,212,255,0.15); color:#00D4FF;">Pilot Template</div>
         <div class="info-row">
-          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
-          <div style="font-weight:700; font-size:0.9rem;">The Union: Wedding OS</div>
+          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Target Vertical</div>
+          <div style="font-weight:700; font-size:0.9rem;">19. The Union: Wedding OS</div>
         </div>
-
-        <div style="margin-bottom:16px;">
-          <div class="contact-item"><i class="fa-regular fa-envelope"></i> emmajames@email.com</div>
-          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 345-6789</div>
-          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Montreal, QC</div>
-        </div>
-
         <div class="revenue-row">
           <div>
-            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
-            <div class="revenue-val">$5,000 CAD</div>
+            <div style="color:#94a3b8; font-size:0.75rem;">Projected Package</div>
+            <div class="revenue-val">$1,500 CAD</div>
           </div>
-        </div>
-
-        <div class="card-actions">
-          <button class="btn-view-card" onclick="triggerToast('Opening Emma & James Wilson file')"><i class="fa-regular fa-eye"></i> View</button>
-          <button class="btn-icon-card edit" onclick="triggerToast('Edit record')"><i class="fa-regular fa-pen-to-square"></i></button>
-          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
-        </div>
-      </div>
-
-      <!-- Client 4 -->
-      <div class="client-card" data-status="active" data-search="david park startup summit corporate clash event">
-        <div class="client-header">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="client-avatar" style="background:linear-gradient(135deg, #3b82f6, #06d6a0);">DP</div>
-            <div>
-              <div style="font-weight:800; font-size:1.05rem;">David Park</div>
-              <div style="color:#94a3b8; font-size:0.85rem;">Startup Summit</div>
-            </div>
-          </div>
-          <button class="btn-icon-card" style="color:#94a3b8;" onclick="triggerToast('Client options')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-        </div>
-
-        <div class="client-status-badge" style="background:rgba(16,185,129,0.15); color:#10B981;">
-          Active
-        </div>
-
-        <div class="info-row">
-          <div style="color:#94a3b8; font-size:0.75rem; margin-bottom:2px;">Current Project</div>
-          <div style="font-weight:700; font-size:0.9rem;">Corporate Clash - Event</div>
-        </div>
-
-        <div style="margin-bottom:16px;">
-          <div class="contact-item"><i class="fa-regular fa-envelope"></i> david@startupsummit.com</div>
-          <div class="contact-item"><i class="fa-solid fa-phone"></i> +1 (555) 456-7890</div>
-          <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Calgary, AB</div>
-        </div>
-
-        <div class="revenue-row">
-          <div>
-            <div style="color:#94a3b8; font-size:0.75rem;">Revenue</div>
-            <div class="revenue-val">$12,000 CAD</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="color:#94a3b8; font-size:0.75rem;">Next Meeting</div>
-            <div style="font-size:0.85rem; font-weight:700;"><i class="fa-regular fa-calendar"></i> Dec 20, 2025</div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <button class="btn-view-card" onclick="triggerToast('Opening David Park profile')"><i class="fa-regular fa-eye"></i> View</button>
-          <button class="btn-icon-card edit" onclick="triggerToast('Edit David Park')"><i class="fa-regular fa-pen-to-square"></i></button>
-          <button class="btn-icon-card trash" onclick="triggerToast('Client archived')"><i class="fa-regular fa-trash-can"></i></button>
+          <a href="19_Wedding_OS_The_Union.html" class="btn-view-card" style="max-width:140px; text-decoration:none;">Launch Arena ↗</a>
         </div>
       </div>
 
     </div>
 
+    <!-- Footer HUD Return Bar -->
+    <div class="footer-hud-nav" style="margin-top:40px; margin-bottom:20px;">
+      <div class="left-info">
+        <h3>Ready to scale your client pipelines?</h3>
+        <p>Book a 7-Day Sprint with a Signed 1-Page Sprint Contract Agreement + 50% Interac e-Transfer Deposit ($1,100 CAD to 9lmntsstudio@gmail.com).</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="index.html#station-04" class="btn-primary" style="background:linear-gradient(135deg, #00D4FF 0%, #0077FF 100%); border-color:#38E1FF; color:#06070A; font-weight:800;">
+          &larr; Return to Studio Cockpit
+        </a>
+        <a href="services.html" class="btn-secondary">
+          Next: Station 05 7-Day Sprints &rarr;
+        </a>
+      </div>
+    </div>
   </div>
 
+  <!-- Universal Bottom 9-Station Spatial Command Dock -->
+  <nav class="fullpage-station-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <a class="fp-dock-item" href="loa.html"><span class="num">01</span><span>Project LOA</span></a>
+    <a class="fp-dock-item teal" href="vault.html"><span class="num">02</span><span>Sonic Vault</span></a>
+    <a class="fp-dock-item" href="core.html"><span class="num">03</span><span>Creator OS Hub</span></a>
+    <a class="fp-dock-item teal active" href="ai-voice.html"><span class="num">04</span><span>Argon AI &amp; CRM</span></a>
+    <a class="fp-dock-item" href="services.html"><span class="num">05</span><span>7-Day Sprints</span></a>
+    <a class="fp-dock-item teal" href="the-helm.html"><span class="num">06</span><span>The Helm</span></a>
+    <a class="fp-dock-item teal" href="clash.html"><span class="num">07</span><span>Battle Arenas</span></a>
+    <a class="fp-dock-item" href="merch.html"><span class="num">08</span><span>Phygital Merch</span></a>
+    <a class="fp-dock-item teal" href="vault.html#interactive-chopper"><span class="num">09</span><span>Studio DAW</span></a>
+  </nav>
+
   <!-- Toast -->
-  <div id="toast" style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#111827; border:1px solid var(--primary); padding:12px 24px; border-radius:9999px; font-weight:bold; font-size:0.85rem; display:none; z-index:999; box-shadow:0 0 30px rgba(0,212,255,0.4);"></div>
+  <div id="toast" style="position:fixed; bottom:84px; left:50%; transform:translateX(-50%); background:#111827; border:1px solid var(--primary); padding:12px 24px; border-radius:9999px; font-weight:bold; font-size:0.85rem; display:none; z-index:999; box-shadow:0 0 30px rgba(0,212,255,0.4);"></div>
 
   <script>
+    let isZeroState = true;
+
+    const KEYWORD_RESPONSES = {
+      'CLASH': '⚡ [CLASH / EVENT DISPATCH]: Flagship Halloween DJ Battle at Bronson Centre (Oct 31, 2026). 8 DJs, $20 GA Cover / $50 Power Hype / $150 VIP Table. Prize pot surges from $500 base up to $5,000 (70/30 split). All passes eligible for PayPal Pay in 4!',
+      'COMEDY': '🎤 [COMEDY / ROAST DISPATCH]: Comedian OS & Roast Battle Arena ready at /02_Comedian_OS_Roast_Battle.html — includes live Laugh-o-Meter decibel telemetry, Heckle Shields, and instant comic tipping.',
+      'ARTIST': '🎵 [ARTIST / MUSIC DISPATCH]: Artist OS 24/7 Creator HQ offers $0 Upfront Onboarding (80/20 revenue split, auto-upgrading to 85/15 at $10k volume) or Pro ($500) / Elite ($1,500) turnkey builds.',
+      'BALLER': '🏀 [BALLER / SPORTS DISPATCH]: Hoops OS 3v3 Streetball Arena live at /06_Hoops_OS_3v3_Streetball.html — verified athlete stat passports, live shot-charts, and crowd MVP voting.',
+      'DEV': '🚀 [DEV / AGENCY SPRINTS]: 7-Day Turnkey Sprints: Starter ($1,500 CAD), Pro Custom ($2,500–$3,500 CAD), Enterprise Scale ($5,000 CAD), plus Monthly Operations Retainers ($1,500–$5,000/mo). Eligible for PayPal Pay in 4.',
+      'SPONSOR': '🏆 [SPONSORSHIP MATRIX]: 3 Q4 Commercial Partner Slots Open: Title Arena Sponsor ($250–$2,500+), Prize Pot Partner, and WebAR Phygital Merch Activation. Includes verified post-event PDF ROI audit.'
+    };
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/[^\w\s.,?!$()/-]/g, '');
+        const utter = new SpeechSynthesisUtterance(clean);
+        utter.rate = 1.03;
+        utter.pitch = 0.95;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    function triggerKeywordPrompt(keyword) {
+      const reply = KEYWORD_RESPONSES[keyword] || KEYWORD_RESPONSES['DEV'];
+      const box = document.getElementById('operatorTranscript');
+      box.innerHTML = `<span style="color:#00FF88; font-weight:800;">[KEYWORD "${keyword}" TRIGGERED]:</span> ${reply}`;
+      speakText(reply);
+      triggerToast(`ManyChat Keyword "${keyword}" Dispatched`);
+    }
+
+    function handleOperatorChat(e) {
+      e.preventDefault();
+      const input = document.getElementById('operatorChatInput');
+      const q = (input.value || '').trim();
+      if (!q) return;
+      const upper = q.toUpperCase();
+      let reply = '⚡ 9LMNTS Studio deploys 7-Day Sprints ($1,500–$5,000 CAD), 24/7 Creator OS portals ($0 upfront 80/20 beta), and 25 Competition OS arenas with PayPal Pay in 4 financing. Use the Start Project button or Pricing Matrix to lock in your Q4 slot.';
+      if (upper.includes('CLASH') || upper.includes('DJ') || upper.includes('HALLOWEEN')) reply = KEYWORD_RESPONSES['CLASH'];
+      else if (upper.includes('COMEDY') || upper.includes('ROAST')) reply = KEYWORD_RESPONSES['COMEDY'];
+      else if (upper.includes('ARTIST') || upper.includes('MUSIC') || upper.includes('STEM')) reply = KEYWORD_RESPONSES['ARTIST'];
+      else if (upper.includes('SPORT') || upper.includes('BALL') || upper.includes('HOOP')) reply = KEYWORD_RESPONSES['BALLER'];
+      else if (upper.includes('SPONSOR') || upper.includes('PARTNER')) reply = KEYWORD_RESPONSES['SPONSOR'];
+      else if (upper.includes('PRICE') || upper.includes('SPRINT') || upper.includes('COST') || upper.includes('DEV')) reply = KEYWORD_RESPONSES['DEV'];
+
+      document.getElementById('operatorTranscript').innerHTML =
+        `<div style="color:#94a3b8; margin-bottom:4px;"><strong>[YOU]:</strong> ${q}</div>` +
+        `<span style="color:var(--primary); font-weight:800;">[9LMNTS AI OPERATOR]:</span> ${reply}`;
+      speakText(reply);
+      input.value = '';
+    }
+
+    function simulateVoice() {
+      const msg = "Welcome to 9LMNTS Studio Station 04. I am the autonomous AI Voice Operator. We offer 7-Day Custom Web and WebAR Sprints from 1500 to 5000 Canadian dollars with PayPal Pay in 4, plus 25 turnkey live competition arenas including Sound Clash OS and Runway OS.";
+      document.getElementById('operatorTranscript').innerHTML = `<span style="color:var(--primary); font-weight:800;">[GEMINI LIVE AUDIO BRIEFING]:</span> ${msg}`;
+      speakText(msg);
+      triggerToast('Gemini Live AI Voice Briefing Active [AUDIO ON]');
+    }
+
+    function toggleZeroStateMode() {
+      isZeroState = !isZeroState;
+      const btn = document.getElementById('toggleZeroStateBtn');
+      const grid = document.getElementById('clientsGrid');
+      const tabs = document.getElementById('pilotFilterTabs');
+      const search = document.getElementById('pilotSearchRow');
+      const rev = document.getElementById('kpiRevVal');
+      const lead = document.getElementById('kpiLeadVal');
+
+      if (isZeroState) {
+        btn.innerText = '● MODE: DAY-1 ZERO-STATE (LIVE)';
+        btn.style.color = '#10B981';
+        btn.style.borderColor = '#10B981';
+        grid.style.display = 'none';
+        tabs.style.display = 'none';
+        search.style.display = 'none';
+        rev.innerText = '$0.00 CAD';
+        lead.innerText = '0 Leads // 0 Subs';
+        triggerToast('Day-1 Zero-State Production Mode Active');
+      } else {
+        btn.innerText = '● MODE: PILOT SIMULATION PREVIEW';
+        btn.style.color = '#00D4FF';
+        btn.style.borderColor = '#00D4FF';
+        grid.style.display = 'grid';
+        tabs.style.display = 'flex';
+        search.style.display = 'flex';
+        rev.innerText = '$9,000 CAD (Projected)';
+        lead.innerText = '3 Pilot Blueprints';
+        triggerToast('Viewing Pilot Cohort Templates');
+      }
+    }
+
     function filterClients(status) {
       document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      if (event && event.target) event.target.classList.add('active');
 
       document.querySelectorAll('.client-card').forEach(card => {
         if (status === 'all' || card.getAttribute('data-status') === status) {
@@ -602,27 +743,14 @@
           card.style.display = 'none';
         }
       });
-      triggerToast(`Filtering by: ${status}`);
     }
 
     function handleSearch() {
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
       document.querySelectorAll('.client-card').forEach(card => {
         const text = card.getAttribute('data-search') || '';
-        if (!q || text.includes(q)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = (!q || text.includes(q)) ? 'block' : 'none';
       });
-    }
-
-    function simulateVoice() {
-      triggerToast('Connecting to Gemini Live AI Voice Session... [AUDIO ON]');
-    }
-
-    function addNewClientPrompt() {
-      triggerToast('Intake modal opened: New Client Registration');
     }
 
     function triggerToast(msg) {

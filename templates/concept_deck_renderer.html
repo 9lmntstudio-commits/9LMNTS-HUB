@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440, initial-scale=1.0" />
+  <title>9LMNTS Studio // Chef OS Concept Deck & Money Multiplier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --espresso-void: #0A0807;
+      --espresso-dark: #120E0B;
+      --espresso-card: #1B1511;
+      --espresso-card-elevated: #241D17;
+      --bronze-primary: #C69C6D;
+      --bronze-light: #DFB78C;
+      --bronze-soft: rgba(198, 156, 109, 0.16);
+      --gold-bright: #E5C178;
+      --border-warm: rgba(198, 156, 109, 0.22);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-cream: #FDFBF7;
+      --text-muted: #BDB0A4;
+      --red-bleed: #EF4444;
+      --red-soft: rgba(239, 68, 68, 0.12);
+      --red-border: rgba(239, 68, 68, 0.35);
+      --green-profit: #10B981;
+      --green-soft: rgba(16, 185, 129, 0.12);
+      --green-border: rgba(16, 185, 129, 0.35);
+      --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-script: 'Alex Brush', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--espresso-void);
+      color: var(--text-cream);
+      font-family: var(--font-sans);
+      width: 1440px;
+      height: 1020px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-container {
+      width: 1440px;
+      height: 1020px;
+      padding: 32px 50px 28px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: radial-gradient(circle at 50% 0%, #1A130E 0%, var(--espresso-void) 75%);
+    }
+
+    /* Ambient Gold Flare */
+    .slide-container::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 350px;
+      background: radial-gradient(ellipse, rgba(198, 156, 109, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Navigation / Brand Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-warm);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: #0A0807;
+      font-weight: 800;
+      box-shadow: 0 4px 18px rgba(198, 156, 109, 0.3);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-cream);
+    }
+
+    .brand-text p {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--bronze-primary);
+      font-weight: 600;
+    }
+
+    .meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid var(--border-warm);
+      background: rgba(27, 21, 17, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .pill.target-pill {
+      background: rgba(198, 156, 109, 0.15);
+      border-color: var(--bronze-primary);
+      color: var(--gold-bright);
+    }
+
+    .pill.status-live {
+      border-color: var(--green-border);
+      color: var(--green-profit);
+    }
+
+    /* Main Slide Body */
+    .slide-body {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      padding: 6px 0;
+    }
+
+    .headline-area {
+      text-align: center;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .headline-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold-bright);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .headline-area h2 {
+      font-family: var(--font-serif);
+      font-size: 2.35rem;
+      line-height: 1.15;
+      color: var(--text-cream);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .headline-area h2 span.highlight {
+      background: linear-gradient(135deg, var(--gold-bright), var(--bronze-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .headline-area p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+
+    /* Comparison Grid (The Money Multiplier) */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .comp-card {
+      border-radius: 18px;
+      padding: 20px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      backdrop-filter: blur(16px);
+      transition: transform 0.2s ease;
+    }
+
+    /* The Bad: 30% Bleed */
+    .comp-card.bleed {
+      background: linear-gradient(180deg, rgba(36, 18, 18, 0.7) 0%, rgba(20, 10, 10, 0.9) 100%);
+      border: 1px solid var(--red-border);
+      box-shadow: 0 16px 40px rgba(239, 68, 68, 0.1);
+    }
+
+    /* The Good: 0% Direct + 50% Upfront */
+    .comp-card.multiplier {
+      background: linear-gradient(180deg, rgba(20, 36, 26, 0.7) 0%, rgba(12, 22, 16, 0.9) 100%);
+      border: 1px solid var(--green-border);
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.15);
+    }
+
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .comp-card.bleed .card-badge {
+      background: var(--red-soft);
+      color: var(--red-bleed);
+      border: 1px solid var(--red-border);
+    }
+
+    .comp-card.multiplier .card-badge {
+      background: var(--green-soft);
+      color: var(--green-profit);
+      border: 1px solid var(--green-border);
+    }
+
+    .comp-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+      color: var(--text-cream);
+    }
+
+    .metric-hero {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 8px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .metric-number {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .comp-card.bleed .metric-number {
+      color: var(--red-bleed);
+    }
+
+    .comp-card.multiplier .metric-number {
+      color: var(--green-profit);
+    }
+
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .comp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .comp-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.85rem;
+      line-height: 1.38;
+      color: var(--text-cream);
+    }
+
+    .comp-list li i {
+      font-size: 0.9rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .comp-card.bleed .comp-list li i {
+      color: var(--red-bleed);
+    }
+
+    .comp-card.multiplier .comp-list li i {
+      color: var(--green-profit);
+    }
+
+    .comp-list li span.bold {
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    /* Bottom Summary & Deal Callout */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      padding: 14px 28px;
+      background: rgba(27, 21, 17, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-warm);
+      border-radius: 14px;
+    }
+
+    .deal-summary {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .deal-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .deal-metric .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .deal-metric .val {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+
+    .deal-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-text {
+      text-align: right;
+    }
+
+    .cta-text .main {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-cream);
+    }
+
+    .cta-text .sub {
+      font-size: 0.72rem;
+      color: var(--bronze-light);
+    }
+
+    .btn-deposit-gold {
+      padding: 10px 22px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--bronze-primary));
+      border: none;
+      border-radius: 9px;
+      color: #0A0807;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(198, 156, 109, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+
+    /* Section Views for 4-Slide Captures */
+    .view-card-slider {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 20px;
+      padding: 36px 44px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .slider-display {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .slider-row label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-cream);
+    }
+
+    .slider-track-mock {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .slider-fill-mock {
+      height: 100%;
+      background: linear-gradient(90deg, var(--bronze-primary), var(--gold-bright));
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .slider-thumb-mock {
+      position: absolute;
+      right: -8px;
+      top: -5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .quote-box {
+      background: var(--espresso-card-elevated);
+      border: 1px solid var(--border-warm);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .quote-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .quote-row.total {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 12px;
+      color: var(--text-cream);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .quote-row.deposit {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--green-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--green-profit);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Dual Location / Brand Hero View */
+    .hero-mock-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-text-side h2 {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      line-height: 1.12;
+      color: #FFFFFF;
+    }
+
+    .hero-dish-card {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-dish-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .hero-dish-info {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dish-name-col h4 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .dish-name-col p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .dish-price-badge {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       VIEW: UNIVERSAL MONEY MULTIPLIER COMPARISON
+       ========================================== -->
+  <div class="slide-container" id="slide-multiplier">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="brand-group">
+        <div class="brand-badge"><i class="fa-solid fa-crown"></i></div>
+        <div class="brand-text">
+          <h1 id="top-title">9LMNTS Studio // Chef OS</h1>
+          <p id="top-sub">Hospitality Revenue Acceleration Suite</p>
+        </div>
+      </div>
+      <div class="meta-pills">
+        <div class="pill target-pill" id="target-pill-name"><i class="fa-solid fa-utensils"></i> Target: Island Flava (ByWard Market)</div>
+        <div class="pill status-live"><i class="fa-solid fa-circle-check"></i> 7-Day Sprint Available</div>
+        <div class="pill"><i class="fa-solid fa-bolt"></i> 0% Delivery Tax</div>
+      </div>
+    </div>
+
+    <!-- Slide Body -->
+    <div class="slide-body">
+      <div class="headline-area">
+        <div class="headline-tag">The Restaurant Money Multiplier</div>
+        <h2>Stop Giving Away <span class="highlight">30% Of Every Order</span> To Third-Party Apps</h2>
+        <p>Keep 100% of your delivery revenue in your bank, eliminate unpaid phone tag, and automatically collect 50% catering deposits online with 1-tap Apple Pay.</p>
+      </div>
+
+      <!-- Comparison Grid -->
+      <div class="comparison-grid">
+        <!-- The Bleed Card -->
+        <div class="comp-card bleed">
+          <div class="card-badge-row">
+            <span class="card-badge"><i class="fa-solid fa-arrow-trend-down"></i> Current Bleed</span>
+            <span style="font-size: 0.85rem; color: var(--red-bleed); font-weight: 600;">UberEats / DoorDash / Skip</span>
+          </div>
+          <h3>Third-Party Delivery Platforms</h3>
+          
+          <div class="metric-hero">
+            <div class="metric-number" id="bleed-monthly">-$4,500</div>
+            <div class="metric-label">Lost Every Month<br><span style="color: var(--red-bleed); font-weight: 700;" id="bleed-annual">(-$54,000 / year on $15k volume)</span></div>
+          </div>
+
+          <ul class="comp-list">
+            <li><i class="fa-solid fa-xmark"></i> <div><span class="bold">30% Commission Fee:</span> You cook, pack, and staff the kitchen — tech apps take nearly a third of your gross margin.</div></li>
+            <li><i class="fa-solid fa-xmark"></i> <div><span class="bold">Zero Customer Data:</span> Uber owns your guests' phone numbers & emails. You cannot send VIP drops or retarget them.</div></li>
+            <li><i class="fa-solid fa-xmark"></i> <div><span class="bold">Unpaid Catering Phone Tag:</span> Hours wasted giving free quotes over DM or phone with zero upfront deposit.</div></li>
+            <li><i class="fa-solid fa-xmark"></i> <div><span class="bold">Last-Minute Ghosting:</span> Customers cancel banquet orders after you've already bought ingredients.</div></li>
+          </ul>
+        </div>
+
+        <!-- The Multiplier Card -->
+        <div class="comp-card multiplier">
+          <div class="card-badge-row">
+            <span class="card-badge"><i class="fa-solid fa-arrow-trend-up"></i> 9LMNTS Solution</span>
+            <span style="font-size: 0.85rem; color: var(--green-profit); font-weight: 600;">Web 2.5 Command OS</span>
+          </div>
+          <h3>Web 2.5 Operating System & Full Admin</h3>
+          
+          <div class="metric-hero">
+            <div class="metric-number" id="profit-monthly">+$4,500</div>
+            <div class="metric-label">Retained Profit / Month<br><span style="color: var(--green-profit); font-weight: 700;" id="profit-annual">(+$54,000 / year in your bank)</span></div>
+          </div>
+
+          <ul class="comp-list">
+            <li><i class="fa-solid fa-check"></i> <div><span class="bold">0% Delivery Commission:</span> 100% of direct orders go straight to your restaurant's bank via built-in Stripe (Apple Pay, Google Pay, Visa, 4x split).</div></li>
+            <li><i class="fa-solid fa-check"></i> <div><span class="bold">Full Admin Command Cockpit:</span> Private mobile HUD: live kitchen order queue, 1-tap 86x stock control & fee savings telemetry.</div></li>
+            <li><i class="fa-solid fa-check"></i> <div><span class="bold">Automated 50% Catering Deposits:</span> Interactive guest slider calculates quotes and locks in a <span class="bold" id="profit-deposit-example">$600–$1,800 deposit</span> upfront before you cook.</div></li>
+            <li><i class="fa-solid fa-check"></i> <div><span class="bold">100% Outright Ownership:</span> Flat 1-time project. $0 monthly agency/SaaS fees forever. You own the code, domain & guest CRM.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+      <div class="deal-summary">
+        <div class="deal-metric">
+          <span class="label">Turnkey Project (1-Time)</span>
+          <span class="val">$2,200 CAD</span>
+        </div>
+        <div style="width: 1px; height: 36px; background: rgba(255,255,255,0.1);"></div>
+        <div class="deal-metric">
+          <span class="label">Kickoff Deposit (50%)</span>
+          <span class="val" style="color: var(--text-cream);">$1,100 CAD</span>
+        </div>
+        <div style="width: 1px; height: 36px; background: rgba(255,255,255,0.1);"></div>
+        <div class="deal-metric">
+          <span class="label">Monthly Agency / SaaS Fee</span>
+          <span class="val" style="color: var(--green-profit);">$0 CAD (Never)</span>
+        </div>
+      </div>
+
+      <div class="deal-cta">
+        <div class="cta-text">
+          <div class="main">Ready to deploy in a 7-day sprint?</div>
+          <div class="sub">Interac e-Transfer Deposit: 9lmntsstudio@gmail.com</div>
+        </div>
+        <div class="btn-deposit-gold">
+          <i class="fa-solid fa-file-contract"></i> View 1-Page Agreement
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script for Dynamic Target Customization -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const client = urlParams.get('client') || 'universal';
+
+    const profiles = {
+      universal: {
+        name: "Ottawa Hospitality Leaders",
+        location: "National Capital Region",
+        bleedMonthly: "-$4,500",
+        bleedAnnual: "(-$54,000 / year on $15k volume)",
+        profitMonthly: "+$4,500",
+        profitAnnual: "(+$54,000 / year in your bank)",
+        depositExample: "$800–$2,400 deposit"
+      },
+      island_flava: {
+        name: "Island Flava",
+        location: "412 Dalhousie St, ByWard Market",
+        bleedMonthly: "-$4,500",
+        bleedAnnual: "(-$54,000 / year on $15k delivery volume)",
+        profitMonthly: "+$4,500",
+        profitAnnual: "(+$54,000 / year direct profit retained)",
+        depositExample: "$660–$1,500 deposit (Jerk Chicken & Oxtail Feasts)"
+      },
+      baccanalle: {
+        name: "Baccanalle (Chef Resa)",
+        location: "595 Montreal Rd, Ottawa",
+        bleedMonthly: "-$3,600",
+        bleedAnnual: "(-$43,200 / year on $12k delivery volume)",
+        profitMonthly: "+$3,600",
+        profitAnnual: "(+$43,200 / year catering & direct margin)",
+        depositExample: "$1,200–$3,000 deposit (Artisanal Corporate Banquets)"
+      },
+      tipikliz: {
+        name: "Tipikliz Caribbean",
+        location: "4025 Innes Rd, Orleans",
+        bleedMonthly: "-$3,000",
+        bleedAnnual: "(-$36,000 / year on $10k delivery volume)",
+        profitMonthly: "+$3,000",
+        profitAnnual: "(+$36,000 / year Haitian menu margin)",
+        depositExample: "$750–$1,800 deposit (Griot & Diri Djon Djon Catering)"
+      },
+      rozo: {
+        name: "Rozo Restaurant & Lounge",
+        location: "253 St. Patrick St, ByWard Market",
+        bleedMonthly: "-$4,200",
+        bleedAnnual: "(-$50,400 / year on $14k food & lounge volume)",
+        profitMonthly: "+$4,200",
+        profitAnnual: "(+$50,400 / year retained lounge revenue)",
+        depositExample: "$850–$2,200 deposit (VIP Tables & Event Buffets)"
+      },
+      margo: {
+        name: "Margo Restaurant",
+        location: "606 Rideau St & 1563 Bank St, Ottawa",
+        bleedMonthly: "-$4,800",
+        bleedAnnual: "(-$57,600 / year on $16k delivery volume)",
+        profitMonthly: "+$4,800",
+        profitAnnual: "(+$57,600 / year direct Haitian kitchen margin)",
+        depositExample: "$1,100–$2,400 deposit (Dual-Kitchen Catering)"
+      }
+    };
+
+    const p = profiles[client] || profiles.universal;
+    document.getElementById('target-pill-name').innerHTML = `<i class="fa-solid fa-utensils"></i> Target: ${p.name} (${p.location})`;
+    document.getElementById('bleed-monthly').innerText = p.bleedMonthly;
+    document.getElementById('bleed-annual').innerText = p.bleedAnnual;
+    document.getElementById('profit-monthly').innerText = p.profitMonthly;
+    document.getElementById('profit-annual').innerText = p.profitAnnual;
+    document.getElementById('profit-deposit-example').innerText = p.depositExample;
+  </script>
+</body>
+</html>

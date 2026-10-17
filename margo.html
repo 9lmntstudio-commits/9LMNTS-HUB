@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Margo. — Haitian &amp; Caribbean Event Catering &amp; Restaurant | Ottawa</title>
+  <meta name="description" content="Margo Caribbean & Canadian Restaurant (606 Rideau St & 1563 Bank St, Ottawa). Crafting unforgettable Haitian & Caribbean culinary experiences, signature Griot & Diri Djon Djon plates, and bespoke event catering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      /* Unified Slide 1 Luxury Dark Mode Palette (Caterix Espresso x Bon Appétit Obsidian) */
+      --espresso-void: #0D0A08;
+      --espresso-dark: #15110E;
+      --espresso-card: #1E1814;
+      --espresso-elevated: #261E19;
+
+      --bronze-primary: #C69C6D;
+      --bronze-light: #DFB78C;
+      --bronze-deep: #D4A977;
+      --bronze-soft: rgba(198, 156, 109, 0.16);
+      --gold-squircle: #E5C178;
+
+      /* Mapped to Slide 1 Dark Mode Surfaces & Text */
+      --ivory-bg: #130F0C;
+      --ivory-card: #1C1612;
+      --ivory-subtle: #251D18;
+      --ivory-text: #F9F5F0;
+      --ivory-muted: #B8ACA0;
+
+      --text-cream: #F9F5F0;
+      --text-warm-muted: #B8ACA0;
+      --border-warm: rgba(198, 156, 109, 0.26);
+      --border-subtle-dark: rgba(255, 255, 255, 0.09);
+
+      --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-script: 'Alex Brush', cursive;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--espresso-void);
+      color: var(--text-cream);
+      font-family: var(--font-sans);
+      line-height: 1.55;
+      overflow-x: hidden;
+      padding-bottom: 96px;
+    }
+
+    .tabular {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =========================================================
+       CATERIX LUXURY HEADER BAR (CLOCHE LOGO + WARM BRONZE PILL)
+       ========================================================= */
+    .caterix-nav {
+      position: sticky;
+      top: 0;
+      z-index: 250;
+      background: rgba(15, 12, 10, 0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(198, 156, 109, 0.18);
+    }
+
+    .caterix-nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .caterix-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-cream);
+    }
+
+    .cloche-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--bronze-light), var(--bronze-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 1.15rem;
+      box-shadow: 0 8px 22px rgba(198, 156, 109, 0.32);
+    }
+
+    .logo-wordmark {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+
+    .logo-wordmark span {
+      color: var(--bronze-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    @media (max-width: 920px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .nav-links a {
+      color: var(--text-cream);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 500;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 1;
+      color: var(--bronze-light);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--bronze-primary);
+      border-radius: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-lang {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(198, 156, 109, 0.32);
+      color: var(--bronze-light);
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.22s var(--ease-out);
+    }
+
+    .btn-lang:hover {
+      background: var(--bronze-primary);
+      color: #14110E;
+    }
+
+    .btn-bronze {
+      background: linear-gradient(135deg, var(--bronze-light) 0%, var(--bronze-primary) 100%);
+      color: #14110E;
+      border: none;
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 10px 28px rgba(198, 156, 109, 0.28);
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+    }
+
+    .btn-bronze:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(198, 156, 109, 0.42);
+    }
+
+    .btn-outline-cream {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-cream);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s var(--ease-out);
+    }
+
+    .btn-outline-cream:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--bronze-light);
+    }
+
+    /* =========================================================
+       HERO SECTION: CATERIX EDITORIAL + BON APPÉTIT PLATE CAROUSEL
+       ========================================================= */
+    .hero-stage {
+      position: relative;
+      background:
+        linear-gradient(95deg, rgba(15, 12, 10, 0.94) 0%, rgba(20, 16, 13, 0.82) 52%, rgba(15, 12, 10, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+      padding: 48px 28px 64px;
+      border-bottom: 1px solid rgba(198, 156, 109, 0.22);
+    }
+
+    .hero-container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Location Switcher Bar Inside Hero Top */
+    .hub-switcher-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      background: rgba(24, 19, 16, 0.84);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-warm);
+      border-radius: 999px;
+      padding: 8px 18px 8px 10px;
+      margin-bottom: 42px;
+    }
+
+    @media (max-width: 760px) {
+      .hub-switcher-strip {
+        border-radius: 20px;
+        padding: 12px;
+      }
+    }
+
+    .hub-pills {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 999px;
+      padding: 4px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .hub-pill-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-warm-muted);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hub-pill-btn.active {
+      background: var(--bronze-primary);
+      color: #14110E;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(198, 156, 109, 0.35);
+    }
+
+    .hub-status-meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.8rem;
+      color: var(--text-warm-muted);
+      flex-wrap: wrap;
+    }
+
+    .hub-status-meta strong {
+      color: var(--text-cream);
+    }
+
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--bronze-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 4.6vw, 4.1rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--bronze-light);
+    }
+
+    .hero-copy {
+      font-size: 1.04rem;
+      color: rgba(249, 245, 240, 0.82);
+      max-width: 560px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    /* Pin 2 Caterix 3-Pillar Bottom Hero Strip */
+    .caterix-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    @media (max-width: 640px) {
+      .caterix-pillars {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pillar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(198, 156, 109, 0.2);
+      border: 1px solid rgba(198, 156, 109, 0.45);
+      color: var(--bronze-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pillar-title {
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+
+    .pillar-desc {
+      font-size: 0.76rem;
+      color: var(--text-warm-muted);
+      line-height: 1.4;
+    }
+
+    /* =========================================================
+       PIN 1 ("BON APPÉTIT!") MOBILE OVERHEAD PLATE SHOWCASE
+       ========================================================= */
+    .bon-appetit-phone {
+      background: radial-gradient(circle at 50% 42%, #1E242B 0%, #0B0C0E 70%);
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      border-radius: 42px;
+      padding: 22px 20px 24px;
+      max-width: 390px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.85),
+        0 0 0 8px rgba(255, 255, 255, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-statusbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      padding: 0 8px 14px;
+    }
+
+    .bon-arc-wrap {
+      text-align: center;
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .bon-sunrise-arc {
+      width: 88px;
+      height: 44px;
+      margin: 0 auto -10px;
+      border-top-left-radius: 90px;
+      border-top-right-radius: 90px;
+      border: 2.5px solid transparent;
+      border-bottom: none;
+      background:
+        linear-gradient(#0D0F12, #0D0F12) padding-box,
+        linear-gradient(90deg, #E5C178 0%, #FF6B4A 100%) border-box;
+      box-shadow: 0 -6px 20px rgba(229, 193, 120, 0.25);
+    }
+
+    .bon-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .bon-tabs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+    }
+
+    .bon-tab {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.42);
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .bon-tab.active {
+      color: #FFFFFF;
+    }
+
+    .bon-tabs-divider {
+      width: 1px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Circular Overhead Matte-Black Plate Carousel (From Pin 1) */
+    .plate-carousel-stage {
+      position: relative;
+      height: 215px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .side-plate {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #16181D;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75);
+      opacity: 0.55;
+      cursor: pointer;
+      transition: all 0.35s var(--ease-out);
+    }
+
+    .side-plate:hover {
+      opacity: 0.85;
+      transform: scale(1.05);
+    }
+
+    .side-plate.left {
+      left: -38px;
+    }
+
+    .side-plate.right {
+      right: -38px;
+    }
+
+    .side-plate img,
+    .center-plate img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .center-plate {
+      width: 196px;
+      height: 196px;
+      border-radius: 50%;
+      padding: 10px;
+      background: radial-gradient(circle at 30% 30%, #23262E, #0E1014 75%);
+      box-shadow:
+        0 22px 50px rgba(0, 0, 0, 0.9),
+        inset 0 1px 2px rgba(255, 255, 255, 0.18);
+      z-index: 2;
+      transition: transform 0.45s var(--ease-out);
+      cursor: pointer;
+    }
+
+    .center-plate:hover {
+      transform: scale(1.03) rotate(2deg);
+    }
+
+    .center-plate-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(229, 193, 120, 0.28);
+    }
+
+    .bon-dish-caption {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .bon-dish-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .bon-dish-sub {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.58);
+      margin-top: 3px;
+    }
+
+    .bon-dish-sub strong {
+      color: #FFFFFF;
+    }
+
+    /* Pin 1 Venue Rating Card ("El rinconcito 9,2") */
+    .bon-venue-card {
+      background: rgba(24, 25, 30, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .bon-venue-thumb {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .bon-venue-info {
+      flex: 1;
+    }
+
+    .bon-venue-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .bon-venue-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .bon-venue-score {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gold-squircle);
+    }
+
+    .bon-venue-city {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 4px;
+    }
+
+    .bon-stars {
+      font-size: 0.72rem;
+      color: #FACC15;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bon-stars span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Pin 1 Bottom Dock with Gold '+' Squircle */
+    .bon-bottom-dock {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .bon-dock-icon {
+      color: var(--gold-squircle);
+      font-size: 1.05rem;
+      opacity: 0.85;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .bon-plus-squircle {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #F0D290, #D9AF62);
+      color: #14110E;
+      border: none;
+      font-size: 1.35rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(229, 193, 120, 0.35);
+      transition: transform 0.2s var(--ease-out);
+    }
+
+    .bon-plus-squircle:hover {
+      transform: scale(1.08);
+    }
+
+    /* =========================================================
+       SLIDE 1 DARK MODE EDITORIAL SECTIONS (UNIFIED ESPRESSO-OBSIDIAN)
+       ========================================================= */
+    .ivory-section {
+      background:
+        radial-gradient(circle at 18% 12%, rgba(198, 156, 109, 0.11), transparent 48%),
+        radial-gradient(circle at 82% 85%, rgba(229, 193, 120, 0.07), transparent 50%),
+        linear-gradient(180deg, #130F0C 0%, #17120E 100%);
+      color: var(--text-cream);
+      padding: 76px 28px;
+      border-top: 1px solid rgba(198, 156, 109, 0.16);
+    }
+
+    .section-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .caterix-sec-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 44px;
+    }
+
+    .caterix-eyebrow {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--bronze-light);
+      margin-bottom: 8px;
+    }
+
+    .caterix-h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.4vw, 2.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #FFFFFF;
+    }
+
+    .caterix-h2-light {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.4vw, 2.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #FFFFFF;
+    }
+
+    /* Pin 2: 4-Card "Explore Our Delicious Menus" Category Showcase (Slide 1 Dark Mode) */
+    .caterix-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 960px) {
+      .caterix-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .caterix-category-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cat-showcase-card {
+      background: linear-gradient(180deg, #211A15 0%, #18130F 100%);
+      border-radius: 22px;
+      padding: 14px 14px 22px;
+      text-align: center;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(198, 156, 109, 0.28);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+      cursor: pointer;
+    }
+
+    .cat-showcase-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-squircle);
+      box-shadow: 0 26px 55px rgba(0, 0, 0, 0.75);
+    }
+
+    .cat-showcase-img {
+      width: 100%;
+      height: 175px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cat-showcase-title {
+      font-family: var(--font-serif);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .cat-showcase-sub {
+      font-size: 0.8rem;
+      color: var(--text-warm-muted);
+    }
+
+    /* Signature Dishes Filter & Luxury Grid (Slide 1 Dark Mode) */
+    .ivory-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .ivory-filter-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(198, 156, 109, 0.28);
+      color: var(--text-warm-muted);
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.22s var(--ease-out);
+    }
+
+    .ivory-filter-pill.active {
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze-primary));
+      color: #14110E;
+      border-color: var(--bronze-light);
+      font-weight: 700;
+      box-shadow: 0 8px 22px rgba(198, 156, 109, 0.3);
+    }
+
+    .signature-dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .luxury-dish-card {
+      background: linear-gradient(180deg, #211A15 0%, #17120E 100%);
+      border: 1px solid rgba(198, 156, 109, 0.26);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+    }
+
+    .luxury-dish-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold-squircle);
+      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.8);
+    }
+
+    .luxury-dish-media {
+      position: relative;
+      height: 215px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(198, 156, 109, 0.16);
+    }
+
+    .luxury-dish-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .luxury-dish-card:hover .luxury-dish-media img {
+      transform: scale(1.05);
+    }
+
+    .luxury-dish-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(15, 12, 10, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(198, 156, 109, 0.35);
+      color: var(--gold-squircle);
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .luxury-dish-body {
+      padding: 22px 24px 16px;
+    }
+
+    .luxury-dish-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .luxury-dish-title {
+      font-family: var(--font-serif);
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .luxury-dish-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold-squircle);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .luxury-dish-desc {
+      font-size: 0.86rem;
+      color: var(--text-warm-muted);
+      line-height: 1.55;
+    }
+
+    .luxury-dish-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .btn-order-squircle {
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze-primary));
+      color: #14110E;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 12px;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(198, 156, 109, 0.25);
+      transition: all 0.22s var(--ease-out);
+    }
+
+    .btn-order-squircle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(198, 156, 109, 0.4);
+    }
+
+    /* =========================================================
+       ESPRESSO LUXURY CATERING CONFIGURATOR (50% DEPOSIT LOCK)
+       ========================================================= */
+    .espresso-catering-sec {
+      background:
+        radial-gradient(circle at 85% 15%, rgba(198, 156, 109, 0.14), transparent 55%),
+        linear-gradient(180deg, var(--espresso-dark) 0%, var(--espresso-void) 100%);
+      padding: 84px 28px;
+      border-top: 1px solid var(--border-warm);
+      border-bottom: 1px solid var(--border-warm);
+    }
+
+    .catering-shell {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 32px;
+      padding: 44px 40px;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.65);
+    }
+
+    @media (max-width: 680px) {
+      .catering-shell {
+        padding: 28px 20px;
+      }
+    }
+
+    .catering-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 36px;
+      margin-top: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .catering-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .slider-panel {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(198, 156, 109, 0.22);
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    input[type="range"].bronze-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--bronze-deep), var(--gold-squircle));
+      outline: none;
+      margin: 14px 0 10px;
+    }
+
+    input[type="range"].bronze-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--ivory-bg);
+      border: 3px solid var(--bronze-primary);
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .tier-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .tier-cards-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .c-tier-card {
+      background: rgba(0, 0, 0, 0.32);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 18px 16px;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+
+    .c-tier-card.active {
+      border-color: var(--bronze-light);
+      background: rgba(198, 156, 109, 0.14);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .addons-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .addons-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .addon-tile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 14px 16px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 0.84rem;
+    }
+
+    .addon-tile input {
+      accent-color: var(--bronze-primary);
+      width: 18px;
+      height: 18px;
+    }
+
+    .summary-dossier {
+      background: #120F0C;
+      border: 1px solid rgba(198, 156, 109, 0.38);
+      border-radius: 26px;
+      padding: 30px 26px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.86rem;
+      color: var(--text-warm-muted);
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .summary-row strong {
+      color: var(--text-cream);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .deposit-escrow-card {
+      background: linear-gradient(145deg, rgba(198, 156, 109, 0.18), rgba(229, 193, 120, 0.08));
+      border: 1px solid var(--bronze-light);
+      border-radius: 20px;
+      padding: 22px 18px;
+      text-align: center;
+      margin: 18px 0;
+    }
+
+    /* =========================================================
+       SLIDE 1 DARK MODE: "MEET YOUR HOST" + "WHY CHOOSE MARGO" + REVIEWS
+       ========================================================= */
+    .chef-story-card {
+      background: linear-gradient(180deg, #211A15 0%, #17120E 100%);
+      border: 1px solid rgba(198, 156, 109, 0.32);
+      border-radius: 28px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 860px) {
+      .chef-story-card {
+        grid-template-columns: 1fr;
+        padding: 26px;
+      }
+    }
+
+    .chef-photo-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 360px;
+      border: 1px solid rgba(198, 156, 109, 0.28);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .chef-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chef-signature {
+      font-family: var(--font-script);
+      font-size: 2.45rem;
+      color: var(--gold-squircle);
+      margin: 14px 0;
+    }
+
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 900px) {
+      .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .why-card {
+      background: linear-gradient(180deg, #211A15 0%, #17120E 100%);
+      border: 1px solid rgba(198, 156, 109, 0.25);
+      border-radius: 20px;
+      padding: 26px 20px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .why-icon-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(198, 156, 109, 0.14);
+      border: 1px solid rgba(198, 156, 109, 0.35);
+      color: var(--gold-squircle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin: 0 auto 14px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testimonial-card {
+      background: linear-gradient(180deg, #211A15 0%, #17120E 100%);
+      border: 1px solid rgba(198, 156, 109, 0.25);
+      border-radius: 22px;
+      padding: 28px 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* =========================================================
+       MODAL & FLOATING DOCK
+       ========================================================= */
+    .pp-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.8);
+      backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .pp-modal.active {
+      display: flex;
+    }
+
+    .pp-modal-content {
+      background: #1B1612;
+      border: 1px solid var(--bronze-primary);
+      border-radius: 26px;
+      max-width: 470px;
+      width: 100%;
+      padding: 28px;
+      color: var(--text-cream);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+    }
+
+    .floating-dock {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      width: calc(100% - 32px);
+      max-width: 900px;
+      z-index: 220;
+      background: rgba(23, 19, 16, 0.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(198, 156, 109, 0.35);
+      border-radius: 999px;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+    }
+
+    .floating-dock.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PIN 2 CATERIX LUXURY HEADER -->
+  <header class="caterix-nav">
+    <div class="caterix-nav-inner">
+      <a href="#top" class="caterix-logo">
+        <div class="cloche-badge"><i class="fa-solid fa-bell-concierge"></i></div>
+        <div>
+          <div class="logo-wordmark">Margo<span>.</span></div>
+          <div style="font-size:0.68rem; color:var(--text-warm-muted); letter-spacing:0.06em; text-transform:uppercase;">Caribbean &amp; Canadian • Ottawa</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#top" class="active">Home</a>
+        <a href="#menus">Menus</a>
+        <a href="#catering-engine">Catering Packages</a>
+        <a href="#story">Our Story</a>
+        <a href="#reviews">Client Reviews</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-lang" onclick="toggleLanguage()" id="langBtn">FR / Kreyòl / EN</button>
+        <a href="#catering-engine" class="btn-bronze">Book Catering</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO STAGE: CATERIX EDITORIAL + PIN 1 "BON APPÉTIT!" OVERHEAD PLATE CAROUSEL -->
+  <section class="hero-stage" id="top">
+    <div class="hero-container">
+
+      <!-- Dual Ottawa Hub Switcher Strip -->
+      <div class="hub-switcher-strip">
+        <div class="hub-pills">
+          <button class="hub-pill-btn active" id="btnLocRideau" onclick="selectLocation('rideau')">
+            <i class="fa-solid fa-location-dot"></i> 606 Rideau St (Downtown)
+          </button>
+          <button class="hub-pill-btn" id="btnLocBank" onclick="selectLocation('bank')">
+            <i class="fa-solid fa-location-dot"></i> 1563 Bank St (South Keys)
+          </button>
+        </div>
+
+        <div class="hub-status-meta">
+          <span>Active Kitchen: <strong id="locAddressDisplay">606 Rideau St, Ottawa</strong></span>
+          <span>Prep Window: <strong id="locEtaDisplay" style="color:var(--gold-squircle);">18–25 Mins • Open Now</strong></span>
+          <a href="tel:6132411400" id="locPhoneLink" style="color:var(--bronze-light); text-decoration:none; font-weight:700;" class="tabular">
+            <i class="fa-solid fa-phone"></i> <span id="locPhoneDisplay">(613) 241-1400</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Hero Split -->
+      <div class="hero-split">
+        <!-- Left: Pin 2 "Caterix" Headline, Pills & 3 Pillars -->
+        <div>
+          <div class="hero-kicker">
+            <i class="fa-solid fa-sparkles"></i>
+            <span data-i18n="heroBadge">Ottawa's Premier Haitian, Caribbean &amp; Canadian Kitchen</span>
+          </div>
+          <h1 class="hero-headline" data-i18n="heroTitle">
+            Crafting Unforgettable <em>Culinary Experiences</em>
+          </h1>
+          <p class="hero-copy" data-i18n="heroLead">
+            From intimate family gatherings to 300-guest corporate galas and weddings across Ottawa–Gatineau, we bring authentic Haitian Griot, fragrant Diri Djon Djon, and warm island elegance to your table.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#catering-engine" class="btn-bronze" data-i18n="ctaCatering">Our Catering Packages</a>
+            <a href="#menus" class="btn-outline-cream" data-i18n="ctaMenu">View Signature Menu</a>
+          </div>
+
+          <div class="caterix-pillars">
+            <div class="pillar-item">
+              <div class="pillar-icon"><i class="fa-solid fa-leaf"></i></div>
+              <div>
+                <div class="pillar-title">Fresh Island Ingredients</div>
+                <div class="pillar-desc">Authentic sour orange marinades, scotch bonnet pikliz &amp; black mushrooms.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><i class="fa-solid fa-hat-chef"></i></div>
+              <div>
+                <div class="pillar-title">Dual Ottawa Kitchens</div>
+                <div class="pillar-desc">Direct pickup &amp; catering dispatch from 606 Rideau St &amp; 1563 Bank St.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+              <div>
+                <div class="pillar-title">Perfect Presentation</div>
+                <div class="pillar-desc">Full chafing warmers, buffet styling &amp; 50% instant date reservation.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Pin 1 ("Bon appétit!") Interactive Mobile Plate Showcase -->
+        <div>
+          <div class="bon-appetit-phone">
+            <div class="phone-statusbar">
+              <span>9:41</span>
+              <span style="display:flex; gap:6px; align-items:center;">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full"></i>
+              </span>
+            </div>
+
+            <div class="bon-arc-wrap">
+              <div class="bon-sunrise-arc"></div>
+              <div class="bon-title">Bon appétit • Sak Pase!</div>
+            </div>
+
+            <div class="bon-tabs">
+              <button class="bon-tab active" onclick="cyclePlate(0)">Signatures</button>
+              <div class="bon-tabs-divider"></div>
+              <button class="bon-tab" onclick="document.getElementById('catering-engine').scrollIntoView({behavior:'smooth'})">Customize Tray</button>
+            </div>
+
+            <!-- 3-Plate Overhead Circular Matte-Black Plate Carousel -->
+            <div class="plate-carousel-stage">
+              <div class="side-plate left" onclick="cyclePlate(-1)" title="Previous Signature Plate">
+                <img id="leftPlateImg" src="assets/margo/diri_djon_djon.jpg" alt="Diri Djon Djon Feast" />
+              </div>
+
+              <div class="center-plate" onclick="cyclePlate(1)" title="Tap to Rotate Margo Signature Plates">
+                <div class="center-plate-inner">
+                  <img id="centerPlateImg" src="assets/margo/griot_royal.jpg" alt="Griot Royal & Banane Pesée" />
+                </div>
+              </div>
+
+              <div class="side-plate right" onclick="cyclePlate(1)" title="Next Signature Plate">
+                <img id="rightPlateImg" src="assets/margo/tassot_cabrit.jpg" alt="Tassot Cabrit Crispy Goat" />
+              </div>
+            </div>
+
+            <div class="bon-dish-caption">
+              <div class="bon-dish-name" id="carouselDishName">GRIOT ROYAL &amp; PIKLIZ</div>
+              <div class="bon-dish-sub" id="carouselDishSub"><strong>6</strong> signature Haitian &amp; Caribbean specialties!</div>
+            </div>
+
+            <!-- Pin 1 Venue Rating Card -->
+            <div class="bon-venue-card">
+              <img class="bon-venue-thumb" src="assets/margo/grand_fritaille.jpg" alt="Margo Restaurant Ottawa" />
+              <div class="bon-venue-info">
+                <div class="bon-venue-top">
+                  <div class="bon-venue-name" id="phoneVenueName">Margo • Rideau St</div>
+                  <div class="bon-venue-score tabular">9,6</div>
+                </div>
+                <div class="bon-venue-city" id="phoneVenueAddr">606 Rideau St, Ottawa</div>
+                <div class="bon-stars">
+                  ★★★★★ <span>(180+) Reviews</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pin 1 Bottom Dock with Warm Gold '+' Squircle -->
+            <div class="bon-bottom-dock">
+              <button class="bon-dock-icon" onclick="document.getElementById('menus').scrollIntoView({behavior:'smooth'})" title="Explore Menu">
+                <i class="fa-solid fa-utensils"></i>
+              </button>
+              <button class="bon-plus-squircle" onclick="orderActiveCarouselDish()" title="Quick Order This Plate">
+                +
+              </button>
+              <button class="bon-dock-icon" onclick="document.getElementById('catering-engine').scrollIntoView({behavior:'smooth'})" title="Catering Quote">
+                <i class="fa-solid fa-receipt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WARM IVORY SECTION 1: "EXPLORE OUR DELICIOUS MENUS" (PIN 2 CATERIX) -->
+  <section class="ivory-section" id="menus">
+    <div class="section-inner">
+
+      <div class="caterix-sec-header">
+        <div class="caterix-eyebrow">Curated For Every Occasion</div>
+        <h2 class="caterix-h2" data-i18n="menuHeading">Explore Our Delicious Menus</h2>
+      </div>
+
+      <!-- 4-Card Caterix Event Menu Showcase -->
+      <div class="caterix-category-grid">
+        <div class="cat-showcase-card" onclick="PresetCatering(150, 24)">
+          <img class="cat-showcase-img" src="assets/margo/catering_wedding_banquet.jpg" alt="Weddings & Galas Menu" />
+          <div class="cat-showcase-title">Weddings &amp; Galas</div>
+          <div class="cat-showcase-sub">Royal Griot, Djon Djon &amp; Full Chafing Service</div>
+        </div>
+
+        <div class="cat-showcase-card" onclick="PresetCatering(45, 20)">
+          <img class="cat-showcase-img" src="assets/margo/corporate_buffet_trays.jpg" alt="Corporate Events" />
+          <div class="cat-showcase-title">Corporate Events</div>
+          <div class="cat-showcase-sub">Executive Office Buffets &amp; Embassy Lunches</div>
+        </div>
+
+        <div class="cat-showcase-card" onclick="PresetCatering(80, 20)">
+          <img class="cat-showcase-img" src="assets/margo/grand_fritaille.jpg" alt="Private Parties" />
+          <div class="cat-showcase-title">Private Parties</div>
+          <div class="cat-showcase-sub">Grand Fritaille Trays, Akra, Cabrit &amp; Plantains</div>
+        </div>
+
+        <div class="cat-showcase-card" onclick="PresetCatering(100, 18)">
+          <img class="cat-showcase-img" src="assets/margo/diri_djon_djon.jpg" alt="Buffet Packages" />
+          <div class="cat-showcase-title">Buffet Packages</div>
+          <div class="cat-showcase-sub">$18–$24 / Guest Custom Platter Stations</div>
+        </div>
+      </div>
+
+      <!-- Filter Pills for Direct Ordering -->
+      <div class="ivory-filter-bar">
+        <button class="ivory-filter-pill active" onclick="filterMenu('all', this)">All Signature Plates</button>
+        <button class="ivory-filter-pill" onclick="filterMenu('haitian', this)">Haitian Classics</button>
+        <button class="ivory-filter-pill" onclick="filterMenu('fritaille', this)">Fritaille &amp; Shareables</button>
+        <button class="ivory-filter-pill" onclick="filterMenu('canadian', this)">Caribbean–Canadian Fusion</button>
+      </div>
+
+      <!-- 6 Signature Dish Cards -->
+      <div class="signature-dishes-grid">
+        <div class="luxury-dish-card" data-cat="haitian">
+          <div>
+            <div class="luxury-dish-media">
+              <span class="luxury-dish-badge">★ #1 Bestseller • Rideau &amp; Bank</span>
+              <img src="assets/margo/griot_royal.jpg" alt="Griot Royal Plate" loading="lazy" />
+            </div>
+            <div class="luxury-dish-body">
+              <div class="luxury-dish-head">
+                <h3 class="luxury-dish-title">Griot Royal Plate</h3>
+                <span class="luxury-dish-price">$23.00</span>
+              </div>
+              <p class="luxury-dish-desc">
+                Traditional Haitian pork cubes marinated in sour orange, scotch bonnet, garlic &amp; island herbs, braised tender then crisped golden. Served with <em>banane pesée</em>, house <em>pikliz</em>, and <em>diri kole ak pwa</em>.
+              </p>
+            </div>
+          </div>
+          <div class="luxury-dish-foot">
+            <span style="font-size:0.78rem; color:var(--ivory-muted); font-weight:600;">🌶️ Banane Pesée + Pikliz Included</span>
+            <button class="btn-order-squircle" onclick="openPayPalCheckout('Griot Royal Plate — Direct Online Order', 23.00, 'MARGO-GRIOT')">
+              <span>+ Order Direct</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="luxury-dish-card" data-cat="haitian">
+          <div>
+            <div class="luxury-dish-media">
+              <span class="luxury-dish-badge">👑 Haitian Crown Jewel</span>
+              <img src="assets/margo/diri_djon_djon.jpg" alt="Diri Djon Djon Feast" loading="lazy" />
+            </div>
+            <div class="luxury-dish-body">
+              <div class="luxury-dish-head">
+                <h3 class="luxury-dish-title">Diri Djon Djon Feast</h3>
+                <span class="luxury-dish-price">$24.99</span>
+              </div>
+              <p class="luxury-dish-desc">
+                Fragrant Haitian black mushroom rice steamed with green lima beans, garlic, and island cloves. Paired with Creole-glazed chicken &amp; crispy pork Griot, sweet plantains, and spicy <em>pikliz</em>.
+              </p>
+            </div>
+          </div>
+          <div class="luxury-dish-foot">
+            <span style="font-size:0.78rem; color:var(--ivory-muted); font-weight:600;">🍄 Authentic Black Mushroom Rice</span>
+            <button class="btn-order-squircle" onclick="openPayPalCheckout('Diri Djon Djon Feast Combination', 24.99, 'MARGO-DJONDJON')">
+              <span>+ Order Direct</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="luxury-dish-card" data-cat="haitian">
+          <div>
+            <div class="luxury-dish-media">
+              <span class="luxury-dish-badge">🔥 Chef Specialty</span>
+              <img src="assets/margo/tassot_cabrit.jpg" alt="Tassot Cabrit" loading="lazy" />
+            </div>
+            <div class="luxury-dish-body">
+              <div class="luxury-dish-head">
+                <h3 class="luxury-dish-title">Tassot Cabrit (Seasoned Goat)</h3>
+                <span class="luxury-dish-price">$25.00</span>
+              </div>
+              <p class="luxury-dish-desc">
+                Tender marinated goat cubes citrus-braised and flash-crisped for a caramelized crust. Served with <em>diri kole ak pwa</em> (rice &amp; red beans), pressed plantains, Creole sauce, and fiery pikliz.
+              </p>
+            </div>
+          </div>
+          <div class="luxury-dish-foot">
+            <span style="font-size:0.78rem; color:var(--ivory-muted); font-weight:600;">🌶️🌶️ Bold Island Marinade</span>
+            <button class="btn-order-squircle" onclick="openPayPalCheckout('Tassot Cabrit Plate', 25.00, 'MARGO-CABRIT')">
+              <span>+ Order Direct</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="luxury-dish-card" data-cat="fritaille">
+          <div>
+            <div class="luxury-dish-media">
+              <span class="luxury-dish-badge">🎉 Shareable Street Feast</span>
+              <img src="assets/margo/grand_fritaille.jpg" alt="Grand Fritaille Box" loading="lazy" />
+            </div>
+            <div class="luxury-dish-body">
+              <div class="luxury-dish-head">
+                <h3 class="luxury-dish-title">Grand Fritaille Platter</h3>
+                <span class="luxury-dish-price">$28.99</span>
+              </div>
+              <p class="luxury-dish-desc">
+                The ultimate Port-au-Prince sharing platter: crispy Griot, hand-grated malanga Akra fritters, spiced beef Boulettes, sweet &amp; green plantains, Creole dipping sauce, and house pikliz.
+              </p>
+            </div>
+          </div>
+          <div class="luxury-dish-foot">
+            <span style="font-size:0.78rem; color:var(--ivory-muted); font-weight:600;">🔥 Griot + Akra + Boulettes + Plantains</span>
+            <button class="btn-order-squircle" onclick="openPayPalCheckout('Grand Fritaille Platter', 28.99, 'MARGO-FRITAILLE')">
+              <span>+ Order Direct</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="luxury-dish-card" data-cat="haitian">
+          <div>
+            <div class="luxury-dish-media">
+              <span class="luxury-dish-badge">🍲 Slow-Simmered Classic</span>
+              <img src="assets/margo/legume_creole.jpg" alt="Legume Haitien & Poulet Creole" loading="lazy" />
+            </div>
+            <div class="luxury-dish-body">
+              <div class="luxury-dish-head">
+                <h3 class="luxury-dish-title">Légume Haïtien &amp; Poulet Créole</h3>
+                <span class="luxury-dish-price">$24.00</span>
+              </div>
+              <p class="luxury-dish-desc">
+                Rich slow-braised Haitian vegetable &amp; beef stew paired with chicken simmered in vibrant Creole sauce. Served with steaming white rice drenched in black bean <em>sos pwa</em> and sweet plantains.
+              </p>
+            </div>
+          </div>
+          <div class="luxury-dish-foot">
+            <span style="font-size:0.78rem; color:var(--ivory-muted); font-weight:600;">🌿 White Rice + Sos Pwa Included</span>
+            <button class="btn-order-squircle" onclick="openPayPalCheckout('Legume Haitien & Poulet Creole Plate', 24.00, 'MARGO-CREOLE')">
+              <span>+ Order Direct</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="luxury-dish-card" data-cat="canadian">
+          <div>
+            <div class="luxury-dish-media">
+              <span class="luxury-dish-badge">🍁 Ottawa Fusion Signature</span>
+              <img src="assets/margo/griot_poutine.jpg" alt="Griot Poutine" loading="lazy" />
+            </div>
+            <div class="luxury-dish-body">
+              <div class="luxury-dish-head">
+                <h3 class="luxury-dish-title">Griot &amp; St-Albert Poutine</h3>
+                <span class="luxury-dish-price">$17.99</span>
+              </div>
+              <p class="luxury-dish-desc">
+                Golden hand-cut fries layered with fresh St-Albert squeaky cheese curds, crowned with crispy chopped Haitian Griot, rich Creole peppercorn gravy, and tangy house pikliz.
+              </p>
+            </div>
+          </div>
+          <div class="luxury-dish-foot">
+            <span style="font-size:0.78rem; color:var(--ivory-muted); font-weight:600;">🧀 St-Albert Curds + Griot + Pikliz</span>
+            <button class="btn-order-squircle" onclick="openPayPalCheckout('Margo Griot & Creole Gravy Poutine', 17.99, 'MARGO-POUTINE')">
+              <span>+ Order Direct</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ESPRESSO LUXURY CATERING CONFIGURATOR SECTION ($18-$24/GUEST + 50% INTERAC LOCK) -->
+  <section class="espresso-catering-sec" id="catering-engine">
+    <div class="section-inner">
+      <div class="catering-shell">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+          <div>
+            <div class="hero-kicker" style="margin-bottom:8px;">Instant Event &amp; Banquet Configurator</div>
+            <h2 class="caterix-h2-light" data-i18n="cateringTitle">Build Your Bespoke Catering Package</h2>
+          </div>
+          <div style="background:rgba(198,156,109,0.16); border:1px solid var(--bronze-primary); color:var(--bronze-light); padding:8px 16px; border-radius:999px; font-size:0.78rem; font-weight:700;">
+            <i class="fa-solid fa-kitchen-set"></i> <span id="cateringHubIndicator">Dispatching From: 606 Rideau St</span>
+          </div>
+        </div>
+
+        <div class="catering-grid">
+          <!-- Left: 3-Step Configurator -->
+          <div>
+            <div class="slider-panel">
+              <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                <div>
+                  <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--bronze-light);">Step 1 • Guest Count</div>
+                  <div style="font-family:var(--font-serif); font-size:1.3rem; font-weight:600; color:#FFF; margin-top:2px;">How many guests are we welcoming?</div>
+                </div>
+                <div style="font-family:var(--font-serif); font-size:2.2rem; font-weight:700; color:var(--gold-squircle);" class="tabular">
+                  <span id="guestCountDisplay">60</span> Guests
+                </div>
+              </div>
+              <input type="range" id="guestSlider" class="bronze-slider" min="15" max="300" step="5" value="60" oninput="updateCateringQuote()" />
+              <div style="display:flex; justify-content:space-between; font-size:0.74rem; color:var(--text-warm-muted);">
+                <span>15 Guests (Office Tray)</span>
+                <span>100 Guests (Banquet)</span>
+                <span>200 Guests (Wedding)</span>
+                <span>300+ Guests (Gala)</span>
+              </div>
+            </div>
+
+            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--bronze-light); margin-bottom:10px;">
+              Step 2 • Choose Per-Guest Platter Package ($18–$24 / Guest)
+            </div>
+            <div class="tier-cards-row">
+              <div class="c-tier-card" id="tierCard18" onclick="selectCateringTier(18, 'Djon Djon & Island Fusion Platter', 'tierCard18')">
+                <div style="font-family:var(--font-serif); font-size:1.1rem; font-weight:700; color:#FFF;">Djon Djon Fusion</div>
+                <div style="font-size:1.4rem; font-weight:800; color:var(--gold-squircle); margin:4px 0;" class="tabular">$18 <span style="font-size:0.74rem; font-weight:400; color:var(--text-warm-muted);">/ guest</span></div>
+                <div style="font-size:0.75rem; color:var(--text-warm-muted); line-height:1.4;">Diri Djon Djon Rice Medley, Roasted Jerk Chicken, Plantains &amp; Pikliz</div>
+              </div>
+
+              <div class="c-tier-card" id="tierCard20" onclick="selectCateringTier(20, 'Classic Griot & Pikliz Platter', 'tierCard20')">
+                <div style="font-family:var(--font-serif); font-size:1.1rem; font-weight:700; color:#FFF;">Classic Griot &amp; Pikliz</div>
+                <div style="font-size:1.4rem; font-weight:800; color:var(--gold-squircle); margin:4px 0;" class="tabular">$20 <span style="font-size:0.74rem; font-weight:400; color:var(--text-warm-muted);">/ guest</span></div>
+                <div style="font-size:0.75rem; color:var(--text-warm-muted); line-height:1.4;">Slow-Marinated Crispy Pork Griot, Seasoned Rice, Banane Pesée, Akra &amp; Pikliz</div>
+              </div>
+
+              <div class="c-tier-card active" id="tierCard24" onclick="selectCateringTier(24, 'Royal Griot & Diri Djon Djon Feast', 'tierCard24')">
+                <div style="font-family:var(--font-serif); font-size:1.1rem; font-weight:700; color:#FFF;">Royal Feast</div>
+                <div style="font-size:1.4rem; font-weight:800; color:var(--gold-squircle); margin:4px 0;" class="tabular">$24 <span style="font-size:0.74rem; font-weight:400; color:var(--text-warm-muted);">/ guest</span></div>
+                <div style="font-size:0.75rem; color:var(--text-warm-muted); line-height:1.4;">Crispy Griot + Tassot Cabrit + Black Mushroom Djon Djon + Fritaille Station</div>
+              </div>
+            </div>
+
+            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--bronze-light); margin-bottom:10px;">
+              Step 3 • Optional Trays &amp; Full-Service Banquet Setup
+            </div>
+            <div class="addons-row">
+              <label class="addon-tile">
+                <input type="checkbox" id="addonDjon" value="140" checked onchange="updateCateringQuote()" />
+                <div>
+                  <div style="font-weight:600; color:#FFF;">Extra Diri Djon Djon Jumbo Tray</div>
+                  <div style="font-size:0.74rem; color:var(--bronze-light);" class="tabular">+$140 CAD • Feeds 25+</div>
+                </div>
+              </label>
+              <label class="addon-tile">
+                <input type="checkbox" id="addonFritaille" value="160" onchange="updateCateringQuote()" />
+                <div>
+                  <div style="font-weight:600; color:#FFF;">Akra, Patties &amp; Fritaille Welcome Tray</div>
+                  <div style="font-size:0.74rem; color:var(--bronze-light);" class="tabular">+$160 CAD • 60 Pieces</div>
+                </div>
+              </label>
+              <label class="addon-tile">
+                <input type="checkbox" id="addonPikliz" value="65" onchange="updateCateringQuote()" />
+                <div>
+                  <div style="font-weight:600; color:#FFF;">Take-Home Mason Jars of Pikliz</div>
+                  <div style="font-size:0.74rem; color:var(--bronze-light);" class="tabular">+$65 CAD • 10 Jars</div>
+                </div>
+              </label>
+              <label class="addon-tile">
+                <input type="checkbox" id="addonStaff" value="250" onchange="updateCateringQuote()" />
+                <div>
+                  <div style="font-weight:600; color:#FFF;">Chafing Dishes, Warmers &amp; Setup</div>
+                  <div style="font-size:0.74rem; color:var(--bronze-light);" class="tabular">+$250 CAD • Ottawa–Gatineau</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Right: Live Catering Specification & 50% Online Stripe Deposit Lock -->
+          <div class="summary-dossier">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <span style="font-size:0.74rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-squircle);">
+                ● Live Catering Estimate
+              </span>
+              <span id="quoteHubTag" style="font-size:0.74rem; color:var(--text-warm-muted);">606 Rideau St Kitchen</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Selected Menu Tier</span>
+              <strong id="summaryTierName">Royal Griot &amp; Diri Djon Djon Feast</strong>
+            </div>
+            <div class="summary-row">
+              <span>Guest Count × Rate</span>
+              <strong id="summaryBaseMath">60 × $24.00 = $1,440.00</strong>
+            </div>
+            <div class="summary-row">
+              <span>Optional Trays &amp; Setup</span>
+              <strong id="summaryAddons">$140.00 CAD</strong>
+            </div>
+            <div class="summary-row" style="border-bottom:1px solid rgba(198,156,109,0.3); padding-bottom:14px;">
+              <span style="color:#FFF; font-weight:700;">Total Catering Package</span>
+              <strong id="summaryTotalPackage" style="font-size:1.15rem; color:var(--gold-squircle);">$1,580.00 CAD</strong>
+            </div>
+
+            <div class="deposit-escrow-card">
+              <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--bronze-light);">
+                50% Online Deposit to Lock Kitchen Date (Stripe Checkout)
+              </div>
+              <div id="summaryDepositAmount" style="font-family:var(--font-serif); font-size:2.55rem; font-weight:700; color:#FFFFFF; margin:4px 0;" class="tabular">
+                $790.00 CAD
+              </div>
+              <div style="font-size:0.76rem; color:var(--text-warm-muted);">
+                Remaining 50% (<span id="summaryBalanceAmount" class="tabular">$790.00 CAD</span>) billed online upon event delivery/pickup.
+              </div>
+              <div id="summaryPayIn4" style="display:inline-block; margin-top:10px; background:rgba(0,0,0,0.4); border:1px solid rgba(198,156,109,0.4); padding:5px 12px; border-radius:999px; font-size:0.73rem; color:var(--gold-squircle);" class="tabular">
+                💳 Stripe Online Checkout • Card, Apple Pay OR 4× $197.50
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+              <input type="text" id="clientEventName" placeholder="Your Name / Organization" style="background:rgba(255,255,255,0.06); border:1px solid rgba(198,156,109,0.3); color:#FFF; padding:11px 14px; border-radius:12px; font-size:0.82rem; outline:none;" />
+              <input type="date" id="clientEventDate" style="background:rgba(255,255,255,0.06); border:1px solid rgba(198,156,109,0.3); color:#FFF; padding:11px 14px; border-radius:12px; font-size:0.82rem; outline:none;" />
+            </div>
+
+            <div style="display:grid; gap:10px;">
+              <button class="btn-bronze" style="width:100%; padding:15px;" onclick="lockCateringDeposit()">
+                <i class="fa-brands fa-stripe-s"></i> Pay 50% Deposit Online (Stripe / Apple Pay / Card)
+              </button>
+              <button class="btn-outline-cream" style="width:100%; padding:13px;" onclick="sendWhatsAppQuote()">
+                <i class="fa-brands fa-whatsapp" style="color:#4ADE80;"></i> Send Quote to Kivenson on WhatsApp
+              </button>
+            </div>
+            <div id="liveQuoteStatusBanner" style="display:none; margin-top:12px; background:rgba(198,156,109,0.15); border:1px solid var(--bronze-light); border-radius:14px; padding:12px; font-size:0.78rem; color:#FFF; line-height:1.5;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARM IVORY SECTION 2: PIN 2 CATERIX "MEET YOUR HOST" + "WHY CHOOSE MARGO" + REVIEWS -->
+  <section class="ivory-section" id="story">
+    <div class="section-inner">
+
+      <!-- Pin 2 Caterix "Meet Your Private Chef / Host" Card -->
+      <div class="chef-story-card">
+        <div class="chef-photo-frame">
+          <img src="assets/margo/haitian_chef_host.jpg" alt="Margo Culinary Host Ottawa" loading="lazy" />
+        </div>
+        <div>
+          <div class="caterix-eyebrow">Meet Your Culinary Host</div>
+          <h2 class="caterix-h2" style="margin-bottom:14px;">Sak Pase, Welcome to Margo.</h2>
+          <p style="font-size:0.95rem; color:var(--ivory-muted); line-height:1.65; margin-bottom:14px;">
+            With two bustling Ottawa kitchens at <strong>606 Rideau St</strong> and <strong>1563 Bank St</strong>, Margo Caribbean &amp; Canadian Restaurant brings the authentic warmth, bold spices, and celebratory spirit of Haiti and the Caribbean to every plate and banquet table.
+          </p>
+          <div class="chef-signature">Kivenson Augustin</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:22px; font-size:0.84rem; font-weight:600; color:var(--ivory-text);">
+            <div><i class="fa-solid fa-check" style="color:var(--bronze-deep); margin-right:6px;"></i> 2 Ottawa Kitchen Hubs</div>
+            <div><i class="fa-solid fa-check" style="color:var(--bronze-deep); margin-right:6px;"></i> 500+ Events Catered</div>
+            <div><i class="fa-solid fa-check" style="color:var(--bronze-deep); margin-right:6px;"></i> 100% Authentic Haitian Recipes</div>
+            <div><i class="fa-solid fa-check" style="color:var(--bronze-deep); margin-right:6px;"></i> Instant Stripe Online Checkout</div>
+          </div>
+          <a href="#catering-engine" class="btn-bronze" style="color:#14110E;">Configure Your Event</a>
+        </div>
+      </div>
+
+      <!-- Pin 2 Caterix "Why Choose Margo?" 4-Column Section -->
+      <div class="caterix-sec-header">
+        <div class="caterix-eyebrow">The Margo Standard</div>
+        <h2 class="caterix-h2">Why Choose Margo?</h2>
+      </div>
+
+      <div class="why-choose-grid">
+        <div class="why-card">
+          <div class="why-icon-circle"><i class="fa-solid fa-book-open"></i></div>
+          <h3 style="font-family:var(--font-serif); font-size:1.2rem; font-weight:700; margin-bottom:6px;">Customized Menus</h3>
+          <p style="font-size:0.82rem; color:var(--ivory-muted);">Tailored platter tiers ($18–$24/guest) crafted to fit your event &amp; guests.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-circle"><i class="fa-solid fa-clock"></i></div>
+          <h3 style="font-family:var(--font-serif); font-size:1.2rem; font-weight:700; margin-bottom:6px;">Reliable Dual-Hub Service</h3>
+          <p style="font-size:0.82rem; color:var(--ivory-muted);">Dispatched hot and on schedule from Downtown Rideau or Bank St.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-circle"><i class="fa-solid fa-pepper-hot"></i></div>
+          <h3 style="font-family:var(--font-serif); font-size:1.2rem; font-weight:700; margin-bottom:6px;">Quality &amp; Freshness</h3>
+          <p style="font-size:0.82rem; color:var(--ivory-muted);">Hand-pressed plantains, house-fermented pikliz &amp; slow-marinated meats.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-circle"><i class="fa-solid fa-award"></i></div>
+          <h3 style="font-family:var(--font-serif); font-size:1.2rem; font-weight:700; margin-bottom:6px;">Memorable Experience</h3>
+          <p style="font-size:0.82rem; color:var(--ivory-muted);">We turn corporate lunches, weddings &amp; galas into unforgettable feasts.</p>
+        </div>
+      </div>
+
+      <!-- Pin 2 Caterix "What Our Clients Say" -->
+      <div id="reviews">
+        <div class="caterix-sec-header">
+          <div class="caterix-eyebrow">180+ Five-Star Ottawa Reviews</div>
+          <h2 class="caterix-h2">What Our Clients Say</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div style="color:#EAB308; font-size:0.85rem; margin-bottom:10px;">★★★★★</div>
+            <p style="font-size:0.88rem; color:var(--ivory-muted); line-height:1.6; margin-bottom:16px;">
+              "Margo catered our 140-guest wedding reception in Ottawa and the Diri Djon Djon and Griot trays were the talk of the entire night. Exceptional presentation!"
+            </p>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--ivory-text);">— Sarah &amp; Jean-Marc, Ottawa</div>
+          </div>
+
+          <div class="testimonial-card">
+            <div style="color:#EAB308; font-size:0.85rem; margin-bottom:10px;">★★★★★</div>
+            <p style="font-size:0.88rem; color:var(--ivory-muted); line-height:1.6; margin-bottom:16px;">
+              "Best Haitian kitchen in the capital. Whether we pick up from 606 Rideau or order catering from 1563 Bank St for our office, the Tassot Cabrit and Pikliz never miss."
+            </p>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--ivory-text);">— David L., Downtown Corporate Host</div>
+          </div>
+
+          <div class="testimonial-card">
+            <div style="color:#EAB308; font-size:0.85rem; margin-bottom:10px;">★★★★★</div>
+            <p style="font-size:0.88rem; color:var(--ivory-muted); line-height:1.6; margin-bottom:16px;">
+              "Our guests are still talking about the Grand Fritaille platters and the Griot Poutine. Booking our catering package online with Stripe checkout was effortless."
+            </p>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--ivory-text);">— Marie-Claude P., Gatineau</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FLOATING BOTTOM DOCK -->
+  <div class="floating-dock">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:0.8rem; font-weight:600; color:var(--text-cream);" id="bottomBarLoc">
+        📍 606 Rideau St • (613) 241-1400
+      </span>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button onclick="selectLocation(currentLoc === 'rideau' ? 'bank' : 'rideau')" class="btn-lang">
+        <i class="fa-solid fa-repeat"></i> Switch Rideau / Bank
+      </button>
+      <a href="#catering-engine" class="btn-bronze" style="padding:9px 18px; font-size:0.74rem;">
+        Book Catering
+      </a>
+    </div>
+  </div>
+
+  <!-- STRIPE ONLINE CHECKOUT & EXPRESS PAYMENT MODAL -->
+  <div id="paypalModal" class="pp-modal">
+    <div class="pp-modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="background:#635BFF; color:#FFF; font-weight:800; font-size:0.72rem; padding:4px 9px; border-radius:6px; letter-spacing:0.04em;">STRIPE</span>
+          <span style="font-family:var(--font-serif); font-weight:700; font-size:1.2rem; color:#FFF;">Margo. Secure Online Checkout</span>
+        </div>
+        <button onclick="closePayPalModal()" style="background:rgba(255,255,255,0.08); border:none; color:var(--text-warm-muted); width:32px; height:32px; border-radius:50%; font-size:1.1rem; cursor:pointer;">&times;</button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px;">
+        <div>
+          <div id="ppItemTitle" style="font-weight:700; font-size:0.95rem; color:#FFF;">Margo 50% Catering Deposit Lock</div>
+          <div id="ppItemSub" style="font-size:0.78rem; color:var(--text-warm-muted); margin-top:3px;">Dispatch Hub: 606 Rideau St, Ottawa</div>
+          <div style="font-size:0.72rem; color:var(--bronze-light); margin-top:4px;">Order Ref: <strong id="ppInteracMemo">MARGO-RIDEAU-01</strong></div>
+        </div>
+        <div style="text-align:right;">
+          <div id="ppItemPrice" class="tabular" style="font-weight:800; font-size:1.3rem; color:var(--gold-squircle);">$790.00 CAD</div>
+          <div style="font-size:0.68rem; color:#4ADE80; font-weight:600;"><i class="fa-solid fa-shield-halved"></i> 256-Bit SSL Stripe Protected</div>
+        </div>
+      </div>
+
+      <!-- Express 1-Tap Apple Pay / Google Pay / Link -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px;">
+        <button onclick="executePayPalOrder('Apple Pay (Stripe Express)')" style="background:#FFFFFF; color:#000000; border:none; padding:11px; border-radius:10px; font-weight:700; font-size:0.82rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;">
+          <i class="fa-brands fa-apple" style="font-size:1.05rem;"></i> Pay
+        </button>
+        <button onclick="executePayPalOrder('Google Pay (Stripe Express)')" style="background:#2A221C; color:#FFFFFF; border:1px solid rgba(255,255,255,0.18); padding:11px; border-radius:10px; font-weight:700; font-size:0.82rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;">
+          <i class="fa-brands fa-google" style="font-size:0.92rem; color:#EA4335;"></i> Pay
+        </button>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:10px 12px; margin-bottom:14px;">
+        <label style="display:flex; align-items:center; gap:10px; padding:6px; cursor:pointer;">
+          <input type="radio" name="ppPlanRadio" value="stripe_full" checked style="accent-color:#635BFF;" />
+          <div style="font-size:0.82rem;">
+            <strong>Pay Online via Stripe (Visa / MC / Amex):</strong> <span id="ppFullAmount" class="tabular" style="color:var(--gold-squircle); font-weight:700;">$790.00 CAD</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:center; gap:10px; padding:6px; cursor:pointer; border-top:1px solid rgba(255,255,255,0.08);">
+          <input type="radio" name="ppPlanRadio" value="payin4" style="accent-color:#635BFF;" />
+          <div style="font-size:0.82rem;">
+            <strong>Split in 4 Installments (Klarna / Pay in 4):</strong> <span id="ppInstallmentAmount" class="tabular">4× $197.50 CAD</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- Simulated Stripe Card Element UI -->
+      <div style="background:rgba(0,0,0,0.45); border:1px solid rgba(198,156,109,0.35); border-radius:14px; padding:12px; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--bronze-light);">Credit or Debit Card (Stripe)</span>
+          <span style="font-size:0.9rem; color:var(--text-warm-muted); display:flex; gap:6px;">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-amex"></i>
+          </span>
+        </div>
+        <input type="text" id="stripeCardInput" placeholder="4242 •••• •••• 4242   |   MM/YY   |   CVC" style="width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#FFF; padding:10px 12px; border-radius:9px; font-size:0.82rem; font-family:monospace; outline:none;" />
+        <div style="font-size:0.7rem; color:var(--text-warm-muted); margin-top:6px;">
+          Amount due now: <strong id="ppInteracAmount" style="color:var(--gold-squircle);" class="tabular">$790.00 CAD</strong> • Instant receipt dispatched to kitchen &amp; email.
+        </div>
+      </div>
+
+      <div id="ppReceiptBanner" style="display:none; background:rgba(74,222,128,0.14); border:1px solid #4ADE80; border-radius:12px; padding:12px; margin-bottom:14px; font-size:0.78rem; color:#FFF; line-height:1.5;"></div>
+
+      <div style="display:grid; gap:10px;">
+        <button onclick="executePayPalOrder('Stripe Online Card Checkout')" style="background:#635BFF; color:#FFFFFF; border:none; padding:14px; border-radius:999px; font-weight:700; font-size:0.86rem; cursor:pointer; box-shadow:0 10px 25px rgba(99,91,255,0.35);">
+          <i class="fa-solid fa-lock"></i> Pay Online Now with Stripe
+        </button>
+        <button onclick="executePayPalOrder('Klarna / PayPal 4× Installment Checkout')" class="btn-bronze" style="width:100%; padding:13px;">
+          Split into 4× Interest-Free Payments Online
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Location State (Rideau St vs Bank St)
+    let currentLoc = 'rideau';
+    const LOCATIONS = {
+      rideau: {
+        branchCode: 'OTT-RIDEAU',
+        short: '606 Rideau St, Ottawa',
+        phone: '(613) 241-1400',
+        tel: '6132411400',
+        eta: '18–25 Mins • Open Now',
+        cateringLabel: 'Dispatching From: 606 Rideau St',
+        venueTitle: 'Margo • Rideau St'
+      },
+      bank: {
+        branchCode: 'OTT-BANK',
+        short: '1563 Bank St, Ottawa',
+        phone: '(613) 421-4005',
+        tel: '6134214005',
+        eta: '15–22 Mins • Open Now',
+        cateringLabel: 'Dispatching From: 1563 Bank St',
+        venueTitle: 'Margo • Bank St'
+      }
+    };
+
+    function selectLocation(locKey) {
+      currentLoc = locKey;
+      const info = LOCATIONS[locKey];
+      document.getElementById('btnLocRideau').classList.toggle('active', locKey === 'rideau');
+      document.getElementById('btnLocBank').classList.toggle('active', locKey === 'bank');
+      document.getElementById('locAddressDisplay').innerText = info.short;
+      document.getElementById('locEtaDisplay').innerText = info.eta;
+      document.getElementById('locPhoneDisplay').innerText = info.phone;
+      document.getElementById('locPhoneLink').href = 'tel:' + info.tel;
+      document.getElementById('cateringHubIndicator').innerText = info.cateringLabel;
+      document.getElementById('quoteHubTag').innerText = info.short + ' Kitchen';
+      document.getElementById('bottomBarLoc').innerText = '📍 ' + info.short + ' • ' + info.phone;
+      document.getElementById('phoneVenueName').innerText = info.venueTitle;
+      document.getElementById('phoneVenueAddr').innerText = info.short;
+    }
+
+    // Pin 1 ("Bon Appétit!") Overhead Plate Carousel Logic
+    const PLATES = [
+      {
+        name: 'GRIOT ROYAL & PIKLIZ',
+        sub: '<strong>#1 Bestseller</strong> • Crispy citrus-marinated pork &amp; banane pesée ($23.00)',
+        price: 23.00,
+        img: 'assets/margo/griot_royal.jpg'
+      },
+      {
+        name: 'DIRI DJON DJON FEAST',
+        sub: '<strong>Crown Jewel</strong> • Haitian black mushroom rice &amp; Creole chicken ($24.99)',
+        price: 24.99,
+        img: 'assets/margo/diri_djon_djon.jpg'
+      },
+      {
+        name: 'TASSOT CABRIT & PLANTAIN',
+        sub: '<strong>Chef Specialty</strong> • Seasoned crispy goat plate &amp; diri kole ($25.00)',
+        price: 25.00,
+        img: 'assets/margo/tassot_cabrit.jpg'
+      }
+    ];
+    let activePlateIdx = 0;
+
+    function cyclePlate(step) {
+      if (step === 0) activePlateIdx = 0;
+      else activePlateIdx = (activePlateIdx + step + PLATES.length) % PLATES.length;
+
+      const center = PLATES[activePlateIdx];
+      const left = PLATES[(activePlateIdx - 1 + PLATES.length) % PLATES.length];
+      const right = PLATES[(activePlateIdx + 1) % PLATES.length];
+
+      document.getElementById('centerPlateImg').src = center.img;
+      document.getElementById('leftPlateImg').src = left.img;
+      document.getElementById('rightPlateImg').src = right.img;
+      document.getElementById('carouselDishName').innerText = center.name;
+      document.getElementById('carouselDishSub').innerHTML = center.sub;
+    }
+
+    function orderActiveCarouselDish() {
+      const p = PLATES[activePlateIdx];
+      openPayPalCheckout(`${p.name} — Direct Online Order`, p.price, 'MARGO-PLATE');
+    }
+
+    function PresetCatering(guests, tierRate) {
+      document.getElementById('guestSlider').value = guests;
+      if (tierRate === 18) selectCateringTier(18, 'Djon Djon & Island Fusion Platter', 'tierCard18');
+      else if (tierRate === 20) selectCateringTier(20, 'Classic Griot & Pikliz Platter', 'tierCard20');
+      else selectCateringTier(24, 'Royal Griot & Diri Djon Djon Feast', 'tierCard24');
+      document.getElementById('catering-engine').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Menu Filter
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.ivory-filter-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.querySelectorAll('.luxury-dish-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? 'flex' : 'none';
+      });
+    }
+
+    // Catering Calculator ($18-$24/guest + 50% Online Stripe Deposit Lock)
+    let selectedTierRate = 24;
+    let selectedTierTitle = 'Royal Griot & Diri Djon Djon Feast';
+
+    function selectCateringTier(rate, title, cardId) {
+      selectedTierRate = rate;
+      selectedTierTitle = title;
+      document.querySelectorAll('.c-tier-card').forEach(c => c.classList.remove('active'));
+      const el = document.getElementById(cardId);
+      if (el) el.classList.add('active');
+      updateCateringQuote();
+    }
+
+    function updateCateringQuote() {
+      const guests = parseInt(document.getElementById('guestSlider').value, 10) || 60;
+      document.getElementById('guestCountDisplay').innerText = guests;
+
+      let addonsTotal = 0;
+      ['addonDjon', 'addonFritaille', 'addonPikliz', 'addonStaff'].forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb && cb.checked) addonsTotal += parseFloat(cb.value);
+      });
+
+      const baseCost = guests * selectedTierRate;
+      const totalPackage = baseCost + addonsTotal;
+      const deposit50 = totalPackage * 0.50;
+      const balance50 = totalPackage - deposit50;
+      const payIn4 = deposit50 / 4;
+
+      document.getElementById('summaryTierName').innerText = selectedTierTitle;
+      document.getElementById('summaryBaseMath').innerText = `${guests} × $${selectedTierRate}.00 = $${baseCost.toLocaleString('en-CA', { minimumFractionDigits: 2 })}`;
+      document.getElementById('summaryAddons').innerText = `$${addonsTotal.toFixed(2)} CAD`;
+      document.getElementById('summaryTotalPackage').innerText = `$${totalPackage.toLocaleString('en-CA', { minimumFractionDigits: 2 })} CAD`;
+      document.getElementById('summaryDepositAmount').innerText = `$${deposit50.toLocaleString('en-CA', { minimumFractionDigits: 2 })} CAD`;
+      document.getElementById('summaryBalanceAmount').innerText = `$${balance50.toLocaleString('en-CA', { minimumFractionDigits: 2 })} CAD`;
+      document.getElementById('summaryPayIn4').innerText = `💳 Stripe Online Checkout • Card, Apple Pay OR 4× $${payIn4.toFixed(2)}`;
+    }
+
+    let activePayPalOrder = { title: '', price: 0, code: '' };
+
+    function openPayPalCheckout(title, price, code) {
+      const memoCode = `${code || 'MARGO'}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+      activePayPalOrder = { title, price: Number(price), code: memoCode };
+      document.getElementById('ppItemTitle').innerText = title;
+      document.getElementById('ppItemSub').innerText = `Dispatch Hub: ${LOCATIONS[currentLoc].short} (${LOCATIONS[currentLoc].phone})`;
+      document.getElementById('ppItemPrice').innerText = `$${activePayPalOrder.price.toFixed(2)} CAD`;
+      document.getElementById('ppInteracAmount').innerText = `$${activePayPalOrder.price.toFixed(2)} CAD`;
+      document.getElementById('ppInteracMemo').innerText = memoCode;
+      document.getElementById('ppFullAmount').innerText = `$${activePayPalOrder.price.toFixed(2)} CAD`;
+      document.getElementById('ppInstallmentAmount').innerText = `4× $${(activePayPalOrder.price / 4).toFixed(2)} CAD`;
+      document.getElementById('ppReceiptBanner').style.display = 'none';
+      document.getElementById('paypalModal').classList.add('active');
+    }
+
+    function closePayPalModal() {
+      document.getElementById('paypalModal').classList.remove('active');
+    }
+
+    function lockCateringDeposit() {
+      const guests = parseInt(document.getElementById('guestSlider').value, 10) || 60;
+      let addonsTotal = 0;
+      ['addonDjon', 'addonFritaille', 'addonPikliz', 'addonStaff'].forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb && cb.checked) addonsTotal += parseFloat(cb.value);
+      });
+      const totalPackage = (guests * selectedTierRate) + addonsTotal;
+      const deposit50 = totalPackage * 0.50;
+      const clientName = (document.getElementById('clientEventName').value || 'Event Host').trim();
+      openPayPalCheckout(
+        `50% Catering Deposit — ${guests} Guests (${selectedTierTitle}) for ${clientName}`,
+        deposit50,
+        `STRIPE-${currentLoc.toUpperCase()}`
+      );
+    }
+
+    async function executePayPalOrder(method) {
+      const receiptEl = document.getElementById('ppReceiptBanner');
+      receiptEl.style.display = 'block';
+      receiptEl.innerHTML =
+        `✅ <strong>Online Payment Authorized (${activePayPalOrder.code})</strong><br/>` +
+        `Kitchen Hub: ${LOCATIONS[currentLoc].short} • Paid Online: <strong>$${activePayPalOrder.price.toFixed(2)} CAD</strong><br/>` +
+        `Gateway: ${method} • Status: <strong>PAID ONLINE (STRIPE VERIFIED)</strong>`;
+
+      try {
+        await fetch('/boilerplates/chef-os/api/quote/route.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            location_branch: LOCATIONS[currentLoc].branchCode,
+            customer_name: (document.getElementById('clientEventName').value || 'Direct Guest').trim(),
+            event_date: document.getElementById('clientEventDate').value || new Date().toISOString().slice(0, 10),
+            guest_count: parseInt(document.getElementById('guestSlider').value, 10) || 60,
+            selected_tier_rate: selectedTierRate,
+            stripe_payment_reference: activePayPalOrder.code,
+            payment_method: method
+          })
+        });
+      } catch (e) {}
+    }
+
+    function sendWhatsAppQuote() {
+      const guests = document.getElementById('guestSlider').value;
+      const dep = document.getElementById('summaryDepositAmount').innerText;
+      const tot = document.getElementById('summaryTotalPackage').innerText;
+      const info = LOCATIONS[currentLoc];
+      const clientName = (document.getElementById('clientEventName').value || 'Event Host').trim();
+      const eventDate = document.getElementById('clientEventDate').value || 'Upcoming Date';
+
+      const statusBanner = document.getElementById('liveQuoteStatusBanner');
+      statusBanner.style.display = 'block';
+      const waText = encodeURIComponent(
+        `Sak pase Margo Team (${info.short})! Here is my Catering Specification:\n` +
+        `• Host: ${clientName} (${eventDate})\n` +
+        `• Tier: ${selectedTierTitle} (${guests} Guests @ $${selectedTierRate}/guest)\n` +
+        `• Total Package: ${tot}\n` +
+        `• 50% Online Stripe Deposit: ${dep}`
+      );
+      statusBanner.innerHTML =
+        `📲 <strong>Catering Specification Ready for ${info.short}</strong><br/>` +
+        `Total Package: ${tot} • 50% Online Stripe Deposit: <strong>${dep}</strong><br/>` +
+        `<a href="https://wa.me/1${info.tel}?text=${waText}" target="_blank" style="color:var(--gold-squircle); font-weight:700; text-decoration:underline; display:inline-block; margin-top:6px;">Open WhatsApp Thread with ${info.short} (${info.phone}) &rarr;</a>`;
+    }
+
+    let currentLang = 'en';
+    const I18N = {
+      en: {
+        heroBadge: "Ottawa's Premier Haitian, Caribbean & Canadian Kitchen",
+        heroTitle: 'Crafting Unforgettable <em>Culinary Experiences</em>',
+        heroLead: 'From intimate family gatherings to 300-guest corporate galas and weddings across Ottawa–Gatineau, we bring authentic Haitian Griot, fragrant Diri Djon Djon, and warm island elegance to your table.',
+        ctaCatering: 'Our Catering Packages',
+        ctaMenu: 'View Signature Menu',
+        menuHeading: 'Explore Our Delicious Menus',
+        cateringTitle: 'Build Your Bespoke Catering Package'
+      },
+      fr: {
+        heroBadge: "La Grande Table Haïtienne, Caraïbéenne & Canadienne d'Ottawa",
+        heroTitle: 'Créer des Expériences <em>Culinaires Inoubliables</em>',
+        heroLead: 'Des réceptions intimes aux mariages et galas de 300 invités à Ottawa–Gatineau, savourez notre Griot artisanal, notre Diri Djon Djon parfumé et notre service traiteur sur mesure.',
+        ctaCatering: 'Nos Forfaits Traiteur',
+        ctaMenu: 'Voir Le Menu Signature',
+        menuHeading: 'Explorez Nos Menus Savoureux',
+        cateringTitle: 'Configurez Votre Réception Traiteur (Dépôt 50%)'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'fr' : 'en';
+      const dict = I18N[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.innerHTML = dict[key];
+      });
+      document.getElementById('langBtn').innerText = currentLang === 'en' ? 'FR / Kreyòl / EN' : 'EN / FR (Actif)';
+    }
+
+    window.addEventListener('scroll', () => {
+      const dock = document.querySelector('.floating-dock');
+      if (dock) dock.classList.toggle('visible', window.scrollY > 360);
+    });
+
+    updateCateringQuote();
+  </script>
+</body>
+</html>

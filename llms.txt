@@ -1,19 +1,42 @@
-# 9LMNTS Studio // Interactive Creative Operating System
+# 9LMNTS Studio // Master Interactive Creative Operating System (V5)
 
-> 9LMNTS Studio is a next-generation creative agency and sovereign technology suite bridging interactive 3D spatial experiences, low-latency audio DAWs, and decentralized event infrastructure.
+> 9LMNTS Studio (Nine Element Studio), founded by Creative Director & Lead Architect Darnley Sanon in Ottawa, Canada, is an entertainment technology agency and sovereign software infrastructure provider bridging 24/7 Creator Operating Systems, 8-Contender Live Competition Engines, WebAR Phygital Streetwear, and Project LOA transmedia IP.
 
-## Platforms
-- [9LMNTS Studio Master Cockpit](https://9lmntsstudio.com)
-- [Artist OS Workstation](https://artist.9lmntsstudio.com)
-- [Sound Clash OS Arena](https://clash.9lmntsstudio.com)
+## Official Domain & Subdomain Directory
+- **Agency Master Cockpit**: https://9lmntsstudio.com
+- **Engine 1 — 24/7 Always-On Creator OS Series**:
+  - Artist OS (Musicians, DJs & Stems): https://artist.9lmntsstudio.com
+  - Comedian OS (Stand-Up Comics & Specials): https://comedy.9lmntsstudio.com
+  - Chef OS (Private Dining, Cookbooks & Fitness Macros): https://feast.9lmntsstudio.com
+  - Street Baller / Athlete OS (Hoopers & Scouting Passports): https://sports.9lmntsstudio.com
+  - Fashion OS (Designers & Lookbooks): https://fashion.9lmntsstudio.com
+  - Worker Bee OS (Freelancers, Couriers & Trades): https://worker.9lmntsstudio.com
+- **Engine 2 — Competition OS Series (Universal 8-Contender Bracket Arenas)**:
+  - Sound Clash OS (DJ Battles & Nightlife): https://clash.9lmntsstudio.com (`/01_Sound_Clash_OS.html`)
+  - Comedian Battle OS / Roast Battle: https://comedy.9lmntsstudio.com (`/02_Comedian_OS_Roast_Battle.html`)
+  - Battle Rap OS / Bars OS: https://bars.9lmntsstudio.com (`/03_Bars_OS_Battle_Rap.html`)
+  - Runway OS / Fashion Battle: https://fashion.9lmntsstudio.com (`/04_Runway_OS_Fashion_Battle.html`)
+  - Chef Battle OS / Feast OS: https://feast.9lmntsstudio.com (`/05_Feast_OS_Chef_Battle.html`)
+  - Sports OS / 3v3 Streetball: https://sports.9lmntsstudio.com (`/06_Hoops_OS_3v3_Streetball.html`)
+  - Gaming OS / GameOS Pro Esports: https://gaming.9lmntsstudio.com (`/07_GameOS_Pro_Esports.html`)
+  - Corporate Clash / Pitch Battle OS: https://pitch.9lmntsstudio.com (`/08_Pitch_Battle_OS_Corporate_Clash.html`)
+  - Reception OS / The Union (Weddings & Galas): https://union.9lmntsstudio.com (`/19_Wedding_OS_The_Union.html`)
+  - Gate OS & Venue OS (Cashless QR Admission): https://gate.9lmntsstudio.com (`/core.html`)
+  - Project LOA Universe (Unreal Engine 5.7 Action RPG & Anime): https://loa.9lmntsstudio.com (`/loa.html`)
 
-## Stations
-- Station 01: Project LOA Metaverse Universe
-- Station 02: Original Music Vault & Stem Chopper
-- Station 03: 9LMNTS Studio Core Services & Telemetry
-- Station 04: AI Voice Operator (Gemini Live API)
-- Station 05: Studio Services & Commercial Video Ads
-- Station 06: The Helm (Founder Dossier & Admin Gateway)
-- Station 07: Sound Clash OS Live Battle Arena
-- Station 08: Live Events & AR Merch Wearables
-- Station 09: ArtistOS Creator HQ DAW
+## The 9 Unified Studio Cockpit Stations
+- **Station 01**: Project LOA Universe — The Awakening of Ptah (`/loa.html`)
+- **Station 02**: Original Music Vault & Multitrack Stem Deck (`/vault.html`)
+- **Station 03**: 9LMNTS Studio Core Services & EventOS Simulator (`/core.html`)
+- **Station 04**: AI Voice Operator (Gemini Live API) & Supabase CRM (`/ai-voice.html`)
+- **Station 05**: Studio Services, 9 Cultural Pillars & Commercial Video Ads (`/services.html`)
+- **Station 06**: The Helm — Founder Dossier (Darnley Sanon) & Day-1 Zero-State Telemetry (`/the-helm.html`)
+- **Station 07**: Sound Clash OS Live Battle Arena (`/clash.html`)
+- **Station 08**: Live Events, 18-Piece Wearable Advertising Catalog & WebAR Merch (`/merch.html`)
+- **Station 09**: Artist OS Creator HQ & Transparent Pricing Matrix (`/pricing.html`)
+
+## Standardized Pricing Matrix (PayPal E-Commerce Services & Pay in 4)
+- **Agency Sprints & WebAR**: Starter ($1,500 CAD), Pro Custom ($2,500–$3,500 CAD), Enterprise Scale ($5,000 CAD)
+- **Monthly Retainers**: Growth/Pro ($1,500/mo), Premier ($2,500–$3,500/mo), Enterprise ($5,000/mo capped)
+- **9LMNTS OS Series**: Free Beta ($0 upfront, 80/20 split), Maintenance ($500/mo), Pro ($500 setup, 90/10 split), Elite ($1,500 setup, 95/5 split), Enterprise Custom ($5,000 setup, 100/0 split)
+- **ManyChat Automation Keywords**: `CLASH`, `COMEDY`, `ARTIST`, `BALLER`, `DEV`, `SPONSOR`

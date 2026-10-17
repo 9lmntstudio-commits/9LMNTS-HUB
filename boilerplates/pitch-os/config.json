@@ -1,0 +1,36 @@
+{
+  "factory_metadata": {
+    "engine": "Pitch OS / Corporate Clash",
+    "boilerplate_source": "/boilerplates/pitch-os/",
+    "target_id": "TARGET-02",
+    "brand_name": "Business Meter (Hansu)",
+    "domain": "businessmeter.ca",
+    "owner_contact": {
+      "decision_maker": "Hansu",
+      "domain": "businessmeter.ca"
+    },
+    "staging_url": "https://businessmeter-staging.9lmntsstudio.com",
+    "production_path": "https://9lmntsstudio.com/08_Pitch_Battle_OS_Corporate_Clash.html"
+  },
+  "arena_configuration": {
+    "contender_slots": 8,
+    "underwrite_per_founder_cad": 250.00,
+    "total_founder_underwrite_cad": 2000.00,
+    "pinned_category_sponsor": {
+      "enabled": true,
+      "sponsor_domain": "businessmeter.ca",
+      "fee_cad": 1000.00,
+      "placement": "PINNED_TOP_ARENA_BANNER"
+    },
+    "venue_attendance_cap": 80,
+    "realtime_voting_channel": "supabase_realtime:telemetry_and_intake"
+  },
+  "payment_engine": {
+    "method": "INTERAC_E_TRANSFER",
+    "deposit_ratio": 0.50,
+    "gross_event_underwrite_pool_cad": 3000.00,
+    "platform_build_total_cad": 3000.00,
+    "platform_deposit_lock_cad": 1500.00,
+    "dns_release_gate": "VERIFIED_50_PERCENT_DEPOSIT_REQUIRED"
+  }
+}

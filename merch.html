@@ -7,43 +7,49 @@
   <meta name="description" content="Physical-to-digital apparel with WebAR spatial tracking. Scannable sleeves trigger glowing 3D holographic energy wings and uncompressed stem drops."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.5"/>
   <style>
+    body {
+      background-color: #0A0C10;
+      background-image: 
+        radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 20% 45%, rgba(255, 85, 0, 0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #0A0C10 0%, #08090C 100%);
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+    }
     .ar-wings-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 22px;
-      margin-bottom: 40px;
+      gap: 24px;
+      margin-bottom: 48px;
     }
     .ar-wing-card {
-      background: rgba(10, 13, 20, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
-        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.22) 0%, transparent 65%);
-      border: 1px solid rgba(0, 212, 255, 0.35);
-      border-top: 2px solid var(--cyber-teal);
+      background: rgba(16, 20, 28, 0.60);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       overflow: hidden;
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.20);
-      transition: all 0.3s var(--ease-cinematic);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
     }
     .ar-wing-card:hover {
-      border-color: rgba(0, 212, 255, 0.65);
+      background: rgba(22, 28, 38, 0.85);
+      border-color: rgba(255, 255, 255, 0.22);
       transform: translateY(-4px);
-      box-shadow: 0 45px 150px rgba(0, 0, 0, 0.98), 0 0 85px rgba(0, 212, 255, 0.35);
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.16);
     }
     .ar-wing-card img {
       width: 100%;
       height: 250px;
       object-fit: cover;
       display: block;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       transition: transform 0.6s ease;
     }
     .ar-wing-card:hover img {
@@ -71,10 +77,10 @@
       <span class="hud-dot" style="background:var(--cyber-teal); box-shadow:0 0 10px var(--cyber-teal);"></span>
       <span>STATION 08</span>
       <span class="hud-sep">/</span>
-      <span class="hud-title">AR MERCH &amp; HOLOGRAPHIC WEARABLES</span>
+      <span class="hud-title">PHYGITAL WEBAR MERCH &amp; WINGS</span>
     </div>
     <div class="hud-actions">
-      <a href="pricing.html" class="hud-cta-btn" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2);">💳 PRICING</a>
+      <a href="pricing.html" class="hud-cta-btn" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2);">🤝 PRICING &amp; DEPOSIT</a>
       <a href="#preorder" class="hud-cta-btn" style="background: linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color: #38E1FF; color:#050505;">
         PRE-ORDER WEARABLES
       </a>
@@ -84,15 +90,15 @@
   <main class="page-container">
     <!-- Hero Section -->
     <section class="page-hero">
-      <span class="station-tag teal">EXPERIENCE THE WINGS // STATION 08</span>
-      <h1>AR Merch &amp; Holographic Wearables</h1>
-      <div class="subtitle" style="color: var(--cyber-teal);">Artist Core OS • Scannable WebAR 3D Energy Wings • 480 GSM Heavyweight Streetwear</div>
+      <span class="station-tag teal">PHYGITAL WEBAR STREETWEAR // STATION 08</span>
+      <h1>Phygital Merch &amp; Holographic Wings</h1>
+      <div class="subtitle" style="color: var(--cyber-teal);">18-Piece Wearable Advertising Catalog • Scannable WebAR 3D Energy Wings • 480 GSM Heavyweight Streetwear</div>
       <p class="lead">
         Step into the future of physical-to-digital apparel. Every limited-edition 9LMNTS garment integrates high-contrast WebAR markers with Flame Orange bounding corners. Point any smartphone camera at the fabric to instantly project animated cyber wings pulsing to live festival bass.
       </p>
-      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
         <a href="#preorder" class="btn-primary" style="background: linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color: #38E1FF; color:#050505; box-shadow: 0 0 25px rgba(0,210,255,0.4);">
-          Pre-Order CYPERFINK Hoodie ($120 CAD) &darr;
+          Pre-Order 9LMNTS Cyber Smart Hoodie ($120 CAD) &darr;
         </a>
         <a href="index.html#station-08" class="btn-secondary">
           Return to Studio Cockpit &rarr;
@@ -100,40 +106,40 @@
       </div>
     </section>
 
-    <!-- AR Wings Visual Showcase Gallery -->
+    <!-- AR Wings Visual Showcase Gallery (Local Verified Assets) -->
     <div class="section-header">
       <div class="section-eyebrow" style="color:var(--cyber-teal);">HOLOGRAPHIC 3D ACTIVATIONS</div>
-      <h2>The 3 Signature Wing Protocols</h2>
+      <h2>The 3 Signature Wing &amp; Apparel Protocols</h2>
     </div>
     <div class="ar-wings-gallery">
       <!-- Wing 1 -->
       <div class="ar-wing-card">
         <div style="overflow:hidden;">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYVh2c_Ofmb2JWFBROh0P9A6adtr6G_wZCjdI_b_ZOab5UqNlR35HCF9zymKxlI4J2RzOG2wTCFxSm2rbvoBSDR71-ZG6wTWYYfO-rm9n6my5IHd6QcHHKKSSMFekCOzDw3MS7O14P1rV8JaDF3bQzagW_gBc10zEHH2hWtoLfvQZJTY-L_dxPeC_6HFAh66wcN07WDcZMBd6YfT_vOYX1l7FNKSTIxzhw2MdrxgooNaP5YKtL4-Du" alt="Artist Core OS Gold Wings"/>
+          <img src="assets/images/ar_wings_concert.jpg" alt="9LMNTS Gold Wings LVL 9 Activation"/>
         </div>
         <div class="ar-card-body">
           <span class="station-tag teal" style="margin-bottom:8px;">STATION 08 // SYNTH ROOM</span>
           <h3 style="margin-bottom:8px;">Gold Wings LVL 9</h3>
-          <p>Radiant golden energy feathers responsive to low-end 808 sub-bass frequencies. Manifests during master studio recording sessions.</p>
+          <p>Radiant golden energy feathers responsive to low-end 808 sub-bass frequencies. Manifests during master studio recording sessions and live stadium sets.</p>
         </div>
       </div>
 
       <!-- Wing 2 -->
       <div class="ar-wing-card">
         <div style="overflow:hidden;">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm2tPtpvco_ei-BkvH9FZ95vQO8U2cVl7rkyCBo8A6hFfIyRyN6e1caXKgcYWAiYa7fObOBZ-A6tsCv2JcvwX9nKf58oaJS8hzEZX-FnDm8LRhmU-4igj5ZOmQimV6nZspxTpXTxSBsgI258lT3F-TuohsbBUeZQBnpwRspfInmf7sfzs0my9dymghl5Vh2lR-fkiX7FsBb8h0Le6mSa-C3uxuEwXZYJYEC3AM8xVRO_mkqiMJB8J7" alt="Street AR Scanning"/>
+          <img src="assets/images/merch_collection_1.png" alt="9LMNTS Streetwear Collection & Prism Vortex"/>
         </div>
         <div class="ar-card-body">
           <span class="station-tag orange" style="margin-bottom:8px;">STREET AR SCANNING</span>
           <h3 style="margin-bottom:8px;">Prism Vortex</h3>
-          <p>Prismatic chromatic aberration wings designed for outdoor neon nights and urban streetwear cyphers across Ottawa and Toronto.</p>
+          <p>Prismatic chromatic aberration wings and scannable UI grid apparel designed for outdoor neon nights and urban streetwear cyphers across Ottawa and Toronto.</p>
         </div>
       </div>
 
       <!-- Wing 3 -->
       <div class="ar-wing-card">
         <div style="overflow:hidden;">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2aaU-A5ClZnfEItu3zXGnYd4YeaUwhKKF5f_w2IJMU0IocgBpfEdrv8EahFtLIoT26UZkQY4jBdBV5PQW8Y8lEV79_GTzpEsVjJBnJBeyRy0hQlUJGHBIZbkJTW0VVhpsF5YSoHnAjvDhNewPjRbdJF35B4Q-cEr1zB93UPJxAm2VnziG0iXlIOdMSg2VfPVMvXx3tMOhKc42P2RDmU5e9CJyHoCU9OgO-0Tbxraq6Luu_YPB4LvV" alt="Festival Crowd Sync"/>
+          <img src="assets/images/merch_collection_2.png" alt="Festival Crowd Sync & Wearable Hardware"/>
         </div>
         <div class="ar-card-body">
           <span class="station-tag purple" style="margin-bottom:8px;">FESTIVAL CROWD SYNC</span>
@@ -167,40 +173,80 @@
       </div>
     </div>
 
-    <!-- Pre-Order Pricing & GateOS Checkout -->
+    <!-- Darnley Runway 2027 & Phygital Lookbook Showcase -->
+    <div class="section-header" style="margin-top:44px;">
+      <div class="section-eyebrow" style="color:var(--neon-orange);">FASHION OS // RUNWAY BATTLE EDITION</div>
+      <h2>Darnley 2027 Runway &amp; Kemet Gold Lookbook</h2>
+    </div>
+    <div class="ar-wings-gallery">
+      <div class="ar-wing-card" style="border-top-color:var(--neon-orange);">
+        <div style="overflow:hidden;">
+          <img src="assets/images/Darnley_Runway_Look01_Look02_Mockup.jpg" alt="Darnley Canadian Tuxedo 2027 Look 01 & 02"/>
+        </div>
+        <div class="ar-card-body">
+          <span class="station-tag orange" style="margin-bottom:8px;">LOOK 01 &amp; 02 // RUNWAY OS</span>
+          <h3 style="margin-bottom:8px;">Canadian Tuxedo 2027</h3>
+          <p>Heavyweight deconstructed salvage denim armor with tactical harness straps, forearm QR target patch, and sculpted runway silhouette.</p>
+        </div>
+      </div>
+
+      <div class="ar-wing-card" style="border-top-color:#D4AF37;">
+        <div style="overflow:hidden;">
+          <img src="assets/images/runway_kemet_gold_1.jpg" alt="Kemet Gold Glyph Streetwear Look"/>
+        </div>
+        <div class="ar-card-body">
+          <span class="station-tag orange" style="margin-bottom:8px;">PROJECT LOA // PTAH EDITION</span>
+          <h3 style="margin-bottom:8px;">Kemet Gold Glyph Anorak</h3>
+          <p>Obsidian technical outerwear with metallic gold Djed hieroglyphic circuitry and scannable sleeve QR unlocking Project LOA cosmetics.</p>
+        </div>
+      </div>
+
+      <div class="ar-wing-card" style="border-top-color:var(--cyber-teal);">
+        <div style="overflow:hidden;">
+          <img src="assets/images/darnley_runway_walk.jpg" alt="Darnley Live Arena Runway Walk"/>
+        </div>
+        <div class="ar-card-body">
+          <span class="station-tag teal" style="margin-bottom:8px;">FRONT ROW // INSTANT CHECKOUT</span>
+          <h3 style="margin-bottom:8px;">Live Arena Runway Sync</h3>
+          <p>Spectators scan the sleeve QR or tap 'Buy Look Now' during the 60-second runway walk to unlock instant pre-order and designer tipping.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pre-Order Pricing & Reservation -->
     <div class="section-header" id="preorder">
-      <div class="section-eyebrow">DAY-1 PRE-ORDER RESERVATION</div>
+      <div class="section-eyebrow">DAY-1 PRE-ORDER RESERVATION // INTERAC E-TRANSFER DEPOSIT</div>
       <h2>Select Your Phygital Wearable Package</h2>
     </div>
     <div class="tiers-grid">
       <!-- Tier 1: Core Tee -->
       <div class="tier-card">
-        <span class="station-tag orange" style="margin-bottom:12px;">CORE APPAREL</span>
+        <span class="station-tag orange" style="margin-bottom:12px;">01. CORE STREETWEAR</span>
         <h3 style="margin-bottom:6px;">9LMNTS Studio Core Tee</h3>
         <div class="tier-price">$45 <span>CAD</span></div>
-        <p class="tier-desc">Heavyweight 280 GSM cotton crewneck with scannable sleeve QR glyph and augmented chest print.</p>
+        <p class="tier-desc">Heavyweight 350 GSM cotton crewneck with front 2x2 UI feature grid, back Studio blueprint, and left sleeve QR glyph.</p>
         <ul class="tier-features">
-          <li>100% Ring-Spun Combed Cotton</li>
-          <li>Reflective high-density studio logos</li>
-          <li>WebAR unlock for mobile browser filter</li>
-          <li>Standard global shipping</li>
+          <li>100% Ring-Spun Combed Cotton (350 GSM)</li>
+          <li>Front 2x2 UI Feature Grid + $ Pricing Callouts</li>
+          <li>Level-H Scannable Left Sleeve Vector QR Patch</li>
+          <li>50% Interac e-Transfer Deposit ($22.50 CAD) to Reserve</li>
         </ul>
-        <button onclick="handlePreorder('Studio Core Tee', 45)" class="btn-secondary" style="width:100%;">Pre-Order ($45 CAD)</button>
+        <button onclick="handlePreorder('01. 9LMNTS Studio Core Tee', 45)" class="btn-secondary" style="width:100%; cursor:pointer;">Pre-Order ($45 CAD)</button>
       </div>
 
-      <!-- Tier 2: CYPERFINK Hoodie -->
+      <!-- Tier 2: 9LMNTS Cyber Smart Hoodie -->
       <div class="tier-card featured teal-card">
-        <span class="station-tag teal" style="margin-bottom:12px;">FLAGSHIP WEARABLE</span>
-        <h3 style="margin-bottom:6px; color:var(--cyber-teal);">CYPERFINK Smart Hoodie</h3>
+        <span class="station-tag teal" style="margin-bottom:12px;">02. FLAGSHIP OUTERWEAR</span>
+        <h3 style="margin-bottom:6px; color:var(--cyber-teal);">9LMNTS Cyber Smart Hoodie</h3>
         <div class="tier-price" style="color:var(--cyber-teal);">$120 <span>CAD</span></div>
-        <p class="tier-desc">Limited-edition 480 GSM French Terry hoodie with dual-wing WebAR spatial projection.</p>
+        <p class="tier-desc">Limited-edition 480 GSM French Terry hoodie with dual-wing WebAR spatial projection and right wrist QR.</p>
         <ul class="tier-features">
           <li>Heavyweight 480 GSM custom French Terry</li>
           <li>Full 3D Holographic Wing Projection (Gold &amp; Prism)</li>
-          <li>Scannable VIP NFC + QR smart sleeve tag</li>
-          <li>Free admission to 1x Sound Clash OS tournament</li>
+          <li>Scannable VIP NFC + Right Wrist QR Smart Tag</li>
+          <li>50% Interac e-Transfer Deposit ($60.00 CAD) to Reserve</li>
         </ul>
-        <button onclick="handlePreorder('CYPERFINK Smart Hoodie', 120)" class="btn-primary" style="width:100%; background:linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color:#38E1FF; color:#050505;">Pre-Order ($120 CAD)</button>
+        <button onclick="handlePreorder('02. 9LMNTS Cyber Smart Hoodie', 120)" class="btn-primary" style="width:100%; background:linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color:#38E1FF; color:#050505; cursor:pointer;">Pre-Order ($120 CAD)</button>
       </div>
 
       <!-- Tier 3: VIP Season Pass -->
@@ -208,14 +254,63 @@
         <span class="station-tag purple" style="margin-bottom:12px;">ALL-ACCESS PATRON</span>
         <h3 style="margin-bottom:6px;">VIP Season Pass Drop</h3>
         <div class="tier-price">$250 <span>CAD</span></div>
-        <p class="tier-desc">Complete collector box with CYPERFINK hoodie, core tee, and all-access VIP passes to all 4 Q4 arenas.</p>
+        <p class="tier-desc">Complete collector box with 9LMNTS Cyber Smart Hoodie, Core Tee, 32oz matte bottle, and all-access VIP passes to all 4 Q4 arenas.</p>
         <ul class="tier-features">
-          <li>CYPERFINK Smart Hoodie + Core Tee</li>
+          <li>9LMNTS Cyber Smart Hoodie + Core Tee + 32oz Bottle</li>
           <li>All-Access VIP Pass to Sound Clash, Sports OS, Runway OS &amp; Corporate Clash</li>
-          <li>Backstage artist lounge access &amp; drink tokens</li>
-          <li>Custom embroidered backer nameplate</li>
+          <li>Acrylic VIP Hard Badge &amp; Lanyard with NFC/QR</li>
+          <li>50% Interac e-Transfer Deposit ($125.00 CAD) to Reserve</li>
         </ul>
-        <button onclick="handlePreorder('VIP Season Pass Drop', 250)" class="btn-secondary" style="width:100%;">Pre-Order ($250 CAD)</button>
+        <button onclick="handlePreorder('VIP Season Pass Drop', 250)" class="btn-secondary" style="width:100%; cursor:pointer;">Pre-Order ($250 CAD)</button>
+      </div>
+    </div>
+
+    <!-- 18-Product Wearable Advertising Catalog Matrix -->
+    <div class="section-header" style="margin-top:56px;">
+      <div class="section-eyebrow" style="color:var(--cyber-teal);">WEARABLE ADVERTISING MASTER PLAN V2</div>
+      <h2>The 18-Product Phygital Merch Catalog</h2>
+      <p style="color:#94A3B8; font-size:0.92rem; margin-top:6px;">Every physical item functions as a live client portal displaying OS UI grids, transparent pricing, and Level-H 300 DPI scannable QR codes.</p>
+    </div>
+    <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom:44px;">
+      <div class="bento-card">
+        <span class="station-tag orange">01 – 04 // APPAREL CORE</span>
+        <h3 style="font-size:1.05rem; margin-top:6px;">Streetwear &amp; Outerwear</h3>
+        <p style="font-size:0.84rem; line-height:1.6;">
+          <strong>01. Heavyweight Oversized Tee</strong> ($45) • 2x2 UI Grid + Left Sleeve QR<br/>
+          <strong>02. Heavyweight Pullover Hoodie</strong> ($120) • 4-Card OS Index + Wrist QR<br/>
+          <strong>03. Long-Sleeve Crewneck</strong> ($75) • 3-Tier Pricing Stack + Dual Sleeve QR<br/>
+          <strong>04. Zip-Up Operator Jacket</strong> ($165) • System Blueprint + Collar QR
+        </p>
+      </div>
+      <div class="bento-card teal-card">
+        <span class="station-tag teal">05 – 08 &amp; 13 // HEADWEAR &amp; DRINKWARE</span>
+        <h3 style="font-size:1.05rem; margin-top:6px;">360° Laser-Etched Vessels</h3>
+        <p style="font-size:0.84rem; line-height:1.6;">
+          <strong>05. Structured Snapback Hat</strong> ($40) • 3D Embroidery + Side QR Patch<br/>
+          <strong>06. 32oz Matte Water Bottle</strong> ($48) • 3-Column OS + Monetization + QR Wrap<br/>
+          <strong>07. 20oz Stainless Tumbler</strong> ($38) • 2-Column Monetization Ledger<br/>
+          <strong>08. Ceramic Matte Coffee Mug</strong> ($28) &amp; <strong>13. Frosted Sports Bottle</strong> ($35)
+        </p>
+      </div>
+      <div class="bento-card">
+        <span class="station-tag purple">09 – 12 // WORKSPACE &amp; TECH GEAR</span>
+        <h3 style="font-size:1.05rem; margin-top:6px;">Operator Hardware Protection</h3>
+        <p style="font-size:0.84rem; line-height:1.6;">
+          <strong>09. Heavy Canvas Utility Tote</strong> ($35) • Full OS Blueprint + Strap QR<br/>
+          <strong>10. Extended Desk / Gaming Mat</strong> ($55) • Trinity-V2 Panorama Print<br/>
+          <strong>11. Impact Phone Case</strong> ($32) • Live UI Widget + Embedded QR<br/>
+          <strong>12. Padded Laptop Sleeve</strong> ($65) • Dashboard Schematic + Zipper QR
+        </p>
+      </div>
+      <div class="bento-card teal-card">
+        <span class="station-tag green">14 – 18 // CREDENTIALS &amp; ARCHIVAL</span>
+        <h3 style="font-size:1.05rem; margin-top:6px;">Event Ops &amp; Field Kit</h3>
+        <p style="font-size:0.84rem; line-height:1.6;">
+          <strong>14. Acrylic VIP Hard Badge &amp; Lanyard</strong> ($30) • Double-Sided NFC/QR<br/>
+          <strong>15. Performance Track Pants</strong> ($85) • Side-Stripe Protocol + Ankle QR<br/>
+          <strong>16. Knit Beanie</strong> ($32) • Woven Label + QR Backing<br/>
+          <strong>17. Holographic Sticker Pack</strong> ($18) &amp; <strong>18. Hardcover Studio Notebook</strong> ($35)
+        </p>
       </div>
     </div>
 
@@ -223,25 +318,117 @@
     <div class="footer-hud-nav">
       <div class="left-info">
         <h3>Return to 4K Studio Cockpit?</h3>
-        <p>Re-enter the spatial workstation or jump directly to the ArtistOS DAW console.</p>
+        <p>Re-enter the spatial workstation or jump directly to Station 09: Studio DAW Mixing Console.</p>
       </div>
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
         <a href="index.html#station-08" class="btn-primary" style="background: linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color: #38E1FF; color:#050505;">
           &larr; Return to Studio Cockpit
         </a>
-        <a href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-          Station 09: Launch Artist OS ↗
+        <a href="vault.html#interactive-chopper" class="btn-secondary">
+          Station 09: Studio DAW Console &rarr;
         </a>
       </div>
     </div>
   </main>
 
+  <!-- Universal Bottom 9-Station Spatial Command Dock -->
+  <nav class="fullpage-station-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <a class="fp-dock-item" href="loa.html"><span class="num">01</span><span>Project LOA</span></a>
+    <a class="fp-dock-item teal" href="vault.html"><span class="num">02</span><span>Sonic Vault</span></a>
+    <a class="fp-dock-item" href="core.html"><span class="num">03</span><span>Creator OS Hub</span></a>
+    <a class="fp-dock-item teal" href="ai-voice.html"><span class="num">04</span><span>Argon AI &amp; CRM</span></a>
+    <a class="fp-dock-item" href="services.html"><span class="num">05</span><span>7-Day Sprints</span></a>
+    <a class="fp-dock-item teal" href="the-helm.html"><span class="num">06</span><span>The Helm</span></a>
+    <a class="fp-dock-item teal" href="clash.html"><span class="num">07</span><span>Battle Arenas</span></a>
+    <a class="fp-dock-item active" href="merch.html"><span class="num">08</span><span>Phygital Merch</span></a>
+    <a class="fp-dock-item teal" href="vault.html#interactive-chopper"><span class="num">09</span><span>Studio DAW</span></a>
+  </nav>
+
+  <!-- Interac e-Transfer Wearable Pre-Order Modal -->
+  <div id="merchOrderModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(14px); z-index:99999; align-items:center; justify-content:center; padding:20px;" onclick="closeMerchModal()">
+    <div style="background:#0B0E17; border:1px solid #00D2FF; border-top:3px solid #00D2FF; border-radius:20px; max-width:480px; width:100%; padding:28px; box-shadow:0 30px 90px rgba(0,0,0,0.95), 0 0 50px rgba(0,210,255,0.25);" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <div>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#00D2FF; font-weight:800; letter-spacing:0.12em;">9LMNTS STUDIO // PHYGITAL MERCH PRE-ORDER</span>
+          <h3 id="merchModalItem" style="font-family:'Orbitron',sans-serif; font-size:1.1rem; color:#FFF; margin-top:4px;">02. 9LMNTS Cyber Smart Hoodie</h3>
+        </div>
+        <button onclick="closeMerchModal()" style="background:none; border:none; color:#94A3B8; font-size:1.6rem; cursor:pointer;">&times;</button>
+      </div>
+      <form onsubmit="submitMerchOrder(event)">
+        <div style="background:rgba(0,210,255,0.08); border:1px solid rgba(0,210,255,0.3); border-radius:12px; padding:14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.75rem; color:#94A3B8;">Pre-Order Reservation (9lmntsstudio@gmail.com)</div>
+            <div id="merchModalDeposit" style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00D2FF; margin-top:2px;">50% Interac e-Transfer Deposit: $60.00 CAD</div>
+          </div>
+          <div id="merchModalPrice" style="font-family:'JetBrains Mono',monospace; font-size:1.45rem; font-weight:900; color:#00D2FF;">$120 CAD</div>
+        </div>
+        <div style="display:grid; gap:12px; margin-bottom:16px;">
+          <input type="text" id="merchClientName" required placeholder="Your Full Name" style="width:100%; padding:12px 14px; background:#121723; border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#FFF;"/>
+          <input type="email" id="merchClientEmail" required placeholder="Email Address for Tracking &amp; WebAR Key" style="width:100%; padding:12px 14px; background:#121723; border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#FFF;"/>
+          <select id="merchSizeSelect" style="width:100%; padding:12px 14px; background:#121723; border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#FFF;">
+            <option value="L (Oversized Drop-Shoulder)">Size: L (Oversized Drop-Shoulder)</option>
+            <option value="M (Standard Streetwear)">Size: M (Standard Streetwear)</option>
+            <option value="XL (Heavyweight Box Fit)">Size: XL (Heavyweight Box Fit)</option>
+            <option value="XXL (Arena Operator Fit)">Size: XXL (Arena Operator Fit)</option>
+            <option value="S (Tailored Fit)">Size: S (Tailored Fit)</option>
+          </select>
+          <label style="display:flex; align-items:center; gap:10px; font-size:0.82rem; color:#CBD5E1; background:#121723; padding:10px 14px; border-radius:10px; border:1px solid rgba(0,210,255,0.3); cursor:pointer;">
+            <input type="checkbox" id="merchUseDeposit" checked/>
+            <span>Reserve with <strong>50% Interac e-Transfer Deposit</strong> to <code>9lmntsstudio@gmail.com</code></span>
+          </label>
+        </div>
+        <button type="submit" id="merchSubmitBtn" class="btn-primary" style="width:100%; justify-content:center; padding:14px; background:linear-gradient(135deg, #00D2FF 0%, #0077FF 100%); border-color:#38E1FF; color:#050505; cursor:pointer;">
+          Lock Wearable Pre-Order (50% e-Transfer Deposit) &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script>
+    let activeMerchOrder = { item: '02. 9LMNTS Cyber Smart Hoodie', price: 120 };
+
     function handlePreorder(item, price) {
-      const email = prompt(`Enter your email to reserve your ${item} ($${price} CAD):`);
-      if (email) {
-        alert(`✓ Pre-order waitlist confirmed for ${email}! You will receive an invoice and delivery notification before public drops.`);
-      }
+      activeMerchOrder = { item, price };
+      document.getElementById('merchModalItem').innerText = item;
+      document.getElementById('merchModalPrice').innerText = '$' + price + ' CAD';
+      document.getElementById('merchModalDeposit').innerText = '50% Interac e-Transfer Deposit: $' + (price / 2).toFixed(2) + ' CAD';
+      document.getElementById('merchOrderModal').style.display = 'flex';
+    }
+
+    function closeMerchModal() {
+      document.getElementById('merchOrderModal').style.display = 'none';
+    }
+
+    function submitMerchOrder(e) {
+      e.preventDefault();
+      const name = document.getElementById('merchClientName').value;
+      const email = document.getElementById('merchClientEmail').value;
+      const size = document.getElementById('merchSizeSelect').value;
+      const depositAmt = (activeMerchOrder.price / 2).toFixed(2);
+      const btn = document.getElementById('merchSubmitBtn');
+      btn.innerText = 'Registering Reservation...';
+      btn.disabled = true;
+
+      fetch('https://loabrain.app.n8n.cloud/webhook/9lmnts-leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          agency: '9LMNTS Studio // Wearable Advertising V2',
+          founder: 'Darnley Sanon',
+          client_name: name,
+          client_email: email,
+          tier: activeMerchOrder.item + ' (' + size + ')',
+          price_cad: activeMerchOrder.price,
+          deposit_cad: depositAmt,
+          payment_method: '50% Interac e-Transfer Deposit to 9lmntsstudio@gmail.com',
+          timestamp: new Date().toISOString()
+        })
+      }).catch(() => {}).finally(() => {
+        alert('✓ Phygital Wearable Pre-Order Registered for ' + name + '!\n\nItem: ' + activeMerchOrder.item + '\nSize: ' + size + '\nTotal: $' + activeMerchOrder.price + ' CAD\n50% Deposit Due: $' + depositAmt + ' CAD\n\nSend your 50% Interac e-Transfer Deposit to 9lmntsstudio@gmail.com to lock your drop and receive your WebAR activation key at ' + email + '.');
+        closeMerchModal();
+        btn.innerText = 'Lock Wearable Pre-Order (50% e-Transfer Deposit) →';
+        btn.disabled = false;
+      });
     }
   </script>
 </body>

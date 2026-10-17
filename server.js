@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { attachBridgeRoutes, startBackgroundPoller } = require('./remote-bridge');
 
 const PORT = process.env.PORT || 8888;
 const PUBLIC_DIR = __dirname;
@@ -10,6 +11,8 @@ const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'application/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.md': 'text/markdown; charset=utf-8',
+  '.gs': 'text/plain; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -33,6 +36,11 @@ const VIDEO_DIRS = [
 const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
   const pathname = decodeURIComponent(parsedUrl.pathname);
+
+  // Remote Phone / Gemini / Google Docs Bridge API (/api/remote/*)
+  if (attachBridgeRoutes(req, res, pathname, parsedUrl)) {
+    return;
+  }
 
   // Video Streaming Route (/videos/<filename>)
   if (pathname.startsWith('/videos/')) {
@@ -119,10 +127,12 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
+  startBackgroundPoller();
   console.log(`\n======================================================`);
   console.log(`⚡ 9LMNTS Studio Cyber Cypher Local Server Online`);
-  console.log(`📡 Local:   http://localhost:${PORT}`);
-  console.log(`📡 Loopback: http://127.0.0.1:${PORT}`);
-  console.log(`📁 Root:     ${PUBLIC_DIR}`);
+  console.log(`📡 Local:          http://localhost:${PORT}`);
+  console.log(`📱 Phone Cockpit:  http://localhost:${PORT}/remote-cockpit.html`);
+  console.log(`🧠 Gemini Brain:   http://localhost:${PORT}/api/remote/brain?format=md`);
+  console.log(`📁 Root:           ${PUBLIC_DIR}`);
   console.log(`======================================================\n`);
 });

@@ -3,566 +3,546 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <title>About &amp; Founder Dossier: Darnley Sanon — 9LMNTS Studio</title>
-  <meta name="description" content="Learn about 9LMNTS Studio, our vision for the future of digital creation, and our AI-powered workflows. Meet founder Darnley Sanon."/>
+  <title>Founder Dossier: Darnley Sanon — Creative Engineer | 9LMNTS Studio</title>
+  <meta name="description" content="Darnley Sanon — Creative Engineer, Brand Architect & Founder of 9LMNTS Studio. Designing high-performing digital operating systems, live battle arenas, and immersive brand experiences."/>
+  
+  <script>
+    try {
+      localStorage.setItem('nl-hud:public:v1', 'hidden');
+      localStorage.setItem('nl-hud:owner-private:v1', 'hidden');
+    } catch(e) {}
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@400;600;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.5"/>
 
   <style>
-    :root {
-      --primary: #FF4500;
-      --primary-glow: rgba(255, 69, 0, 0.35);
-      --font-display: 'Orbitron', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-script: 'Mrs Saint Delafield', cursive;
-    }
-
     body {
-      background-color: #06070A;
+      background-color: #0A0C10;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.25) 0%, rgba(255, 30, 0, 0.06) 35%, transparent 60%),
-        radial-gradient(circle at 85% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
-        linear-gradient(180deg, rgba(6, 7, 10, 0.75) 0%, rgba(6, 7, 10, 0.96) 100%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-attachment: fixed;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-size: cover;
+        radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 20% 45%, rgba(255, 85, 0, 0.05) 0%, transparent 60%),
+        linear-gradient(180deg, #0A0C10 0%, #08090C 100%);
       color: #FFFFFF;
-      font-family: var(--font-body);
+      font-family: var(--font-sans);
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
 
-    .about-container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 32px 24px 100px 24px;
-    }
-
-    .hero-heading {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.1;
-      text-transform: uppercase;
-      font-style: italic;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    .script-accent {
-      font-family: var(--font-script);
-      color: var(--primary);
-      font-size: clamp(3.8rem, 7vw, 7.5rem);
-      text-transform: capitalize;
-      margin-left: -10px;
-      display: inline-block;
-      transform: rotate(-3deg);
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .hero-desc {
-      font-family: var(--font-body);
-      font-size: 1.15rem;
-      color: #cbd5e1;
-      max-width: 780px;
-      margin: 0 auto 36px auto;
-      line-height: 1.65;
-    }
-
-    /* 50% Glassmorphic Bento Sections (Modal & Core Style) */
-    .section-box {
-      background: rgba(10, 13, 20, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
-        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.22) 0%, transparent 65%);
-      border: 1px solid rgba(255, 69, 0, 0.35);
-      border-top: 2px solid #FF4500;
-      border-radius: 26px;
-      padding: 44px 36px;
-      margin-bottom: 48px;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      transition: all 0.3s var(--ease-cinematic);
-    }
-    .section-box:hover {
-      border-color: rgba(255, 69, 0, 0.65);
-      box-shadow: 0 45px 150px rgba(0, 0, 0, 0.98), 0 0 85px rgba(255, 69, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-      transform: translateY(-2px);
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      font-style: italic;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    @media(min-width: 900px) {
-      .grid-2 { grid-template-columns: 1fr 1fr; }
-    }
-
-    .culture-img-box {
-      aspect-ratio: 4/3;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-top: 1px solid rgba(255, 69, 0, 0.5);
-      border-radius: 20px;
-      background: #000;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      overflow: hidden;
+    /* Founder Portrait Frame matching Pinterest Pin */
+    .portrait-frame-inner {
+      width: 100%;
+      height: 100%;
       position: relative;
-    }
-    .culture-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.88;
-      transition: transform 0.6s ease;
-    }
-    .culture-img-box:hover img {
-      transform: scale(1.04);
-    }
-
-    .founder-img-box {
-      aspect-ratio: 4/5;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-top: 2px solid rgba(255, 69, 0, 0.7);
-      border-radius: 22px;
-      background: #000;
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.20);
       overflow: hidden;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-    .founder-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(80%);
-      opacity: 0.95;
-      transition: all 0.7s ease;
-    }
-    .founder-img-box:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
-      transform: scale(1.03);
-    }
-
-    .body-p {
-      font-family: var(--font-body);
-      color: #cbd5e1;
-      font-size: 0.98rem;
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .quote-box {
-      border: 1px solid rgba(255, 69, 0, 0.35);
-      border-left: 4px solid var(--primary);
-      border-radius: 14px;
-      padding: 16px 24px;
-      margin: 24px 0;
-      font-family: var(--font-body);
-      color: #ffffff;
-      font-size: 1.05rem;
-      font-style: italic;
-      line-height: 1.6;
-      background: rgba(255, 69, 0, 0.08);
-      backdrop-filter: blur(12px);
-    }
-
-    .skill-tags {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .skill-tag {
-      padding: 6px 16px;
-      background: rgba(255, 69, 0, 0.12);
-      border: 1px solid rgba(255, 69, 0, 0.40);
-      border-radius: 9999px;
-      color: var(--primary);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    /* AI Elements cards */
-    .ai-feature-card {
-      background: rgba(14, 18, 27, 0.50);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.4);
-      border-radius: 18px;
-      padding: 20px 22px;
-      display: flex;
-      gap: 16px;
-      margin-bottom: 14px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.10);
-    }
-    .ai-feature-card:hover {
-      border-color: rgba(255, 69, 0, 0.65);
-      transform: translateX(4px);
-    }
-    .ai-icon-box {
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 69, 0, 0.15);
-      border: 1px solid rgba(255, 69, 0, 0.45);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      color: var(--primary);
-      flex-shrink: 0;
-      font-size: 1.2rem;
+      background: radial-gradient(circle at 50% 30%, #1A1F29 0%, #0D1016 70%, #080A0E 100%);
     }
-
-    /* 4-step workflow */
-    .workflow-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
+    .portrait-frame-inner img {
+      position: absolute;
+      top: -5%;
+      height: 125%;
+      width: auto;
+      max-width: none;
+      left: -12%;
+      mask-image: linear-gradient(to bottom, black 72%, transparent 98%);
+      -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 98%);
+      transition: transform 0.6s var(--ease-cinematic);
     }
-    .step-box {
-      text-align: center;
-      padding: 22px 14px;
-      background: rgba(14, 18, 27, 0.50);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(255, 69, 0, 0.4);
-      border-radius: 18px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.10);
-    }
-    .step-box:hover {
-      background: rgba(255, 69, 0, 0.12);
-      border-color: var(--primary);
-      transform: translateY(-3px);
-    }
-    .step-num {
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 69, 0, 0.15);
-      border: 1px solid rgba(255, 69, 0, 0.45);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px auto;
-      color: var(--primary);
-      font-family: var(--font-mono);
-      font-size: 1.4rem;
-      font-weight: 900;
-    }
-    .step-name {
-      font-family: var(--font-display);
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    /* Values grid */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-      margin-top: 28px;
-    }
-    .value-card {
-      background: rgba(14, 18, 27, 0.50);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 2px solid rgba(255, 69, 0, 0.5);
-      border-radius: 22px;
-      padding: 32px 24px;
-      text-align: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    }
-    .value-card:hover {
-      border-color: rgba(255, 69, 0, 0.65);
-      transform: translateY(-4px);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 69, 0, 0.25);
-    }
-
-    /* CTA Section (Modal Bento Style) */
-    .cta-box {
-      background: rgba(10, 13, 20, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
-        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.28) 0%, transparent 65%);
-      border: 1px solid rgba(255, 69, 0, 0.40);
-      border-top: 2px solid #FF4500;
-      border-radius: 26px;
-      padding: 56px 30px;
-      text-align: center;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      margin-top: 40px;
+    .portrait-frame-inner:hover img {
+      transform: scale(1.02);
     }
   </style>
 </head>
 <body>
 
-  <!-- Universal HUD Return Header -->
-  <header class="hud-top-bar">
-    <a href="index.html#station-06" class="hud-back-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-      RETURN TO STUDIO COCKPIT
+  <!-- Top Navigation Bar (Matching Pinterest Reference) -->
+  <header class="editorial-nav-bar">
+    <a href="index.html" class="editorial-logo">
+      <span>9LMNTS</span>
+      <span class="editorial-logo-badge">STUDIO</span>
     </a>
-    <div class="hud-breadcrumb">
-      <span class="hud-dot" style="background:#FF4500; box-shadow:0 0 10px #FF4500;"></span>
-      <span>STATION 06</span>
-      <span class="hud-sep">/</span>
-      <span class="hud-title">THE HELM // DARNLEY SANON</span>
-    </div>
-    <div class="hud-actions">
-      <a href="pricing.html" class="hud-cta-btn" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2);">💳 PRICING</a>
-      <a href="services.html#intake" class="hud-cta-btn">⚡ START PROJECT</a>
+
+    <nav class="editorial-nav-links">
+      <a href="#work" class="editorial-nav-link">Work</a>
+      <a href="#capabilities" class="editorial-nav-link">Capabilities</a>
+      <a href="#process" class="editorial-nav-link">Process</a>
+      <a href="pricing.html" class="editorial-nav-link">Pricing</a>
+      <a href="index.html#station-06" class="editorial-nav-link">Cockpit</a>
+    </nav>
+
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="index.html" class="editorial-pill-btn secondary" style="padding:10px 18px; font-size:0.75rem;">
+        &larr; Studio Cockpit
+      </a>
+      <button onclick="openEditorialModal()" class="editorial-pill-btn primary" style="padding:10px 22px; font-size:0.75rem;">
+        Let's Talk ↗
+      </button>
     </div>
   </header>
 
-  <div class="about-container">
+  <!-- Master Page Container -->
+  <main class="editorial-page-container">
 
-    <!-- Hero Section -->
-    <div class="page-hero" style="text-align: center; margin-bottom: 48px;">
-      <span class="station-tag orange">FOUNDER DOSSIER // STATION 06</span>
-      <h1 class="hero-heading">
-        Where Culture Meets<br/>
-        <span class="script-accent">Technology</span>
-      </h1>
-      <p class="hero-desc">
-        9LMNTS Studio bridges the gap between Hip-Hop culture and cutting-edge digital innovation, creating sovereign platforms and acoustic soundscapes that resonate.
-      </p>
-      <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
-        <a href="services.html#intake" class="btn-primary">Book Production Brief &rarr;</a>
-        <a href="pricing.html" class="btn-secondary">Explore Pricing Matrix 💳</a>
-      </div>
-    </div>
-
-    <!-- Story Section -->
-    <div class="section-box">
-      <div class="grid-2">
-        <div class="culture-img-box">
-          <img src="https://images.unsplash.com/photo-1602559399822-bd7d9f6da207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Hip-Hop Culture"/>
+    <!-- Hero Section (Pinterest 2-Column Standard) -->
+    <section class="editorial-hero-grid">
+      <div>
+        <div class="editorial-eyebrow">
+          <span class="sparkle" style="color: #E5C178;">✦</span>
+          <span>Web 2.5 Command OS &bull; 9LMNTS Studio Ottawa</span>
         </div>
+
+        <div style="font-family: var(--font-headline); font-size: 1.15rem; color: #E5C178; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-weight: 800;">
+          Darnley Sanon &bull; Creative Engineer
+        </div>
+
+        <h1 class="editorial-hero-title">
+          WEB 2.5<br/>
+          COMMAND<br/>
+          SYSTEMS
+        </h1>
+
+        <p class="editorial-hero-subtitle">
+          I architect and deploy sovereign Web 2.5 Command Operating Systems, 25 live tournament battle arenas, and luxury spatial brand workstations that eliminate the 30% delivery app bleed and put profit directly in your bank.
+        </p>
+
+        <div class="editorial-hero-actions">
+          <a href="#work" class="editorial-pill-btn primary">
+            View My Work ↗
+          </a>
+          <button onclick="openEditorialModal()" class="editorial-pill-btn secondary">
+            Request 7-Day Sprint ($2,200 CAD) ↓
+          </button>
+        </div>
+
+        <!-- Floating Code Console Card (Pinterest Inspiration 1) -->
+        <div class="floating-code-console">
+          <div class="console-header">
+            <span class="console-dot red"></span>
+            <span class="console-dot yellow"></span>
+            <span class="console-dot green"></span>
+            <span class="console-title">9lmnts_web25_kernel.js</span>
+          </div>
+          <pre class="console-body"><span class="kw">const</span> <span class="var">darnleySanon</span> = {
+  <span class="prop">title</span>: <span class="str">"Creative Engineer & Founder"</span>,
+  <span class="prop">deliverable</span>: <span class="str">"Web 2.5 Command OS + Full Admin"</span>,
+  <span class="prop">pricing</span>: <span class="str">"Flat $2,200 CAD (1-Time Sprint)"</span>,
+  <span class="prop">monthlyFees</span>: <span class="num">0</span>, <span class="comment">// $0 Monthly SaaS Retainers</span>
+  <span class="prop">clientCheckout</span>: <span class="str">"Built-in Stripe (Apple Pay/4x)"</span>,
+  <span class="prop">ownership</span>: <span class="str">"100% Outright Client Ownership"</span>
+};
+<span class="fn">deployOperatingSystem</span>(<span class="var">darnleySanon</span>);</pre>
+        </div>
+      </div>
+
+      <!-- Right Column: Charismatic Founder Portrait with Golden Halo Aura (Pinterest Inspiration 2) -->
+      <div class="editorial-portrait-card">
+        <div class="portrait-frame-inner">
+          <div class="founder-halo-aura"></div>
+          <img src="assets/founder/darnley_4view.jpg" alt="Darnley Sanon — Founder & Creative Engineer" />
+        </div>
+
+        <!-- Floating Availability Badge -->
+        <a href="#process" class="editorial-avail-badge">
+          <span class="editorial-avail-dot"></span>
+          <div>
+            <div style="font-size:0.58rem; color:#94A3B8; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">AVAILABLE FOR</div>
+            <div class="editorial-avail-text">7-Day Sprints ↗</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 4-Metric Horizontal Bento Bar (Pinterest Inspiration 2 Gold Edition) -->
+    <section class="editorial-metrics-bar">
+      <div class="editorial-metric-col">
+        <span class="editorial-metric-icon gold">✦</span>
+        <div class="editorial-metric-number gold">09</div>
+        <div class="editorial-metric-label">Spatial Workstations</div>
+      </div>
+      <div class="editorial-metric-col">
+        <span class="editorial-metric-icon gold"><i class="fa-solid fa-trophy"></i></span>
+        <div class="editorial-metric-number gold">25+</div>
+        <div class="editorial-metric-label">Live Arenas</div>
+      </div>
+      <div class="editorial-metric-col">
+        <span class="editorial-metric-icon gold"><i class="fa-solid fa-bolt"></i></span>
+        <div class="editorial-metric-number gold">0%</div>
+        <div class="editorial-metric-label">App Store Tax (Direct Payouts)</div>
+      </div>
+      <div class="editorial-metric-col">
+        <span class="editorial-metric-icon gold"><i class="fa-solid fa-shield-halved"></i></span>
+        <div class="editorial-metric-number gold">$0</div>
+        <div class="editorial-metric-label">Monthly Fees (100% Ownership)</div>
+      </div>
+    </section>
+
+    <!-- Featured Work 3-Card Grid (Matching Pinterest 3-Card Layout) -->
+    <section id="work" style="margin-bottom: 72px;">
+      <div class="editorial-section-header">
         <div>
-          <span class="station-tag orange" style="margin-bottom:8px;">ORIGIN PROTOCOL</span>
-          <h2 class="section-title">
-            The 9LMNTS <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Story</span>
-          </h2>
-          <p class="body-p">
-            Born from the vibrant energy of Hip-Hop culture, 9LMNTS Studio represents the convergence of artistic expression and technological innovation. Just as Hip-Hop consists of 9 foundational elements—MCing, DJing, Graffiti, Breaking, Beatboxing, Knowledge, Fashion, Entrepreneurship, and Language—our approach to digital design draws from these diverse disciplines.
-          </p>
-          <p class="body-p">
-            Each element influences how we craft digital experiences. The rhythm of a DJ's mix informs our UX flows. The bold statements of graffiti art inspire our visual designs. The entrepreneurial spirit drives our innovative solutions. The result? Websites and applications that don't just function—they perform.
-          </p>
-          <p class="body-p">
-            We believe that great design, like great Hip-Hop, is about authentic expression, cultural awareness, and pushing boundaries. Every project we undertake is an opportunity to create something that resonates on a deeper level, connecting with audiences through both aesthetics and meaning.
+          <div class="editorial-section-eyebrow">FEATURED WORK &amp; PLATFORMS</div>
+          <h2 class="editorial-section-title">Selected Operating Systems</h2>
+        </div>
+        <a href="core.html" class="editorial-section-link">
+          Explore All 9 Stations &rarr;
+        </a>
+      </div>
+
+      <div class="editorial-featured-grid">
+        <!-- Card 1: Creator OS Hub -->
+        <a href="core.html" class="editorial-card">
+          <div class="editorial-card-visual">
+            <img src="assets/money_multiplier/02_web25_admin_command_cockpit.png" alt="Creator OS Hub & Admin Command Cockpit" style="object-position: center top;" />
+          </div>
+          <div class="editorial-card-content">
+            <div>
+              <div class="editorial-card-title">Creator OS &amp; Admin Cockpit</div>
+              <div class="editorial-card-meta">Web 2.5 Command Engines &bull; 0% Marketplace Fees</div>
+            </div>
+            <div class="editorial-arrow-btn">↗</div>
+          </div>
+        </a>
+
+        <!-- Card 2: Project LOA -->
+        <a href="loa.html" class="editorial-card">
+          <div class="editorial-card-visual">
+            <img src="assets/images/damian_storyboard_cinematic.jpg" alt="Project LOA Cinematic Universe" style="object-position: center 30%;" />
+          </div>
+          <div class="editorial-card-content">
+            <div>
+              <div class="editorial-card-title">Project LOA: Ptah</div>
+              <div class="editorial-card-meta">Unreal Engine 5.7 &bull; Transmedia Action RPG</div>
+            </div>
+            <div class="editorial-arrow-btn">↗</div>
+          </div>
+        </a>
+
+        <!-- Card 3: Battle Arenas -->
+        <a href="clash.html" class="editorial-card">
+          <div class="editorial-card-visual">
+            <img src="assets/images/Clash_OS_image_2.png" alt="Sound Clash OS & Live Arenas" style="object-position: center center;" />
+          </div>
+          <div class="editorial-card-content">
+            <div>
+              <div class="editorial-card-title">Battle Arenas &amp; Clash OS</div>
+              <div class="editorial-card-meta">25 Tournament Arenas &bull; 95/5 Revenue Split</div>
+            </div>
+            <div class="editorial-arrow-btn">↗</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Split Section: Core Capabilities & Tools / Technologies -->
+    <section id="capabilities" class="editorial-split-grid">
+      <!-- Left Column: Core Capabilities -->
+      <div class="editorial-panel">
+        <div class="editorial-section-eyebrow">PRACTICE &amp; ARCHITECTURE</div>
+        <h3 style="font-family:var(--font-headline); font-size:1.6rem; color:#FFF; margin-bottom:12px;">Core Capabilities</h3>
+        <p style="font-size:0.86rem; color:#94A3B8; line-height:1.6; margin-bottom:24px;">
+          End-to-end creative technology combining spatial user interfaces, zero-dependency engineering, and cultural authenticity.
+        </p>
+
+        <div class="editorial-caps-grid">
+          <div class="editorial-cap-item">
+            <h4><i class="fa-solid fa-bezier-curve" style="color:#FFF;"></i> UI/UX Design</h4>
+            <p>Crafting high-legibility dark mode bento interfaces, spatial HUD navigation, and editorial brand systems.</p>
+          </div>
+          <div class="editorial-cap-item">
+            <h4><i class="fa-solid fa-code" style="color:#FFF;"></i> Web 2.5 Command OS</h4>
+            <p>Architecting standalone platforms for hospitality and creators with private full admin cockpits and 0% app tax.</p>
+          </div>
+          <div class="editorial-cap-item">
+            <h4><i class="fa-solid fa-bolt" style="color:#FFF;"></i> Live Competition Arenas</h4>
+            <p>Building 8-contender live tournament brackets with smartphone QR audience voting and real-time prize pot surges.</p>
+          </div>
+          <div class="editorial-cap-item">
+            <h4><i class="fa-solid fa-shirt" style="color:#FFF;"></i> Phygital WebAR Merch</h4>
+            <p>Developing 480 GSM streetwear integrated with zero-app WebAR 3D holographic energy wings and NFC chips.</p>
+          </div>
+          <div class="editorial-cap-item">
+            <h4><i class="fa-solid fa-sliders" style="color:#FFF;"></i> Analog Stem Mastering</h4>
+            <p>24-bit 96kHz lossless stem separation, multitrack audio choppers, and in-browser mixing consoles.</p>
+          </div>
+          <div class="editorial-cap-item">
+            <h4><i class="fa-solid fa-robot" style="color:#FFF;"></i> AI Voice &amp; CRM Engines</h4>
+            <p>Deploying Gemini Live AI voice operators, ManyChat conversational funnels, and automated outbound pipelines.</p>
+          </div>
+        </div>
+
+        <!-- Executive Guarantee & Cursive Signature (Pinterest Inspiration 2) -->
+        <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #E5C178; margin-bottom: 12px;">
+            ✦ The 9LMNTS Studio Guarantee
+          </div>
+          <ul class="executive-checklist">
+            <li><span class="golden-check"><i class="fa-solid fa-check"></i></span> Web 2.5 Sovereign Architecture (100% Outright Client Ownership)</li>
+            <li><span class="golden-check"><i class="fa-solid fa-check"></i></span> Zero Monthly Agency Retainers &bull; Zero Recurring SaaS Subscriptions Forever</li>
+            <li><span class="golden-check"><i class="fa-solid fa-check"></i></span> Built-in Stripe Online Checkout (1-Tap Apple Pay, Google Pay &amp; 4× Split Pay)</li>
+            <li><span class="golden-check"><i class="fa-solid fa-check"></i></span> Full Admin Command Cockpit (Live Queue, 1-Tap 86x Stock, Payout Telemetry)</li>
+            <li><span class="golden-check"><i class="fa-solid fa-check"></i></span> Turnkey 7-Day Sprint Guarantee with 50% Interac e-Transfer Escrow</li>
+          </ul>
+          <div class="founder-signature-gold">Darnley Sanon</div>
+        </div>
+      </div>
+
+      <!-- Right Column: Tools & Technologies & Operating Standards -->
+      <div class="editorial-panel">
+        <div class="editorial-section-eyebrow">TECH STACK &amp; STANDARDS</div>
+        <h3 style="font-family:var(--font-headline); font-size:1.6rem; color:#FFF; margin-bottom:12px;">Tools &amp; Technologies</h3>
+        <p style="font-size:0.86rem; color:#94A3B8; line-height:1.6; margin-bottom:20px;">
+          Production-grade tools leveraged across every 9LMNTS Studio sprint:
+        </p>
+
+        <!-- Tech Badges Grid (Pinterest Inspirations 1 & 2) -->
+        <div class="tech-badges-grid" style="margin-bottom: 28px;">
+          <span class="tech-badge-item"><i class="fa-brands fa-js"></i> Vanilla JS / HTML5</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-network-wired"></i> Web 2.5 Architecture</span>
+          <span class="tech-badge-item"><i class="fa-brands fa-stripe"></i> Stripe Online Checkout</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-cube"></i> Unreal Engine 5.7</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-vr-cardboard"></i> WebAR / Three.js</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-brain"></i> Gemini Live AI</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-headphones"></i> Web Audio DAW Stems</span>
+          <span class="tech-badge-item"><i class="fa-brands fa-figma"></i> Figma Spatial Bento</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-cloud"></i> Netlify Edge</span>
+          <span class="tech-badge-item"><i class="fa-solid fa-money-bill-transfer"></i> Interac e-Transfer (B2B)</span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(229, 193, 120, 0.25); border-radius:16px; padding:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="font-family:var(--font-mono); font-size:0.70rem; color:#E5C178; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">
+            OPERATING CONSTITUTION
+          </div>
+          <div style="font-weight:800; font-size:0.95rem; color:#FFF; margin-bottom:6px;">
+            Zero Free Work &bull; Flat 1-Time Turnkey Sprints
+          </div>
+          <p style="font-size:0.78rem; color:#94A3B8; line-height:1.55; margin:0;">
+            All client agency sprints kick off strictly with a <strong>Signed 1-Page Sprint Contract Agreement + 50% Interac e-Transfer Deposit ($1,100 CAD on $2,200 CAD to 9lmntsstudio@gmail.com)</strong>. Zero monthly retainers forever. Unpaid client prototypes remain locked in the local vault until verified.
           </p>
         </div>
       </div>
+    </section>
+
+    <!-- My Design Process (5-Step Horizontal Flow) -->
+    <section id="process" class="editorial-process-container">
+      <div class="editorial-section-header" style="margin-bottom: 24px;">
+        <div>
+          <div class="editorial-section-eyebrow">EXECUTION METHODOLOGY</div>
+          <h2 class="editorial-section-title">My 5-Stage Sprint Process</h2>
+        </div>
+        <div style="font-family:var(--font-mono); font-size:0.75rem; color:#94A3B8;">
+          7 CALENDAR DAYS &bull; ZERO LATENCY
+        </div>
+      </div>
+
+      <div class="editorial-process-row">
+        <div class="editorial-process-step">
+          <div class="editorial-step-num">01 / AUDIT</div>
+          <div class="editorial-step-title">Discover</div>
+          <p class="editorial-step-desc">Brand DNA, cultural positioning, audience economics, and technical specification scoping.</p>
+        </div>
+        <div class="editorial-process-step">
+          <div class="editorial-step-num">02 / AGREEMENT</div>
+          <div class="editorial-step-title">Lock Sprint</div>
+          <p class="editorial-step-desc">Signed 1-Page Sprint Contract + 50% Interac e-Transfer deposit ($1,100 CAD) received.</p>
+        </div>
+        <div class="editorial-process-step">
+          <div class="editorial-step-num">03 / DESIGN</div>
+          <div class="editorial-step-title">Spatial UI</div>
+          <p class="editorial-step-desc">Bento grid spatial layout, authentic cultural dish/product photography, and typography system.</p>
+        </div>
+        <div class="editorial-process-step">
+          <div class="editorial-step-num">04 / CODE</div>
+          <div class="editorial-step-title">Build &amp; Wire</div>
+          <p class="editorial-step-desc">Zero-dependency, lightning-fast HTML5/CSS3/JS frontend with built-in client checkout.</p>
+        </div>
+        <div class="editorial-process-step">
+          <div class="editorial-step-num">05 / LAUNCH</div>
+          <div class="editorial-step-title">Cutover</div>
+          <p class="editorial-step-desc">Final 50% balance settlement, live DNS cutover, Google indexing, and founder training.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Ticker Ribbon (Pinterest Inspiration 2 Standard) -->
+    <div class="feature-ticker-ribbon">
+      <div class="ticker-pill-item"><i class="fa-solid fa-code"></i> Zero Monthly Fees</div>
+      <div class="ticker-pill-item"><i class="fa-solid fa-bolt"></i> 7-Day Turnkey Sprints</div>
+      <div class="ticker-pill-item"><i class="fa-solid fa-lock"></i> 100% Outright Code Ownership</div>
+      <div class="ticker-pill-item"><i class="fa-solid fa-credit-card"></i> Built-in Stripe Checkout</div>
+      <div class="ticker-pill-item"><i class="fa-solid fa-desktop"></i> 4K Spatial Cockpit</div>
     </div>
 
-    <!-- AI Element Section -->
-    <div class="section-box">
-      <div style="text-align: center; margin-bottom: 36px;">
-        <span class="station-tag teal" style="margin-bottom:8px;">ELEMENT 10 // NEURAL ACCELERATION</span>
-        <h2 class="section-title">
-          The <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px; color:var(--cyber-teal);">AI Element</span>
+    <!-- Closing CTA Banner (Matching Pinterest Footer) -->
+    <section class="editorial-cta-banner">
+      <div>
+        <h2 class="editorial-cta-big-text">
+          Let's Create<br/>
+          Something ✦<br/>
+          Extraordinary
         </h2>
-        <p class="body-p" style="max-width: 700px; margin: 0 auto;">
-          We've added a 10th element to the traditional 9: Artificial Intelligence. By integrating autonomous AI agents and vector pipelines into our workflow, we deliver smarter, faster, and more sovereign solutions.
+        <p style="font-size:1.05rem; color:#94A3B8; max-width:480px; line-height:1.6; margin-bottom:28px;">
+          I'm currently accepting select 7-day creative agency sprints, sovereign creator OS builds, and venue arena deployments.
+        </p>
+        <button onclick="openEditorialModal()" class="editorial-pill-btn primary" style="padding:15px 36px; font-size:0.90rem;">
+          Let's Work Together ↗
+        </button>
+      </div>
+
+      <div class="editorial-contact-list">
+        <a href="mailto:9lmntsstudio@gmail.com" class="editorial-contact-item">
+          <div class="editorial-contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div style="font-size:0.70rem; color:#64748B; font-weight:700; text-transform:uppercase;">Direct Inquiries</div>
+            <div style="font-weight:700; color:#FFF;">9lmntsstudio@gmail.com</div>
+          </div>
+        </a>
+
+        <div class="editorial-contact-item">
+          <div class="editorial-contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div style="font-size:0.70rem; color:#64748B; font-weight:700; text-transform:uppercase;">Headquarters</div>
+            <div style="font-weight:700; color:#FFF;">Ottawa, Ontario, Canada</div>
+          </div>
+        </div>
+
+        <a href="pricing.html" class="editorial-contact-item">
+          <div class="editorial-contact-icon"><i class="fa-solid fa-file-signature"></i></div>
+          <div>
+            <div style="font-size:0.70rem; color:#64748B; font-weight:700; text-transform:uppercase;">Agency Kickoff Policy</div>
+            <div style="font-weight:700; color:#FFF;">Signed 1-Page Contract + 50% Deposit ($1,100 CAD)</div>
+          </div>
+        </a>
+
+        <a href="index.html" class="editorial-contact-item">
+          <div class="editorial-contact-icon"><i class="fa-solid fa-desktop"></i></div>
+          <div>
+            <div style="font-size:0.70rem; color:#64748B; font-weight:700; text-transform:uppercase;">4K Interactive Cockpit</div>
+            <div style="font-weight:700; color:#FFF;">9lmntsstudio.com (9 Production Stations)</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Universal Bottom 9-Station Spatial Command Dock -->
+  <nav class="fullpage-station-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <a class="fp-dock-item" href="loa.html"><span class="num">01</span><span>Project LOA</span></a>
+    <a class="fp-dock-item teal" href="vault.html"><span class="num">02</span><span>Sonic Vault</span></a>
+    <a class="fp-dock-item" href="core.html"><span class="num">03</span><span>Creator OS Hub</span></a>
+    <a class="fp-dock-item teal" href="ai-voice.html"><span class="num">04</span><span>Argon AI &amp; CRM</span></a>
+    <a class="fp-dock-item" href="services.html"><span class="num">05</span><span>7-Day Sprints</span></a>
+    <a class="fp-dock-item teal active" href="the-helm.html"><span class="num">06</span><span>The Helm</span></a>
+    <a class="fp-dock-item teal" href="clash.html"><span class="num">07</span><span>Battle Arenas</span></a>
+    <a class="fp-dock-item" href="merch.html"><span class="num">08</span><span>Phygital Merch</span></a>
+    <a class="fp-dock-item teal" href="vault.html#interactive-chopper"><span class="num">09</span><span>Studio DAW</span></a>
+  </nav>
+
+  <!-- Pinterest-Grade Minimalist Editorial Modal Dialog -->
+  <div class="editorial-modal-backdrop" id="editorialModal" onclick="closeEditorialModal()">
+    <div class="editorial-modal-window" onclick="event.stopPropagation()">
+      <button class="editorial-modal-close" onclick="closeEditorialModal()">&times;</button>
+
+      <div style="margin-bottom:24px;">
+        <div style="font-family:var(--font-mono); font-size:0.68rem; color:#94A3B8; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:6px;">
+          9LMNTS STUDIO &bull; 7-DAY AGENCY SPRINT
+        </div>
+        <h3 style="font-family:var(--font-headline); font-size:1.6rem; font-weight:900; color:#FFF; margin:0 0 8px 0;">
+          Let's Work Together
+        </h3>
+        <p style="font-size:0.84rem; color:#94A3B8; line-height:1.55; margin:0;">
+          All sprints kick off with a <strong>Signed 1-Page Sprint Contract Agreement + 50% Interac e-Transfer Deposit ($1,100 CAD on $2,200 CAD)</strong> to <code>9lmntsstudio@gmail.com</code>.
         </p>
       </div>
 
-      <div class="grid-2">
-        <div>
-          <div class="ai-feature-card">
-            <div class="ai-icon-box"><i class="fa-solid fa-brain"></i></div>
-            <div>
-              <h3 style="font-size:1.05rem; margin-bottom:4px;">AI-Powered Design</h3>
-              <p class="body-p" style="font-size:0.88rem; margin:0;">Leveraging machine learning to optimize layouts, audio routing, and user experiences across spatial interfaces.</p>
-            </div>
+      <form onsubmit="handleEditorialSubmit(event)">
+        <div style="display:grid; gap:14px; margin-bottom:20px;">
+          <div>
+            <label style="display:block; font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Your Name / Brand</label>
+            <input type="text" id="edClientName" required placeholder="e.g. Marcus Vance / Studio Neo" class="editorial-input"/>
           </div>
-          <div class="ai-feature-card">
-            <div class="ai-icon-box"><i class="fa-solid fa-bolt"></i></div>
-            <div>
-              <h3 style="font-size:1.05rem; margin-bottom:4px;">Rapid Prototyping</h3>
-              <p class="body-p" style="font-size:0.88rem; margin:0;">AI-assisted wireframing and mockup generation for faster iterations from concept to production.</p>
-            </div>
+
+          <div>
+            <label style="display:block; font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Email Address (For 1-Page Contract &amp; Invoice)</label>
+            <input type="email" id="edClientEmail" required placeholder="e.g. marcus@brand.com" class="editorial-input"/>
           </div>
-          <div class="ai-feature-card">
-            <div class="ai-icon-box"><i class="fa-solid fa-bullseye"></i></div>
-            <div>
-              <h3 style="font-size:1.05rem; margin-bottom:4px;">Smart Optimization</h3>
-              <p class="body-p" style="font-size:0.88rem; margin:0;">Automated testing, latency minimization, and performance optimization powered by neural pipelines.</p>
-            </div>
+
+          <div>
+            <label style="display:block; font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Target Deliverable</label>
+            <select id="edPackage" class="editorial-input" style="cursor:pointer;">
+              <option value="7-Day Creative Tech Sprint ($2,200 CAD — $1,100 Deposit)">7-Day Creative Tech Sprint ($2,200 CAD — $1,100 50% Deposit)</option>
+              <option value="EventOS Turnkey Arena ($1,500 CAD — $750 Deposit)">EventOS Turnkey Arena ($1,500 CAD — $750 50% Deposit)</option>
+              <option value="Sovereign Creator OS Platform ($3,500 CAD — $1,750 Deposit)">Sovereign Creator OS Platform ($3,500 CAD — $1,750 50% Deposit)</option>
+              <option value="Studio Audio & 96kHz Stem Mastering ($450 CAD — $225 Deposit)">Studio Audio &amp; 96kHz Stem Mastering ($450 CAD — $225 50% Deposit)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.72rem; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Project Vision &amp; Requirements</label>
+            <textarea id="edScope" rows="3" placeholder="Describe your vision, target launch date, and required integrations..." class="editorial-input" style="resize:vertical;"></textarea>
           </div>
         </div>
 
-        <div class="culture-img-box" style="aspect-ratio: 1/1;">
-          <img src="https://images.unsplash.com/photo-1764336312138-14a5368a6cd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Artificial Intelligence Neon Brain"/>
-        </div>
-      </div>
-
-      <!-- AI Workflow -->
-      <div style="margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);">
-        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Our AI Production Pipeline</h3>
-        <p class="body-p">
-          From initial concept to final deployment, AI enhances every stage of our process. We use machine learning algorithms to analyze user behavior, optimize designs, and predict trends.
-        </p>
-        <div class="workflow-grid">
-          <div class="step-box">
-            <div class="step-num">01</div>
-            <div class="step-name">Analyze</div>
-          </div>
-          <div class="step-box">
-            <div class="step-num">02</div>
-            <div class="step-name">Design</div>
-          </div>
-          <div class="step-box">
-            <div class="step-num">03</div>
-            <div class="step-name">Optimize</div>
-          </div>
-          <div class="step-box">
-            <div class="step-num">04</div>
-            <div class="step-name">Deploy</div>
-          </div>
-        </div>
-      </div>
+        <button type="submit" id="edSubmitBtn" class="editorial-pill-btn primary" style="width:100%; padding:16px; font-size:0.86rem; justify-content:center;">
+          Request 1-Page Contract &amp; Deposit Invoice ↗
+        </button>
+      </form>
     </div>
-
-    <!-- Founder Section -->
-    <div class="section-box">
-      <div style="text-align: center; margin-bottom: 36px;">
-        <span class="station-tag orange" style="margin-bottom:8px;">LEADERSHIP &amp; ARCHITECTURE</span>
-        <h2 class="section-title">
-          Meet the <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px;">Founder</span>
-        </h2>
-      </div>
-
-      <div class="grid-2">
-        <div class="founder-img-box">
-          <img src="assets/images/founder.png" alt="Darnley Sanon - Founder & Creative Director"/>
-        </div>
-        <div>
-          <h3 style="font-size: clamp(2rem, 3.5vw, 2.75rem); margin-bottom:4px;">
-            Darnley Sanon
-          </h3>
-          <p style="color:var(--primary); font-family:var(--font-mono); font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:20px;">
-            Founder &amp; Creative Director // Lead Architect
-          </p>
-
-          <p class="body-p">
-            With over a decade of experience in graphic design and UI/UX, Darnley founded 9LMNTS Studio to merge his passion for Hip-Hop culture with cutting-edge digital design. His unique approach combines artistic authenticity with technical excellence.
-          </p>
-          <p class="body-p">
-            As a freelance graphic designer and UI/UX specialist, he has worked with clients across Southeast Asia, North America, and Europe, bringing a fresh perspective that honors cultural roots while embracing innovation.
-          </p>
-
-          <div class="quote-box">
-            "Every project is an opportunity to tell a story, to create something that resonates beyond the screen. That's the power of combining art, culture, and technology."
-          </div>
-
-          <div class="skill-tags">
-            <span class="skill-tag">Graphic Design</span>
-            <span class="skill-tag">UI/UX Systems</span>
-            <span class="skill-tag">Audio Engineering</span>
-            <span class="skill-tag">Brand Strategy</span>
-            <span class="skill-tag">AI Workflows</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Values Section -->
-    <div class="section-box">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <span class="station-tag green" style="margin-bottom:8px;">FOUNDATIONAL CODE</span>
-        <h2 class="section-title">
-          Our <span class="script-accent" style="font-size: clamp(3rem, 5vw, 5rem); margin-left:-5px; color:var(--matrix-green);">Values</span>
-        </h2>
-        <p class="body-p">The principles that guide everything we do across physical and digital spaces</p>
-      </div>
-
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="step-num">01</div>
-          <h3 style="font-size:1.15rem; margin-bottom:8px;">Authenticity</h3>
-          <p class="body-p" style="font-size:0.90rem; margin:0;">We create designs that are true to your brand and resonate with your audience on a cultural level.</p>
-        </div>
-        <div class="value-card">
-          <div class="step-num">02</div>
-          <h3 style="font-size:1.15rem; margin-bottom:8px;">Innovation</h3>
-          <p class="body-p" style="font-size:0.90rem; margin:0;">We push boundaries and embrace new technologies to deliver cutting-edge solutions that outperform standards.</p>
-        </div>
-        <div class="value-card">
-          <div class="step-num">03</div>
-          <h3 style="font-size:1.15rem; margin-bottom:8px;">Excellence</h3>
-          <p class="body-p" style="font-size:0.90rem; margin:0;">We are committed to the highest quality in every aspect of our work, from code architecture to typography.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="cta-box">
-      <h2 style="font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom:12px;">
-        Ready to Start<br/>
-        Your <span class="script-accent" style="font-size: clamp(3.5rem, 6vw, 6rem); margin-left:-10px;">Journey?</span>
-      </h2>
-      <p class="body-p" style="font-size:1.1rem; margin-bottom:28px;">
-        Let's create something extraordinary together.
-      </p>
-      <a href="services.html#intake" class="btn-primary" style="padding:16px 36px; font-size:0.95rem;">
-        <span>Get in Touch &rarr;</span>
-      </a>
-    </div>
-
-    <!-- Footer HUD Return Bar -->
-    <div class="footer-hud-nav">
-      <div class="left-info">
-        <h3>Ready to return to the Studio Cockpit?</h3>
-        <p>Return to the 4K interactive terminal or explore official pricing plans.</p>
-      </div>
-      <div style="display:flex; gap:14px; flex-wrap:wrap;">
-        <a href="index.html#station-06" class="btn-primary">
-          &larr; Return to Studio Cockpit
-        </a>
-        <a href="pricing.html" class="btn-secondary">
-          Official Pricing Matrix &rarr;
-        </a>
-      </div>
-    </div>
-
   </div>
 
+  <script>
+    function openEditorialModal() {
+      document.getElementById('editorialModal').classList.add('active');
+    }
+
+    function closeEditorialModal() {
+      document.getElementById('editorialModal').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeEditorialModal();
+    });
+
+    function handleEditorialSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('edClientName').value;
+      const email = document.getElementById('edClientEmail').value;
+      const pkg = document.getElementById('edPackage').value;
+      const scope = document.getElementById('edScope').value;
+      const btn = document.getElementById('edSubmitBtn');
+
+      btn.innerText = 'Dispatching Contract & Invoice...';
+      btn.disabled = true;
+
+      fetch('https://loabrain.app.n8n.cloud/webhook/9lmnts-leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          agency: '9LMNTS Studio // Founder Dossier',
+          founder: 'Darnley Sanon',
+          client_name: name,
+          client_email: email,
+          package: pkg,
+          scope_notes: scope,
+          payment_method: '50% Interac e-Transfer Deposit (9lmntsstudio@gmail.com) + Signed 1-Page Sprint Contract',
+          timestamp: new Date().toISOString()
+        })
+      })
+      .catch(() => {})
+      .finally(() => {
+        alert(`✓ 9LMNTS Studio Sprint Request Dispatched for ${name}!\n\nPackage: ${pkg}\nPayment Protocol: Signed 1-Page Sprint Contract + 50% Interac e-Transfer Deposit to 9lmntsstudio@gmail.com\n\nYour 1-Page Sprint Contract Agreement and 50% deposit instructions have been dispatched to ${email}.`);
+        closeEditorialModal();
+        btn.innerText = 'Request 1-Page Contract & Deposit Invoice ↗';
+        btn.disabled = false;
+      });
+    }
+  </script>
 </body>
 </html>

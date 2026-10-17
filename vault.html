@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.2"/>
   <style>
     /* Suppress Netlify HUD */
     iframe[src*="netlify"],
@@ -729,7 +729,7 @@
           <button class="btn-play-track" onclick="selectTrack(0, true); document.getElementById('interactive-chopper').scrollIntoView({behavior:'smooth'});">
             <span>▶</span> AUDITION IN DAW
           </button>
-          <a class="btn-download-audio" href="/assets/audio/you_could_have_been.mp3" download="You_Could_Have_Been_9LMNTS.mp3">
+          <a class="btn-download-audio" href="assets/audio/you_could_have_been.mp3" download="You_Could_Have_Been_9LMNTS.mp3">
             <span>⬇</span> MP3
           </a>
         </div>
@@ -752,7 +752,7 @@
           <button class="btn-play-track" onclick="selectTrack(1, true); document.getElementById('interactive-chopper').scrollIntoView({behavior:'smooth'});">
             <span>▶</span> AUDITION IN DAW
           </button>
-          <a class="btn-download-audio" href="/assets/audio/raise_another.mp3" download="Raise_Another_9LMNTS.mp3">
+          <a class="btn-download-audio" href="assets/audio/raise_another.mp3" download="Raise_Another_9LMNTS.mp3">
             <span>⬇</span> MP3
           </a>
         </div>
@@ -775,7 +775,7 @@
           <button class="btn-play-track" onclick="selectTrack(2, true); document.getElementById('interactive-chopper').scrollIntoView({behavior:'smooth'});">
             <span>▶</span> AUDITION IN DAW
           </button>
-          <a class="btn-download-audio" href="/assets/audio/same_blood_same_knife.mp3" download="Same_Blood_Same_Knife_9LMNTS.mp3">
+          <a class="btn-download-audio" href="assets/audio/same_blood_same_knife.mp3" download="Same_Blood_Same_Knife_9LMNTS.mp3">
             <span>⬇</span> MP3
           </a>
         </div>
@@ -837,6 +837,19 @@
       </div>
     </div>
   </main>
+
+  <!-- Universal Bottom 9-Station Spatial Command Dock -->
+  <nav class="fullpage-station-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <a class="fp-dock-item" href="loa.html"><span class="num">01</span><span>Project LOA</span></a>
+    <a class="fp-dock-item teal active" href="vault.html"><span class="num">02</span><span>Sonic Vault</span></a>
+    <a class="fp-dock-item" href="core.html"><span class="num">03</span><span>Creator OS Hub</span></a>
+    <a class="fp-dock-item teal" href="ai-voice.html"><span class="num">04</span><span>Argon AI &amp; CRM</span></a>
+    <a class="fp-dock-item" href="services.html"><span class="num">05</span><span>7-Day Sprints</span></a>
+    <a class="fp-dock-item teal" href="the-helm.html"><span class="num">06</span><span>The Helm</span></a>
+    <a class="fp-dock-item teal" href="clash.html"><span class="num">07</span><span>Battle Arenas</span></a>
+    <a class="fp-dock-item" href="merch.html"><span class="num">08</span><span>Phygital Merch</span></a>
+    <a class="fp-dock-item teal" href="vault.html#interactive-chopper"><span class="num">09</span><span>Studio DAW</span></a>
+  </nav>
 
   <script>
     // Audio Vault Track Library

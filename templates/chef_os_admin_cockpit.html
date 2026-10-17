@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440, initial-scale=1.0" />
+  <title>9LMNTS Studio // Web 2.5 Command Operating System Admin Cockpit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --espresso-void: #090706;
+      --espresso-dark: #110D0A;
+      --espresso-card: #18130F;
+      --espresso-elevated: #221A15;
+      --bronze-primary: #C69C6D;
+      --bronze-light: #DFB78C;
+      --gold-bright: #E5C178;
+      --border-warm: rgba(198, 156, 109, 0.22);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-cream: #FDFBF7;
+      --text-muted: #A89C90;
+      --green-profit: #10B981;
+      --green-soft: rgba(16, 185, 129, 0.12);
+      --green-border: rgba(16, 185, 129, 0.35);
+      --red-bleed: #EF4444;
+      --red-soft: rgba(239, 68, 68, 0.12);
+      --blue-hud: #3B82F6;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--espresso-void);
+      color: var(--text-cream);
+      font-family: var(--font-sans);
+      width: 1440px;
+      height: 1020px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cockpit-container {
+      width: 1440px;
+      height: 1020px;
+      padding: 24px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: radial-gradient(circle at 50% 0%, #1A130E 0%, var(--espresso-void) 80%);
+    }
+
+    /* Ambient Lighting */
+    .cockpit-container::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 380px;
+      background: radial-gradient(ellipse, rgba(198, 156, 109, 0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Top Command Header */
+    .cockpit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-warm);
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hud-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #090706;
+      font-size: 1.15rem;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(198, 156, 109, 0.35);
+    }
+
+    .header-titles h1 {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-titles p {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--bronze-primary);
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill-hud {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--border-warm);
+      background: rgba(24, 19, 15, 0.7);
+    }
+
+    .pill-hud.live {
+      border-color: var(--green-border);
+      color: var(--green-profit);
+    }
+
+    .pill-hud.client-select {
+      background: rgba(198, 156, 109, 0.15);
+      border-color: var(--bronze-primary);
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    /* 4-Bento Telemetry Row */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 10;
+      margin: 12px 0;
+    }
+
+    .telemetry-card {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 16px;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      backdrop-filter: blur(14px);
+    }
+
+    .telemetry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .telemetry-top i {
+      font-size: 0.95rem;
+    }
+
+    .telemetry-val {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+
+    .telemetry-sub {
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Main Command Workspace (2-Column Deck) */
+    .workspace-deck {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      flex: 1;
+      position: relative;
+      z-index: 10;
+      min-height: 0;
+      margin-bottom: 12px;
+    }
+
+    .deck-panel {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .panel-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-header span.badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(198, 156, 109, 0.16);
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    /* Live Orders List */
+    .orders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .order-ticket {
+      background: var(--espresso-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.2s ease;
+    }
+
+    .order-ticket:hover {
+      border-color: var(--bronze-primary);
+    }
+
+    .ticket-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ticket-num {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      padding: 4px 8px;
+      background: rgba(229, 193, 120, 0.12);
+      border-radius: 6px;
+    }
+
+    .ticket-details .item {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .ticket-details .sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+    }
+
+    .ticket-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ticket-price {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--green-profit);
+    }
+
+    .status-tag {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    .status-tag.prep {
+      background: rgba(239, 178, 68, 0.15);
+      border: 1px solid rgba(239, 178, 68, 0.4);
+      color: #F59E0B;
+    }
+
+    .status-tag.ready {
+      background: var(--green-soft);
+      border: 1px solid var(--green-border);
+      color: var(--green-profit);
+    }
+
+    .status-tag.delivery {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: var(--blue-hud);
+    }
+
+    /* Catering Requests & Calendar */
+    .catering-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .catering-ticket {
+      background: var(--espresso-elevated);
+      border: 1px solid var(--border-warm);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cat-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cat-client {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .cat-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold-bright);
+      background: rgba(198, 156, 109, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .cat-grid span.highlight {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .deposit-status-box {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--green-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .deposit-status-box .amt {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--green-profit);
+    }
+
+    /* Bottom Quick Action HUD */
+    .cockpit-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(24, 19, 15, 0.88);
+      border: 1px solid var(--border-warm);
+      border-radius: 14px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .inventory-switches {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .inv-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bronze-primary);
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+
+    .switch-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .switch-pill.in-stock {
+      border-color: var(--green-border);
+      color: var(--green-profit);
+    }
+
+    .switch-pill.eighty-six {
+      border-color: rgba(239, 68, 68, 0.4);
+      color: var(--red-bleed);
+      opacity: 0.7;
+    }
+
+    .payout-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .payout-telemetry span.strong {
+      color: var(--gold-bright);
+      font-weight: 800;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cockpit-container">
+    <!-- Top HUD Header -->
+    <div class="cockpit-header">
+      <div class="header-left">
+        <div class="hud-badge"><i class="fa-solid fa-terminal"></i></div>
+        <div class="header-titles">
+          <h1>9LMNTS // <span id="client-name">Island Flava</span> <span style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--gold-bright); font-weight: 700; padding: 3px 8px; border: 1px solid var(--border-warm); border-radius: 6px;">Web 2.5 Command OS</span></h1>
+          <p>Full Admin Cockpit // Zero-Commission Kitchen &amp; Catering Engine</p>
+        </div>
+      </div>
+
+      <div class="header-meta">
+        <div class="pill-hud live"><i class="fa-solid fa-circle"></i> System Live (0% Fee)</div>
+        <div class="pill-hud"><i class="fa-brands fa-stripe"></i> Stripe Direct Bank Payouts</div>
+        <div class="pill-hud client-select" id="client-badge"><i class="fa-solid fa-store"></i> 412 Dalhousie St (Ottawa)</div>
+      </div>
+    </div>
+
+    <!-- 4-Bento Telemetry Row -->
+    <div class="telemetry-grid">
+      <!-- Card 1 -->
+      <div class="telemetry-card">
+        <div class="telemetry-top">
+          <span>Today's Direct Sales</span>
+          <i class="fa-solid fa-wallet" style="color: var(--gold-bright);"></i>
+        </div>
+        <div class="telemetry-val" id="val-direct-sales">$3,420.00</div>
+        <div class="telemetry-sub" style="color: var(--green-profit);">
+          <i class="fa-solid fa-arrow-trend-up"></i> 100% Retained Margin (0% Uber Tax)
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="telemetry-card">
+        <div class="telemetry-top">
+          <span>30% Delivery Fees Saved</span>
+          <i class="fa-solid fa-piggy-bank" style="color: var(--green-profit);"></i>
+        </div>
+        <div class="telemetry-val" style="color: var(--green-profit);" id="val-fees-saved">+$4,580.00</div>
+        <div class="telemetry-sub" style="color: var(--text-muted);">
+          Recaptured in your bank this month
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="telemetry-card">
+        <div class="telemetry-top">
+          <span>Catering Deposits Locked</span>
+          <i class="fa-solid fa-lock" style="color: var(--gold-bright);"></i>
+        </div>
+        <div class="telemetry-val" id="val-catering-locked">$5,850.00</div>
+        <div class="telemetry-sub" style="color: var(--gold-bright);">
+          5 Active Banquets Auto-Secured
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="telemetry-card">
+        <div class="telemetry-top">
+          <span>Owned Guest CRM List</span>
+          <i class="fa-solid fa-users" style="color: var(--bronze-light);"></i>
+        </div>
+        <div class="telemetry-val" id="val-crm-guests">648 Guests</div>
+        <div class="telemetry-sub" style="color: var(--text-muted);">
+          100% Direct SMS/Email Retargeting
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Workspace (2-Column Split Deck) -->
+    <div class="workspace-deck">
+      <!-- Left Panel: Live Orders & Kitchen Queue HUD -->
+      <div class="deck-panel">
+        <div class="panel-header">
+          <h3><i class="fa-solid fa-fire-burner" style="color: var(--gold-bright);"></i> Live Kitchen Command Queue</h3>
+          <span class="badge">REAL-TIME AUTO-DISPATCH</span>
+        </div>
+
+        <div class="orders-list">
+          <!-- Ticket 1 -->
+          <div class="order-ticket">
+            <div class="ticket-left">
+              <span class="ticket-num">#1042</span>
+              <div class="ticket-details">
+                <div class="item" id="order-1-item">Jerk Chicken &amp; Oxtail Feast (×2)</div>
+                <div class="sub">
+                  <span><i class="fa-solid fa-clock"></i> 8 mins ago</span>
+                  <span>•</span>
+                  <span><i class="fa-brands fa-apple"></i> Apple Pay (Direct)</span>
+                </div>
+              </div>
+            </div>
+            <div class="ticket-right">
+              <span class="ticket-price">$53.00</span>
+              <span class="status-tag prep">Prepping (12m left)</span>
+            </div>
+          </div>
+
+          <!-- Ticket 2 -->
+          <div class="order-ticket">
+            <div class="ticket-left">
+              <span class="ticket-num">#1041</span>
+              <div class="ticket-details">
+                <div class="item" id="order-2-item">Curry Goat &amp; Diri Kole Platter (×1)</div>
+                <div class="sub">
+                  <span><i class="fa-solid fa-clock"></i> 21 mins ago</span>
+                  <span>•</span>
+                  <span><i class="fa-solid fa-credit-card"></i> Visa Direct</span>
+                </div>
+              </div>
+            </div>
+            <div class="ticket-right">
+              <span class="ticket-price">$26.50</span>
+              <span class="status-tag ready">Ready for Pickup</span>
+            </div>
+          </div>
+
+          <!-- Ticket 3 -->
+          <div class="order-ticket">
+            <div class="ticket-left">
+              <span class="ticket-num">#1040</span>
+              <div class="ticket-details">
+                <div class="item" id="order-3-item">Grand Island Sharing Box (4–6 Guests)</div>
+                <div class="sub">
+                  <span><i class="fa-solid fa-clock"></i> 34 mins ago</span>
+                  <span>•</span>
+                  <span><i class="fa-brands fa-google-pay"></i> Google Pay</span>
+                </div>
+              </div>
+            </div>
+            <div class="ticket-right">
+              <span class="ticket-price">$115.00</span>
+              <span class="status-tag delivery">Out for Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Catering Request & Upfront Deposit Engine -->
+      <div class="deck-panel">
+        <div class="panel-header">
+          <h3><i class="fa-solid fa-calendar-check" style="color: var(--green-profit);"></i> Automated Catering Engine</h3>
+          <span class="badge" style="color: var(--green-profit); background: var(--green-soft);">50% DEPOSITS SECURED</span>
+        </div>
+
+        <div class="catering-list">
+          <!-- Catering Booking 1 -->
+          <div class="catering-ticket">
+            <div class="cat-head">
+              <span class="cat-client">Embassy Gala Reception (120 Guests)</span>
+              <span class="cat-date">NOV 14, 2026</span>
+            </div>
+            <div class="cat-grid">
+              <span>Package: <span class="highlight">Grand Buffet ($24/head)</span></span>
+              <span>Total Value: <span class="highlight">$2,880.00 CAD</span></span>
+            </div>
+            <div class="deposit-status-box">
+              <span><i class="fa-solid fa-shield-halved" style="color: var(--green-profit);"></i> 50% Upfront Deposit Paid Online</span>
+              <span class="amt">$1,440.00 CAD</span>
+            </div>
+          </div>
+
+          <!-- Catering Booking 2 -->
+          <div class="catering-ticket">
+            <div class="cat-head">
+              <span class="cat-client">Corporate Innovation Luncheon (60 Guests)</span>
+              <span class="cat-date">NOV 21, 2026</span>
+            </div>
+            <div class="cat-grid">
+              <span>Package: <span class="highlight">Platter Feast ($22/head)</span></span>
+              <span>Total Value: <span class="highlight">$1,320.00 CAD</span></span>
+            </div>
+            <div class="deposit-status-box">
+              <span><i class="fa-solid fa-shield-halved" style="color: var(--green-profit);"></i> 50% Upfront Deposit Paid Online</span>
+              <span class="amt">$660.00 CAD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Admin Control Bar -->
+    <div class="cockpit-bottom">
+      <div class="inventory-switches">
+        <span class="inv-title"><i class="fa-solid fa-sliders"></i> 1-Tap 86x Stock:</span>
+        <span class="switch-pill in-stock"><i class="fa-solid fa-check"></i> <span id="dish-1-name">Jerk Chicken</span> (In Stock)</span>
+        <span class="switch-pill in-stock"><i class="fa-solid fa-check"></i> <span id="dish-2-name">Oxtail Plate</span> (In Stock)</span>
+        <span class="switch-pill in-stock"><i class="fa-solid fa-check"></i> <span id="dish-3-name">Curry Goat</span> (In Stock)</span>
+        <span class="switch-pill eighty-six"><i class="fa-solid fa-ban"></i> Sweet Plantains (86'd Sold Out)</span>
+      </div>
+
+      <div class="payout-telemetry">
+        <span><i class="fa-brands fa-stripe" style="color: var(--gold-bright);"></i> Next Bank Deposit:</span>
+        <span class="strong">$4,280.00 CAD</span>
+        <span>(Tomorrow at 9:00 AM)</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const client = params.get('client') || 'island_flava';
+
+    const clientConfigs = {
+      island_flava: {
+        name: "Island Flava",
+        badge: "412 Dalhousie St (ByWard Market)",
+        sales: "$3,420.00",
+        saved: "+$4,580.00",
+        catering: "$5,850.00",
+        guests: "648 Guests",
+        order1: "Jerk Chicken & Oxtail Feast (×2)",
+        order2: "Curry Goat & Roti Platter (×1)",
+        order3: "Grand Island Sharing Box (4–6 Guests)",
+        dish1: "Jerk Chicken",
+        dish2: "Oxtail Plate",
+        dish3: "Curry Goat"
+      },
+      baccanalle: {
+        name: "Baccanalle",
+        badge: "595 Montreal Rd (Ottawa)",
+        sales: "$4,150.00",
+        saved: "+$3,620.00",
+        catering: "$8,900.00",
+        guests: "890 Guests",
+        order1: "Artisanal Jerk Chicken Box (×3)",
+        order2: "Sorrel Glazed Salmon & Coconut Rice",
+        order3: "Capital Fair Award Tasting Platter",
+        dish1: "Smoked Jerk",
+        dish2: "Sorrel Salmon",
+        dish3: "Vegan Roti"
+      },
+      tipikliz: {
+        name: "Tipikliz Caribbean",
+        badge: "4025 Innes Rd (Orleans)",
+        sales: "$2,890.00",
+        saved: "+$3,120.00",
+        catering: "$4,600.00",
+        guests: "512 Guests",
+        order1: "Griot Royal & Diri Djon Djon (×2)",
+        order2: "Tassot Cabrit & Pikliz Platter",
+        order3: "Grand Fritaille Community Feast",
+        dish1: "Griot Royal",
+        dish2: "Diri Djon Djon",
+        dish3: "Tassot Cabrit"
+      },
+      rozo: {
+        name: "Rozo Restaurant & Lounge",
+        badge: "253 St. Patrick St (ByWard Market)",
+        sales: "$5,120.00",
+        saved: "+$4,250.00",
+        catering: "$7,400.00",
+        guests: "780 Guests",
+        order1: "Slow-Braised Oxtail & Griot (×2)",
+        order2: "VIP Table Bottle & Tasting Package",
+        order3: "ByWard Nightlife Platter (6 Guests)",
+        dish1: "Braised Oxtail",
+        dish2: "Lounge Jerk",
+        dish3: "VIP Table 1"
+      },
+      margo: {
+        name: "Margo Restaurant",
+        badge: "606 Rideau & 1563 Bank (Dual-Hub)",
+        sales: "$5,680.00",
+        saved: "+$4,890.00",
+        catering: "$9,200.00",
+        guests: "1,140 Guests",
+        order1: "Griot Royal & Diri Djon Djon Feast (Rideau)",
+        order2: "Tassot Cabrit & Poutine Creole (Bank St)",
+        order3: "Grand Fritaille Banquet Platter (Dual Kitchen)",
+        dish1: "Griot Royal",
+        dish2: "Diri Djon Djon",
+        dish3: "Tassot Cabrit"
+      }
+    };
+
+    const c = clientConfigs[client] || clientConfigs.island_flava;
+    document.getElementById('client-name').innerText = c.name;
+    document.getElementById('client-badge').innerHTML = `<i class="fa-solid fa-store"></i> ${c.badge}`;
+    document.getElementById('val-direct-sales').innerText = c.sales;
+    document.getElementById('val-fees-saved').innerText = c.saved;
+    document.getElementById('val-catering-locked').innerText = c.catering;
+    document.getElementById('val-crm-guests').innerText = c.guests;
+    document.getElementById('order-1-item').innerText = c.order1;
+    document.getElementById('order-2-item').innerText = c.order2;
+    document.getElementById('order-3-item').innerText = c.order3;
+    document.getElementById('dish-1-name').innerText = c.dish1;
+    document.getElementById('dish-2-name').innerText = c.dish2;
+    document.getElementById('dish-3-name').innerText = c.dish3;
+  </script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 /* 9LMNTS STUDIO OFFICIAL RECKLESS DESIGN TYPOGRAPHY SYSTEM */
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Orbitron:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@700&display=swap");
 
 @font-face {
   font-family: 'Bulgatti';
-  src: local('Bulgatti'), local('Bulgatti-Regular'), url('/fonts/Bulgatti.ttf') format('truetype');
+  src: local('Bulgatti'), local('Bulgatti-Regular');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,8 @@
   --font-heading: 'Syne', 'Orbitron', sans-serif;
   --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-script: 'Bulgatti', 'Caveat', cursive;
+  --font-script: 'Indie Flower', 'Caveat', cursive;
+  --font-handwriting: 'Indie Flower', cursive, sans-serif;
 }
 
 .font-display {
@@ -33,8 +34,15 @@
   font-family: var(--font-mono);
 }
 
+.font-handwriting {
+  font-family: 'Indie Flower', cursive, sans-serif;
+  letter-spacing: 0.03em;
+}
+
 .font-script,
+.font-\[\'Indie_Flower\'\],
 .font-\[\'Mrs_Saint_Delafield\'\],
 .font-\[\'Permanent_Marker\'\] {
   font-family: var(--font-script) !important;
+  letter-spacing: 0.03em;
 }

@@ -2,74 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://9lmntsstudio.com/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/loa</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/vault</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/core</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/ai-voice</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/services</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/the-helm</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/clash</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/merch</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://9lmntsstudio.com/pricing</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://artist.9lmntsstudio.com/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://clash.9lmntsstudio.com/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- 25 Live Competition OS Arena Verticals -->
+  <url><loc>https://9lmntsstudio.com/01_Sound_Clash_OS.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/02_Comedian_OS_Roast_Battle.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/03_Bars_OS_Battle_Rap.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/04_Runway_OS_Fashion_Battle.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/05_Feast_OS_Chef_Battle.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/06_Hoops_OS_3v3_Streetball.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/07_GameOS_Pro_Esports.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/08_Pitch_Battle_OS_Corporate_Clash.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/09_Dance_Clash_OS_BBoy_Arena.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/10_Ink_OS_Tattoo_Battle.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/11_Barista_OS_Coffee_Clash.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/12_Mixology_OS_Cocktail_Clash.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/13_Barber_OS_Fade_Clash.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/14_Beat_Battle_OS_Producer_Arena.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/15_Fit_Clash_OS_CrossFit_Arena.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/16_Karaoke_Clash_OS.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/17_Trivia_Clash_OS_Quiz_Arena.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/18_Love_Match_OS_Bachelor_Auction.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/19_Wedding_OS_The_Union.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/20_Pitmaster_OS_BBQ_Battle.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/21_Auto_Clash_OS_Car_Showcase.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/22_Cosplay_Clash_OS.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/23_Kicks_Clash_OS_Sneakerhead_Arena.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/24_Poetry_Slam_OS_Spoken_Word.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://9lmntsstudio.com/25_Illusion_Clash_OS_Magic_Arena.html</loc><lastmod>2026-10-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

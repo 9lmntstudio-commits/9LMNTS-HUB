@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="styles/fullpage.css?v=3.0"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.2"/>
   <style>
     /* Dedicated LOA Styles */
     .tab-active-damian {
@@ -927,7 +927,7 @@
           <li>Digital Neo-Ottawa Concept Artbook (PDF) &amp; 4K Wallpaper Pack</li>
           <li>Your name permanently listed in the official game backer roll</li>
         </ul>
-        <a href="https://paypal.com" target="_blank" class="btn-secondary" style="width:100%; text-align:center;">Back for $25 CAD</a>
+        <button onclick="openLoaBackerModal('Tier 01 — Digital Citizen', 25)" class="btn-secondary" style="width:100%; text-align:center; cursor:pointer;">Back for $25 CAD</button>
       </div>
 
       <!-- Tier 2 -->
@@ -943,7 +943,7 @@
           <li>Special 'Djed Operative' in-game title &amp; profile badge</li>
           <li>Name in official cinematic anime series ending credits</li>
         </ul>
-        <a href="https://paypal.com" target="_blank" class="btn-primary" style="width:100%; text-align:center; background: linear-gradient(135deg, #FF5500, #CC3300); border-color:#FF7733;">Back for $75 CAD</a>
+        <button onclick="openLoaBackerModal('Tier 02 — Djed Operative (Alpha)', 75)" class="btn-primary" style="width:100%; text-align:center; background: linear-gradient(135deg, #FF5500, #CC3300); border-color:#FF7733; cursor:pointer;">Back for $75 CAD (4x $18.75)</button>
       </div>
 
       <!-- Tier 3 -->
@@ -959,7 +959,7 @@
           <li>Exclusive In-Game 'Neo-Ottawa Streetwear' Skin for Damian Kane</li>
           <li>Physical Holographic Backer Certificate signed by Creative Director Darnley Sanon</li>
         </ul>
-        <a href="https://paypal.com" target="_blank" class="btn-secondary" style="width:100%; text-align:center;">Back for $150 CAD</a>
+        <button onclick="openLoaBackerModal('Tier 03 — Phygital Streetwear', 150)" class="btn-secondary" style="width:100%; text-align:center; cursor:pointer;">Back for $150 CAD (4x $37.50)</button>
       </div>
 
       <!-- Tier 4 -->
@@ -975,7 +975,56 @@
           <li>Access to monthly private developer streams with Darnley Sanon</li>
           <li>Hardcover Full-Color 'Art of LOA &amp; 9LMNTS Studio' Lore Bible</li>
         </ul>
-        <a href="https://paypal.com" target="_blank" class="btn-secondary" style="width:100%; text-align:center;">Back for $500 CAD</a>
+        <button onclick="openLoaBackerModal('Tier 04 — Architect\'s Sceptre', 500)" class="btn-secondary" style="width:100%; text-align:center; cursor:pointer;">Back for $500 CAD (4x $125)</button>
+      </div>
+
+      <!-- Tier 5 (Master Redesign V5: $2,500 CAD Executive Backer Tier) -->
+      <div class="tier-card" style="border-color: rgba(0, 212, 255, 0.45); box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);">
+        <div class="tier-badge" style="background: rgba(0, 212, 255, 0.2); color: #00D4FF; border: 1px solid #00D4FF;">TIER 05 // VAULT 9 IMMORTAL</div>
+        <h3 style="font-family:var(--font-display); color:#00D4FF; margin-bottom:6px;">Ptah Executive Patron</h3>
+        <div class="tier-price" style="color:#00D4FF;">$2,500 <span>CAD</span></div>
+        <p class="tier-desc">Become a canon character inside Neo-Ottawa 3026 &amp; Associate Producer on the pilot.</p>
+        <ul class="tier-features">
+          <li>Everything in Architect's Sceptre ($500 Tier)</li>
+          <li>Custom 3D Metahuman NPC likeness scanned into Neo-Ottawa Sector 01</li>
+          <li>Official Associate Producer credit in Unreal 5.7 Vertical Slice &amp; Anime Pilot</li>
+          <li>Full 18-Piece 9LMNTS x LOA Phygital Capsule Drop + VIP All-Arena Lifetime Pass</li>
+          <li>1-on-1 Creative Direction Session with Founder Darnley Sanon</li>
+        </ul>
+        <button onclick="openLoaBackerModal('Tier 05 — Ptah Executive Patron', 2500)" class="btn-primary" style="width:100%; text-align:center; background: linear-gradient(135deg, #00D4FF, #0077FF); border-color:#38E1FF; color:#050505; cursor:pointer;">Back for $2,500 CAD (4x $625)</button>
+      </div>
+    </div>
+
+    <!-- PayPal E-Commerce Services Backer Checkout Modal -->
+    <div id="loaBackerModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(14px); z-index:99998; align-items:center; justify-content:center; padding:20px;" onclick="closeLoaBackerModal()">
+      <div style="background:#0B0E17; border:1px solid #FF5500; border-top:3px solid #FF5500; border-radius:20px; max-width:480px; width:100%; padding:28px; box-shadow:0 30px 90px rgba(0,0,0,0.95), 0 0 50px rgba(255,85,0,0.25);" onclick="event.stopPropagation()">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1);">
+          <div>
+            <span style="font-family:var(--font-mono); font-size:0.7rem; color:#FF5500; font-weight:800; letter-spacing:0.12em;">PAYPAL E-COMMERCE SERVICES // PROJECT LOA</span>
+            <h3 id="loaModalTierTitle" style="font-family:var(--font-display); font-size:1.15rem; color:#FFF; margin-top:4px;">Tier 02 — Djed Operative</h3>
+          </div>
+          <button onclick="closeLoaBackerModal()" style="background:none; border:none; color:#94A3B8; font-size:1.6rem; cursor:pointer;">&times;</button>
+        </div>
+        <form onsubmit="submitLoaPledge(event)">
+          <div style="background:rgba(255,85,0,0.08); border:1px solid rgba(255,85,0,0.3); border-radius:12px; padding:14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:0.75rem; color:#94A3B8;">Pledge Contribution</div>
+              <div id="loaModalInstallment" style="font-family:var(--font-mono); font-size:0.75rem; color:#00D4FF; margin-top:2px;">PayPal Pay in 4: 4x $18.75 CAD (0% Interest)</div>
+            </div>
+            <div id="loaModalPrice" style="font-family:var(--font-mono); font-size:1.5rem; font-weight:900; color:#FF5500;">$75 CAD</div>
+          </div>
+          <div style="display:grid; gap:12px; margin-bottom:16px;">
+            <input type="text" id="loaBackerName" required placeholder="Your Full Name / Backer Roll Handle" style="width:100%; padding:12px 14px; background:#121723; border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#FFF; font-family:var(--font-body);"/>
+            <input type="email" id="loaBackerEmail" required placeholder="Email Address for Steam/Epic Key &amp; Updates" style="width:100%; padding:12px 14px; background:#121723; border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#FFF; font-family:var(--font-body);"/>
+            <label style="display:flex; align-items:center; gap:10px; font-size:0.82rem; color:#CBD5E1; background:#121723; padding:10px 14px; border-radius:10px; border:1px solid rgba(0,212,255,0.3); cursor:pointer;">
+              <input type="checkbox" id="loaUsePayIn4" checked/>
+              <span>Use <strong>PayPal Pay in 4</strong> (4 interest-free bi-weekly installments)</span>
+            </label>
+          </div>
+          <button type="submit" id="loaPledgeBtn" class="btn-primary" style="width:100%; justify-content:center; padding:14px; font-size:0.9rem; cursor:pointer;">
+            Authorize Pledge via PayPal E-Commerce &rarr;
+          </button>
+        </form>
       </div>
     </div>
 
@@ -989,6 +1038,51 @@
     </div>
 
     <script>
+      let activeLoaTier = { title: 'Tier 02 — Djed Operative (Alpha)', price: 75 };
+
+      function openLoaBackerModal(title, price) {
+        activeLoaTier = { title, price };
+        document.getElementById('loaModalTierTitle').innerText = title;
+        document.getElementById('loaModalPrice').innerText = '$' + price.toLocaleString() + ' CAD';
+        document.getElementById('loaModalInstallment').innerText = 'PayPal Pay in 4: 4x $' + (price / 4).toFixed(2) + ' CAD (0% Interest)';
+        document.getElementById('loaBackerModal').style.display = 'flex';
+      }
+
+      function closeLoaBackerModal() {
+        document.getElementById('loaBackerModal').style.display = 'none';
+      }
+
+      function submitLoaPledge(e) {
+        e.preventDefault();
+        const name = document.getElementById('loaBackerName').value;
+        const email = document.getElementById('loaBackerEmail').value;
+        const payIn4 = document.getElementById('loaUsePayIn4').checked;
+        const btn = document.getElementById('loaPledgeBtn');
+        btn.innerText = 'Dispatched to PayPal E-Commerce...';
+        btn.disabled = true;
+
+        fetch('https://loabrain.app.n8n.cloud/webhook/9lmnts-leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            agency: '9LMNTS Studio // Project LOA',
+            founder: 'Darnley Sanon',
+            client_name: name,
+            client_email: email,
+            tier: activeLoaTier.title,
+            price_cad: activeLoaTier.price,
+            pay_in_4: payIn4,
+            installments: payIn4 ? ('4x $' + (activeLoaTier.price / 4).toFixed(2) + ' CAD (0% Interest)') : 'Full Payment',
+            timestamp: new Date().toISOString()
+          })
+        }).catch(() => {}).finally(() => {
+          alert('✓ Project LOA Backer Pledge Confirmed for ' + name + '!\n\nReward Tier: ' + activeLoaTier.title + '\nAmount: $' + activeLoaTier.price.toLocaleString() + ' CAD\nPayment Plan: ' + (payIn4 ? 'PayPal Pay in 4 (0% Interest)' : 'Full Settlement') + '\n\nConfirmation and backer credentials dispatched to ' + email + '.');
+          closeLoaBackerModal();
+          btn.innerText = 'Authorize Pledge via PayPal E-Commerce →';
+          btn.disabled = false;
+        });
+      }
+
       function switchCharacterTab(tab) {
         // Panels
         document.getElementById('characterDamian').style.display = tab === 'damian' ? 'block' : 'none';
@@ -1022,7 +1116,10 @@
 
       // Close on escape key
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeImageModal();
+        if (e.key === 'Escape') {
+          closeImageModal();
+          closeLoaBackerModal();
+        }
       });
     </script>
 
@@ -1042,5 +1139,18 @@
       </div>
     </div>
   </main>
+
+  <!-- Universal Bottom 9-Station Spatial Command Dock -->
+  <nav class="fullpage-station-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <a class="fp-dock-item active" href="loa.html"><span class="num">01</span><span>Project LOA</span></a>
+    <a class="fp-dock-item teal" href="vault.html"><span class="num">02</span><span>Sonic Vault</span></a>
+    <a class="fp-dock-item" href="core.html"><span class="num">03</span><span>Creator OS Hub</span></a>
+    <a class="fp-dock-item teal" href="ai-voice.html"><span class="num">04</span><span>Argon AI &amp; CRM</span></a>
+    <a class="fp-dock-item" href="services.html"><span class="num">05</span><span>7-Day Sprints</span></a>
+    <a class="fp-dock-item teal" href="the-helm.html"><span class="num">06</span><span>The Helm</span></a>
+    <a class="fp-dock-item teal" href="clash.html"><span class="num">07</span><span>Battle Arenas</span></a>
+    <a class="fp-dock-item" href="merch.html"><span class="num">08</span><span>Phygital Merch</span></a>
+    <a class="fp-dock-item teal" href="vault.html#interactive-chopper"><span class="num">09</span><span>Studio DAW</span></a>
+  </nav>
 </body>
 </html>

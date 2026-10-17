@@ -106,22 +106,170 @@
     ::-webkit-scrollbar-thumb:hover { background: rgba(255, 85, 0, 0.8); }
 
     /* ===================================================
-       1. CYBERPUNK HEADER
+       1. VISIONOS SPATIAL HUD HEADER & 9-STATION COMMAND DOCK
        =================================================== */
     .studio-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 70px;
+      top: 12px;
+      left: 24px;
+      right: 24px;
+      height: 50px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      padding: 0 28px;
+      justify-content: space-between;
+      padding: 0 18px;
       z-index: 100;
-      pointer-events: none;
-      background: transparent;
-      border-bottom: none;
+      pointer-events: auto;
+      background: rgba(10, 12, 18, 0.72);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-top: 1px solid rgba(255, 85, 0, 0.38);
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .studio-brand-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .studio-brand-mark {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .studio-brand-mark .accent {
+      color: var(--neon-orange);
+      text-shadow: 0 0 14px rgba(255, 85, 0, 0.55);
+    }
+
+    .studio-status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.10);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #34D399;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .studio-status-chip .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      animation: radarPulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    .studio-telemetry-center {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      color: #94A3B8;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1260px) {
+      .studio-telemetry-center { display: none; }
+    }
+
+    /* Desktop 9-Station Spatial Command Dock (Bottom Center) */
+    .desktop-command-dock {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 95;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      background: rgba(10, 12, 18, 0.78);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 85, 0, 0.42);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.88), 0 0 35px rgba(255, 85, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      max-width: 96vw;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .desktop-command-dock::-webkit-scrollbar { display: none; }
+
+    .cmd-dock-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 11px;
+      padding: 7px 12px;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: all 0.22s var(--ease-cinematic);
+      text-decoration: none;
+    }
+
+    .cmd-dock-item .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: rgba(255, 85, 0, 0.16);
+      color: var(--neon-orange);
+      border: 1px solid rgba(255, 85, 0, 0.35);
+    }
+
+    .cmd-dock-item.teal .num {
+      background: rgba(0, 240, 255, 0.14);
+      color: var(--cyber-teal);
+      border-color: rgba(0, 240, 255, 0.35);
+    }
+
+    .cmd-dock-item:hover {
+      background: rgba(255, 85, 0, 0.14);
+      border-color: var(--neon-orange);
+      color: #FFFFFF;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 85, 0, 0.28);
+    }
+
+    .cmd-dock-item.teal:hover {
+      background: rgba(0, 240, 255, 0.14);
+      border-color: var(--cyber-teal);
+      box-shadow: 0 8px 20px rgba(0, 240, 255, 0.28);
+    }
+
+    @media (max-width: 768px) {
+      .desktop-command-dock { display: none; }
     }
 
     /* Cyber Hamburger Menu Button */
@@ -130,7 +278,7 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       width: 38px;
       height: 38px;
-      border-radius: 8px;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -175,63 +323,63 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       pointer-events: auto;
     }
 
     .btn-glow {
-      background: var(--neon-orange);
-      color: #050505;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 0.78rem;
+      background: #FFFFFF;
+      color: #0A0C10;
+      border: 1px solid #FFFFFF;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.04em;
       cursor: pointer;
-      box-shadow: 0 0 18px rgba(255, 85, 0, 0.45);
-      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.20);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       text-decoration: none;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .btn-glow:hover {
-      background: #ff6a1a;
-      box-shadow: 0 0 25px rgba(255, 85, 0, 0.75);
-      transform: translateY(-1px);
+      background: #E5E7EB;
+      box-shadow: 0 8px 28px rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
     }
 
     .btn-mode-toggle {
-      background: rgba(14, 18, 27, 0.75);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(0, 240, 255, 0.40);
-      color: var(--cyber-teal);
-      padding: 7px 14px;
-      border-radius: 6px;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.06em;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
       gap: 6px;
       text-decoration: none;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       text-transform: uppercase;
     }
 
     .btn-mode-toggle:hover {
-      background: rgba(0, 240, 255, 0.18);
-      border-color: #00F0FF;
-      color: #fff;
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.55);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
       transform: translateY(-1px);
     }
 
@@ -302,99 +450,74 @@
       z-index: 50;
     }
 
-    /* Radar Pin Dot (Only element visible by default) */
+    /* Minimalist Editorial Pointer Pin (Inspired by Pinterest Desk Reference) */
     .tag-pin {
-      width: 22px;
-      height: 22px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: rgba(10, 11, 16, 0.92);
-      border: 2px solid var(--neon-orange);
-      box-shadow: 0 0 14px var(--neon-orange);
+      background: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.22);
       position: relative;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8px;
       font-weight: 800;
-      color: #fff;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      color: #0A0C10;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .tag-pin::after {
       content: '';
       position: absolute;
-      inset: -6px;
-      border: 1px solid var(--neon-orange);
+      inset: -5px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
       border-radius: 50%;
-      animation: radarPulse 2.2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+      animation: radarPulse 2.4s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     @keyframes radarPulse {
       0% { transform: scale(0.6); opacity: 1; }
-      100% { transform: scale(2.2); opacity: 0; }
+      100% { transform: scale(2.0); opacity: 0; }
     }
 
     .guide-tag:hover .tag-pin, .guide-tag.active .tag-pin {
-      transform: scale(1.18);
-      box-shadow: 0 0 24px var(--neon-orange);
-      background: var(--neon-orange);
-      color: #050505;
+      transform: scale(1.3);
+      box-shadow: 0 0 20px #FFFFFF, 0 0 0 5px rgba(255, 255, 255, 0.35);
+      background: #FFFFFF;
+      color: #0A0C10;
     }
 
-    /* Color Variants */
-    .guide-tag.teal .tag-pin {
-      border-color: var(--cyber-teal);
-      box-shadow: 0 0 14px var(--cyber-teal);
-    }
-    .guide-tag.teal .tag-pin::after { border-color: var(--cyber-teal); }
-    .guide-tag.teal:hover .tag-pin, .guide-tag.teal.active .tag-pin {
-      box-shadow: 0 0 24px var(--cyber-teal);
-      background: var(--cyber-teal);
-      color: #050505;
-    }
-
-    .guide-tag.purple .tag-pin {
-      border-color: var(--cyber-purple);
-      box-shadow: 0 0 14px var(--cyber-purple);
-    }
-    .guide-tag.purple .tag-pin::after { border-color: var(--cyber-purple); }
-    .guide-tag.purple:hover .tag-pin, .guide-tag.purple.active .tag-pin {
-      box-shadow: 0 0 24px var(--cyber-purple);
-      background: var(--cyber-purple);
-      color: #fff;
-    }
-
+    /* Minimal White/Silver Pointer Dots */
+    .guide-tag.teal .tag-pin,
+    .guide-tag.purple .tag-pin,
     .guide-tag.green .tag-pin {
-      border-color: var(--matrix-green);
-      box-shadow: 0 0 14px var(--matrix-green);
-    }
-    .guide-tag.green .tag-pin::after { border-color: var(--matrix-green); }
-    .guide-tag.green:hover .tag-pin, .guide-tag.green.active .tag-pin {
-      box-shadow: 0 0 24px var(--matrix-green);
-      background: var(--matrix-green);
-      color: #050505;
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.22);
     }
 
-    /* Tech Label Card - HIDDEN BY DEFAULT (Revealed on 1 Click) */
+    /* Minimal Editorial Label Card */
     .tag-label {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(8px) scale(0.92);
+      transform: translateY(6px) scale(0.96);
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
-      background: rgba(14, 16, 23, 0.95);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 85, 0, 0.5);
-      padding: 8px 12px;
-      border-radius: 8px;
+      background: rgba(10, 13, 19, 0.94);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 10px 14px;
+      border-radius: 12px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(255, 85, 0, 0.25);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
       position: absolute;
-      left: 28px;
+      left: 24px;
       top: -12px;
       white-space: nowrap;
       z-index: 60;
@@ -431,7 +554,8 @@
     .guide-tag.green .tag-label::before { background: var(--matrix-green); }
     .guide-tag.green .tag-label { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(16, 185, 129, 0.25); }
 
-    /* SINGLE CLICK ACTIVATION */
+    /* HOVER OR ACTIVE REVEAL */
+    .guide-tag:hover .tag-label,
     .guide-tag.active .tag-label {
       opacity: 1;
       visibility: visible;
@@ -527,19 +651,10 @@
       z-index: 15;
     }
 
-    /* Ambient corner hud elements */
+    /* Ambient corner hud elements consolidated into .studio-header */
     .hud-corner {
-      position: fixed;
-      pointer-events: none;
-      z-index: 50;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: rgba(255, 255, 255, 0.4);
-      padding: 12px 28px;
-      letter-spacing: 1px;
+      display: none;
     }
-    .hud-tl { top: 68px; left: 0; }
-    .hud-tr { top: 68px; right: 0; text-align: right; }
 
     /* ===================================================
        4. MOBILE 3-PART COCKPIT & STREAMLINED DOCK
@@ -562,17 +677,18 @@
 
     /* ===================================================
        5. OBSIDIAN PROTOCOL SYSTEM DRAWER (#navDrawer)
+          Matching Pinterest Dark Minimalist Standard
        =================================================== */
     .nav-drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(3, 4, 7, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(4, 6, 9, 0.82);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
       z-index: 998;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .nav-drawer-backdrop.active {
@@ -584,14 +700,14 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: 380px;
+      width: 400px;
       max-width: 90vw;
       height: 100vh;
-      background: rgba(10, 11, 16, 0.94);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-left: 1px solid rgba(255, 85, 0, 0.25);
-      box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+      background: #0B0E14;
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.95);
       z-index: 999;
       transform: translateX(100%);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -599,7 +715,7 @@
       flex-direction: column;
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: rgba(255, 85, 0, 0.3) transparent;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
     }
 
     .nav-drawer.active {
@@ -607,7 +723,7 @@
     }
 
     .drawer-header {
-      padding: 20px 24px;
+      padding: 24px 28px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
@@ -616,31 +732,33 @@
 
     .drawer-title {
       font-family: 'Syne', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: #fff;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #FFFFFF;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .drawer-title .pulse {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--neon-orange);
-      box-shadow: 0 0 10px var(--neon-orange);
+      background: #FFFFFF;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
 
     .drawer-close {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #94a3b8;
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      font-size: 1.2rem;
+      color: #94A3B8;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      line-height: 1;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -649,54 +767,58 @@
     }
 
     .drawer-close:hover {
-      background: rgba(255, 85, 0, 0.15);
-      color: #fff;
-      border-color: rgba(255, 85, 0, 0.4);
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
     }
 
     .drawer-body {
-      padding: 20px 24px;
+      padding: 24px 28px;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 24px;
     }
 
     .drawer-section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      font-weight: 700;
-      color: #64748b;
-      letter-spacing: 1.2px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #64748B;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .drawer-cta-card {
-      background: linear-gradient(135deg, rgba(255, 85, 0, 0.15) 0%, rgba(10, 11, 16, 0.8) 100%);
-      border: 1px solid rgba(255, 85, 0, 0.35);
-      border-radius: 10px;
-      padding: 16px;
+      background: rgba(18, 22, 31, 0.60);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
     .drawer-cta-card h4 {
       font-family: 'Syne', sans-serif;
-      font-size: 0.85rem;
-      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #FFFFFF;
       margin: 0;
     }
 
     .drawer-cta-card p {
-      font-size: 0.72rem;
-      color: #94a3b8;
-      margin: 0 0 4px 0;
-      line-height: 1.35;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      color: #94A3B8;
+      margin: 0 0 6px 0;
+      line-height: 1.5;
     }
 
     .drawer-external-links {
@@ -707,44 +829,45 @@
 
     .drawer-ext-link {
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 10px 12px;
-      color: #e2e8f0;
-      font-size: 0.76rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 11px 14px;
+      color: #E2E8F0;
+      font-size: 0.75rem;
       font-weight: 700;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: all 0.2s ease;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     .drawer-ext-link:hover {
-      background: rgba(0, 240, 255, 0.08);
-      border-color: var(--cyber-teal);
-      color: #fff;
-      box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
 
     .drawer-ext-link.clash:hover {
-      background: rgba(255, 85, 0, 0.08);
-      border-color: var(--neon-orange);
-      box-shadow: 0 0 14px rgba(255, 85, 0, 0.2);
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
 
     .drawer-station-list {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
     }
 
     .drawer-station-item {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 7px;
-      padding: 9px 12px;
+      border-radius: 12px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -753,50 +876,52 @@
     }
 
     .drawer-station-item:hover {
-      background: rgba(255, 85, 0, 0.08);
-      border-color: rgba(255, 85, 0, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.20);
       transform: translateX(-3px);
     }
 
     .drawer-station-item .station-meta {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
     }
 
     .drawer-station-item .station-num {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.68rem;
       font-weight: 800;
-      color: var(--neon-orange);
-      background: rgba(255, 85, 0, 0.12);
-      padding: 2px 5px;
-      border-radius: 4px;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 2px 7px;
+      border-radius: 6px;
     }
 
     .drawer-station-item .station-name {
-      font-size: 0.74rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.76rem;
       font-weight: 700;
-      color: #e2e8f0;
+      color: #E2E8F0;
     }
 
     .drawer-station-item .station-arrow {
-      color: #64748b;
-      font-size: 0.72rem;
+      color: #64748B;
+      font-size: 0.76rem;
       transition: color 0.2s ease;
     }
 
     .drawer-station-item:hover .station-arrow {
-      color: var(--neon-orange);
+      color: #FFFFFF;
     }
 
     .drawer-telemetry {
-      padding: 16px 24px;
+      padding: 18px 28px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(4, 5, 8, 0.9);
+      background: #090B0E;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.66rem;
-      color: #64748b;
+      color: #64748B;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -861,15 +986,11 @@
     }
 
     .modal-dialog {
-      background: rgba(10, 13, 20, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
-        radial-gradient(circle at 50% -10%, rgba(255, 69, 0, 0.28) 0%, rgba(255, 30, 0, 0.08) 45%, transparent 75%);
+      background: #0E121A;
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(255, 69, 0, 0.40);
-      border-top: 2px solid #FF4500;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(255, 69, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.16);
       border-radius: 26px;
       width: 100%;
       max-width: 760px;
@@ -884,65 +1005,47 @@
       max-width: 900px;
     }
 
-    /* Cyan Telemetry Variant */
+    /* Minimalist Dark Obsidian Standard */
     .modal-dialog.teal-theme,
     .modal-dialog.purple-theme {
-      background: rgba(10, 13, 20, 0.50);
-      background-image: 
-        linear-gradient(180deg, rgba(14, 18, 27, 0.45) 0%, rgba(10, 13, 20, 0.60) 100%),
-        radial-gradient(circle at 50% -10%, rgba(0, 212, 255, 0.28) 0%, rgba(0, 160, 220, 0.08) 45%, transparent 75%);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid rgba(0, 212, 255, 0.40);
-      border-top: 2px solid #00D2FF;
-      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), 0 0 70px rgba(0, 212, 255, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      background: #0E121A;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.16);
     }
     .modal-dialog.teal-theme .modal-badge,
     .modal-dialog.purple-theme .modal-badge {
-      background: rgba(0, 240, 255, 0.12);
-      border-color: rgba(0, 240, 255, 0.45);
-      color: var(--cyber-teal);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: #CBD5E1;
+      box-shadow: none;
     }
     .modal-dialog.teal-theme .spec-item,
     .modal-dialog.purple-theme .spec-item {
-      border-top-color: rgba(0, 240, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.08);
     }
     .modal-dialog.teal-theme .spec-item h4,
     .modal-dialog.purple-theme .spec-item h4 {
-      color: var(--cyber-teal);
+      color: #FFFFFF;
     }
     .modal-dialog.teal-theme .spec-item h4::before,
     .modal-dialog.purple-theme .spec-item h4::before {
-      background: var(--cyber-teal);
-      box-shadow: 0 0 8px var(--cyber-teal);
-    }
-    .modal-dialog.teal-theme .btn-primary,
-    .modal-dialog.purple-theme .btn-primary {
-      background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
-      border-color: #00E5FF;
-      color: #050a14;
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-    }
-    .modal-dialog.teal-theme .btn-primary:hover,
-    .modal-dialog.purple-theme .btn-primary:hover {
-      background: #38f4ff;
-      box-shadow: 0 0 40px rgba(0, 240, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      background: #FFFFFF;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     }
 
     .modal-backdrop.active .modal-dialog.active {
       display: block;
-      animation: cyberModalPopIn 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+      animation: cyberModalPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .modal-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 69, 0, 0.12);
-      border: 1px solid rgba(255, 69, 0, 0.45);
-      color: #FF4500;
-      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #CBD5E1;
+      font-size: 0.68rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -950,57 +1053,55 @@
       border-radius: 9999px;
       margin-bottom: 16px;
       font-family: 'JetBrains Mono', monospace;
-      box-shadow: 0 0 15px rgba(255, 69, 0, 0.2);
     }
 
     .modal-close {
       position: absolute;
       top: 24px;
       right: 26px;
-      background: rgba(18, 20, 28, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
       color: #94a3b8;
-      font-size: 22px;
+      font-size: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.25s var(--ease-cinematic);
+      transition: all 0.2s ease;
       backdrop-filter: blur(12px);
       z-index: 10;
     }
 
     .modal-close:hover {
       color: #fff;
-      background: rgba(255, 69, 0, 0.25);
-      border-color: #FF4500;
-      transform: rotate(90deg);
-      box-shadow: 0 0 25px rgba(255, 69, 0, 0.5);
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: scale(1.06);
     }
 
     .modal-dialog h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
       font-weight: 900;
       text-transform: uppercase;
-      font-style: italic;
+      font-style: normal;
       color: #FFFFFF;
       letter-spacing: -0.02em;
-      line-height: 1.15;
+      line-height: 1.10;
       margin-bottom: 8px;
     }
 
     .modal-dialog .subtitle {
-      color: #FF5500;
-      font-family: 'Orbitron', monospace;
-      font-size: 0.82rem;
-      font-weight: 800;
+      color: #94A3B8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.80rem;
+      font-weight: 700;
       margin-bottom: 18px;
       text-transform: uppercase;
-      letter-spacing: 0.10em;
+      letter-spacing: 0.08em;
     }
 
     .modal-dialog p {
@@ -1593,13 +1694,38 @@
 </head>
 <body>
 
-  <!-- Top Floating Action HUD: Start Project CTA & Hamburger Menu -->
+  <!-- Top Floating VisionOS Spatial HUD Header -->
   <header class="studio-header">
+    <a href="index.html" class="studio-brand-pill" onclick="resetStudioView(); return false;" title="Reset 4K Studio Camera">
+      <div class="studio-brand-mark">
+        <span class="accent">9LMNTS</span>
+        <span>STUDIO</span>
+      </div>
+      <div class="studio-status-chip">
+        <span class="dot"></span>
+        <span>4K SPATIAL COCKPIT</span>
+      </div>
+    </a>
+
+    <div class="studio-telemetry-center" id="hudAudioStatus">
+      <span>SYS // CYBER-CYPHER V5</span>
+      <span style="color: rgba(255,255,255,0.2);">•</span>
+      <span style="color: var(--cyber-teal);">DSP: 96kHz / 32-BIT</span>
+      <span style="color: rgba(255,255,255,0.2);">•</span>
+      <span>CLICK ANY STATION OR DOCK BELOW</span>
+    </div>
+
     <div class="header-actions">
       <!-- Switch to Mobile Cockpit View -->
       <a href="mobile.html?mode=mobile" class="btn-mode-toggle" onclick="localStorage.setItem('9lmnts_preferred_mode', 'mobile')" title="Switch to Mobile Cockpit View">
         <span style="font-size: 13px;">📱</span>
         <span>Mobile View</span>
+      </a>
+
+      <!-- Official Pricing Matrix -->
+      <a href="pricing.html" class="btn-mode-toggle" style="border-color: rgba(255, 85, 0, 0.45); color: #F8FAFC;" title="View Sprints & Creator OS Pricing">
+        <span>💳</span>
+        <span>Pricing</span>
       </a>
 
       <!-- Primary Start CTA Button -->
@@ -1647,9 +1773,9 @@
       <div>
         <div class="drawer-section-label">Studio &amp; Commercial Hub</div>
         <div class="drawer-external-links">
-          <a class="drawer-ext-link" href="pricing.html" style="border-color: rgba(0, 112, 186, 0.4); background: rgba(0, 112, 186, 0.1);">
+          <a class="drawer-ext-link" href="pricing.html" style="border-color: rgba(255, 85, 0, 0.4); background: rgba(255, 85, 0, 0.08);">
             <span>Official Pricing</span>
-            <span style="color: #93c5fd;">💳</span>
+            <span style="color: var(--neon-orange);">💳</span>
           </a>
           <a class="drawer-ext-link" href="services.html">
             <span>Services &amp; Sprints</span>
@@ -1684,63 +1810,63 @@
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('01')">
             <div class="station-meta">
               <span class="station-num">01</span>
-              <span class="station-name">Project LOA Universe</span>
+              <span class="station-name">Project LOA (RPG &amp; Anime)</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('02')">
             <div class="station-meta">
               <span class="station-num">02</span>
-              <span class="station-name">Music Vault &amp; Stem Chopper</span>
+              <span class="station-name">Sonic Vault &amp; Stem Chopper</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('03')">
             <div class="station-meta">
               <span class="station-num">03</span>
-              <span class="station-name">9LMNTS Studio Core Services</span>
+              <span class="station-name">Creator OS Hub (6 Engines)</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('04')">
             <div class="station-meta">
               <span class="station-num">04</span>
-              <span class="station-name">AI Voice Operator</span>
+              <span class="station-name">Argon AI Voice &amp; CRM</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('05')">
             <div class="station-meta">
               <span class="station-num">05</span>
-              <span class="station-name">Event OS &amp; Video Ads</span>
+              <span class="station-name">7-Day Sprints &amp; Video Ads</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('06')">
             <div class="station-meta">
               <span class="station-num">06</span>
-              <span class="station-name">The Helm / Darnley Sanon</span>
+              <span class="station-name">The Helm: Darnley Sanon</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('07')">
             <div class="station-meta">
               <span class="station-num">07</span>
-              <span class="station-name">Sound Clash OS Arena</span>
+              <span class="station-name">Battle Arenas (25 Clash OS)</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('08')">
             <div class="station-meta">
               <span class="station-num">08</span>
-              <span class="station-name">Live Events &amp; AR Merch</span>
+              <span class="station-name">Phygital WebAR Merch</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
           <div class="drawer-station-item" onclick="jumpToStationFromDrawer('09')">
             <div class="station-meta">
               <span class="station-num">09</span>
-              <span class="station-name">Artist OS Creator HQ DAW</span>
+              <span class="station-name">Studio DAW Mixing Console</span>
             </div>
             <span class="station-arrow">↗</span>
           </div>
@@ -1769,10 +1895,6 @@
     </div>
   </aside>
 
-  <!-- Ambient HUD Overlays -->
-  <div class="hud-corner hud-tl">SYS.ID: 9LMNTS-CYBER-CYPHER // 4K SPATIAL CANVAS ACTIVE</div>
-  <div class="hud-corner hud-tr" id="hudAudioStatus">LATENCY: 14MS // AUDIO ENGINE: ONLINE [96kHz/32-BIT]</div>
-
   <!-- Hardware-Accelerated 4K Edge Sharpening Kernel Filter -->
   <svg width="0" height="0" style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
     <defs>
@@ -1792,104 +1914,103 @@
 
       <!-- Master 4K Render Base Plate (3840x2160 UHD) -->
       <picture>
-        <source srcset="/assets/studio/cyber-cypher-4k.jpg" type="image/jpeg"/>
-        <img id="heroImage" class="base-plate" src="/assets/studio/cyber-cypher-4k.jpg" alt="9LMNTS Cyber Cypher Immersive 4K Studio" width="3840" height="2160"/>
+        <source srcset="assets/studio/cyber-cypher-4k.jpg" type="image/jpeg"/>
+        <img id="heroImage" class="base-plate" src="assets/studio/cyber-cypher-4k.jpg" alt="9LMNTS Cyber Cypher Immersive 4K Studio" width="3840" height="2160"/>
       </picture>
 
       <div class="grid-vignette"></div>
 
       <!-- ========================================================================= -->
-      <!-- 9 UNIFIED HOTSPOT STATIONS (PINNED RADAR BEACONS BY DEFAULT)               -->
-      <!-- Single Click: Displays Station Label | Double-Click: Launches Modal & Zoom -->
+      <!-- 9 UNIFIED HOTSPOT STATIONS (HOVER TO PREVIEW / 1-CLICK TO OPEN MODAL)      -->
       <!-- ========================================================================= -->
 
       <!-- Station 01 — Project LOA Universe (Left Wall Poster) -->
-      <div id="tag-01" class="guide-tag pos-station-01" onclick="handleHotspot(event, '01')" ondblclick="launchStationModal(event, '01')" role="button" aria-label="Station 01: Project LOA">
+      <div id="tag-01" class="guide-tag pos-station-01" onclick="launchStationModal(event, '01')" role="button" aria-label="Station 01: Project LOA">
         <div class="tag-pin">01</div>
         <div class="tag-label" onclick="launchStationModal(event, '01')">
-          <span class="label-title">01: Project LOA <span class="label-badge">CYBER</span></span>
-          <span class="label-sub">Metaverse Lore &amp; Universe</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">01: Project LOA <span class="label-badge">UE 5.7</span></span>
+          <span class="label-sub">Transmedia RPG &amp; Anime</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 02 — Music Vault & Audio Chopper (Left Monitor Speaker/Desk) -->
-      <div id="tag-02" class="guide-tag teal pos-station-02" onclick="handleHotspot(event, '02')" ondblclick="launchStationModal(event, '02')" role="button" aria-label="Station 02: Music Vault">
+      <!-- Station 02 — Sonic Vault & Stem Chopper (Left Monitor Speaker/Desk) -->
+      <div id="tag-02" class="guide-tag teal pos-station-02" onclick="launchStationModal(event, '02')" role="button" aria-label="Station 02: Sonic Vault">
         <div class="tag-pin">02</div>
         <div class="tag-label" onclick="launchStationModal(event, '02')">
-          <span class="label-title">02: Music Vault <span class="label-badge">STEMS</span></span>
-          <span class="label-sub">Acapella &amp; Chopper Engine</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">02: Sonic Vault <span class="label-badge">96kHz</span></span>
+          <span class="label-sub">Master Stems &amp; Chopper</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 03 — 9LMNTS Studio Core Services (Center Wall Display) -->
-      <div id="tag-03" class="guide-tag pos-station-03" onclick="handleHotspot(event, '03')" ondblclick="launchStationModal(event, '03')" role="button" aria-label="Station 03: Core Services">
+      <!-- Station 03 — Creator OS Hub (Center Wall Display) -->
+      <div id="tag-03" class="guide-tag pos-station-03" onclick="launchStationModal(event, '03')" role="button" aria-label="Station 03: Creator OS Hub">
         <div class="tag-pin">03</div>
         <div class="tag-label" onclick="launchStationModal(event, '03')">
-          <span class="label-title">03: Core Services <span class="label-badge">LIVE</span></span>
-          <span class="label-sub">ArtistOS Telemetry &amp; Metrics</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">03: Creator OS Hub <span class="label-badge">6 OS</span></span>
+          <span class="label-sub">6 Sovereign Creator Engines</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 04 — AI Voice Operator (Right Monitor Speaker) -->
-      <div id="tag-04" class="guide-tag teal align-left pos-station-04" onclick="handleHotspot(event, '04')" ondblclick="launchStationModal(event, '04')" role="button" aria-label="Station 04: AI Voice">
+      <!-- Station 04 — Argon AI & CRM (Right Monitor Speaker) -->
+      <div id="tag-04" class="guide-tag teal align-left pos-station-04" onclick="launchStationModal(event, '04')" role="button" aria-label="Station 04: Argon AI & CRM">
         <div class="tag-pin">04</div>
         <div class="tag-label" onclick="launchStationModal(event, '04')">
-          <span class="label-title">04: AI Operator <span class="label-badge">GEMINI</span></span>
-          <span class="label-sub">Gemini Live Voice Engine</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">04: Argon AI &amp; CRM <span class="label-badge">AI LIVE</span></span>
+          <span class="label-sub">Gemini Voice &amp; Lead Engine</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 05 — Event OS & Video Ads (Right Upper Poster/Cityscape) -->
-      <div id="tag-05" class="guide-tag align-left pos-station-05" onclick="handleHotspot(event, '05')" ondblclick="launchStationModal(event, '05')" role="button" aria-label="Station 05: Services & Ads">
+      <!-- Station 05 — 7-Day Sprints & Video Ads (Right Upper Poster/Cityscape) -->
+      <div id="tag-05" class="guide-tag align-left pos-station-05" onclick="launchStationModal(event, '05')" role="button" aria-label="Station 05: 7-Day Sprints">
         <div class="tag-pin">05</div>
         <div class="tag-label" onclick="launchStationModal(event, '05')">
-          <span class="label-title">05: Services &amp; Ads <span class="label-badge">PRO</span></span>
-          <span class="label-sub">OS Modules &amp; Video Ads</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">05: 7-Day Sprints <span class="label-badge">SPRINT</span></span>
+          <span class="label-sub">Agency Builds &amp; Video Ads</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
       <!-- Station 06 — The Helm / Darnley Sanon (Center Mixing Desk) -->
-      <div id="tag-06" class="guide-tag teal pos-station-06" onclick="handleHotspot(event, '06')" ondblclick="launchStationModal(event, '06')" role="button" aria-label="Station 06: The Helm">
+      <div id="tag-06" class="guide-tag teal pos-station-06" onclick="launchStationModal(event, '06')" role="button" aria-label="Station 06: The Helm">
         <div class="tag-pin">06</div>
         <div class="tag-label" onclick="launchStationModal(event, '06')">
           <span class="label-title">06: The Helm <span class="label-badge">FOUNDER</span></span>
-          <span class="label-sub">Darnley Sanon Dossier</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-sub">Founder: Darnley Sanon</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 07 — Sound Clash OS Arena (Right Jumbotron Screen) -->
-      <div id="tag-07" class="guide-tag teal align-left pos-station-07" onclick="handleHotspot(event, '07')" ondblclick="launchStationModal(event, '07')" role="button" aria-label="Station 07: Sound Clash Arena">
+      <!-- Station 07 — Battle Arenas (Right Jumbotron Screen) -->
+      <div id="tag-07" class="guide-tag teal align-left pos-station-07" onclick="launchStationModal(event, '07')" role="button" aria-label="Station 07: Battle Arenas">
         <div class="tag-pin">07</div>
         <div class="tag-label" onclick="launchStationModal(event, '07')">
-          <span class="label-title">07: Sound Clash OS <span class="label-badge">ARENA</span></span>
-          <span class="label-sub">Live Battle Telemetry</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">07: Battle Arenas <span class="label-badge">25 ARENAS</span></span>
+          <span class="label-sub">25 Live Competition OS</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 08 — Live Events & AR Merch (Tour Calendar Desk Display) -->
-      <div id="tag-08" class="guide-tag align-left pos-station-08" onclick="handleHotspot(event, '08')" ondblclick="launchStationModal(event, '08')" role="button" aria-label="Station 08: AR Merch & Live Passes">
+      <!-- Station 08 — Phygital Merch (Tour Calendar Desk Display) -->
+      <div id="tag-08" class="guide-tag align-left pos-station-08" onclick="launchStationModal(event, '08')" role="button" aria-label="Station 08: Phygital Merch">
         <div class="tag-pin">08</div>
         <div class="tag-label" onclick="launchStationModal(event, '08')">
-          <span class="label-title">08: AR Merch &amp; Events <span class="label-badge">PASSES</span></span>
-          <span class="label-sub">Holographic Wings &amp; Passes</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">08: Phygital Merch <span class="label-badge">WEBAR</span></span>
+          <span class="label-sub">WebAR Streetwear &amp; Wings</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
-      <!-- Station 09 — Artist OS Creator HQ (Left Desk Screen) -->
-      <div id="tag-09" class="guide-tag teal pos-station-09" onclick="handleHotspot(event, '09')" ondblclick="launchStationModal(event, '09')" role="button" aria-label="Station 09: Artist OS DAW">
+      <!-- Station 09 — Studio DAW (Left Desk Screen) -->
+      <div id="tag-09" class="guide-tag teal pos-station-09" onclick="launchStationModal(event, '09')" role="button" aria-label="Station 09: Studio DAW">
         <div class="tag-pin">09</div>
         <div class="tag-label" onclick="launchStationModal(event, '09')">
-          <span class="label-title">09: Artist OS DAW <span class="label-badge">HQ</span></span>
-          <span class="label-sub">Stems Mixing Console</span>
-          <span class="label-hint"><span class="hint-accent">Double-click</span> to open ↗</span>
+          <span class="label-title">09: Studio DAW <span class="label-badge">DAW HQ</span></span>
+          <span class="label-sub">ArtistOS Mixing Console</span>
+          <span class="label-hint"><span class="hint-accent">Click</span> to launch ↗</span>
         </div>
       </div>
 
@@ -1897,6 +2018,19 @@
       <div class="reset-hotspot" onclick="resetStudioView()" title="Click to Reset Camera to Wide Center"></div>
     </div>
   </main>
+
+  <!-- Desktop 9-Station Spatial Command Dock (1-Click Station Access) -->
+  <nav class="desktop-command-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <button class="cmd-dock-item" onclick="launchStationModal(event, '01')"><span class="num">01</span><span>Project LOA</span></button>
+    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '02')"><span class="num">02</span><span>Sonic Vault</span></button>
+    <button class="cmd-dock-item" onclick="launchStationModal(event, '03')"><span class="num">03</span><span>Creator OS Hub</span></button>
+    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '04')"><span class="num">04</span><span>Argon AI &amp; CRM</span></button>
+    <button class="cmd-dock-item" onclick="launchStationModal(event, '05')"><span class="num">05</span><span>7-Day Sprints</span></button>
+    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '06')"><span class="num">06</span><span>The Helm</span></button>
+    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '07')"><span class="num">07</span><span>Battle Arenas</span></button>
+    <button class="cmd-dock-item" onclick="launchStationModal(event, '08')"><span class="num">08</span><span>Phygital Merch</span></button>
+    <button class="cmd-dock-item teal" onclick="launchStationModal(event, '09')"><span class="num">09</span><span>Studio DAW</span></button>
+  </nav>
 
   <!-- Mobile 3-Part Side Scroll Switcher Header -->
   <nav class="mobile-part-switcher" id="mobilePartSwitcher" aria-label="Cockpit Bay Switcher">
@@ -1923,22 +2057,22 @@
 
   <!-- Streamlined Mobile Bottom Dock (Less functions, high utility) -->
   <div class="mobile-streamlined-dock" id="mobileDock">
-    <button class="dock-btn sprint-btn" onclick="launchStationModal(event, '05')" title="Start Immersion Sprint">
+    <button class="dock-btn sprint-btn" onclick="launchStationModal(event, '05')" title="Start 7-Day Sprint">
       <span class="dock-icon">⚡</span>
-      <span>Book Sprint</span>
+      <span>7-Day Sprint</span>
     </button>
-    <a class="dock-btn" href="pricing.html" title="View Official Pricing">
-      <span class="dock-icon">💳</span>
+    <a class="dock-btn" href="pricing.html" title="View Official Pricing & 50% Deposit">
+      <span class="dock-icon">🤝</span>
       <span>Pricing</span>
     </a>
-    <a class="dock-btn" href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer" title="Launch Sound Clash OS">
+    <a class="dock-btn" href="clash.html" title="Launch 25 Battle Arenas">
       <span class="dock-icon">🎛️</span>
-      <span>Clash OS</span>
+      <span>25 Arenas</span>
     </a>
     <button class="dock-btn" onclick="toggleNavDrawer(true)" title="Open Directory Menu">
       <span class="dock-icon">☰</span>
       <span>Directory</span>
-    </button>
+    </a>
   </div>
 
 
@@ -1951,19 +2085,19 @@
     <!-- Modal 01: Project LOA Universe -->
     <div class="modal-dialog" id="modalLoaGame">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">METAVERSE ARCHIVE // STATION 01</span>
-      <h2>LOA Game: The Cyber Cypher</h2>
-      <div class="subtitle">Interactive Hip-Hop Narrative Universe &amp; Lore</div>
+      <span class="modal-badge">TRANSMEDIA UNIVERSE // STATION 01</span>
+      <h2>Project LOA: Legends of the Arena</h2>
+      <div class="subtitle">Unreal Engine 5.7 Action RPG, Anime Series &amp; Original OST</div>
       <p>
-        The LOA universe bridges street cyphers with cybernetic bio-augmentation, tracking the journey of sonic rebels taking back digital airwaves through autonomous code and booming low-end basslines.
+        Set in Neo-Ottawa 3026, Project LOA bridges street cyphers with Kemetic Djed bio-augmentation — tracking Damian Kane and Ida the Streamer as they reclaim the digital airwaves through sonic combat.
       </p>
       <div class="elements-list">
-        <span>Story Mode</span>
-        <span>Avatar Gear</span>
+        <span>UE 5.7 Action RPG</span>
+        <span>Anime Series</span>
         <span>Original OST</span>
-        <span>Cypher Battles</span>
-        <span>Faction Wars</span>
-        <span>Augment Lab</span>
+        <span>Cypher Combat</span>
+        <span>5 Ptah Backer Tiers</span>
+        <span>Neo-Ottawa 3026</span>
       </div>
 
       <!-- Featured Operatives Spotlight -->
@@ -1985,12 +2119,12 @@
       </div>
       <div class="spec-grid">
         <div class="spec-item">
-          <h4>Bio-Augment Stems</h4>
-          <p>Real-time neural MIDI-CV translation for rhythmic flow states.</p>
+          <h4>Sonic Combat Engine</h4>
+          <p>Real-time 96kHz audio stems drive weapon resonance and combo multipliers.</p>
         </div>
         <div class="spec-item">
-          <h4>Cypher Protocol</h4>
-          <p>Decentralized peer-to-peer battle arena with encrypted stems.</p>
+          <h4>Ptah Backer Matrix</h4>
+          <p>5 sovereign backer tiers from Digital Initiate ($25) to Executive Producer ($2,500).</p>
         </div>
       </div>
       <div class="modal-actions">
@@ -1999,19 +2133,19 @@
           Watch Trailer ↗
         </a>
         <a class="btn-primary" href="loa.html">
-          Launch LOA Experience ↗
+          Enter Project LOA Hub ↗
         </a>
       </div>
     </div>
 
-    <!-- Modal 02: Music Vault & Stem Chopper -->
+    <!-- Modal 02: Sonic Vault & Stem Chopper -->
     <div class="modal-dialog teal-theme" id="modalMusicVault">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">AUDIO VAULT // STATION 02</span>
-      <h2>Original Music Vault &amp; Stem Chopper</h2>
-      <div class="subtitle">Multi-Track Master Recordings &amp; Chopping Matrix</div>
+      <span class="modal-badge">SONIC VAULT // STATION 02</span>
+      <h2>Sonic Vault &amp; 96kHz Stem Chopper</h2>
+      <div class="subtitle">Unreleased Master Recordings, Acapellas &amp; Live Stem Matrix</div>
       <p>
-        Direct access to unreleased master multi-tracks, acapellas, and drum breaks from 9LMNTS Studio sessions. Play and chop master recordings directly on the website DAW with real stem matrix controls.
+        Direct access to unreleased 96kHz/32-bit master multi-tracks, acapellas, and 808 drum breaks from 9LMNTS Studio sessions. Audition and mute live stems right inside the cockpit or launch the full Sonic Vault.
       </p>
 
       <!-- Interactive Embedded DAW Chopper Board -->
@@ -2162,108 +2296,111 @@
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
         <a class="btn-primary" href="vault.html#interactive-chopper">
-          Launch Website DAW &amp; Stems ↗
+          Open Full Sonic Vault ↗
         </a>
       </div>
     </div>
 
-    <!-- Modal 03: 9LMNTS Studio Core Services / Main Stream Display -->
+    <!-- Modal 03: Creator OS Hub (6 Sovereign Creator Engines) -->
     <div class="modal-dialog" id="modalMainStream">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">STUDIO TELEMETRY // STATION 03</span>
-      <h2>9LMNTS Studio Core</h2>
-      <div class="subtitle">Live Cypher Stream &amp; Global Metrics</div>
+      <span class="modal-badge">CREATOR OPERATING SYSTEMS // STATION 03</span>
+      <h2>Creator OS Hub: 6 Sovereign Engines</h2>
+      <div class="subtitle">Always-On 24/7 Creator Monetization &amp; Direct Checkout Platforms</div>
       <p>
-        Central telemetry monitor showcasing live artist streaming analytics, audience engagement graphs, community coin drops, and synchronized lighting control for the entire physical acoustic chamber.
+        Stop surrendering 30% to third-party marketplaces. Station 03 powers our 6 turnkey Creator Operating Systems — giving independent artists, chefs, comedians, athletes, designers, and agencies 100% direct ownership of their audience and revenue.
       </p>
       <div class="spec-grid">
         <div class="spec-item">
-          <h4>Day-1 Verified Metrics</h4>
-          <p>Zero hardcoded fake counts — telemetry directly connected to production nodes.</p>
+          <h4>01. Artist &amp; Comedian OS</h4>
+          <p>Multitrack stem licensing, VIP fan vaults, tour pass drops &amp; special crowd voting.</p>
         </div>
         <div class="spec-item">
-          <h4>Cypher Protocol</h4>
-          <p>Decentralized audio distribution with sub-millisecond network buffer sync.</p>
+          <h4>02. Chef &amp; Hospitality OS</h4>
+          <p>0%-commission direct online ordering, automatic 50% catering deposits &amp; cultural menus.</p>
         </div>
         <div class="spec-item">
-          <h4>BPM Synchronizer</h4>
-          <p>138.00 Locked Master Clock syncing room neons, screens, and DSP bus.</p>
+          <h4>03. Street Baller &amp; Athlete OS</h4>
+          <p>Scouting passports, verified Combine telemetry, highlight reels &amp; NIL sponsor slots.</p>
         </div>
         <div class="spec-item">
-          <h4>Chamber Acoustics</h4>
-          <p>Active room tuning DSP with dynamic bass-trap absorption for ultra-low latency.</p>
+          <h4>04. Fashion &amp; Worker Bee OS</h4>
+          <p>Runway lookbook instant checkout, WebAR apparel tags &amp; B2B agency sprint dispatch.</p>
         </div>
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
+        <a class="btn-secondary" href="pricing.html">
+          View OS Setup Tiers ↗
+        </a>
         <a class="btn-primary" href="core.html">
-          Monitor Live Cypher ↗
+          Launch Creator OS Hub ↗
         </a>
       </div>
     </div>
 
-    <!-- Modal 04: AI Voice Operator (Gemini Live API) -->
+    <!-- Modal 04: Argon AI & CRM (Gemini Live API) -->
     <div class="modal-dialog teal-theme" id="modalAiVoice">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">NEURAL VOICE // STATION 04</span>
-      <h2>AI Voice Operator (Gemini Live API)</h2>
-      <div class="subtitle">Real-Time Studio Assistant &amp; Voice Synthesis</div>
+      <span class="modal-badge">NEURAL VOICE &amp; CRM // STATION 04</span>
+      <h2>Argon AI Voice Operator &amp; CRM</h2>
+      <div class="subtitle">Gemini Live API Voice Synthesis, ManyChat Funnels &amp; 50-Agent Swarm</div>
       <p>
-        Equipped with Google Gemini Live API bidirectional audio streaming, the studio voice operator manages cue mixes, automated session recalls, client project dispatch, and voice-commanded fader automation.
+        Equipped with Google Gemini Live bidirectional voice streaming, the Argon AI Operator qualifies inbound leads in real time, triggers 6 ManyChat keyword funnels (`CLASH`, `COMEDY`, `ARTIST`, `BALLER`, `DEV`, `SPONSOR`), and dispatches 1-Page Sprint Contracts.
       </p>
       <div class="spec-grid">
         <div class="spec-item">
-          <h4>Bidirectional Voice</h4>
-          <p>Native sub-200ms voice dialogue with conversational turn-taking.</p>
+          <h4>Gemini Live Voice</h4>
+          <p>Sub-200ms conversational voice receptionist in English, French &amp; Kreyòl.</p>
         </div>
         <div class="spec-item">
-          <h4>Session Automation</h4>
-          <p>Voice-commanded routing across buses, stem exports, and lighting cues.</p>
+          <h4>Argon Lead Telemetry</h4>
+          <p>Day-1 Zero-State verified CRM ledger + interactive Client Sandbox simulator.</p>
         </div>
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
         <a class="btn-primary" href="ai-voice.html">
-          Initialize Voice Session ↗
+          Launch Argon AI &amp; CRM ↗
         </a>
       </div>
     </div>
 
-    <!-- Modal 05: Services, Video Ads & OS Ecosystem -->
+    <!-- Modal 05: 7-Day Sprints & Video Ads -->
     <div class="modal-dialog wide-dialog" id="modalStudioServices">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">STUDIO PRODUCTION &amp; AGENCY // STATION 05</span>
-      <h2>9LMNTS Studio Services &amp; Video Ads</h2>
-      <div class="subtitle">Full-Spectrum Creative Ecosystem &amp; Commercial Campaigns</div>
+      <span class="modal-badge">7-DAY AGENCY SPRINTS // STATION 05</span>
+      <h2>7-Day Custom Web Sprints &amp; Video Ads</h2>
+      <div class="subtitle">Turnkey Platform Builds Locked with Signed 1-Page Contract &amp; 50% e-Transfer Deposit</div>
       <p>
-        From commercial video ads, 3D holographic projection for festivals, to comprehensive OS modular infrastructure, 9LMNTS Studio elevates your creative enterprise with high-octane cyberpunk aesthetics.
+        From 7-day custom web platform sprints (Chef OS, Artist OS, Event OS) to commercial cyberpunk video ad reels, 9LMNTS Studio ships production-ready architecture with a simple **50% Interac e-Transfer Deposit (`9lmntsstudio@gmail.com`) + Signed 1-Page Sprint Contract Agreement**.
       </p>
 
-      <!-- 6 Canonical OS Modules -->
+      <!-- 6 Canonical Agency Deliverables -->
       <div class="service-modules-grid">
         <div class="service-module-card">
-          <h4><span class="mod-tag">01</span> ARTIST OS</h4>
-          <p>Stems, release timelines, workflow orchestration &amp; portfolio tracking.</p>
+          <h4><span class="mod-tag">01</span> CHEF &amp; HOSPITALITY OS</h4>
+          <p>7-Day Restaurant &amp; Catering Sprint ($2,200 CAD • $1,100 50% e-Transfer Deposit).</p>
         </div>
         <div class="service-module-card">
-          <h4><span class="mod-tag">02</span> SOUND CLASH OS</h4>
-          <p>Real-time tournament engine, crowd telemetry &amp; live escrow bounties.</p>
+          <h4><span class="mod-tag">02</span> STARTER WEB SPRINT</h4>
+          <p>High-converting custom landing system ($1,500 CAD • $750 50% e-Transfer Deposit).</p>
         </div>
         <div class="service-module-card">
-          <h4><span class="mod-tag">03</span> SPORTS OS</h4>
-          <p>Athlete brand identity, high-speed highlight reels &amp; custom scoring.</p>
+          <h4><span class="mod-tag">03</span> PRO CUSTOM SPRINT</h4>
+          <p>Multi-page OS build + custom media ($2,500–$3,500 CAD • 50% e-Transfer Deposit).</p>
         </div>
         <div class="service-module-card">
-          <h4><span class="mod-tag">04</span> WORKER BEE OS</h4>
-          <p>Automated production pipeline, task sprint matrix &amp; dispatch hub.</p>
+          <h4><span class="mod-tag">04</span> EVENT OS ARENA</h4>
+          <p>Turnkey live tournament &amp; QR voting setup ($1,500 CAD • $750 50% Deposit).</p>
         </div>
         <div class="service-module-card">
-          <h4><span class="mod-tag">05</span> TIRELESS OS</h4>
-          <p>24/7 AI-driven content syndication, asset resizing &amp; cross-channel blitz.</p>
+          <h4><span class="mod-tag">05</span> AI SUPER AGENT</h4>
+          <p>Bespoke Gemini Voice &amp; ManyChat funnel deployment ($1,500 CAD • $750 Deposit).</p>
         </div>
         <div class="service-module-card">
-          <h4><span class="mod-tag">06</span> TOUR &amp; LAUNCH OS</h4>
-          <p>Stage visuals, dynamic promo video ads, ticketing engines &amp; press kits.</p>
+          <h4><span class="mod-tag">06</span> COMMERCIAL VIDEO ADS</h4>
+          <p>4K cyberpunk brand reels, stage visuals &amp; promotional campaign assets.</p>
         </div>
       </div>
 
@@ -2275,41 +2412,39 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--neon-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
           </svg>
-          Book Studio Sprint or Video Ads Reel
+          Lock Your 7-Day Sprint (1-Page Contract + 50% e-Transfer Deposit)
         </h3>
-        <p>Get a customized production roadmap and quote for your next single, concert tour, or brand campaign.</p>
+        <p>Select your sprint package below to receive your 1-Page Sprint Contract Agreement and 50% Interac e-Transfer deposit instructions (`9lmntsstudio@gmail.com`).</p>
         <div class="lead-form-grid">
-          <input class="lead-input" type="text" name="name" placeholder="Your Name / Artist Alias" autocomplete="name" required/>
-          <input class="lead-input" type="email" name="email" placeholder="Email Address" autocomplete="email" required/>
+          <input class="lead-input" type="text" name="name" placeholder="Your Name / Brand / Restaurant" autocomplete="name" required/>
+          <input class="lead-input" type="email" name="email" placeholder="Email Address for Contract" autocomplete="email" required/>
         </div>
         <div class="lead-form-grid">
           <select class="lead-input" name="package" style="background:#111319;" required>
-            <option value="Starter Sprint">Starter Sprint — $1,500 CAD (4x $375 Pay in 4)</option>
-            <option value="Pro Custom Sprint" selected>Pro Custom Sprint — $2,500 – $3,500 CAD (4x $625 Pay in 4)</option>
-            <option value="Enterprise Scale Build">Enterprise Scale Build — $5,000 CAD</option>
-            <option value="Pro Retainer">Pro Retainer — $1,500 / mo</option>
-            <option value="Premier Operations Retainer">Premier Operations Retainer — $2,500 – $3,500 / mo</option>
-            <option value="Enterprise Custom Retainer">Enterprise Custom Retainer — $5,000 / mo</option>
-            <option value="OS Series - Free Tier">9LMNTS OS Series — Free Tier (80/20 Split)</option>
-            <option value="OS Series - Pro Setup">9LMNTS OS Series — Pro Setup ($500 CAD, 90/10)</option>
-            <option value="OS Series - Elite Setup">9LMNTS OS Series — Elite Setup ($1,500 CAD, 95/5)</option>
+            <option value="Starter Sprint">Starter Sprint — $1,500 CAD ($750 50% e-Transfer Deposit)</option>
+            <option value="7-Day Chef OS Sprint">7-Day Chef OS Sprint — $2,200 CAD ($1,100 50% e-Transfer Deposit)</option>
+            <option value="Pro Custom Sprint" selected>Pro Custom Sprint — $2,500 – $3,500 CAD ($1,250 50% e-Transfer Deposit)</option>
+            <option value="Enterprise Scale Build">Enterprise Scale Build — $5,000 CAD ($2,500 50% e-Transfer Deposit)</option>
+            <option value="EventOS Turnkey Arena">EventOS Turnkey Arena — $1,500 CAD ($750 50% Deposit, 95/5 Split)</option>
+            <option value="Bespoke Sovereign Super Agent">Bespoke Sovereign Super Agent — $1,500 CAD ($750 50% Deposit)</option>
+            <option value="OS Series - Pro Setup">9LMNTS OS Series — Pro Setup ($500 CAD • $250 Deposit)</option>
             <option value="Commercial Video Ad Reel">Commercial Cyberpunk Video Ad Reel</option>
           </select>
-          <input class="lead-input" type="text" name="timeline" placeholder="Target Launch Date / Q4 2026"/>
+          <input class="lead-input" type="text" name="timeline" placeholder="Target Launch Date / 7-Day Sprint"/>
         </div>
-        <textarea class="lead-input" name="scope" rows="2" placeholder="Brief project scope or track details..." style="margin-bottom: 10px;"></textarea>
+        <textarea class="lead-input" name="scope" rows="2" placeholder="Brief project scope, menu/brand goals, or required integrations..." style="margin-bottom: 10px;"></textarea>
         <button class="btn-primary" type="submit" style="padding: 10px 18px; font-size: 0.82rem; width: 100%;">
-          Transmit Project Brief &rarr;
+          Request 1-Page Contract &amp; 50% Deposit Invoice &rarr;
         </button>
       </form>
 
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <a class="btn-primary" href="pricing.html" style="background: linear-gradient(135deg, #0070ba 0%, #003087 100%); border-color: #0070ba;">
-          Official Pricing Matrix 💳
+        <a class="btn-primary" href="pricing.html" style="background: linear-gradient(135deg, #FF5500 0%, #CC3300 100%); border-color: #FF7733;">
+          Official Pricing &amp; 50% Deposit 🤝
         </a>
         <a class="btn-primary" href="services.html">
-          Explore Creator Bundles &amp; Services ↗
+          Explore 7-Day Sprints &amp; Reels ↗
         </a>
       </div>
     </div>
@@ -2319,21 +2454,21 @@
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
       <span class="modal-badge" style="color:var(--matrix-green); background:rgba(16,185,129,0.15);">FOUNDER DOSSIER // STATION 06</span>
       <h2>The Helm: Darnley Sanon</h2>
-      <div class="subtitle">Founder, Architect &amp; Audio Engineer</div>
+      <div class="subtitle">Founder, Creative Systems Architect &amp; Audio Engineer</div>
       <p>
-        "We built 9LMNTS Studio because creator tools were broken. Independent artists and labels were forced to juggle disjointed platforms for streaming, merchandise, booking, and ticket revenue — giving away 30% to 50% of their creative equity."
+        "We built 9LMNTS Studio because creator and hospitality tools were broken. Independent artists, chefs, and event producers were forced to surrender 30% to 50% of their revenue to third-party platforms."
       </p>
       <p>
-        "Our mission is to arm creators with custom digital sovereign operating systems — from low-latency Web Audio DAWs like ArtistOS to competitive live-event jumbotrons like Sound Clash OS."
+        "Our mission is to arm creators and local businesses with sovereign digital operating systems — from 0%-commission Chef OS builds to 96kHz Web Audio DAWs and 25 live tournament arenas."
       </p>
       <div class="spec-grid">
         <div class="spec-item">
-          <h4 style="color:var(--matrix-green);">Studio Residency</h4>
-          <p>Toronto &amp; Ottawa Autonomous Hubs // Now Booking Q4 2026 &amp; 2027.</p>
+          <h4 style="color:var(--matrix-green);">Ottawa &amp; Toronto Hubs</h4>
+          <p>Autonomous Creative Tech Studio // Booking 7-Day Sprints for Q4 2026 &amp; 2027.</p>
         </div>
         <div class="spec-item">
-          <h4 style="color:var(--matrix-green);">Admin Gateway</h4>
-          <p>Secured console gate for live telemetry, CRM records, and billing.</p>
+          <h4 style="color:var(--matrix-green);">Direct Agency Kickoff</h4>
+          <p>Signed 1-Page Sprint Contract + 50% Interac e-Transfer Deposit (`9lmntsstudio@gmail.com`).</p>
         </div>
       </div>
       <div class="modal-actions">
@@ -2344,72 +2479,75 @@
       </div>
     </div>
 
-    <!-- Modal 07: Sound Clash OS Live Arena -->
+    <!-- Modal 07: Battle Arenas (25 Live Competition OS) -->
     <div class="modal-dialog teal-theme" id="modalSoundClash">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">LIVE BATTLE ARENA // STATION 07</span>
-      <h2>Sound Clash OS Arena</h2>
-      <div class="subtitle">Real-Time Producer Battle &amp; Tournament Engine</div>
+      <span class="modal-badge">25 LIVE COMPETITION OS // STATION 07</span>
+      <h2>Battle Arenas &amp; Sound Clash OS</h2>
+      <div class="subtitle">25 Turnkey Live Competition Arenas, Crowd QR Voting &amp; Judge Consoles</div>
       <p>
-        The dedicated tournament terminal connects 9LMNTS Studio to global underground sound clashes. Real-time decibel meters, crowd voting, round clocks, and cryptographic hash verification for unreleased stems.
+        Station 07 powers 9LMNTS Studio's 25 live tournament engines — including Sound Clash OS, Pitch Battle OS, Culinary Clash, King of the Court, Runway OS, Dance Cypher, and Comedy Roast Battle.
       </p>
       <div class="spec-grid">
         <div class="spec-item">
-          <h4>Match Engine</h4>
-          <p>8-contender live bracket tournament with dynamic round timing.</p>
+          <h4>25 Turnkey Arenas</h4>
+          <p>Pre-architected 8-contender bracket engines for music, sports, food, fashion &amp; tech.</p>
         </div>
         <div class="spec-item">
-          <h4>Bounty Escrow</h4>
-          <p>$6,000 Live Prize Pot locked in on-chain verified smart escrow.</p>
+          <h4>4-Box Monetization</h4>
+          <p>VIP Gate Passes, Contender Entry Fees, Audience Power Votes &amp; Main Stage Sponsors.</p>
         </div>
         <div class="spec-item">
-          <h4>Live Crowd Vote</h4>
-          <p>Instant phone QR voting with decibel meter crowd noise integration.</p>
+          <h4>Live Crowd QR Vote</h4>
+          <p>Instant smartphone QR audience voting + real-time stage decibel telemetry.</p>
         </div>
         <div class="spec-item">
-          <h4>Anti-Ghost Protocol</h4>
-          <p>Cryptographic hash verification of original unreleased WAV stems.</p>
+          <h4>95 / 5 Organizer Split</h4>
+          <p>Turnkey arena deployment ($1,500 CAD • $750 50% Deposit) with 95% net revenue to you.</p>
         </div>
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <a class="btn-primary" href="https://clash.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
-          Launch Sound Clash OS ↗
+        <a class="btn-secondary" href="01_Sound_Clash_OS.html">
+           Sound Clash Arena #01 ↗
+        </a>
+        <a class="btn-primary" href="clash.html">
+          Explore All 25 Battle Arenas ↗
         </a>
       </div>
     </div>
 
-    <!-- Modal 08: AR Merch & Live Events -->
+    <!-- Modal 08: Phygital Merch & Holographic Wearables -->
     <div class="modal-dialog teal-theme wide-dialog" id="modalArMerch">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">EXPERIENCE THE WINGS // STATION 08</span>
-      <h2>AR Merch &amp; Holographic Wearables</h2>
-      <div class="subtitle">Artist Core OS // Holographic Wing Activation &amp; Smart Merch</div>
+      <span class="modal-badge">PHYGITAL WEBAR STREETWEAR // STATION 08</span>
+      <h2>Phygital Merch &amp; Holographic Wings</h2>
+      <div class="subtitle">18-Piece Wearable Advertising Catalog • 480 GSM Streetwear • WebAR Wings</div>
       <p>
-        Step into the future of physical-to-digital apparel. Every limited edition 9LMNTS garment integrates smart QR spatial anchoring, unlocking fiery and prismatic holographic cyber-wings across live festivals, concerts, and metaverse broadcasts.
+        Step into physical-to-digital streetwear. Every limited-edition 9LMNTS garment integrates Level-H scannable QR sleeve badges and WebAR spatial markers — unlocking 3D holographic cyber-wings and instant client portal demos.
       </p>
 
-      <!-- AR Visual Showcase Gallery -->
+      <!-- AR Visual Showcase Gallery (Local Verified Assets) -->
       <div class="ar-showcase-gallery">
         <div class="ar-showcase-card" onclick="playCyberClick()">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYVh2c_Ofmb2JWFBROh0P9A6adtr6G_wZCjdI_b_ZOab5UqNlR35HCF9zymKxlI4J2RzOG2wTCFxSm2rbvoBSDR71-ZG6wTWYYfO-rm9n6my5IHd6QcHHKKSSMFekCOzDw3MS7O14P1rV8JaDF3bQzagW_gBc10zEHH2hWtoLfvQZJTY-L_dxPeC_6HFAh66wcN07WDcZMBd6YfT_vOYX1l7FNKSTIxzhw2MdrxgooNaP5YKtL4-Du" alt="Artist Core OS Gold Wings"/>
+          <img src="assets/images/ar_wings_concert.jpg" alt="9LMNTS Holographic Gold Wings Activation"/>
           <div class="ar-card-label">
-            <span>Studio Synth Room</span>
+            <span>WebAR Wing Projection</span>
             <span class="highlight">GOLD WINGS LVL 9</span>
           </div>
         </div>
         <div class="ar-showcase-card" onclick="playCyberClick()">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm2tPtpvco_ei-BkvH9FZ95vQO8U2cVl7rkyCBo8A6hFfIyRyN6e1caXKgcYWAiYa7fObOBZ-A6tsCv2JcvwX9nKf58oaJS8hzEZX-FnDm8LRhmU-4igj5ZOmQimV6nZspxTpXTxSBsgI258lT3F-TuohsbBUeZQBnpwRspfInmf7sfzs0my9dymghl5Vh2lR-fkiX7FsBb8h0Le6mSa-C3uxuEwXZYJYEC3AM8xVRO_mkqiMJB8J7" alt="Toronto Street AR Wings Scan"/>
+          <img src="assets/images/Darnley_Runway_Look01_Look02_Mockup.jpg" alt="Darnley 2027 Runway Look 01 & 02"/>
           <div class="ar-card-label">
-            <span>Street AR Scanning</span>
-            <span class="highlight">PRISM VORTEX</span>
+            <span>Darnley 2027 Lookbook</span>
+            <span class="highlight">RUNWAY EDITION</span>
           </div>
         </div>
         <div class="ar-showcase-card" onclick="playCyberClick()">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2aaU-A5ClZnfEItu3zXGnYd4YeaUwhKKF5f_w2IJMU0IocgBpfEdrv8EahFtLIoT26UZkQY4jBdBV5PQW8Y8lEV79_GTzpEsVjJBnJBeyRy0hQlUJGHBIZbkJTW0VVhpsF5YSoHnAjvDhNewPjRbdJF35B4Q-cEr1zB93UPJxAm2VnziG0iXlIOdMSg2VfPVMvXx3tMOhKc42P2RDmU5e9CJyHoCU9OgO-0Tbxraq6Luu_YPB4LvV" alt="Festival Crowd Sync"/>
+          <img src="assets/images/runway_kemet_gold_1.jpg" alt="Kemet Gold Glyph Anorak"/>
           <div class="ar-card-label">
-            <span>Festival Crowd Sync</span>
-            <span class="highlight">LIVE STAGE AR</span>
+            <span>Project LOA Ptah Drop</span>
+            <span class="highlight">KEMET GOLD ANORAK</span>
           </div>
         </div>
       </div>
@@ -2417,61 +2555,64 @@
       <div class="spec-grid">
         <div class="spec-item">
           <h4>Live Crowd AR Wings</h4>
-          <p>Dual-wing holographic projection rendered live at 60 FPS via WebXR camera scan.</p>
+          <p>Dual-wing holographic projection rendered live at 60 FPS via browser WebXR camera scan.</p>
         </div>
         <div class="spec-item">
           <h4>Smart QR Sleeve Glyphs</h4>
-          <p>Scannable sleeves linking crowd members directly to stems, VIP drops, and artist tipping.</p>
+          <p>Scannable sleeves linking directly to stems, VIP arena passes, and live OS demos.</p>
         </div>
         <div class="spec-item">
-          <h4>Heavyweight Fabric Specs</h4>
-          <p>480 GSM French Terry Cotton, cyberpunk reflective transfer inks, built for stadium bass.</p>
+          <h4>480 GSM Heavyweight Build</h4>
+          <p>Custom French Terry cotton, reflective silicone inks, and oversized drop-shoulder cut.</p>
         </div>
         <div class="spec-item">
-          <h4>Day-1 Pre-Order Pricing</h4>
-          <p>Core Tee: $45 CAD // CYPERFINK Smart Hoodie: $120 CAD // VIP Season Pass: $250 CAD.</p>
+          <h4>18-Piece Phygital Catalog</h4>
+          <p>Core Tee: $45 CAD // 9LMNTS Cyber Smart Hoodie: $120 CAD // VIP Season Box: $250 CAD.</p>
         </div>
       </div>
 
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
         <a class="btn-primary" href="merch.html">
-          Pre-Order CYPERFINK AR Wearables ↗
+          Explore 18-Piece Phygital Merch Catalog ↗
         </a>
       </div>
     </div>
 
-    <!-- Modal 09: Artist OS DAW Workstation -->
+    <!-- Modal 09: Studio DAW Mixing Console -->
     <div class="modal-dialog" id="modalArtistOS">
       <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">×</button>
-      <span class="modal-badge">CREATOR HQ // STATION 09</span>
-      <h2>ArtistOS Workstation</h2>
-      <div class="subtitle">Next-Gen Audio Production &amp; Touring Suite</div>
+      <span class="modal-badge">STUDIO DAW CONSOLE // STATION 09</span>
+      <h2>Studio DAW: ArtistOS Mixing Console</h2>
+      <div class="subtitle">64-Bus Web Audio Mixing Desk, Stem Mastering &amp; EP Production</div>
       <p>
-        The integrated ArtistOS terminal provides hands-on stems mixing, multi-track waveform synthesis, and real-time beat sequencing mapped directly to physical faders and tactile motor controls.
+        The integrated Studio DAW terminal provides hands-on multitrack stem mixing, 96kHz/32-bit analog-modeled bus processing, and direct stem mastering packages engineered at 9LMNTS Studio.
       </p>
       <div class="spec-grid">
         <div class="spec-item">
-          <h4>Multi-Bus Matrix</h4>
-          <p>64 Virtual Stereo Buses with analog modeled saturation &amp; filters.</p>
+          <h4>64-Bus Mixing Matrix</h4>
+          <p>Virtual stereo buses with analog-modeled saturation, compression &amp; EQ.</p>
         </div>
         <div class="spec-item">
-          <h4>Low-Latency DSP</h4>
-          <p>Sub-millisecond buffer monitoring with zero-drift hardware clock lock.</p>
+          <h4>Stem Mastering ($250)</h4>
+          <p>96kHz/32-bit multi-stem mastering ($125 50% e-Transfer deposit to start).</p>
         </div>
         <div class="spec-item">
-          <h4>Stem Chopper</h4>
-          <p>AI neural demixing for instant acapella and drum break chopping.</p>
+          <h4>Full Vocal &amp; Track Mix ($750)</h4>
+          <p>Complete vocal tuning, 808 sub alignment &amp; master stem delivery ($375 Deposit).</p>
         </div>
         <div class="spec-item">
-          <h4>Tour Revenue Ledger</h4>
-          <p>Direct cashless integration for gate passes, merch, and royalties.</p>
+          <h4>ArtistOS Master EP ($1,500)</h4>
+          <p>4-track EP mastering + custom ArtistOS interactive stem player ($750 Deposit).</p>
         </div>
       </div>
       <div class="modal-actions">
         <button class="btn-secondary" onclick="closeModal()">Back to Studio</button>
-        <a class="btn-primary" href="https://artist.9lmntsstudio.com" target="_blank" rel="noopener noreferrer">
-          Launch Artist OS ↗
+        <a class="btn-secondary" href="pricing.html">
+          Book Mixing / Mastering ↗
+        </a>
+        <a class="btn-primary" href="vault.html#interactive-chopper">
+          Launch Interactive DAW Console ↗
         </a>
       </div>
     </div>
@@ -2908,9 +3049,9 @@
 
       // Cockpit Station 02 DAW Audio Engine
       const CP_TRACKS = [
-        { id: 'you_could_have_been', title: 'You Could Have Been', src: '/assets/audio/you_could_have_been.mp3' },
-        { id: 'raise_another', title: 'Raise Another', src: '/assets/audio/raise_another.mp3' },
-        { id: 'same_blood_same_knife', title: 'Same Blood, Same Knife', src: '/assets/audio/same_blood_same_knife.mp3' }
+        { id: 'you_could_have_been', title: 'You Could Have Been', src: 'assets/audio/you_could_have_been.mp3' },
+        { id: 'raise_another', title: 'Raise Another', src: 'assets/audio/raise_another.mp3' },
+        { id: 'same_blood_same_knife', title: 'Same Blood, Same Knife', src: 'assets/audio/same_blood_same_knife.mp3' }
       ];
       let cpCurrentTrack = 0;
       let cpIsPlaying = false;

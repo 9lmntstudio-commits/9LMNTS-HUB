@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>BUSINESS METER (HANSU) • Pitch OS Live Duel Arena | businessmeter.ca × 9LMNTS Studio</title>
+  <meta name="description" content="Business Meter (businessmeter.ca) Live 8-Contender Founder Pitch Duel, $250 x 8 Contender Underwrite Engine, $1,000 Pinned Category Sponsor Banner, and 80-Seat Realtime Voting Arena powered by 9LMNTS Pitch OS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #00FF88;
+      --secondary: #00D2FF;
+      --flame: #FF5500;
+      --gold: #FFB300;
+      --bg-dark: #050609;
+      --card-bg: rgba(11, 15, 24, 0.92);
+      --card-border: #1E2538;
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      padding-bottom: 96px;
+      background-image:
+        radial-gradient(circle at 50% 10%, rgba(0, 255, 136, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 85% 20%, rgba(255, 85, 0, 0.10) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+    }
+
+    .container { max-width: 620px; margin: 0 auto; min-height: 100vh; position: relative; }
+
+    header {
+      position: sticky; top: 0; z-index: 120;
+      background: rgba(5, 6, 9, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 900; text-transform: uppercase;
+      text-decoration: none; color: #FFF;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .brand-logo span { color: var(--primary); }
+    .live-status-badge {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(0, 255, 136, 0.12);
+      border: 1px solid rgba(0, 255, 136, 0.45);
+      padding: 4px 10px; border-radius: 20px;
+      font-size: 0.68rem; font-weight: 800; font-family: var(--font-mono);
+      color: var(--primary);
+    }
+    .live-dot { width: 7px; height: 7px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* PINNED $1,000 CATEGORY SPONSOR BANNER (businessmeter.ca) */
+    .pinned-sponsor-banner {
+      position: sticky;
+      top: 53px;
+      z-index: 110;
+      background: linear-gradient(90deg, rgba(255, 179, 0, 0.18), rgba(255, 85, 0, 0.22), rgba(255, 179, 0, 0.18));
+      border-bottom: 1px solid var(--gold);
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(14px);
+    }
+    .sponsor-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #050505;
+      background: var(--gold);
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .sponsor-copy {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #FFF;
+      flex: 1;
+    }
+    .sponsor-copy a { color: var(--gold); text-decoration: underline; }
+    .sponsor-telemetry {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .hero-card {
+      padding: 22px 16px; text-align: center;
+      background: linear-gradient(180deg, rgba(11, 15, 24, 0.95) 0%, rgba(5, 6, 9, 0.98) 100%);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .hero-badge {
+      display: inline-block; font-size: 0.65rem; font-family: var(--font-mono);
+      color: var(--flame); font-weight: 800; letter-spacing: 1.5px;
+      background: rgba(255, 85, 0, 0.12); border: 1px solid rgba(255, 85, 0, 0.4);
+      padding: 4px 10px; border-radius: 6px; margin-bottom: 8px; text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: var(--font-display); font-size: 1.55rem; font-weight: 900;
+      text-transform: uppercase; line-height: 1.15; margin-bottom: 6px;
+    }
+    .hero-tagline { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 16px; }
+
+    /* Self-Liquidating Pre-Door Revenue Box */
+    .pot-surge-box {
+      background: #080B12; border: 1px solid var(--primary);
+      border-radius: 14px; padding: 14px; margin-bottom: 12px;
+      box-shadow: 0 0 24px rgba(0, 255, 136, 0.14);
+    }
+    .pot-label { font-size: 0.65rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+    .pot-amount { font-family: var(--font-mono); font-size: 1.85rem; font-weight: 900; color: #FFFFFF; margin: 2px 0; }
+    .pot-split { font-size: 0.68rem; font-family: var(--font-mono); color: var(--primary); }
+
+    /* 80-Seat Room Capacity Bar */
+    .seat-cap-bar {
+      background: #0A0E17;
+      border: 1px solid rgba(0, 210, 255, 0.35);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .nav-tabs {
+      display: flex; background: #080B10; border-bottom: 1px solid var(--card-border);
+      position: sticky; top: 94px; z-index: 90; overflow-x: auto; scrollbar-width: none;
+    }
+    .tab-btn {
+      flex: 1; padding: 13px 10px; text-align: center;
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+      color: var(--text-muted); border-bottom: 2px solid transparent; cursor: pointer;
+      white-space: nowrap; text-transform: uppercase;
+    }
+    .tab-btn.active { color: #FFF; border-bottom-color: var(--primary); background: rgba(0, 255, 136, 0.06); }
+
+    .view-content { display: none; padding: 16px; }
+    .view-content.active { display: block; }
+
+    .duel-stage {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 16px; margin-bottom: 16px;
+    }
+    .stage-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .round-tag { font-size: 0.7rem; font-family: var(--font-mono); color: var(--primary); font-weight: 800; }
+    .round-timer {
+      font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800;
+      background: rgba(255, 85, 0, 0.15); border: 1px solid var(--flame);
+      padding: 3px 8px; border-radius: 6px; color: #FFF;
+    }
+
+    .contenders-grid {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center;
+      margin-bottom: 14px;
+    }
+    .contender-card {
+      background: #080B10; border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 12px 8px; text-align: center;
+    }
+    .contender-card.c1 { border-top: 3px solid var(--primary); }
+    .contender-card.c2 { border-top: 3px solid var(--secondary); }
+    .c-name { font-family: var(--font-display); font-size: 0.82rem; font-weight: 800; margin-bottom: 2px; }
+    .c-stat { font-size: 0.64rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .c-votes { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 900; margin-top: 4px; }
+    .vs-circle {
+      width: 32px; height: 32px; border-radius: 50%; background: #121624;
+      border: 1px solid var(--card-border); display: flex; align-items: center;
+      justify-content: center; font-size: 0.65rem; font-family: var(--font-display); font-weight: 900;
+    }
+
+    .vote-bar-wrap {
+      display: flex; height: 10px; border-radius: 5px; overflow: hidden;
+      margin-bottom: 14px; background: #1A1F2C;
+    }
+    .vote-bar-c1 { height: 100%; background: var(--primary); transition: width 0.35s; }
+    .vote-bar-c2 { height: 100%; background: var(--secondary); transition: width 0.35s; }
+
+    .vote-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .btn-vote {
+      padding: 12px; border: none; border-radius: 8px; font-family: var(--font-display);
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase; cursor: pointer;
+      color: #050505;
+    }
+    .btn-vote.c1 { background: var(--primary); }
+    .btn-vote.c2 { background: var(--secondary); }
+
+    .monetization-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .mono-box {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 14px 10px; text-align: center;
+      cursor: pointer; transition: 0.2s;
+    }
+    .mono-box:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .mono-num { font-size: 0.65rem; font-family: var(--font-mono); color: var(--gold); font-weight: 800; }
+    .mono-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 800; margin: 4px 0; }
+    .mono-price { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 900; color: #FFF; }
+    .mono-btn {
+      margin-top: 8px; display: block; padding: 6px; border-radius: 6px;
+      background: rgba(0, 255, 136, 0.15); border: 1px solid var(--primary);
+      font-size: 0.65rem; font-family: var(--font-display); font-weight: 700;
+      color: var(--primary); text-transform: uppercase;
+    }
+
+    .pp-modal { display:none; position:fixed; z-index:9999; inset:0; background:rgba(0,0,0,0.86); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:16px; }
+    .pp-modal.active { display:flex; }
+    .pp-modal-content { background:#0A0D14; border:1px solid var(--primary); box-shadow:0 0 35px rgba(0,255,136,0.25); border-radius:14px; max-width:450px; width:100%; padding:20px; color:#FFF; }
+
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(5, 6, 9, 0.96); backdrop-filter: blur(12px);
+      border-top: 1px solid var(--card-border); padding: 10px 16px;
+      display: flex; justify-content: space-around; max-width: 620px; margin: 0 auto;
+    }
+    .b-item {
+      text-align: center; color: var(--text-muted); font-size: 0.65rem;
+      font-family: var(--font-display); text-transform: uppercase; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .b-item.active { color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a href="index.html" class="brand-logo">
+        BUSINESS<span>METER</span>.CA <span style="font-size:0.65rem; color:var(--text-muted); font-family:var(--font-mono);">× PITCH OS</span>
+      </a>
+      <div class="live-status-badge">
+        <div class="live-dot"></div>
+        <span>80-SEAT ARENA LIVE</span>
+      </div>
+    </header>
+
+    <!-- PINNED $1,000 CATEGORY SPONSOR BANNER -->
+    <div class="pinned-sponsor-banner">
+      <span class="sponsor-tag">PINNED SPONSOR ($1,000)</span>
+      <div class="sponsor-copy">
+        Powered by <a href="https://businessmeter.ca" target="_blank" rel="noopener">businessmeter.ca</a> — Reserve Exclusive Category Sponsor Banner
+      </div>
+      <div class="sponsor-telemetry" onclick="openPayPalCheckout('Pinned Category Sponsor Banner (businessmeter.ca)', 1000, 'BM-SPONSOR-1000')" style="cursor:pointer;">
+        👁 <span id="sponsorImpressions">1,420</span> • [LOCK SLOT]
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-card">
+      <span class="hero-badge">HANSU // BUSINESS METER LIVE CORPORATE CLASH</span>
+      <h1 class="hero-title">8-Founder Live Pitch Duel &amp; Voting Meter</h1>
+      <p class="hero-tagline">8 Contenders × $250 Underwrite ($2,000) + $1,000 Pinned Sponsor = $3,000 Pre-Door Pool</p>
+
+      <div class="pot-surge-box">
+        <div class="pot-label">Pre-Door Underwrite &amp; Live Arena Pool</div>
+        <div class="pot-amount" id="potCounter">$3,000 CAD</div>
+        <div class="pot-split">8× $250 Contender Packs ($2,000) + $1,000 Pinned Sponsor Locked</div>
+      </div>
+
+      <div class="seat-cap-bar">
+        <span>🎟️ VENUE ATTENDANCE TELEMETRY:</span>
+        <strong style="color:var(--secondary);"><span id="roomVotesCount">64</span> / 80 SEATS VOTING LIVE</strong>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="nav-tabs">
+      <div class="tab-btn active" onclick="switchView('live', this)">Live Duel Meter</div>
+      <div class="tab-btn" onclick="switchView('underwrite', this)">$250×8 Underwrite</div>
+      <div class="tab-btn" onclick="switchView('bracket', this)">8-Contender Bracket</div>
+    </div>
+
+    <!-- VIEW 1: LIVE DUEL METER -->
+    <div id="view-live" class="view-content active">
+      <div class="duel-stage">
+        <div class="stage-header">
+          <span class="round-tag"><i class="fas fa-bolt"></i> QUARTERFINAL DUEL 01 • LIVE WEBSOCKET</span>
+          <span class="round-timer" id="roundTimer">02:45</span>
+        </div>
+
+        <div class="contenders-grid">
+          <div class="contender-card c1">
+            <div class="c-name">Founder Contender 01</div>
+            <div class="c-stat">$250 Underwrite Slot #1</div>
+            <div class="c-votes" id="c1Votes" style="color:var(--primary);">56%</div>
+          </div>
+
+          <div class="vs-circle">VS</div>
+
+          <div class="contender-card c2">
+            <div class="c-name">Founder Contender 02</div>
+            <div class="c-stat">$250 Underwrite Slot #2</div>
+            <div class="c-votes" id="c2Votes" style="color:var(--secondary);">44%</div>
+          </div>
+        </div>
+
+        <div class="vote-bar-wrap">
+          <div class="vote-bar-c1" id="barC1" style="width: 56%;"></div>
+          <div class="vote-bar-c2" id="barC2" style="width: 44%;"></div>
+        </div>
+
+        <div class="vote-actions">
+          <button class="btn-vote c1" onclick="castVote('A')">
+            ⚡ Vote Contender 01
+          </button>
+          <button class="btn-vote c2" onclick="castVote('B')">
+            ⚡ Vote Contender 02
+          </button>
+        </div>
+        <div id="voteTelemetryMsg" style="display:none; margin-top:10px; font-family:var(--font-mono); font-size:0.72rem; color:var(--primary); text-align:center;"></div>
+      </div>
+
+      <!-- 4-BOX BUSINESS METER UNDERWRITE & SPONSOR MATRIX -->
+      <div class="monetization-grid">
+        <div onclick="openPayPalCheckout('Founder Contender Ticket Underwrite (1 of 8 Slots)', 250, 'BM-CONTENDER-250')" class="mono-box">
+          <div class="mono-num">SLOT 01–08 ($2,000 POOL)</div>
+          <div class="mono-title">Founder Contender Pack</div>
+          <div class="mono-price">$250 CAD</div>
+          <span class="mono-btn">Lock Contender Slot</span>
+        </div>
+
+        <div onclick="openPayPalCheckout('Pinned Category Sponsor Banner (businessmeter.ca)', 1000, 'BM-SPONSOR-1000')" class="mono-box">
+          <div class="mono-num">PINNED TOP BANNER</div>
+          <div class="mono-title">Category Sponsor</div>
+          <div class="mono-price">$1,000 CAD</div>
+          <span class="mono-btn">Pin Brand Banner</span>
+        </div>
+
+        <div onclick="openPayPalCheckout('80-Seat VIP Audience Ballot & Networking Pass', 40, 'BM-SEAT-80')" class="mono-box">
+          <div class="mono-num">80-SEAT ARENA CAP</div>
+          <div class="mono-title">Audience Voting Seat</div>
+          <div class="mono-price">$40 CAD</div>
+          <span class="mono-btn">Reserve Seat</span>
+        </div>
+
+        <div onclick="openPayPalCheckout('Business Meter Pitch OS — 50% Turnkey Activation Deposit', 1500, 'BMETER-PITCHOS-50LOCK')" class="mono-box" style="border-color:var(--flame);">
+          <div class="mono-num" style="color:var(--flame);">DNS &amp; PLATFORM LOCK</div>
+          <div class="mono-title">50% Activation Deposit</div>
+          <div class="mono-price">$1,500 CAD</div>
+          <span class="mono-btn" style="border-color:var(--flame); color:var(--flame); background:rgba(255,85,0,0.15);">Activate businessmeter.ca</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: $250 x 8 UNDERWRITE BREAKDOWN -->
+    <div id="view-underwrite" class="view-content">
+      <div class="duel-stage">
+        <h3 style="font-family:var(--font-display); font-size:0.95rem; color:var(--primary); margin-bottom:10px;">
+          SELF-LIQUIDATING 80-SEAT REVENUE MODEL
+        </h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+          Every Business Meter live clash is 100% underwritten before doors open:
+        </p>
+        <div style="display:grid; gap:10px; font-family:var(--font-mono); font-size:0.78rem;">
+          <div style="background:#080B10; border:1px solid var(--card-border); padding:12px; border-radius:10px; display:flex; justify-content:space-between;">
+            <span>8 Founder Contenders × $250 Underwrite</span>
+            <strong style="color:var(--primary);">$2,000.00 CAD</strong>
+          </div>
+          <div style="background:#080B10; border:1px solid var(--card-border); padding:12px; border-radius:10px; display:flex; justify-content:space-between;">
+            <span>1 Pinned Category Sponsor (Top Mobile Banner)</span>
+            <strong style="color:var(--gold);">$1,000.00 CAD</strong>
+          </div>
+          <div style="background:#080B10; border:1px solid var(--card-border); padding:12px; border-radius:10px; display:flex; justify-content:space-between;">
+            <span>80-Seat Audience Attendance (10 Guests / Founder)</span>
+            <strong style="color:var(--secondary);">80 SEATS FILLED</strong>
+          </div>
+          <div style="background:rgba(0,255,136,0.1); border:1px solid var(--primary); padding:14px; border-radius:10px; display:flex; justify-content:space-between;">
+            <strong>PRE-DOOR UNDERWRITE TOTAL:</strong>
+            <strong style="color:#FFF; font-size:1rem;">$3,000.00 CAD</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: 8-CONTENDER BRACKET -->
+    <div id="view-bracket" class="view-content">
+      <div class="duel-stage">
+        <h3 style="font-family:var(--font-display); font-size:0.9rem; color:var(--primary); margin-bottom:12px;">
+          8-CONTENDER BUSINESS METER BRACKET ($250 × 8)
+        </h3>
+        <div style="display:grid; gap:8px; font-family:var(--font-mono); font-size:0.75rem;">
+          <div style="background:#080B10; border:1px solid var(--primary); padding:10px; border-radius:8px; display:flex; justify-content:space-between;">
+            <span>QF 01: Contender Slot 01 vs. Contender Slot 02</span>
+            <span style="color:var(--primary);">● LIVE DUEL</span>
+          </div>
+          <div style="background:#080B10; border:1px solid var(--card-border); padding:10px; border-radius:8px; display:flex; justify-content:space-between;">
+            <span>QF 02: Contender Slot 03 vs. Contender Slot 04</span>
+            <span style="color:var(--gold);">$250 UNDERWRITE LOCKED</span>
+          </div>
+          <div style="background:#080B10; border:1px solid var(--card-border); padding:10px; border-radius:8px; display:flex; justify-content:space-between;">
+            <span>QF 03: Contender Slot 05 vs. Contender Slot 06</span>
+            <span style="color:var(--gold);">$250 UNDERWRITE LOCKED</span>
+          </div>
+          <div style="background:#080B10; border:1px solid var(--card-border); padding:10px; border-radius:8px; display:flex; justify-content:space-between;">
+            <span>QF 04: Contender Slot 07 vs. Contender Slot 08</span>
+            <span style="color:var(--gold);">$250 UNDERWRITE LOCKED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <div class="b-item active" onclick="switchView('live', this)"><i class="fas fa-bolt"></i>Duel Meter</div>
+      <div class="b-item" onclick="switchView('underwrite', this)"><i class="fas fa-coins"></i>$3K Math</div>
+      <div class="b-item" onclick="switchView('bracket', this)"><i class="fas fa-sitemap"></i>8-Bracket</div>
+      <div class="b-item" onclick="openPayPalCheckout('Business Meter Pitch OS — 50% Activation Deposit', 1500, 'BMETER-PITCHOS-50LOCK')"><i class="fas fa-lock"></i>50% Lock</div>
+    </div>
+  </div>
+
+  <!-- INTERAC e-TRANSFER & PAYPAL ESCROW MODAL -->
+  <div id="paypalModal" class="pp-modal">
+    <div class="pp-modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1E2538; padding-bottom:10px; margin-bottom:12px;">
+        <span style="font-family:var(--font-display); font-size:0.9rem; font-weight:900; color:var(--primary);">PITCH OS // INTERAC &amp; PAYPAL ESCROW</span>
+        <button onclick="closePayPalModal()" style="background:none; border:none; color:#94A3B8; font-size:1.4rem; cursor:pointer;">&times;</button>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div id="ppItemTitle" style="font-weight:800; font-size:0.92rem;">Founder Contender Pack</div>
+        <div id="ppItemPrice" style="font-family:var(--font-mono); font-size:1.3rem; font-weight:900; color:var(--primary); margin-top:4px;">$250.00 CAD</div>
+      </div>
+      <div style="background:#0D121D; border:1px solid rgba(0,255,136,0.35); border-radius:10px; padding:12px; margin-bottom:14px; font-family:var(--font-mono); font-size:0.74rem;">
+        <div style="color:var(--primary); font-weight:800; margin-bottom:4px;">⚡ INTERAC e-TRANSFER INSTRUCTIONS:</div>
+        <div>1. Send to: <strong>payments@9lmntsstudio.com</strong></div>
+        <div>2. Amount: <strong id="ppInteracAmount" style="color:var(--primary);">$250.00 CAD</strong></div>
+        <div>3. Reference Memo: <strong id="ppInteracMemo" style="color:var(--gold);">BMETER-50LOCK</strong></div>
+      </div>
+      <div id="ppReceiptBanner" style="display:none; background:rgba(0,255,136,0.12); border:1px solid var(--primary); border-radius:8px; padding:10px; margin-bottom:12px; font-family:var(--font-mono); font-size:0.72rem;"></div>
+      <div style="display:grid; gap:8px;">
+        <button onclick="executePayPalOrder('Interac e-Transfer Verified')" style="background:var(--primary); color:#050505; border:none; padding:12px; border-radius:8px; font-weight:900; cursor:pointer;">
+          ⚡ Confirm Interac e-Transfer Sent
+        </button>
+        <button onclick="executePayPalOrder('PayPal Pay in 4 / Card')" style="background:#FFC439; color:#003087; border:none; padding:12px; border-radius:8px; font-weight:900; cursor:pointer;">
+          Pay via PayPal / Pay in 4 (<span id="ppInstallmentAmount">4x $62.50</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let votesA = 36;
+    let votesB = 28;
+    let sponsorImpressions = 1420;
+    let potTotal = 3000;
+    let secondsLeft = 165;
+
+    function switchView(viewId, btn) {
+      document.querySelectorAll('.view-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById('view-' + viewId);
+      if (target) target.classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    async function castVote(target) {
+      if (target === 'A') votesA++;
+      else votesB++;
+      sponsorImpressions++;
+      const total = votesA + votesB;
+      const pctA = Math.round((votesA / total) * 100);
+      const pctB = 100 - pctA;
+
+      document.getElementById('c1Votes').innerText = pctA + '%';
+      document.getElementById('c2Votes').innerText = pctB + '%';
+      document.getElementById('barC1').style.width = pctA + '%';
+      document.getElementById('barC2').style.width = pctB + '%';
+      document.getElementById('roomVotesCount').innerText = Math.min(80, total);
+      document.getElementById('sponsorImpressions').innerText = sponsorImpressions.toLocaleString();
+
+      const msg = document.getElementById('voteTelemetryMsg');
+      msg.style.display = 'block';
+      msg.innerText = `✅ Real-Time Vote Locked for Contender ${target === 'A' ? '01' : '02'} • Pinned Sponsor Impression #${sponsorImpressions} Recorded`;
+
+      try {
+        await fetch('/boilerplates/pitch-os/api/vote/route.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ duel_id: 'BM-CLASH-01', vote_target: target })
+        });
+      } catch (e) {}
+    }
+
+    let activeOrder = { title: '', price: 250, code: 'BMETER' };
+    function openPayPalCheckout(title, price, code) {
+      activeOrder = { title, price: Number(price), code };
+      document.getElementById('ppItemTitle').innerText = title;
+      document.getElementById('ppItemPrice').innerText = `$${activeOrder.price.toFixed(2)} CAD`;
+      document.getElementById('ppInteracAmount').innerText = `$${activeOrder.price.toFixed(2)} CAD`;
+      document.getElementById('ppInteracMemo').innerText = code;
+      document.getElementById('ppInstallmentAmount').innerText = `4x $${(activeOrder.price / 4).toFixed(2)} CAD`;
+      document.getElementById('ppReceiptBanner').style.display = 'none';
+      document.getElementById('paypalModal').classList.add('active');
+    }
+
+    function closePayPalModal() {
+      document.getElementById('paypalModal').classList.remove('active');
+    }
+
+    function executePayPalOrder(method) {
+      const receipt = document.getElementById('ppReceiptBanner');
+      receipt.style.display = 'block';
+      receipt.innerHTML =
+        `✅ <strong>ORDER LOGGED (${activeOrder.code})</strong><br/>` +
+        `Package: ${activeOrder.title}<br/>` +
+        `Amount: <strong>$${activeOrder.price.toFixed(2)} CAD</strong> via ${method}`;
+    }
+
+    setInterval(() => {
+      if (secondsLeft > 0) {
+        secondsLeft--;
+        const mins = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+        const secs = String(secondsLeft % 60).padStart(2, '0');
+        document.getElementById('roundTimer').innerText = mins + ':' + secs;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

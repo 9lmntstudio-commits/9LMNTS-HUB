@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440, initial-scale=1.0" />
+  <title>9LMNTS Studio // Prospect Prototype Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Alex+Brush&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --espresso-void: #0D0A08;
+      --espresso-dark: #15110E;
+      --espresso-card: #1E1814;
+      --espresso-elevated: #261E19;
+      --bronze-primary: #C69C6D;
+      --bronze-light: #DFB78C;
+      --gold-bright: #E5C178;
+      --border-warm: rgba(198, 156, 109, 0.22);
+      --text-cream: #FDFBF7;
+      --text-muted: #BDB0A4;
+      --green-profit: #10B981;
+      --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-script: 'Alex Brush', cursive;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--espresso-void);
+      color: var(--text-cream);
+      font-family: var(--font-sans);
+      width: 1440px;
+      height: 1020px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-wrapper {
+      width: 1440px;
+      height: 1020px;
+      padding: 44px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: radial-gradient(circle at 50% 0%, #1A130E 0%, var(--espresso-void) 80%);
+    }
+
+    /* Ambient lighting */
+    .slide-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 380px;
+      background: radial-gradient(ellipse, rgba(198, 156, 109, 0.16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-warm);
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand-side {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cloche-pill {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0D0A08;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 16px rgba(198, 156, 109, 0.35);
+    }
+
+    .brand-side h1 {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-side span.badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(198, 156, 109, 0.15);
+      border: 1px solid var(--border-warm);
+      color: var(--gold-bright);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .btn-nav-order {
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--bronze-primary));
+      color: #0D0A08;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: none;
+      box-shadow: 0 4px 14px rgba(198, 156, 109, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Main Slide Views */
+    .view-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* VIEW 1: HERO */
+    .hero-view {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    .hero-left h2 {
+      font-family: var(--font-serif);
+      font-size: 3.4rem;
+      line-height: 1.1;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-left p.desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 580px;
+    }
+
+    .hero-badges-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .hero-feature-box {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-feature-box i {
+      font-size: 1.3rem;
+      color: var(--gold-bright);
+    }
+
+    .hero-feature-box .text .num {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .hero-feature-box .text .lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hero-right-card {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+      position: relative;
+    }
+
+    .hero-dish-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-dish-info {
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--espresso-dark);
+      border-top: 1px solid var(--border-warm);
+    }
+
+    /* VIEW 2: CATERING CALCULATOR */
+    .catering-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .calc-card {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 24px;
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .calc-card h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: #FFFFFF;
+    }
+
+    .tier-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .tier-btn {
+      background: var(--espresso-elevated);
+      border: 1px solid var(--border-warm);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .tier-btn.active {
+      border-color: var(--gold-bright);
+      background: rgba(198, 156, 109, 0.16);
+    }
+
+    .tier-btn .t-title { font-weight: 700; font-size: 0.95rem; color: #FFF; }
+    .tier-btn .t-price { font-size: 0.8rem; color: var(--gold-bright); font-weight: 600; }
+
+    .slider-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .mock-slider-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .mock-slider-fill {
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--bronze-primary), var(--gold-bright));
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .mock-slider-handle {
+      position: absolute;
+      right: -10px;
+      top: -6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      border: 3px solid var(--bronze-primary);
+    }
+
+    .calc-right-summary {
+      background: var(--espresso-card);
+      border: 1px solid var(--border-warm);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .calc-breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .calc-breakdown-row.total {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 16px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .instant-deposit-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.25));
+      border: 1px solid var(--green-profit);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .instant-deposit-banner .left-txt .tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green-profit);
+      font-weight: 800;
+    }
+
+    .instant-deposit-banner .left-txt .amount {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    /* VIEW 3: STRIPE 1-TAP CHECKOUT MODAL */
+    .checkout-view {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .stripe-modal {
+      width: 580px;
+      background: #181310;
+      border: 1px solid var(--border-warm);
+      border-radius: 28px;
+      padding: 36px 40px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .stripe-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+
+    .stripe-header .title-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stripe-header .title-badge i {
+      font-size: 1.4rem;
+      color: var(--gold-bright);
+    }
+
+    .stripe-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: #FFFFFF;
+    }
+
+    .apple-pay-btn {
+      width: 100%;
+      height: 52px;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #FFFFFF;
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    }
+
+    .divider-or {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .divider-or::before, .divider-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .card-input-box {
+      background: #110E0B;
+      border: 1px solid var(--border-warm);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--text-cream);
+    }
+
+    .card-icons {
+      display: flex;
+      gap: 8px;
+      color: var(--gold-bright);
+      font-size: 1.1rem;
+    }
+
+    .modal-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer / Bottom Info */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: rgba(24, 19, 16, 0.8);
+      border: 1px solid var(--border-warm);
+      border-radius: 14px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-left span.highlight {
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--green-profit);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-wrapper">
+    <!-- Header -->
+    <div class="header-nav">
+      <div class="brand-side">
+        <div class="cloche-pill"><i class="fa-solid fa-utensils"></i></div>
+        <h1 id="client-name">Island Flava.</h1>
+        <span class="badge" id="cuisine-badge">Chef OS // Grenadian &amp; Caribbean</span>
+      </div>
+      <div class="nav-actions">
+        <a href="#menu" class="nav-link">Authentic Menu</a>
+        <a href="#catering" class="nav-link">Catering Calculator</a>
+        <button class="btn-nav-order"><i class="fa-solid fa-bolt"></i> Order Direct (0% Fee)</button>
+      </div>
+    </div>
+
+    <!-- Dynamic Main View -->
+    <div class="view-container">
+
+      <!-- SLIDE 1: BRANDED HERO -->
+      <div class="hero-view" id="view-hero" style="display: none;">
+        <div class="hero-left">
+          <div class="hero-eyebrow"><i class="fa-solid fa-location-dot"></i> <span id="hero-address">412 Dalhousie St, ByWard Market</span></div>
+          <h2 id="hero-title">Authentic Caribbean Feasts, <span style="color: var(--gold-bright);">Zero App Fees.</span></h2>
+          <p class="desc" id="hero-desc">Order direct for 100% kitchen fresh plates, or slide your guest count to lock in bespoke catering with an automated 50% deposit.</p>
+          
+          <div class="hero-badges-row">
+            <div class="hero-feature-box">
+              <i class="fa-solid fa-shield-halved"></i>
+              <div class="text">
+                <div class="num">0% Commission</div>
+                <div class="lbl">Direct Stripe Online Bank</div>
+              </div>
+            </div>
+            <div class="hero-feature-box">
+              <i class="fa-brands fa-apple"></i>
+              <div class="text">
+                <div class="num">1-Tap Apple Pay</div>
+                <div class="lbl">Visa, MC, Amex, 4x Split</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right-card">
+          <img src="" id="hero-img" class="hero-dish-img" alt="Signature Dish" />
+          <div class="hero-dish-info">
+            <div>
+              <h4 id="hero-dish-name" style="font-family: var(--font-serif); font-size: 1.4rem; color: #FFF;">Jerk Chicken &amp; Oxtail Platter</h4>
+              <p id="hero-dish-sub" style="font-size: 0.85rem; color: var(--text-muted);">Steaming Rice &amp; Peas, Fried Sweet Plantains</p>
+            </div>
+            <div class="dish-price-badge" id="hero-dish-price">$26.50</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: CATERING CALCULATOR -->
+      <div class="catering-view" id="view-catering" style="display: none;">
+        <div class="calc-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-bright); font-weight: 700;">Live Catering Estimator</div>
+            <div style="font-size: 0.85rem; color: var(--green-profit); font-weight: 700;"><i class="fa-solid fa-bolt"></i> Real-Time Quote</div>
+          </div>
+          <h3 id="calc-headline">Plan Your Banquet or Party</h3>
+
+          <div class="tier-selector">
+            <div class="tier-btn active">
+              <div class="t-title">Grand Buffet</div>
+              <div class="t-price">$24.00 / guest</div>
+            </div>
+            <div class="tier-btn">
+              <div class="t-title">Party Platters</div>
+              <div class="t-price">$18.50 / guest</div>
+            </div>
+          </div>
+
+          <div class="slider-block">
+            <div class="slider-labels">
+              <span>Guest Count</span>
+              <span style="color: var(--gold-bright); font-size: 1.15rem;" id="calc-guests-label">75 Guests</span>
+            </div>
+            <div class="mock-slider-bar">
+              <div class="mock-slider-fill" id="calc-slider-fill" style="width: 55%;">
+                <div class="mock-slider-handle"></div>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+              <span>15 Guests</span>
+              <span>150 Guests</span>
+              <span>300+ Guests</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-right-summary">
+          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-bright); font-weight: 700;">Instant Quote Breakdown</div>
+          
+          <div class="calc-breakdown-row">
+            <span>Package Rate (75 × $24)</span>
+            <span id="calc-subtotal" style="font-weight: 700; color: #FFF;">$1,800.00 CAD</span>
+          </div>
+          <div class="calc-breakdown-row">
+            <span>Staffing &amp; Warmers Setup</span>
+            <span style="font-weight: 700; color: #FFF;">$250.00 CAD</span>
+          </div>
+          <div class="calc-breakdown-row total">
+            <span>Total Estimated Event</span>
+            <span id="calc-total" style="color: var(--gold-bright);">$2,050.00 CAD</span>
+          </div>
+
+          <div class="instant-deposit-banner">
+            <div class="left-txt">
+              <div class="tag"><i class="fa-solid fa-lock"></i> Auto-Collected 50% Deposit</div>
+              <div class="amount" id="calc-deposit">$1,025.00</div>
+            </div>
+            <button class="btn-nav-order" style="padding: 12px 20px;"><i class="fa-brands fa-apple"></i> Lock Date via Stripe</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: STRIPE 1-TAP CHECKOUT PROOF -->
+      <div class="checkout-view" id="view-stripe" style="display: none;">
+        <div class="stripe-modal">
+          <div class="stripe-header">
+            <div class="title-badge">
+              <i class="fa-brands fa-stripe"></i>
+              <div>
+                <h3 id="stripe-checkout-title">Island Flava Secure Checkout</h3>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Powered by Stripe // 0% Commission To Third Parties</p>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Deposit Due</div>
+              <div style="font-size: 1.35rem; font-weight: 800; color: var(--green-profit);" id="stripe-deposit-val">$1,025.00 CAD</div>
+            </div>
+          </div>
+
+          <div class="apple-pay-btn">
+            <i class="fa-brands fa-apple"></i> Pay with Apple Pay
+          </div>
+
+          <div class="divider-or">or pay with credit card</div>
+
+          <div class="card-input-box">
+            <span>4242 •••• •••• 4242</span>
+            <div class="card-icons">
+              <i class="fa-brands fa-cc-visa"></i>
+              <i class="fa-brands fa-cc-mastercard"></i>
+              <i class="fa-brands fa-cc-amex"></i>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="card-input-box" style="font-size: 0.85rem;">MM / YY</div>
+            <div class="card-input-box" style="font-size: 0.85rem;">CVC</div>
+          </div>
+
+          <button class="btn-nav-order" style="width: 100%; justify-content: center; padding: 16px; font-size: 1rem;">
+            <i class="fa-solid fa-lock"></i> Authorize $1,025.00 Catering Deposit
+          </button>
+
+          <div class="modal-bottom-row">
+            <span><i class="fa-solid fa-shield-halved" style="color: var(--green-profit);"></i> 256-Bit Encrypted Direct Bank Payout</span>
+            <span style="color: var(--gold-bright); font-weight: 700;">Zero Third-Party Middleman</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="slide-footer">
+      <div class="footer-left">
+        <span>Powered by <span class="highlight">9LMNTS Studio // Chef OS</span></span>
+        <span>•</span>
+        <span id="footer-sprint">7-Day Turnkey Project: $2,200 CAD One-Time ($1,100 CAD Deposit // Zero Monthly Fees)</span>
+      </div>
+      <div class="footer-right">
+        <i class="fa-solid fa-circle-check"></i> <span id="footer-guarantee">Client Keeps 100% Of Revenue Direct</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const client = params.get('client') || 'island_flava';
+    const slide = params.get('slide') || 'hero';
+
+    const clientData = {
+      island_flava: {
+        name: "Island Flava.",
+        badge: "Chef OS // Grenadian & Caribbean",
+        address: "412 Dalhousie St, ByWard Market, Ottawa",
+        heroTitle: "Authentic Caribbean Feasts, <span style='color: var(--gold-bright);'>Zero App Fees.</span>",
+        heroDesc: "Order ByWard Market's best Jerk Chicken & Oxtail direct to keep 100% of profit in the kitchen, or book 15-300+ guest catering with instant 50% deposits.",
+        dishName: "Signature Jerk Chicken & Oxtail",
+        dishSub: "Rice & Peas, Sweet Plantains, House Gravy",
+        dishPrice: "$24.50",
+        dishImg: "../assets/margo/griot_royal.jpg", // high quality plate
+        calcHeadline: "Island Flava Event Catering",
+        calcDeposit: "$1,025.00",
+        stripeTitle: "Island Flava Direct Checkout"
+      },
+      baccanalle: {
+        name: "Baccanalle.",
+        badge: "Chef OS // Artisanal Caribbean Catering",
+        address: "595 Montreal Rd, Ottawa, ON",
+        heroTitle: "Award-Winning Catering, <span style='color: var(--gold-bright);'>Direct 50% Deposits.</span>",
+        heroDesc: "Eliminate unpaid quotes and phone tag. Corporate galas, weddings, and party boxes with automated 1-tap Apple Pay guest checkout.",
+        dishName: "Artisanal Jerk Feast & Sorrel Platter",
+        dishSub: "Slow-Smoked Jerk, Coconut Rice, Fried Plantain",
+        dishPrice: "$28.00",
+        dishImg: "../assets/margo/grand_fritaille.jpg",
+        calcHeadline: "Baccanalle Gala & Event Estimator",
+        calcDeposit: "$1,500.00",
+        stripeTitle: "Baccanalle Artisanal Checkout"
+      },
+      tipikliz: {
+        name: "Tipikliz Caribbean.",
+        badge: "Chef OS // Haitian Creole Flagship",
+        address: "4025 Innes Rd, Orleans, ON",
+        heroTitle: "Authentic Haitian Griot & Rice, <span style='color: var(--gold-bright);'>100% Margin.</span>",
+        heroDesc: "Stop losing $3,000/mo to delivery apps. Orleans foodies order direct with 0% commission, and community feasts lock in 50% deposits automatically.",
+        dishName: "Griot Royal & Diri Djon Djon",
+        dishSub: "Crisp Fried Pork Shoulder, Black Mushroom Rice, Spicy Pikliz",
+        dishPrice: "$23.00",
+        dishImg: "../assets/margo/diri_djon_djon.jpg",
+        calcHeadline: "Tipikliz Community & Family Catering",
+        calcDeposit: "$800.00",
+        stripeTitle: "Tipikliz Creole Checkout"
+      },
+      rozo: {
+        name: "Rozo Restaurant.",
+        badge: "Chef OS // Caribbean Lounge & Live Music",
+        address: "253 St. Patrick St, ByWard Market",
+        heroTitle: "Luxury Dining & VIP Tables, <span style='color: var(--gold-bright);'>Instant Deposits.</span>",
+        heroDesc: "ByWard Market's premier Caribbean dining lounge. Direct reservations, VIP bottle & feast packages, and bespoke event catering with zero commission bleed.",
+        dishName: "Slow-Braised Caribbean Oxtail & Griot",
+        dishSub: "Rich Oxtail Gravy, Black Rice, Fried Green Plantains",
+        dishPrice: "$29.50",
+        dishImg: "../assets/margo/tassot_cabrit.jpg",
+        calcHeadline: "Rozo VIP Lounge & Event Estimator",
+        calcDeposit: "$950.00",
+        stripeTitle: "Rozo Lounge Direct Checkout"
+      }
+    };
+
+    const cd = clientData[client] || clientData.island_flava;
+
+    document.getElementById('client-name').innerText = cd.name;
+    document.getElementById('cuisine-badge').innerText = cd.badge;
+    document.getElementById('hero-address').innerText = cd.address;
+    document.getElementById('hero-title').innerHTML = cd.heroTitle;
+    document.getElementById('hero-desc').innerText = cd.heroDesc;
+    document.getElementById('hero-dish-name').innerText = cd.dishName;
+    document.getElementById('hero-dish-sub').innerText = cd.dishSub;
+    document.getElementById('hero-dish-price').innerText = cd.dishPrice;
+    document.getElementById('hero-img').src = cd.dishImg;
+    document.getElementById('calc-headline').innerText = cd.calcHeadline;
+    document.getElementById('calc-deposit').innerText = cd.calcDeposit;
+    document.getElementById('stripe-checkout-title').innerText = cd.stripeTitle;
+    document.getElementById('stripe-deposit-val').innerText = cd.calcDeposit + " CAD";
+
+    // Switch slide
+    if (slide === 'hero') {
+      document.getElementById('view-hero').style.display = 'grid';
+    } else if (slide === 'catering') {
+      document.getElementById('view-catering').style.display = 'grid';
+    } else if (slide === 'stripe') {
+      document.getElementById('view-stripe').style.display = 'flex';
+    } else {
+      document.getElementById('view-hero').style.display = 'grid';
+    }
+  </script>
+</body>
+</html>

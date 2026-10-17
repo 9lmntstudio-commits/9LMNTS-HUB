@@ -1,0 +1,62 @@
+{
+  "factory_metadata": {
+    "engine": "Chef OS & Catering Engine",
+    "boilerplate_source": "/boilerplates/chef-os/",
+    "target_id": "TARGET-01",
+    "brand_name": "Margo Caribbean & Canadian Restaurant",
+    "owner_contact": {
+      "decision_maker": "Kivenson Augustin",
+      "instagram": "@margocaribbean",
+      "phones": {
+        "OTT-RIDEAU": "(613) 241-1400",
+        "OTT-BANK": "(613) 421-4005"
+      }
+    },
+    "staging_url": "https://margo-staging.9lmntsstudio.com",
+    "production_path": "https://9lmntsstudio.com/margo"
+  },
+  "locations": [
+    {
+      "branch_code": "OTT-RIDEAU",
+      "name": "Margo Rideau Street Hub",
+      "address": "606 Rideau St, Ottawa, ON",
+      "phone": "(613) 241-1400"
+    },
+    {
+      "branch_code": "OTT-BANK",
+      "name": "Margo Bank Street Hub",
+      "address": "1563 Bank St, Ottawa, ON",
+      "phone": "(613) 421-4005"
+    }
+  ],
+  "catering_calculator": {
+    "min_guests": 15,
+    "max_guests": 300,
+    "slider_rate_range_cad": [18.00, 24.00],
+    "key_menu_models": [
+      {
+        "sku": "PLT-GRIOT-DJON",
+        "title": "Griot & Djon Djon Royal Platter",
+        "rate_per_person_cad": 24.00
+      },
+      {
+        "sku": "PLT-GRIOT-STD",
+        "title": "Classic Griot & Pikliz Platter",
+        "rate_per_person_cad": 20.00
+      },
+      {
+        "sku": "PLT-DJON-FUSION",
+        "title": "Djon Djon & Caribbean Fusion Platter",
+        "rate_per_person_cad": 18.00
+      }
+    ]
+  },
+  "payment_engine": {
+    "method": "STRIPE_ONLINE_CHECKOUT",
+    "supported_gateways": ["STRIPE_CARD", "APPLE_PAY", "GOOGLE_PAY", "KLARNA_PAY_IN_4"],
+    "deposit_ratio": 0.50,
+    "platform_build_total_cad": 2200.00,
+    "platform_deposit_lock_cad": 1100.00,
+    "dns_release_gate": "VERIFIED_50_PERCENT_ONLINE_DEPOSIT_REQUIRED"
+  }
+}

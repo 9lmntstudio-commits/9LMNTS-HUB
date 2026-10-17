@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>9LMNTS Studio — Gemini Mobile & Remote Command Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700;800&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-void: #050505;
+      --bg-card: #0E121B;
+      --flame: #FF5500;
+      --cyan: #00D2FF;
+      --green: #00FF88;
+      --text: #F5F5F7;
+      --muted: #8E9BAE;
+      --border: rgba(255, 85, 0, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-void);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      padding: 16px;
+      max-width: 880px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--flame);
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    .brand span { color: var(--flame); }
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0, 255, 136, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(0, 255, 136, 0.35);
+      font-weight: 700;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .card.cyan { border-top: 2px solid var(--cyan); }
+    .card.flame { border-top: 2px solid var(--flame); }
+    .card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+      color: #FFF;
+      text-transform: uppercase;
+    }
+    .sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; }
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    input[type="text"], input[type="password"] {
+      flex: 1;
+      min-width: 180px;
+      background: #07090E;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #FFF;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .btn {
+      background: linear-gradient(135deg, #FF5500, #FF2200);
+      color: #FFF;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn.secondary {
+      background: rgba(0, 210, 255, 0.14);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+    }
+    .btn.ghost {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #E2E8F0;
+    }
+    .cmd-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    pre.terminal {
+      background: #040507;
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #00FF88;
+      overflow-x: auto;
+      max-height: 360px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .prompt-box {
+      background: rgba(255, 85, 0, 0.08);
+      border: 1px dashed rgba(255, 85, 0, 0.45);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #FFF;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <div class="brand">9LMNTS <span>GEMINI BRIDGE</span></div>
+      <div style="font-size:0.7rem; color:var(--muted); font-family:'JetBrains Mono',monospace;">Phone ↔ Google Docs ↔ PC Terminal Cockpit</div>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span class="badge" id="bridgeStatusBadge">● BRIDGE READY</span>
+      <a href="index.html" class="btn ghost" style="padding:6px 10px; font-size:0.68rem;">HQ</a>
+    </div>
+  </div>
+
+  <!-- SECTION 1: REMOTE COMMAND EXECUTION FROM PHONE -->
+  <div class="card flame">
+    <h2>1. Run PC Workspace Commands From Your Phone</h2>
+    <p class="sub">Execute production builds, inspect files, or run terminal commands directly on your PC and sync the output to your Gemini Google Doc.</p>
+
+    <div class="input-row">
+      <input type="password" id="pinInput" value="9999" placeholder="Security PIN (Default: 9999)" style="max-width:140px;" />
+      <input type="text" id="customCmdInput" placeholder="Enter command (e.g. build, status, read services.html, git status)" />
+      <button class="btn" onclick="executeRemoteCommand(document.getElementById('customCmdInput').value)">▶ Run on PC</button>
+    </div>
+
+    <div class="cmd-grid">
+      <button class="btn secondary" onclick="executeRemoteCommand('build')">⚡ Run Build (dist/)</button>
+      <button class="btn secondary" onclick="executeRemoteCommand('status')">📊 Workspace Status</button>
+      <button class="btn secondary" onclick="executeRemoteCommand('list')">📁 List All Files</button>
+      <button class="btn secondary" onclick="executeRemoteCommand('read llms.txt')">🧠 Read llms.txt</button>
+      <button class="btn secondary" onclick="executeRemoteCommand('read services.html')">🎬 Read services.html</button>
+      <button class="btn secondary" onclick="executeRemoteCommand('sync')">☁️ Force Docs Sync</button>
+    </div>
+
+    <pre class="terminal" id="terminalOutput">Connecting to 9LMNTS Local Bridge...</pre>
+  </div>
+
+  <!-- SECTION 2: GOOGLE DOCS / GEMINI MOBILE APP MIDDLEMAN SETUP -->
+  <div class="card cyan">
+    <h2>2. Google Docs ↔ Gemini Phone App Middleman Bridge</h2>
+    <p class="sub">
+      Because the <strong>Gemini Mobile App</strong> natively reads <strong>@Google Drive / @Google Docs</strong>, this middleman syncs your PC terminal & workspace brain into a live Google Doc named <code>9LMNTS_GEMINI_LIVE_BRAIN</code> and polls Line 1 (<code>RUN_CMD: ...</code>) every 10 seconds to run commands from your phone!
+    </p>
+
+    <div class="input-row">
+      <input type="text" id="googleScriptUrlInput" placeholder="Paste Google Apps Script Web App URL (https://script.google.com/macros/s/.../exec)" />
+      <button class="btn" onclick="saveGoogleBridgeUrl()">💾 Connect & Sync to Google Docs</button>
+    </div>
+
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+      <a href="9LMNTS_GEMINI_MOBILE_BRAIN_SYNC.md" download="9LMNTS_GEMINI_MOBILE_BRAIN_SYNC.md" class="btn ghost">⬇ Download Brain (.md) for Drive</a>
+      <a href="google-apps-script-bridge.gs" target="_blank" class="btn ghost">📜 View Google Apps Script (.gs)</a>
+      <button class="btn secondary" onclick="copyBrainForGemini()">📋 Copy Live Brain for Gemini App</button>
+    </div>
+
+    <div class="prompt-box">
+      <strong>Ask your Gemini Phone App:</strong><br/>
+      "@Google Drive read 9LMNTS_GEMINI_LIVE_BRAIN and tell me the latest build and terminal output."<br/><br/>
+      <strong>Run a Command from your Phone via Google Docs:</strong><br/>
+      Open <code>9LMNTS_GEMINI_LIVE_BRAIN</code> in Google Docs on your phone and change Line 1 to:<br/>
+      <code>RUN_CMD: build</code> &nbsp;or&nbsp; <code>RUN_CMD: read ai-voice.html</code>
+    </div>
+  </div>
+
+  <script>
+    async function refreshBrain() {
+      try {
+        const res = await fetch('/api/remote/brain');
+        const data = await res.json();
+        if (data && data.lastCommandOutput) {
+          document.getElementById('terminalOutput').textContent = data.lastCommandOutput;
+        }
+        if (data && data.lastSyncStatus && data.lastSyncStatus.docUrl) {
+          document.getElementById('bridgeStatusBadge').textContent = '● DOCS SYNCED';
+        }
+      } catch (e) {
+        document.getElementById('terminalOutput').textContent =
+          'Local server API (/api/remote/brain) not detected on this port.\nRun `node server.js` in `c:\\Users\\Darnl\\Downloads\\9LMNTS Studio cyber V2` to enable live command execution.';
+      }
+    }
+
+    async function executeRemoteCommand(cmd) {
+      if (!cmd) return;
+      const pin = document.getElementById('pinInput').value || '9999';
+      const term = document.getElementById('terminalOutput');
+      term.textContent = '⏳ Executing on PC: ' + cmd + ' ...';
+      try {
+        const res = await fetch('/api/remote/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-9LMNTS-Token': pin
+          },
+          body: JSON.stringify({ command: cmd })
+        });
+        const data = await res.json();
+        if (!data.ok && data.error) {
+          term.textContent = '❌ Error: ' + data.error;
+        } else {
+          term.textContent = `[${data.timestamp || new Date().toISOString()}] $ ${data.command}\n\n${data.output}`;
+        }
+      } catch (err) {
+        term.textContent = '❌ Request failed: ' + err.message;
+      }
+    }
+
+    async function saveGoogleBridgeUrl() {
+      const url = document.getElementById('googleScriptUrlInput').value.trim();
+      const pin = document.getElementById('pinInput').value || '9999';
+      const term = document.getElementById('terminalOutput');
+      term.textContent = '⏳ Saving Google Apps Script Webhook URL and syncing Brain to Google Docs...';
+      try {
+        const res = await fetch('/api/remote/config', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-9LMNTS-Token': pin
+          },
+          body: JSON.stringify({ googleScriptUrl: url })
+        });
+        const data = await res.json();
+        term.textContent = '✅ Google Docs Bridge Result:\n' + JSON.stringify(data, null, 2);
+        refreshBrain();
+      } catch (err) {
+        term.textContent = '❌ Could not save config: ' + err.message;
+      }
+    }
+
+    async function copyBrainForGemini() {
+      try {
+        const res = await fetch('/api/remote/brain?format=md');
+        const text = await res.text();
+        await navigator.clipboard.writeText(text);
+        alert('✅ Copied full 9LMNTS Live Brain & Terminal Log! Paste directly into the Gemini app or Google Docs.');
+      } catch (e) {
+        alert('Could not copy automatically: ' + e.message);
+      }
+    }
+
+    refreshBrain();
+  </script>
+</body>
+</html>

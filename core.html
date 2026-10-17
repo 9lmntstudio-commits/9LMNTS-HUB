@@ -3,39 +3,35 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <title>Event OS Live Interactive Demo — 9LMNTS Studio Core</title>
-  <meta name="description" content="Experience the future of event monetization and venue management with Gate OS / Event OS. Live ticketing, real-time analytics, dynamic vote packs, and holographic modules."/>
+  <title>Station 03: Creator OS Hub (6 Sovereign Creator Engines) — 9LMNTS Studio</title>
+  <meta name="description" content="Explore 9LMNTS Studio's 6 Always-On 24/7 Creator Operating Systems: Artist OS, Chef &amp; Hospitality OS, Comedian OS, Street Baller / Athlete OS, Fashion OS, and Worker Bee OS."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles/fullpage.css?v=3.5"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     :root {
-      --primary: #d946ef;
-      --secondary: #06b6d4;
-      --accent: #ef4444;
-      --bg: #050505;
-      --card-bg: #111111;
-      --card-border: rgba(255, 255, 255, 0.1);
-      --font-display: 'Orbitron', sans-serif;
-      --font-body: 'Inter', sans-serif;
+      --primary: #FFFFFF;
+      --secondary: #CBD5E1;
+      --accent: #FFFFFF;
+      --bg: #0A0C10;
+      --card-bg: rgba(16, 20, 28, 0.60);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: #06070A;
+      background-color: #0A0C10;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(255, 69, 0, 0.25) 0%, rgba(255, 30, 0, 0.06) 35%, transparent 60%),
-        radial-gradient(circle at 85% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 45%),
-        linear-gradient(180deg, rgba(6, 7, 10, 0.75) 0%, rgba(6, 7, 10, 0.96) 100%),
-        url('assets/images/dark_cyber_portal.jpg');
-      background-attachment: fixed;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-size: cover;
+        radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 20% 45%, rgba(255, 85, 0, 0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #0A0C10 0%, #08090C 100%);
       color: #ffffff;
       font-family: var(--font-body);
       overflow-x: hidden;
@@ -47,12 +43,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11, 14, 21, 0.85);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: rgba(9, 11, 14, 0.85);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      padding: 12px 24px;
+      padding: 16px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -62,33 +58,35 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-family: var(--font-body);
+      font-size: 0.74rem;
       font-weight: 800;
       color: #cbd5e1;
       text-decoration: none;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      border-radius: 9999px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(12px);
       transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
     .hud-back-btn:hover {
-      background: var(--primary);
-      color: #050505;
-      border-color: var(--primary);
-      box-shadow: 0 0 20px var(--primary);
+      background: #FFFFFF;
+      color: #0A0C10;
+      border-color: #FFFFFF;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
     }
 
     /* Theme Switcher Pills */
     .theme-pills {
       display: flex;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 9999px;
-      padding: 4px;
-      gap: 4px;
+      padding: 5px;
+      gap: 6px;
       overflow-x: auto;
       scrollbar-width: none;
       backdrop-filter: blur(12px);
@@ -97,20 +95,21 @@
       background: transparent;
       border: none;
       color: rgba(255, 255, 255, 0.6);
-      font-family: var(--font-display);
-      font-size: 0.68rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
       font-weight: 800;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 9999px;
       cursor: pointer;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
       white-space: nowrap;
       transition: all 0.2s ease;
     }
     .theme-btn.active {
       background: #ffffff;
-      color: #050505;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+      color: #0A0C10;
+      box-shadow: 0 2px 14px rgba(255, 255, 255, 0.2);
     }
 
     /* Marquee Ticker */
@@ -124,7 +123,7 @@
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--primary);
+      color: #94A3B8;
     }
     .ticker-track {
       display: inline-block;
@@ -138,7 +137,7 @@
     /* Hero Section */
     .demo-hero {
       position: relative;
-      padding: 60px 20px 40px 20px;
+      padding: 64px 24px 44px 24px;
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
@@ -147,80 +146,82 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 9999px;
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      background: rgba(217, 70, 239, 0.12);
-      border: 1px solid var(--primary);
-      color: var(--primary);
+      margin-bottom: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #CBD5E1;
       backdrop-filter: blur(12px);
     }
     .demo-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      font-size: clamp(2.8rem, 6.2vw, 4.8rem);
       font-weight: 900;
-      font-style: italic;
+      font-style: normal;
       text-transform: uppercase;
-      line-height: 1.0;
-      margin-bottom: 16px;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
     }
     .demo-hero p {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.10rem;
+      color: #94A3B8;
       max-width: 640px;
-      margin: 0 auto 32px auto;
-      line-height: 1.6;
+      margin: 0 auto 36px auto;
+      line-height: 1.65;
     }
     .hero-actions {
       display: flex;
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
     .btn-main {
-      padding: 16px 36px;
-      border-radius: 14px;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 0.84rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: var(--primary);
-      color: #050505;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.08em;
+      background: #FFFFFF;
+      color: #0A0C10;
+      border: 1px solid #FFFFFF;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 25px rgba(217, 70, 239, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
     }
     .btn-main:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 35px var(--primary), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      background: #E5E7EB;
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.28);
     }
     .btn-secondary {
-      padding: 16px 32px;
-      border-radius: 14px;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 0.95rem;
+      padding: 14px 30px;
+      border-radius: 9999px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 0.84rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: rgba(255, 255, 255, 0.06);
+      letter-spacing: 0.08em;
+      background: rgba(255, 255, 255, 0.05);
       color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.14);
       cursor: pointer;
       text-decoration: none;
       backdrop-filter: blur(12px);
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-secondary:hover {
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255, 255, 255, 0.12);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
@@ -296,9 +297,9 @@
     }
     .bento-card {
       background: rgba(14, 18, 27, 0.50);
-      background-image: radial-gradient(circle at 50% 0%, rgba(217, 70, 239, 0.08) 0%, transparent 60%);
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.12) 0%, transparent 60%);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-top: 1px solid rgba(217, 70, 239, 0.45);
+      border-top: 2px solid var(--primary);
       border-radius: 22px;
       padding: 28px;
       position: relative;
@@ -309,9 +310,9 @@
       transition: all 0.3s var(--ease-cinematic);
     }
     .bento-card:hover {
-      border-color: rgba(217, 70, 239, 0.6);
+      border-color: var(--primary);
       transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(217, 70, 239, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 85, 0, 0.25);
     }
 
     .col-span-8 { grid-column: span 12; }
@@ -333,7 +334,7 @@
       font-size: 1.4rem;
       font-weight: 900;
       text-transform: uppercase;
-      font-style: italic;
+      font-style: normal;
     }
     .timer-pill {
       font-family: var(--font-mono);
@@ -537,7 +538,7 @@
     .pack-card.popular {
       border-color: var(--primary);
       background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 25px rgba(217, 70, 239, 0.2);
+      box-shadow: 0 0 25px rgba(255, 85, 0, 0.25);
     }
     .popular-tag {
       position: absolute;
@@ -561,7 +562,7 @@
       padding: 24px;
       border-radius: 18px;
       border: 1px solid var(--primary);
-      background: rgba(217, 70, 239, 0.08);
+      background: rgba(255, 85, 0, 0.08);
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -715,29 +716,25 @@
 
     <!-- Theme Switcher -->
     <div class="theme-pills" id="themePills">
-      <button class="theme-btn active" onclick="switchTheme('nightlife')">Nightlife</button>
-      <button class="theme-btn" onclick="switchTheme('artist')">Artist OS</button>
-      <button class="theme-btn" onclick="switchTheme('corporate')">Corporate</button>
-      <button class="theme-btn" onclick="switchTheme('wedding')">Wedding</button>
-      <button class="theme-btn" onclick="switchTheme('comedy')">Comedy</button>
-      <button class="theme-btn" onclick="switchTheme('venue')">Venue</button>
-      <button class="theme-btn" onclick="switchTheme('catering')">Catering</button>
-      <button class="theme-btn" onclick="switchTheme('gaming')">Gaming</button>
+      <button class="theme-btn active" onclick="switchTheme('artist')">Artist OS</button>
+      <button class="theme-btn" onclick="switchTheme('catering')">Chef &amp; Catering OS</button>
+      <button class="theme-btn" onclick="switchTheme('comedy')">Comedian OS</button>
+      <button class="theme-btn" onclick="switchTheme('nightlife')">Sound Clash OS</button>
+      <button class="theme-btn" onclick="switchTheme('corporate')">Pitch OS</button>
+      <button class="theme-btn" onclick="switchTheme('venue')">Venue OS</button>
+      <button class="theme-btn" onclick="switchTheme('wedding')">Reception OS</button>
+      <button class="theme-btn" onclick="switchTheme('gaming')">Gaming OS</button>
     </div>
 
     <div style="display:flex; align-items:center; gap:12px;">
-      <span style="font-family:var(--font-mono); font-size:0.72rem; color:#ef4444; font-weight:800; display:flex; align-items:center; gap:6px;">
-        <span style="width:8px; height:8px; border-radius:50%; background:#ef4444; display:inline-block; animation:pulse 1.5s infinite;"></span>
-        LIVE ARENA
-      </span>
-      <a href="services.html#intake" class="btn-main" style="padding:8px 16px; font-size:0.75rem;">⚡ START PROJECT</a>
+      <a href="pricing.html" class="hud-cta-btn">🤝 50% DEPOSIT PRICING</a>
     </div>
   </header>
 
   <!-- Marquee Ticker -->
   <div class="ticker-bar">
     <div class="ticker-track" id="tickerTrack">
-      🔥 DJ K-OS JUST DROPPED A NEW TRACK &nbsp;•&nbsp; 👑 SARAH J. JOINED THE VIP LOUNGE &nbsp;•&nbsp; ⚡ POWER HYPE ACTIVATED BY TABLE 4 &nbsp;•&nbsp; 🎵 NEXT BATTLE: ROUND 2 STARTS IN 5 MINS &nbsp;•&nbsp; 🔥 DJ K-OS JUST DROPPED A NEW TRACK &nbsp;•&nbsp; 👑 SARAH J. JOINED THE VIP LOUNGE &nbsp;•&nbsp; ⚡ POWER HYPE ACTIVATED BY TABLE 4 &nbsp;•&nbsp; 🎵 NEXT BATTLE: ROUND 2 STARTS IN 5 MINS
+      ⚡ STATION 03: CREATOR OS HUB • 6 ALWAYS-ON 24/7 SOVEREIGN ENGINES (ARTIST OS • CHEF OS • COMEDIAN OS • STREET BALLER OS • FASHION OS • WORKER BEE OS) • 0% MARKETPLACE COMMISSIONS • LOCK YOUR 7-DAY SPRINT WITH 50% E-TRANSFER DEPOSIT ⚡&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
   </div>
 
@@ -745,38 +742,74 @@
   <section class="demo-hero">
     <div class="demo-badge" id="heroBadge">
       <span style="width:8px; height:8px; border-radius:50%; background:currentColor;"></span>
-      <span id="heroBadgeText">LIVE DEMO — SOUND CLASH</span>
+      <span id="heroBadgeText">STATION 03 // 6 SOVEREIGN CREATOR ENGINES</span>
     </div>
     <h1>
-      YOUR EVENTS.<br/>
-      <span style="color:var(--primary);" id="heroAccentText">SUPERCHARGED.</span>
+      CREATOR OS HUB.<br/>
+      <span style="color:var(--primary);" id="heroAccentText">6 SOVEREIGN ENGINES.</span>
     </h1>
     <p id="heroSubtitle">
-      EventOS turns your venue into a revenue machine. Watch these numbers climb in real time with mobile crowd voting, lossless audio sync, and surging prize pots.
+      Stop surrendering 30% to third-party marketplaces. Explore our 6 Always-On 24/7 Creator Operating Systems and live interactive venue telemetry below — built for artists, chefs, comedians, athletes, designers, and agencies.
     </p>
     <div class="hero-actions">
-      <a href="#votePacksSection" class="btn-main">Get EventOS Now</a>
-      <a href="services.html#intake" class="btn-secondary">Book a Demo</a>
+      <a href="pricing.html#agency-sprints" class="btn-main">Lock 7-Day OS Sprint (50% Deposit)</a>
+      <a href="services.html#intake" class="btn-secondary">Request 1-Page Sprint Contract</a>
     </div>
 
     <!-- Hero Stats Grid -->
     <div class="hero-stats-grid" id="heroStatsGrid">
       <div class="hero-stat-card">
         <span class="stat-badge">LIVE</span>
-        <div class="stat-val" id="stat1Val">878</div>
-        <div class="stat-lbl" id="stat1Lbl">Live Tickets</div>
+        <div class="stat-val" id="stat1Val">6 OS</div>
+        <div class="stat-lbl" id="stat1Lbl">Creator Engines</div>
       </div>
       <div class="hero-stat-card">
-        <div class="stat-val" id="stat2Val">$128.5K</div>
-        <div class="stat-lbl" id="stat2Lbl">Tonight's Revenue</div>
+        <div class="stat-val" id="stat2Val">0%</div>
+        <div class="stat-lbl" id="stat2Lbl">Marketplace Cut</div>
       </div>
       <div class="hero-stat-card">
-        <div class="stat-val" id="stat3Val">127</div>
-        <div class="stat-lbl" id="stat3Lbl">Events This Month</div>
+        <div class="stat-val" id="stat3Val">7 DAYS</div>
+        <div class="stat-lbl" id="stat3Lbl">Turnkey Sprint</div>
       </div>
       <div class="hero-stat-card">
-        <div class="stat-val" id="stat4Val">4.9★</div>
-        <div class="stat-lbl" id="stat4Lbl">Avg Rating</div>
+        <div class="stat-val" id="stat4Val">50%</div>
+        <div class="stat-lbl" id="stat4Lbl">e-Transfer Deposit</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Sovereign Creator Operating Systems Bento Showcase -->
+  <section style="max-width: 1240px; margin: 0 auto 36px auto; padding: 0 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+      <div class="bento-card">
+        <span class="station-tag orange">ENGINE 01 // MUSIC &amp; STEMS</span>
+        <h3 style="font-size: 1.2rem; margin: 8px 0;">Artist OS &amp; Stem Vault</h3>
+        <p style="font-size: 0.88rem; color: #CBD5E1;">In-browser multitrack stem chopper, direct WAV/MP3 licensing checkout, superfan membership vault, and tour ticket drops.</p>
+      </div>
+      <div class="bento-card" style="border-top-color: #00F0FF;">
+        <span class="station-tag teal">ENGINE 02 // HOSPITALITY &amp; CATERING</span>
+        <h3 style="font-size: 1.2rem; margin: 8px 0;">Chef &amp; Restaurant OS</h3>
+        <p style="font-size: 0.88rem; color: #CBD5E1;">0%-commission direct online menu ordering, interactive per-guest catering calculator, and automatic 50% customer catering deposits.</p>
+      </div>
+      <div class="bento-card">
+        <span class="station-tag orange">ENGINE 03 // STAND-UP &amp; ROAST</span>
+        <h3 style="font-size: 1.2rem; margin: 8px 0;">Comedian OS</h3>
+        <p style="font-size: 0.88rem; color: #CBD5E1;">Special pay-per-view vault, live crowd heckle-shield tipping, tour date ticket drops, and roast battle audience voting.</p>
+      </div>
+      <div class="bento-card" style="border-top-color: #00F0FF;">
+        <span class="station-tag teal">ENGINE 04 // SPORTS &amp; NIL</span>
+        <h3 style="font-size: 1.2rem; margin: 8px 0;">Street Baller / Athlete OS</h3>
+        <p style="font-size: 0.88rem; color: #CBD5E1;">Verified scouting combine passport, 4K highlight reel player, 3v3 King of the Court brackets, and direct NIL sponsor slots.</p>
+      </div>
+      <div class="bento-card">
+        <span class="station-tag orange">ENGINE 05 // RUNWAY &amp; WEBAR</span>
+        <h3 style="font-size: 1.2rem; margin: 8px 0;">Fashion &amp; Runway OS</h3>
+        <p style="font-size: 0.88rem; color: #CBD5E1;">60-second runway walk instant lookbook checkout, scannable sleeve QR glyphs, and 480 GSM phygital drop reservations.</p>
+      </div>
+      <div class="bento-card" style="border-top-color: #00F0FF;">
+        <span class="station-tag teal">ENGINE 06 // B2B AUTOMATION</span>
+        <h3 style="font-size: 1.2rem; margin: 8px 0;">Worker Bee &amp; Agency OS</h3>
+        <p style="font-size: 0.88rem; color: #CBD5E1;">Automated B2B service intake, scope estimator, Gemini Live voice qualification, and 1-page sprint contract dispatch.</p>
       </div>
     </div>
   </section>
@@ -1166,30 +1199,43 @@
   <!-- 3-Step Gate OS Flow -->
   <section style="max-width:1000px; margin:60px auto; padding:0 20px; text-align:center;">
     <span class="demo-badge">THE COMPLETE LIFECYCLE</span>
-    <h2 style="font-family:var(--font-display); font-size:clamp(1.8rem, 3.5vw, 2.8rem); text-transform:uppercase; font-style:italic; margin-bottom:12px;">
-      How EventOS Works
+    <h2 style="font-family:var(--font-display); font-size:clamp(1.8rem, 3.5vw, 2.8rem); text-transform:uppercase; font-style:normal; margin-bottom:12px;">
+      How Creator &amp; Event OS Works
     </h2>
     <div class="gate-steps-grid">
       <div class="gate-step-card">
         <div class="step-badge-num">1</div>
-        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:900; margin-bottom:8px;">Deposit &amp; Reserve</h3>
-        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6;">Lock in your date. We instantly provision your dedicated platform environment.</p>
+        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:900; margin-bottom:8px;">1-Page Contract &amp; 50% Deposit</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6;">Sign your 1-Page Sprint Contract Agreement and send your 50% Interac e-Transfer Deposit to 9lmntsstudio@gmail.com.</p>
       </div>
       <div class="gate-step-card">
         <div class="step-badge-num">2</div>
-        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:900; margin-bottom:8px;">Unlock "The Gate"</h3>
-        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6;">Access your basic OS immediately to start managing RSVPs, building hype, and collecting data before the event.</p>
+        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:900; margin-bottom:8px;">7-Day Custom Sprint</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6;">We build your sovereign Creator OS, Chef OS, or Event OS with custom brand tokens, photography, and customer checkout.</p>
       </div>
       <div class="gate-step-card" style="border-color:var(--primary);">
         <div class="step-badge-num">3</div>
-        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:900; margin-bottom:8px; color:var(--primary);">Full Event OS Live</h3>
-        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6;">On event day, The Gate transforms into the full Event OS, activating live voting, digital tipping, and real-time analytics.</p>
+        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:900; margin-bottom:8px; color:var(--primary);">Live DNS Cutover</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.6;">Upon final 50% balance settlement, your platform goes live on your custom domain with 0% agency commission on your sales.</p>
       </div>
     </div>
   </section>
 
+  <!-- Universal Bottom 9-Station Spatial Command Dock -->
+  <nav class="fullpage-station-dock" aria-label="9LMNTS Spatial Stations Dock">
+    <a class="fp-dock-item" href="loa.html"><span class="num">01</span><span>Project LOA</span></a>
+    <a class="fp-dock-item teal" href="vault.html"><span class="num">02</span><span>Sonic Vault</span></a>
+    <a class="fp-dock-item active" href="core.html"><span class="num">03</span><span>Creator OS Hub</span></a>
+    <a class="fp-dock-item teal" href="ai-voice.html"><span class="num">04</span><span>Argon AI &amp; CRM</span></a>
+    <a class="fp-dock-item" href="services.html"><span class="num">05</span><span>7-Day Sprints</span></a>
+    <a class="fp-dock-item teal" href="the-helm.html"><span class="num">06</span><span>The Helm</span></a>
+    <a class="fp-dock-item teal" href="clash.html"><span class="num">07</span><span>Battle Arenas</span></a>
+    <a class="fp-dock-item" href="merch.html"><span class="num">08</span><span>Phygital Merch</span></a>
+    <a class="fp-dock-item teal" href="vault.html#interactive-chopper"><span class="num">09</span><span>Studio DAW</span></a>
+  </nav>
+
   <!-- Toast Notification -->
-  <div id="toast" style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#1A1A1A; border:1px solid var(--primary); padding:12px 24px; border-radius:9999px; font-weight:bold; font-size:0.85rem; display:none; z-index:999; box-shadow:0 0 30px rgba(0,0,0,0.8);"></div>
+  <div id="toast" style="position:fixed; bottom:84px; left:50%; transform:translateX(-50%); background:#1A1A1A; border:1px solid var(--primary); padding:12px 24px; border-radius:9999px; font-weight:bold; font-size:0.85rem; display:none; z-index:999; box-shadow:0 0 30px rgba(0,0,0,0.8);"></div>
 
   <script>
     const THEMES = {

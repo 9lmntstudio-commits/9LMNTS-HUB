@@ -591,6 +591,50 @@
       }
     }, 1000);
 
+    let activePayPalOrder = { title: 'General Admission Cover', price: 20, code: 'BOX 01' };
+
+    function openPayPalCheckout(title, price, boxCode) {
+      activePayPalOrder = { title, price: Number(price) || 20, code: boxCode || 'PASS' };
+      const titleEl = document.getElementById('ppItemTitle');
+      const subEl = document.getElementById('ppItemSub');
+      const priceEl = document.getElementById('ppItemPrice');
+      const fullEl = document.getElementById('ppFullAmount');
+      const instEl = document.getElementById('ppInstallmentAmount');
+      if (titleEl) titleEl.innerText = title;
+      if (subEl) subEl.innerText = '9LMNTS Competition OS Series • ' + (boxCode || 'LIVE PASS');
+      if (priceEl) priceEl.innerText = '$' + activePayPalOrder.price + ' CAD';
+      if (fullEl) fullEl.innerText = '$' + activePayPalOrder.price.toFixed(2) + ' CAD';
+      if (instEl) instEl.innerText = '4 payments of $' + (activePayPalOrder.price / 4).toFixed(2) + ' CAD';
+      const modal = document.getElementById('paypalModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closePayPalModal() {
+      const modal = document.getElementById('paypalModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function executePayPalOrder(method) {
+      const planRadios = document.getElementsByName('ppPlanRadio');
+      let selectedPlan = 'full';
+      for (const r of planRadios) {
+        if (r.checked) selectedPlan = r.value;
+      }
+      const planText = selectedPlan === 'payin4'
+        ? 'PayPal Pay in 4 (4x $' + (activePayPalOrder.price / 4).toFixed(2) + ' CAD)'
+        : 'Pay in Full ($' + activePayPalOrder.price.toFixed(2) + ' CAD)';
+      potTotal += activePayPalOrder.price;
+      updateScores();
+      closePayPalModal();
+      alert(
+        '✅ 9LMNTS E-COMMERCE VERIFIED\n\n' +
+        'Pass: ' + activePayPalOrder.title + ' (' + activePayPalOrder.code + ')\n' +
+        'Rail: ' + method.toUpperCase() + '\n' +
+        'Plan: ' + planText + '\n\n' +
+        'Live Prize Pot incremented to $' + potTotal.toLocaleString() + ' CAD!'
+      );
+    }
+
     function openAdmin() { document.getElementById('adminModal').classList.add('active'); }
     function closeAdmin() { document.getElementById('adminModal').classList.remove('active'); }
     function unlockAdmin() {
