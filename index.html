@@ -1660,37 +1660,63 @@
 
       /* Radar Pins on Mobile (Optimized for finger touch) */
       .tag-pin {
-        width: 28px !important;
-        height: 28px !important;
-        font-size: 11px !important;
-        box-shadow: 0 0 18px var(--neon-orange) !important;
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 10px !important;
+        box-shadow: 0 0 14px rgba(255, 255, 255, 0.8) !important;
       }
       /* Disable hovering tech labels on mobile to avoid screen occlusion */
       .tag-label {
         display: none !important;
       }
 
-      /* Modal Responsive Refinement */
+      /* Universal Fluid Modal Engine (Guaranteed fit across any screen) */
       .modal-backdrop {
-        padding: 12px;
+        padding: clamp(8px, 2.5vw, 20px) !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
       }
       .modal-dialog {
-        padding: 24px 20px;
-        max-height: 88vh;
-        border-radius: 20px;
-        width: 100%;
+        padding: clamp(20px, 4.5vw, 32px) clamp(16px, 4vw, 24px) !important;
+        max-height: 90vh !important;
+        max-height: 90dvh !important;
+        border-radius: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
       }
       .modal-dialog h2 {
-        font-size: 1.35rem;
+        font-size: clamp(1.35rem, 5vw, 1.8rem) !important;
+        line-height: 1.15 !important;
+      }
+      .modal-dialog .subtitle {
+        font-size: clamp(0.70rem, 2.8vw, 0.78rem) !important;
+        margin-bottom: 14px !important;
+      }
+      .modal-dialog p {
+        font-size: clamp(0.85rem, 3.2vw, 0.92rem) !important;
+        line-height: 1.6 !important;
+        margin-bottom: 18px !important;
+      }
+      .modal-actions {
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100% !important;
+        padding: 12px 18px !important;
+        font-size: 0.78rem !important;
       }
     }
 
     @media (max-width: 480px) {
       .btn-glow span { display: none; }
       .btn-glow { padding: 8px 10px; }
-      .mobile-streamlined-dock { padding: 4px 6px; gap: 4px; }
-      .dock-btn { padding: 7px 9px; font-size: 0.62rem; }
-      .switcher-pill { padding: 5px 8px; font-size: 0.58rem; }
+      .studio-header { padding: 0 12px !important; left: 10px !important; right: 10px !important; }
+      .modal-dialog { padding: 18px 14px !important; }
     }
   </style>
 </head>
